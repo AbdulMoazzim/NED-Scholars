@@ -1,0 +1,181 @@
+"use client";
+
+import { useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { programs } from "@/data/CausesSupportData";
+import { stats } from "@/data/CausesSupportData";
+import Footer from "@/components/Footer";
+import CustomCard from "@/components/Card";
+import StatCard from "@/components/Stats";
+
+gsap.registerPlugin(ScrollTrigger);
+
+
+
+const SupportPage: React.FC = () => {
+  const heroSectionRef = useRef(null);
+  const programsTitleRef = useRef<HTMLHeadingElement>(null);
+  const programsSectionRef = useRef(null);
+  const impactTitleRef = useRef<HTMLHeadingElement>(null);
+  const impactSubtitleRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    // Hero animations
+    const tl = gsap.timeline();
+
+    if (heroSectionRef.current && programsSectionRef.current) {
+      gsap.set([heroSectionRef.current, programsSectionRef.current], {
+        opacity: 0,
+        y: 50,
+      });
+
+      tl.to(heroSectionRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.out",
+      });
+      tl.to(programsSectionRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.out",
+      });
+    }
+
+    // Section titles animations
+    if (programsTitleRef.current) {
+      gsap.fromTo(
+        programsTitleRef.current.parentElement,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: programsTitleRef.current,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }
+
+    if (impactTitleRef.current && impactSubtitleRef.current) {
+      const impactTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: impactTitleRef.current,
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
+      });
+
+      gsap.set([impactTitleRef.current, impactSubtitleRef.current], {
+        opacity: 0,
+        y: 50,
+      });
+
+      impactTl
+        .to(impactTitleRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+        })
+        .to(
+          impactSubtitleRef.current,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out",
+          },
+          "-=0.5"
+        );
+    }
+  }, []);
+
+  const handleMainDonate = () => {
+    const donateSection = document.getElementById("donate");
+    if (donateSection) {
+      gsap.to(window, {
+        duration: 1,
+        scrollTo: { y: donateSection, offsetY: 50 },
+        ease: "power2.inOut",
+      });
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-600 to-indigo-700">
+      {/* Hero Section */}
+      <section
+        className="text-center py-20 px-5 text-white"
+        ref={heroSectionRef}
+      >
+        <div className="max-w-6xl mx-auto box">
+          <h1 className="text-6xl md:text-7xl font-bold mb-6 drop-shadow-lg">
+            NED Scholars
+          </h1>
+          <p className="text-xl md:text-2xl mb-12 opacity-90 max-w-3xl mx-auto">
+            Empowering aspiring scholars pursuing their dreams in STEM
+          </p>
+          <button
+            className="bg-gradient-to-r from-red-500 to-orange-500 text-white px-12 py-5 text-xl font-bold rounded-full hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            onClick={handleMainDonate}
+          >
+            Donate Now & Make a Difference
+          </button>
+        </div>
+      </section>
+
+      {/* Programs Section */}
+      <section className="bg-white py-20">
+        <div className="max-w-6xl mx-auto px-5">
+          <div className="text-center mb-16">
+            <h2
+              ref={programsTitleRef}
+              className="text-5xl font-bold mb-6 text-gray-800 relative"
+            >
+              Our Impact Programs
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-600 mx-auto rounded-full"></div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mb-16 box" ref={programsSectionRef}>
+            {programs.map((program, index) => (
+              <CustomCard key={program.id} value={program} index={index} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Impact Section */}
+      <section className="bg-gradient-to-br from-gray-800 to-gray-900 text-white py-20 text-center">
+        <div className="max-w-6xl mx-auto px-5">
+          <h2
+            ref={impactTitleRef}
+            className="text-5xl font-bold mb-6 text-white relative"
+          >
+            Our Growing Impact
+          </h2>
+          <p
+            ref={impactSubtitleRef}
+            className="text-xl mb-12 max-w-3xl mx-auto"
+          >
+            Together, we're transforming lives and building the future of STEM
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+            {stats.map((stat, index) => (
+              <StatCard key={stat.label} stat={stat} index={index} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+    </div>
+  );
+};
+
+export default SupportPage;
