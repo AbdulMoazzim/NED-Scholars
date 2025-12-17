@@ -46,7 +46,11 @@ export const getFormConfig = (type: string) => {
           { name: 'excerpt', label: 'Blog Excerpt', type: 'textarea', required: true, rows: 3 },
           { name: 'content', label: 'Blog Content', type: 'textarea', required: true, rows: 8 },
           { name: 'author', label: 'Author Name', type: 'text', required: true },
-          { name: 'category', label: 'Category', type: 'select', required: true, options: ['Technology', 'Education', 'Research', 'Innovation', 'Student Life'] },
+          { name: 'category', label: 'Category', type: 'select', required: true, options: ["TECHNOLOGY"
+    , "EDUCATION"
+    , "RESEARCH"
+    , "INNOVATION"
+    , "STUDENT_LIFE"] },
         ]
       },
       'news': {
@@ -57,8 +61,12 @@ export const getFormConfig = (type: string) => {
           { name: 'content', label: 'Full Article', type: 'textarea', required: true, rows: 6 },
           { name: 'location', label: 'Location', type: 'text', required: false },
           { name: 'eventDate', label: 'Event Date', type: 'datetime-local', required: false },
-          { name: 'priority', label: 'Priority Level', type: 'select', required: true, options: ['Low', 'Medium', 'High', 'Urgent'] },
-          { name: 'category', label: 'News Category', type: 'select', required: true, options: ['Announcement', 'Event', 'Achievement', 'Research', 'Partnership'] },
+          { name: 'priority', label: 'Priority Level', type: 'select', required: true, options: ["LOW" , "MEDIUM" , "HIGH" , "URGENT"] },
+          { name: 'category', label: 'News Category', type: 'select', required: true, options: ["ANNOUNCEMENT"
+    , "EVENT"
+    , "ACHIEVEMENT"
+    , "RESEARCH"
+    , "PARTNERSHIP"] },
         ]
       }
     };

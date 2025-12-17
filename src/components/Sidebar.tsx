@@ -2,7 +2,7 @@ import { sidebarItems } from "@/data/AdminPortal";
 import { Edit, Menu, X,  } from "lucide-react";
 
 
-export default function Sidebar({activeTab, setActiveTab, sidebarOpen, setSidebarOpen}: {activeTab: string, setActiveTab: (tab: string) => void, sidebarOpen: boolean, setSidebarOpen: (open: boolean) => void}) {
+export default function Sidebar({activeTab,setFormData, setActiveTab, sidebarOpen, setSidebarOpen, setErrors}: {activeTab: string,setFormData: (data: Record<string, string>)=>void,setErrors: (data: Record<string, string>)=>void, setActiveTab: (tab: string) => void, sidebarOpen: boolean, setSidebarOpen: (open: boolean) => void}) {
     
   return (
     <>
@@ -36,8 +36,10 @@ export default function Sidebar({activeTab, setActiveTab, sidebarOpen, setSideba
                   <button
                     key={item.id}
                     onClick={() => {
+                      setErrors({})
                       setActiveTab(item.id);
                       setSidebarOpen(false);
+                      setFormData({})
                     }}
                     className={`w-full flex items-center space-x-4 p-4 rounded-xl transition-all duration-300 group ${
                       activeTab === item.id 

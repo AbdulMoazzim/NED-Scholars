@@ -53,6 +53,21 @@ export type BlogPost = $Result.DefaultSelection<Prisma.$BlogPostPayload>
  * 
  */
 export type NewsUpdate = $Result.DefaultSelection<Prisma.$NewsUpdatePayload>
+/**
+ * Model Image
+ * 
+ */
+export type Image = $Result.DefaultSelection<Prisma.$ImagePayload>
+/**
+ * Model Video
+ * 
+ */
+export type Video = $Result.DefaultSelection<Prisma.$VideoPayload>
+/**
+ * Model YoutubeUrl
+ * 
+ */
+export type YoutubeUrl = $Result.DefaultSelection<Prisma.$YoutubeUrlPayload>
 
 /**
  * Enums
@@ -300,6 +315,36 @@ export class PrismaClient<
     * ```
     */
   get newsUpdate(): Prisma.NewsUpdateDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.image`: Exposes CRUD operations for the **Image** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Images
+    * const images = await prisma.image.findMany()
+    * ```
+    */
+  get image(): Prisma.ImageDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.video`: Exposes CRUD operations for the **Video** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Videos
+    * const videos = await prisma.video.findMany()
+    * ```
+    */
+  get video(): Prisma.VideoDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.youtubeUrl`: Exposes CRUD operations for the **YoutubeUrl** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more YoutubeUrls
+    * const youtubeUrls = await prisma.youtubeUrl.findMany()
+    * ```
+    */
+  get youtubeUrl(): Prisma.YoutubeUrlDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -747,7 +792,10 @@ export namespace Prisma {
     TeamMember: 'TeamMember',
     SuccessStory: 'SuccessStory',
     BlogPost: 'BlogPost',
-    NewsUpdate: 'NewsUpdate'
+    NewsUpdate: 'NewsUpdate',
+    Image: 'Image',
+    Video: 'Video',
+    YoutubeUrl: 'YoutubeUrl'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -766,7 +814,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "session" | "account" | "verification" | "teamMember" | "successStory" | "blogPost" | "newsUpdate"
+      modelProps: "user" | "session" | "account" | "verification" | "teamMember" | "successStory" | "blogPost" | "newsUpdate" | "image" | "video" | "youtubeUrl"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1362,6 +1410,228 @@ export namespace Prisma {
           }
         }
       }
+      Image: {
+        payload: Prisma.$ImagePayload<ExtArgs>
+        fields: Prisma.ImageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ImageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ImageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>
+          }
+          findFirst: {
+            args: Prisma.ImageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ImageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>
+          }
+          findMany: {
+            args: Prisma.ImageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>[]
+          }
+          create: {
+            args: Prisma.ImageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>
+          }
+          createMany: {
+            args: Prisma.ImageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ImageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>[]
+          }
+          delete: {
+            args: Prisma.ImageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>
+          }
+          update: {
+            args: Prisma.ImageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>
+          }
+          deleteMany: {
+            args: Prisma.ImageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ImageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ImageUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>[]
+          }
+          upsert: {
+            args: Prisma.ImageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>
+          }
+          aggregate: {
+            args: Prisma.ImageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateImage>
+          }
+          groupBy: {
+            args: Prisma.ImageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ImageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ImageCountArgs<ExtArgs>
+            result: $Utils.Optional<ImageCountAggregateOutputType> | number
+          }
+        }
+      }
+      Video: {
+        payload: Prisma.$VideoPayload<ExtArgs>
+        fields: Prisma.VideoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.VideoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.VideoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoPayload>
+          }
+          findFirst: {
+            args: Prisma.VideoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.VideoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoPayload>
+          }
+          findMany: {
+            args: Prisma.VideoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoPayload>[]
+          }
+          create: {
+            args: Prisma.VideoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoPayload>
+          }
+          createMany: {
+            args: Prisma.VideoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.VideoCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoPayload>[]
+          }
+          delete: {
+            args: Prisma.VideoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoPayload>
+          }
+          update: {
+            args: Prisma.VideoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoPayload>
+          }
+          deleteMany: {
+            args: Prisma.VideoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.VideoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.VideoUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoPayload>[]
+          }
+          upsert: {
+            args: Prisma.VideoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideoPayload>
+          }
+          aggregate: {
+            args: Prisma.VideoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateVideo>
+          }
+          groupBy: {
+            args: Prisma.VideoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<VideoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.VideoCountArgs<ExtArgs>
+            result: $Utils.Optional<VideoCountAggregateOutputType> | number
+          }
+        }
+      }
+      YoutubeUrl: {
+        payload: Prisma.$YoutubeUrlPayload<ExtArgs>
+        fields: Prisma.YoutubeUrlFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.YoutubeUrlFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$YoutubeUrlPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.YoutubeUrlFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$YoutubeUrlPayload>
+          }
+          findFirst: {
+            args: Prisma.YoutubeUrlFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$YoutubeUrlPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.YoutubeUrlFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$YoutubeUrlPayload>
+          }
+          findMany: {
+            args: Prisma.YoutubeUrlFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$YoutubeUrlPayload>[]
+          }
+          create: {
+            args: Prisma.YoutubeUrlCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$YoutubeUrlPayload>
+          }
+          createMany: {
+            args: Prisma.YoutubeUrlCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.YoutubeUrlCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$YoutubeUrlPayload>[]
+          }
+          delete: {
+            args: Prisma.YoutubeUrlDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$YoutubeUrlPayload>
+          }
+          update: {
+            args: Prisma.YoutubeUrlUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$YoutubeUrlPayload>
+          }
+          deleteMany: {
+            args: Prisma.YoutubeUrlDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.YoutubeUrlUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.YoutubeUrlUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$YoutubeUrlPayload>[]
+          }
+          upsert: {
+            args: Prisma.YoutubeUrlUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$YoutubeUrlPayload>
+          }
+          aggregate: {
+            args: Prisma.YoutubeUrlAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateYoutubeUrl>
+          }
+          groupBy: {
+            args: Prisma.YoutubeUrlGroupByArgs<ExtArgs>
+            result: $Utils.Optional<YoutubeUrlGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.YoutubeUrlCountArgs<ExtArgs>
+            result: $Utils.Optional<YoutubeUrlCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1466,6 +1736,9 @@ export namespace Prisma {
     successStory?: SuccessStoryOmit
     blogPost?: BlogPostOmit
     newsUpdate?: NewsUpdateOmit
+    image?: ImageOmit
+    video?: VideoOmit
+    youtubeUrl?: YoutubeUrlOmit
   }
 
   /* Types for Logging */
@@ -1578,6 +1851,202 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountAccountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AccountWhereInput
+  }
+
+
+  /**
+   * Count Type TeamMemberCountOutputType
+   */
+
+  export type TeamMemberCountOutputType = {
+    images: number
+    videos: number
+    youtubeUrls: number
+  }
+
+  export type TeamMemberCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    images?: boolean | TeamMemberCountOutputTypeCountImagesArgs
+    videos?: boolean | TeamMemberCountOutputTypeCountVideosArgs
+    youtubeUrls?: boolean | TeamMemberCountOutputTypeCountYoutubeUrlsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * TeamMemberCountOutputType without action
+   */
+  export type TeamMemberCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TeamMemberCountOutputType
+     */
+    select?: TeamMemberCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * TeamMemberCountOutputType without action
+   */
+  export type TeamMemberCountOutputTypeCountImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ImageWhereInput
+  }
+
+  /**
+   * TeamMemberCountOutputType without action
+   */
+  export type TeamMemberCountOutputTypeCountVideosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VideoWhereInput
+  }
+
+  /**
+   * TeamMemberCountOutputType without action
+   */
+  export type TeamMemberCountOutputTypeCountYoutubeUrlsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: YoutubeUrlWhereInput
+  }
+
+
+  /**
+   * Count Type SuccessStoryCountOutputType
+   */
+
+  export type SuccessStoryCountOutputType = {
+    images: number
+    videos: number
+    youtubeUrls: number
+  }
+
+  export type SuccessStoryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    images?: boolean | SuccessStoryCountOutputTypeCountImagesArgs
+    videos?: boolean | SuccessStoryCountOutputTypeCountVideosArgs
+    youtubeUrls?: boolean | SuccessStoryCountOutputTypeCountYoutubeUrlsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * SuccessStoryCountOutputType without action
+   */
+  export type SuccessStoryCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SuccessStoryCountOutputType
+     */
+    select?: SuccessStoryCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * SuccessStoryCountOutputType without action
+   */
+  export type SuccessStoryCountOutputTypeCountImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ImageWhereInput
+  }
+
+  /**
+   * SuccessStoryCountOutputType without action
+   */
+  export type SuccessStoryCountOutputTypeCountVideosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VideoWhereInput
+  }
+
+  /**
+   * SuccessStoryCountOutputType without action
+   */
+  export type SuccessStoryCountOutputTypeCountYoutubeUrlsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: YoutubeUrlWhereInput
+  }
+
+
+  /**
+   * Count Type BlogPostCountOutputType
+   */
+
+  export type BlogPostCountOutputType = {
+    images: number
+    videos: number
+    youtubeUrls: number
+  }
+
+  export type BlogPostCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    images?: boolean | BlogPostCountOutputTypeCountImagesArgs
+    videos?: boolean | BlogPostCountOutputTypeCountVideosArgs
+    youtubeUrls?: boolean | BlogPostCountOutputTypeCountYoutubeUrlsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * BlogPostCountOutputType without action
+   */
+  export type BlogPostCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlogPostCountOutputType
+     */
+    select?: BlogPostCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * BlogPostCountOutputType without action
+   */
+  export type BlogPostCountOutputTypeCountImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ImageWhereInput
+  }
+
+  /**
+   * BlogPostCountOutputType without action
+   */
+  export type BlogPostCountOutputTypeCountVideosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VideoWhereInput
+  }
+
+  /**
+   * BlogPostCountOutputType without action
+   */
+  export type BlogPostCountOutputTypeCountYoutubeUrlsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: YoutubeUrlWhereInput
+  }
+
+
+  /**
+   * Count Type NewsUpdateCountOutputType
+   */
+
+  export type NewsUpdateCountOutputType = {
+    images: number
+    videos: number
+    youtubeUrls: number
+  }
+
+  export type NewsUpdateCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    images?: boolean | NewsUpdateCountOutputTypeCountImagesArgs
+    videos?: boolean | NewsUpdateCountOutputTypeCountVideosArgs
+    youtubeUrls?: boolean | NewsUpdateCountOutputTypeCountYoutubeUrlsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * NewsUpdateCountOutputType without action
+   */
+  export type NewsUpdateCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NewsUpdateCountOutputType
+     */
+    select?: NewsUpdateCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * NewsUpdateCountOutputType without action
+   */
+  export type NewsUpdateCountOutputTypeCountImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ImageWhereInput
+  }
+
+  /**
+   * NewsUpdateCountOutputType without action
+   */
+  export type NewsUpdateCountOutputTypeCountVideosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VideoWhereInput
+  }
+
+  /**
+   * NewsUpdateCountOutputType without action
+   */
+  export type NewsUpdateCountOutputTypeCountYoutubeUrlsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: YoutubeUrlWhereInput
   }
 
 
@@ -6245,6 +6714,10 @@ export namespace Prisma {
     achievements?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    images?: boolean | TeamMember$imagesArgs<ExtArgs>
+    videos?: boolean | TeamMember$videosArgs<ExtArgs>
+    youtubeUrls?: boolean | TeamMember$youtubeUrlsArgs<ExtArgs>
+    _count?: boolean | TeamMemberCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["teamMember"]>
 
   export type TeamMemberSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6287,10 +6760,22 @@ export namespace Prisma {
   }
 
   export type TeamMemberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "position" | "email" | "phone" | "bio" | "expertise" | "achievements" | "createdAt" | "updatedAt", ExtArgs["result"]["teamMember"]>
+  export type TeamMemberInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    images?: boolean | TeamMember$imagesArgs<ExtArgs>
+    videos?: boolean | TeamMember$videosArgs<ExtArgs>
+    youtubeUrls?: boolean | TeamMember$youtubeUrlsArgs<ExtArgs>
+    _count?: boolean | TeamMemberCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type TeamMemberIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type TeamMemberIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $TeamMemberPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "TeamMember"
-    objects: {}
+    objects: {
+      images: Prisma.$ImagePayload<ExtArgs>[]
+      videos: Prisma.$VideoPayload<ExtArgs>[]
+      youtubeUrls: Prisma.$YoutubeUrlPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
@@ -6696,6 +7181,9 @@ export namespace Prisma {
    */
   export interface Prisma__TeamMemberClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    images<T extends TeamMember$imagesArgs<ExtArgs> = {}>(args?: Subset<T, TeamMember$imagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    videos<T extends TeamMember$videosArgs<ExtArgs> = {}>(args?: Subset<T, TeamMember$videosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    youtubeUrls<T extends TeamMember$youtubeUrlsArgs<ExtArgs> = {}>(args?: Subset<T, TeamMember$youtubeUrlsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$YoutubeUrlPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6752,6 +7240,10 @@ export namespace Prisma {
      */
     omit?: TeamMemberOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeamMemberInclude<ExtArgs> | null
+    /**
      * Filter, which TeamMember to fetch.
      */
     where: TeamMemberWhereUniqueInput
@@ -6770,6 +7262,10 @@ export namespace Prisma {
      */
     omit?: TeamMemberOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeamMemberInclude<ExtArgs> | null
+    /**
      * Filter, which TeamMember to fetch.
      */
     where: TeamMemberWhereUniqueInput
@@ -6787,6 +7283,10 @@ export namespace Prisma {
      * Omit specific fields from the TeamMember
      */
     omit?: TeamMemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeamMemberInclude<ExtArgs> | null
     /**
      * Filter, which TeamMember to fetch.
      */
@@ -6836,6 +7336,10 @@ export namespace Prisma {
      */
     omit?: TeamMemberOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeamMemberInclude<ExtArgs> | null
+    /**
      * Filter, which TeamMember to fetch.
      */
     where?: TeamMemberWhereInput
@@ -6884,6 +7388,10 @@ export namespace Prisma {
      */
     omit?: TeamMemberOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeamMemberInclude<ExtArgs> | null
+    /**
      * Filter, which TeamMembers to fetch.
      */
     where?: TeamMemberWhereInput
@@ -6926,6 +7434,10 @@ export namespace Prisma {
      * Omit specific fields from the TeamMember
      */
     omit?: TeamMemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeamMemberInclude<ExtArgs> | null
     /**
      * The data needed to create a TeamMember.
      */
@@ -6974,6 +7486,10 @@ export namespace Prisma {
      * Omit specific fields from the TeamMember
      */
     omit?: TeamMemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeamMemberInclude<ExtArgs> | null
     /**
      * The data needed to update a TeamMember.
      */
@@ -7041,6 +7557,10 @@ export namespace Prisma {
      */
     omit?: TeamMemberOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeamMemberInclude<ExtArgs> | null
+    /**
      * The filter to search for the TeamMember to update in case it exists.
      */
     where: TeamMemberWhereUniqueInput
@@ -7067,6 +7587,10 @@ export namespace Prisma {
      */
     omit?: TeamMemberOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeamMemberInclude<ExtArgs> | null
+    /**
      * Filter which TeamMember to delete.
      */
     where: TeamMemberWhereUniqueInput
@@ -7087,6 +7611,78 @@ export namespace Prisma {
   }
 
   /**
+   * TeamMember.images
+   */
+  export type TeamMember$imagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    where?: ImageWhereInput
+    orderBy?: ImageOrderByWithRelationInput | ImageOrderByWithRelationInput[]
+    cursor?: ImageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ImageScalarFieldEnum | ImageScalarFieldEnum[]
+  }
+
+  /**
+   * TeamMember.videos
+   */
+  export type TeamMember$videosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video
+     */
+    select?: VideoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video
+     */
+    omit?: VideoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoInclude<ExtArgs> | null
+    where?: VideoWhereInput
+    orderBy?: VideoOrderByWithRelationInput | VideoOrderByWithRelationInput[]
+    cursor?: VideoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: VideoScalarFieldEnum | VideoScalarFieldEnum[]
+  }
+
+  /**
+   * TeamMember.youtubeUrls
+   */
+  export type TeamMember$youtubeUrlsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the YoutubeUrl
+     */
+    select?: YoutubeUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the YoutubeUrl
+     */
+    omit?: YoutubeUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: YoutubeUrlInclude<ExtArgs> | null
+    where?: YoutubeUrlWhereInput
+    orderBy?: YoutubeUrlOrderByWithRelationInput | YoutubeUrlOrderByWithRelationInput[]
+    cursor?: YoutubeUrlWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: YoutubeUrlScalarFieldEnum | YoutubeUrlScalarFieldEnum[]
+  }
+
+  /**
    * TeamMember without action
    */
   export type TeamMemberDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7098,6 +7694,10 @@ export namespace Prisma {
      * Omit specific fields from the TeamMember
      */
     omit?: TeamMemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeamMemberInclude<ExtArgs> | null
   }
 
 
@@ -7339,6 +7939,10 @@ export namespace Prisma {
     advice?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    images?: boolean | SuccessStory$imagesArgs<ExtArgs>
+    videos?: boolean | SuccessStory$videosArgs<ExtArgs>
+    youtubeUrls?: boolean | SuccessStory$youtubeUrlsArgs<ExtArgs>
+    _count?: boolean | SuccessStoryCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["successStory"]>
 
   export type SuccessStorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7381,10 +7985,22 @@ export namespace Prisma {
   }
 
   export type SuccessStoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "studentName" | "year" | "currentPosition" | "company" | "story" | "impact" | "advice" | "createdAt" | "updatedAt", ExtArgs["result"]["successStory"]>
+  export type SuccessStoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    images?: boolean | SuccessStory$imagesArgs<ExtArgs>
+    videos?: boolean | SuccessStory$videosArgs<ExtArgs>
+    youtubeUrls?: boolean | SuccessStory$youtubeUrlsArgs<ExtArgs>
+    _count?: boolean | SuccessStoryCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type SuccessStoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type SuccessStoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $SuccessStoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "SuccessStory"
-    objects: {}
+    objects: {
+      images: Prisma.$ImagePayload<ExtArgs>[]
+      videos: Prisma.$VideoPayload<ExtArgs>[]
+      youtubeUrls: Prisma.$YoutubeUrlPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       studentName: string
@@ -7790,6 +8406,9 @@ export namespace Prisma {
    */
   export interface Prisma__SuccessStoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    images<T extends SuccessStory$imagesArgs<ExtArgs> = {}>(args?: Subset<T, SuccessStory$imagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    videos<T extends SuccessStory$videosArgs<ExtArgs> = {}>(args?: Subset<T, SuccessStory$videosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    youtubeUrls<T extends SuccessStory$youtubeUrlsArgs<ExtArgs> = {}>(args?: Subset<T, SuccessStory$youtubeUrlsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$YoutubeUrlPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7846,6 +8465,10 @@ export namespace Prisma {
      */
     omit?: SuccessStoryOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SuccessStoryInclude<ExtArgs> | null
+    /**
      * Filter, which SuccessStory to fetch.
      */
     where: SuccessStoryWhereUniqueInput
@@ -7864,6 +8487,10 @@ export namespace Prisma {
      */
     omit?: SuccessStoryOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SuccessStoryInclude<ExtArgs> | null
+    /**
      * Filter, which SuccessStory to fetch.
      */
     where: SuccessStoryWhereUniqueInput
@@ -7881,6 +8508,10 @@ export namespace Prisma {
      * Omit specific fields from the SuccessStory
      */
     omit?: SuccessStoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SuccessStoryInclude<ExtArgs> | null
     /**
      * Filter, which SuccessStory to fetch.
      */
@@ -7930,6 +8561,10 @@ export namespace Prisma {
      */
     omit?: SuccessStoryOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SuccessStoryInclude<ExtArgs> | null
+    /**
      * Filter, which SuccessStory to fetch.
      */
     where?: SuccessStoryWhereInput
@@ -7978,6 +8613,10 @@ export namespace Prisma {
      */
     omit?: SuccessStoryOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SuccessStoryInclude<ExtArgs> | null
+    /**
      * Filter, which SuccessStories to fetch.
      */
     where?: SuccessStoryWhereInput
@@ -8020,6 +8659,10 @@ export namespace Prisma {
      * Omit specific fields from the SuccessStory
      */
     omit?: SuccessStoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SuccessStoryInclude<ExtArgs> | null
     /**
      * The data needed to create a SuccessStory.
      */
@@ -8068,6 +8711,10 @@ export namespace Prisma {
      * Omit specific fields from the SuccessStory
      */
     omit?: SuccessStoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SuccessStoryInclude<ExtArgs> | null
     /**
      * The data needed to update a SuccessStory.
      */
@@ -8135,6 +8782,10 @@ export namespace Prisma {
      */
     omit?: SuccessStoryOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SuccessStoryInclude<ExtArgs> | null
+    /**
      * The filter to search for the SuccessStory to update in case it exists.
      */
     where: SuccessStoryWhereUniqueInput
@@ -8161,6 +8812,10 @@ export namespace Prisma {
      */
     omit?: SuccessStoryOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SuccessStoryInclude<ExtArgs> | null
+    /**
      * Filter which SuccessStory to delete.
      */
     where: SuccessStoryWhereUniqueInput
@@ -8181,6 +8836,78 @@ export namespace Prisma {
   }
 
   /**
+   * SuccessStory.images
+   */
+  export type SuccessStory$imagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    where?: ImageWhereInput
+    orderBy?: ImageOrderByWithRelationInput | ImageOrderByWithRelationInput[]
+    cursor?: ImageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ImageScalarFieldEnum | ImageScalarFieldEnum[]
+  }
+
+  /**
+   * SuccessStory.videos
+   */
+  export type SuccessStory$videosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video
+     */
+    select?: VideoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video
+     */
+    omit?: VideoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoInclude<ExtArgs> | null
+    where?: VideoWhereInput
+    orderBy?: VideoOrderByWithRelationInput | VideoOrderByWithRelationInput[]
+    cursor?: VideoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: VideoScalarFieldEnum | VideoScalarFieldEnum[]
+  }
+
+  /**
+   * SuccessStory.youtubeUrls
+   */
+  export type SuccessStory$youtubeUrlsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the YoutubeUrl
+     */
+    select?: YoutubeUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the YoutubeUrl
+     */
+    omit?: YoutubeUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: YoutubeUrlInclude<ExtArgs> | null
+    where?: YoutubeUrlWhereInput
+    orderBy?: YoutubeUrlOrderByWithRelationInput | YoutubeUrlOrderByWithRelationInput[]
+    cursor?: YoutubeUrlWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: YoutubeUrlScalarFieldEnum | YoutubeUrlScalarFieldEnum[]
+  }
+
+  /**
    * SuccessStory without action
    */
   export type SuccessStoryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8192,6 +8919,10 @@ export namespace Prisma {
      * Omit specific fields from the SuccessStory
      */
     omit?: SuccessStoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SuccessStoryInclude<ExtArgs> | null
   }
 
 
@@ -8391,6 +9122,10 @@ export namespace Prisma {
     category?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    images?: boolean | BlogPost$imagesArgs<ExtArgs>
+    videos?: boolean | BlogPost$videosArgs<ExtArgs>
+    youtubeUrls?: boolean | BlogPost$youtubeUrlsArgs<ExtArgs>
+    _count?: boolean | BlogPostCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["blogPost"]>
 
   export type BlogPostSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -8430,10 +9165,22 @@ export namespace Prisma {
   }
 
   export type BlogPostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "slug" | "title" | "excerpt" | "content" | "author" | "category" | "createdAt" | "updatedAt", ExtArgs["result"]["blogPost"]>
+  export type BlogPostInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    images?: boolean | BlogPost$imagesArgs<ExtArgs>
+    videos?: boolean | BlogPost$videosArgs<ExtArgs>
+    youtubeUrls?: boolean | BlogPost$youtubeUrlsArgs<ExtArgs>
+    _count?: boolean | BlogPostCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type BlogPostIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type BlogPostIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $BlogPostPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "BlogPost"
-    objects: {}
+    objects: {
+      images: Prisma.$ImagePayload<ExtArgs>[]
+      videos: Prisma.$VideoPayload<ExtArgs>[]
+      youtubeUrls: Prisma.$YoutubeUrlPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       slug: string
@@ -8838,6 +9585,9 @@ export namespace Prisma {
    */
   export interface Prisma__BlogPostClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    images<T extends BlogPost$imagesArgs<ExtArgs> = {}>(args?: Subset<T, BlogPost$imagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    videos<T extends BlogPost$videosArgs<ExtArgs> = {}>(args?: Subset<T, BlogPost$videosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    youtubeUrls<T extends BlogPost$youtubeUrlsArgs<ExtArgs> = {}>(args?: Subset<T, BlogPost$youtubeUrlsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$YoutubeUrlPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8893,6 +9643,10 @@ export namespace Prisma {
      */
     omit?: BlogPostOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlogPostInclude<ExtArgs> | null
+    /**
      * Filter, which BlogPost to fetch.
      */
     where: BlogPostWhereUniqueInput
@@ -8911,6 +9665,10 @@ export namespace Prisma {
      */
     omit?: BlogPostOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlogPostInclude<ExtArgs> | null
+    /**
      * Filter, which BlogPost to fetch.
      */
     where: BlogPostWhereUniqueInput
@@ -8928,6 +9686,10 @@ export namespace Prisma {
      * Omit specific fields from the BlogPost
      */
     omit?: BlogPostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlogPostInclude<ExtArgs> | null
     /**
      * Filter, which BlogPost to fetch.
      */
@@ -8977,6 +9739,10 @@ export namespace Prisma {
      */
     omit?: BlogPostOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlogPostInclude<ExtArgs> | null
+    /**
      * Filter, which BlogPost to fetch.
      */
     where?: BlogPostWhereInput
@@ -9025,6 +9791,10 @@ export namespace Prisma {
      */
     omit?: BlogPostOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlogPostInclude<ExtArgs> | null
+    /**
      * Filter, which BlogPosts to fetch.
      */
     where?: BlogPostWhereInput
@@ -9067,6 +9837,10 @@ export namespace Prisma {
      * Omit specific fields from the BlogPost
      */
     omit?: BlogPostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlogPostInclude<ExtArgs> | null
     /**
      * The data needed to create a BlogPost.
      */
@@ -9115,6 +9889,10 @@ export namespace Prisma {
      * Omit specific fields from the BlogPost
      */
     omit?: BlogPostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlogPostInclude<ExtArgs> | null
     /**
      * The data needed to update a BlogPost.
      */
@@ -9182,6 +9960,10 @@ export namespace Prisma {
      */
     omit?: BlogPostOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlogPostInclude<ExtArgs> | null
+    /**
      * The filter to search for the BlogPost to update in case it exists.
      */
     where: BlogPostWhereUniqueInput
@@ -9208,6 +9990,10 @@ export namespace Prisma {
      */
     omit?: BlogPostOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlogPostInclude<ExtArgs> | null
+    /**
      * Filter which BlogPost to delete.
      */
     where: BlogPostWhereUniqueInput
@@ -9228,6 +10014,78 @@ export namespace Prisma {
   }
 
   /**
+   * BlogPost.images
+   */
+  export type BlogPost$imagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    where?: ImageWhereInput
+    orderBy?: ImageOrderByWithRelationInput | ImageOrderByWithRelationInput[]
+    cursor?: ImageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ImageScalarFieldEnum | ImageScalarFieldEnum[]
+  }
+
+  /**
+   * BlogPost.videos
+   */
+  export type BlogPost$videosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video
+     */
+    select?: VideoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video
+     */
+    omit?: VideoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoInclude<ExtArgs> | null
+    where?: VideoWhereInput
+    orderBy?: VideoOrderByWithRelationInput | VideoOrderByWithRelationInput[]
+    cursor?: VideoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: VideoScalarFieldEnum | VideoScalarFieldEnum[]
+  }
+
+  /**
+   * BlogPost.youtubeUrls
+   */
+  export type BlogPost$youtubeUrlsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the YoutubeUrl
+     */
+    select?: YoutubeUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the YoutubeUrl
+     */
+    omit?: YoutubeUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: YoutubeUrlInclude<ExtArgs> | null
+    where?: YoutubeUrlWhereInput
+    orderBy?: YoutubeUrlOrderByWithRelationInput | YoutubeUrlOrderByWithRelationInput[]
+    cursor?: YoutubeUrlWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: YoutubeUrlScalarFieldEnum | YoutubeUrlScalarFieldEnum[]
+  }
+
+  /**
    * BlogPost without action
    */
   export type BlogPostDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -9239,6 +10097,10 @@ export namespace Prisma {
      * Omit specific fields from the BlogPost
      */
     omit?: BlogPostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlogPostInclude<ExtArgs> | null
   }
 
 
@@ -9446,6 +10308,10 @@ export namespace Prisma {
     category?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    images?: boolean | NewsUpdate$imagesArgs<ExtArgs>
+    videos?: boolean | NewsUpdate$videosArgs<ExtArgs>
+    youtubeUrls?: boolean | NewsUpdate$youtubeUrlsArgs<ExtArgs>
+    _count?: boolean | NewsUpdateCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["newsUpdate"]>
 
   export type NewsUpdateSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -9488,10 +10354,22 @@ export namespace Prisma {
   }
 
   export type NewsUpdateOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "headline" | "summary" | "content" | "location" | "eventDate" | "priority" | "category" | "createdAt" | "updatedAt", ExtArgs["result"]["newsUpdate"]>
+  export type NewsUpdateInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    images?: boolean | NewsUpdate$imagesArgs<ExtArgs>
+    videos?: boolean | NewsUpdate$videosArgs<ExtArgs>
+    youtubeUrls?: boolean | NewsUpdate$youtubeUrlsArgs<ExtArgs>
+    _count?: boolean | NewsUpdateCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type NewsUpdateIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type NewsUpdateIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $NewsUpdatePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "NewsUpdate"
-    objects: {}
+    objects: {
+      images: Prisma.$ImagePayload<ExtArgs>[]
+      videos: Prisma.$VideoPayload<ExtArgs>[]
+      youtubeUrls: Prisma.$YoutubeUrlPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       headline: string
@@ -9897,6 +10775,9 @@ export namespace Prisma {
    */
   export interface Prisma__NewsUpdateClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    images<T extends NewsUpdate$imagesArgs<ExtArgs> = {}>(args?: Subset<T, NewsUpdate$imagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    videos<T extends NewsUpdate$videosArgs<ExtArgs> = {}>(args?: Subset<T, NewsUpdate$videosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    youtubeUrls<T extends NewsUpdate$youtubeUrlsArgs<ExtArgs> = {}>(args?: Subset<T, NewsUpdate$youtubeUrlsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$YoutubeUrlPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9953,6 +10834,10 @@ export namespace Prisma {
      */
     omit?: NewsUpdateOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NewsUpdateInclude<ExtArgs> | null
+    /**
      * Filter, which NewsUpdate to fetch.
      */
     where: NewsUpdateWhereUniqueInput
@@ -9971,6 +10856,10 @@ export namespace Prisma {
      */
     omit?: NewsUpdateOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NewsUpdateInclude<ExtArgs> | null
+    /**
      * Filter, which NewsUpdate to fetch.
      */
     where: NewsUpdateWhereUniqueInput
@@ -9988,6 +10877,10 @@ export namespace Prisma {
      * Omit specific fields from the NewsUpdate
      */
     omit?: NewsUpdateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NewsUpdateInclude<ExtArgs> | null
     /**
      * Filter, which NewsUpdate to fetch.
      */
@@ -10037,6 +10930,10 @@ export namespace Prisma {
      */
     omit?: NewsUpdateOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NewsUpdateInclude<ExtArgs> | null
+    /**
      * Filter, which NewsUpdate to fetch.
      */
     where?: NewsUpdateWhereInput
@@ -10085,6 +10982,10 @@ export namespace Prisma {
      */
     omit?: NewsUpdateOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NewsUpdateInclude<ExtArgs> | null
+    /**
      * Filter, which NewsUpdates to fetch.
      */
     where?: NewsUpdateWhereInput
@@ -10127,6 +11028,10 @@ export namespace Prisma {
      * Omit specific fields from the NewsUpdate
      */
     omit?: NewsUpdateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NewsUpdateInclude<ExtArgs> | null
     /**
      * The data needed to create a NewsUpdate.
      */
@@ -10175,6 +11080,10 @@ export namespace Prisma {
      * Omit specific fields from the NewsUpdate
      */
     omit?: NewsUpdateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NewsUpdateInclude<ExtArgs> | null
     /**
      * The data needed to update a NewsUpdate.
      */
@@ -10242,6 +11151,10 @@ export namespace Prisma {
      */
     omit?: NewsUpdateOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NewsUpdateInclude<ExtArgs> | null
+    /**
      * The filter to search for the NewsUpdate to update in case it exists.
      */
     where: NewsUpdateWhereUniqueInput
@@ -10268,6 +11181,10 @@ export namespace Prisma {
      */
     omit?: NewsUpdateOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NewsUpdateInclude<ExtArgs> | null
+    /**
      * Filter which NewsUpdate to delete.
      */
     where: NewsUpdateWhereUniqueInput
@@ -10288,6 +11205,78 @@ export namespace Prisma {
   }
 
   /**
+   * NewsUpdate.images
+   */
+  export type NewsUpdate$imagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    where?: ImageWhereInput
+    orderBy?: ImageOrderByWithRelationInput | ImageOrderByWithRelationInput[]
+    cursor?: ImageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ImageScalarFieldEnum | ImageScalarFieldEnum[]
+  }
+
+  /**
+   * NewsUpdate.videos
+   */
+  export type NewsUpdate$videosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video
+     */
+    select?: VideoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video
+     */
+    omit?: VideoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoInclude<ExtArgs> | null
+    where?: VideoWhereInput
+    orderBy?: VideoOrderByWithRelationInput | VideoOrderByWithRelationInput[]
+    cursor?: VideoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: VideoScalarFieldEnum | VideoScalarFieldEnum[]
+  }
+
+  /**
+   * NewsUpdate.youtubeUrls
+   */
+  export type NewsUpdate$youtubeUrlsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the YoutubeUrl
+     */
+    select?: YoutubeUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the YoutubeUrl
+     */
+    omit?: YoutubeUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: YoutubeUrlInclude<ExtArgs> | null
+    where?: YoutubeUrlWhereInput
+    orderBy?: YoutubeUrlOrderByWithRelationInput | YoutubeUrlOrderByWithRelationInput[]
+    cursor?: YoutubeUrlWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: YoutubeUrlScalarFieldEnum | YoutubeUrlScalarFieldEnum[]
+  }
+
+  /**
    * NewsUpdate without action
    */
   export type NewsUpdateDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -10299,6 +11288,3640 @@ export namespace Prisma {
      * Omit specific fields from the NewsUpdate
      */
     omit?: NewsUpdateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NewsUpdateInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Image
+   */
+
+  export type AggregateImage = {
+    _count: ImageCountAggregateOutputType | null
+    _min: ImageMinAggregateOutputType | null
+    _max: ImageMaxAggregateOutputType | null
+  }
+
+  export type ImageMinAggregateOutputType = {
+    id: string | null
+    url: string | null
+    alt: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    blogPostId: string | null
+    teamMemberId: string | null
+    newsUpdateId: string | null
+    successStoryId: string | null
+  }
+
+  export type ImageMaxAggregateOutputType = {
+    id: string | null
+    url: string | null
+    alt: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    blogPostId: string | null
+    teamMemberId: string | null
+    newsUpdateId: string | null
+    successStoryId: string | null
+  }
+
+  export type ImageCountAggregateOutputType = {
+    id: number
+    url: number
+    alt: number
+    createdAt: number
+    updatedAt: number
+    blogPostId: number
+    teamMemberId: number
+    newsUpdateId: number
+    successStoryId: number
+    _all: number
+  }
+
+
+  export type ImageMinAggregateInputType = {
+    id?: true
+    url?: true
+    alt?: true
+    createdAt?: true
+    updatedAt?: true
+    blogPostId?: true
+    teamMemberId?: true
+    newsUpdateId?: true
+    successStoryId?: true
+  }
+
+  export type ImageMaxAggregateInputType = {
+    id?: true
+    url?: true
+    alt?: true
+    createdAt?: true
+    updatedAt?: true
+    blogPostId?: true
+    teamMemberId?: true
+    newsUpdateId?: true
+    successStoryId?: true
+  }
+
+  export type ImageCountAggregateInputType = {
+    id?: true
+    url?: true
+    alt?: true
+    createdAt?: true
+    updatedAt?: true
+    blogPostId?: true
+    teamMemberId?: true
+    newsUpdateId?: true
+    successStoryId?: true
+    _all?: true
+  }
+
+  export type ImageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Image to aggregate.
+     */
+    where?: ImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Images to fetch.
+     */
+    orderBy?: ImageOrderByWithRelationInput | ImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Images.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Images
+    **/
+    _count?: true | ImageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ImageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ImageMaxAggregateInputType
+  }
+
+  export type GetImageAggregateType<T extends ImageAggregateArgs> = {
+        [P in keyof T & keyof AggregateImage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateImage[P]>
+      : GetScalarType<T[P], AggregateImage[P]>
+  }
+
+
+
+
+  export type ImageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ImageWhereInput
+    orderBy?: ImageOrderByWithAggregationInput | ImageOrderByWithAggregationInput[]
+    by: ImageScalarFieldEnum[] | ImageScalarFieldEnum
+    having?: ImageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ImageCountAggregateInputType | true
+    _min?: ImageMinAggregateInputType
+    _max?: ImageMaxAggregateInputType
+  }
+
+  export type ImageGroupByOutputType = {
+    id: string
+    url: string
+    alt: string | null
+    createdAt: Date
+    updatedAt: Date
+    blogPostId: string | null
+    teamMemberId: string | null
+    newsUpdateId: string | null
+    successStoryId: string | null
+    _count: ImageCountAggregateOutputType | null
+    _min: ImageMinAggregateOutputType | null
+    _max: ImageMaxAggregateOutputType | null
+  }
+
+  type GetImageGroupByPayload<T extends ImageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ImageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ImageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ImageGroupByOutputType[P]>
+            : GetScalarType<T[P], ImageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ImageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    alt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    blogPostId?: boolean
+    teamMemberId?: boolean
+    newsUpdateId?: boolean
+    successStoryId?: boolean
+    blogPost?: boolean | Image$blogPostArgs<ExtArgs>
+    teamMember?: boolean | Image$teamMemberArgs<ExtArgs>
+    newsUpdate?: boolean | Image$newsUpdateArgs<ExtArgs>
+    successStory?: boolean | Image$successStoryArgs<ExtArgs>
+  }, ExtArgs["result"]["image"]>
+
+  export type ImageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    alt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    blogPostId?: boolean
+    teamMemberId?: boolean
+    newsUpdateId?: boolean
+    successStoryId?: boolean
+    blogPost?: boolean | Image$blogPostArgs<ExtArgs>
+    teamMember?: boolean | Image$teamMemberArgs<ExtArgs>
+    newsUpdate?: boolean | Image$newsUpdateArgs<ExtArgs>
+    successStory?: boolean | Image$successStoryArgs<ExtArgs>
+  }, ExtArgs["result"]["image"]>
+
+  export type ImageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    alt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    blogPostId?: boolean
+    teamMemberId?: boolean
+    newsUpdateId?: boolean
+    successStoryId?: boolean
+    blogPost?: boolean | Image$blogPostArgs<ExtArgs>
+    teamMember?: boolean | Image$teamMemberArgs<ExtArgs>
+    newsUpdate?: boolean | Image$newsUpdateArgs<ExtArgs>
+    successStory?: boolean | Image$successStoryArgs<ExtArgs>
+  }, ExtArgs["result"]["image"]>
+
+  export type ImageSelectScalar = {
+    id?: boolean
+    url?: boolean
+    alt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    blogPostId?: boolean
+    teamMemberId?: boolean
+    newsUpdateId?: boolean
+    successStoryId?: boolean
+  }
+
+  export type ImageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "url" | "alt" | "createdAt" | "updatedAt" | "blogPostId" | "teamMemberId" | "newsUpdateId" | "successStoryId", ExtArgs["result"]["image"]>
+  export type ImageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    blogPost?: boolean | Image$blogPostArgs<ExtArgs>
+    teamMember?: boolean | Image$teamMemberArgs<ExtArgs>
+    newsUpdate?: boolean | Image$newsUpdateArgs<ExtArgs>
+    successStory?: boolean | Image$successStoryArgs<ExtArgs>
+  }
+  export type ImageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    blogPost?: boolean | Image$blogPostArgs<ExtArgs>
+    teamMember?: boolean | Image$teamMemberArgs<ExtArgs>
+    newsUpdate?: boolean | Image$newsUpdateArgs<ExtArgs>
+    successStory?: boolean | Image$successStoryArgs<ExtArgs>
+  }
+  export type ImageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    blogPost?: boolean | Image$blogPostArgs<ExtArgs>
+    teamMember?: boolean | Image$teamMemberArgs<ExtArgs>
+    newsUpdate?: boolean | Image$newsUpdateArgs<ExtArgs>
+    successStory?: boolean | Image$successStoryArgs<ExtArgs>
+  }
+
+  export type $ImagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Image"
+    objects: {
+      blogPost: Prisma.$BlogPostPayload<ExtArgs> | null
+      teamMember: Prisma.$TeamMemberPayload<ExtArgs> | null
+      newsUpdate: Prisma.$NewsUpdatePayload<ExtArgs> | null
+      successStory: Prisma.$SuccessStoryPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      url: string
+      alt: string | null
+      createdAt: Date
+      updatedAt: Date
+      blogPostId: string | null
+      teamMemberId: string | null
+      newsUpdateId: string | null
+      successStoryId: string | null
+    }, ExtArgs["result"]["image"]>
+    composites: {}
+  }
+
+  type ImageGetPayload<S extends boolean | null | undefined | ImageDefaultArgs> = $Result.GetResult<Prisma.$ImagePayload, S>
+
+  type ImageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ImageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ImageCountAggregateInputType | true
+    }
+
+  export interface ImageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Image'], meta: { name: 'Image' } }
+    /**
+     * Find zero or one Image that matches the filter.
+     * @param {ImageFindUniqueArgs} args - Arguments to find a Image
+     * @example
+     * // Get one Image
+     * const image = await prisma.image.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ImageFindUniqueArgs>(args: SelectSubset<T, ImageFindUniqueArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Image that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ImageFindUniqueOrThrowArgs} args - Arguments to find a Image
+     * @example
+     * // Get one Image
+     * const image = await prisma.image.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ImageFindUniqueOrThrowArgs>(args: SelectSubset<T, ImageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Image that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImageFindFirstArgs} args - Arguments to find a Image
+     * @example
+     * // Get one Image
+     * const image = await prisma.image.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ImageFindFirstArgs>(args?: SelectSubset<T, ImageFindFirstArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Image that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImageFindFirstOrThrowArgs} args - Arguments to find a Image
+     * @example
+     * // Get one Image
+     * const image = await prisma.image.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ImageFindFirstOrThrowArgs>(args?: SelectSubset<T, ImageFindFirstOrThrowArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Images that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Images
+     * const images = await prisma.image.findMany()
+     * 
+     * // Get first 10 Images
+     * const images = await prisma.image.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const imageWithIdOnly = await prisma.image.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ImageFindManyArgs>(args?: SelectSubset<T, ImageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Image.
+     * @param {ImageCreateArgs} args - Arguments to create a Image.
+     * @example
+     * // Create one Image
+     * const Image = await prisma.image.create({
+     *   data: {
+     *     // ... data to create a Image
+     *   }
+     * })
+     * 
+     */
+    create<T extends ImageCreateArgs>(args: SelectSubset<T, ImageCreateArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Images.
+     * @param {ImageCreateManyArgs} args - Arguments to create many Images.
+     * @example
+     * // Create many Images
+     * const image = await prisma.image.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ImageCreateManyArgs>(args?: SelectSubset<T, ImageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Images and returns the data saved in the database.
+     * @param {ImageCreateManyAndReturnArgs} args - Arguments to create many Images.
+     * @example
+     * // Create many Images
+     * const image = await prisma.image.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Images and only return the `id`
+     * const imageWithIdOnly = await prisma.image.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ImageCreateManyAndReturnArgs>(args?: SelectSubset<T, ImageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Image.
+     * @param {ImageDeleteArgs} args - Arguments to delete one Image.
+     * @example
+     * // Delete one Image
+     * const Image = await prisma.image.delete({
+     *   where: {
+     *     // ... filter to delete one Image
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ImageDeleteArgs>(args: SelectSubset<T, ImageDeleteArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Image.
+     * @param {ImageUpdateArgs} args - Arguments to update one Image.
+     * @example
+     * // Update one Image
+     * const image = await prisma.image.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ImageUpdateArgs>(args: SelectSubset<T, ImageUpdateArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Images.
+     * @param {ImageDeleteManyArgs} args - Arguments to filter Images to delete.
+     * @example
+     * // Delete a few Images
+     * const { count } = await prisma.image.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ImageDeleteManyArgs>(args?: SelectSubset<T, ImageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Images.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Images
+     * const image = await prisma.image.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ImageUpdateManyArgs>(args: SelectSubset<T, ImageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Images and returns the data updated in the database.
+     * @param {ImageUpdateManyAndReturnArgs} args - Arguments to update many Images.
+     * @example
+     * // Update many Images
+     * const image = await prisma.image.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Images and only return the `id`
+     * const imageWithIdOnly = await prisma.image.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ImageUpdateManyAndReturnArgs>(args: SelectSubset<T, ImageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Image.
+     * @param {ImageUpsertArgs} args - Arguments to update or create a Image.
+     * @example
+     * // Update or create a Image
+     * const image = await prisma.image.upsert({
+     *   create: {
+     *     // ... data to create a Image
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Image we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ImageUpsertArgs>(args: SelectSubset<T, ImageUpsertArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Images.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImageCountArgs} args - Arguments to filter Images to count.
+     * @example
+     * // Count the number of Images
+     * const count = await prisma.image.count({
+     *   where: {
+     *     // ... the filter for the Images we want to count
+     *   }
+     * })
+    **/
+    count<T extends ImageCountArgs>(
+      args?: Subset<T, ImageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ImageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Image.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ImageAggregateArgs>(args: Subset<T, ImageAggregateArgs>): Prisma.PrismaPromise<GetImageAggregateType<T>>
+
+    /**
+     * Group by Image.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ImageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ImageGroupByArgs['orderBy'] }
+        : { orderBy?: ImageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ImageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetImageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Image model
+   */
+  readonly fields: ImageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Image.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ImageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    blogPost<T extends Image$blogPostArgs<ExtArgs> = {}>(args?: Subset<T, Image$blogPostArgs<ExtArgs>>): Prisma__BlogPostClient<$Result.GetResult<Prisma.$BlogPostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    teamMember<T extends Image$teamMemberArgs<ExtArgs> = {}>(args?: Subset<T, Image$teamMemberArgs<ExtArgs>>): Prisma__TeamMemberClient<$Result.GetResult<Prisma.$TeamMemberPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    newsUpdate<T extends Image$newsUpdateArgs<ExtArgs> = {}>(args?: Subset<T, Image$newsUpdateArgs<ExtArgs>>): Prisma__NewsUpdateClient<$Result.GetResult<Prisma.$NewsUpdatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    successStory<T extends Image$successStoryArgs<ExtArgs> = {}>(args?: Subset<T, Image$successStoryArgs<ExtArgs>>): Prisma__SuccessStoryClient<$Result.GetResult<Prisma.$SuccessStoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Image model
+   */
+  interface ImageFieldRefs {
+    readonly id: FieldRef<"Image", 'String'>
+    readonly url: FieldRef<"Image", 'String'>
+    readonly alt: FieldRef<"Image", 'String'>
+    readonly createdAt: FieldRef<"Image", 'DateTime'>
+    readonly updatedAt: FieldRef<"Image", 'DateTime'>
+    readonly blogPostId: FieldRef<"Image", 'String'>
+    readonly teamMemberId: FieldRef<"Image", 'String'>
+    readonly newsUpdateId: FieldRef<"Image", 'String'>
+    readonly successStoryId: FieldRef<"Image", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Image findUnique
+   */
+  export type ImageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    /**
+     * Filter, which Image to fetch.
+     */
+    where: ImageWhereUniqueInput
+  }
+
+  /**
+   * Image findUniqueOrThrow
+   */
+  export type ImageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    /**
+     * Filter, which Image to fetch.
+     */
+    where: ImageWhereUniqueInput
+  }
+
+  /**
+   * Image findFirst
+   */
+  export type ImageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    /**
+     * Filter, which Image to fetch.
+     */
+    where?: ImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Images to fetch.
+     */
+    orderBy?: ImageOrderByWithRelationInput | ImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Images.
+     */
+    cursor?: ImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Images.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Images.
+     */
+    distinct?: ImageScalarFieldEnum | ImageScalarFieldEnum[]
+  }
+
+  /**
+   * Image findFirstOrThrow
+   */
+  export type ImageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    /**
+     * Filter, which Image to fetch.
+     */
+    where?: ImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Images to fetch.
+     */
+    orderBy?: ImageOrderByWithRelationInput | ImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Images.
+     */
+    cursor?: ImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Images.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Images.
+     */
+    distinct?: ImageScalarFieldEnum | ImageScalarFieldEnum[]
+  }
+
+  /**
+   * Image findMany
+   */
+  export type ImageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    /**
+     * Filter, which Images to fetch.
+     */
+    where?: ImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Images to fetch.
+     */
+    orderBy?: ImageOrderByWithRelationInput | ImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Images.
+     */
+    cursor?: ImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Images.
+     */
+    skip?: number
+    distinct?: ImageScalarFieldEnum | ImageScalarFieldEnum[]
+  }
+
+  /**
+   * Image create
+   */
+  export type ImageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Image.
+     */
+    data: XOR<ImageCreateInput, ImageUncheckedCreateInput>
+  }
+
+  /**
+   * Image createMany
+   */
+  export type ImageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Images.
+     */
+    data: ImageCreateManyInput | ImageCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Image createManyAndReturn
+   */
+  export type ImageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * The data used to create many Images.
+     */
+    data: ImageCreateManyInput | ImageCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Image update
+   */
+  export type ImageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Image.
+     */
+    data: XOR<ImageUpdateInput, ImageUncheckedUpdateInput>
+    /**
+     * Choose, which Image to update.
+     */
+    where: ImageWhereUniqueInput
+  }
+
+  /**
+   * Image updateMany
+   */
+  export type ImageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Images.
+     */
+    data: XOR<ImageUpdateManyMutationInput, ImageUncheckedUpdateManyInput>
+    /**
+     * Filter which Images to update
+     */
+    where?: ImageWhereInput
+    /**
+     * Limit how many Images to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Image updateManyAndReturn
+   */
+  export type ImageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * The data used to update Images.
+     */
+    data: XOR<ImageUpdateManyMutationInput, ImageUncheckedUpdateManyInput>
+    /**
+     * Filter which Images to update
+     */
+    where?: ImageWhereInput
+    /**
+     * Limit how many Images to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Image upsert
+   */
+  export type ImageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Image to update in case it exists.
+     */
+    where: ImageWhereUniqueInput
+    /**
+     * In case the Image found by the `where` argument doesn't exist, create a new Image with this data.
+     */
+    create: XOR<ImageCreateInput, ImageUncheckedCreateInput>
+    /**
+     * In case the Image was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ImageUpdateInput, ImageUncheckedUpdateInput>
+  }
+
+  /**
+   * Image delete
+   */
+  export type ImageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    /**
+     * Filter which Image to delete.
+     */
+    where: ImageWhereUniqueInput
+  }
+
+  /**
+   * Image deleteMany
+   */
+  export type ImageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Images to delete
+     */
+    where?: ImageWhereInput
+    /**
+     * Limit how many Images to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Image.blogPost
+   */
+  export type Image$blogPostArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlogPost
+     */
+    select?: BlogPostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlogPost
+     */
+    omit?: BlogPostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlogPostInclude<ExtArgs> | null
+    where?: BlogPostWhereInput
+  }
+
+  /**
+   * Image.teamMember
+   */
+  export type Image$teamMemberArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TeamMember
+     */
+    select?: TeamMemberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TeamMember
+     */
+    omit?: TeamMemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeamMemberInclude<ExtArgs> | null
+    where?: TeamMemberWhereInput
+  }
+
+  /**
+   * Image.newsUpdate
+   */
+  export type Image$newsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NewsUpdate
+     */
+    select?: NewsUpdateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NewsUpdate
+     */
+    omit?: NewsUpdateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NewsUpdateInclude<ExtArgs> | null
+    where?: NewsUpdateWhereInput
+  }
+
+  /**
+   * Image.successStory
+   */
+  export type Image$successStoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SuccessStory
+     */
+    select?: SuccessStorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SuccessStory
+     */
+    omit?: SuccessStoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SuccessStoryInclude<ExtArgs> | null
+    where?: SuccessStoryWhereInput
+  }
+
+  /**
+   * Image without action
+   */
+  export type ImageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Video
+   */
+
+  export type AggregateVideo = {
+    _count: VideoCountAggregateOutputType | null
+    _min: VideoMinAggregateOutputType | null
+    _max: VideoMaxAggregateOutputType | null
+  }
+
+  export type VideoMinAggregateOutputType = {
+    id: string | null
+    url: string | null
+    title: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    blogPostId: string | null
+    teamMemberId: string | null
+    newsUpdateId: string | null
+    successStoryId: string | null
+  }
+
+  export type VideoMaxAggregateOutputType = {
+    id: string | null
+    url: string | null
+    title: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    blogPostId: string | null
+    teamMemberId: string | null
+    newsUpdateId: string | null
+    successStoryId: string | null
+  }
+
+  export type VideoCountAggregateOutputType = {
+    id: number
+    url: number
+    title: number
+    createdAt: number
+    updatedAt: number
+    blogPostId: number
+    teamMemberId: number
+    newsUpdateId: number
+    successStoryId: number
+    _all: number
+  }
+
+
+  export type VideoMinAggregateInputType = {
+    id?: true
+    url?: true
+    title?: true
+    createdAt?: true
+    updatedAt?: true
+    blogPostId?: true
+    teamMemberId?: true
+    newsUpdateId?: true
+    successStoryId?: true
+  }
+
+  export type VideoMaxAggregateInputType = {
+    id?: true
+    url?: true
+    title?: true
+    createdAt?: true
+    updatedAt?: true
+    blogPostId?: true
+    teamMemberId?: true
+    newsUpdateId?: true
+    successStoryId?: true
+  }
+
+  export type VideoCountAggregateInputType = {
+    id?: true
+    url?: true
+    title?: true
+    createdAt?: true
+    updatedAt?: true
+    blogPostId?: true
+    teamMemberId?: true
+    newsUpdateId?: true
+    successStoryId?: true
+    _all?: true
+  }
+
+  export type VideoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Video to aggregate.
+     */
+    where?: VideoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Videos to fetch.
+     */
+    orderBy?: VideoOrderByWithRelationInput | VideoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: VideoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Videos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Videos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Videos
+    **/
+    _count?: true | VideoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: VideoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: VideoMaxAggregateInputType
+  }
+
+  export type GetVideoAggregateType<T extends VideoAggregateArgs> = {
+        [P in keyof T & keyof AggregateVideo]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateVideo[P]>
+      : GetScalarType<T[P], AggregateVideo[P]>
+  }
+
+
+
+
+  export type VideoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VideoWhereInput
+    orderBy?: VideoOrderByWithAggregationInput | VideoOrderByWithAggregationInput[]
+    by: VideoScalarFieldEnum[] | VideoScalarFieldEnum
+    having?: VideoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: VideoCountAggregateInputType | true
+    _min?: VideoMinAggregateInputType
+    _max?: VideoMaxAggregateInputType
+  }
+
+  export type VideoGroupByOutputType = {
+    id: string
+    url: string
+    title: string | null
+    createdAt: Date
+    updatedAt: Date
+    blogPostId: string | null
+    teamMemberId: string | null
+    newsUpdateId: string | null
+    successStoryId: string | null
+    _count: VideoCountAggregateOutputType | null
+    _min: VideoMinAggregateOutputType | null
+    _max: VideoMaxAggregateOutputType | null
+  }
+
+  type GetVideoGroupByPayload<T extends VideoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<VideoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof VideoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], VideoGroupByOutputType[P]>
+            : GetScalarType<T[P], VideoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type VideoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    title?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    blogPostId?: boolean
+    teamMemberId?: boolean
+    newsUpdateId?: boolean
+    successStoryId?: boolean
+    blogPost?: boolean | Video$blogPostArgs<ExtArgs>
+    teamMember?: boolean | Video$teamMemberArgs<ExtArgs>
+    newsUpdate?: boolean | Video$newsUpdateArgs<ExtArgs>
+    successStory?: boolean | Video$successStoryArgs<ExtArgs>
+  }, ExtArgs["result"]["video"]>
+
+  export type VideoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    title?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    blogPostId?: boolean
+    teamMemberId?: boolean
+    newsUpdateId?: boolean
+    successStoryId?: boolean
+    blogPost?: boolean | Video$blogPostArgs<ExtArgs>
+    teamMember?: boolean | Video$teamMemberArgs<ExtArgs>
+    newsUpdate?: boolean | Video$newsUpdateArgs<ExtArgs>
+    successStory?: boolean | Video$successStoryArgs<ExtArgs>
+  }, ExtArgs["result"]["video"]>
+
+  export type VideoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    title?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    blogPostId?: boolean
+    teamMemberId?: boolean
+    newsUpdateId?: boolean
+    successStoryId?: boolean
+    blogPost?: boolean | Video$blogPostArgs<ExtArgs>
+    teamMember?: boolean | Video$teamMemberArgs<ExtArgs>
+    newsUpdate?: boolean | Video$newsUpdateArgs<ExtArgs>
+    successStory?: boolean | Video$successStoryArgs<ExtArgs>
+  }, ExtArgs["result"]["video"]>
+
+  export type VideoSelectScalar = {
+    id?: boolean
+    url?: boolean
+    title?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    blogPostId?: boolean
+    teamMemberId?: boolean
+    newsUpdateId?: boolean
+    successStoryId?: boolean
+  }
+
+  export type VideoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "url" | "title" | "createdAt" | "updatedAt" | "blogPostId" | "teamMemberId" | "newsUpdateId" | "successStoryId", ExtArgs["result"]["video"]>
+  export type VideoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    blogPost?: boolean | Video$blogPostArgs<ExtArgs>
+    teamMember?: boolean | Video$teamMemberArgs<ExtArgs>
+    newsUpdate?: boolean | Video$newsUpdateArgs<ExtArgs>
+    successStory?: boolean | Video$successStoryArgs<ExtArgs>
+  }
+  export type VideoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    blogPost?: boolean | Video$blogPostArgs<ExtArgs>
+    teamMember?: boolean | Video$teamMemberArgs<ExtArgs>
+    newsUpdate?: boolean | Video$newsUpdateArgs<ExtArgs>
+    successStory?: boolean | Video$successStoryArgs<ExtArgs>
+  }
+  export type VideoIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    blogPost?: boolean | Video$blogPostArgs<ExtArgs>
+    teamMember?: boolean | Video$teamMemberArgs<ExtArgs>
+    newsUpdate?: boolean | Video$newsUpdateArgs<ExtArgs>
+    successStory?: boolean | Video$successStoryArgs<ExtArgs>
+  }
+
+  export type $VideoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Video"
+    objects: {
+      blogPost: Prisma.$BlogPostPayload<ExtArgs> | null
+      teamMember: Prisma.$TeamMemberPayload<ExtArgs> | null
+      newsUpdate: Prisma.$NewsUpdatePayload<ExtArgs> | null
+      successStory: Prisma.$SuccessStoryPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      url: string
+      title: string | null
+      createdAt: Date
+      updatedAt: Date
+      blogPostId: string | null
+      teamMemberId: string | null
+      newsUpdateId: string | null
+      successStoryId: string | null
+    }, ExtArgs["result"]["video"]>
+    composites: {}
+  }
+
+  type VideoGetPayload<S extends boolean | null | undefined | VideoDefaultArgs> = $Result.GetResult<Prisma.$VideoPayload, S>
+
+  type VideoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<VideoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: VideoCountAggregateInputType | true
+    }
+
+  export interface VideoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Video'], meta: { name: 'Video' } }
+    /**
+     * Find zero or one Video that matches the filter.
+     * @param {VideoFindUniqueArgs} args - Arguments to find a Video
+     * @example
+     * // Get one Video
+     * const video = await prisma.video.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends VideoFindUniqueArgs>(args: SelectSubset<T, VideoFindUniqueArgs<ExtArgs>>): Prisma__VideoClient<$Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Video that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {VideoFindUniqueOrThrowArgs} args - Arguments to find a Video
+     * @example
+     * // Get one Video
+     * const video = await prisma.video.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends VideoFindUniqueOrThrowArgs>(args: SelectSubset<T, VideoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__VideoClient<$Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Video that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VideoFindFirstArgs} args - Arguments to find a Video
+     * @example
+     * // Get one Video
+     * const video = await prisma.video.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends VideoFindFirstArgs>(args?: SelectSubset<T, VideoFindFirstArgs<ExtArgs>>): Prisma__VideoClient<$Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Video that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VideoFindFirstOrThrowArgs} args - Arguments to find a Video
+     * @example
+     * // Get one Video
+     * const video = await prisma.video.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends VideoFindFirstOrThrowArgs>(args?: SelectSubset<T, VideoFindFirstOrThrowArgs<ExtArgs>>): Prisma__VideoClient<$Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Videos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VideoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Videos
+     * const videos = await prisma.video.findMany()
+     * 
+     * // Get first 10 Videos
+     * const videos = await prisma.video.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const videoWithIdOnly = await prisma.video.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends VideoFindManyArgs>(args?: SelectSubset<T, VideoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Video.
+     * @param {VideoCreateArgs} args - Arguments to create a Video.
+     * @example
+     * // Create one Video
+     * const Video = await prisma.video.create({
+     *   data: {
+     *     // ... data to create a Video
+     *   }
+     * })
+     * 
+     */
+    create<T extends VideoCreateArgs>(args: SelectSubset<T, VideoCreateArgs<ExtArgs>>): Prisma__VideoClient<$Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Videos.
+     * @param {VideoCreateManyArgs} args - Arguments to create many Videos.
+     * @example
+     * // Create many Videos
+     * const video = await prisma.video.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends VideoCreateManyArgs>(args?: SelectSubset<T, VideoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Videos and returns the data saved in the database.
+     * @param {VideoCreateManyAndReturnArgs} args - Arguments to create many Videos.
+     * @example
+     * // Create many Videos
+     * const video = await prisma.video.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Videos and only return the `id`
+     * const videoWithIdOnly = await prisma.video.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends VideoCreateManyAndReturnArgs>(args?: SelectSubset<T, VideoCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Video.
+     * @param {VideoDeleteArgs} args - Arguments to delete one Video.
+     * @example
+     * // Delete one Video
+     * const Video = await prisma.video.delete({
+     *   where: {
+     *     // ... filter to delete one Video
+     *   }
+     * })
+     * 
+     */
+    delete<T extends VideoDeleteArgs>(args: SelectSubset<T, VideoDeleteArgs<ExtArgs>>): Prisma__VideoClient<$Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Video.
+     * @param {VideoUpdateArgs} args - Arguments to update one Video.
+     * @example
+     * // Update one Video
+     * const video = await prisma.video.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends VideoUpdateArgs>(args: SelectSubset<T, VideoUpdateArgs<ExtArgs>>): Prisma__VideoClient<$Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Videos.
+     * @param {VideoDeleteManyArgs} args - Arguments to filter Videos to delete.
+     * @example
+     * // Delete a few Videos
+     * const { count } = await prisma.video.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends VideoDeleteManyArgs>(args?: SelectSubset<T, VideoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Videos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VideoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Videos
+     * const video = await prisma.video.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends VideoUpdateManyArgs>(args: SelectSubset<T, VideoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Videos and returns the data updated in the database.
+     * @param {VideoUpdateManyAndReturnArgs} args - Arguments to update many Videos.
+     * @example
+     * // Update many Videos
+     * const video = await prisma.video.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Videos and only return the `id`
+     * const videoWithIdOnly = await prisma.video.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends VideoUpdateManyAndReturnArgs>(args: SelectSubset<T, VideoUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Video.
+     * @param {VideoUpsertArgs} args - Arguments to update or create a Video.
+     * @example
+     * // Update or create a Video
+     * const video = await prisma.video.upsert({
+     *   create: {
+     *     // ... data to create a Video
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Video we want to update
+     *   }
+     * })
+     */
+    upsert<T extends VideoUpsertArgs>(args: SelectSubset<T, VideoUpsertArgs<ExtArgs>>): Prisma__VideoClient<$Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Videos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VideoCountArgs} args - Arguments to filter Videos to count.
+     * @example
+     * // Count the number of Videos
+     * const count = await prisma.video.count({
+     *   where: {
+     *     // ... the filter for the Videos we want to count
+     *   }
+     * })
+    **/
+    count<T extends VideoCountArgs>(
+      args?: Subset<T, VideoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], VideoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Video.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VideoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends VideoAggregateArgs>(args: Subset<T, VideoAggregateArgs>): Prisma.PrismaPromise<GetVideoAggregateType<T>>
+
+    /**
+     * Group by Video.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VideoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends VideoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: VideoGroupByArgs['orderBy'] }
+        : { orderBy?: VideoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, VideoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetVideoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Video model
+   */
+  readonly fields: VideoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Video.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__VideoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    blogPost<T extends Video$blogPostArgs<ExtArgs> = {}>(args?: Subset<T, Video$blogPostArgs<ExtArgs>>): Prisma__BlogPostClient<$Result.GetResult<Prisma.$BlogPostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    teamMember<T extends Video$teamMemberArgs<ExtArgs> = {}>(args?: Subset<T, Video$teamMemberArgs<ExtArgs>>): Prisma__TeamMemberClient<$Result.GetResult<Prisma.$TeamMemberPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    newsUpdate<T extends Video$newsUpdateArgs<ExtArgs> = {}>(args?: Subset<T, Video$newsUpdateArgs<ExtArgs>>): Prisma__NewsUpdateClient<$Result.GetResult<Prisma.$NewsUpdatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    successStory<T extends Video$successStoryArgs<ExtArgs> = {}>(args?: Subset<T, Video$successStoryArgs<ExtArgs>>): Prisma__SuccessStoryClient<$Result.GetResult<Prisma.$SuccessStoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Video model
+   */
+  interface VideoFieldRefs {
+    readonly id: FieldRef<"Video", 'String'>
+    readonly url: FieldRef<"Video", 'String'>
+    readonly title: FieldRef<"Video", 'String'>
+    readonly createdAt: FieldRef<"Video", 'DateTime'>
+    readonly updatedAt: FieldRef<"Video", 'DateTime'>
+    readonly blogPostId: FieldRef<"Video", 'String'>
+    readonly teamMemberId: FieldRef<"Video", 'String'>
+    readonly newsUpdateId: FieldRef<"Video", 'String'>
+    readonly successStoryId: FieldRef<"Video", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Video findUnique
+   */
+  export type VideoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video
+     */
+    select?: VideoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video
+     */
+    omit?: VideoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoInclude<ExtArgs> | null
+    /**
+     * Filter, which Video to fetch.
+     */
+    where: VideoWhereUniqueInput
+  }
+
+  /**
+   * Video findUniqueOrThrow
+   */
+  export type VideoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video
+     */
+    select?: VideoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video
+     */
+    omit?: VideoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoInclude<ExtArgs> | null
+    /**
+     * Filter, which Video to fetch.
+     */
+    where: VideoWhereUniqueInput
+  }
+
+  /**
+   * Video findFirst
+   */
+  export type VideoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video
+     */
+    select?: VideoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video
+     */
+    omit?: VideoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoInclude<ExtArgs> | null
+    /**
+     * Filter, which Video to fetch.
+     */
+    where?: VideoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Videos to fetch.
+     */
+    orderBy?: VideoOrderByWithRelationInput | VideoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Videos.
+     */
+    cursor?: VideoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Videos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Videos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Videos.
+     */
+    distinct?: VideoScalarFieldEnum | VideoScalarFieldEnum[]
+  }
+
+  /**
+   * Video findFirstOrThrow
+   */
+  export type VideoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video
+     */
+    select?: VideoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video
+     */
+    omit?: VideoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoInclude<ExtArgs> | null
+    /**
+     * Filter, which Video to fetch.
+     */
+    where?: VideoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Videos to fetch.
+     */
+    orderBy?: VideoOrderByWithRelationInput | VideoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Videos.
+     */
+    cursor?: VideoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Videos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Videos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Videos.
+     */
+    distinct?: VideoScalarFieldEnum | VideoScalarFieldEnum[]
+  }
+
+  /**
+   * Video findMany
+   */
+  export type VideoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video
+     */
+    select?: VideoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video
+     */
+    omit?: VideoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoInclude<ExtArgs> | null
+    /**
+     * Filter, which Videos to fetch.
+     */
+    where?: VideoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Videos to fetch.
+     */
+    orderBy?: VideoOrderByWithRelationInput | VideoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Videos.
+     */
+    cursor?: VideoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Videos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Videos.
+     */
+    skip?: number
+    distinct?: VideoScalarFieldEnum | VideoScalarFieldEnum[]
+  }
+
+  /**
+   * Video create
+   */
+  export type VideoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video
+     */
+    select?: VideoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video
+     */
+    omit?: VideoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Video.
+     */
+    data: XOR<VideoCreateInput, VideoUncheckedCreateInput>
+  }
+
+  /**
+   * Video createMany
+   */
+  export type VideoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Videos.
+     */
+    data: VideoCreateManyInput | VideoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Video createManyAndReturn
+   */
+  export type VideoCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video
+     */
+    select?: VideoSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video
+     */
+    omit?: VideoOmit<ExtArgs> | null
+    /**
+     * The data used to create many Videos.
+     */
+    data: VideoCreateManyInput | VideoCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Video update
+   */
+  export type VideoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video
+     */
+    select?: VideoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video
+     */
+    omit?: VideoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Video.
+     */
+    data: XOR<VideoUpdateInput, VideoUncheckedUpdateInput>
+    /**
+     * Choose, which Video to update.
+     */
+    where: VideoWhereUniqueInput
+  }
+
+  /**
+   * Video updateMany
+   */
+  export type VideoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Videos.
+     */
+    data: XOR<VideoUpdateManyMutationInput, VideoUncheckedUpdateManyInput>
+    /**
+     * Filter which Videos to update
+     */
+    where?: VideoWhereInput
+    /**
+     * Limit how many Videos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Video updateManyAndReturn
+   */
+  export type VideoUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video
+     */
+    select?: VideoSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video
+     */
+    omit?: VideoOmit<ExtArgs> | null
+    /**
+     * The data used to update Videos.
+     */
+    data: XOR<VideoUpdateManyMutationInput, VideoUncheckedUpdateManyInput>
+    /**
+     * Filter which Videos to update
+     */
+    where?: VideoWhereInput
+    /**
+     * Limit how many Videos to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Video upsert
+   */
+  export type VideoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video
+     */
+    select?: VideoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video
+     */
+    omit?: VideoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Video to update in case it exists.
+     */
+    where: VideoWhereUniqueInput
+    /**
+     * In case the Video found by the `where` argument doesn't exist, create a new Video with this data.
+     */
+    create: XOR<VideoCreateInput, VideoUncheckedCreateInput>
+    /**
+     * In case the Video was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<VideoUpdateInput, VideoUncheckedUpdateInput>
+  }
+
+  /**
+   * Video delete
+   */
+  export type VideoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video
+     */
+    select?: VideoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video
+     */
+    omit?: VideoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoInclude<ExtArgs> | null
+    /**
+     * Filter which Video to delete.
+     */
+    where: VideoWhereUniqueInput
+  }
+
+  /**
+   * Video deleteMany
+   */
+  export type VideoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Videos to delete
+     */
+    where?: VideoWhereInput
+    /**
+     * Limit how many Videos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Video.blogPost
+   */
+  export type Video$blogPostArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlogPost
+     */
+    select?: BlogPostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlogPost
+     */
+    omit?: BlogPostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlogPostInclude<ExtArgs> | null
+    where?: BlogPostWhereInput
+  }
+
+  /**
+   * Video.teamMember
+   */
+  export type Video$teamMemberArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TeamMember
+     */
+    select?: TeamMemberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TeamMember
+     */
+    omit?: TeamMemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeamMemberInclude<ExtArgs> | null
+    where?: TeamMemberWhereInput
+  }
+
+  /**
+   * Video.newsUpdate
+   */
+  export type Video$newsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NewsUpdate
+     */
+    select?: NewsUpdateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NewsUpdate
+     */
+    omit?: NewsUpdateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NewsUpdateInclude<ExtArgs> | null
+    where?: NewsUpdateWhereInput
+  }
+
+  /**
+   * Video.successStory
+   */
+  export type Video$successStoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SuccessStory
+     */
+    select?: SuccessStorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SuccessStory
+     */
+    omit?: SuccessStoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SuccessStoryInclude<ExtArgs> | null
+    where?: SuccessStoryWhereInput
+  }
+
+  /**
+   * Video without action
+   */
+  export type VideoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video
+     */
+    select?: VideoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video
+     */
+    omit?: VideoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideoInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model YoutubeUrl
+   */
+
+  export type AggregateYoutubeUrl = {
+    _count: YoutubeUrlCountAggregateOutputType | null
+    _min: YoutubeUrlMinAggregateOutputType | null
+    _max: YoutubeUrlMaxAggregateOutputType | null
+  }
+
+  export type YoutubeUrlMinAggregateOutputType = {
+    id: string | null
+    url: string | null
+    title: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    blogPostId: string | null
+    teamMemberId: string | null
+    newsUpdateId: string | null
+    successStoryId: string | null
+  }
+
+  export type YoutubeUrlMaxAggregateOutputType = {
+    id: string | null
+    url: string | null
+    title: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    blogPostId: string | null
+    teamMemberId: string | null
+    newsUpdateId: string | null
+    successStoryId: string | null
+  }
+
+  export type YoutubeUrlCountAggregateOutputType = {
+    id: number
+    url: number
+    title: number
+    createdAt: number
+    updatedAt: number
+    blogPostId: number
+    teamMemberId: number
+    newsUpdateId: number
+    successStoryId: number
+    _all: number
+  }
+
+
+  export type YoutubeUrlMinAggregateInputType = {
+    id?: true
+    url?: true
+    title?: true
+    createdAt?: true
+    updatedAt?: true
+    blogPostId?: true
+    teamMemberId?: true
+    newsUpdateId?: true
+    successStoryId?: true
+  }
+
+  export type YoutubeUrlMaxAggregateInputType = {
+    id?: true
+    url?: true
+    title?: true
+    createdAt?: true
+    updatedAt?: true
+    blogPostId?: true
+    teamMemberId?: true
+    newsUpdateId?: true
+    successStoryId?: true
+  }
+
+  export type YoutubeUrlCountAggregateInputType = {
+    id?: true
+    url?: true
+    title?: true
+    createdAt?: true
+    updatedAt?: true
+    blogPostId?: true
+    teamMemberId?: true
+    newsUpdateId?: true
+    successStoryId?: true
+    _all?: true
+  }
+
+  export type YoutubeUrlAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which YoutubeUrl to aggregate.
+     */
+    where?: YoutubeUrlWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of YoutubeUrls to fetch.
+     */
+    orderBy?: YoutubeUrlOrderByWithRelationInput | YoutubeUrlOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: YoutubeUrlWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` YoutubeUrls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` YoutubeUrls.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned YoutubeUrls
+    **/
+    _count?: true | YoutubeUrlCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: YoutubeUrlMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: YoutubeUrlMaxAggregateInputType
+  }
+
+  export type GetYoutubeUrlAggregateType<T extends YoutubeUrlAggregateArgs> = {
+        [P in keyof T & keyof AggregateYoutubeUrl]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateYoutubeUrl[P]>
+      : GetScalarType<T[P], AggregateYoutubeUrl[P]>
+  }
+
+
+
+
+  export type YoutubeUrlGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: YoutubeUrlWhereInput
+    orderBy?: YoutubeUrlOrderByWithAggregationInput | YoutubeUrlOrderByWithAggregationInput[]
+    by: YoutubeUrlScalarFieldEnum[] | YoutubeUrlScalarFieldEnum
+    having?: YoutubeUrlScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: YoutubeUrlCountAggregateInputType | true
+    _min?: YoutubeUrlMinAggregateInputType
+    _max?: YoutubeUrlMaxAggregateInputType
+  }
+
+  export type YoutubeUrlGroupByOutputType = {
+    id: string
+    url: string
+    title: string | null
+    createdAt: Date
+    updatedAt: Date
+    blogPostId: string | null
+    teamMemberId: string | null
+    newsUpdateId: string | null
+    successStoryId: string | null
+    _count: YoutubeUrlCountAggregateOutputType | null
+    _min: YoutubeUrlMinAggregateOutputType | null
+    _max: YoutubeUrlMaxAggregateOutputType | null
+  }
+
+  type GetYoutubeUrlGroupByPayload<T extends YoutubeUrlGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<YoutubeUrlGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof YoutubeUrlGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], YoutubeUrlGroupByOutputType[P]>
+            : GetScalarType<T[P], YoutubeUrlGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type YoutubeUrlSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    title?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    blogPostId?: boolean
+    teamMemberId?: boolean
+    newsUpdateId?: boolean
+    successStoryId?: boolean
+    blogPost?: boolean | YoutubeUrl$blogPostArgs<ExtArgs>
+    teamMember?: boolean | YoutubeUrl$teamMemberArgs<ExtArgs>
+    newsUpdate?: boolean | YoutubeUrl$newsUpdateArgs<ExtArgs>
+    successStory?: boolean | YoutubeUrl$successStoryArgs<ExtArgs>
+  }, ExtArgs["result"]["youtubeUrl"]>
+
+  export type YoutubeUrlSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    title?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    blogPostId?: boolean
+    teamMemberId?: boolean
+    newsUpdateId?: boolean
+    successStoryId?: boolean
+    blogPost?: boolean | YoutubeUrl$blogPostArgs<ExtArgs>
+    teamMember?: boolean | YoutubeUrl$teamMemberArgs<ExtArgs>
+    newsUpdate?: boolean | YoutubeUrl$newsUpdateArgs<ExtArgs>
+    successStory?: boolean | YoutubeUrl$successStoryArgs<ExtArgs>
+  }, ExtArgs["result"]["youtubeUrl"]>
+
+  export type YoutubeUrlSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    title?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    blogPostId?: boolean
+    teamMemberId?: boolean
+    newsUpdateId?: boolean
+    successStoryId?: boolean
+    blogPost?: boolean | YoutubeUrl$blogPostArgs<ExtArgs>
+    teamMember?: boolean | YoutubeUrl$teamMemberArgs<ExtArgs>
+    newsUpdate?: boolean | YoutubeUrl$newsUpdateArgs<ExtArgs>
+    successStory?: boolean | YoutubeUrl$successStoryArgs<ExtArgs>
+  }, ExtArgs["result"]["youtubeUrl"]>
+
+  export type YoutubeUrlSelectScalar = {
+    id?: boolean
+    url?: boolean
+    title?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    blogPostId?: boolean
+    teamMemberId?: boolean
+    newsUpdateId?: boolean
+    successStoryId?: boolean
+  }
+
+  export type YoutubeUrlOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "url" | "title" | "createdAt" | "updatedAt" | "blogPostId" | "teamMemberId" | "newsUpdateId" | "successStoryId", ExtArgs["result"]["youtubeUrl"]>
+  export type YoutubeUrlInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    blogPost?: boolean | YoutubeUrl$blogPostArgs<ExtArgs>
+    teamMember?: boolean | YoutubeUrl$teamMemberArgs<ExtArgs>
+    newsUpdate?: boolean | YoutubeUrl$newsUpdateArgs<ExtArgs>
+    successStory?: boolean | YoutubeUrl$successStoryArgs<ExtArgs>
+  }
+  export type YoutubeUrlIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    blogPost?: boolean | YoutubeUrl$blogPostArgs<ExtArgs>
+    teamMember?: boolean | YoutubeUrl$teamMemberArgs<ExtArgs>
+    newsUpdate?: boolean | YoutubeUrl$newsUpdateArgs<ExtArgs>
+    successStory?: boolean | YoutubeUrl$successStoryArgs<ExtArgs>
+  }
+  export type YoutubeUrlIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    blogPost?: boolean | YoutubeUrl$blogPostArgs<ExtArgs>
+    teamMember?: boolean | YoutubeUrl$teamMemberArgs<ExtArgs>
+    newsUpdate?: boolean | YoutubeUrl$newsUpdateArgs<ExtArgs>
+    successStory?: boolean | YoutubeUrl$successStoryArgs<ExtArgs>
+  }
+
+  export type $YoutubeUrlPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "YoutubeUrl"
+    objects: {
+      blogPost: Prisma.$BlogPostPayload<ExtArgs> | null
+      teamMember: Prisma.$TeamMemberPayload<ExtArgs> | null
+      newsUpdate: Prisma.$NewsUpdatePayload<ExtArgs> | null
+      successStory: Prisma.$SuccessStoryPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      url: string
+      title: string | null
+      createdAt: Date
+      updatedAt: Date
+      blogPostId: string | null
+      teamMemberId: string | null
+      newsUpdateId: string | null
+      successStoryId: string | null
+    }, ExtArgs["result"]["youtubeUrl"]>
+    composites: {}
+  }
+
+  type YoutubeUrlGetPayload<S extends boolean | null | undefined | YoutubeUrlDefaultArgs> = $Result.GetResult<Prisma.$YoutubeUrlPayload, S>
+
+  type YoutubeUrlCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<YoutubeUrlFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: YoutubeUrlCountAggregateInputType | true
+    }
+
+  export interface YoutubeUrlDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['YoutubeUrl'], meta: { name: 'YoutubeUrl' } }
+    /**
+     * Find zero or one YoutubeUrl that matches the filter.
+     * @param {YoutubeUrlFindUniqueArgs} args - Arguments to find a YoutubeUrl
+     * @example
+     * // Get one YoutubeUrl
+     * const youtubeUrl = await prisma.youtubeUrl.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends YoutubeUrlFindUniqueArgs>(args: SelectSubset<T, YoutubeUrlFindUniqueArgs<ExtArgs>>): Prisma__YoutubeUrlClient<$Result.GetResult<Prisma.$YoutubeUrlPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one YoutubeUrl that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {YoutubeUrlFindUniqueOrThrowArgs} args - Arguments to find a YoutubeUrl
+     * @example
+     * // Get one YoutubeUrl
+     * const youtubeUrl = await prisma.youtubeUrl.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends YoutubeUrlFindUniqueOrThrowArgs>(args: SelectSubset<T, YoutubeUrlFindUniqueOrThrowArgs<ExtArgs>>): Prisma__YoutubeUrlClient<$Result.GetResult<Prisma.$YoutubeUrlPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first YoutubeUrl that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {YoutubeUrlFindFirstArgs} args - Arguments to find a YoutubeUrl
+     * @example
+     * // Get one YoutubeUrl
+     * const youtubeUrl = await prisma.youtubeUrl.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends YoutubeUrlFindFirstArgs>(args?: SelectSubset<T, YoutubeUrlFindFirstArgs<ExtArgs>>): Prisma__YoutubeUrlClient<$Result.GetResult<Prisma.$YoutubeUrlPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first YoutubeUrl that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {YoutubeUrlFindFirstOrThrowArgs} args - Arguments to find a YoutubeUrl
+     * @example
+     * // Get one YoutubeUrl
+     * const youtubeUrl = await prisma.youtubeUrl.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends YoutubeUrlFindFirstOrThrowArgs>(args?: SelectSubset<T, YoutubeUrlFindFirstOrThrowArgs<ExtArgs>>): Prisma__YoutubeUrlClient<$Result.GetResult<Prisma.$YoutubeUrlPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more YoutubeUrls that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {YoutubeUrlFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all YoutubeUrls
+     * const youtubeUrls = await prisma.youtubeUrl.findMany()
+     * 
+     * // Get first 10 YoutubeUrls
+     * const youtubeUrls = await prisma.youtubeUrl.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const youtubeUrlWithIdOnly = await prisma.youtubeUrl.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends YoutubeUrlFindManyArgs>(args?: SelectSubset<T, YoutubeUrlFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$YoutubeUrlPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a YoutubeUrl.
+     * @param {YoutubeUrlCreateArgs} args - Arguments to create a YoutubeUrl.
+     * @example
+     * // Create one YoutubeUrl
+     * const YoutubeUrl = await prisma.youtubeUrl.create({
+     *   data: {
+     *     // ... data to create a YoutubeUrl
+     *   }
+     * })
+     * 
+     */
+    create<T extends YoutubeUrlCreateArgs>(args: SelectSubset<T, YoutubeUrlCreateArgs<ExtArgs>>): Prisma__YoutubeUrlClient<$Result.GetResult<Prisma.$YoutubeUrlPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many YoutubeUrls.
+     * @param {YoutubeUrlCreateManyArgs} args - Arguments to create many YoutubeUrls.
+     * @example
+     * // Create many YoutubeUrls
+     * const youtubeUrl = await prisma.youtubeUrl.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends YoutubeUrlCreateManyArgs>(args?: SelectSubset<T, YoutubeUrlCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many YoutubeUrls and returns the data saved in the database.
+     * @param {YoutubeUrlCreateManyAndReturnArgs} args - Arguments to create many YoutubeUrls.
+     * @example
+     * // Create many YoutubeUrls
+     * const youtubeUrl = await prisma.youtubeUrl.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many YoutubeUrls and only return the `id`
+     * const youtubeUrlWithIdOnly = await prisma.youtubeUrl.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends YoutubeUrlCreateManyAndReturnArgs>(args?: SelectSubset<T, YoutubeUrlCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$YoutubeUrlPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a YoutubeUrl.
+     * @param {YoutubeUrlDeleteArgs} args - Arguments to delete one YoutubeUrl.
+     * @example
+     * // Delete one YoutubeUrl
+     * const YoutubeUrl = await prisma.youtubeUrl.delete({
+     *   where: {
+     *     // ... filter to delete one YoutubeUrl
+     *   }
+     * })
+     * 
+     */
+    delete<T extends YoutubeUrlDeleteArgs>(args: SelectSubset<T, YoutubeUrlDeleteArgs<ExtArgs>>): Prisma__YoutubeUrlClient<$Result.GetResult<Prisma.$YoutubeUrlPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one YoutubeUrl.
+     * @param {YoutubeUrlUpdateArgs} args - Arguments to update one YoutubeUrl.
+     * @example
+     * // Update one YoutubeUrl
+     * const youtubeUrl = await prisma.youtubeUrl.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends YoutubeUrlUpdateArgs>(args: SelectSubset<T, YoutubeUrlUpdateArgs<ExtArgs>>): Prisma__YoutubeUrlClient<$Result.GetResult<Prisma.$YoutubeUrlPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more YoutubeUrls.
+     * @param {YoutubeUrlDeleteManyArgs} args - Arguments to filter YoutubeUrls to delete.
+     * @example
+     * // Delete a few YoutubeUrls
+     * const { count } = await prisma.youtubeUrl.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends YoutubeUrlDeleteManyArgs>(args?: SelectSubset<T, YoutubeUrlDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more YoutubeUrls.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {YoutubeUrlUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many YoutubeUrls
+     * const youtubeUrl = await prisma.youtubeUrl.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends YoutubeUrlUpdateManyArgs>(args: SelectSubset<T, YoutubeUrlUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more YoutubeUrls and returns the data updated in the database.
+     * @param {YoutubeUrlUpdateManyAndReturnArgs} args - Arguments to update many YoutubeUrls.
+     * @example
+     * // Update many YoutubeUrls
+     * const youtubeUrl = await prisma.youtubeUrl.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more YoutubeUrls and only return the `id`
+     * const youtubeUrlWithIdOnly = await prisma.youtubeUrl.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends YoutubeUrlUpdateManyAndReturnArgs>(args: SelectSubset<T, YoutubeUrlUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$YoutubeUrlPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one YoutubeUrl.
+     * @param {YoutubeUrlUpsertArgs} args - Arguments to update or create a YoutubeUrl.
+     * @example
+     * // Update or create a YoutubeUrl
+     * const youtubeUrl = await prisma.youtubeUrl.upsert({
+     *   create: {
+     *     // ... data to create a YoutubeUrl
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the YoutubeUrl we want to update
+     *   }
+     * })
+     */
+    upsert<T extends YoutubeUrlUpsertArgs>(args: SelectSubset<T, YoutubeUrlUpsertArgs<ExtArgs>>): Prisma__YoutubeUrlClient<$Result.GetResult<Prisma.$YoutubeUrlPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of YoutubeUrls.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {YoutubeUrlCountArgs} args - Arguments to filter YoutubeUrls to count.
+     * @example
+     * // Count the number of YoutubeUrls
+     * const count = await prisma.youtubeUrl.count({
+     *   where: {
+     *     // ... the filter for the YoutubeUrls we want to count
+     *   }
+     * })
+    **/
+    count<T extends YoutubeUrlCountArgs>(
+      args?: Subset<T, YoutubeUrlCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], YoutubeUrlCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a YoutubeUrl.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {YoutubeUrlAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends YoutubeUrlAggregateArgs>(args: Subset<T, YoutubeUrlAggregateArgs>): Prisma.PrismaPromise<GetYoutubeUrlAggregateType<T>>
+
+    /**
+     * Group by YoutubeUrl.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {YoutubeUrlGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends YoutubeUrlGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: YoutubeUrlGroupByArgs['orderBy'] }
+        : { orderBy?: YoutubeUrlGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, YoutubeUrlGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetYoutubeUrlGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the YoutubeUrl model
+   */
+  readonly fields: YoutubeUrlFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for YoutubeUrl.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__YoutubeUrlClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    blogPost<T extends YoutubeUrl$blogPostArgs<ExtArgs> = {}>(args?: Subset<T, YoutubeUrl$blogPostArgs<ExtArgs>>): Prisma__BlogPostClient<$Result.GetResult<Prisma.$BlogPostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    teamMember<T extends YoutubeUrl$teamMemberArgs<ExtArgs> = {}>(args?: Subset<T, YoutubeUrl$teamMemberArgs<ExtArgs>>): Prisma__TeamMemberClient<$Result.GetResult<Prisma.$TeamMemberPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    newsUpdate<T extends YoutubeUrl$newsUpdateArgs<ExtArgs> = {}>(args?: Subset<T, YoutubeUrl$newsUpdateArgs<ExtArgs>>): Prisma__NewsUpdateClient<$Result.GetResult<Prisma.$NewsUpdatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    successStory<T extends YoutubeUrl$successStoryArgs<ExtArgs> = {}>(args?: Subset<T, YoutubeUrl$successStoryArgs<ExtArgs>>): Prisma__SuccessStoryClient<$Result.GetResult<Prisma.$SuccessStoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the YoutubeUrl model
+   */
+  interface YoutubeUrlFieldRefs {
+    readonly id: FieldRef<"YoutubeUrl", 'String'>
+    readonly url: FieldRef<"YoutubeUrl", 'String'>
+    readonly title: FieldRef<"YoutubeUrl", 'String'>
+    readonly createdAt: FieldRef<"YoutubeUrl", 'DateTime'>
+    readonly updatedAt: FieldRef<"YoutubeUrl", 'DateTime'>
+    readonly blogPostId: FieldRef<"YoutubeUrl", 'String'>
+    readonly teamMemberId: FieldRef<"YoutubeUrl", 'String'>
+    readonly newsUpdateId: FieldRef<"YoutubeUrl", 'String'>
+    readonly successStoryId: FieldRef<"YoutubeUrl", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * YoutubeUrl findUnique
+   */
+  export type YoutubeUrlFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the YoutubeUrl
+     */
+    select?: YoutubeUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the YoutubeUrl
+     */
+    omit?: YoutubeUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: YoutubeUrlInclude<ExtArgs> | null
+    /**
+     * Filter, which YoutubeUrl to fetch.
+     */
+    where: YoutubeUrlWhereUniqueInput
+  }
+
+  /**
+   * YoutubeUrl findUniqueOrThrow
+   */
+  export type YoutubeUrlFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the YoutubeUrl
+     */
+    select?: YoutubeUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the YoutubeUrl
+     */
+    omit?: YoutubeUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: YoutubeUrlInclude<ExtArgs> | null
+    /**
+     * Filter, which YoutubeUrl to fetch.
+     */
+    where: YoutubeUrlWhereUniqueInput
+  }
+
+  /**
+   * YoutubeUrl findFirst
+   */
+  export type YoutubeUrlFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the YoutubeUrl
+     */
+    select?: YoutubeUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the YoutubeUrl
+     */
+    omit?: YoutubeUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: YoutubeUrlInclude<ExtArgs> | null
+    /**
+     * Filter, which YoutubeUrl to fetch.
+     */
+    where?: YoutubeUrlWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of YoutubeUrls to fetch.
+     */
+    orderBy?: YoutubeUrlOrderByWithRelationInput | YoutubeUrlOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for YoutubeUrls.
+     */
+    cursor?: YoutubeUrlWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` YoutubeUrls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` YoutubeUrls.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of YoutubeUrls.
+     */
+    distinct?: YoutubeUrlScalarFieldEnum | YoutubeUrlScalarFieldEnum[]
+  }
+
+  /**
+   * YoutubeUrl findFirstOrThrow
+   */
+  export type YoutubeUrlFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the YoutubeUrl
+     */
+    select?: YoutubeUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the YoutubeUrl
+     */
+    omit?: YoutubeUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: YoutubeUrlInclude<ExtArgs> | null
+    /**
+     * Filter, which YoutubeUrl to fetch.
+     */
+    where?: YoutubeUrlWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of YoutubeUrls to fetch.
+     */
+    orderBy?: YoutubeUrlOrderByWithRelationInput | YoutubeUrlOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for YoutubeUrls.
+     */
+    cursor?: YoutubeUrlWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` YoutubeUrls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` YoutubeUrls.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of YoutubeUrls.
+     */
+    distinct?: YoutubeUrlScalarFieldEnum | YoutubeUrlScalarFieldEnum[]
+  }
+
+  /**
+   * YoutubeUrl findMany
+   */
+  export type YoutubeUrlFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the YoutubeUrl
+     */
+    select?: YoutubeUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the YoutubeUrl
+     */
+    omit?: YoutubeUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: YoutubeUrlInclude<ExtArgs> | null
+    /**
+     * Filter, which YoutubeUrls to fetch.
+     */
+    where?: YoutubeUrlWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of YoutubeUrls to fetch.
+     */
+    orderBy?: YoutubeUrlOrderByWithRelationInput | YoutubeUrlOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing YoutubeUrls.
+     */
+    cursor?: YoutubeUrlWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` YoutubeUrls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` YoutubeUrls.
+     */
+    skip?: number
+    distinct?: YoutubeUrlScalarFieldEnum | YoutubeUrlScalarFieldEnum[]
+  }
+
+  /**
+   * YoutubeUrl create
+   */
+  export type YoutubeUrlCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the YoutubeUrl
+     */
+    select?: YoutubeUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the YoutubeUrl
+     */
+    omit?: YoutubeUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: YoutubeUrlInclude<ExtArgs> | null
+    /**
+     * The data needed to create a YoutubeUrl.
+     */
+    data: XOR<YoutubeUrlCreateInput, YoutubeUrlUncheckedCreateInput>
+  }
+
+  /**
+   * YoutubeUrl createMany
+   */
+  export type YoutubeUrlCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many YoutubeUrls.
+     */
+    data: YoutubeUrlCreateManyInput | YoutubeUrlCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * YoutubeUrl createManyAndReturn
+   */
+  export type YoutubeUrlCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the YoutubeUrl
+     */
+    select?: YoutubeUrlSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the YoutubeUrl
+     */
+    omit?: YoutubeUrlOmit<ExtArgs> | null
+    /**
+     * The data used to create many YoutubeUrls.
+     */
+    data: YoutubeUrlCreateManyInput | YoutubeUrlCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: YoutubeUrlIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * YoutubeUrl update
+   */
+  export type YoutubeUrlUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the YoutubeUrl
+     */
+    select?: YoutubeUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the YoutubeUrl
+     */
+    omit?: YoutubeUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: YoutubeUrlInclude<ExtArgs> | null
+    /**
+     * The data needed to update a YoutubeUrl.
+     */
+    data: XOR<YoutubeUrlUpdateInput, YoutubeUrlUncheckedUpdateInput>
+    /**
+     * Choose, which YoutubeUrl to update.
+     */
+    where: YoutubeUrlWhereUniqueInput
+  }
+
+  /**
+   * YoutubeUrl updateMany
+   */
+  export type YoutubeUrlUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update YoutubeUrls.
+     */
+    data: XOR<YoutubeUrlUpdateManyMutationInput, YoutubeUrlUncheckedUpdateManyInput>
+    /**
+     * Filter which YoutubeUrls to update
+     */
+    where?: YoutubeUrlWhereInput
+    /**
+     * Limit how many YoutubeUrls to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * YoutubeUrl updateManyAndReturn
+   */
+  export type YoutubeUrlUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the YoutubeUrl
+     */
+    select?: YoutubeUrlSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the YoutubeUrl
+     */
+    omit?: YoutubeUrlOmit<ExtArgs> | null
+    /**
+     * The data used to update YoutubeUrls.
+     */
+    data: XOR<YoutubeUrlUpdateManyMutationInput, YoutubeUrlUncheckedUpdateManyInput>
+    /**
+     * Filter which YoutubeUrls to update
+     */
+    where?: YoutubeUrlWhereInput
+    /**
+     * Limit how many YoutubeUrls to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: YoutubeUrlIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * YoutubeUrl upsert
+   */
+  export type YoutubeUrlUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the YoutubeUrl
+     */
+    select?: YoutubeUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the YoutubeUrl
+     */
+    omit?: YoutubeUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: YoutubeUrlInclude<ExtArgs> | null
+    /**
+     * The filter to search for the YoutubeUrl to update in case it exists.
+     */
+    where: YoutubeUrlWhereUniqueInput
+    /**
+     * In case the YoutubeUrl found by the `where` argument doesn't exist, create a new YoutubeUrl with this data.
+     */
+    create: XOR<YoutubeUrlCreateInput, YoutubeUrlUncheckedCreateInput>
+    /**
+     * In case the YoutubeUrl was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<YoutubeUrlUpdateInput, YoutubeUrlUncheckedUpdateInput>
+  }
+
+  /**
+   * YoutubeUrl delete
+   */
+  export type YoutubeUrlDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the YoutubeUrl
+     */
+    select?: YoutubeUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the YoutubeUrl
+     */
+    omit?: YoutubeUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: YoutubeUrlInclude<ExtArgs> | null
+    /**
+     * Filter which YoutubeUrl to delete.
+     */
+    where: YoutubeUrlWhereUniqueInput
+  }
+
+  /**
+   * YoutubeUrl deleteMany
+   */
+  export type YoutubeUrlDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which YoutubeUrls to delete
+     */
+    where?: YoutubeUrlWhereInput
+    /**
+     * Limit how many YoutubeUrls to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * YoutubeUrl.blogPost
+   */
+  export type YoutubeUrl$blogPostArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlogPost
+     */
+    select?: BlogPostSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlogPost
+     */
+    omit?: BlogPostOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlogPostInclude<ExtArgs> | null
+    where?: BlogPostWhereInput
+  }
+
+  /**
+   * YoutubeUrl.teamMember
+   */
+  export type YoutubeUrl$teamMemberArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TeamMember
+     */
+    select?: TeamMemberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TeamMember
+     */
+    omit?: TeamMemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeamMemberInclude<ExtArgs> | null
+    where?: TeamMemberWhereInput
+  }
+
+  /**
+   * YoutubeUrl.newsUpdate
+   */
+  export type YoutubeUrl$newsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NewsUpdate
+     */
+    select?: NewsUpdateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NewsUpdate
+     */
+    omit?: NewsUpdateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NewsUpdateInclude<ExtArgs> | null
+    where?: NewsUpdateWhereInput
+  }
+
+  /**
+   * YoutubeUrl.successStory
+   */
+  export type YoutubeUrl$successStoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SuccessStory
+     */
+    select?: SuccessStorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SuccessStory
+     */
+    omit?: SuccessStoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SuccessStoryInclude<ExtArgs> | null
+    where?: SuccessStoryWhereInput
+  }
+
+  /**
+   * YoutubeUrl without action
+   */
+  export type YoutubeUrlDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the YoutubeUrl
+     */
+    select?: YoutubeUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the YoutubeUrl
+     */
+    omit?: YoutubeUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: YoutubeUrlInclude<ExtArgs> | null
   }
 
 
@@ -10440,6 +15063,51 @@ export namespace Prisma {
   };
 
   export type NewsUpdateScalarFieldEnum = (typeof NewsUpdateScalarFieldEnum)[keyof typeof NewsUpdateScalarFieldEnum]
+
+
+  export const ImageScalarFieldEnum: {
+    id: 'id',
+    url: 'url',
+    alt: 'alt',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    blogPostId: 'blogPostId',
+    teamMemberId: 'teamMemberId',
+    newsUpdateId: 'newsUpdateId',
+    successStoryId: 'successStoryId'
+  };
+
+  export type ImageScalarFieldEnum = (typeof ImageScalarFieldEnum)[keyof typeof ImageScalarFieldEnum]
+
+
+  export const VideoScalarFieldEnum: {
+    id: 'id',
+    url: 'url',
+    title: 'title',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    blogPostId: 'blogPostId',
+    teamMemberId: 'teamMemberId',
+    newsUpdateId: 'newsUpdateId',
+    successStoryId: 'successStoryId'
+  };
+
+  export type VideoScalarFieldEnum = (typeof VideoScalarFieldEnum)[keyof typeof VideoScalarFieldEnum]
+
+
+  export const YoutubeUrlScalarFieldEnum: {
+    id: 'id',
+    url: 'url',
+    title: 'title',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    blogPostId: 'blogPostId',
+    teamMemberId: 'teamMemberId',
+    newsUpdateId: 'newsUpdateId',
+    successStoryId: 'successStoryId'
+  };
+
+  export type YoutubeUrlScalarFieldEnum = (typeof YoutubeUrlScalarFieldEnum)[keyof typeof YoutubeUrlScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -10908,6 +15576,9 @@ export namespace Prisma {
     achievements?: StringNullableFilter<"TeamMember"> | string | null
     createdAt?: DateTimeFilter<"TeamMember"> | Date | string
     updatedAt?: DateTimeFilter<"TeamMember"> | Date | string
+    images?: ImageListRelationFilter
+    videos?: VideoListRelationFilter
+    youtubeUrls?: YoutubeUrlListRelationFilter
   }
 
   export type TeamMemberOrderByWithRelationInput = {
@@ -10921,6 +15592,9 @@ export namespace Prisma {
     achievements?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    images?: ImageOrderByRelationAggregateInput
+    videos?: VideoOrderByRelationAggregateInput
+    youtubeUrls?: YoutubeUrlOrderByRelationAggregateInput
   }
 
   export type TeamMemberWhereUniqueInput = Prisma.AtLeast<{
@@ -10937,6 +15611,9 @@ export namespace Prisma {
     achievements?: StringNullableFilter<"TeamMember"> | string | null
     createdAt?: DateTimeFilter<"TeamMember"> | Date | string
     updatedAt?: DateTimeFilter<"TeamMember"> | Date | string
+    images?: ImageListRelationFilter
+    videos?: VideoListRelationFilter
+    youtubeUrls?: YoutubeUrlListRelationFilter
   }, "id" | "email">
 
   export type TeamMemberOrderByWithAggregationInput = {
@@ -10985,6 +15662,9 @@ export namespace Prisma {
     advice?: StringNullableFilter<"SuccessStory"> | string | null
     createdAt?: DateTimeFilter<"SuccessStory"> | Date | string
     updatedAt?: DateTimeFilter<"SuccessStory"> | Date | string
+    images?: ImageListRelationFilter
+    videos?: VideoListRelationFilter
+    youtubeUrls?: YoutubeUrlListRelationFilter
   }
 
   export type SuccessStoryOrderByWithRelationInput = {
@@ -10998,6 +15678,9 @@ export namespace Prisma {
     advice?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    images?: ImageOrderByRelationAggregateInput
+    videos?: VideoOrderByRelationAggregateInput
+    youtubeUrls?: YoutubeUrlOrderByRelationAggregateInput
   }
 
   export type SuccessStoryWhereUniqueInput = Prisma.AtLeast<{
@@ -11014,6 +15697,9 @@ export namespace Prisma {
     advice?: StringNullableFilter<"SuccessStory"> | string | null
     createdAt?: DateTimeFilter<"SuccessStory"> | Date | string
     updatedAt?: DateTimeFilter<"SuccessStory"> | Date | string
+    images?: ImageListRelationFilter
+    videos?: VideoListRelationFilter
+    youtubeUrls?: YoutubeUrlListRelationFilter
   }, "id">
 
   export type SuccessStoryOrderByWithAggregationInput = {
@@ -11063,6 +15749,9 @@ export namespace Prisma {
     category?: EnumBlogCategoryFilter<"BlogPost"> | $Enums.BlogCategory
     createdAt?: DateTimeFilter<"BlogPost"> | Date | string
     updatedAt?: DateTimeFilter<"BlogPost"> | Date | string
+    images?: ImageListRelationFilter
+    videos?: VideoListRelationFilter
+    youtubeUrls?: YoutubeUrlListRelationFilter
   }
 
   export type BlogPostOrderByWithRelationInput = {
@@ -11075,6 +15764,9 @@ export namespace Prisma {
     category?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    images?: ImageOrderByRelationAggregateInput
+    videos?: VideoOrderByRelationAggregateInput
+    youtubeUrls?: YoutubeUrlOrderByRelationAggregateInput
   }
 
   export type BlogPostWhereUniqueInput = Prisma.AtLeast<{
@@ -11090,6 +15782,9 @@ export namespace Prisma {
     category?: EnumBlogCategoryFilter<"BlogPost"> | $Enums.BlogCategory
     createdAt?: DateTimeFilter<"BlogPost"> | Date | string
     updatedAt?: DateTimeFilter<"BlogPost"> | Date | string
+    images?: ImageListRelationFilter
+    videos?: VideoListRelationFilter
+    youtubeUrls?: YoutubeUrlListRelationFilter
   }, "id" | "slug">
 
   export type BlogPostOrderByWithAggregationInput = {
@@ -11136,6 +15831,9 @@ export namespace Prisma {
     category?: EnumNewsCategoryFilter<"NewsUpdate"> | $Enums.NewsCategory
     createdAt?: DateTimeFilter<"NewsUpdate"> | Date | string
     updatedAt?: DateTimeFilter<"NewsUpdate"> | Date | string
+    images?: ImageListRelationFilter
+    videos?: VideoListRelationFilter
+    youtubeUrls?: YoutubeUrlListRelationFilter
   }
 
   export type NewsUpdateOrderByWithRelationInput = {
@@ -11149,6 +15847,9 @@ export namespace Prisma {
     category?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    images?: ImageOrderByRelationAggregateInput
+    videos?: VideoOrderByRelationAggregateInput
+    youtubeUrls?: YoutubeUrlOrderByRelationAggregateInput
   }
 
   export type NewsUpdateWhereUniqueInput = Prisma.AtLeast<{
@@ -11165,6 +15866,9 @@ export namespace Prisma {
     category?: EnumNewsCategoryFilter<"NewsUpdate"> | $Enums.NewsCategory
     createdAt?: DateTimeFilter<"NewsUpdate"> | Date | string
     updatedAt?: DateTimeFilter<"NewsUpdate"> | Date | string
+    images?: ImageListRelationFilter
+    videos?: VideoListRelationFilter
+    youtubeUrls?: YoutubeUrlListRelationFilter
   }, "id">
 
   export type NewsUpdateOrderByWithAggregationInput = {
@@ -11197,6 +15901,258 @@ export namespace Prisma {
     category?: EnumNewsCategoryWithAggregatesFilter<"NewsUpdate"> | $Enums.NewsCategory
     createdAt?: DateTimeWithAggregatesFilter<"NewsUpdate"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"NewsUpdate"> | Date | string
+  }
+
+  export type ImageWhereInput = {
+    AND?: ImageWhereInput | ImageWhereInput[]
+    OR?: ImageWhereInput[]
+    NOT?: ImageWhereInput | ImageWhereInput[]
+    id?: StringFilter<"Image"> | string
+    url?: StringFilter<"Image"> | string
+    alt?: StringNullableFilter<"Image"> | string | null
+    createdAt?: DateTimeFilter<"Image"> | Date | string
+    updatedAt?: DateTimeFilter<"Image"> | Date | string
+    blogPostId?: StringNullableFilter<"Image"> | string | null
+    teamMemberId?: StringNullableFilter<"Image"> | string | null
+    newsUpdateId?: StringNullableFilter<"Image"> | string | null
+    successStoryId?: StringNullableFilter<"Image"> | string | null
+    blogPost?: XOR<BlogPostNullableScalarRelationFilter, BlogPostWhereInput> | null
+    teamMember?: XOR<TeamMemberNullableScalarRelationFilter, TeamMemberWhereInput> | null
+    newsUpdate?: XOR<NewsUpdateNullableScalarRelationFilter, NewsUpdateWhereInput> | null
+    successStory?: XOR<SuccessStoryNullableScalarRelationFilter, SuccessStoryWhereInput> | null
+  }
+
+  export type ImageOrderByWithRelationInput = {
+    id?: SortOrder
+    url?: SortOrder
+    alt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    blogPostId?: SortOrderInput | SortOrder
+    teamMemberId?: SortOrderInput | SortOrder
+    newsUpdateId?: SortOrderInput | SortOrder
+    successStoryId?: SortOrderInput | SortOrder
+    blogPost?: BlogPostOrderByWithRelationInput
+    teamMember?: TeamMemberOrderByWithRelationInput
+    newsUpdate?: NewsUpdateOrderByWithRelationInput
+    successStory?: SuccessStoryOrderByWithRelationInput
+  }
+
+  export type ImageWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ImageWhereInput | ImageWhereInput[]
+    OR?: ImageWhereInput[]
+    NOT?: ImageWhereInput | ImageWhereInput[]
+    url?: StringFilter<"Image"> | string
+    alt?: StringNullableFilter<"Image"> | string | null
+    createdAt?: DateTimeFilter<"Image"> | Date | string
+    updatedAt?: DateTimeFilter<"Image"> | Date | string
+    blogPostId?: StringNullableFilter<"Image"> | string | null
+    teamMemberId?: StringNullableFilter<"Image"> | string | null
+    newsUpdateId?: StringNullableFilter<"Image"> | string | null
+    successStoryId?: StringNullableFilter<"Image"> | string | null
+    blogPost?: XOR<BlogPostNullableScalarRelationFilter, BlogPostWhereInput> | null
+    teamMember?: XOR<TeamMemberNullableScalarRelationFilter, TeamMemberWhereInput> | null
+    newsUpdate?: XOR<NewsUpdateNullableScalarRelationFilter, NewsUpdateWhereInput> | null
+    successStory?: XOR<SuccessStoryNullableScalarRelationFilter, SuccessStoryWhereInput> | null
+  }, "id">
+
+  export type ImageOrderByWithAggregationInput = {
+    id?: SortOrder
+    url?: SortOrder
+    alt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    blogPostId?: SortOrderInput | SortOrder
+    teamMemberId?: SortOrderInput | SortOrder
+    newsUpdateId?: SortOrderInput | SortOrder
+    successStoryId?: SortOrderInput | SortOrder
+    _count?: ImageCountOrderByAggregateInput
+    _max?: ImageMaxOrderByAggregateInput
+    _min?: ImageMinOrderByAggregateInput
+  }
+
+  export type ImageScalarWhereWithAggregatesInput = {
+    AND?: ImageScalarWhereWithAggregatesInput | ImageScalarWhereWithAggregatesInput[]
+    OR?: ImageScalarWhereWithAggregatesInput[]
+    NOT?: ImageScalarWhereWithAggregatesInput | ImageScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Image"> | string
+    url?: StringWithAggregatesFilter<"Image"> | string
+    alt?: StringNullableWithAggregatesFilter<"Image"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Image"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Image"> | Date | string
+    blogPostId?: StringNullableWithAggregatesFilter<"Image"> | string | null
+    teamMemberId?: StringNullableWithAggregatesFilter<"Image"> | string | null
+    newsUpdateId?: StringNullableWithAggregatesFilter<"Image"> | string | null
+    successStoryId?: StringNullableWithAggregatesFilter<"Image"> | string | null
+  }
+
+  export type VideoWhereInput = {
+    AND?: VideoWhereInput | VideoWhereInput[]
+    OR?: VideoWhereInput[]
+    NOT?: VideoWhereInput | VideoWhereInput[]
+    id?: StringFilter<"Video"> | string
+    url?: StringFilter<"Video"> | string
+    title?: StringNullableFilter<"Video"> | string | null
+    createdAt?: DateTimeFilter<"Video"> | Date | string
+    updatedAt?: DateTimeFilter<"Video"> | Date | string
+    blogPostId?: StringNullableFilter<"Video"> | string | null
+    teamMemberId?: StringNullableFilter<"Video"> | string | null
+    newsUpdateId?: StringNullableFilter<"Video"> | string | null
+    successStoryId?: StringNullableFilter<"Video"> | string | null
+    blogPost?: XOR<BlogPostNullableScalarRelationFilter, BlogPostWhereInput> | null
+    teamMember?: XOR<TeamMemberNullableScalarRelationFilter, TeamMemberWhereInput> | null
+    newsUpdate?: XOR<NewsUpdateNullableScalarRelationFilter, NewsUpdateWhereInput> | null
+    successStory?: XOR<SuccessStoryNullableScalarRelationFilter, SuccessStoryWhereInput> | null
+  }
+
+  export type VideoOrderByWithRelationInput = {
+    id?: SortOrder
+    url?: SortOrder
+    title?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    blogPostId?: SortOrderInput | SortOrder
+    teamMemberId?: SortOrderInput | SortOrder
+    newsUpdateId?: SortOrderInput | SortOrder
+    successStoryId?: SortOrderInput | SortOrder
+    blogPost?: BlogPostOrderByWithRelationInput
+    teamMember?: TeamMemberOrderByWithRelationInput
+    newsUpdate?: NewsUpdateOrderByWithRelationInput
+    successStory?: SuccessStoryOrderByWithRelationInput
+  }
+
+  export type VideoWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: VideoWhereInput | VideoWhereInput[]
+    OR?: VideoWhereInput[]
+    NOT?: VideoWhereInput | VideoWhereInput[]
+    url?: StringFilter<"Video"> | string
+    title?: StringNullableFilter<"Video"> | string | null
+    createdAt?: DateTimeFilter<"Video"> | Date | string
+    updatedAt?: DateTimeFilter<"Video"> | Date | string
+    blogPostId?: StringNullableFilter<"Video"> | string | null
+    teamMemberId?: StringNullableFilter<"Video"> | string | null
+    newsUpdateId?: StringNullableFilter<"Video"> | string | null
+    successStoryId?: StringNullableFilter<"Video"> | string | null
+    blogPost?: XOR<BlogPostNullableScalarRelationFilter, BlogPostWhereInput> | null
+    teamMember?: XOR<TeamMemberNullableScalarRelationFilter, TeamMemberWhereInput> | null
+    newsUpdate?: XOR<NewsUpdateNullableScalarRelationFilter, NewsUpdateWhereInput> | null
+    successStory?: XOR<SuccessStoryNullableScalarRelationFilter, SuccessStoryWhereInput> | null
+  }, "id">
+
+  export type VideoOrderByWithAggregationInput = {
+    id?: SortOrder
+    url?: SortOrder
+    title?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    blogPostId?: SortOrderInput | SortOrder
+    teamMemberId?: SortOrderInput | SortOrder
+    newsUpdateId?: SortOrderInput | SortOrder
+    successStoryId?: SortOrderInput | SortOrder
+    _count?: VideoCountOrderByAggregateInput
+    _max?: VideoMaxOrderByAggregateInput
+    _min?: VideoMinOrderByAggregateInput
+  }
+
+  export type VideoScalarWhereWithAggregatesInput = {
+    AND?: VideoScalarWhereWithAggregatesInput | VideoScalarWhereWithAggregatesInput[]
+    OR?: VideoScalarWhereWithAggregatesInput[]
+    NOT?: VideoScalarWhereWithAggregatesInput | VideoScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Video"> | string
+    url?: StringWithAggregatesFilter<"Video"> | string
+    title?: StringNullableWithAggregatesFilter<"Video"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Video"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Video"> | Date | string
+    blogPostId?: StringNullableWithAggregatesFilter<"Video"> | string | null
+    teamMemberId?: StringNullableWithAggregatesFilter<"Video"> | string | null
+    newsUpdateId?: StringNullableWithAggregatesFilter<"Video"> | string | null
+    successStoryId?: StringNullableWithAggregatesFilter<"Video"> | string | null
+  }
+
+  export type YoutubeUrlWhereInput = {
+    AND?: YoutubeUrlWhereInput | YoutubeUrlWhereInput[]
+    OR?: YoutubeUrlWhereInput[]
+    NOT?: YoutubeUrlWhereInput | YoutubeUrlWhereInput[]
+    id?: StringFilter<"YoutubeUrl"> | string
+    url?: StringFilter<"YoutubeUrl"> | string
+    title?: StringNullableFilter<"YoutubeUrl"> | string | null
+    createdAt?: DateTimeFilter<"YoutubeUrl"> | Date | string
+    updatedAt?: DateTimeFilter<"YoutubeUrl"> | Date | string
+    blogPostId?: StringNullableFilter<"YoutubeUrl"> | string | null
+    teamMemberId?: StringNullableFilter<"YoutubeUrl"> | string | null
+    newsUpdateId?: StringNullableFilter<"YoutubeUrl"> | string | null
+    successStoryId?: StringNullableFilter<"YoutubeUrl"> | string | null
+    blogPost?: XOR<BlogPostNullableScalarRelationFilter, BlogPostWhereInput> | null
+    teamMember?: XOR<TeamMemberNullableScalarRelationFilter, TeamMemberWhereInput> | null
+    newsUpdate?: XOR<NewsUpdateNullableScalarRelationFilter, NewsUpdateWhereInput> | null
+    successStory?: XOR<SuccessStoryNullableScalarRelationFilter, SuccessStoryWhereInput> | null
+  }
+
+  export type YoutubeUrlOrderByWithRelationInput = {
+    id?: SortOrder
+    url?: SortOrder
+    title?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    blogPostId?: SortOrderInput | SortOrder
+    teamMemberId?: SortOrderInput | SortOrder
+    newsUpdateId?: SortOrderInput | SortOrder
+    successStoryId?: SortOrderInput | SortOrder
+    blogPost?: BlogPostOrderByWithRelationInput
+    teamMember?: TeamMemberOrderByWithRelationInput
+    newsUpdate?: NewsUpdateOrderByWithRelationInput
+    successStory?: SuccessStoryOrderByWithRelationInput
+  }
+
+  export type YoutubeUrlWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: YoutubeUrlWhereInput | YoutubeUrlWhereInput[]
+    OR?: YoutubeUrlWhereInput[]
+    NOT?: YoutubeUrlWhereInput | YoutubeUrlWhereInput[]
+    url?: StringFilter<"YoutubeUrl"> | string
+    title?: StringNullableFilter<"YoutubeUrl"> | string | null
+    createdAt?: DateTimeFilter<"YoutubeUrl"> | Date | string
+    updatedAt?: DateTimeFilter<"YoutubeUrl"> | Date | string
+    blogPostId?: StringNullableFilter<"YoutubeUrl"> | string | null
+    teamMemberId?: StringNullableFilter<"YoutubeUrl"> | string | null
+    newsUpdateId?: StringNullableFilter<"YoutubeUrl"> | string | null
+    successStoryId?: StringNullableFilter<"YoutubeUrl"> | string | null
+    blogPost?: XOR<BlogPostNullableScalarRelationFilter, BlogPostWhereInput> | null
+    teamMember?: XOR<TeamMemberNullableScalarRelationFilter, TeamMemberWhereInput> | null
+    newsUpdate?: XOR<NewsUpdateNullableScalarRelationFilter, NewsUpdateWhereInput> | null
+    successStory?: XOR<SuccessStoryNullableScalarRelationFilter, SuccessStoryWhereInput> | null
+  }, "id">
+
+  export type YoutubeUrlOrderByWithAggregationInput = {
+    id?: SortOrder
+    url?: SortOrder
+    title?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    blogPostId?: SortOrderInput | SortOrder
+    teamMemberId?: SortOrderInput | SortOrder
+    newsUpdateId?: SortOrderInput | SortOrder
+    successStoryId?: SortOrderInput | SortOrder
+    _count?: YoutubeUrlCountOrderByAggregateInput
+    _max?: YoutubeUrlMaxOrderByAggregateInput
+    _min?: YoutubeUrlMinOrderByAggregateInput
+  }
+
+  export type YoutubeUrlScalarWhereWithAggregatesInput = {
+    AND?: YoutubeUrlScalarWhereWithAggregatesInput | YoutubeUrlScalarWhereWithAggregatesInput[]
+    OR?: YoutubeUrlScalarWhereWithAggregatesInput[]
+    NOT?: YoutubeUrlScalarWhereWithAggregatesInput | YoutubeUrlScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"YoutubeUrl"> | string
+    url?: StringWithAggregatesFilter<"YoutubeUrl"> | string
+    title?: StringNullableWithAggregatesFilter<"YoutubeUrl"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"YoutubeUrl"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"YoutubeUrl"> | Date | string
+    blogPostId?: StringNullableWithAggregatesFilter<"YoutubeUrl"> | string | null
+    teamMemberId?: StringNullableWithAggregatesFilter<"YoutubeUrl"> | string | null
+    newsUpdateId?: StringNullableWithAggregatesFilter<"YoutubeUrl"> | string | null
+    successStoryId?: StringNullableWithAggregatesFilter<"YoutubeUrl"> | string | null
   }
 
   export type UserCreateInput = {
@@ -11573,6 +16529,9 @@ export namespace Prisma {
     achievements?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    images?: ImageCreateNestedManyWithoutTeamMemberInput
+    videos?: VideoCreateNestedManyWithoutTeamMemberInput
+    youtubeUrls?: YoutubeUrlCreateNestedManyWithoutTeamMemberInput
   }
 
   export type TeamMemberUncheckedCreateInput = {
@@ -11586,6 +16545,9 @@ export namespace Prisma {
     achievements?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    images?: ImageUncheckedCreateNestedManyWithoutTeamMemberInput
+    videos?: VideoUncheckedCreateNestedManyWithoutTeamMemberInput
+    youtubeUrls?: YoutubeUrlUncheckedCreateNestedManyWithoutTeamMemberInput
   }
 
   export type TeamMemberUpdateInput = {
@@ -11599,6 +16561,9 @@ export namespace Prisma {
     achievements?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: ImageUpdateManyWithoutTeamMemberNestedInput
+    videos?: VideoUpdateManyWithoutTeamMemberNestedInput
+    youtubeUrls?: YoutubeUrlUpdateManyWithoutTeamMemberNestedInput
   }
 
   export type TeamMemberUncheckedUpdateInput = {
@@ -11612,6 +16577,9 @@ export namespace Prisma {
     achievements?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: ImageUncheckedUpdateManyWithoutTeamMemberNestedInput
+    videos?: VideoUncheckedUpdateManyWithoutTeamMemberNestedInput
+    youtubeUrls?: YoutubeUrlUncheckedUpdateManyWithoutTeamMemberNestedInput
   }
 
   export type TeamMemberCreateManyInput = {
@@ -11664,6 +16632,9 @@ export namespace Prisma {
     advice?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    images?: ImageCreateNestedManyWithoutSuccessStoryInput
+    videos?: VideoCreateNestedManyWithoutSuccessStoryInput
+    youtubeUrls?: YoutubeUrlCreateNestedManyWithoutSuccessStoryInput
   }
 
   export type SuccessStoryUncheckedCreateInput = {
@@ -11677,6 +16648,9 @@ export namespace Prisma {
     advice?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    images?: ImageUncheckedCreateNestedManyWithoutSuccessStoryInput
+    videos?: VideoUncheckedCreateNestedManyWithoutSuccessStoryInput
+    youtubeUrls?: YoutubeUrlUncheckedCreateNestedManyWithoutSuccessStoryInput
   }
 
   export type SuccessStoryUpdateInput = {
@@ -11690,6 +16664,9 @@ export namespace Prisma {
     advice?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: ImageUpdateManyWithoutSuccessStoryNestedInput
+    videos?: VideoUpdateManyWithoutSuccessStoryNestedInput
+    youtubeUrls?: YoutubeUrlUpdateManyWithoutSuccessStoryNestedInput
   }
 
   export type SuccessStoryUncheckedUpdateInput = {
@@ -11703,6 +16680,9 @@ export namespace Prisma {
     advice?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: ImageUncheckedUpdateManyWithoutSuccessStoryNestedInput
+    videos?: VideoUncheckedUpdateManyWithoutSuccessStoryNestedInput
+    youtubeUrls?: YoutubeUrlUncheckedUpdateManyWithoutSuccessStoryNestedInput
   }
 
   export type SuccessStoryCreateManyInput = {
@@ -11754,6 +16734,9 @@ export namespace Prisma {
     category: $Enums.BlogCategory
     createdAt?: Date | string
     updatedAt?: Date | string
+    images?: ImageCreateNestedManyWithoutBlogPostInput
+    videos?: VideoCreateNestedManyWithoutBlogPostInput
+    youtubeUrls?: YoutubeUrlCreateNestedManyWithoutBlogPostInput
   }
 
   export type BlogPostUncheckedCreateInput = {
@@ -11766,6 +16749,9 @@ export namespace Prisma {
     category: $Enums.BlogCategory
     createdAt?: Date | string
     updatedAt?: Date | string
+    images?: ImageUncheckedCreateNestedManyWithoutBlogPostInput
+    videos?: VideoUncheckedCreateNestedManyWithoutBlogPostInput
+    youtubeUrls?: YoutubeUrlUncheckedCreateNestedManyWithoutBlogPostInput
   }
 
   export type BlogPostUpdateInput = {
@@ -11778,6 +16764,9 @@ export namespace Prisma {
     category?: EnumBlogCategoryFieldUpdateOperationsInput | $Enums.BlogCategory
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: ImageUpdateManyWithoutBlogPostNestedInput
+    videos?: VideoUpdateManyWithoutBlogPostNestedInput
+    youtubeUrls?: YoutubeUrlUpdateManyWithoutBlogPostNestedInput
   }
 
   export type BlogPostUncheckedUpdateInput = {
@@ -11790,6 +16779,9 @@ export namespace Prisma {
     category?: EnumBlogCategoryFieldUpdateOperationsInput | $Enums.BlogCategory
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: ImageUncheckedUpdateManyWithoutBlogPostNestedInput
+    videos?: VideoUncheckedUpdateManyWithoutBlogPostNestedInput
+    youtubeUrls?: YoutubeUrlUncheckedUpdateManyWithoutBlogPostNestedInput
   }
 
   export type BlogPostCreateManyInput = {
@@ -11839,6 +16831,9 @@ export namespace Prisma {
     category: $Enums.NewsCategory
     createdAt?: Date | string
     updatedAt?: Date | string
+    images?: ImageCreateNestedManyWithoutNewsUpdateInput
+    videos?: VideoCreateNestedManyWithoutNewsUpdateInput
+    youtubeUrls?: YoutubeUrlCreateNestedManyWithoutNewsUpdateInput
   }
 
   export type NewsUpdateUncheckedCreateInput = {
@@ -11852,6 +16847,9 @@ export namespace Prisma {
     category: $Enums.NewsCategory
     createdAt?: Date | string
     updatedAt?: Date | string
+    images?: ImageUncheckedCreateNestedManyWithoutNewsUpdateInput
+    videos?: VideoUncheckedCreateNestedManyWithoutNewsUpdateInput
+    youtubeUrls?: YoutubeUrlUncheckedCreateNestedManyWithoutNewsUpdateInput
   }
 
   export type NewsUpdateUpdateInput = {
@@ -11865,6 +16863,9 @@ export namespace Prisma {
     category?: EnumNewsCategoryFieldUpdateOperationsInput | $Enums.NewsCategory
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: ImageUpdateManyWithoutNewsUpdateNestedInput
+    videos?: VideoUpdateManyWithoutNewsUpdateNestedInput
+    youtubeUrls?: YoutubeUrlUpdateManyWithoutNewsUpdateNestedInput
   }
 
   export type NewsUpdateUncheckedUpdateInput = {
@@ -11878,6 +16879,9 @@ export namespace Prisma {
     category?: EnumNewsCategoryFieldUpdateOperationsInput | $Enums.NewsCategory
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: ImageUncheckedUpdateManyWithoutNewsUpdateNestedInput
+    videos?: VideoUncheckedUpdateManyWithoutNewsUpdateNestedInput
+    youtubeUrls?: YoutubeUrlUncheckedUpdateManyWithoutNewsUpdateNestedInput
   }
 
   export type NewsUpdateCreateManyInput = {
@@ -11917,6 +16921,246 @@ export namespace Prisma {
     category?: EnumNewsCategoryFieldUpdateOperationsInput | $Enums.NewsCategory
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ImageCreateInput = {
+    id?: string
+    url: string
+    alt?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPost?: BlogPostCreateNestedOneWithoutImagesInput
+    teamMember?: TeamMemberCreateNestedOneWithoutImagesInput
+    newsUpdate?: NewsUpdateCreateNestedOneWithoutImagesInput
+    successStory?: SuccessStoryCreateNestedOneWithoutImagesInput
+  }
+
+  export type ImageUncheckedCreateInput = {
+    id?: string
+    url: string
+    alt?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPostId?: string | null
+    teamMemberId?: string | null
+    newsUpdateId?: string | null
+    successStoryId?: string | null
+  }
+
+  export type ImageUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    alt?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPost?: BlogPostUpdateOneWithoutImagesNestedInput
+    teamMember?: TeamMemberUpdateOneWithoutImagesNestedInput
+    newsUpdate?: NewsUpdateUpdateOneWithoutImagesNestedInput
+    successStory?: SuccessStoryUpdateOneWithoutImagesNestedInput
+  }
+
+  export type ImageUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    alt?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPostId?: NullableStringFieldUpdateOperationsInput | string | null
+    teamMemberId?: NullableStringFieldUpdateOperationsInput | string | null
+    newsUpdateId?: NullableStringFieldUpdateOperationsInput | string | null
+    successStoryId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ImageCreateManyInput = {
+    id?: string
+    url: string
+    alt?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPostId?: string | null
+    teamMemberId?: string | null
+    newsUpdateId?: string | null
+    successStoryId?: string | null
+  }
+
+  export type ImageUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    alt?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ImageUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    alt?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPostId?: NullableStringFieldUpdateOperationsInput | string | null
+    teamMemberId?: NullableStringFieldUpdateOperationsInput | string | null
+    newsUpdateId?: NullableStringFieldUpdateOperationsInput | string | null
+    successStoryId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type VideoCreateInput = {
+    id?: string
+    url: string
+    title?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPost?: BlogPostCreateNestedOneWithoutVideosInput
+    teamMember?: TeamMemberCreateNestedOneWithoutVideosInput
+    newsUpdate?: NewsUpdateCreateNestedOneWithoutVideosInput
+    successStory?: SuccessStoryCreateNestedOneWithoutVideosInput
+  }
+
+  export type VideoUncheckedCreateInput = {
+    id?: string
+    url: string
+    title?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPostId?: string | null
+    teamMemberId?: string | null
+    newsUpdateId?: string | null
+    successStoryId?: string | null
+  }
+
+  export type VideoUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPost?: BlogPostUpdateOneWithoutVideosNestedInput
+    teamMember?: TeamMemberUpdateOneWithoutVideosNestedInput
+    newsUpdate?: NewsUpdateUpdateOneWithoutVideosNestedInput
+    successStory?: SuccessStoryUpdateOneWithoutVideosNestedInput
+  }
+
+  export type VideoUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPostId?: NullableStringFieldUpdateOperationsInput | string | null
+    teamMemberId?: NullableStringFieldUpdateOperationsInput | string | null
+    newsUpdateId?: NullableStringFieldUpdateOperationsInput | string | null
+    successStoryId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type VideoCreateManyInput = {
+    id?: string
+    url: string
+    title?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPostId?: string | null
+    teamMemberId?: string | null
+    newsUpdateId?: string | null
+    successStoryId?: string | null
+  }
+
+  export type VideoUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type VideoUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPostId?: NullableStringFieldUpdateOperationsInput | string | null
+    teamMemberId?: NullableStringFieldUpdateOperationsInput | string | null
+    newsUpdateId?: NullableStringFieldUpdateOperationsInput | string | null
+    successStoryId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type YoutubeUrlCreateInput = {
+    id?: string
+    url: string
+    title?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPost?: BlogPostCreateNestedOneWithoutYoutubeUrlsInput
+    teamMember?: TeamMemberCreateNestedOneWithoutYoutubeUrlsInput
+    newsUpdate?: NewsUpdateCreateNestedOneWithoutYoutubeUrlsInput
+    successStory?: SuccessStoryCreateNestedOneWithoutYoutubeUrlsInput
+  }
+
+  export type YoutubeUrlUncheckedCreateInput = {
+    id?: string
+    url: string
+    title?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPostId?: string | null
+    teamMemberId?: string | null
+    newsUpdateId?: string | null
+    successStoryId?: string | null
+  }
+
+  export type YoutubeUrlUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPost?: BlogPostUpdateOneWithoutYoutubeUrlsNestedInput
+    teamMember?: TeamMemberUpdateOneWithoutYoutubeUrlsNestedInput
+    newsUpdate?: NewsUpdateUpdateOneWithoutYoutubeUrlsNestedInput
+    successStory?: SuccessStoryUpdateOneWithoutYoutubeUrlsNestedInput
+  }
+
+  export type YoutubeUrlUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPostId?: NullableStringFieldUpdateOperationsInput | string | null
+    teamMemberId?: NullableStringFieldUpdateOperationsInput | string | null
+    newsUpdateId?: NullableStringFieldUpdateOperationsInput | string | null
+    successStoryId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type YoutubeUrlCreateManyInput = {
+    id?: string
+    url: string
+    title?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPostId?: string | null
+    teamMemberId?: string | null
+    newsUpdateId?: string | null
+    successStoryId?: string | null
+  }
+
+  export type YoutubeUrlUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type YoutubeUrlUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPostId?: NullableStringFieldUpdateOperationsInput | string | null
+    teamMemberId?: NullableStringFieldUpdateOperationsInput | string | null
+    newsUpdateId?: NullableStringFieldUpdateOperationsInput | string | null
+    successStoryId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -12244,6 +17488,36 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type ImageListRelationFilter = {
+    every?: ImageWhereInput
+    some?: ImageWhereInput
+    none?: ImageWhereInput
+  }
+
+  export type VideoListRelationFilter = {
+    every?: VideoWhereInput
+    some?: VideoWhereInput
+    none?: VideoWhereInput
+  }
+
+  export type YoutubeUrlListRelationFilter = {
+    every?: YoutubeUrlWhereInput
+    some?: YoutubeUrlWhereInput
+    none?: YoutubeUrlWhereInput
+  }
+
+  export type ImageOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type VideoOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type YoutubeUrlOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type TeamMemberCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -12483,6 +17757,134 @@ export namespace Prisma {
     _max?: NestedEnumNewsCategoryFilter<$PrismaModel>
   }
 
+  export type BlogPostNullableScalarRelationFilter = {
+    is?: BlogPostWhereInput | null
+    isNot?: BlogPostWhereInput | null
+  }
+
+  export type TeamMemberNullableScalarRelationFilter = {
+    is?: TeamMemberWhereInput | null
+    isNot?: TeamMemberWhereInput | null
+  }
+
+  export type NewsUpdateNullableScalarRelationFilter = {
+    is?: NewsUpdateWhereInput | null
+    isNot?: NewsUpdateWhereInput | null
+  }
+
+  export type SuccessStoryNullableScalarRelationFilter = {
+    is?: SuccessStoryWhereInput | null
+    isNot?: SuccessStoryWhereInput | null
+  }
+
+  export type ImageCountOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    alt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    blogPostId?: SortOrder
+    teamMemberId?: SortOrder
+    newsUpdateId?: SortOrder
+    successStoryId?: SortOrder
+  }
+
+  export type ImageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    alt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    blogPostId?: SortOrder
+    teamMemberId?: SortOrder
+    newsUpdateId?: SortOrder
+    successStoryId?: SortOrder
+  }
+
+  export type ImageMinOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    alt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    blogPostId?: SortOrder
+    teamMemberId?: SortOrder
+    newsUpdateId?: SortOrder
+    successStoryId?: SortOrder
+  }
+
+  export type VideoCountOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    title?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    blogPostId?: SortOrder
+    teamMemberId?: SortOrder
+    newsUpdateId?: SortOrder
+    successStoryId?: SortOrder
+  }
+
+  export type VideoMaxOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    title?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    blogPostId?: SortOrder
+    teamMemberId?: SortOrder
+    newsUpdateId?: SortOrder
+    successStoryId?: SortOrder
+  }
+
+  export type VideoMinOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    title?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    blogPostId?: SortOrder
+    teamMemberId?: SortOrder
+    newsUpdateId?: SortOrder
+    successStoryId?: SortOrder
+  }
+
+  export type YoutubeUrlCountOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    title?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    blogPostId?: SortOrder
+    teamMemberId?: SortOrder
+    newsUpdateId?: SortOrder
+    successStoryId?: SortOrder
+  }
+
+  export type YoutubeUrlMaxOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    title?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    blogPostId?: SortOrder
+    teamMemberId?: SortOrder
+    newsUpdateId?: SortOrder
+    successStoryId?: SortOrder
+  }
+
+  export type YoutubeUrlMinOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    title?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    blogPostId?: SortOrder
+    teamMemberId?: SortOrder
+    newsUpdateId?: SortOrder
+    successStoryId?: SortOrder
+  }
+
   export type SessionCreateNestedManyWithoutUserInput = {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
@@ -12619,6 +18021,174 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAccountsInput, UserUpdateWithoutAccountsInput>, UserUncheckedUpdateWithoutAccountsInput>
   }
 
+  export type ImageCreateNestedManyWithoutTeamMemberInput = {
+    create?: XOR<ImageCreateWithoutTeamMemberInput, ImageUncheckedCreateWithoutTeamMemberInput> | ImageCreateWithoutTeamMemberInput[] | ImageUncheckedCreateWithoutTeamMemberInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutTeamMemberInput | ImageCreateOrConnectWithoutTeamMemberInput[]
+    createMany?: ImageCreateManyTeamMemberInputEnvelope
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+  }
+
+  export type VideoCreateNestedManyWithoutTeamMemberInput = {
+    create?: XOR<VideoCreateWithoutTeamMemberInput, VideoUncheckedCreateWithoutTeamMemberInput> | VideoCreateWithoutTeamMemberInput[] | VideoUncheckedCreateWithoutTeamMemberInput[]
+    connectOrCreate?: VideoCreateOrConnectWithoutTeamMemberInput | VideoCreateOrConnectWithoutTeamMemberInput[]
+    createMany?: VideoCreateManyTeamMemberInputEnvelope
+    connect?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+  }
+
+  export type YoutubeUrlCreateNestedManyWithoutTeamMemberInput = {
+    create?: XOR<YoutubeUrlCreateWithoutTeamMemberInput, YoutubeUrlUncheckedCreateWithoutTeamMemberInput> | YoutubeUrlCreateWithoutTeamMemberInput[] | YoutubeUrlUncheckedCreateWithoutTeamMemberInput[]
+    connectOrCreate?: YoutubeUrlCreateOrConnectWithoutTeamMemberInput | YoutubeUrlCreateOrConnectWithoutTeamMemberInput[]
+    createMany?: YoutubeUrlCreateManyTeamMemberInputEnvelope
+    connect?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+  }
+
+  export type ImageUncheckedCreateNestedManyWithoutTeamMemberInput = {
+    create?: XOR<ImageCreateWithoutTeamMemberInput, ImageUncheckedCreateWithoutTeamMemberInput> | ImageCreateWithoutTeamMemberInput[] | ImageUncheckedCreateWithoutTeamMemberInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutTeamMemberInput | ImageCreateOrConnectWithoutTeamMemberInput[]
+    createMany?: ImageCreateManyTeamMemberInputEnvelope
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+  }
+
+  export type VideoUncheckedCreateNestedManyWithoutTeamMemberInput = {
+    create?: XOR<VideoCreateWithoutTeamMemberInput, VideoUncheckedCreateWithoutTeamMemberInput> | VideoCreateWithoutTeamMemberInput[] | VideoUncheckedCreateWithoutTeamMemberInput[]
+    connectOrCreate?: VideoCreateOrConnectWithoutTeamMemberInput | VideoCreateOrConnectWithoutTeamMemberInput[]
+    createMany?: VideoCreateManyTeamMemberInputEnvelope
+    connect?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+  }
+
+  export type YoutubeUrlUncheckedCreateNestedManyWithoutTeamMemberInput = {
+    create?: XOR<YoutubeUrlCreateWithoutTeamMemberInput, YoutubeUrlUncheckedCreateWithoutTeamMemberInput> | YoutubeUrlCreateWithoutTeamMemberInput[] | YoutubeUrlUncheckedCreateWithoutTeamMemberInput[]
+    connectOrCreate?: YoutubeUrlCreateOrConnectWithoutTeamMemberInput | YoutubeUrlCreateOrConnectWithoutTeamMemberInput[]
+    createMany?: YoutubeUrlCreateManyTeamMemberInputEnvelope
+    connect?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+  }
+
+  export type ImageUpdateManyWithoutTeamMemberNestedInput = {
+    create?: XOR<ImageCreateWithoutTeamMemberInput, ImageUncheckedCreateWithoutTeamMemberInput> | ImageCreateWithoutTeamMemberInput[] | ImageUncheckedCreateWithoutTeamMemberInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutTeamMemberInput | ImageCreateOrConnectWithoutTeamMemberInput[]
+    upsert?: ImageUpsertWithWhereUniqueWithoutTeamMemberInput | ImageUpsertWithWhereUniqueWithoutTeamMemberInput[]
+    createMany?: ImageCreateManyTeamMemberInputEnvelope
+    set?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    disconnect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    delete?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    update?: ImageUpdateWithWhereUniqueWithoutTeamMemberInput | ImageUpdateWithWhereUniqueWithoutTeamMemberInput[]
+    updateMany?: ImageUpdateManyWithWhereWithoutTeamMemberInput | ImageUpdateManyWithWhereWithoutTeamMemberInput[]
+    deleteMany?: ImageScalarWhereInput | ImageScalarWhereInput[]
+  }
+
+  export type VideoUpdateManyWithoutTeamMemberNestedInput = {
+    create?: XOR<VideoCreateWithoutTeamMemberInput, VideoUncheckedCreateWithoutTeamMemberInput> | VideoCreateWithoutTeamMemberInput[] | VideoUncheckedCreateWithoutTeamMemberInput[]
+    connectOrCreate?: VideoCreateOrConnectWithoutTeamMemberInput | VideoCreateOrConnectWithoutTeamMemberInput[]
+    upsert?: VideoUpsertWithWhereUniqueWithoutTeamMemberInput | VideoUpsertWithWhereUniqueWithoutTeamMemberInput[]
+    createMany?: VideoCreateManyTeamMemberInputEnvelope
+    set?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    disconnect?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    delete?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    connect?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    update?: VideoUpdateWithWhereUniqueWithoutTeamMemberInput | VideoUpdateWithWhereUniqueWithoutTeamMemberInput[]
+    updateMany?: VideoUpdateManyWithWhereWithoutTeamMemberInput | VideoUpdateManyWithWhereWithoutTeamMemberInput[]
+    deleteMany?: VideoScalarWhereInput | VideoScalarWhereInput[]
+  }
+
+  export type YoutubeUrlUpdateManyWithoutTeamMemberNestedInput = {
+    create?: XOR<YoutubeUrlCreateWithoutTeamMemberInput, YoutubeUrlUncheckedCreateWithoutTeamMemberInput> | YoutubeUrlCreateWithoutTeamMemberInput[] | YoutubeUrlUncheckedCreateWithoutTeamMemberInput[]
+    connectOrCreate?: YoutubeUrlCreateOrConnectWithoutTeamMemberInput | YoutubeUrlCreateOrConnectWithoutTeamMemberInput[]
+    upsert?: YoutubeUrlUpsertWithWhereUniqueWithoutTeamMemberInput | YoutubeUrlUpsertWithWhereUniqueWithoutTeamMemberInput[]
+    createMany?: YoutubeUrlCreateManyTeamMemberInputEnvelope
+    set?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    disconnect?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    delete?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    connect?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    update?: YoutubeUrlUpdateWithWhereUniqueWithoutTeamMemberInput | YoutubeUrlUpdateWithWhereUniqueWithoutTeamMemberInput[]
+    updateMany?: YoutubeUrlUpdateManyWithWhereWithoutTeamMemberInput | YoutubeUrlUpdateManyWithWhereWithoutTeamMemberInput[]
+    deleteMany?: YoutubeUrlScalarWhereInput | YoutubeUrlScalarWhereInput[]
+  }
+
+  export type ImageUncheckedUpdateManyWithoutTeamMemberNestedInput = {
+    create?: XOR<ImageCreateWithoutTeamMemberInput, ImageUncheckedCreateWithoutTeamMemberInput> | ImageCreateWithoutTeamMemberInput[] | ImageUncheckedCreateWithoutTeamMemberInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutTeamMemberInput | ImageCreateOrConnectWithoutTeamMemberInput[]
+    upsert?: ImageUpsertWithWhereUniqueWithoutTeamMemberInput | ImageUpsertWithWhereUniqueWithoutTeamMemberInput[]
+    createMany?: ImageCreateManyTeamMemberInputEnvelope
+    set?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    disconnect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    delete?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    update?: ImageUpdateWithWhereUniqueWithoutTeamMemberInput | ImageUpdateWithWhereUniqueWithoutTeamMemberInput[]
+    updateMany?: ImageUpdateManyWithWhereWithoutTeamMemberInput | ImageUpdateManyWithWhereWithoutTeamMemberInput[]
+    deleteMany?: ImageScalarWhereInput | ImageScalarWhereInput[]
+  }
+
+  export type VideoUncheckedUpdateManyWithoutTeamMemberNestedInput = {
+    create?: XOR<VideoCreateWithoutTeamMemberInput, VideoUncheckedCreateWithoutTeamMemberInput> | VideoCreateWithoutTeamMemberInput[] | VideoUncheckedCreateWithoutTeamMemberInput[]
+    connectOrCreate?: VideoCreateOrConnectWithoutTeamMemberInput | VideoCreateOrConnectWithoutTeamMemberInput[]
+    upsert?: VideoUpsertWithWhereUniqueWithoutTeamMemberInput | VideoUpsertWithWhereUniqueWithoutTeamMemberInput[]
+    createMany?: VideoCreateManyTeamMemberInputEnvelope
+    set?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    disconnect?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    delete?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    connect?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    update?: VideoUpdateWithWhereUniqueWithoutTeamMemberInput | VideoUpdateWithWhereUniqueWithoutTeamMemberInput[]
+    updateMany?: VideoUpdateManyWithWhereWithoutTeamMemberInput | VideoUpdateManyWithWhereWithoutTeamMemberInput[]
+    deleteMany?: VideoScalarWhereInput | VideoScalarWhereInput[]
+  }
+
+  export type YoutubeUrlUncheckedUpdateManyWithoutTeamMemberNestedInput = {
+    create?: XOR<YoutubeUrlCreateWithoutTeamMemberInput, YoutubeUrlUncheckedCreateWithoutTeamMemberInput> | YoutubeUrlCreateWithoutTeamMemberInput[] | YoutubeUrlUncheckedCreateWithoutTeamMemberInput[]
+    connectOrCreate?: YoutubeUrlCreateOrConnectWithoutTeamMemberInput | YoutubeUrlCreateOrConnectWithoutTeamMemberInput[]
+    upsert?: YoutubeUrlUpsertWithWhereUniqueWithoutTeamMemberInput | YoutubeUrlUpsertWithWhereUniqueWithoutTeamMemberInput[]
+    createMany?: YoutubeUrlCreateManyTeamMemberInputEnvelope
+    set?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    disconnect?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    delete?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    connect?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    update?: YoutubeUrlUpdateWithWhereUniqueWithoutTeamMemberInput | YoutubeUrlUpdateWithWhereUniqueWithoutTeamMemberInput[]
+    updateMany?: YoutubeUrlUpdateManyWithWhereWithoutTeamMemberInput | YoutubeUrlUpdateManyWithWhereWithoutTeamMemberInput[]
+    deleteMany?: YoutubeUrlScalarWhereInput | YoutubeUrlScalarWhereInput[]
+  }
+
+  export type ImageCreateNestedManyWithoutSuccessStoryInput = {
+    create?: XOR<ImageCreateWithoutSuccessStoryInput, ImageUncheckedCreateWithoutSuccessStoryInput> | ImageCreateWithoutSuccessStoryInput[] | ImageUncheckedCreateWithoutSuccessStoryInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutSuccessStoryInput | ImageCreateOrConnectWithoutSuccessStoryInput[]
+    createMany?: ImageCreateManySuccessStoryInputEnvelope
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+  }
+
+  export type VideoCreateNestedManyWithoutSuccessStoryInput = {
+    create?: XOR<VideoCreateWithoutSuccessStoryInput, VideoUncheckedCreateWithoutSuccessStoryInput> | VideoCreateWithoutSuccessStoryInput[] | VideoUncheckedCreateWithoutSuccessStoryInput[]
+    connectOrCreate?: VideoCreateOrConnectWithoutSuccessStoryInput | VideoCreateOrConnectWithoutSuccessStoryInput[]
+    createMany?: VideoCreateManySuccessStoryInputEnvelope
+    connect?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+  }
+
+  export type YoutubeUrlCreateNestedManyWithoutSuccessStoryInput = {
+    create?: XOR<YoutubeUrlCreateWithoutSuccessStoryInput, YoutubeUrlUncheckedCreateWithoutSuccessStoryInput> | YoutubeUrlCreateWithoutSuccessStoryInput[] | YoutubeUrlUncheckedCreateWithoutSuccessStoryInput[]
+    connectOrCreate?: YoutubeUrlCreateOrConnectWithoutSuccessStoryInput | YoutubeUrlCreateOrConnectWithoutSuccessStoryInput[]
+    createMany?: YoutubeUrlCreateManySuccessStoryInputEnvelope
+    connect?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+  }
+
+  export type ImageUncheckedCreateNestedManyWithoutSuccessStoryInput = {
+    create?: XOR<ImageCreateWithoutSuccessStoryInput, ImageUncheckedCreateWithoutSuccessStoryInput> | ImageCreateWithoutSuccessStoryInput[] | ImageUncheckedCreateWithoutSuccessStoryInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutSuccessStoryInput | ImageCreateOrConnectWithoutSuccessStoryInput[]
+    createMany?: ImageCreateManySuccessStoryInputEnvelope
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+  }
+
+  export type VideoUncheckedCreateNestedManyWithoutSuccessStoryInput = {
+    create?: XOR<VideoCreateWithoutSuccessStoryInput, VideoUncheckedCreateWithoutSuccessStoryInput> | VideoCreateWithoutSuccessStoryInput[] | VideoUncheckedCreateWithoutSuccessStoryInput[]
+    connectOrCreate?: VideoCreateOrConnectWithoutSuccessStoryInput | VideoCreateOrConnectWithoutSuccessStoryInput[]
+    createMany?: VideoCreateManySuccessStoryInputEnvelope
+    connect?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+  }
+
+  export type YoutubeUrlUncheckedCreateNestedManyWithoutSuccessStoryInput = {
+    create?: XOR<YoutubeUrlCreateWithoutSuccessStoryInput, YoutubeUrlUncheckedCreateWithoutSuccessStoryInput> | YoutubeUrlCreateWithoutSuccessStoryInput[] | YoutubeUrlUncheckedCreateWithoutSuccessStoryInput[]
+    connectOrCreate?: YoutubeUrlCreateOrConnectWithoutSuccessStoryInput | YoutubeUrlCreateOrConnectWithoutSuccessStoryInput[]
+    createMany?: YoutubeUrlCreateManySuccessStoryInputEnvelope
+    connect?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -12627,8 +18197,260 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type ImageUpdateManyWithoutSuccessStoryNestedInput = {
+    create?: XOR<ImageCreateWithoutSuccessStoryInput, ImageUncheckedCreateWithoutSuccessStoryInput> | ImageCreateWithoutSuccessStoryInput[] | ImageUncheckedCreateWithoutSuccessStoryInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutSuccessStoryInput | ImageCreateOrConnectWithoutSuccessStoryInput[]
+    upsert?: ImageUpsertWithWhereUniqueWithoutSuccessStoryInput | ImageUpsertWithWhereUniqueWithoutSuccessStoryInput[]
+    createMany?: ImageCreateManySuccessStoryInputEnvelope
+    set?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    disconnect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    delete?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    update?: ImageUpdateWithWhereUniqueWithoutSuccessStoryInput | ImageUpdateWithWhereUniqueWithoutSuccessStoryInput[]
+    updateMany?: ImageUpdateManyWithWhereWithoutSuccessStoryInput | ImageUpdateManyWithWhereWithoutSuccessStoryInput[]
+    deleteMany?: ImageScalarWhereInput | ImageScalarWhereInput[]
+  }
+
+  export type VideoUpdateManyWithoutSuccessStoryNestedInput = {
+    create?: XOR<VideoCreateWithoutSuccessStoryInput, VideoUncheckedCreateWithoutSuccessStoryInput> | VideoCreateWithoutSuccessStoryInput[] | VideoUncheckedCreateWithoutSuccessStoryInput[]
+    connectOrCreate?: VideoCreateOrConnectWithoutSuccessStoryInput | VideoCreateOrConnectWithoutSuccessStoryInput[]
+    upsert?: VideoUpsertWithWhereUniqueWithoutSuccessStoryInput | VideoUpsertWithWhereUniqueWithoutSuccessStoryInput[]
+    createMany?: VideoCreateManySuccessStoryInputEnvelope
+    set?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    disconnect?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    delete?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    connect?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    update?: VideoUpdateWithWhereUniqueWithoutSuccessStoryInput | VideoUpdateWithWhereUniqueWithoutSuccessStoryInput[]
+    updateMany?: VideoUpdateManyWithWhereWithoutSuccessStoryInput | VideoUpdateManyWithWhereWithoutSuccessStoryInput[]
+    deleteMany?: VideoScalarWhereInput | VideoScalarWhereInput[]
+  }
+
+  export type YoutubeUrlUpdateManyWithoutSuccessStoryNestedInput = {
+    create?: XOR<YoutubeUrlCreateWithoutSuccessStoryInput, YoutubeUrlUncheckedCreateWithoutSuccessStoryInput> | YoutubeUrlCreateWithoutSuccessStoryInput[] | YoutubeUrlUncheckedCreateWithoutSuccessStoryInput[]
+    connectOrCreate?: YoutubeUrlCreateOrConnectWithoutSuccessStoryInput | YoutubeUrlCreateOrConnectWithoutSuccessStoryInput[]
+    upsert?: YoutubeUrlUpsertWithWhereUniqueWithoutSuccessStoryInput | YoutubeUrlUpsertWithWhereUniqueWithoutSuccessStoryInput[]
+    createMany?: YoutubeUrlCreateManySuccessStoryInputEnvelope
+    set?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    disconnect?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    delete?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    connect?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    update?: YoutubeUrlUpdateWithWhereUniqueWithoutSuccessStoryInput | YoutubeUrlUpdateWithWhereUniqueWithoutSuccessStoryInput[]
+    updateMany?: YoutubeUrlUpdateManyWithWhereWithoutSuccessStoryInput | YoutubeUrlUpdateManyWithWhereWithoutSuccessStoryInput[]
+    deleteMany?: YoutubeUrlScalarWhereInput | YoutubeUrlScalarWhereInput[]
+  }
+
+  export type ImageUncheckedUpdateManyWithoutSuccessStoryNestedInput = {
+    create?: XOR<ImageCreateWithoutSuccessStoryInput, ImageUncheckedCreateWithoutSuccessStoryInput> | ImageCreateWithoutSuccessStoryInput[] | ImageUncheckedCreateWithoutSuccessStoryInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutSuccessStoryInput | ImageCreateOrConnectWithoutSuccessStoryInput[]
+    upsert?: ImageUpsertWithWhereUniqueWithoutSuccessStoryInput | ImageUpsertWithWhereUniqueWithoutSuccessStoryInput[]
+    createMany?: ImageCreateManySuccessStoryInputEnvelope
+    set?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    disconnect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    delete?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    update?: ImageUpdateWithWhereUniqueWithoutSuccessStoryInput | ImageUpdateWithWhereUniqueWithoutSuccessStoryInput[]
+    updateMany?: ImageUpdateManyWithWhereWithoutSuccessStoryInput | ImageUpdateManyWithWhereWithoutSuccessStoryInput[]
+    deleteMany?: ImageScalarWhereInput | ImageScalarWhereInput[]
+  }
+
+  export type VideoUncheckedUpdateManyWithoutSuccessStoryNestedInput = {
+    create?: XOR<VideoCreateWithoutSuccessStoryInput, VideoUncheckedCreateWithoutSuccessStoryInput> | VideoCreateWithoutSuccessStoryInput[] | VideoUncheckedCreateWithoutSuccessStoryInput[]
+    connectOrCreate?: VideoCreateOrConnectWithoutSuccessStoryInput | VideoCreateOrConnectWithoutSuccessStoryInput[]
+    upsert?: VideoUpsertWithWhereUniqueWithoutSuccessStoryInput | VideoUpsertWithWhereUniqueWithoutSuccessStoryInput[]
+    createMany?: VideoCreateManySuccessStoryInputEnvelope
+    set?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    disconnect?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    delete?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    connect?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    update?: VideoUpdateWithWhereUniqueWithoutSuccessStoryInput | VideoUpdateWithWhereUniqueWithoutSuccessStoryInput[]
+    updateMany?: VideoUpdateManyWithWhereWithoutSuccessStoryInput | VideoUpdateManyWithWhereWithoutSuccessStoryInput[]
+    deleteMany?: VideoScalarWhereInput | VideoScalarWhereInput[]
+  }
+
+  export type YoutubeUrlUncheckedUpdateManyWithoutSuccessStoryNestedInput = {
+    create?: XOR<YoutubeUrlCreateWithoutSuccessStoryInput, YoutubeUrlUncheckedCreateWithoutSuccessStoryInput> | YoutubeUrlCreateWithoutSuccessStoryInput[] | YoutubeUrlUncheckedCreateWithoutSuccessStoryInput[]
+    connectOrCreate?: YoutubeUrlCreateOrConnectWithoutSuccessStoryInput | YoutubeUrlCreateOrConnectWithoutSuccessStoryInput[]
+    upsert?: YoutubeUrlUpsertWithWhereUniqueWithoutSuccessStoryInput | YoutubeUrlUpsertWithWhereUniqueWithoutSuccessStoryInput[]
+    createMany?: YoutubeUrlCreateManySuccessStoryInputEnvelope
+    set?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    disconnect?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    delete?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    connect?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    update?: YoutubeUrlUpdateWithWhereUniqueWithoutSuccessStoryInput | YoutubeUrlUpdateWithWhereUniqueWithoutSuccessStoryInput[]
+    updateMany?: YoutubeUrlUpdateManyWithWhereWithoutSuccessStoryInput | YoutubeUrlUpdateManyWithWhereWithoutSuccessStoryInput[]
+    deleteMany?: YoutubeUrlScalarWhereInput | YoutubeUrlScalarWhereInput[]
+  }
+
+  export type ImageCreateNestedManyWithoutBlogPostInput = {
+    create?: XOR<ImageCreateWithoutBlogPostInput, ImageUncheckedCreateWithoutBlogPostInput> | ImageCreateWithoutBlogPostInput[] | ImageUncheckedCreateWithoutBlogPostInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutBlogPostInput | ImageCreateOrConnectWithoutBlogPostInput[]
+    createMany?: ImageCreateManyBlogPostInputEnvelope
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+  }
+
+  export type VideoCreateNestedManyWithoutBlogPostInput = {
+    create?: XOR<VideoCreateWithoutBlogPostInput, VideoUncheckedCreateWithoutBlogPostInput> | VideoCreateWithoutBlogPostInput[] | VideoUncheckedCreateWithoutBlogPostInput[]
+    connectOrCreate?: VideoCreateOrConnectWithoutBlogPostInput | VideoCreateOrConnectWithoutBlogPostInput[]
+    createMany?: VideoCreateManyBlogPostInputEnvelope
+    connect?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+  }
+
+  export type YoutubeUrlCreateNestedManyWithoutBlogPostInput = {
+    create?: XOR<YoutubeUrlCreateWithoutBlogPostInput, YoutubeUrlUncheckedCreateWithoutBlogPostInput> | YoutubeUrlCreateWithoutBlogPostInput[] | YoutubeUrlUncheckedCreateWithoutBlogPostInput[]
+    connectOrCreate?: YoutubeUrlCreateOrConnectWithoutBlogPostInput | YoutubeUrlCreateOrConnectWithoutBlogPostInput[]
+    createMany?: YoutubeUrlCreateManyBlogPostInputEnvelope
+    connect?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+  }
+
+  export type ImageUncheckedCreateNestedManyWithoutBlogPostInput = {
+    create?: XOR<ImageCreateWithoutBlogPostInput, ImageUncheckedCreateWithoutBlogPostInput> | ImageCreateWithoutBlogPostInput[] | ImageUncheckedCreateWithoutBlogPostInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutBlogPostInput | ImageCreateOrConnectWithoutBlogPostInput[]
+    createMany?: ImageCreateManyBlogPostInputEnvelope
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+  }
+
+  export type VideoUncheckedCreateNestedManyWithoutBlogPostInput = {
+    create?: XOR<VideoCreateWithoutBlogPostInput, VideoUncheckedCreateWithoutBlogPostInput> | VideoCreateWithoutBlogPostInput[] | VideoUncheckedCreateWithoutBlogPostInput[]
+    connectOrCreate?: VideoCreateOrConnectWithoutBlogPostInput | VideoCreateOrConnectWithoutBlogPostInput[]
+    createMany?: VideoCreateManyBlogPostInputEnvelope
+    connect?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+  }
+
+  export type YoutubeUrlUncheckedCreateNestedManyWithoutBlogPostInput = {
+    create?: XOR<YoutubeUrlCreateWithoutBlogPostInput, YoutubeUrlUncheckedCreateWithoutBlogPostInput> | YoutubeUrlCreateWithoutBlogPostInput[] | YoutubeUrlUncheckedCreateWithoutBlogPostInput[]
+    connectOrCreate?: YoutubeUrlCreateOrConnectWithoutBlogPostInput | YoutubeUrlCreateOrConnectWithoutBlogPostInput[]
+    createMany?: YoutubeUrlCreateManyBlogPostInputEnvelope
+    connect?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+  }
+
   export type EnumBlogCategoryFieldUpdateOperationsInput = {
     set?: $Enums.BlogCategory
+  }
+
+  export type ImageUpdateManyWithoutBlogPostNestedInput = {
+    create?: XOR<ImageCreateWithoutBlogPostInput, ImageUncheckedCreateWithoutBlogPostInput> | ImageCreateWithoutBlogPostInput[] | ImageUncheckedCreateWithoutBlogPostInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutBlogPostInput | ImageCreateOrConnectWithoutBlogPostInput[]
+    upsert?: ImageUpsertWithWhereUniqueWithoutBlogPostInput | ImageUpsertWithWhereUniqueWithoutBlogPostInput[]
+    createMany?: ImageCreateManyBlogPostInputEnvelope
+    set?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    disconnect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    delete?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    update?: ImageUpdateWithWhereUniqueWithoutBlogPostInput | ImageUpdateWithWhereUniqueWithoutBlogPostInput[]
+    updateMany?: ImageUpdateManyWithWhereWithoutBlogPostInput | ImageUpdateManyWithWhereWithoutBlogPostInput[]
+    deleteMany?: ImageScalarWhereInput | ImageScalarWhereInput[]
+  }
+
+  export type VideoUpdateManyWithoutBlogPostNestedInput = {
+    create?: XOR<VideoCreateWithoutBlogPostInput, VideoUncheckedCreateWithoutBlogPostInput> | VideoCreateWithoutBlogPostInput[] | VideoUncheckedCreateWithoutBlogPostInput[]
+    connectOrCreate?: VideoCreateOrConnectWithoutBlogPostInput | VideoCreateOrConnectWithoutBlogPostInput[]
+    upsert?: VideoUpsertWithWhereUniqueWithoutBlogPostInput | VideoUpsertWithWhereUniqueWithoutBlogPostInput[]
+    createMany?: VideoCreateManyBlogPostInputEnvelope
+    set?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    disconnect?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    delete?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    connect?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    update?: VideoUpdateWithWhereUniqueWithoutBlogPostInput | VideoUpdateWithWhereUniqueWithoutBlogPostInput[]
+    updateMany?: VideoUpdateManyWithWhereWithoutBlogPostInput | VideoUpdateManyWithWhereWithoutBlogPostInput[]
+    deleteMany?: VideoScalarWhereInput | VideoScalarWhereInput[]
+  }
+
+  export type YoutubeUrlUpdateManyWithoutBlogPostNestedInput = {
+    create?: XOR<YoutubeUrlCreateWithoutBlogPostInput, YoutubeUrlUncheckedCreateWithoutBlogPostInput> | YoutubeUrlCreateWithoutBlogPostInput[] | YoutubeUrlUncheckedCreateWithoutBlogPostInput[]
+    connectOrCreate?: YoutubeUrlCreateOrConnectWithoutBlogPostInput | YoutubeUrlCreateOrConnectWithoutBlogPostInput[]
+    upsert?: YoutubeUrlUpsertWithWhereUniqueWithoutBlogPostInput | YoutubeUrlUpsertWithWhereUniqueWithoutBlogPostInput[]
+    createMany?: YoutubeUrlCreateManyBlogPostInputEnvelope
+    set?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    disconnect?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    delete?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    connect?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    update?: YoutubeUrlUpdateWithWhereUniqueWithoutBlogPostInput | YoutubeUrlUpdateWithWhereUniqueWithoutBlogPostInput[]
+    updateMany?: YoutubeUrlUpdateManyWithWhereWithoutBlogPostInput | YoutubeUrlUpdateManyWithWhereWithoutBlogPostInput[]
+    deleteMany?: YoutubeUrlScalarWhereInput | YoutubeUrlScalarWhereInput[]
+  }
+
+  export type ImageUncheckedUpdateManyWithoutBlogPostNestedInput = {
+    create?: XOR<ImageCreateWithoutBlogPostInput, ImageUncheckedCreateWithoutBlogPostInput> | ImageCreateWithoutBlogPostInput[] | ImageUncheckedCreateWithoutBlogPostInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutBlogPostInput | ImageCreateOrConnectWithoutBlogPostInput[]
+    upsert?: ImageUpsertWithWhereUniqueWithoutBlogPostInput | ImageUpsertWithWhereUniqueWithoutBlogPostInput[]
+    createMany?: ImageCreateManyBlogPostInputEnvelope
+    set?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    disconnect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    delete?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    update?: ImageUpdateWithWhereUniqueWithoutBlogPostInput | ImageUpdateWithWhereUniqueWithoutBlogPostInput[]
+    updateMany?: ImageUpdateManyWithWhereWithoutBlogPostInput | ImageUpdateManyWithWhereWithoutBlogPostInput[]
+    deleteMany?: ImageScalarWhereInput | ImageScalarWhereInput[]
+  }
+
+  export type VideoUncheckedUpdateManyWithoutBlogPostNestedInput = {
+    create?: XOR<VideoCreateWithoutBlogPostInput, VideoUncheckedCreateWithoutBlogPostInput> | VideoCreateWithoutBlogPostInput[] | VideoUncheckedCreateWithoutBlogPostInput[]
+    connectOrCreate?: VideoCreateOrConnectWithoutBlogPostInput | VideoCreateOrConnectWithoutBlogPostInput[]
+    upsert?: VideoUpsertWithWhereUniqueWithoutBlogPostInput | VideoUpsertWithWhereUniqueWithoutBlogPostInput[]
+    createMany?: VideoCreateManyBlogPostInputEnvelope
+    set?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    disconnect?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    delete?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    connect?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    update?: VideoUpdateWithWhereUniqueWithoutBlogPostInput | VideoUpdateWithWhereUniqueWithoutBlogPostInput[]
+    updateMany?: VideoUpdateManyWithWhereWithoutBlogPostInput | VideoUpdateManyWithWhereWithoutBlogPostInput[]
+    deleteMany?: VideoScalarWhereInput | VideoScalarWhereInput[]
+  }
+
+  export type YoutubeUrlUncheckedUpdateManyWithoutBlogPostNestedInput = {
+    create?: XOR<YoutubeUrlCreateWithoutBlogPostInput, YoutubeUrlUncheckedCreateWithoutBlogPostInput> | YoutubeUrlCreateWithoutBlogPostInput[] | YoutubeUrlUncheckedCreateWithoutBlogPostInput[]
+    connectOrCreate?: YoutubeUrlCreateOrConnectWithoutBlogPostInput | YoutubeUrlCreateOrConnectWithoutBlogPostInput[]
+    upsert?: YoutubeUrlUpsertWithWhereUniqueWithoutBlogPostInput | YoutubeUrlUpsertWithWhereUniqueWithoutBlogPostInput[]
+    createMany?: YoutubeUrlCreateManyBlogPostInputEnvelope
+    set?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    disconnect?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    delete?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    connect?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    update?: YoutubeUrlUpdateWithWhereUniqueWithoutBlogPostInput | YoutubeUrlUpdateWithWhereUniqueWithoutBlogPostInput[]
+    updateMany?: YoutubeUrlUpdateManyWithWhereWithoutBlogPostInput | YoutubeUrlUpdateManyWithWhereWithoutBlogPostInput[]
+    deleteMany?: YoutubeUrlScalarWhereInput | YoutubeUrlScalarWhereInput[]
+  }
+
+  export type ImageCreateNestedManyWithoutNewsUpdateInput = {
+    create?: XOR<ImageCreateWithoutNewsUpdateInput, ImageUncheckedCreateWithoutNewsUpdateInput> | ImageCreateWithoutNewsUpdateInput[] | ImageUncheckedCreateWithoutNewsUpdateInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutNewsUpdateInput | ImageCreateOrConnectWithoutNewsUpdateInput[]
+    createMany?: ImageCreateManyNewsUpdateInputEnvelope
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+  }
+
+  export type VideoCreateNestedManyWithoutNewsUpdateInput = {
+    create?: XOR<VideoCreateWithoutNewsUpdateInput, VideoUncheckedCreateWithoutNewsUpdateInput> | VideoCreateWithoutNewsUpdateInput[] | VideoUncheckedCreateWithoutNewsUpdateInput[]
+    connectOrCreate?: VideoCreateOrConnectWithoutNewsUpdateInput | VideoCreateOrConnectWithoutNewsUpdateInput[]
+    createMany?: VideoCreateManyNewsUpdateInputEnvelope
+    connect?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+  }
+
+  export type YoutubeUrlCreateNestedManyWithoutNewsUpdateInput = {
+    create?: XOR<YoutubeUrlCreateWithoutNewsUpdateInput, YoutubeUrlUncheckedCreateWithoutNewsUpdateInput> | YoutubeUrlCreateWithoutNewsUpdateInput[] | YoutubeUrlUncheckedCreateWithoutNewsUpdateInput[]
+    connectOrCreate?: YoutubeUrlCreateOrConnectWithoutNewsUpdateInput | YoutubeUrlCreateOrConnectWithoutNewsUpdateInput[]
+    createMany?: YoutubeUrlCreateManyNewsUpdateInputEnvelope
+    connect?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+  }
+
+  export type ImageUncheckedCreateNestedManyWithoutNewsUpdateInput = {
+    create?: XOR<ImageCreateWithoutNewsUpdateInput, ImageUncheckedCreateWithoutNewsUpdateInput> | ImageCreateWithoutNewsUpdateInput[] | ImageUncheckedCreateWithoutNewsUpdateInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutNewsUpdateInput | ImageCreateOrConnectWithoutNewsUpdateInput[]
+    createMany?: ImageCreateManyNewsUpdateInputEnvelope
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+  }
+
+  export type VideoUncheckedCreateNestedManyWithoutNewsUpdateInput = {
+    create?: XOR<VideoCreateWithoutNewsUpdateInput, VideoUncheckedCreateWithoutNewsUpdateInput> | VideoCreateWithoutNewsUpdateInput[] | VideoUncheckedCreateWithoutNewsUpdateInput[]
+    connectOrCreate?: VideoCreateOrConnectWithoutNewsUpdateInput | VideoCreateOrConnectWithoutNewsUpdateInput[]
+    createMany?: VideoCreateManyNewsUpdateInputEnvelope
+    connect?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+  }
+
+  export type YoutubeUrlUncheckedCreateNestedManyWithoutNewsUpdateInput = {
+    create?: XOR<YoutubeUrlCreateWithoutNewsUpdateInput, YoutubeUrlUncheckedCreateWithoutNewsUpdateInput> | YoutubeUrlCreateWithoutNewsUpdateInput[] | YoutubeUrlUncheckedCreateWithoutNewsUpdateInput[]
+    connectOrCreate?: YoutubeUrlCreateOrConnectWithoutNewsUpdateInput | YoutubeUrlCreateOrConnectWithoutNewsUpdateInput[]
+    createMany?: YoutubeUrlCreateManyNewsUpdateInputEnvelope
+    connect?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
   }
 
   export type EnumNewsPriorityFieldUpdateOperationsInput = {
@@ -12637,6 +18459,282 @@ export namespace Prisma {
 
   export type EnumNewsCategoryFieldUpdateOperationsInput = {
     set?: $Enums.NewsCategory
+  }
+
+  export type ImageUpdateManyWithoutNewsUpdateNestedInput = {
+    create?: XOR<ImageCreateWithoutNewsUpdateInput, ImageUncheckedCreateWithoutNewsUpdateInput> | ImageCreateWithoutNewsUpdateInput[] | ImageUncheckedCreateWithoutNewsUpdateInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutNewsUpdateInput | ImageCreateOrConnectWithoutNewsUpdateInput[]
+    upsert?: ImageUpsertWithWhereUniqueWithoutNewsUpdateInput | ImageUpsertWithWhereUniqueWithoutNewsUpdateInput[]
+    createMany?: ImageCreateManyNewsUpdateInputEnvelope
+    set?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    disconnect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    delete?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    update?: ImageUpdateWithWhereUniqueWithoutNewsUpdateInput | ImageUpdateWithWhereUniqueWithoutNewsUpdateInput[]
+    updateMany?: ImageUpdateManyWithWhereWithoutNewsUpdateInput | ImageUpdateManyWithWhereWithoutNewsUpdateInput[]
+    deleteMany?: ImageScalarWhereInput | ImageScalarWhereInput[]
+  }
+
+  export type VideoUpdateManyWithoutNewsUpdateNestedInput = {
+    create?: XOR<VideoCreateWithoutNewsUpdateInput, VideoUncheckedCreateWithoutNewsUpdateInput> | VideoCreateWithoutNewsUpdateInput[] | VideoUncheckedCreateWithoutNewsUpdateInput[]
+    connectOrCreate?: VideoCreateOrConnectWithoutNewsUpdateInput | VideoCreateOrConnectWithoutNewsUpdateInput[]
+    upsert?: VideoUpsertWithWhereUniqueWithoutNewsUpdateInput | VideoUpsertWithWhereUniqueWithoutNewsUpdateInput[]
+    createMany?: VideoCreateManyNewsUpdateInputEnvelope
+    set?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    disconnect?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    delete?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    connect?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    update?: VideoUpdateWithWhereUniqueWithoutNewsUpdateInput | VideoUpdateWithWhereUniqueWithoutNewsUpdateInput[]
+    updateMany?: VideoUpdateManyWithWhereWithoutNewsUpdateInput | VideoUpdateManyWithWhereWithoutNewsUpdateInput[]
+    deleteMany?: VideoScalarWhereInput | VideoScalarWhereInput[]
+  }
+
+  export type YoutubeUrlUpdateManyWithoutNewsUpdateNestedInput = {
+    create?: XOR<YoutubeUrlCreateWithoutNewsUpdateInput, YoutubeUrlUncheckedCreateWithoutNewsUpdateInput> | YoutubeUrlCreateWithoutNewsUpdateInput[] | YoutubeUrlUncheckedCreateWithoutNewsUpdateInput[]
+    connectOrCreate?: YoutubeUrlCreateOrConnectWithoutNewsUpdateInput | YoutubeUrlCreateOrConnectWithoutNewsUpdateInput[]
+    upsert?: YoutubeUrlUpsertWithWhereUniqueWithoutNewsUpdateInput | YoutubeUrlUpsertWithWhereUniqueWithoutNewsUpdateInput[]
+    createMany?: YoutubeUrlCreateManyNewsUpdateInputEnvelope
+    set?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    disconnect?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    delete?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    connect?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    update?: YoutubeUrlUpdateWithWhereUniqueWithoutNewsUpdateInput | YoutubeUrlUpdateWithWhereUniqueWithoutNewsUpdateInput[]
+    updateMany?: YoutubeUrlUpdateManyWithWhereWithoutNewsUpdateInput | YoutubeUrlUpdateManyWithWhereWithoutNewsUpdateInput[]
+    deleteMany?: YoutubeUrlScalarWhereInput | YoutubeUrlScalarWhereInput[]
+  }
+
+  export type ImageUncheckedUpdateManyWithoutNewsUpdateNestedInput = {
+    create?: XOR<ImageCreateWithoutNewsUpdateInput, ImageUncheckedCreateWithoutNewsUpdateInput> | ImageCreateWithoutNewsUpdateInput[] | ImageUncheckedCreateWithoutNewsUpdateInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutNewsUpdateInput | ImageCreateOrConnectWithoutNewsUpdateInput[]
+    upsert?: ImageUpsertWithWhereUniqueWithoutNewsUpdateInput | ImageUpsertWithWhereUniqueWithoutNewsUpdateInput[]
+    createMany?: ImageCreateManyNewsUpdateInputEnvelope
+    set?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    disconnect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    delete?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    update?: ImageUpdateWithWhereUniqueWithoutNewsUpdateInput | ImageUpdateWithWhereUniqueWithoutNewsUpdateInput[]
+    updateMany?: ImageUpdateManyWithWhereWithoutNewsUpdateInput | ImageUpdateManyWithWhereWithoutNewsUpdateInput[]
+    deleteMany?: ImageScalarWhereInput | ImageScalarWhereInput[]
+  }
+
+  export type VideoUncheckedUpdateManyWithoutNewsUpdateNestedInput = {
+    create?: XOR<VideoCreateWithoutNewsUpdateInput, VideoUncheckedCreateWithoutNewsUpdateInput> | VideoCreateWithoutNewsUpdateInput[] | VideoUncheckedCreateWithoutNewsUpdateInput[]
+    connectOrCreate?: VideoCreateOrConnectWithoutNewsUpdateInput | VideoCreateOrConnectWithoutNewsUpdateInput[]
+    upsert?: VideoUpsertWithWhereUniqueWithoutNewsUpdateInput | VideoUpsertWithWhereUniqueWithoutNewsUpdateInput[]
+    createMany?: VideoCreateManyNewsUpdateInputEnvelope
+    set?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    disconnect?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    delete?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    connect?: VideoWhereUniqueInput | VideoWhereUniqueInput[]
+    update?: VideoUpdateWithWhereUniqueWithoutNewsUpdateInput | VideoUpdateWithWhereUniqueWithoutNewsUpdateInput[]
+    updateMany?: VideoUpdateManyWithWhereWithoutNewsUpdateInput | VideoUpdateManyWithWhereWithoutNewsUpdateInput[]
+    deleteMany?: VideoScalarWhereInput | VideoScalarWhereInput[]
+  }
+
+  export type YoutubeUrlUncheckedUpdateManyWithoutNewsUpdateNestedInput = {
+    create?: XOR<YoutubeUrlCreateWithoutNewsUpdateInput, YoutubeUrlUncheckedCreateWithoutNewsUpdateInput> | YoutubeUrlCreateWithoutNewsUpdateInput[] | YoutubeUrlUncheckedCreateWithoutNewsUpdateInput[]
+    connectOrCreate?: YoutubeUrlCreateOrConnectWithoutNewsUpdateInput | YoutubeUrlCreateOrConnectWithoutNewsUpdateInput[]
+    upsert?: YoutubeUrlUpsertWithWhereUniqueWithoutNewsUpdateInput | YoutubeUrlUpsertWithWhereUniqueWithoutNewsUpdateInput[]
+    createMany?: YoutubeUrlCreateManyNewsUpdateInputEnvelope
+    set?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    disconnect?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    delete?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    connect?: YoutubeUrlWhereUniqueInput | YoutubeUrlWhereUniqueInput[]
+    update?: YoutubeUrlUpdateWithWhereUniqueWithoutNewsUpdateInput | YoutubeUrlUpdateWithWhereUniqueWithoutNewsUpdateInput[]
+    updateMany?: YoutubeUrlUpdateManyWithWhereWithoutNewsUpdateInput | YoutubeUrlUpdateManyWithWhereWithoutNewsUpdateInput[]
+    deleteMany?: YoutubeUrlScalarWhereInput | YoutubeUrlScalarWhereInput[]
+  }
+
+  export type BlogPostCreateNestedOneWithoutImagesInput = {
+    create?: XOR<BlogPostCreateWithoutImagesInput, BlogPostUncheckedCreateWithoutImagesInput>
+    connectOrCreate?: BlogPostCreateOrConnectWithoutImagesInput
+    connect?: BlogPostWhereUniqueInput
+  }
+
+  export type TeamMemberCreateNestedOneWithoutImagesInput = {
+    create?: XOR<TeamMemberCreateWithoutImagesInput, TeamMemberUncheckedCreateWithoutImagesInput>
+    connectOrCreate?: TeamMemberCreateOrConnectWithoutImagesInput
+    connect?: TeamMemberWhereUniqueInput
+  }
+
+  export type NewsUpdateCreateNestedOneWithoutImagesInput = {
+    create?: XOR<NewsUpdateCreateWithoutImagesInput, NewsUpdateUncheckedCreateWithoutImagesInput>
+    connectOrCreate?: NewsUpdateCreateOrConnectWithoutImagesInput
+    connect?: NewsUpdateWhereUniqueInput
+  }
+
+  export type SuccessStoryCreateNestedOneWithoutImagesInput = {
+    create?: XOR<SuccessStoryCreateWithoutImagesInput, SuccessStoryUncheckedCreateWithoutImagesInput>
+    connectOrCreate?: SuccessStoryCreateOrConnectWithoutImagesInput
+    connect?: SuccessStoryWhereUniqueInput
+  }
+
+  export type BlogPostUpdateOneWithoutImagesNestedInput = {
+    create?: XOR<BlogPostCreateWithoutImagesInput, BlogPostUncheckedCreateWithoutImagesInput>
+    connectOrCreate?: BlogPostCreateOrConnectWithoutImagesInput
+    upsert?: BlogPostUpsertWithoutImagesInput
+    disconnect?: BlogPostWhereInput | boolean
+    delete?: BlogPostWhereInput | boolean
+    connect?: BlogPostWhereUniqueInput
+    update?: XOR<XOR<BlogPostUpdateToOneWithWhereWithoutImagesInput, BlogPostUpdateWithoutImagesInput>, BlogPostUncheckedUpdateWithoutImagesInput>
+  }
+
+  export type TeamMemberUpdateOneWithoutImagesNestedInput = {
+    create?: XOR<TeamMemberCreateWithoutImagesInput, TeamMemberUncheckedCreateWithoutImagesInput>
+    connectOrCreate?: TeamMemberCreateOrConnectWithoutImagesInput
+    upsert?: TeamMemberUpsertWithoutImagesInput
+    disconnect?: TeamMemberWhereInput | boolean
+    delete?: TeamMemberWhereInput | boolean
+    connect?: TeamMemberWhereUniqueInput
+    update?: XOR<XOR<TeamMemberUpdateToOneWithWhereWithoutImagesInput, TeamMemberUpdateWithoutImagesInput>, TeamMemberUncheckedUpdateWithoutImagesInput>
+  }
+
+  export type NewsUpdateUpdateOneWithoutImagesNestedInput = {
+    create?: XOR<NewsUpdateCreateWithoutImagesInput, NewsUpdateUncheckedCreateWithoutImagesInput>
+    connectOrCreate?: NewsUpdateCreateOrConnectWithoutImagesInput
+    upsert?: NewsUpdateUpsertWithoutImagesInput
+    disconnect?: NewsUpdateWhereInput | boolean
+    delete?: NewsUpdateWhereInput | boolean
+    connect?: NewsUpdateWhereUniqueInput
+    update?: XOR<XOR<NewsUpdateUpdateToOneWithWhereWithoutImagesInput, NewsUpdateUpdateWithoutImagesInput>, NewsUpdateUncheckedUpdateWithoutImagesInput>
+  }
+
+  export type SuccessStoryUpdateOneWithoutImagesNestedInput = {
+    create?: XOR<SuccessStoryCreateWithoutImagesInput, SuccessStoryUncheckedCreateWithoutImagesInput>
+    connectOrCreate?: SuccessStoryCreateOrConnectWithoutImagesInput
+    upsert?: SuccessStoryUpsertWithoutImagesInput
+    disconnect?: SuccessStoryWhereInput | boolean
+    delete?: SuccessStoryWhereInput | boolean
+    connect?: SuccessStoryWhereUniqueInput
+    update?: XOR<XOR<SuccessStoryUpdateToOneWithWhereWithoutImagesInput, SuccessStoryUpdateWithoutImagesInput>, SuccessStoryUncheckedUpdateWithoutImagesInput>
+  }
+
+  export type BlogPostCreateNestedOneWithoutVideosInput = {
+    create?: XOR<BlogPostCreateWithoutVideosInput, BlogPostUncheckedCreateWithoutVideosInput>
+    connectOrCreate?: BlogPostCreateOrConnectWithoutVideosInput
+    connect?: BlogPostWhereUniqueInput
+  }
+
+  export type TeamMemberCreateNestedOneWithoutVideosInput = {
+    create?: XOR<TeamMemberCreateWithoutVideosInput, TeamMemberUncheckedCreateWithoutVideosInput>
+    connectOrCreate?: TeamMemberCreateOrConnectWithoutVideosInput
+    connect?: TeamMemberWhereUniqueInput
+  }
+
+  export type NewsUpdateCreateNestedOneWithoutVideosInput = {
+    create?: XOR<NewsUpdateCreateWithoutVideosInput, NewsUpdateUncheckedCreateWithoutVideosInput>
+    connectOrCreate?: NewsUpdateCreateOrConnectWithoutVideosInput
+    connect?: NewsUpdateWhereUniqueInput
+  }
+
+  export type SuccessStoryCreateNestedOneWithoutVideosInput = {
+    create?: XOR<SuccessStoryCreateWithoutVideosInput, SuccessStoryUncheckedCreateWithoutVideosInput>
+    connectOrCreate?: SuccessStoryCreateOrConnectWithoutVideosInput
+    connect?: SuccessStoryWhereUniqueInput
+  }
+
+  export type BlogPostUpdateOneWithoutVideosNestedInput = {
+    create?: XOR<BlogPostCreateWithoutVideosInput, BlogPostUncheckedCreateWithoutVideosInput>
+    connectOrCreate?: BlogPostCreateOrConnectWithoutVideosInput
+    upsert?: BlogPostUpsertWithoutVideosInput
+    disconnect?: BlogPostWhereInput | boolean
+    delete?: BlogPostWhereInput | boolean
+    connect?: BlogPostWhereUniqueInput
+    update?: XOR<XOR<BlogPostUpdateToOneWithWhereWithoutVideosInput, BlogPostUpdateWithoutVideosInput>, BlogPostUncheckedUpdateWithoutVideosInput>
+  }
+
+  export type TeamMemberUpdateOneWithoutVideosNestedInput = {
+    create?: XOR<TeamMemberCreateWithoutVideosInput, TeamMemberUncheckedCreateWithoutVideosInput>
+    connectOrCreate?: TeamMemberCreateOrConnectWithoutVideosInput
+    upsert?: TeamMemberUpsertWithoutVideosInput
+    disconnect?: TeamMemberWhereInput | boolean
+    delete?: TeamMemberWhereInput | boolean
+    connect?: TeamMemberWhereUniqueInput
+    update?: XOR<XOR<TeamMemberUpdateToOneWithWhereWithoutVideosInput, TeamMemberUpdateWithoutVideosInput>, TeamMemberUncheckedUpdateWithoutVideosInput>
+  }
+
+  export type NewsUpdateUpdateOneWithoutVideosNestedInput = {
+    create?: XOR<NewsUpdateCreateWithoutVideosInput, NewsUpdateUncheckedCreateWithoutVideosInput>
+    connectOrCreate?: NewsUpdateCreateOrConnectWithoutVideosInput
+    upsert?: NewsUpdateUpsertWithoutVideosInput
+    disconnect?: NewsUpdateWhereInput | boolean
+    delete?: NewsUpdateWhereInput | boolean
+    connect?: NewsUpdateWhereUniqueInput
+    update?: XOR<XOR<NewsUpdateUpdateToOneWithWhereWithoutVideosInput, NewsUpdateUpdateWithoutVideosInput>, NewsUpdateUncheckedUpdateWithoutVideosInput>
+  }
+
+  export type SuccessStoryUpdateOneWithoutVideosNestedInput = {
+    create?: XOR<SuccessStoryCreateWithoutVideosInput, SuccessStoryUncheckedCreateWithoutVideosInput>
+    connectOrCreate?: SuccessStoryCreateOrConnectWithoutVideosInput
+    upsert?: SuccessStoryUpsertWithoutVideosInput
+    disconnect?: SuccessStoryWhereInput | boolean
+    delete?: SuccessStoryWhereInput | boolean
+    connect?: SuccessStoryWhereUniqueInput
+    update?: XOR<XOR<SuccessStoryUpdateToOneWithWhereWithoutVideosInput, SuccessStoryUpdateWithoutVideosInput>, SuccessStoryUncheckedUpdateWithoutVideosInput>
+  }
+
+  export type BlogPostCreateNestedOneWithoutYoutubeUrlsInput = {
+    create?: XOR<BlogPostCreateWithoutYoutubeUrlsInput, BlogPostUncheckedCreateWithoutYoutubeUrlsInput>
+    connectOrCreate?: BlogPostCreateOrConnectWithoutYoutubeUrlsInput
+    connect?: BlogPostWhereUniqueInput
+  }
+
+  export type TeamMemberCreateNestedOneWithoutYoutubeUrlsInput = {
+    create?: XOR<TeamMemberCreateWithoutYoutubeUrlsInput, TeamMemberUncheckedCreateWithoutYoutubeUrlsInput>
+    connectOrCreate?: TeamMemberCreateOrConnectWithoutYoutubeUrlsInput
+    connect?: TeamMemberWhereUniqueInput
+  }
+
+  export type NewsUpdateCreateNestedOneWithoutYoutubeUrlsInput = {
+    create?: XOR<NewsUpdateCreateWithoutYoutubeUrlsInput, NewsUpdateUncheckedCreateWithoutYoutubeUrlsInput>
+    connectOrCreate?: NewsUpdateCreateOrConnectWithoutYoutubeUrlsInput
+    connect?: NewsUpdateWhereUniqueInput
+  }
+
+  export type SuccessStoryCreateNestedOneWithoutYoutubeUrlsInput = {
+    create?: XOR<SuccessStoryCreateWithoutYoutubeUrlsInput, SuccessStoryUncheckedCreateWithoutYoutubeUrlsInput>
+    connectOrCreate?: SuccessStoryCreateOrConnectWithoutYoutubeUrlsInput
+    connect?: SuccessStoryWhereUniqueInput
+  }
+
+  export type BlogPostUpdateOneWithoutYoutubeUrlsNestedInput = {
+    create?: XOR<BlogPostCreateWithoutYoutubeUrlsInput, BlogPostUncheckedCreateWithoutYoutubeUrlsInput>
+    connectOrCreate?: BlogPostCreateOrConnectWithoutYoutubeUrlsInput
+    upsert?: BlogPostUpsertWithoutYoutubeUrlsInput
+    disconnect?: BlogPostWhereInput | boolean
+    delete?: BlogPostWhereInput | boolean
+    connect?: BlogPostWhereUniqueInput
+    update?: XOR<XOR<BlogPostUpdateToOneWithWhereWithoutYoutubeUrlsInput, BlogPostUpdateWithoutYoutubeUrlsInput>, BlogPostUncheckedUpdateWithoutYoutubeUrlsInput>
+  }
+
+  export type TeamMemberUpdateOneWithoutYoutubeUrlsNestedInput = {
+    create?: XOR<TeamMemberCreateWithoutYoutubeUrlsInput, TeamMemberUncheckedCreateWithoutYoutubeUrlsInput>
+    connectOrCreate?: TeamMemberCreateOrConnectWithoutYoutubeUrlsInput
+    upsert?: TeamMemberUpsertWithoutYoutubeUrlsInput
+    disconnect?: TeamMemberWhereInput | boolean
+    delete?: TeamMemberWhereInput | boolean
+    connect?: TeamMemberWhereUniqueInput
+    update?: XOR<XOR<TeamMemberUpdateToOneWithWhereWithoutYoutubeUrlsInput, TeamMemberUpdateWithoutYoutubeUrlsInput>, TeamMemberUncheckedUpdateWithoutYoutubeUrlsInput>
+  }
+
+  export type NewsUpdateUpdateOneWithoutYoutubeUrlsNestedInput = {
+    create?: XOR<NewsUpdateCreateWithoutYoutubeUrlsInput, NewsUpdateUncheckedCreateWithoutYoutubeUrlsInput>
+    connectOrCreate?: NewsUpdateCreateOrConnectWithoutYoutubeUrlsInput
+    upsert?: NewsUpdateUpsertWithoutYoutubeUrlsInput
+    disconnect?: NewsUpdateWhereInput | boolean
+    delete?: NewsUpdateWhereInput | boolean
+    connect?: NewsUpdateWhereUniqueInput
+    update?: XOR<XOR<NewsUpdateUpdateToOneWithWhereWithoutYoutubeUrlsInput, NewsUpdateUpdateWithoutYoutubeUrlsInput>, NewsUpdateUncheckedUpdateWithoutYoutubeUrlsInput>
+  }
+
+  export type SuccessStoryUpdateOneWithoutYoutubeUrlsNestedInput = {
+    create?: XOR<SuccessStoryCreateWithoutYoutubeUrlsInput, SuccessStoryUncheckedCreateWithoutYoutubeUrlsInput>
+    connectOrCreate?: SuccessStoryCreateOrConnectWithoutYoutubeUrlsInput
+    upsert?: SuccessStoryUpsertWithoutYoutubeUrlsInput
+    disconnect?: SuccessStoryWhereInput | boolean
+    delete?: SuccessStoryWhereInput | boolean
+    connect?: SuccessStoryWhereUniqueInput
+    update?: XOR<XOR<SuccessStoryUpdateToOneWithWhereWithoutYoutubeUrlsInput, SuccessStoryUpdateWithoutYoutubeUrlsInput>, SuccessStoryUncheckedUpdateWithoutYoutubeUrlsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -13167,6 +19265,1527 @@ export namespace Prisma {
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
   }
 
+  export type ImageCreateWithoutTeamMemberInput = {
+    id?: string
+    url: string
+    alt?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPost?: BlogPostCreateNestedOneWithoutImagesInput
+    newsUpdate?: NewsUpdateCreateNestedOneWithoutImagesInput
+    successStory?: SuccessStoryCreateNestedOneWithoutImagesInput
+  }
+
+  export type ImageUncheckedCreateWithoutTeamMemberInput = {
+    id?: string
+    url: string
+    alt?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPostId?: string | null
+    newsUpdateId?: string | null
+    successStoryId?: string | null
+  }
+
+  export type ImageCreateOrConnectWithoutTeamMemberInput = {
+    where: ImageWhereUniqueInput
+    create: XOR<ImageCreateWithoutTeamMemberInput, ImageUncheckedCreateWithoutTeamMemberInput>
+  }
+
+  export type ImageCreateManyTeamMemberInputEnvelope = {
+    data: ImageCreateManyTeamMemberInput | ImageCreateManyTeamMemberInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type VideoCreateWithoutTeamMemberInput = {
+    id?: string
+    url: string
+    title?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPost?: BlogPostCreateNestedOneWithoutVideosInput
+    newsUpdate?: NewsUpdateCreateNestedOneWithoutVideosInput
+    successStory?: SuccessStoryCreateNestedOneWithoutVideosInput
+  }
+
+  export type VideoUncheckedCreateWithoutTeamMemberInput = {
+    id?: string
+    url: string
+    title?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPostId?: string | null
+    newsUpdateId?: string | null
+    successStoryId?: string | null
+  }
+
+  export type VideoCreateOrConnectWithoutTeamMemberInput = {
+    where: VideoWhereUniqueInput
+    create: XOR<VideoCreateWithoutTeamMemberInput, VideoUncheckedCreateWithoutTeamMemberInput>
+  }
+
+  export type VideoCreateManyTeamMemberInputEnvelope = {
+    data: VideoCreateManyTeamMemberInput | VideoCreateManyTeamMemberInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type YoutubeUrlCreateWithoutTeamMemberInput = {
+    id?: string
+    url: string
+    title?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPost?: BlogPostCreateNestedOneWithoutYoutubeUrlsInput
+    newsUpdate?: NewsUpdateCreateNestedOneWithoutYoutubeUrlsInput
+    successStory?: SuccessStoryCreateNestedOneWithoutYoutubeUrlsInput
+  }
+
+  export type YoutubeUrlUncheckedCreateWithoutTeamMemberInput = {
+    id?: string
+    url: string
+    title?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPostId?: string | null
+    newsUpdateId?: string | null
+    successStoryId?: string | null
+  }
+
+  export type YoutubeUrlCreateOrConnectWithoutTeamMemberInput = {
+    where: YoutubeUrlWhereUniqueInput
+    create: XOR<YoutubeUrlCreateWithoutTeamMemberInput, YoutubeUrlUncheckedCreateWithoutTeamMemberInput>
+  }
+
+  export type YoutubeUrlCreateManyTeamMemberInputEnvelope = {
+    data: YoutubeUrlCreateManyTeamMemberInput | YoutubeUrlCreateManyTeamMemberInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ImageUpsertWithWhereUniqueWithoutTeamMemberInput = {
+    where: ImageWhereUniqueInput
+    update: XOR<ImageUpdateWithoutTeamMemberInput, ImageUncheckedUpdateWithoutTeamMemberInput>
+    create: XOR<ImageCreateWithoutTeamMemberInput, ImageUncheckedCreateWithoutTeamMemberInput>
+  }
+
+  export type ImageUpdateWithWhereUniqueWithoutTeamMemberInput = {
+    where: ImageWhereUniqueInput
+    data: XOR<ImageUpdateWithoutTeamMemberInput, ImageUncheckedUpdateWithoutTeamMemberInput>
+  }
+
+  export type ImageUpdateManyWithWhereWithoutTeamMemberInput = {
+    where: ImageScalarWhereInput
+    data: XOR<ImageUpdateManyMutationInput, ImageUncheckedUpdateManyWithoutTeamMemberInput>
+  }
+
+  export type ImageScalarWhereInput = {
+    AND?: ImageScalarWhereInput | ImageScalarWhereInput[]
+    OR?: ImageScalarWhereInput[]
+    NOT?: ImageScalarWhereInput | ImageScalarWhereInput[]
+    id?: StringFilter<"Image"> | string
+    url?: StringFilter<"Image"> | string
+    alt?: StringNullableFilter<"Image"> | string | null
+    createdAt?: DateTimeFilter<"Image"> | Date | string
+    updatedAt?: DateTimeFilter<"Image"> | Date | string
+    blogPostId?: StringNullableFilter<"Image"> | string | null
+    teamMemberId?: StringNullableFilter<"Image"> | string | null
+    newsUpdateId?: StringNullableFilter<"Image"> | string | null
+    successStoryId?: StringNullableFilter<"Image"> | string | null
+  }
+
+  export type VideoUpsertWithWhereUniqueWithoutTeamMemberInput = {
+    where: VideoWhereUniqueInput
+    update: XOR<VideoUpdateWithoutTeamMemberInput, VideoUncheckedUpdateWithoutTeamMemberInput>
+    create: XOR<VideoCreateWithoutTeamMemberInput, VideoUncheckedCreateWithoutTeamMemberInput>
+  }
+
+  export type VideoUpdateWithWhereUniqueWithoutTeamMemberInput = {
+    where: VideoWhereUniqueInput
+    data: XOR<VideoUpdateWithoutTeamMemberInput, VideoUncheckedUpdateWithoutTeamMemberInput>
+  }
+
+  export type VideoUpdateManyWithWhereWithoutTeamMemberInput = {
+    where: VideoScalarWhereInput
+    data: XOR<VideoUpdateManyMutationInput, VideoUncheckedUpdateManyWithoutTeamMemberInput>
+  }
+
+  export type VideoScalarWhereInput = {
+    AND?: VideoScalarWhereInput | VideoScalarWhereInput[]
+    OR?: VideoScalarWhereInput[]
+    NOT?: VideoScalarWhereInput | VideoScalarWhereInput[]
+    id?: StringFilter<"Video"> | string
+    url?: StringFilter<"Video"> | string
+    title?: StringNullableFilter<"Video"> | string | null
+    createdAt?: DateTimeFilter<"Video"> | Date | string
+    updatedAt?: DateTimeFilter<"Video"> | Date | string
+    blogPostId?: StringNullableFilter<"Video"> | string | null
+    teamMemberId?: StringNullableFilter<"Video"> | string | null
+    newsUpdateId?: StringNullableFilter<"Video"> | string | null
+    successStoryId?: StringNullableFilter<"Video"> | string | null
+  }
+
+  export type YoutubeUrlUpsertWithWhereUniqueWithoutTeamMemberInput = {
+    where: YoutubeUrlWhereUniqueInput
+    update: XOR<YoutubeUrlUpdateWithoutTeamMemberInput, YoutubeUrlUncheckedUpdateWithoutTeamMemberInput>
+    create: XOR<YoutubeUrlCreateWithoutTeamMemberInput, YoutubeUrlUncheckedCreateWithoutTeamMemberInput>
+  }
+
+  export type YoutubeUrlUpdateWithWhereUniqueWithoutTeamMemberInput = {
+    where: YoutubeUrlWhereUniqueInput
+    data: XOR<YoutubeUrlUpdateWithoutTeamMemberInput, YoutubeUrlUncheckedUpdateWithoutTeamMemberInput>
+  }
+
+  export type YoutubeUrlUpdateManyWithWhereWithoutTeamMemberInput = {
+    where: YoutubeUrlScalarWhereInput
+    data: XOR<YoutubeUrlUpdateManyMutationInput, YoutubeUrlUncheckedUpdateManyWithoutTeamMemberInput>
+  }
+
+  export type YoutubeUrlScalarWhereInput = {
+    AND?: YoutubeUrlScalarWhereInput | YoutubeUrlScalarWhereInput[]
+    OR?: YoutubeUrlScalarWhereInput[]
+    NOT?: YoutubeUrlScalarWhereInput | YoutubeUrlScalarWhereInput[]
+    id?: StringFilter<"YoutubeUrl"> | string
+    url?: StringFilter<"YoutubeUrl"> | string
+    title?: StringNullableFilter<"YoutubeUrl"> | string | null
+    createdAt?: DateTimeFilter<"YoutubeUrl"> | Date | string
+    updatedAt?: DateTimeFilter<"YoutubeUrl"> | Date | string
+    blogPostId?: StringNullableFilter<"YoutubeUrl"> | string | null
+    teamMemberId?: StringNullableFilter<"YoutubeUrl"> | string | null
+    newsUpdateId?: StringNullableFilter<"YoutubeUrl"> | string | null
+    successStoryId?: StringNullableFilter<"YoutubeUrl"> | string | null
+  }
+
+  export type ImageCreateWithoutSuccessStoryInput = {
+    id?: string
+    url: string
+    alt?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPost?: BlogPostCreateNestedOneWithoutImagesInput
+    teamMember?: TeamMemberCreateNestedOneWithoutImagesInput
+    newsUpdate?: NewsUpdateCreateNestedOneWithoutImagesInput
+  }
+
+  export type ImageUncheckedCreateWithoutSuccessStoryInput = {
+    id?: string
+    url: string
+    alt?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPostId?: string | null
+    teamMemberId?: string | null
+    newsUpdateId?: string | null
+  }
+
+  export type ImageCreateOrConnectWithoutSuccessStoryInput = {
+    where: ImageWhereUniqueInput
+    create: XOR<ImageCreateWithoutSuccessStoryInput, ImageUncheckedCreateWithoutSuccessStoryInput>
+  }
+
+  export type ImageCreateManySuccessStoryInputEnvelope = {
+    data: ImageCreateManySuccessStoryInput | ImageCreateManySuccessStoryInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type VideoCreateWithoutSuccessStoryInput = {
+    id?: string
+    url: string
+    title?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPost?: BlogPostCreateNestedOneWithoutVideosInput
+    teamMember?: TeamMemberCreateNestedOneWithoutVideosInput
+    newsUpdate?: NewsUpdateCreateNestedOneWithoutVideosInput
+  }
+
+  export type VideoUncheckedCreateWithoutSuccessStoryInput = {
+    id?: string
+    url: string
+    title?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPostId?: string | null
+    teamMemberId?: string | null
+    newsUpdateId?: string | null
+  }
+
+  export type VideoCreateOrConnectWithoutSuccessStoryInput = {
+    where: VideoWhereUniqueInput
+    create: XOR<VideoCreateWithoutSuccessStoryInput, VideoUncheckedCreateWithoutSuccessStoryInput>
+  }
+
+  export type VideoCreateManySuccessStoryInputEnvelope = {
+    data: VideoCreateManySuccessStoryInput | VideoCreateManySuccessStoryInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type YoutubeUrlCreateWithoutSuccessStoryInput = {
+    id?: string
+    url: string
+    title?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPost?: BlogPostCreateNestedOneWithoutYoutubeUrlsInput
+    teamMember?: TeamMemberCreateNestedOneWithoutYoutubeUrlsInput
+    newsUpdate?: NewsUpdateCreateNestedOneWithoutYoutubeUrlsInput
+  }
+
+  export type YoutubeUrlUncheckedCreateWithoutSuccessStoryInput = {
+    id?: string
+    url: string
+    title?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPostId?: string | null
+    teamMemberId?: string | null
+    newsUpdateId?: string | null
+  }
+
+  export type YoutubeUrlCreateOrConnectWithoutSuccessStoryInput = {
+    where: YoutubeUrlWhereUniqueInput
+    create: XOR<YoutubeUrlCreateWithoutSuccessStoryInput, YoutubeUrlUncheckedCreateWithoutSuccessStoryInput>
+  }
+
+  export type YoutubeUrlCreateManySuccessStoryInputEnvelope = {
+    data: YoutubeUrlCreateManySuccessStoryInput | YoutubeUrlCreateManySuccessStoryInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ImageUpsertWithWhereUniqueWithoutSuccessStoryInput = {
+    where: ImageWhereUniqueInput
+    update: XOR<ImageUpdateWithoutSuccessStoryInput, ImageUncheckedUpdateWithoutSuccessStoryInput>
+    create: XOR<ImageCreateWithoutSuccessStoryInput, ImageUncheckedCreateWithoutSuccessStoryInput>
+  }
+
+  export type ImageUpdateWithWhereUniqueWithoutSuccessStoryInput = {
+    where: ImageWhereUniqueInput
+    data: XOR<ImageUpdateWithoutSuccessStoryInput, ImageUncheckedUpdateWithoutSuccessStoryInput>
+  }
+
+  export type ImageUpdateManyWithWhereWithoutSuccessStoryInput = {
+    where: ImageScalarWhereInput
+    data: XOR<ImageUpdateManyMutationInput, ImageUncheckedUpdateManyWithoutSuccessStoryInput>
+  }
+
+  export type VideoUpsertWithWhereUniqueWithoutSuccessStoryInput = {
+    where: VideoWhereUniqueInput
+    update: XOR<VideoUpdateWithoutSuccessStoryInput, VideoUncheckedUpdateWithoutSuccessStoryInput>
+    create: XOR<VideoCreateWithoutSuccessStoryInput, VideoUncheckedCreateWithoutSuccessStoryInput>
+  }
+
+  export type VideoUpdateWithWhereUniqueWithoutSuccessStoryInput = {
+    where: VideoWhereUniqueInput
+    data: XOR<VideoUpdateWithoutSuccessStoryInput, VideoUncheckedUpdateWithoutSuccessStoryInput>
+  }
+
+  export type VideoUpdateManyWithWhereWithoutSuccessStoryInput = {
+    where: VideoScalarWhereInput
+    data: XOR<VideoUpdateManyMutationInput, VideoUncheckedUpdateManyWithoutSuccessStoryInput>
+  }
+
+  export type YoutubeUrlUpsertWithWhereUniqueWithoutSuccessStoryInput = {
+    where: YoutubeUrlWhereUniqueInput
+    update: XOR<YoutubeUrlUpdateWithoutSuccessStoryInput, YoutubeUrlUncheckedUpdateWithoutSuccessStoryInput>
+    create: XOR<YoutubeUrlCreateWithoutSuccessStoryInput, YoutubeUrlUncheckedCreateWithoutSuccessStoryInput>
+  }
+
+  export type YoutubeUrlUpdateWithWhereUniqueWithoutSuccessStoryInput = {
+    where: YoutubeUrlWhereUniqueInput
+    data: XOR<YoutubeUrlUpdateWithoutSuccessStoryInput, YoutubeUrlUncheckedUpdateWithoutSuccessStoryInput>
+  }
+
+  export type YoutubeUrlUpdateManyWithWhereWithoutSuccessStoryInput = {
+    where: YoutubeUrlScalarWhereInput
+    data: XOR<YoutubeUrlUpdateManyMutationInput, YoutubeUrlUncheckedUpdateManyWithoutSuccessStoryInput>
+  }
+
+  export type ImageCreateWithoutBlogPostInput = {
+    id?: string
+    url: string
+    alt?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    teamMember?: TeamMemberCreateNestedOneWithoutImagesInput
+    newsUpdate?: NewsUpdateCreateNestedOneWithoutImagesInput
+    successStory?: SuccessStoryCreateNestedOneWithoutImagesInput
+  }
+
+  export type ImageUncheckedCreateWithoutBlogPostInput = {
+    id?: string
+    url: string
+    alt?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    teamMemberId?: string | null
+    newsUpdateId?: string | null
+    successStoryId?: string | null
+  }
+
+  export type ImageCreateOrConnectWithoutBlogPostInput = {
+    where: ImageWhereUniqueInput
+    create: XOR<ImageCreateWithoutBlogPostInput, ImageUncheckedCreateWithoutBlogPostInput>
+  }
+
+  export type ImageCreateManyBlogPostInputEnvelope = {
+    data: ImageCreateManyBlogPostInput | ImageCreateManyBlogPostInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type VideoCreateWithoutBlogPostInput = {
+    id?: string
+    url: string
+    title?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    teamMember?: TeamMemberCreateNestedOneWithoutVideosInput
+    newsUpdate?: NewsUpdateCreateNestedOneWithoutVideosInput
+    successStory?: SuccessStoryCreateNestedOneWithoutVideosInput
+  }
+
+  export type VideoUncheckedCreateWithoutBlogPostInput = {
+    id?: string
+    url: string
+    title?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    teamMemberId?: string | null
+    newsUpdateId?: string | null
+    successStoryId?: string | null
+  }
+
+  export type VideoCreateOrConnectWithoutBlogPostInput = {
+    where: VideoWhereUniqueInput
+    create: XOR<VideoCreateWithoutBlogPostInput, VideoUncheckedCreateWithoutBlogPostInput>
+  }
+
+  export type VideoCreateManyBlogPostInputEnvelope = {
+    data: VideoCreateManyBlogPostInput | VideoCreateManyBlogPostInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type YoutubeUrlCreateWithoutBlogPostInput = {
+    id?: string
+    url: string
+    title?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    teamMember?: TeamMemberCreateNestedOneWithoutYoutubeUrlsInput
+    newsUpdate?: NewsUpdateCreateNestedOneWithoutYoutubeUrlsInput
+    successStory?: SuccessStoryCreateNestedOneWithoutYoutubeUrlsInput
+  }
+
+  export type YoutubeUrlUncheckedCreateWithoutBlogPostInput = {
+    id?: string
+    url: string
+    title?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    teamMemberId?: string | null
+    newsUpdateId?: string | null
+    successStoryId?: string | null
+  }
+
+  export type YoutubeUrlCreateOrConnectWithoutBlogPostInput = {
+    where: YoutubeUrlWhereUniqueInput
+    create: XOR<YoutubeUrlCreateWithoutBlogPostInput, YoutubeUrlUncheckedCreateWithoutBlogPostInput>
+  }
+
+  export type YoutubeUrlCreateManyBlogPostInputEnvelope = {
+    data: YoutubeUrlCreateManyBlogPostInput | YoutubeUrlCreateManyBlogPostInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ImageUpsertWithWhereUniqueWithoutBlogPostInput = {
+    where: ImageWhereUniqueInput
+    update: XOR<ImageUpdateWithoutBlogPostInput, ImageUncheckedUpdateWithoutBlogPostInput>
+    create: XOR<ImageCreateWithoutBlogPostInput, ImageUncheckedCreateWithoutBlogPostInput>
+  }
+
+  export type ImageUpdateWithWhereUniqueWithoutBlogPostInput = {
+    where: ImageWhereUniqueInput
+    data: XOR<ImageUpdateWithoutBlogPostInput, ImageUncheckedUpdateWithoutBlogPostInput>
+  }
+
+  export type ImageUpdateManyWithWhereWithoutBlogPostInput = {
+    where: ImageScalarWhereInput
+    data: XOR<ImageUpdateManyMutationInput, ImageUncheckedUpdateManyWithoutBlogPostInput>
+  }
+
+  export type VideoUpsertWithWhereUniqueWithoutBlogPostInput = {
+    where: VideoWhereUniqueInput
+    update: XOR<VideoUpdateWithoutBlogPostInput, VideoUncheckedUpdateWithoutBlogPostInput>
+    create: XOR<VideoCreateWithoutBlogPostInput, VideoUncheckedCreateWithoutBlogPostInput>
+  }
+
+  export type VideoUpdateWithWhereUniqueWithoutBlogPostInput = {
+    where: VideoWhereUniqueInput
+    data: XOR<VideoUpdateWithoutBlogPostInput, VideoUncheckedUpdateWithoutBlogPostInput>
+  }
+
+  export type VideoUpdateManyWithWhereWithoutBlogPostInput = {
+    where: VideoScalarWhereInput
+    data: XOR<VideoUpdateManyMutationInput, VideoUncheckedUpdateManyWithoutBlogPostInput>
+  }
+
+  export type YoutubeUrlUpsertWithWhereUniqueWithoutBlogPostInput = {
+    where: YoutubeUrlWhereUniqueInput
+    update: XOR<YoutubeUrlUpdateWithoutBlogPostInput, YoutubeUrlUncheckedUpdateWithoutBlogPostInput>
+    create: XOR<YoutubeUrlCreateWithoutBlogPostInput, YoutubeUrlUncheckedCreateWithoutBlogPostInput>
+  }
+
+  export type YoutubeUrlUpdateWithWhereUniqueWithoutBlogPostInput = {
+    where: YoutubeUrlWhereUniqueInput
+    data: XOR<YoutubeUrlUpdateWithoutBlogPostInput, YoutubeUrlUncheckedUpdateWithoutBlogPostInput>
+  }
+
+  export type YoutubeUrlUpdateManyWithWhereWithoutBlogPostInput = {
+    where: YoutubeUrlScalarWhereInput
+    data: XOR<YoutubeUrlUpdateManyMutationInput, YoutubeUrlUncheckedUpdateManyWithoutBlogPostInput>
+  }
+
+  export type ImageCreateWithoutNewsUpdateInput = {
+    id?: string
+    url: string
+    alt?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPost?: BlogPostCreateNestedOneWithoutImagesInput
+    teamMember?: TeamMemberCreateNestedOneWithoutImagesInput
+    successStory?: SuccessStoryCreateNestedOneWithoutImagesInput
+  }
+
+  export type ImageUncheckedCreateWithoutNewsUpdateInput = {
+    id?: string
+    url: string
+    alt?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPostId?: string | null
+    teamMemberId?: string | null
+    successStoryId?: string | null
+  }
+
+  export type ImageCreateOrConnectWithoutNewsUpdateInput = {
+    where: ImageWhereUniqueInput
+    create: XOR<ImageCreateWithoutNewsUpdateInput, ImageUncheckedCreateWithoutNewsUpdateInput>
+  }
+
+  export type ImageCreateManyNewsUpdateInputEnvelope = {
+    data: ImageCreateManyNewsUpdateInput | ImageCreateManyNewsUpdateInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type VideoCreateWithoutNewsUpdateInput = {
+    id?: string
+    url: string
+    title?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPost?: BlogPostCreateNestedOneWithoutVideosInput
+    teamMember?: TeamMemberCreateNestedOneWithoutVideosInput
+    successStory?: SuccessStoryCreateNestedOneWithoutVideosInput
+  }
+
+  export type VideoUncheckedCreateWithoutNewsUpdateInput = {
+    id?: string
+    url: string
+    title?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPostId?: string | null
+    teamMemberId?: string | null
+    successStoryId?: string | null
+  }
+
+  export type VideoCreateOrConnectWithoutNewsUpdateInput = {
+    where: VideoWhereUniqueInput
+    create: XOR<VideoCreateWithoutNewsUpdateInput, VideoUncheckedCreateWithoutNewsUpdateInput>
+  }
+
+  export type VideoCreateManyNewsUpdateInputEnvelope = {
+    data: VideoCreateManyNewsUpdateInput | VideoCreateManyNewsUpdateInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type YoutubeUrlCreateWithoutNewsUpdateInput = {
+    id?: string
+    url: string
+    title?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPost?: BlogPostCreateNestedOneWithoutYoutubeUrlsInput
+    teamMember?: TeamMemberCreateNestedOneWithoutYoutubeUrlsInput
+    successStory?: SuccessStoryCreateNestedOneWithoutYoutubeUrlsInput
+  }
+
+  export type YoutubeUrlUncheckedCreateWithoutNewsUpdateInput = {
+    id?: string
+    url: string
+    title?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPostId?: string | null
+    teamMemberId?: string | null
+    successStoryId?: string | null
+  }
+
+  export type YoutubeUrlCreateOrConnectWithoutNewsUpdateInput = {
+    where: YoutubeUrlWhereUniqueInput
+    create: XOR<YoutubeUrlCreateWithoutNewsUpdateInput, YoutubeUrlUncheckedCreateWithoutNewsUpdateInput>
+  }
+
+  export type YoutubeUrlCreateManyNewsUpdateInputEnvelope = {
+    data: YoutubeUrlCreateManyNewsUpdateInput | YoutubeUrlCreateManyNewsUpdateInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ImageUpsertWithWhereUniqueWithoutNewsUpdateInput = {
+    where: ImageWhereUniqueInput
+    update: XOR<ImageUpdateWithoutNewsUpdateInput, ImageUncheckedUpdateWithoutNewsUpdateInput>
+    create: XOR<ImageCreateWithoutNewsUpdateInput, ImageUncheckedCreateWithoutNewsUpdateInput>
+  }
+
+  export type ImageUpdateWithWhereUniqueWithoutNewsUpdateInput = {
+    where: ImageWhereUniqueInput
+    data: XOR<ImageUpdateWithoutNewsUpdateInput, ImageUncheckedUpdateWithoutNewsUpdateInput>
+  }
+
+  export type ImageUpdateManyWithWhereWithoutNewsUpdateInput = {
+    where: ImageScalarWhereInput
+    data: XOR<ImageUpdateManyMutationInput, ImageUncheckedUpdateManyWithoutNewsUpdateInput>
+  }
+
+  export type VideoUpsertWithWhereUniqueWithoutNewsUpdateInput = {
+    where: VideoWhereUniqueInput
+    update: XOR<VideoUpdateWithoutNewsUpdateInput, VideoUncheckedUpdateWithoutNewsUpdateInput>
+    create: XOR<VideoCreateWithoutNewsUpdateInput, VideoUncheckedCreateWithoutNewsUpdateInput>
+  }
+
+  export type VideoUpdateWithWhereUniqueWithoutNewsUpdateInput = {
+    where: VideoWhereUniqueInput
+    data: XOR<VideoUpdateWithoutNewsUpdateInput, VideoUncheckedUpdateWithoutNewsUpdateInput>
+  }
+
+  export type VideoUpdateManyWithWhereWithoutNewsUpdateInput = {
+    where: VideoScalarWhereInput
+    data: XOR<VideoUpdateManyMutationInput, VideoUncheckedUpdateManyWithoutNewsUpdateInput>
+  }
+
+  export type YoutubeUrlUpsertWithWhereUniqueWithoutNewsUpdateInput = {
+    where: YoutubeUrlWhereUniqueInput
+    update: XOR<YoutubeUrlUpdateWithoutNewsUpdateInput, YoutubeUrlUncheckedUpdateWithoutNewsUpdateInput>
+    create: XOR<YoutubeUrlCreateWithoutNewsUpdateInput, YoutubeUrlUncheckedCreateWithoutNewsUpdateInput>
+  }
+
+  export type YoutubeUrlUpdateWithWhereUniqueWithoutNewsUpdateInput = {
+    where: YoutubeUrlWhereUniqueInput
+    data: XOR<YoutubeUrlUpdateWithoutNewsUpdateInput, YoutubeUrlUncheckedUpdateWithoutNewsUpdateInput>
+  }
+
+  export type YoutubeUrlUpdateManyWithWhereWithoutNewsUpdateInput = {
+    where: YoutubeUrlScalarWhereInput
+    data: XOR<YoutubeUrlUpdateManyMutationInput, YoutubeUrlUncheckedUpdateManyWithoutNewsUpdateInput>
+  }
+
+  export type BlogPostCreateWithoutImagesInput = {
+    id?: string
+    slug: string
+    title: string
+    excerpt: string
+    content: string
+    author: string
+    category: $Enums.BlogCategory
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    videos?: VideoCreateNestedManyWithoutBlogPostInput
+    youtubeUrls?: YoutubeUrlCreateNestedManyWithoutBlogPostInput
+  }
+
+  export type BlogPostUncheckedCreateWithoutImagesInput = {
+    id?: string
+    slug: string
+    title: string
+    excerpt: string
+    content: string
+    author: string
+    category: $Enums.BlogCategory
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    videos?: VideoUncheckedCreateNestedManyWithoutBlogPostInput
+    youtubeUrls?: YoutubeUrlUncheckedCreateNestedManyWithoutBlogPostInput
+  }
+
+  export type BlogPostCreateOrConnectWithoutImagesInput = {
+    where: BlogPostWhereUniqueInput
+    create: XOR<BlogPostCreateWithoutImagesInput, BlogPostUncheckedCreateWithoutImagesInput>
+  }
+
+  export type TeamMemberCreateWithoutImagesInput = {
+    id?: string
+    name: string
+    position: string
+    email: string
+    phone?: string | null
+    bio: string
+    expertise?: string | null
+    achievements?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    videos?: VideoCreateNestedManyWithoutTeamMemberInput
+    youtubeUrls?: YoutubeUrlCreateNestedManyWithoutTeamMemberInput
+  }
+
+  export type TeamMemberUncheckedCreateWithoutImagesInput = {
+    id?: string
+    name: string
+    position: string
+    email: string
+    phone?: string | null
+    bio: string
+    expertise?: string | null
+    achievements?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    videos?: VideoUncheckedCreateNestedManyWithoutTeamMemberInput
+    youtubeUrls?: YoutubeUrlUncheckedCreateNestedManyWithoutTeamMemberInput
+  }
+
+  export type TeamMemberCreateOrConnectWithoutImagesInput = {
+    where: TeamMemberWhereUniqueInput
+    create: XOR<TeamMemberCreateWithoutImagesInput, TeamMemberUncheckedCreateWithoutImagesInput>
+  }
+
+  export type NewsUpdateCreateWithoutImagesInput = {
+    id?: string
+    headline: string
+    summary: string
+    content: string
+    location?: string | null
+    eventDate?: Date | string | null
+    priority: $Enums.NewsPriority
+    category: $Enums.NewsCategory
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    videos?: VideoCreateNestedManyWithoutNewsUpdateInput
+    youtubeUrls?: YoutubeUrlCreateNestedManyWithoutNewsUpdateInput
+  }
+
+  export type NewsUpdateUncheckedCreateWithoutImagesInput = {
+    id?: string
+    headline: string
+    summary: string
+    content: string
+    location?: string | null
+    eventDate?: Date | string | null
+    priority: $Enums.NewsPriority
+    category: $Enums.NewsCategory
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    videos?: VideoUncheckedCreateNestedManyWithoutNewsUpdateInput
+    youtubeUrls?: YoutubeUrlUncheckedCreateNestedManyWithoutNewsUpdateInput
+  }
+
+  export type NewsUpdateCreateOrConnectWithoutImagesInput = {
+    where: NewsUpdateWhereUniqueInput
+    create: XOR<NewsUpdateCreateWithoutImagesInput, NewsUpdateUncheckedCreateWithoutImagesInput>
+  }
+
+  export type SuccessStoryCreateWithoutImagesInput = {
+    id?: string
+    studentName: string
+    year: number
+    currentPosition: string
+    company: string
+    story: string
+    impact: string
+    advice?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    videos?: VideoCreateNestedManyWithoutSuccessStoryInput
+    youtubeUrls?: YoutubeUrlCreateNestedManyWithoutSuccessStoryInput
+  }
+
+  export type SuccessStoryUncheckedCreateWithoutImagesInput = {
+    id?: string
+    studentName: string
+    year: number
+    currentPosition: string
+    company: string
+    story: string
+    impact: string
+    advice?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    videos?: VideoUncheckedCreateNestedManyWithoutSuccessStoryInput
+    youtubeUrls?: YoutubeUrlUncheckedCreateNestedManyWithoutSuccessStoryInput
+  }
+
+  export type SuccessStoryCreateOrConnectWithoutImagesInput = {
+    where: SuccessStoryWhereUniqueInput
+    create: XOR<SuccessStoryCreateWithoutImagesInput, SuccessStoryUncheckedCreateWithoutImagesInput>
+  }
+
+  export type BlogPostUpsertWithoutImagesInput = {
+    update: XOR<BlogPostUpdateWithoutImagesInput, BlogPostUncheckedUpdateWithoutImagesInput>
+    create: XOR<BlogPostCreateWithoutImagesInput, BlogPostUncheckedCreateWithoutImagesInput>
+    where?: BlogPostWhereInput
+  }
+
+  export type BlogPostUpdateToOneWithWhereWithoutImagesInput = {
+    where?: BlogPostWhereInput
+    data: XOR<BlogPostUpdateWithoutImagesInput, BlogPostUncheckedUpdateWithoutImagesInput>
+  }
+
+  export type BlogPostUpdateWithoutImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    excerpt?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    author?: StringFieldUpdateOperationsInput | string
+    category?: EnumBlogCategoryFieldUpdateOperationsInput | $Enums.BlogCategory
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    videos?: VideoUpdateManyWithoutBlogPostNestedInput
+    youtubeUrls?: YoutubeUrlUpdateManyWithoutBlogPostNestedInput
+  }
+
+  export type BlogPostUncheckedUpdateWithoutImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    excerpt?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    author?: StringFieldUpdateOperationsInput | string
+    category?: EnumBlogCategoryFieldUpdateOperationsInput | $Enums.BlogCategory
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    videos?: VideoUncheckedUpdateManyWithoutBlogPostNestedInput
+    youtubeUrls?: YoutubeUrlUncheckedUpdateManyWithoutBlogPostNestedInput
+  }
+
+  export type TeamMemberUpsertWithoutImagesInput = {
+    update: XOR<TeamMemberUpdateWithoutImagesInput, TeamMemberUncheckedUpdateWithoutImagesInput>
+    create: XOR<TeamMemberCreateWithoutImagesInput, TeamMemberUncheckedCreateWithoutImagesInput>
+    where?: TeamMemberWhereInput
+  }
+
+  export type TeamMemberUpdateToOneWithWhereWithoutImagesInput = {
+    where?: TeamMemberWhereInput
+    data: XOR<TeamMemberUpdateWithoutImagesInput, TeamMemberUncheckedUpdateWithoutImagesInput>
+  }
+
+  export type TeamMemberUpdateWithoutImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    position?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: StringFieldUpdateOperationsInput | string
+    expertise?: NullableStringFieldUpdateOperationsInput | string | null
+    achievements?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    videos?: VideoUpdateManyWithoutTeamMemberNestedInput
+    youtubeUrls?: YoutubeUrlUpdateManyWithoutTeamMemberNestedInput
+  }
+
+  export type TeamMemberUncheckedUpdateWithoutImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    position?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: StringFieldUpdateOperationsInput | string
+    expertise?: NullableStringFieldUpdateOperationsInput | string | null
+    achievements?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    videos?: VideoUncheckedUpdateManyWithoutTeamMemberNestedInput
+    youtubeUrls?: YoutubeUrlUncheckedUpdateManyWithoutTeamMemberNestedInput
+  }
+
+  export type NewsUpdateUpsertWithoutImagesInput = {
+    update: XOR<NewsUpdateUpdateWithoutImagesInput, NewsUpdateUncheckedUpdateWithoutImagesInput>
+    create: XOR<NewsUpdateCreateWithoutImagesInput, NewsUpdateUncheckedCreateWithoutImagesInput>
+    where?: NewsUpdateWhereInput
+  }
+
+  export type NewsUpdateUpdateToOneWithWhereWithoutImagesInput = {
+    where?: NewsUpdateWhereInput
+    data: XOR<NewsUpdateUpdateWithoutImagesInput, NewsUpdateUncheckedUpdateWithoutImagesInput>
+  }
+
+  export type NewsUpdateUpdateWithoutImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    headline?: StringFieldUpdateOperationsInput | string
+    summary?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    eventDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    priority?: EnumNewsPriorityFieldUpdateOperationsInput | $Enums.NewsPriority
+    category?: EnumNewsCategoryFieldUpdateOperationsInput | $Enums.NewsCategory
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    videos?: VideoUpdateManyWithoutNewsUpdateNestedInput
+    youtubeUrls?: YoutubeUrlUpdateManyWithoutNewsUpdateNestedInput
+  }
+
+  export type NewsUpdateUncheckedUpdateWithoutImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    headline?: StringFieldUpdateOperationsInput | string
+    summary?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    eventDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    priority?: EnumNewsPriorityFieldUpdateOperationsInput | $Enums.NewsPriority
+    category?: EnumNewsCategoryFieldUpdateOperationsInput | $Enums.NewsCategory
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    videos?: VideoUncheckedUpdateManyWithoutNewsUpdateNestedInput
+    youtubeUrls?: YoutubeUrlUncheckedUpdateManyWithoutNewsUpdateNestedInput
+  }
+
+  export type SuccessStoryUpsertWithoutImagesInput = {
+    update: XOR<SuccessStoryUpdateWithoutImagesInput, SuccessStoryUncheckedUpdateWithoutImagesInput>
+    create: XOR<SuccessStoryCreateWithoutImagesInput, SuccessStoryUncheckedCreateWithoutImagesInput>
+    where?: SuccessStoryWhereInput
+  }
+
+  export type SuccessStoryUpdateToOneWithWhereWithoutImagesInput = {
+    where?: SuccessStoryWhereInput
+    data: XOR<SuccessStoryUpdateWithoutImagesInput, SuccessStoryUncheckedUpdateWithoutImagesInput>
+  }
+
+  export type SuccessStoryUpdateWithoutImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    studentName?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    currentPosition?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+    story?: StringFieldUpdateOperationsInput | string
+    impact?: StringFieldUpdateOperationsInput | string
+    advice?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    videos?: VideoUpdateManyWithoutSuccessStoryNestedInput
+    youtubeUrls?: YoutubeUrlUpdateManyWithoutSuccessStoryNestedInput
+  }
+
+  export type SuccessStoryUncheckedUpdateWithoutImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    studentName?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    currentPosition?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+    story?: StringFieldUpdateOperationsInput | string
+    impact?: StringFieldUpdateOperationsInput | string
+    advice?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    videos?: VideoUncheckedUpdateManyWithoutSuccessStoryNestedInput
+    youtubeUrls?: YoutubeUrlUncheckedUpdateManyWithoutSuccessStoryNestedInput
+  }
+
+  export type BlogPostCreateWithoutVideosInput = {
+    id?: string
+    slug: string
+    title: string
+    excerpt: string
+    content: string
+    author: string
+    category: $Enums.BlogCategory
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    images?: ImageCreateNestedManyWithoutBlogPostInput
+    youtubeUrls?: YoutubeUrlCreateNestedManyWithoutBlogPostInput
+  }
+
+  export type BlogPostUncheckedCreateWithoutVideosInput = {
+    id?: string
+    slug: string
+    title: string
+    excerpt: string
+    content: string
+    author: string
+    category: $Enums.BlogCategory
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    images?: ImageUncheckedCreateNestedManyWithoutBlogPostInput
+    youtubeUrls?: YoutubeUrlUncheckedCreateNestedManyWithoutBlogPostInput
+  }
+
+  export type BlogPostCreateOrConnectWithoutVideosInput = {
+    where: BlogPostWhereUniqueInput
+    create: XOR<BlogPostCreateWithoutVideosInput, BlogPostUncheckedCreateWithoutVideosInput>
+  }
+
+  export type TeamMemberCreateWithoutVideosInput = {
+    id?: string
+    name: string
+    position: string
+    email: string
+    phone?: string | null
+    bio: string
+    expertise?: string | null
+    achievements?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    images?: ImageCreateNestedManyWithoutTeamMemberInput
+    youtubeUrls?: YoutubeUrlCreateNestedManyWithoutTeamMemberInput
+  }
+
+  export type TeamMemberUncheckedCreateWithoutVideosInput = {
+    id?: string
+    name: string
+    position: string
+    email: string
+    phone?: string | null
+    bio: string
+    expertise?: string | null
+    achievements?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    images?: ImageUncheckedCreateNestedManyWithoutTeamMemberInput
+    youtubeUrls?: YoutubeUrlUncheckedCreateNestedManyWithoutTeamMemberInput
+  }
+
+  export type TeamMemberCreateOrConnectWithoutVideosInput = {
+    where: TeamMemberWhereUniqueInput
+    create: XOR<TeamMemberCreateWithoutVideosInput, TeamMemberUncheckedCreateWithoutVideosInput>
+  }
+
+  export type NewsUpdateCreateWithoutVideosInput = {
+    id?: string
+    headline: string
+    summary: string
+    content: string
+    location?: string | null
+    eventDate?: Date | string | null
+    priority: $Enums.NewsPriority
+    category: $Enums.NewsCategory
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    images?: ImageCreateNestedManyWithoutNewsUpdateInput
+    youtubeUrls?: YoutubeUrlCreateNestedManyWithoutNewsUpdateInput
+  }
+
+  export type NewsUpdateUncheckedCreateWithoutVideosInput = {
+    id?: string
+    headline: string
+    summary: string
+    content: string
+    location?: string | null
+    eventDate?: Date | string | null
+    priority: $Enums.NewsPriority
+    category: $Enums.NewsCategory
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    images?: ImageUncheckedCreateNestedManyWithoutNewsUpdateInput
+    youtubeUrls?: YoutubeUrlUncheckedCreateNestedManyWithoutNewsUpdateInput
+  }
+
+  export type NewsUpdateCreateOrConnectWithoutVideosInput = {
+    where: NewsUpdateWhereUniqueInput
+    create: XOR<NewsUpdateCreateWithoutVideosInput, NewsUpdateUncheckedCreateWithoutVideosInput>
+  }
+
+  export type SuccessStoryCreateWithoutVideosInput = {
+    id?: string
+    studentName: string
+    year: number
+    currentPosition: string
+    company: string
+    story: string
+    impact: string
+    advice?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    images?: ImageCreateNestedManyWithoutSuccessStoryInput
+    youtubeUrls?: YoutubeUrlCreateNestedManyWithoutSuccessStoryInput
+  }
+
+  export type SuccessStoryUncheckedCreateWithoutVideosInput = {
+    id?: string
+    studentName: string
+    year: number
+    currentPosition: string
+    company: string
+    story: string
+    impact: string
+    advice?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    images?: ImageUncheckedCreateNestedManyWithoutSuccessStoryInput
+    youtubeUrls?: YoutubeUrlUncheckedCreateNestedManyWithoutSuccessStoryInput
+  }
+
+  export type SuccessStoryCreateOrConnectWithoutVideosInput = {
+    where: SuccessStoryWhereUniqueInput
+    create: XOR<SuccessStoryCreateWithoutVideosInput, SuccessStoryUncheckedCreateWithoutVideosInput>
+  }
+
+  export type BlogPostUpsertWithoutVideosInput = {
+    update: XOR<BlogPostUpdateWithoutVideosInput, BlogPostUncheckedUpdateWithoutVideosInput>
+    create: XOR<BlogPostCreateWithoutVideosInput, BlogPostUncheckedCreateWithoutVideosInput>
+    where?: BlogPostWhereInput
+  }
+
+  export type BlogPostUpdateToOneWithWhereWithoutVideosInput = {
+    where?: BlogPostWhereInput
+    data: XOR<BlogPostUpdateWithoutVideosInput, BlogPostUncheckedUpdateWithoutVideosInput>
+  }
+
+  export type BlogPostUpdateWithoutVideosInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    excerpt?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    author?: StringFieldUpdateOperationsInput | string
+    category?: EnumBlogCategoryFieldUpdateOperationsInput | $Enums.BlogCategory
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: ImageUpdateManyWithoutBlogPostNestedInput
+    youtubeUrls?: YoutubeUrlUpdateManyWithoutBlogPostNestedInput
+  }
+
+  export type BlogPostUncheckedUpdateWithoutVideosInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    excerpt?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    author?: StringFieldUpdateOperationsInput | string
+    category?: EnumBlogCategoryFieldUpdateOperationsInput | $Enums.BlogCategory
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: ImageUncheckedUpdateManyWithoutBlogPostNestedInput
+    youtubeUrls?: YoutubeUrlUncheckedUpdateManyWithoutBlogPostNestedInput
+  }
+
+  export type TeamMemberUpsertWithoutVideosInput = {
+    update: XOR<TeamMemberUpdateWithoutVideosInput, TeamMemberUncheckedUpdateWithoutVideosInput>
+    create: XOR<TeamMemberCreateWithoutVideosInput, TeamMemberUncheckedCreateWithoutVideosInput>
+    where?: TeamMemberWhereInput
+  }
+
+  export type TeamMemberUpdateToOneWithWhereWithoutVideosInput = {
+    where?: TeamMemberWhereInput
+    data: XOR<TeamMemberUpdateWithoutVideosInput, TeamMemberUncheckedUpdateWithoutVideosInput>
+  }
+
+  export type TeamMemberUpdateWithoutVideosInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    position?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: StringFieldUpdateOperationsInput | string
+    expertise?: NullableStringFieldUpdateOperationsInput | string | null
+    achievements?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: ImageUpdateManyWithoutTeamMemberNestedInput
+    youtubeUrls?: YoutubeUrlUpdateManyWithoutTeamMemberNestedInput
+  }
+
+  export type TeamMemberUncheckedUpdateWithoutVideosInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    position?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: StringFieldUpdateOperationsInput | string
+    expertise?: NullableStringFieldUpdateOperationsInput | string | null
+    achievements?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: ImageUncheckedUpdateManyWithoutTeamMemberNestedInput
+    youtubeUrls?: YoutubeUrlUncheckedUpdateManyWithoutTeamMemberNestedInput
+  }
+
+  export type NewsUpdateUpsertWithoutVideosInput = {
+    update: XOR<NewsUpdateUpdateWithoutVideosInput, NewsUpdateUncheckedUpdateWithoutVideosInput>
+    create: XOR<NewsUpdateCreateWithoutVideosInput, NewsUpdateUncheckedCreateWithoutVideosInput>
+    where?: NewsUpdateWhereInput
+  }
+
+  export type NewsUpdateUpdateToOneWithWhereWithoutVideosInput = {
+    where?: NewsUpdateWhereInput
+    data: XOR<NewsUpdateUpdateWithoutVideosInput, NewsUpdateUncheckedUpdateWithoutVideosInput>
+  }
+
+  export type NewsUpdateUpdateWithoutVideosInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    headline?: StringFieldUpdateOperationsInput | string
+    summary?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    eventDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    priority?: EnumNewsPriorityFieldUpdateOperationsInput | $Enums.NewsPriority
+    category?: EnumNewsCategoryFieldUpdateOperationsInput | $Enums.NewsCategory
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: ImageUpdateManyWithoutNewsUpdateNestedInput
+    youtubeUrls?: YoutubeUrlUpdateManyWithoutNewsUpdateNestedInput
+  }
+
+  export type NewsUpdateUncheckedUpdateWithoutVideosInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    headline?: StringFieldUpdateOperationsInput | string
+    summary?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    eventDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    priority?: EnumNewsPriorityFieldUpdateOperationsInput | $Enums.NewsPriority
+    category?: EnumNewsCategoryFieldUpdateOperationsInput | $Enums.NewsCategory
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: ImageUncheckedUpdateManyWithoutNewsUpdateNestedInput
+    youtubeUrls?: YoutubeUrlUncheckedUpdateManyWithoutNewsUpdateNestedInput
+  }
+
+  export type SuccessStoryUpsertWithoutVideosInput = {
+    update: XOR<SuccessStoryUpdateWithoutVideosInput, SuccessStoryUncheckedUpdateWithoutVideosInput>
+    create: XOR<SuccessStoryCreateWithoutVideosInput, SuccessStoryUncheckedCreateWithoutVideosInput>
+    where?: SuccessStoryWhereInput
+  }
+
+  export type SuccessStoryUpdateToOneWithWhereWithoutVideosInput = {
+    where?: SuccessStoryWhereInput
+    data: XOR<SuccessStoryUpdateWithoutVideosInput, SuccessStoryUncheckedUpdateWithoutVideosInput>
+  }
+
+  export type SuccessStoryUpdateWithoutVideosInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    studentName?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    currentPosition?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+    story?: StringFieldUpdateOperationsInput | string
+    impact?: StringFieldUpdateOperationsInput | string
+    advice?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: ImageUpdateManyWithoutSuccessStoryNestedInput
+    youtubeUrls?: YoutubeUrlUpdateManyWithoutSuccessStoryNestedInput
+  }
+
+  export type SuccessStoryUncheckedUpdateWithoutVideosInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    studentName?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    currentPosition?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+    story?: StringFieldUpdateOperationsInput | string
+    impact?: StringFieldUpdateOperationsInput | string
+    advice?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: ImageUncheckedUpdateManyWithoutSuccessStoryNestedInput
+    youtubeUrls?: YoutubeUrlUncheckedUpdateManyWithoutSuccessStoryNestedInput
+  }
+
+  export type BlogPostCreateWithoutYoutubeUrlsInput = {
+    id?: string
+    slug: string
+    title: string
+    excerpt: string
+    content: string
+    author: string
+    category: $Enums.BlogCategory
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    images?: ImageCreateNestedManyWithoutBlogPostInput
+    videos?: VideoCreateNestedManyWithoutBlogPostInput
+  }
+
+  export type BlogPostUncheckedCreateWithoutYoutubeUrlsInput = {
+    id?: string
+    slug: string
+    title: string
+    excerpt: string
+    content: string
+    author: string
+    category: $Enums.BlogCategory
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    images?: ImageUncheckedCreateNestedManyWithoutBlogPostInput
+    videos?: VideoUncheckedCreateNestedManyWithoutBlogPostInput
+  }
+
+  export type BlogPostCreateOrConnectWithoutYoutubeUrlsInput = {
+    where: BlogPostWhereUniqueInput
+    create: XOR<BlogPostCreateWithoutYoutubeUrlsInput, BlogPostUncheckedCreateWithoutYoutubeUrlsInput>
+  }
+
+  export type TeamMemberCreateWithoutYoutubeUrlsInput = {
+    id?: string
+    name: string
+    position: string
+    email: string
+    phone?: string | null
+    bio: string
+    expertise?: string | null
+    achievements?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    images?: ImageCreateNestedManyWithoutTeamMemberInput
+    videos?: VideoCreateNestedManyWithoutTeamMemberInput
+  }
+
+  export type TeamMemberUncheckedCreateWithoutYoutubeUrlsInput = {
+    id?: string
+    name: string
+    position: string
+    email: string
+    phone?: string | null
+    bio: string
+    expertise?: string | null
+    achievements?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    images?: ImageUncheckedCreateNestedManyWithoutTeamMemberInput
+    videos?: VideoUncheckedCreateNestedManyWithoutTeamMemberInput
+  }
+
+  export type TeamMemberCreateOrConnectWithoutYoutubeUrlsInput = {
+    where: TeamMemberWhereUniqueInput
+    create: XOR<TeamMemberCreateWithoutYoutubeUrlsInput, TeamMemberUncheckedCreateWithoutYoutubeUrlsInput>
+  }
+
+  export type NewsUpdateCreateWithoutYoutubeUrlsInput = {
+    id?: string
+    headline: string
+    summary: string
+    content: string
+    location?: string | null
+    eventDate?: Date | string | null
+    priority: $Enums.NewsPriority
+    category: $Enums.NewsCategory
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    images?: ImageCreateNestedManyWithoutNewsUpdateInput
+    videos?: VideoCreateNestedManyWithoutNewsUpdateInput
+  }
+
+  export type NewsUpdateUncheckedCreateWithoutYoutubeUrlsInput = {
+    id?: string
+    headline: string
+    summary: string
+    content: string
+    location?: string | null
+    eventDate?: Date | string | null
+    priority: $Enums.NewsPriority
+    category: $Enums.NewsCategory
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    images?: ImageUncheckedCreateNestedManyWithoutNewsUpdateInput
+    videos?: VideoUncheckedCreateNestedManyWithoutNewsUpdateInput
+  }
+
+  export type NewsUpdateCreateOrConnectWithoutYoutubeUrlsInput = {
+    where: NewsUpdateWhereUniqueInput
+    create: XOR<NewsUpdateCreateWithoutYoutubeUrlsInput, NewsUpdateUncheckedCreateWithoutYoutubeUrlsInput>
+  }
+
+  export type SuccessStoryCreateWithoutYoutubeUrlsInput = {
+    id?: string
+    studentName: string
+    year: number
+    currentPosition: string
+    company: string
+    story: string
+    impact: string
+    advice?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    images?: ImageCreateNestedManyWithoutSuccessStoryInput
+    videos?: VideoCreateNestedManyWithoutSuccessStoryInput
+  }
+
+  export type SuccessStoryUncheckedCreateWithoutYoutubeUrlsInput = {
+    id?: string
+    studentName: string
+    year: number
+    currentPosition: string
+    company: string
+    story: string
+    impact: string
+    advice?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    images?: ImageUncheckedCreateNestedManyWithoutSuccessStoryInput
+    videos?: VideoUncheckedCreateNestedManyWithoutSuccessStoryInput
+  }
+
+  export type SuccessStoryCreateOrConnectWithoutYoutubeUrlsInput = {
+    where: SuccessStoryWhereUniqueInput
+    create: XOR<SuccessStoryCreateWithoutYoutubeUrlsInput, SuccessStoryUncheckedCreateWithoutYoutubeUrlsInput>
+  }
+
+  export type BlogPostUpsertWithoutYoutubeUrlsInput = {
+    update: XOR<BlogPostUpdateWithoutYoutubeUrlsInput, BlogPostUncheckedUpdateWithoutYoutubeUrlsInput>
+    create: XOR<BlogPostCreateWithoutYoutubeUrlsInput, BlogPostUncheckedCreateWithoutYoutubeUrlsInput>
+    where?: BlogPostWhereInput
+  }
+
+  export type BlogPostUpdateToOneWithWhereWithoutYoutubeUrlsInput = {
+    where?: BlogPostWhereInput
+    data: XOR<BlogPostUpdateWithoutYoutubeUrlsInput, BlogPostUncheckedUpdateWithoutYoutubeUrlsInput>
+  }
+
+  export type BlogPostUpdateWithoutYoutubeUrlsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    excerpt?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    author?: StringFieldUpdateOperationsInput | string
+    category?: EnumBlogCategoryFieldUpdateOperationsInput | $Enums.BlogCategory
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: ImageUpdateManyWithoutBlogPostNestedInput
+    videos?: VideoUpdateManyWithoutBlogPostNestedInput
+  }
+
+  export type BlogPostUncheckedUpdateWithoutYoutubeUrlsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    excerpt?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    author?: StringFieldUpdateOperationsInput | string
+    category?: EnumBlogCategoryFieldUpdateOperationsInput | $Enums.BlogCategory
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: ImageUncheckedUpdateManyWithoutBlogPostNestedInput
+    videos?: VideoUncheckedUpdateManyWithoutBlogPostNestedInput
+  }
+
+  export type TeamMemberUpsertWithoutYoutubeUrlsInput = {
+    update: XOR<TeamMemberUpdateWithoutYoutubeUrlsInput, TeamMemberUncheckedUpdateWithoutYoutubeUrlsInput>
+    create: XOR<TeamMemberCreateWithoutYoutubeUrlsInput, TeamMemberUncheckedCreateWithoutYoutubeUrlsInput>
+    where?: TeamMemberWhereInput
+  }
+
+  export type TeamMemberUpdateToOneWithWhereWithoutYoutubeUrlsInput = {
+    where?: TeamMemberWhereInput
+    data: XOR<TeamMemberUpdateWithoutYoutubeUrlsInput, TeamMemberUncheckedUpdateWithoutYoutubeUrlsInput>
+  }
+
+  export type TeamMemberUpdateWithoutYoutubeUrlsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    position?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: StringFieldUpdateOperationsInput | string
+    expertise?: NullableStringFieldUpdateOperationsInput | string | null
+    achievements?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: ImageUpdateManyWithoutTeamMemberNestedInput
+    videos?: VideoUpdateManyWithoutTeamMemberNestedInput
+  }
+
+  export type TeamMemberUncheckedUpdateWithoutYoutubeUrlsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    position?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: StringFieldUpdateOperationsInput | string
+    expertise?: NullableStringFieldUpdateOperationsInput | string | null
+    achievements?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: ImageUncheckedUpdateManyWithoutTeamMemberNestedInput
+    videos?: VideoUncheckedUpdateManyWithoutTeamMemberNestedInput
+  }
+
+  export type NewsUpdateUpsertWithoutYoutubeUrlsInput = {
+    update: XOR<NewsUpdateUpdateWithoutYoutubeUrlsInput, NewsUpdateUncheckedUpdateWithoutYoutubeUrlsInput>
+    create: XOR<NewsUpdateCreateWithoutYoutubeUrlsInput, NewsUpdateUncheckedCreateWithoutYoutubeUrlsInput>
+    where?: NewsUpdateWhereInput
+  }
+
+  export type NewsUpdateUpdateToOneWithWhereWithoutYoutubeUrlsInput = {
+    where?: NewsUpdateWhereInput
+    data: XOR<NewsUpdateUpdateWithoutYoutubeUrlsInput, NewsUpdateUncheckedUpdateWithoutYoutubeUrlsInput>
+  }
+
+  export type NewsUpdateUpdateWithoutYoutubeUrlsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    headline?: StringFieldUpdateOperationsInput | string
+    summary?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    eventDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    priority?: EnumNewsPriorityFieldUpdateOperationsInput | $Enums.NewsPriority
+    category?: EnumNewsCategoryFieldUpdateOperationsInput | $Enums.NewsCategory
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: ImageUpdateManyWithoutNewsUpdateNestedInput
+    videos?: VideoUpdateManyWithoutNewsUpdateNestedInput
+  }
+
+  export type NewsUpdateUncheckedUpdateWithoutYoutubeUrlsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    headline?: StringFieldUpdateOperationsInput | string
+    summary?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    eventDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    priority?: EnumNewsPriorityFieldUpdateOperationsInput | $Enums.NewsPriority
+    category?: EnumNewsCategoryFieldUpdateOperationsInput | $Enums.NewsCategory
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: ImageUncheckedUpdateManyWithoutNewsUpdateNestedInput
+    videos?: VideoUncheckedUpdateManyWithoutNewsUpdateNestedInput
+  }
+
+  export type SuccessStoryUpsertWithoutYoutubeUrlsInput = {
+    update: XOR<SuccessStoryUpdateWithoutYoutubeUrlsInput, SuccessStoryUncheckedUpdateWithoutYoutubeUrlsInput>
+    create: XOR<SuccessStoryCreateWithoutYoutubeUrlsInput, SuccessStoryUncheckedCreateWithoutYoutubeUrlsInput>
+    where?: SuccessStoryWhereInput
+  }
+
+  export type SuccessStoryUpdateToOneWithWhereWithoutYoutubeUrlsInput = {
+    where?: SuccessStoryWhereInput
+    data: XOR<SuccessStoryUpdateWithoutYoutubeUrlsInput, SuccessStoryUncheckedUpdateWithoutYoutubeUrlsInput>
+  }
+
+  export type SuccessStoryUpdateWithoutYoutubeUrlsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    studentName?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    currentPosition?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+    story?: StringFieldUpdateOperationsInput | string
+    impact?: StringFieldUpdateOperationsInput | string
+    advice?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: ImageUpdateManyWithoutSuccessStoryNestedInput
+    videos?: VideoUpdateManyWithoutSuccessStoryNestedInput
+  }
+
+  export type SuccessStoryUncheckedUpdateWithoutYoutubeUrlsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    studentName?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    currentPosition?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+    story?: StringFieldUpdateOperationsInput | string
+    impact?: StringFieldUpdateOperationsInput | string
+    advice?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: ImageUncheckedUpdateManyWithoutSuccessStoryNestedInput
+    videos?: VideoUncheckedUpdateManyWithoutSuccessStoryNestedInput
+  }
+
   export type SessionCreateManyUserInput = {
     id: string
     expiresAt: Date | string
@@ -13269,6 +20888,534 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ImageCreateManyTeamMemberInput = {
+    id?: string
+    url: string
+    alt?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPostId?: string | null
+    newsUpdateId?: string | null
+    successStoryId?: string | null
+  }
+
+  export type VideoCreateManyTeamMemberInput = {
+    id?: string
+    url: string
+    title?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPostId?: string | null
+    newsUpdateId?: string | null
+    successStoryId?: string | null
+  }
+
+  export type YoutubeUrlCreateManyTeamMemberInput = {
+    id?: string
+    url: string
+    title?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPostId?: string | null
+    newsUpdateId?: string | null
+    successStoryId?: string | null
+  }
+
+  export type ImageUpdateWithoutTeamMemberInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    alt?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPost?: BlogPostUpdateOneWithoutImagesNestedInput
+    newsUpdate?: NewsUpdateUpdateOneWithoutImagesNestedInput
+    successStory?: SuccessStoryUpdateOneWithoutImagesNestedInput
+  }
+
+  export type ImageUncheckedUpdateWithoutTeamMemberInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    alt?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPostId?: NullableStringFieldUpdateOperationsInput | string | null
+    newsUpdateId?: NullableStringFieldUpdateOperationsInput | string | null
+    successStoryId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ImageUncheckedUpdateManyWithoutTeamMemberInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    alt?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPostId?: NullableStringFieldUpdateOperationsInput | string | null
+    newsUpdateId?: NullableStringFieldUpdateOperationsInput | string | null
+    successStoryId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type VideoUpdateWithoutTeamMemberInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPost?: BlogPostUpdateOneWithoutVideosNestedInput
+    newsUpdate?: NewsUpdateUpdateOneWithoutVideosNestedInput
+    successStory?: SuccessStoryUpdateOneWithoutVideosNestedInput
+  }
+
+  export type VideoUncheckedUpdateWithoutTeamMemberInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPostId?: NullableStringFieldUpdateOperationsInput | string | null
+    newsUpdateId?: NullableStringFieldUpdateOperationsInput | string | null
+    successStoryId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type VideoUncheckedUpdateManyWithoutTeamMemberInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPostId?: NullableStringFieldUpdateOperationsInput | string | null
+    newsUpdateId?: NullableStringFieldUpdateOperationsInput | string | null
+    successStoryId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type YoutubeUrlUpdateWithoutTeamMemberInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPost?: BlogPostUpdateOneWithoutYoutubeUrlsNestedInput
+    newsUpdate?: NewsUpdateUpdateOneWithoutYoutubeUrlsNestedInput
+    successStory?: SuccessStoryUpdateOneWithoutYoutubeUrlsNestedInput
+  }
+
+  export type YoutubeUrlUncheckedUpdateWithoutTeamMemberInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPostId?: NullableStringFieldUpdateOperationsInput | string | null
+    newsUpdateId?: NullableStringFieldUpdateOperationsInput | string | null
+    successStoryId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type YoutubeUrlUncheckedUpdateManyWithoutTeamMemberInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPostId?: NullableStringFieldUpdateOperationsInput | string | null
+    newsUpdateId?: NullableStringFieldUpdateOperationsInput | string | null
+    successStoryId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ImageCreateManySuccessStoryInput = {
+    id?: string
+    url: string
+    alt?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPostId?: string | null
+    teamMemberId?: string | null
+    newsUpdateId?: string | null
+  }
+
+  export type VideoCreateManySuccessStoryInput = {
+    id?: string
+    url: string
+    title?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPostId?: string | null
+    teamMemberId?: string | null
+    newsUpdateId?: string | null
+  }
+
+  export type YoutubeUrlCreateManySuccessStoryInput = {
+    id?: string
+    url: string
+    title?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPostId?: string | null
+    teamMemberId?: string | null
+    newsUpdateId?: string | null
+  }
+
+  export type ImageUpdateWithoutSuccessStoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    alt?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPost?: BlogPostUpdateOneWithoutImagesNestedInput
+    teamMember?: TeamMemberUpdateOneWithoutImagesNestedInput
+    newsUpdate?: NewsUpdateUpdateOneWithoutImagesNestedInput
+  }
+
+  export type ImageUncheckedUpdateWithoutSuccessStoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    alt?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPostId?: NullableStringFieldUpdateOperationsInput | string | null
+    teamMemberId?: NullableStringFieldUpdateOperationsInput | string | null
+    newsUpdateId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ImageUncheckedUpdateManyWithoutSuccessStoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    alt?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPostId?: NullableStringFieldUpdateOperationsInput | string | null
+    teamMemberId?: NullableStringFieldUpdateOperationsInput | string | null
+    newsUpdateId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type VideoUpdateWithoutSuccessStoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPost?: BlogPostUpdateOneWithoutVideosNestedInput
+    teamMember?: TeamMemberUpdateOneWithoutVideosNestedInput
+    newsUpdate?: NewsUpdateUpdateOneWithoutVideosNestedInput
+  }
+
+  export type VideoUncheckedUpdateWithoutSuccessStoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPostId?: NullableStringFieldUpdateOperationsInput | string | null
+    teamMemberId?: NullableStringFieldUpdateOperationsInput | string | null
+    newsUpdateId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type VideoUncheckedUpdateManyWithoutSuccessStoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPostId?: NullableStringFieldUpdateOperationsInput | string | null
+    teamMemberId?: NullableStringFieldUpdateOperationsInput | string | null
+    newsUpdateId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type YoutubeUrlUpdateWithoutSuccessStoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPost?: BlogPostUpdateOneWithoutYoutubeUrlsNestedInput
+    teamMember?: TeamMemberUpdateOneWithoutYoutubeUrlsNestedInput
+    newsUpdate?: NewsUpdateUpdateOneWithoutYoutubeUrlsNestedInput
+  }
+
+  export type YoutubeUrlUncheckedUpdateWithoutSuccessStoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPostId?: NullableStringFieldUpdateOperationsInput | string | null
+    teamMemberId?: NullableStringFieldUpdateOperationsInput | string | null
+    newsUpdateId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type YoutubeUrlUncheckedUpdateManyWithoutSuccessStoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPostId?: NullableStringFieldUpdateOperationsInput | string | null
+    teamMemberId?: NullableStringFieldUpdateOperationsInput | string | null
+    newsUpdateId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ImageCreateManyBlogPostInput = {
+    id?: string
+    url: string
+    alt?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    teamMemberId?: string | null
+    newsUpdateId?: string | null
+    successStoryId?: string | null
+  }
+
+  export type VideoCreateManyBlogPostInput = {
+    id?: string
+    url: string
+    title?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    teamMemberId?: string | null
+    newsUpdateId?: string | null
+    successStoryId?: string | null
+  }
+
+  export type YoutubeUrlCreateManyBlogPostInput = {
+    id?: string
+    url: string
+    title?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    teamMemberId?: string | null
+    newsUpdateId?: string | null
+    successStoryId?: string | null
+  }
+
+  export type ImageUpdateWithoutBlogPostInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    alt?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teamMember?: TeamMemberUpdateOneWithoutImagesNestedInput
+    newsUpdate?: NewsUpdateUpdateOneWithoutImagesNestedInput
+    successStory?: SuccessStoryUpdateOneWithoutImagesNestedInput
+  }
+
+  export type ImageUncheckedUpdateWithoutBlogPostInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    alt?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teamMemberId?: NullableStringFieldUpdateOperationsInput | string | null
+    newsUpdateId?: NullableStringFieldUpdateOperationsInput | string | null
+    successStoryId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ImageUncheckedUpdateManyWithoutBlogPostInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    alt?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teamMemberId?: NullableStringFieldUpdateOperationsInput | string | null
+    newsUpdateId?: NullableStringFieldUpdateOperationsInput | string | null
+    successStoryId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type VideoUpdateWithoutBlogPostInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teamMember?: TeamMemberUpdateOneWithoutVideosNestedInput
+    newsUpdate?: NewsUpdateUpdateOneWithoutVideosNestedInput
+    successStory?: SuccessStoryUpdateOneWithoutVideosNestedInput
+  }
+
+  export type VideoUncheckedUpdateWithoutBlogPostInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teamMemberId?: NullableStringFieldUpdateOperationsInput | string | null
+    newsUpdateId?: NullableStringFieldUpdateOperationsInput | string | null
+    successStoryId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type VideoUncheckedUpdateManyWithoutBlogPostInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teamMemberId?: NullableStringFieldUpdateOperationsInput | string | null
+    newsUpdateId?: NullableStringFieldUpdateOperationsInput | string | null
+    successStoryId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type YoutubeUrlUpdateWithoutBlogPostInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teamMember?: TeamMemberUpdateOneWithoutYoutubeUrlsNestedInput
+    newsUpdate?: NewsUpdateUpdateOneWithoutYoutubeUrlsNestedInput
+    successStory?: SuccessStoryUpdateOneWithoutYoutubeUrlsNestedInput
+  }
+
+  export type YoutubeUrlUncheckedUpdateWithoutBlogPostInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teamMemberId?: NullableStringFieldUpdateOperationsInput | string | null
+    newsUpdateId?: NullableStringFieldUpdateOperationsInput | string | null
+    successStoryId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type YoutubeUrlUncheckedUpdateManyWithoutBlogPostInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teamMemberId?: NullableStringFieldUpdateOperationsInput | string | null
+    newsUpdateId?: NullableStringFieldUpdateOperationsInput | string | null
+    successStoryId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ImageCreateManyNewsUpdateInput = {
+    id?: string
+    url: string
+    alt?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPostId?: string | null
+    teamMemberId?: string | null
+    successStoryId?: string | null
+  }
+
+  export type VideoCreateManyNewsUpdateInput = {
+    id?: string
+    url: string
+    title?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPostId?: string | null
+    teamMemberId?: string | null
+    successStoryId?: string | null
+  }
+
+  export type YoutubeUrlCreateManyNewsUpdateInput = {
+    id?: string
+    url: string
+    title?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blogPostId?: string | null
+    teamMemberId?: string | null
+    successStoryId?: string | null
+  }
+
+  export type ImageUpdateWithoutNewsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    alt?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPost?: BlogPostUpdateOneWithoutImagesNestedInput
+    teamMember?: TeamMemberUpdateOneWithoutImagesNestedInput
+    successStory?: SuccessStoryUpdateOneWithoutImagesNestedInput
+  }
+
+  export type ImageUncheckedUpdateWithoutNewsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    alt?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPostId?: NullableStringFieldUpdateOperationsInput | string | null
+    teamMemberId?: NullableStringFieldUpdateOperationsInput | string | null
+    successStoryId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ImageUncheckedUpdateManyWithoutNewsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    alt?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPostId?: NullableStringFieldUpdateOperationsInput | string | null
+    teamMemberId?: NullableStringFieldUpdateOperationsInput | string | null
+    successStoryId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type VideoUpdateWithoutNewsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPost?: BlogPostUpdateOneWithoutVideosNestedInput
+    teamMember?: TeamMemberUpdateOneWithoutVideosNestedInput
+    successStory?: SuccessStoryUpdateOneWithoutVideosNestedInput
+  }
+
+  export type VideoUncheckedUpdateWithoutNewsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPostId?: NullableStringFieldUpdateOperationsInput | string | null
+    teamMemberId?: NullableStringFieldUpdateOperationsInput | string | null
+    successStoryId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type VideoUncheckedUpdateManyWithoutNewsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPostId?: NullableStringFieldUpdateOperationsInput | string | null
+    teamMemberId?: NullableStringFieldUpdateOperationsInput | string | null
+    successStoryId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type YoutubeUrlUpdateWithoutNewsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPost?: BlogPostUpdateOneWithoutYoutubeUrlsNestedInput
+    teamMember?: TeamMemberUpdateOneWithoutYoutubeUrlsNestedInput
+    successStory?: SuccessStoryUpdateOneWithoutYoutubeUrlsNestedInput
+  }
+
+  export type YoutubeUrlUncheckedUpdateWithoutNewsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPostId?: NullableStringFieldUpdateOperationsInput | string | null
+    teamMemberId?: NullableStringFieldUpdateOperationsInput | string | null
+    successStoryId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type YoutubeUrlUncheckedUpdateManyWithoutNewsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blogPostId?: NullableStringFieldUpdateOperationsInput | string | null
+    teamMemberId?: NullableStringFieldUpdateOperationsInput | string | null
+    successStoryId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 

@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from "react";
+import { Dispatch, ReactElement, ReactNode, SetStateAction } from "react";
 
 // Define types for menu items
 export interface SubSubLinkItem {
@@ -22,7 +22,7 @@ export interface SuccessStory {
   slug?: string;
   name: string;
   heading: string;
-  image: React.ReactNode; // This can be a URL string or a React component
+  image: React.ReactNode;
   content: string;
 }
 
@@ -39,7 +39,6 @@ export interface Stats {
   color?: string;
 }
 
-
 export interface Resource {
   id: string;
   file: File;
@@ -55,7 +54,15 @@ export interface YouTubeUrl {
 export interface FormField {
   name: string;
   label: string;
-  type: 'text' | 'email' | 'tel' | 'number' | 'date' | 'datetime-local' | 'textarea' | 'select';
+  type:
+    | "text"
+    | "email"
+    | "tel"
+    | "number"
+    | "date"
+    | "datetime-local"
+    | "textarea"
+    | "select";
   required: boolean;
   rows?: number; // for textarea
   options?: string[]; // for select
@@ -99,7 +106,12 @@ export interface BlogData {
   excerpt: string;
   content: string;
   author: string;
-  category: 'Technology' | 'Education' | 'Research' | 'Innovation' | 'Student Life';
+  category:
+    | "TECHNOLOGY"
+    | "EDUCATION"
+    | "RESEARCH"
+    | "INNOVATION"
+    | "STUDENT_LIFE";
 }
 
 export interface NewsData {
@@ -108,157 +120,44 @@ export interface NewsData {
   content: string;
   location?: string;
   eventDate?: string;
-  priority: 'Low' | 'Medium' | 'High' | 'Urgent';
-  category: 'Announcement' | 'Event' | 'Achievement' | 'Research' | 'Partnership';
+  priority: "LOW" | "MEDIUM" | "HIGH" | "URGENT";
+  category:
+    | "ANNOUNCEMENT"
+    | "EVENT"
+    | "ACHIEVEMENT"
+    | "RESEARCH"
+    | "PARTNERSHIP";
 }
 
-export type ContentData = TeamMemberData | SuccessStoryData | BlogData | NewsData;
+export type ContentData =
+  | TeamMemberData
+  | SuccessStoryData
+  | BlogData
+  | NewsData;
 
 export interface ContentFormProps {
+  activeTab: string;
+  setFormData: Dispatch<SetStateAction<Partial<ContentData>>>;
+  formData: Partial<ContentData>;
   config: SideBarItem;
-  previewMode: boolean;
-  setPreviewMode: (mode: boolean) => void;
+  errors: Record<string, string>;
+  setErrors: Dispatch<SetStateAction<Record<string,string>>>;
 }
 
-// Form submission interface
-export interface FormSubmissionData {
-  formData: Record<string, any>;
-  images: Resource[];
-  videos: Resource[];
-  youtubeUrls: YouTubeUrl[];
-  type: string;
-}
-
-// API Response interfaces
-export interface ApiResponse<T = any> {
-  success: boolean;
-  data?: T;
-  message?: string;
-  error?: string;
-}
-
-export interface PaginatedResponse<T> extends ApiResponse<T[]> {
-  pagination: {
-    page: number;
-    limit: number;
-    total: number;
-    totalPages: number;
-  };
-}
-
-// Database entity interfaces
-export interface BaseEntity {
-  id: string;
-  createdAt: Date;
-  updatedAt: Date;
-  isActive: boolean;
-}
-
-export interface TeamMember extends BaseEntity {
-  name: string;
-  position: string;
-  department: string;
-  email: string;
-  phone?: string;
-  bio: string;
-  expertise?: string;
-  achievements?: string;
-  profileImage?: string;
-  images: string[];
-  videos: string[];
-  youtubeUrls: YouTubeUrl[];
-}
-
-export interface SuccessStory extends BaseEntity {
-  studentName: string;
-  program: string;
-  year: number;
-  currentPosition: string;
-  company: string;
-  story: string;
-  impact: string;
-  advice?: string;
-  featured: boolean;
-  studentImage?: string;
-  images: string[];
-  videos: string[];
-  youtubeUrls: YouTubeUrl[];
-}
-
-export interface Blog extends BaseEntity {
-  title: string;
-  slug: string;
-  excerpt: string;
-  content: string;
-  author: string;
-  category: string;
-  tags: string[];
-  publishDate: Date;
-  published: boolean;
-  views: number;
-  featuredImage?: string;
-  images: string[];
-  videos: string[];
-  youtubeUrls: YouTubeUrl[];
-}
-
-export interface News extends BaseEntity {
-  headline: string;
-  summary: string;
-  content: string;
-  location?: string;
-  eventDate?: Date;
-  priority: string;
-  category: string;
-  published: boolean;
-  views: number;
-  featuredImage?: string;
-  images: string[];
-  videos: string[];
-  youtubeUrls: YouTubeUrl[];
-}
-
-// File upload interfaces
-export interface FileUploadConfig {
-  maxSize: number; // in bytes
-  allowedTypes: string[];
-  maxFiles: number;
-}
-
-export interface UploadedFile {
-  id: string;
-  originalName: string;
-  filename: string;
-  path: string;
-  mimetype: string;
-  size: number;
+export interface imageData {
   url: string;
+  alt: string;
+  blogPostId: null | string;
+  successStoryId: null | string;
+  teamMemberId: null | string;
+  newsUpdateId: null | string;
+}
+export interface videoData {
+  url: string;
+  title: string;
+  blogPostId: null | string;
+  successStoryId: null | string;
+  teamMemberId: null | string;
+  newsUpdateId: null | string;
 }
 
-// // Form validation types
-// export interface ValidationError {
-//   field: string;
-//   message: string;
-// }
-
-// export interface FormValidationResult {
-//   isValid: boolean;
-//   errors: ValidationError[];
-// }
-
-// // Media management types
-// export interface MediaLibrary {
-//   id: string;
-//   type: 'image' | 'video';
-//   originalName: string;
-//   filename: string;
-//   path: string;
-//   url: string;
-//   size: number;
-//   mimetype: string;
-//   alt?: string;
-//   caption?: string;
-//   uploadedBy: string;
-//   uploadedAt: Date;
-//   usageCount: number;
-// }

@@ -1,264 +1,53 @@
-import { ContentFormProps, Resource, YouTubeUrl } from "@/lib/types";
-import { Eye, ImageIcon, Save, Trash2, Video, Youtube, Bold, Italic, List, ListOrdered, Heading1, Heading2, Heading3, Underline, Strikethrough } from "lucide-react";
+import { BlogData, ContentData, ContentFormProps, NewsData, Resource, SuccessStoryData, TeamMemberData, YouTubeUrl } from "@/lib/types";
+import {ImageIcon, Save, Trash2, Video, Youtube, AlertCircle } from "lucide-react";
 import { useRef, useState } from "react";
-import { useEditor, EditorContent } from '@tiptap/react';
-import StarterKit from '@tiptap/starter-kit';
-import {Underline as TiptapUnderline} from '@tiptap/extension-underline';
-import { Level } from '@tiptap/extension-heading';
-import { PreviewContent } from "./PreviewMode";
+import { TiptapEditor } from "./TipTapEditor";
+import { CreateTeamMember } from "@/app/actions/team-member";
+import { toast } from "sonner";
+import { CreateSuccessStory } from "@/app/actions/success-stories";
+import { CreateBlog } from "@/app/actions/blogs";
+import { CreateNews } from "@/app/actions/news";
 
-// Tiptap Editor Component
-const TiptapEditor = ({ 
-  value, 
-  onChange, 
-  placeholder
-}: { 
-  value: string; 
-  onChange: (value: string) => void; 
-  placeholder: string;
-  required?: boolean;
-}) => {
-  const editor = useEditor({
-    extensions: [
-      StarterKit.configure({
-        heading: {
-          levels: [1, 2, 3],
-        },
-        bulletList: {
-          keepMarks: true,
-          keepAttributes: false,
-        },
-        orderedList: {
-          keepMarks: true,
-          keepAttributes: false,
-        },
-      }),
-      TiptapUnderline,
-    ],
-    content: value || '',
-    onUpdate: ({ editor }) => {
-      onChange(editor.getHTML());
-    },
-    immediatelyRender: false,
-    editorProps: {
-      attributes: {
-        class: 'prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto focus:outline-none min-h-[120px] p-4 prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-ul:list-disc prose-ol:list-decimal prose-li:my-1',
-      },
-    },
-  });
-
-  const setHeading = (level: Level) => {
-    if (editor?.isActive('heading', { level })) {
-      editor.chain().focus().setParagraph().run();
-    } else {
-      editor?.chain().focus().toggleHeading({ level }).run();
-    }
-  };
-
-  if (!editor) {
-    return null;
-  }
-
-  return (
-    <div className="border border-gray-300 rounded-xl focus-within:ring-2 focus-within:ring-indigo-500 focus-within:border-transparent transition-all duration-300">
-      {/* Add custom styles for editor content */}
-      <style jsx>{`
-        .ProseMirror h1 {
-          font-size: 1.875rem;
-          font-weight: bold;
-          margin-bottom: 1rem;
-          line-height: 1.2;
-        }
-        .ProseMirror h2 {
-          font-size: 1.5rem;
-          font-weight: bold;
-          margin-bottom: 0.75rem;
-          line-height: 1.3;
-        }
-        .ProseMirror h3 {
-          font-size: 1.25rem;
-          font-weight: bold;
-          margin-bottom: 0.5rem;
-          line-height: 1.4;
-        }
-        .ProseMirror ul {
-          list-style-type: disc;
-          margin-left: 1.5rem;
-          margin-bottom: 1rem;
-        }
-        .ProseMirror ol {
-          list-style-type: decimal;
-          margin-left: 1.5rem;
-          margin-bottom: 1rem;
-        }
-        .ProseMirror li {
-          margin-bottom: 0.25rem;
-        }
-        .ProseMirror u {
-          text-decoration: underline;
-        }
-        .ProseMirror strong {
-          font-weight: bold;
-        }
-        .ProseMirror em {
-          font-style: italic;
-        }
-        .ProseMirror s {
-          text-decoration: line-through;
-        }
-        .ProseMirror p {
-          margin-bottom: 0.75rem;
-        }
-      `}</style>
-      {/* Toolbar */}
-      <div className="border-b border-gray-200 p-3 flex flex-wrap gap-1 bg-gray-50 rounded-t-xl">
-        {/* Heading Buttons */}
-        <div className="flex gap-1 mr-2 border-r border-gray-300 pr-2">
-          <button
-            type="button"
-            onClick={() => setHeading(1)}
-            className={`p-2 rounded-md transition-colors ${
-              editor.isActive('heading', { level: 1 })
-                ? 'bg-indigo-100 text-indigo-600'
-                : 'hover:bg-gray-200 text-gray-600'
-            }`}
-            title="Heading 1"
-          >
-            <Heading1 className="w-4 h-4" />
-          </button>
-          <button
-            type="button"
-            onClick={() => setHeading(2)}
-            className={`p-2 rounded-md transition-colors ${
-              editor.isActive('heading', { level: 2 })
-                ? 'bg-indigo-100 text-indigo-600'
-                : 'hover:bg-gray-200 text-gray-600'
-            }`}
-            title="Heading 2"
-          >
-            <Heading2 className="w-4 h-4" />
-          </button>
-          <button
-            type="button"
-            onClick={() => setHeading(3)}
-            className={`p-2 rounded-md transition-colors ${
-              editor.isActive('heading', { level: 3 })
-                ? 'bg-indigo-100 text-indigo-600'
-                : 'hover:bg-gray-200 text-gray-600'
-            }`}
-            title="Heading 3"
-          >
-            <Heading3 className="w-4 h-4" />
-          </button>
-        </div>
-
-        {/* Text Formatting */}
-        <div className="flex gap-1 mr-2 border-r border-gray-300 pr-2">
-          <button
-            type="button"
-            onClick={() => editor.chain().focus().toggleBold().run()}
-            className={`p-2 rounded-md transition-colors ${
-              editor.isActive('bold')
-                ? 'bg-indigo-100 text-indigo-600'
-                : 'hover:bg-gray-200 text-gray-600'
-            }`}
-            title="Bold"
-          >
-            <Bold className="w-4 h-4" />
-          </button>
-          <button
-            type="button"
-            onClick={() => editor.chain().focus().toggleItalic().run()}
-            className={`p-2 rounded-md transition-colors ${
-              editor.isActive('italic')
-                ? 'bg-indigo-100 text-indigo-600'
-                : 'hover:bg-gray-200 text-gray-600'
-            }`}
-            title="Italic"
-          >
-            <Italic className="w-4 h-4" />
-          </button>
-          <button
-            type="button"
-            onClick={() => editor.chain().focus().toggleUnderline().run()}
-            className={`p-2 rounded-md transition-colors ${
-              editor.isActive('underline')
-                ? 'bg-indigo-100 text-indigo-600'
-                : 'hover:bg-gray-200 text-gray-600'
-            }`}
-            title="Underline"
-          >
-            <Underline className="w-4 h-4" />
-          </button>
-          <button
-            type="button"
-            onClick={() => editor.chain().focus().toggleStrike().run()}
-            className={`p-2 rounded-md transition-colors ${
-              editor.isActive('strike')
-                ? 'bg-indigo-100 text-indigo-600'
-                : 'hover:bg-gray-200 text-gray-600'
-            }`}
-            title="Strikethrough"
-          >
-            <Strikethrough className="w-4 h-4" />
-          </button>
-        </div>
-
-        {/* Lists */}
-        <div className="flex gap-1">
-          <button
-            type="button"
-            onClick={() => editor.chain().focus().toggleBulletList().run()}
-            className={`p-2 rounded-md transition-colors ${
-              editor.isActive('bulletList')
-                ? 'bg-indigo-100 text-indigo-600'
-                : 'hover:bg-gray-200 text-gray-600'
-            }`}
-            title="Bullet List"
-          >
-            <List className="w-4 h-4" />
-          </button>
-          <button
-            type="button"
-            onClick={() => editor.chain().focus().toggleOrderedList().run()}
-            className={`p-2 rounded-md transition-colors ${
-              editor.isActive('orderedList')
-                ? 'bg-indigo-100 text-indigo-600'
-                : 'hover:bg-gray-200 text-gray-600'
-            }`}
-            title="Numbered List"
-          >
-            <ListOrdered className="w-4 h-4" />
-          </button>
-        </div>
-      </div>
-
-      {/* Editor Content */}
-      <div className="min-h-[120px] relative">
-        <EditorContent 
-          editor={editor} 
-          className="focus:outline-none [&_.ProseMirror]:focus:outline-none [&_.ProseMirror_h1]:text-3xl [&_.ProseMirror_h1]:font-bold [&_.ProseMirror_h1]:mb-4 [&_.ProseMirror_h2]:text-2xl [&_.ProseMirror_h2]:font-bold [&_.ProseMirror_h2]:mb-3 [&_.ProseMirror_h3]:text-xl [&_.ProseMirror_h3]:font-bold [&_.ProseMirror_h3]:mb-2 [&_.ProseMirror_ul]:list-disc [&_.ProseMirror_ul]:ml-6 [&_.ProseMirror_ol]:list-decimal [&_.ProseMirror_ol]:ml-6 [&_.ProseMirror_li]:mb-1 [&_.ProseMirror_u]:underline [&_.ProseMirror_strong]:font-bold [&_.ProseMirror_em]:italic [&_.ProseMirror_s]:line-through"
-        />
-        {(!value || value === '<p></p>') && (
-          <div className="absolute top-4 left-4 text-gray-400 pointer-events-none">
-            {placeholder}
-          </div>
-        )}
-      </div>
-    </div>
-  );
-};
-
-export const ContentForm = ({ config, previewMode, setPreviewMode }: ContentFormProps) => {
-  const [formData, setFormData] = useState<Record<string, any>>({});
+export const ContentForm = ({ config, activeTab, setFormData, formData, errors, setErrors }: ContentFormProps) => {
+  
   const [images, setImages] = useState<Resource[]>([]);
   const [videos, setVideos] = useState<Resource[]>([]);
   const [youtubeUrls, setYoutubeUrls] = useState<YouTubeUrl[]>([{ url: '', title: '' }]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const videoInputRef = useRef<HTMLInputElement>(null);
 
-  const handleInputChange = (name: string, value: any) => {
-    setFormData(prev => ({ ...prev, [name]: value }));
+  const handleInputChange = (name: string, value: string) => {
+    setFormData(prev => ({ 
+      ...prev, 
+      [name]: value 
+    } as Partial<ContentData>));
+    
+    // Clear error for this field when user starts typing
+    if (errors[name]) {
+      setErrors(prev => {
+        const newErrors = { ...prev };
+        delete newErrors[name];
+        return newErrors;
+      });
+    }
+  };
+
+  const validateForm = (): boolean => {
+    const newErrors: Record<string, string> = {};
+
+    // Check required fields
+    config.fields.forEach((field) => {
+      if (field.required) {
+        const value = formData[field.name as keyof typeof formData];
+        if (!value || value === "<p></p>") {
+          newErrors[field.name] = `${field.label} is required`;
+        }
+      }
+    });
+    console.log(errors);
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -266,7 +55,7 @@ export const ContentForm = ({ config, previewMode, setPreviewMode }: ContentForm
     const files = Array.from(e.target.files);
     files.forEach(file => {
       const reader = new FileReader();
-      reader.onload = (event) => {
+      reader.onload = () => {
         setImages(prev => [...prev, {
           id: (Date.now() + Math.random()).toString(),
           file,
@@ -312,10 +101,101 @@ export const ContentForm = ({ config, previewMode, setPreviewMode }: ContentForm
     setVideos(prev => prev.filter(video => video.id !== id));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log('Form Data:', { formData, images, videos, youtubeUrls });
-    alert('Content saved successfully!');
+  const resetForm = () => {
+    setFormData({});
+    setImages([]);
+    setVideos([]);
+    setYoutubeUrls([{ url: '', title: '' }]);
+    setErrors({});
+  };
+
+  const handleSubmit = async () => {
+    // Validate form first
+    if (!validateForm()) {
+      toast("Please fill in all required fields");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      let typedData: ContentData;
+      
+      switch (activeTab) {
+        case "team-members":
+          typedData = formData as TeamMemberData;
+          const memberResult = await CreateTeamMember({
+            formData: typedData,
+            images,
+            videos,
+            youtubeUrls
+          });
+          
+          if (memberResult.success) {
+            toast( "Team member created successfully");
+            resetForm();
+          } else {
+            toast("Failed to create team member");
+          }
+          break;
+
+        case "success-stories":
+          typedData = formData as SuccessStoryData;
+          const storyResult = await CreateSuccessStory({
+            formData: typedData,
+            images,
+            videos,
+            youtubeUrls
+          });
+          
+          if (storyResult.success) {
+            toast( "Success story created successfully");
+            resetForm();
+          } else {
+            toast("Failed to create success story");
+          }
+          break;
+
+        case "blogs":
+          typedData = formData as BlogData;
+          const blogResult = await CreateBlog({
+            formData: typedData,
+            images,
+            videos,
+            youtubeUrls
+          });
+          
+          if (blogResult.success) {
+            toast( "Success story created successfully");
+            resetForm();
+          } else {
+            toast("Failed to create success story");
+          }
+          break;
+
+        case "news":
+          typedData = formData as NewsData;
+          const newsResult = await CreateNews({
+            formData: typedData,
+            images,
+            videos,
+            youtubeUrls
+          });
+          
+          if (newsResult.success) {
+            toast( "Success story created successfully");
+            resetForm();
+          } else {
+            toast("Failed to create success story");
+          }
+          break;
+      }
+    } catch (error) {
+      console.error("Submit error:", error);
+      toast("An unexpected error occurred");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -329,34 +209,39 @@ export const ContentForm = ({ config, previewMode, setPreviewMode }: ContentForm
           </div>
           <div className="flex space-x-3">
             <button
-              onClick={() => setPreviewMode(!previewMode)}
-              className="flex items-center space-x-2 px-6 py-3 bg-indigo-100 text-indigo-600 rounded-xl hover:bg-indigo-200 transition-all duration-300"
-            >
-              <Eye className="w-5 h-5" />
-              <span>{previewMode ? 'Edit' : 'Preview'}</span>
-            </button>
-            <button
               type="button"
-              onClick={() => {
-                console.log('Form Data:', { formData, images, videos, youtubeUrls });
-                alert('Content saved successfully!');
-              }}
-              className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              onClick={handleSubmit}
+              disabled={isSubmitting}
+              className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Save className="w-5 h-5" />
-              <span>Save Content</span>
+              <span>{isSubmitting ? 'Saving...' : 'Save Content'}</span>
             </button>
           </div>
         </div>
       </div>
 
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
-        {!previewMode ? (
           <>
             {/* Form Section */}
             <div className="xl:col-span-2">
               <div className="bg-white rounded-2xl shadow-lg p-8">
                 <h3 className="text-2xl font-bold text-gray-800 mb-6">Content Details</h3>
+                
+                {/* Error Summary */}
+                {Object.keys(errors).length > 0 && (
+                  <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
+                    <AlertCircle className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="text-sm font-semibold text-red-800 mb-2">Please fix the following errors:</h4>
+                      <ul className="text-sm text-red-700 space-y-1">
+                        {Object.values(errors).map((error, idx) => (
+                          <li key={idx}>• {error}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                )}
                 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
                   {config.fields.map((field) => (
@@ -369,33 +254,63 @@ export const ContentForm = ({ config, previewMode, setPreviewMode }: ContentForm
                       {field.type === 'textarea' ? (
                         <div className="relative">
                           <TiptapEditor
-                            value={formData[field.name] || ''}
+                            value={formData[field.name as keyof typeof formData] || ''}
                             onChange={(value) => handleInputChange(field.name, value)}
                             placeholder={`Enter ${field.label.toLowerCase()}`}
                             required={field.required}
                           />
+                          {errors[field.name] && (
+                            <p className="text-sm text-red-600 mt-2 flex items-center gap-1">
+                              <AlertCircle className="w-4 h-4" />
+                              {errors[field.name]}
+                            </p>
+                          )}
                         </div>
                       ) : field.type === 'select' ? (
-                        <select
-                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300"
-                          value={formData[field.name as keyof typeof formData] || ''}
-                          onChange={(e) => handleInputChange(field.name, e.target.value)}
-                          required={field.required}
-                        >
-                          <option value="">Select {field.label}</option>
-                          {field.options?.map((option: string) => (
-                            <option key={option} value={option}>{option}</option>
-                          ))}
-                        </select>
+                        <div>
+                          <select
+                            className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:border-transparent transition-all duration-300 ${
+                              errors[field.name]
+                                ? 'border-red-500 focus:ring-red-500'
+                                : 'border-gray-300 focus:ring-indigo-500'
+                            }`}
+                            value={formData[field.name as keyof typeof formData] || ''}
+                            onChange={(e) => handleInputChange(field.name, e.target.value)}
+                            required={field.required}
+                          >
+                            <option value="">Select {field.label}</option>
+                            {field.options?.map((option: string) => (
+                              <option key={option} value={option}>{option}</option>
+                            ))}
+                          </select>
+                          {errors[field.name] && (
+                            <p className="text-sm text-red-600 mt-2 flex items-center gap-1">
+                              <AlertCircle className="w-4 h-4" />
+                              {errors[field.name]}
+                            </p>
+                          )}
+                        </div>
                       ) : (
-                        <input
-                          type={field.type}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300"
-                          placeholder={`Enter ${field.label.toLowerCase()}`}
-                          value={formData[field.name as keyof typeof formData] || ''}
-                          onChange={(e) => handleInputChange(field.name, e.target.value)}
-                          required={field.required}
-                        />
+                        <div>
+                          <input
+                            type={field.type}
+                            className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:border-transparent transition-all duration-300 ${
+                              errors[field.name]
+                                ? 'border-red-500 focus:ring-red-500'
+                                : 'border-gray-300 focus:ring-indigo-500'
+                            }`}
+                            placeholder={`Enter ${field.label.toLowerCase()}`}
+                            value={formData[field.name as keyof typeof formData] || ''}
+                            onChange={(e) => handleInputChange(field.name, e.target.value)}
+                            required={field.required}
+                          />
+                          {errors[field.name] && (
+                            <p className="text-sm text-red-600 mt-2 flex items-center gap-1">
+                              <AlertCircle className="w-4 h-4" />
+                              {errors[field.name]}
+                            </p>
+                          )}
+                        </div>
                       )}
                     </div>
                   ))}
@@ -550,18 +465,7 @@ export const ContentForm = ({ config, previewMode, setPreviewMode }: ContentForm
               </div>
             </div>
           </>
-        ) : (
-          /* Preview Mode */
-          <div className="xl:col-span-3">
-            <PreviewContent 
-              formData={formData}
-              images={images}
-              videos={videos}
-              youtubeUrls={youtubeUrls}
-              config={config}
-            />
-          </div>
-        )}
+        
       </div>
     </div>
   );

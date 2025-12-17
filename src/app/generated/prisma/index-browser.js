@@ -222,6 +222,42 @@ exports.Prisma.NewsUpdateScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.ImageScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  alt: 'alt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  blogPostId: 'blogPostId',
+  teamMemberId: 'teamMemberId',
+  newsUpdateId: 'newsUpdateId',
+  successStoryId: 'successStoryId'
+};
+
+exports.Prisma.VideoScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  title: 'title',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  blogPostId: 'blogPostId',
+  teamMemberId: 'teamMemberId',
+  newsUpdateId: 'newsUpdateId',
+  successStoryId: 'successStoryId'
+};
+
+exports.Prisma.YoutubeUrlScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  title: 'title',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  blogPostId: 'blogPostId',
+  teamMemberId: 'teamMemberId',
+  newsUpdateId: 'newsUpdateId',
+  successStoryId: 'successStoryId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -267,7 +303,10 @@ exports.Prisma.ModelName = {
   TeamMember: 'TeamMember',
   SuccessStory: 'SuccessStory',
   BlogPost: 'BlogPost',
-  NewsUpdate: 'NewsUpdate'
+  NewsUpdate: 'NewsUpdate',
+  Image: 'Image',
+  Video: 'Video',
+  YoutubeUrl: 'YoutubeUrl'
 };
 
 /**

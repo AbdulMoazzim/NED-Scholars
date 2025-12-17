@@ -78,3 +78,182 @@ model Verification {
 
   @@map("verification")
 }
+
+// Team Members Model
+model TeamMember {
+  id           String       @id @default(cuid())
+  name         String       @db.VarChar(2048)
+  position     String       @db.VarChar(2048)
+  email        String       @unique @db.VarChar(255)
+  phone        String?      @db.VarChar(50)
+  bio          String       @db.VarChar(2048)
+  expertise    String?      @db.VarChar(2048)
+  achievements String?      @db.VarChar(2048)
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  images       Image[]
+  videos       Video[]
+  youtubeUrls  YoutubeUrl[]
+
+  @@map("team_members")
+}
+
+// Success Stories Model
+model SuccessStory {
+  id              String       @id @default(cuid())
+  studentName     String       @db.VarChar(2048)
+  year            Int
+  currentPosition String       @db.VarChar(2048)
+  company         String       @db.VarChar(2048)
+  story           String       @db.VarChar(2048)
+  impact          String       @db.VarChar(2048)
+  advice          String?      @db.VarChar(2048)
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+  images          Image[]
+  videos          Video[]
+  youtubeUrls     YoutubeUrl[]
+
+  @@map("success_stories")
+}
+
+// Blog Posts Model
+model BlogPost {
+  id          String       @id @default(cuid())
+  slug        String       @unique @db.VarChar(255)
+  title       String       @db.VarChar(2048)
+  excerpt     String       @db.VarChar(2048)
+  content     String       @db.VarChar(2048)
+  author      String       @db.VarChar(2048)
+  category    BlogCategory
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  images      Image[]
+  videos      Video[]
+  youtubeUrls YoutubeUrl[]
+
+  @@map("blog_posts")
+}
+
+// News Updates Model
+model NewsUpdate {
+  id          String       @id @default(cuid())
+  headline    String       @db.VarChar(2048)
+  summary     String       @db.VarChar(2048)
+  content     String       @db.VarChar(2048)
+  location    String?      @db.VarChar(2048)
+  eventDate   DateTime?
+  priority    NewsPriority
+  category    NewsCategory
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  images      Image[]
+  videos      Video[]
+  youtubeUrls YoutubeUrl[]
+
+  @@map("news_updates")
+}
+
+// Images Model
+model Image {
+  id        String   @id @default(cuid())
+  url       String   @db.VarChar(2048)
+  alt       String?  @db.VarChar(512)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Foreign keys
+  blogPostId String?
+  blogPost   BlogPost? @relation(fields: [blogPostId], references: [id], onDelete: Cascade)
+
+  teamMemberId String?
+  teamMember   TeamMember? @relation(fields: [teamMemberId], references: [id], onDelete: Cascade)
+
+  newsUpdateId String?
+  newsUpdate   NewsUpdate? @relation(fields: [newsUpdateId], references: [id], onDelete: Cascade)
+
+  successStoryId String?
+  successStory   SuccessStory? @relation(fields: [successStoryId], references: [id], onDelete: Cascade)
+
+  @@map("images")
+}
+
+// Videos Model
+model Video {
+  id        String   @id @default(cuid())
+  url       String   @db.VarChar(2048)
+  title     String?  @db.VarChar(512)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Foreign keys
+  blogPostId String?
+  blogPost   BlogPost? @relation(fields: [blogPostId], references: [id], onDelete: Cascade)
+
+  teamMemberId String?
+  teamMember   TeamMember? @relation(fields: [teamMemberId], references: [id], onDelete: Cascade)
+
+  newsUpdateId String?
+  newsUpdate   NewsUpdate? @relation(fields: [newsUpdateId], references: [id], onDelete: Cascade)
+
+  successStoryId String?
+  successStory   SuccessStory? @relation(fields: [successStoryId], references: [id], onDelete: Cascade)
+
+  @@map("videos")
+}
+
+// YouTube URLs Model
+model YoutubeUrl {
+  id        String   @id @default(cuid())
+  url       String   @db.VarChar(2048)
+  title     String?  @db.VarChar(512)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Foreign keys
+  blogPostId String?
+  blogPost   BlogPost? @relation(fields: [blogPostId], references: [id], onDelete: Cascade)
+
+  teamMemberId String?
+  teamMember   TeamMember? @relation(fields: [teamMemberId], references: [id], onDelete: Cascade)
+
+  newsUpdateId String?
+  newsUpdate   NewsUpdate? @relation(fields: [newsUpdateId], references: [id], onDelete: Cascade)
+
+  successStoryId String?
+  successStory   SuccessStory? @relation(fields: [successStoryId], references: [id], onDelete: Cascade)
+
+  @@map("youtube_urls")
+}
+
+// Enums for Blog Categories
+enum BlogCategory {
+  TECHNOLOGY
+  EDUCATION
+  RESEARCH
+  INNOVATION
+  STUDENT_LIFE
+
+  @@map("blog_category")
+}
+
+// Enums for News Priority
+enum NewsPriority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+
+  @@map("news_priority")
+}
+
+// Enums for News Categories
+enum NewsCategory {
+  ANNOUNCEMENT
+  EVENT
+  ACHIEVEMENT
+  RESEARCH
+  PARTNERSHIP
+
+  @@map("news_category")
+}
