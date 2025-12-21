@@ -6522,6 +6522,7 @@ export namespace Prisma {
 
   export type TeamMemberMinAggregateOutputType = {
     id: string | null
+    slug: string | null
     name: string | null
     position: string | null
     email: string | null
@@ -6535,6 +6536,7 @@ export namespace Prisma {
 
   export type TeamMemberMaxAggregateOutputType = {
     id: string | null
+    slug: string | null
     name: string | null
     position: string | null
     email: string | null
@@ -6548,6 +6550,7 @@ export namespace Prisma {
 
   export type TeamMemberCountAggregateOutputType = {
     id: number
+    slug: number
     name: number
     position: number
     email: number
@@ -6563,6 +6566,7 @@ export namespace Prisma {
 
   export type TeamMemberMinAggregateInputType = {
     id?: true
+    slug?: true
     name?: true
     position?: true
     email?: true
@@ -6576,6 +6580,7 @@ export namespace Prisma {
 
   export type TeamMemberMaxAggregateInputType = {
     id?: true
+    slug?: true
     name?: true
     position?: true
     email?: true
@@ -6589,6 +6594,7 @@ export namespace Prisma {
 
   export type TeamMemberCountAggregateInputType = {
     id?: true
+    slug?: true
     name?: true
     position?: true
     email?: true
@@ -6675,6 +6681,7 @@ export namespace Prisma {
 
   export type TeamMemberGroupByOutputType = {
     id: string
+    slug: string
     name: string
     position: string
     email: string
@@ -6705,6 +6712,7 @@ export namespace Prisma {
 
   export type TeamMemberSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    slug?: boolean
     name?: boolean
     position?: boolean
     email?: boolean
@@ -6722,6 +6730,7 @@ export namespace Prisma {
 
   export type TeamMemberSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    slug?: boolean
     name?: boolean
     position?: boolean
     email?: boolean
@@ -6735,6 +6744,7 @@ export namespace Prisma {
 
   export type TeamMemberSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    slug?: boolean
     name?: boolean
     position?: boolean
     email?: boolean
@@ -6748,6 +6758,7 @@ export namespace Prisma {
 
   export type TeamMemberSelectScalar = {
     id?: boolean
+    slug?: boolean
     name?: boolean
     position?: boolean
     email?: boolean
@@ -6759,7 +6770,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type TeamMemberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "position" | "email" | "phone" | "bio" | "expertise" | "achievements" | "createdAt" | "updatedAt", ExtArgs["result"]["teamMember"]>
+  export type TeamMemberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "slug" | "name" | "position" | "email" | "phone" | "bio" | "expertise" | "achievements" | "createdAt" | "updatedAt", ExtArgs["result"]["teamMember"]>
   export type TeamMemberInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     images?: boolean | TeamMember$imagesArgs<ExtArgs>
     videos?: boolean | TeamMember$videosArgs<ExtArgs>
@@ -6778,6 +6789,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      slug: string
       name: string
       position: string
       email: string
@@ -7214,6 +7226,7 @@ export namespace Prisma {
    */
   interface TeamMemberFieldRefs {
     readonly id: FieldRef<"TeamMember", 'String'>
+    readonly slug: FieldRef<"TeamMember", 'String'>
     readonly name: FieldRef<"TeamMember", 'String'>
     readonly position: FieldRef<"TeamMember", 'String'>
     readonly email: FieldRef<"TeamMember", 'String'>
@@ -7723,6 +7736,7 @@ export namespace Prisma {
 
   export type SuccessStoryMinAggregateOutputType = {
     id: string | null
+    slug: string | null
     studentName: string | null
     year: number | null
     currentPosition: string | null
@@ -7736,6 +7750,7 @@ export namespace Prisma {
 
   export type SuccessStoryMaxAggregateOutputType = {
     id: string | null
+    slug: string | null
     studentName: string | null
     year: number | null
     currentPosition: string | null
@@ -7749,6 +7764,7 @@ export namespace Prisma {
 
   export type SuccessStoryCountAggregateOutputType = {
     id: number
+    slug: number
     studentName: number
     year: number
     currentPosition: number
@@ -7772,6 +7788,7 @@ export namespace Prisma {
 
   export type SuccessStoryMinAggregateInputType = {
     id?: true
+    slug?: true
     studentName?: true
     year?: true
     currentPosition?: true
@@ -7785,6 +7802,7 @@ export namespace Prisma {
 
   export type SuccessStoryMaxAggregateInputType = {
     id?: true
+    slug?: true
     studentName?: true
     year?: true
     currentPosition?: true
@@ -7798,6 +7816,7 @@ export namespace Prisma {
 
   export type SuccessStoryCountAggregateInputType = {
     id?: true
+    slug?: true
     studentName?: true
     year?: true
     currentPosition?: true
@@ -7898,12 +7917,13 @@ export namespace Prisma {
 
   export type SuccessStoryGroupByOutputType = {
     id: string
+    slug: string
     studentName: string
     year: number
-    currentPosition: string
-    company: string
+    currentPosition: string | null
+    company: string | null
     story: string
-    impact: string
+    impact: string | null
     advice: string | null
     createdAt: Date
     updatedAt: Date
@@ -7930,6 +7950,7 @@ export namespace Prisma {
 
   export type SuccessStorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    slug?: boolean
     studentName?: boolean
     year?: boolean
     currentPosition?: boolean
@@ -7947,6 +7968,7 @@ export namespace Prisma {
 
   export type SuccessStorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    slug?: boolean
     studentName?: boolean
     year?: boolean
     currentPosition?: boolean
@@ -7960,6 +7982,7 @@ export namespace Prisma {
 
   export type SuccessStorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    slug?: boolean
     studentName?: boolean
     year?: boolean
     currentPosition?: boolean
@@ -7973,6 +7996,7 @@ export namespace Prisma {
 
   export type SuccessStorySelectScalar = {
     id?: boolean
+    slug?: boolean
     studentName?: boolean
     year?: boolean
     currentPosition?: boolean
@@ -7984,7 +8008,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type SuccessStoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "studentName" | "year" | "currentPosition" | "company" | "story" | "impact" | "advice" | "createdAt" | "updatedAt", ExtArgs["result"]["successStory"]>
+  export type SuccessStoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "slug" | "studentName" | "year" | "currentPosition" | "company" | "story" | "impact" | "advice" | "createdAt" | "updatedAt", ExtArgs["result"]["successStory"]>
   export type SuccessStoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     images?: boolean | SuccessStory$imagesArgs<ExtArgs>
     videos?: boolean | SuccessStory$videosArgs<ExtArgs>
@@ -8003,12 +8027,13 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      slug: string
       studentName: string
       year: number
-      currentPosition: string
-      company: string
+      currentPosition: string | null
+      company: string | null
       story: string
-      impact: string
+      impact: string | null
       advice: string | null
       createdAt: Date
       updatedAt: Date
@@ -8439,6 +8464,7 @@ export namespace Prisma {
    */
   interface SuccessStoryFieldRefs {
     readonly id: FieldRef<"SuccessStory", 'String'>
+    readonly slug: FieldRef<"SuccessStory", 'String'>
     readonly studentName: FieldRef<"SuccessStory", 'String'>
     readonly year: FieldRef<"SuccessStory", 'Int'>
     readonly currentPosition: FieldRef<"SuccessStory", 'String'>
@@ -10116,6 +10142,7 @@ export namespace Prisma {
 
   export type NewsUpdateMinAggregateOutputType = {
     id: string | null
+    slug: string | null
     headline: string | null
     summary: string | null
     content: string | null
@@ -10129,6 +10156,7 @@ export namespace Prisma {
 
   export type NewsUpdateMaxAggregateOutputType = {
     id: string | null
+    slug: string | null
     headline: string | null
     summary: string | null
     content: string | null
@@ -10142,6 +10170,7 @@ export namespace Prisma {
 
   export type NewsUpdateCountAggregateOutputType = {
     id: number
+    slug: number
     headline: number
     summary: number
     content: number
@@ -10157,6 +10186,7 @@ export namespace Prisma {
 
   export type NewsUpdateMinAggregateInputType = {
     id?: true
+    slug?: true
     headline?: true
     summary?: true
     content?: true
@@ -10170,6 +10200,7 @@ export namespace Prisma {
 
   export type NewsUpdateMaxAggregateInputType = {
     id?: true
+    slug?: true
     headline?: true
     summary?: true
     content?: true
@@ -10183,6 +10214,7 @@ export namespace Prisma {
 
   export type NewsUpdateCountAggregateInputType = {
     id?: true
+    slug?: true
     headline?: true
     summary?: true
     content?: true
@@ -10269,6 +10301,7 @@ export namespace Prisma {
 
   export type NewsUpdateGroupByOutputType = {
     id: string
+    slug: string
     headline: string
     summary: string
     content: string
@@ -10299,6 +10332,7 @@ export namespace Prisma {
 
   export type NewsUpdateSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    slug?: boolean
     headline?: boolean
     summary?: boolean
     content?: boolean
@@ -10316,6 +10350,7 @@ export namespace Prisma {
 
   export type NewsUpdateSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    slug?: boolean
     headline?: boolean
     summary?: boolean
     content?: boolean
@@ -10329,6 +10364,7 @@ export namespace Prisma {
 
   export type NewsUpdateSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    slug?: boolean
     headline?: boolean
     summary?: boolean
     content?: boolean
@@ -10342,6 +10378,7 @@ export namespace Prisma {
 
   export type NewsUpdateSelectScalar = {
     id?: boolean
+    slug?: boolean
     headline?: boolean
     summary?: boolean
     content?: boolean
@@ -10353,7 +10390,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type NewsUpdateOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "headline" | "summary" | "content" | "location" | "eventDate" | "priority" | "category" | "createdAt" | "updatedAt", ExtArgs["result"]["newsUpdate"]>
+  export type NewsUpdateOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "slug" | "headline" | "summary" | "content" | "location" | "eventDate" | "priority" | "category" | "createdAt" | "updatedAt", ExtArgs["result"]["newsUpdate"]>
   export type NewsUpdateInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     images?: boolean | NewsUpdate$imagesArgs<ExtArgs>
     videos?: boolean | NewsUpdate$videosArgs<ExtArgs>
@@ -10372,6 +10409,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      slug: string
       headline: string
       summary: string
       content: string
@@ -10808,6 +10846,7 @@ export namespace Prisma {
    */
   interface NewsUpdateFieldRefs {
     readonly id: FieldRef<"NewsUpdate", 'String'>
+    readonly slug: FieldRef<"NewsUpdate", 'String'>
     readonly headline: FieldRef<"NewsUpdate", 'String'>
     readonly summary: FieldRef<"NewsUpdate", 'String'>
     readonly content: FieldRef<"NewsUpdate", 'String'>
@@ -15004,6 +15043,7 @@ export namespace Prisma {
 
   export const TeamMemberScalarFieldEnum: {
     id: 'id',
+    slug: 'slug',
     name: 'name',
     position: 'position',
     email: 'email',
@@ -15020,6 +15060,7 @@ export namespace Prisma {
 
   export const SuccessStoryScalarFieldEnum: {
     id: 'id',
+    slug: 'slug',
     studentName: 'studentName',
     year: 'year',
     currentPosition: 'currentPosition',
@@ -15051,6 +15092,7 @@ export namespace Prisma {
 
   export const NewsUpdateScalarFieldEnum: {
     id: 'id',
+    slug: 'slug',
     headline: 'headline',
     summary: 'summary',
     content: 'content',
@@ -15567,6 +15609,7 @@ export namespace Prisma {
     OR?: TeamMemberWhereInput[]
     NOT?: TeamMemberWhereInput | TeamMemberWhereInput[]
     id?: StringFilter<"TeamMember"> | string
+    slug?: StringFilter<"TeamMember"> | string
     name?: StringFilter<"TeamMember"> | string
     position?: StringFilter<"TeamMember"> | string
     email?: StringFilter<"TeamMember"> | string
@@ -15583,6 +15626,7 @@ export namespace Prisma {
 
   export type TeamMemberOrderByWithRelationInput = {
     id?: SortOrder
+    slug?: SortOrder
     name?: SortOrder
     position?: SortOrder
     email?: SortOrder
@@ -15599,6 +15643,7 @@ export namespace Prisma {
 
   export type TeamMemberWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    slug?: string
     email?: string
     AND?: TeamMemberWhereInput | TeamMemberWhereInput[]
     OR?: TeamMemberWhereInput[]
@@ -15614,10 +15659,11 @@ export namespace Prisma {
     images?: ImageListRelationFilter
     videos?: VideoListRelationFilter
     youtubeUrls?: YoutubeUrlListRelationFilter
-  }, "id" | "email">
+  }, "id" | "slug" | "email">
 
   export type TeamMemberOrderByWithAggregationInput = {
     id?: SortOrder
+    slug?: SortOrder
     name?: SortOrder
     position?: SortOrder
     email?: SortOrder
@@ -15637,6 +15683,7 @@ export namespace Prisma {
     OR?: TeamMemberScalarWhereWithAggregatesInput[]
     NOT?: TeamMemberScalarWhereWithAggregatesInput | TeamMemberScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"TeamMember"> | string
+    slug?: StringWithAggregatesFilter<"TeamMember"> | string
     name?: StringWithAggregatesFilter<"TeamMember"> | string
     position?: StringWithAggregatesFilter<"TeamMember"> | string
     email?: StringWithAggregatesFilter<"TeamMember"> | string
@@ -15653,12 +15700,13 @@ export namespace Prisma {
     OR?: SuccessStoryWhereInput[]
     NOT?: SuccessStoryWhereInput | SuccessStoryWhereInput[]
     id?: StringFilter<"SuccessStory"> | string
+    slug?: StringFilter<"SuccessStory"> | string
     studentName?: StringFilter<"SuccessStory"> | string
     year?: IntFilter<"SuccessStory"> | number
-    currentPosition?: StringFilter<"SuccessStory"> | string
-    company?: StringFilter<"SuccessStory"> | string
+    currentPosition?: StringNullableFilter<"SuccessStory"> | string | null
+    company?: StringNullableFilter<"SuccessStory"> | string | null
     story?: StringFilter<"SuccessStory"> | string
-    impact?: StringFilter<"SuccessStory"> | string
+    impact?: StringNullableFilter<"SuccessStory"> | string | null
     advice?: StringNullableFilter<"SuccessStory"> | string | null
     createdAt?: DateTimeFilter<"SuccessStory"> | Date | string
     updatedAt?: DateTimeFilter<"SuccessStory"> | Date | string
@@ -15669,12 +15717,13 @@ export namespace Prisma {
 
   export type SuccessStoryOrderByWithRelationInput = {
     id?: SortOrder
+    slug?: SortOrder
     studentName?: SortOrder
     year?: SortOrder
-    currentPosition?: SortOrder
-    company?: SortOrder
+    currentPosition?: SortOrderInput | SortOrder
+    company?: SortOrderInput | SortOrder
     story?: SortOrder
-    impact?: SortOrder
+    impact?: SortOrderInput | SortOrder
     advice?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -15685,31 +15734,33 @@ export namespace Prisma {
 
   export type SuccessStoryWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    slug?: string
     AND?: SuccessStoryWhereInput | SuccessStoryWhereInput[]
     OR?: SuccessStoryWhereInput[]
     NOT?: SuccessStoryWhereInput | SuccessStoryWhereInput[]
     studentName?: StringFilter<"SuccessStory"> | string
     year?: IntFilter<"SuccessStory"> | number
-    currentPosition?: StringFilter<"SuccessStory"> | string
-    company?: StringFilter<"SuccessStory"> | string
+    currentPosition?: StringNullableFilter<"SuccessStory"> | string | null
+    company?: StringNullableFilter<"SuccessStory"> | string | null
     story?: StringFilter<"SuccessStory"> | string
-    impact?: StringFilter<"SuccessStory"> | string
+    impact?: StringNullableFilter<"SuccessStory"> | string | null
     advice?: StringNullableFilter<"SuccessStory"> | string | null
     createdAt?: DateTimeFilter<"SuccessStory"> | Date | string
     updatedAt?: DateTimeFilter<"SuccessStory"> | Date | string
     images?: ImageListRelationFilter
     videos?: VideoListRelationFilter
     youtubeUrls?: YoutubeUrlListRelationFilter
-  }, "id">
+  }, "id" | "slug">
 
   export type SuccessStoryOrderByWithAggregationInput = {
     id?: SortOrder
+    slug?: SortOrder
     studentName?: SortOrder
     year?: SortOrder
-    currentPosition?: SortOrder
-    company?: SortOrder
+    currentPosition?: SortOrderInput | SortOrder
+    company?: SortOrderInput | SortOrder
     story?: SortOrder
-    impact?: SortOrder
+    impact?: SortOrderInput | SortOrder
     advice?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -15725,12 +15776,13 @@ export namespace Prisma {
     OR?: SuccessStoryScalarWhereWithAggregatesInput[]
     NOT?: SuccessStoryScalarWhereWithAggregatesInput | SuccessStoryScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"SuccessStory"> | string
+    slug?: StringWithAggregatesFilter<"SuccessStory"> | string
     studentName?: StringWithAggregatesFilter<"SuccessStory"> | string
     year?: IntWithAggregatesFilter<"SuccessStory"> | number
-    currentPosition?: StringWithAggregatesFilter<"SuccessStory"> | string
-    company?: StringWithAggregatesFilter<"SuccessStory"> | string
+    currentPosition?: StringNullableWithAggregatesFilter<"SuccessStory"> | string | null
+    company?: StringNullableWithAggregatesFilter<"SuccessStory"> | string | null
     story?: StringWithAggregatesFilter<"SuccessStory"> | string
-    impact?: StringWithAggregatesFilter<"SuccessStory"> | string
+    impact?: StringNullableWithAggregatesFilter<"SuccessStory"> | string | null
     advice?: StringNullableWithAggregatesFilter<"SuccessStory"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"SuccessStory"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"SuccessStory"> | Date | string
@@ -15822,6 +15874,7 @@ export namespace Prisma {
     OR?: NewsUpdateWhereInput[]
     NOT?: NewsUpdateWhereInput | NewsUpdateWhereInput[]
     id?: StringFilter<"NewsUpdate"> | string
+    slug?: StringFilter<"NewsUpdate"> | string
     headline?: StringFilter<"NewsUpdate"> | string
     summary?: StringFilter<"NewsUpdate"> | string
     content?: StringFilter<"NewsUpdate"> | string
@@ -15838,6 +15891,7 @@ export namespace Prisma {
 
   export type NewsUpdateOrderByWithRelationInput = {
     id?: SortOrder
+    slug?: SortOrder
     headline?: SortOrder
     summary?: SortOrder
     content?: SortOrder
@@ -15854,6 +15908,7 @@ export namespace Prisma {
 
   export type NewsUpdateWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    slug?: string
     AND?: NewsUpdateWhereInput | NewsUpdateWhereInput[]
     OR?: NewsUpdateWhereInput[]
     NOT?: NewsUpdateWhereInput | NewsUpdateWhereInput[]
@@ -15869,10 +15924,11 @@ export namespace Prisma {
     images?: ImageListRelationFilter
     videos?: VideoListRelationFilter
     youtubeUrls?: YoutubeUrlListRelationFilter
-  }, "id">
+  }, "id" | "slug">
 
   export type NewsUpdateOrderByWithAggregationInput = {
     id?: SortOrder
+    slug?: SortOrder
     headline?: SortOrder
     summary?: SortOrder
     content?: SortOrder
@@ -15892,6 +15948,7 @@ export namespace Prisma {
     OR?: NewsUpdateScalarWhereWithAggregatesInput[]
     NOT?: NewsUpdateScalarWhereWithAggregatesInput | NewsUpdateScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"NewsUpdate"> | string
+    slug?: StringWithAggregatesFilter<"NewsUpdate"> | string
     headline?: StringWithAggregatesFilter<"NewsUpdate"> | string
     summary?: StringWithAggregatesFilter<"NewsUpdate"> | string
     content?: StringWithAggregatesFilter<"NewsUpdate"> | string
@@ -16520,6 +16577,7 @@ export namespace Prisma {
 
   export type TeamMemberCreateInput = {
     id?: string
+    slug: string
     name: string
     position: string
     email: string
@@ -16536,6 +16594,7 @@ export namespace Prisma {
 
   export type TeamMemberUncheckedCreateInput = {
     id?: string
+    slug: string
     name: string
     position: string
     email: string
@@ -16552,6 +16611,7 @@ export namespace Prisma {
 
   export type TeamMemberUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     position?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -16568,6 +16628,7 @@ export namespace Prisma {
 
   export type TeamMemberUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     position?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -16584,6 +16645,7 @@ export namespace Prisma {
 
   export type TeamMemberCreateManyInput = {
     id?: string
+    slug: string
     name: string
     position: string
     email: string
@@ -16597,6 +16659,7 @@ export namespace Prisma {
 
   export type TeamMemberUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     position?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -16610,6 +16673,7 @@ export namespace Prisma {
 
   export type TeamMemberUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     position?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -16623,12 +16687,13 @@ export namespace Prisma {
 
   export type SuccessStoryCreateInput = {
     id?: string
+    slug: string
     studentName: string
     year: number
-    currentPosition: string
-    company: string
+    currentPosition?: string | null
+    company?: string | null
     story: string
-    impact: string
+    impact?: string | null
     advice?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -16639,12 +16704,13 @@ export namespace Prisma {
 
   export type SuccessStoryUncheckedCreateInput = {
     id?: string
+    slug: string
     studentName: string
     year: number
-    currentPosition: string
-    company: string
+    currentPosition?: string | null
+    company?: string | null
     story: string
-    impact: string
+    impact?: string | null
     advice?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -16655,12 +16721,13 @@ export namespace Prisma {
 
   export type SuccessStoryUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     studentName?: StringFieldUpdateOperationsInput | string
     year?: IntFieldUpdateOperationsInput | number
-    currentPosition?: StringFieldUpdateOperationsInput | string
-    company?: StringFieldUpdateOperationsInput | string
+    currentPosition?: NullableStringFieldUpdateOperationsInput | string | null
+    company?: NullableStringFieldUpdateOperationsInput | string | null
     story?: StringFieldUpdateOperationsInput | string
-    impact?: StringFieldUpdateOperationsInput | string
+    impact?: NullableStringFieldUpdateOperationsInput | string | null
     advice?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16671,12 +16738,13 @@ export namespace Prisma {
 
   export type SuccessStoryUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     studentName?: StringFieldUpdateOperationsInput | string
     year?: IntFieldUpdateOperationsInput | number
-    currentPosition?: StringFieldUpdateOperationsInput | string
-    company?: StringFieldUpdateOperationsInput | string
+    currentPosition?: NullableStringFieldUpdateOperationsInput | string | null
+    company?: NullableStringFieldUpdateOperationsInput | string | null
     story?: StringFieldUpdateOperationsInput | string
-    impact?: StringFieldUpdateOperationsInput | string
+    impact?: NullableStringFieldUpdateOperationsInput | string | null
     advice?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16687,12 +16755,13 @@ export namespace Prisma {
 
   export type SuccessStoryCreateManyInput = {
     id?: string
+    slug: string
     studentName: string
     year: number
-    currentPosition: string
-    company: string
+    currentPosition?: string | null
+    company?: string | null
     story: string
-    impact: string
+    impact?: string | null
     advice?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -16700,12 +16769,13 @@ export namespace Prisma {
 
   export type SuccessStoryUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     studentName?: StringFieldUpdateOperationsInput | string
     year?: IntFieldUpdateOperationsInput | number
-    currentPosition?: StringFieldUpdateOperationsInput | string
-    company?: StringFieldUpdateOperationsInput | string
+    currentPosition?: NullableStringFieldUpdateOperationsInput | string | null
+    company?: NullableStringFieldUpdateOperationsInput | string | null
     story?: StringFieldUpdateOperationsInput | string
-    impact?: StringFieldUpdateOperationsInput | string
+    impact?: NullableStringFieldUpdateOperationsInput | string | null
     advice?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16713,12 +16783,13 @@ export namespace Prisma {
 
   export type SuccessStoryUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     studentName?: StringFieldUpdateOperationsInput | string
     year?: IntFieldUpdateOperationsInput | number
-    currentPosition?: StringFieldUpdateOperationsInput | string
-    company?: StringFieldUpdateOperationsInput | string
+    currentPosition?: NullableStringFieldUpdateOperationsInput | string | null
+    company?: NullableStringFieldUpdateOperationsInput | string | null
     story?: StringFieldUpdateOperationsInput | string
-    impact?: StringFieldUpdateOperationsInput | string
+    impact?: NullableStringFieldUpdateOperationsInput | string | null
     advice?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16822,6 +16893,7 @@ export namespace Prisma {
 
   export type NewsUpdateCreateInput = {
     id?: string
+    slug: string
     headline: string
     summary: string
     content: string
@@ -16838,6 +16910,7 @@ export namespace Prisma {
 
   export type NewsUpdateUncheckedCreateInput = {
     id?: string
+    slug: string
     headline: string
     summary: string
     content: string
@@ -16854,6 +16927,7 @@ export namespace Prisma {
 
   export type NewsUpdateUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     headline?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
@@ -16870,6 +16944,7 @@ export namespace Prisma {
 
   export type NewsUpdateUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     headline?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
@@ -16886,6 +16961,7 @@ export namespace Prisma {
 
   export type NewsUpdateCreateManyInput = {
     id?: string
+    slug: string
     headline: string
     summary: string
     content: string
@@ -16899,6 +16975,7 @@ export namespace Prisma {
 
   export type NewsUpdateUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     headline?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
@@ -16912,6 +16989,7 @@ export namespace Prisma {
 
   export type NewsUpdateUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     headline?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
@@ -17520,6 +17598,7 @@ export namespace Prisma {
 
   export type TeamMemberCountOrderByAggregateInput = {
     id?: SortOrder
+    slug?: SortOrder
     name?: SortOrder
     position?: SortOrder
     email?: SortOrder
@@ -17533,6 +17612,7 @@ export namespace Prisma {
 
   export type TeamMemberMaxOrderByAggregateInput = {
     id?: SortOrder
+    slug?: SortOrder
     name?: SortOrder
     position?: SortOrder
     email?: SortOrder
@@ -17546,6 +17626,7 @@ export namespace Prisma {
 
   export type TeamMemberMinOrderByAggregateInput = {
     id?: SortOrder
+    slug?: SortOrder
     name?: SortOrder
     position?: SortOrder
     email?: SortOrder
@@ -17570,6 +17651,7 @@ export namespace Prisma {
 
   export type SuccessStoryCountOrderByAggregateInput = {
     id?: SortOrder
+    slug?: SortOrder
     studentName?: SortOrder
     year?: SortOrder
     currentPosition?: SortOrder
@@ -17587,6 +17669,7 @@ export namespace Prisma {
 
   export type SuccessStoryMaxOrderByAggregateInput = {
     id?: SortOrder
+    slug?: SortOrder
     studentName?: SortOrder
     year?: SortOrder
     currentPosition?: SortOrder
@@ -17600,6 +17683,7 @@ export namespace Prisma {
 
   export type SuccessStoryMinOrderByAggregateInput = {
     id?: SortOrder
+    slug?: SortOrder
     studentName?: SortOrder
     year?: SortOrder
     currentPosition?: SortOrder
@@ -17700,6 +17784,7 @@ export namespace Prisma {
 
   export type NewsUpdateCountOrderByAggregateInput = {
     id?: SortOrder
+    slug?: SortOrder
     headline?: SortOrder
     summary?: SortOrder
     content?: SortOrder
@@ -17713,6 +17798,7 @@ export namespace Prisma {
 
   export type NewsUpdateMaxOrderByAggregateInput = {
     id?: SortOrder
+    slug?: SortOrder
     headline?: SortOrder
     summary?: SortOrder
     content?: SortOrder
@@ -17726,6 +17812,7 @@ export namespace Prisma {
 
   export type NewsUpdateMinOrderByAggregateInput = {
     id?: SortOrder
+    slug?: SortOrder
     headline?: SortOrder
     summary?: SortOrder
     content?: SortOrder
@@ -19921,6 +20008,7 @@ export namespace Prisma {
 
   export type TeamMemberCreateWithoutImagesInput = {
     id?: string
+    slug: string
     name: string
     position: string
     email: string
@@ -19936,6 +20024,7 @@ export namespace Prisma {
 
   export type TeamMemberUncheckedCreateWithoutImagesInput = {
     id?: string
+    slug: string
     name: string
     position: string
     email: string
@@ -19956,6 +20045,7 @@ export namespace Prisma {
 
   export type NewsUpdateCreateWithoutImagesInput = {
     id?: string
+    slug: string
     headline: string
     summary: string
     content: string
@@ -19971,6 +20061,7 @@ export namespace Prisma {
 
   export type NewsUpdateUncheckedCreateWithoutImagesInput = {
     id?: string
+    slug: string
     headline: string
     summary: string
     content: string
@@ -19991,12 +20082,13 @@ export namespace Prisma {
 
   export type SuccessStoryCreateWithoutImagesInput = {
     id?: string
+    slug: string
     studentName: string
     year: number
-    currentPosition: string
-    company: string
+    currentPosition?: string | null
+    company?: string | null
     story: string
-    impact: string
+    impact?: string | null
     advice?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -20006,12 +20098,13 @@ export namespace Prisma {
 
   export type SuccessStoryUncheckedCreateWithoutImagesInput = {
     id?: string
+    slug: string
     studentName: string
     year: number
-    currentPosition: string
-    company: string
+    currentPosition?: string | null
+    company?: string | null
     story: string
-    impact: string
+    impact?: string | null
     advice?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -20076,6 +20169,7 @@ export namespace Prisma {
 
   export type TeamMemberUpdateWithoutImagesInput = {
     id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     position?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -20091,6 +20185,7 @@ export namespace Prisma {
 
   export type TeamMemberUncheckedUpdateWithoutImagesInput = {
     id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     position?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -20117,6 +20212,7 @@ export namespace Prisma {
 
   export type NewsUpdateUpdateWithoutImagesInput = {
     id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     headline?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
@@ -20132,6 +20228,7 @@ export namespace Prisma {
 
   export type NewsUpdateUncheckedUpdateWithoutImagesInput = {
     id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     headline?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
@@ -20158,12 +20255,13 @@ export namespace Prisma {
 
   export type SuccessStoryUpdateWithoutImagesInput = {
     id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     studentName?: StringFieldUpdateOperationsInput | string
     year?: IntFieldUpdateOperationsInput | number
-    currentPosition?: StringFieldUpdateOperationsInput | string
-    company?: StringFieldUpdateOperationsInput | string
+    currentPosition?: NullableStringFieldUpdateOperationsInput | string | null
+    company?: NullableStringFieldUpdateOperationsInput | string | null
     story?: StringFieldUpdateOperationsInput | string
-    impact?: StringFieldUpdateOperationsInput | string
+    impact?: NullableStringFieldUpdateOperationsInput | string | null
     advice?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20173,12 +20271,13 @@ export namespace Prisma {
 
   export type SuccessStoryUncheckedUpdateWithoutImagesInput = {
     id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     studentName?: StringFieldUpdateOperationsInput | string
     year?: IntFieldUpdateOperationsInput | number
-    currentPosition?: StringFieldUpdateOperationsInput | string
-    company?: StringFieldUpdateOperationsInput | string
+    currentPosition?: NullableStringFieldUpdateOperationsInput | string | null
+    company?: NullableStringFieldUpdateOperationsInput | string | null
     story?: StringFieldUpdateOperationsInput | string
-    impact?: StringFieldUpdateOperationsInput | string
+    impact?: NullableStringFieldUpdateOperationsInput | string | null
     advice?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20221,6 +20320,7 @@ export namespace Prisma {
 
   export type TeamMemberCreateWithoutVideosInput = {
     id?: string
+    slug: string
     name: string
     position: string
     email: string
@@ -20236,6 +20336,7 @@ export namespace Prisma {
 
   export type TeamMemberUncheckedCreateWithoutVideosInput = {
     id?: string
+    slug: string
     name: string
     position: string
     email: string
@@ -20256,6 +20357,7 @@ export namespace Prisma {
 
   export type NewsUpdateCreateWithoutVideosInput = {
     id?: string
+    slug: string
     headline: string
     summary: string
     content: string
@@ -20271,6 +20373,7 @@ export namespace Prisma {
 
   export type NewsUpdateUncheckedCreateWithoutVideosInput = {
     id?: string
+    slug: string
     headline: string
     summary: string
     content: string
@@ -20291,12 +20394,13 @@ export namespace Prisma {
 
   export type SuccessStoryCreateWithoutVideosInput = {
     id?: string
+    slug: string
     studentName: string
     year: number
-    currentPosition: string
-    company: string
+    currentPosition?: string | null
+    company?: string | null
     story: string
-    impact: string
+    impact?: string | null
     advice?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -20306,12 +20410,13 @@ export namespace Prisma {
 
   export type SuccessStoryUncheckedCreateWithoutVideosInput = {
     id?: string
+    slug: string
     studentName: string
     year: number
-    currentPosition: string
-    company: string
+    currentPosition?: string | null
+    company?: string | null
     story: string
-    impact: string
+    impact?: string | null
     advice?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -20376,6 +20481,7 @@ export namespace Prisma {
 
   export type TeamMemberUpdateWithoutVideosInput = {
     id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     position?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -20391,6 +20497,7 @@ export namespace Prisma {
 
   export type TeamMemberUncheckedUpdateWithoutVideosInput = {
     id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     position?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -20417,6 +20524,7 @@ export namespace Prisma {
 
   export type NewsUpdateUpdateWithoutVideosInput = {
     id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     headline?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
@@ -20432,6 +20540,7 @@ export namespace Prisma {
 
   export type NewsUpdateUncheckedUpdateWithoutVideosInput = {
     id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     headline?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
@@ -20458,12 +20567,13 @@ export namespace Prisma {
 
   export type SuccessStoryUpdateWithoutVideosInput = {
     id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     studentName?: StringFieldUpdateOperationsInput | string
     year?: IntFieldUpdateOperationsInput | number
-    currentPosition?: StringFieldUpdateOperationsInput | string
-    company?: StringFieldUpdateOperationsInput | string
+    currentPosition?: NullableStringFieldUpdateOperationsInput | string | null
+    company?: NullableStringFieldUpdateOperationsInput | string | null
     story?: StringFieldUpdateOperationsInput | string
-    impact?: StringFieldUpdateOperationsInput | string
+    impact?: NullableStringFieldUpdateOperationsInput | string | null
     advice?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20473,12 +20583,13 @@ export namespace Prisma {
 
   export type SuccessStoryUncheckedUpdateWithoutVideosInput = {
     id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     studentName?: StringFieldUpdateOperationsInput | string
     year?: IntFieldUpdateOperationsInput | number
-    currentPosition?: StringFieldUpdateOperationsInput | string
-    company?: StringFieldUpdateOperationsInput | string
+    currentPosition?: NullableStringFieldUpdateOperationsInput | string | null
+    company?: NullableStringFieldUpdateOperationsInput | string | null
     story?: StringFieldUpdateOperationsInput | string
-    impact?: StringFieldUpdateOperationsInput | string
+    impact?: NullableStringFieldUpdateOperationsInput | string | null
     advice?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20521,6 +20632,7 @@ export namespace Prisma {
 
   export type TeamMemberCreateWithoutYoutubeUrlsInput = {
     id?: string
+    slug: string
     name: string
     position: string
     email: string
@@ -20536,6 +20648,7 @@ export namespace Prisma {
 
   export type TeamMemberUncheckedCreateWithoutYoutubeUrlsInput = {
     id?: string
+    slug: string
     name: string
     position: string
     email: string
@@ -20556,6 +20669,7 @@ export namespace Prisma {
 
   export type NewsUpdateCreateWithoutYoutubeUrlsInput = {
     id?: string
+    slug: string
     headline: string
     summary: string
     content: string
@@ -20571,6 +20685,7 @@ export namespace Prisma {
 
   export type NewsUpdateUncheckedCreateWithoutYoutubeUrlsInput = {
     id?: string
+    slug: string
     headline: string
     summary: string
     content: string
@@ -20591,12 +20706,13 @@ export namespace Prisma {
 
   export type SuccessStoryCreateWithoutYoutubeUrlsInput = {
     id?: string
+    slug: string
     studentName: string
     year: number
-    currentPosition: string
-    company: string
+    currentPosition?: string | null
+    company?: string | null
     story: string
-    impact: string
+    impact?: string | null
     advice?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -20606,12 +20722,13 @@ export namespace Prisma {
 
   export type SuccessStoryUncheckedCreateWithoutYoutubeUrlsInput = {
     id?: string
+    slug: string
     studentName: string
     year: number
-    currentPosition: string
-    company: string
+    currentPosition?: string | null
+    company?: string | null
     story: string
-    impact: string
+    impact?: string | null
     advice?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -20676,6 +20793,7 @@ export namespace Prisma {
 
   export type TeamMemberUpdateWithoutYoutubeUrlsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     position?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -20691,6 +20809,7 @@ export namespace Prisma {
 
   export type TeamMemberUncheckedUpdateWithoutYoutubeUrlsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     position?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -20717,6 +20836,7 @@ export namespace Prisma {
 
   export type NewsUpdateUpdateWithoutYoutubeUrlsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     headline?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
@@ -20732,6 +20852,7 @@ export namespace Prisma {
 
   export type NewsUpdateUncheckedUpdateWithoutYoutubeUrlsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     headline?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
@@ -20758,12 +20879,13 @@ export namespace Prisma {
 
   export type SuccessStoryUpdateWithoutYoutubeUrlsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     studentName?: StringFieldUpdateOperationsInput | string
     year?: IntFieldUpdateOperationsInput | number
-    currentPosition?: StringFieldUpdateOperationsInput | string
-    company?: StringFieldUpdateOperationsInput | string
+    currentPosition?: NullableStringFieldUpdateOperationsInput | string | null
+    company?: NullableStringFieldUpdateOperationsInput | string | null
     story?: StringFieldUpdateOperationsInput | string
-    impact?: StringFieldUpdateOperationsInput | string
+    impact?: NullableStringFieldUpdateOperationsInput | string | null
     advice?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20773,12 +20895,13 @@ export namespace Prisma {
 
   export type SuccessStoryUncheckedUpdateWithoutYoutubeUrlsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     studentName?: StringFieldUpdateOperationsInput | string
     year?: IntFieldUpdateOperationsInput | number
-    currentPosition?: StringFieldUpdateOperationsInput | string
-    company?: StringFieldUpdateOperationsInput | string
+    currentPosition?: NullableStringFieldUpdateOperationsInput | string | null
+    company?: NullableStringFieldUpdateOperationsInput | string | null
     story?: StringFieldUpdateOperationsInput | string
-    impact?: StringFieldUpdateOperationsInput | string
+    impact?: NullableStringFieldUpdateOperationsInput | string | null
     advice?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

@@ -32,10 +32,10 @@ export const getFormConfig = (type: string) => {
         fields: [
           { name: 'studentName', label: 'Student Name', type: 'text', required: true },
           { name: 'year', label: 'Graduation Year', type: 'number', required: true },
-          { name: 'currentPosition', label: 'Current Position', type: 'text', required: true },
-          { name: 'company', label: 'Company/Organization', type: 'text', required: true },
+          { name: 'currentPosition', label: 'Current Position', type: 'text', required: false },
+          { name: 'company', label: 'Company/Organization', type: 'text', required: false },
           { name: 'story', label: 'Success Story', type: 'textarea', required: true, rows: 6 },
-          { name: 'impact', label: 'Scholarship Impact', type: 'textarea', required: true, rows: 4 },
+          { name: 'impact', label: 'Scholarship Impact', type: 'textarea', required: false, rows: 4 },
           { name: 'advice', label: 'Advice for Future Students', type: 'textarea', required: false, rows: 3 },
         ]
       },

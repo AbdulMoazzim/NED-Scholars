@@ -12,7 +12,7 @@ export async function CreateTeamMember(memberData: {
 }) {
   try {
     const createdMember = await prisma.teamMember.create({
-      data: memberData.formData
+      data: {...memberData.formData, slug:memberData.formData.name.split(" ").join("-")+"-"+crypto.randomUUID()}
     });
 
     // Handle images

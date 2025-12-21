@@ -16,15 +16,19 @@ import {
 } from "lucide-react";
 import { banners, causes, paymentMethods, stats } from "@/data/HomePageData";
 import Image from "next/image";
-import { successStories } from "@/data/SuccessStories";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { GetAllSuccessStories } from "./actions/success-stories";
+import SuccessStoriesComponent from "@/components/Success-stories-card";
+import { SuccessStoriesData } from "@/lib/types";
+
 gsap.registerPlugin(useGSAP); // register the hook to avoid React version discrepancies
 
 const NedScholarsHomepage = () => {
   const [currentBanner, setCurrentBanner] = useState(0);
   const container = useRef(null);
   const router = useRouter();
+  const [stories, setSuccessStories] = useState<SuccessStoriesData>({success: false, data: []});
+  
   useGSAP(
     () => {
       gsap.to(".animate-strip", {
@@ -36,10 +40,20 @@ const NedScholarsHomepage = () => {
     },
     { scope: container }
   );
+  
   useEffect(() => {
+    async function load() {
+      const data = await GetAllSuccessStories(); // server call
+      if (data.success) {  
+        setSuccessStories(data);
+      }
+    }
+    load();
+    
     const interval = setInterval(() => {
       setCurrentBanner((prev) => (prev + 1) % banners.length);
     }, 5000);
+    
     return () => clearInterval(interval);
   }, []);
 
@@ -246,7 +260,7 @@ const NedScholarsHomepage = () => {
                 </div>
               </div>
 
-              <Button className="mt-4">About Us</Button>
+              <Button className="mt-4" onClick={()=>{router.push("/about")}}>About Us</Button>
             </div>
 
             <div className="relative">
@@ -310,7 +324,7 @@ const NedScholarsHomepage = () => {
                 We provide scholarships, mentorship, training and career
                 counseling to ensure these students have the resources they need
                 to succeed. By breaking down barriers and fostering a love of
-                learning, we're working towards a better future for everyone.
+                learning, we&apos;re working towards a better future for everyone.
               </p>
 
               <div className="space-y-4">
@@ -431,45 +445,8 @@ const NedScholarsHomepage = () => {
       </section>
 
       {/* Success Stories */}
-      <section id="stories" className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <Badge className="mb-4">Success Stories</Badge>
-            <h3 className="text-4xl font-bold text-gray-800 mb-6">
-              Transforming Lives Through Education
-            </h3>
-            <p className="text-gray-600 text-lg">
-              Meet some of our amazing scholars who are making a difference in
-              the world
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {successStories.slice(0, 3).map((story, index) => (
-              <Card
-                key={index}
-                className="hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2"
-              >
-                <CardContent className="p-6 text-center">
-                  <div className="text-6xl mb-4">{story.image}</div>
-                  <h4 className="text-xl font-bold text-gray-800 mb-2">
-                    {story.name}
-                  </h4>
-                  <p className="text-gray-600 mb-4">
-                    {story.content.slice(0, 200)}...
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-        <div className="w-full text-center mt-4">
-          <Button>
-            <Link href="/scholars/success-stories">
-              View More
-            </Link>
-          </Button>
-        </div>
+      <section id="stories" className=" bg-white">
+          <SuccessStoriesComponent  slice={3} data={stories}  path="/"/>
       </section>
 
     </div>
@@ -477,4 +454,3 @@ const NedScholarsHomepage = () => {
 };
 
 export default NedScholarsHomepage;
-

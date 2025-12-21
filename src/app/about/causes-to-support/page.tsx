@@ -5,9 +5,10 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { programs } from "@/data/CausesSupportData";
 import { stats } from "@/data/CausesSupportData";
-import Footer from "@/components/Footer";
 import CustomCard from "@/components/Card";
 import StatCard from "@/components/Stats";
+import causesToSupport from "../../../../public/causes_to_support.png"
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -141,7 +142,10 @@ const SupportPage: React.FC = () => {
             >
               Our Impact Programs
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-600 mx-auto rounded-full"></div>
+            <div className="w-2/5 h-1 bg-gradient-to-r from-indigo-500 to-purple-600 mx-auto rounded-full"></div>
+            <div className="flex w-full justify-center">
+            <Image src={causesToSupport} alt="Causes-to-Support banner"/>
+            </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mb-16 box" ref={programsSectionRef}>
             {programs.map((program, index) => (
@@ -164,7 +168,7 @@ const SupportPage: React.FC = () => {
             ref={impactSubtitleRef}
             className="text-xl mb-12 max-w-3xl mx-auto"
           >
-            Together, we're transforming lives and building the future of STEM
+            Together, we&apos;re transforming lives and building the future of STEM
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
             {stats.map((stat, index) => (

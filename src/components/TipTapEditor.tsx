@@ -40,16 +40,32 @@ export const TiptapEditor = ({
     immediatelyRender: false,
     editorProps: {
       attributes: {
-        class: 'prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto focus:outline-none min-h-[120px] p-4 prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-ul:list-disc prose-ol:list-decimal prose-li:my-1',
+        class: 'prose prose-sm sm:prose lg:prose-lg xl:prose-2xl focus:outline-none min-h-[120px] p-4 prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-ul:list-disc prose-ol:list-decimal prose-li:my-1 max-w-none',
       },
     },
   });
 
   const setHeading = (level: Level) => {
-    if (editor?.isActive('heading', { level })) {
-      editor.chain().focus().setParagraph().run();
+    if (!editor) return;
+    
+    // Check if there's an active selection
+    const { from, to } = editor.state.selection;
+    const hasSelection = from !== to;
+    
+    if (hasSelection) {
+      // If text is selected, apply heading to selection
+      if (editor.isActive('heading', { level })) {
+        editor.chain().focus().setParagraph().run();
+      } else {
+        editor.chain().focus().setHeading({ level }).run();
+      }
     } else {
-      editor?.chain().focus().toggleHeading({ level }).run();
+      // If no selection, apply to current block/line
+      if (editor.isActive('heading', { level })) {
+        editor.chain().focus().setParagraph().run();
+      } else {
+        editor.chain().focus().setHeading({ level }).run();
+      }
     }
   };
 
@@ -58,9 +74,19 @@ export const TiptapEditor = ({
   }
 
   return (
-    <div className="border border-gray-300 rounded-xl focus-within:ring-2 focus-within:ring-indigo-500 focus-within:border-transparent transition-all duration-300">
+    <div className="border border-gray-300 rounded-xl focus-within:ring-2 focus-within:ring-indigo-500 focus-within:border-transparent transition-all duration-300 w-full">
       {/* Add custom styles for editor content */}
       <style jsx>{`
+        .ProseMirror {
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+          white-space: pre-wrap;
+          width: 100%;
+          box-sizing: border-box;
+        }
+        .ProseMirror * {
+          max-width: 100%;
+        }
         .ProseMirror h1 {
           font-size: 1.875rem;
           font-weight: bold;
@@ -232,12 +258,12 @@ export const TiptapEditor = ({
       </div>
 
       {/* Editor Content */}
-      <div className="min-h-[120px] relative">
+      <div className="min-h-[120px] relative w-full overflow-x-hidden">
         <EditorContent 
           editor={editor} 
-          className="focus:outline-none [&_.ProseMirror]:focus:outline-none [&_.ProseMirror_h1]:text-3xl [&_.ProseMirror_h1]:font-bold [&_.ProseMirror_h1]:mb-4 [&_.ProseMirror_h2]:text-2xl [&_.ProseMirror_h2]:font-bold [&_.ProseMirror_h2]:mb-3 [&_.ProseMirror_h3]:text-xl [&_.ProseMirror_h3]:font-bold [&_.ProseMirror_h3]:mb-2 [&_.ProseMirror_ul]:list-disc [&_.ProseMirror_ul]:ml-6 [&_.ProseMirror_ol]:list-decimal [&_.ProseMirror_ol]:ml-6 [&_.ProseMirror_li]:mb-1 [&_.ProseMirror_u]:underline [&_.ProseMirror_strong]:font-bold [&_.ProseMirror_em]:italic [&_.ProseMirror_s]:line-through"
+          className="w-full focus:outline-none [&_.ProseMirror]:focus:outline-none [&_.ProseMirror]:break-words [&_.ProseMirror]:w-full [&_.ProseMirror_h1]:text-3xl [&_.ProseMirror_h1]:font-bold [&_.ProseMirror_h1]:mb-4 [&_.ProseMirror_h2]:text-2xl [&_.ProseMirror_h2]:font-bold [&_.ProseMirror_h2]:mb-3 [&_.ProseMirror_h3]:text-xl [&_.ProseMirror_h3]:font-bold [&_.ProseMirror_h3]:mb-2 [&_.ProseMirror_ul]:list-disc [&_.ProseMirror_ul]:ml-6 [&_.ProseMirror_ol]:list-decimal [&_.ProseMirror_ol]:ml-6 [&_.ProseMirror_li]:mb-1 [&_.ProseMirror_u]:underline [&_.ProseMirror_strong]:font-bold [&_.ProseMirror_em]:italic [&_.ProseMirror_s]:line-through"
         />
-        {(!value || value === '<p></p>') && (
+        {(!value || value === '<p></p>' || value.trim() === '') && (
           <div className="absolute top-4 left-4 text-gray-400 pointer-events-none">
             {placeholder}
           </div>

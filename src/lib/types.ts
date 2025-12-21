@@ -1,4 +1,6 @@
+import { GetAllSuccessStories } from "@/app/actions/success-stories";
 import { Dispatch, ReactElement, ReactNode, SetStateAction } from "react";
+import { FORM_CONFIGS } from "../data/form-config";
 
 // Define types for menu items
 export interface SubSubLinkItem {
@@ -18,13 +20,6 @@ export interface MenuItem {
   subItems?: SubLinkItem[];
 }
 
-export interface SuccessStory {
-  slug?: string;
-  name: string;
-  heading: string;
-  image: React.ReactNode;
-  content: string;
-}
 
 export interface cardItems {
   icon: ReactNode;
@@ -81,23 +76,25 @@ export interface SidebarNavItem {
 }
 
 export interface TeamMemberData {
+  slug:string;
   name: string;
   position: string;
   email: string;
-  phone?: string;
+  phone: string | null;
   bio: string;
-  expertise?: string;
-  achievements?: string;
+  expertise: string | null;
+  achievements: string | null;
 }
 
 export interface SuccessStoryData {
+  slug: string;
   studentName: string;
   year: number;
   currentPosition: string;
   company: string;
   story: string;
-  impact: string;
-  advice?: string;
+  impact: string | null;
+  advice: string | null;
 }
 
 export interface BlogData {
@@ -115,6 +112,7 @@ export interface BlogData {
 }
 
 export interface NewsData {
+  slug: string;
   headline: string;
   summary: string;
   content: string;
@@ -146,18 +144,59 @@ export interface ContentFormProps {
 
 export interface imageData {
   url: string;
-  alt: string;
-  blogPostId: null | string;
-  successStoryId: null | string;
-  teamMemberId: null | string;
-  newsUpdateId: null | string;
-}
-export interface videoData {
-  url: string;
-  title: string;
+  alt: string | null;  // Changed from string to string | null
   blogPostId: null | string;
   successStoryId: null | string;
   teamMemberId: null | string;
   newsUpdateId: null | string;
 }
 
+export interface videoData {
+  url: string;
+  title: string | null;  // Changed from string to string | null
+  blogPostId: null | string;
+  successStoryId: null | string;
+  teamMemberId: null | string;
+  newsUpdateId: null | string;
+}
+
+export type SuccessStoriesData = Awaited<ReturnType<typeof GetAllSuccessStories>>;
+
+// Type definitions for TypeScript
+export interface FieldConfig {
+  type: string;
+  label?: string;
+  placeholder?: string;
+  required?: boolean;
+  validation?: {
+    minLength?: number;
+    maxLength?: number;
+    pattern?: RegExp;
+    min?: number;
+    max?: number;
+    maxDate?: Date;
+  };
+  options?: Array<{ value: string; label: string }>;
+  rows?: number;
+  accept?: string;
+  helperText?: string;
+  defaultValue?: string;
+  hidden?: boolean;
+}
+
+export interface FormSection {
+  heading: string;
+  description: string;
+  fields: string[];
+}
+
+export interface FormConfig {
+  title: string;
+  description: string;
+  submitButtonText: string;
+  successMessage: string;
+  fields: Record<string, FieldConfig>;
+  sections: FormSection[];
+}
+
+export type FormConfigs = typeof FORM_CONFIGS;

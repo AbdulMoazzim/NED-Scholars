@@ -70,12 +70,18 @@ export const ContentForm = ({ config, activeTab, setFormData, formData, errors, 
     if (!e.target.files) return;
     const files = Array.from(e.target.files);
     files.forEach(file => {
-      setVideos(prev => [...prev, {
-        id: (Date.now() + Math.random()).toString(),
-        file,
-        name: file.name,
-        size: (file.size / 1024 / 1024).toFixed(2) + ' MB'
-      }]);
+      console.log(file)
+      if(file.size < 4*1024*1024) {
+        setVideos(prev => [...prev, {
+          id: (Date.now() + Math.random()).toString(),
+          file,
+          name: file.name,
+          size: (file.size / 1024 / 1024).toFixed(2) + ' MB'
+        }]);
+      }
+      else {
+        toast("Video must be less than 4 mb");
+      }
     });
   };
 
@@ -142,7 +148,7 @@ export const ContentForm = ({ config, activeTab, setFormData, formData, errors, 
         case "success-stories":
           typedData = formData as SuccessStoryData;
           const storyResult = await CreateSuccessStory({
-            formData: typedData,
+            formData: {...typedData, year: Number(typedData.year)},
             images,
             videos,
             youtubeUrls
@@ -417,6 +423,7 @@ export const ContentForm = ({ config, activeTab, setFormData, formData, errors, 
               <div className="bg-white rounded-2xl shadow-lg p-6">
                 <div className="flex justify-between items-center mb-4">
                   <h4 className="text-lg font-semibold text-gray-800">Videos</h4>
+                  <p className="text-sm text-gray-500">Max file size: 4 MB</p>
                   <button
                     type="button"
                     onClick={() => videoInputRef.current?.click()}

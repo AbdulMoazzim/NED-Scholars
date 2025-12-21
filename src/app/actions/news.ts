@@ -13,7 +13,7 @@ export async function CreateNews(newsData: {
 }) {
   try {
     const createdNews = await prisma.newsUpdate.create({
-      data: newsData.formData
+      data: {...newsData.formData, slug: newsData.formData.headline.split(" ").join("-")+"-"+crypto.randomUUID()}
     });
 
     // Handle images

@@ -19,11 +19,11 @@ export const menuItems: MenuItem[] = [
       subItems: [
         {
           title: 'Scholarship',
-          href: '/services/scholarship',
+          href: '/services/scholarships',
         },
         { title: 'Laptop Scholarship', href: '/services/laptop-scholarship' },
         { title: 'Mentorship', href: '/services/mentorship' },
-        { title: 'Dare 2 Design', href: '/services/dare-2-design' },
+        { title: 'Dare 2 Design', href: '/services/dare-to-design' },
         { title: 'Vocational Training', href: '/services/vocational-training' },
         { title: 'Save a Child', href: '/services/save-a-child' },
         { title: 'Coaching Center', href: '/services/coaching-center' }
@@ -35,8 +35,7 @@ export const menuItems: MenuItem[] = [
       subItems: [
         { title: 'Seminar', href: '/programs/seminar' },
         { title: 'Webinar', href: '/programs/webinar' },
-        { title: 'Internship', href: '/programs/internship' },
-        { title: 'Laptop Distribution', href: '/programs/laptop-distribution' }
+        { title: 'Internship', href: '/programs/internship' }
       ]
     },
     {
@@ -75,11 +74,11 @@ export const menuItems: MenuItem[] = [
 export const ScholarshipData = [
     {
       title: "Eligibility Criteria",
-      href: "/services/scholarship/eligibility",
+      href: "/services/scholarships/eligible-criteria",
     },
     {
       title: "Application and Selection Process",
-      href: "/services/scholarship/process",
+      href: "/services/scholarships/application-selection-process",
     },
-    { title: "Apply for Scholarship", href: "/services/scholarship/apply" },
+    { title: "Apply for Scholarship", href: "/register/scholarship" },
   ];

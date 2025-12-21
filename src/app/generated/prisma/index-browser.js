@@ -173,6 +173,7 @@ exports.Prisma.VerificationScalarFieldEnum = {
 
 exports.Prisma.TeamMemberScalarFieldEnum = {
   id: 'id',
+  slug: 'slug',
   name: 'name',
   position: 'position',
   email: 'email',
@@ -186,6 +187,7 @@ exports.Prisma.TeamMemberScalarFieldEnum = {
 
 exports.Prisma.SuccessStoryScalarFieldEnum = {
   id: 'id',
+  slug: 'slug',
   studentName: 'studentName',
   year: 'year',
   currentPosition: 'currentPosition',
@@ -211,6 +213,7 @@ exports.Prisma.BlogPostScalarFieldEnum = {
 
 exports.Prisma.NewsUpdateScalarFieldEnum = {
   id: 'id',
+  slug: 'slug',
   headline: 'headline',
   summary: 'summary',
   content: 'content',

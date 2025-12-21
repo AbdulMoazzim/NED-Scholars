@@ -4,7 +4,6 @@ import { prisma } from "@/lib/auth"
 import { Resource, SuccessStoryData, YouTubeUrl } from "@/lib/types";
 import { HandleImages, HandleURLS, HandleVideos } from "@/lib/serverUtils";
 
-
 export async function CreateSuccessStory(storyData: {
   formData: SuccessStoryData;
   images: Resource[];
@@ -13,7 +12,7 @@ export async function CreateSuccessStory(storyData: {
 }) {
   try {
     const createdStory = await prisma.successStory.create({
-      data: storyData.formData
+      data: {...storyData.formData, slug: storyData.formData.studentName.split(" ").join("-")+"-"+crypto.randomUUID()}
     });
 
     // Handle images
@@ -29,7 +28,7 @@ export async function CreateSuccessStory(storyData: {
     return { success: true, data: createdStory };
   } catch (err) {
     console.log("CreateSuccessStory error:", err);
-    return { success: false, error: err };
+    return { success: false, error: "Server Internal Error" };
   }
 }
 
@@ -42,10 +41,11 @@ export async function GetAllSuccessStories() {
         youtubeUrls: true,
       },
     });
-    return { success: true, data: stories };
+    const parsedStories = stories.map(story => ({...story, createdAt: story.createdAt.toISOString(), updatedAt: story.updatedAt.toISOString()}))
+    return { success: true, data: parsedStories };
   } catch (err) {
     console.log(err);
-    return { success: false, error: err };
+    return { success: false, error: "Server Internal Error" };
   }
 }
 
@@ -62,7 +62,7 @@ export async function GetSuccessStory(id: string) {
     return { success: true, data: story };
   } catch (err) {
     console.log(err);
-    return { success: false, error: err };
+    return { success: false, error: "Server Internal Error" };
   }
 }
 
@@ -73,7 +73,7 @@ export async function DeleteSuccessStory(id: string) {
     return { success: true };
   } catch (err) {
     console.log(err);
-    return { success: false, error: err };
+    return { success: false, error: "Server Internal Error" };
   }
 }
 
@@ -83,6 +83,6 @@ export async function UpdateSuccessStory(id: string, data: SuccessStoryData) {
     return { success: true };
   } catch (err) {
     console.log(err);
-    return { success: false, error: err };
+    return { success: false, error: "Server Internal Error" };
   }
 }
