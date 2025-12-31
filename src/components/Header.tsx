@@ -5,11 +5,14 @@ import Navbar from "./Navbar";
 import SubNavbar from "./SubNavbar";
 import { SubLinkItem } from "@/lib/types";
 import MobileHeader from "./MobileHeader";
-import { GraduationCap, Menu, X } from "lucide-react";
+import {  Menu, X } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { Button } from "./ui/button";
 import { useSession } from "@/lib/auth-client";
 import MyUser from "./MyUser";
+import Link from "next/link";
+import Image from "next/image";
+import Icon from "../../public/logo.png";
 
 export default function Header() {
   const [subHeader, setSubHeader] = useState<SubLinkItem>({
@@ -43,15 +46,7 @@ export default function Header() {
               router.push("/");
             }}
           >
-            <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
-              <GraduationCap className="w-6 h-6 text-white" />
-            </div>
-            <div>
-              <h1 className="text-2xl font-bold text-gray-800">NED Scholars</h1>
-              <p className="text-sm text-gray-600">
-                Empowering Minds, Shaping Futures
-              </p>
-            </div>
+            <Image src={Icon} width={50} height={50} alt="icon"/>
           </div>
 
 
@@ -86,11 +81,15 @@ export default function Header() {
             />
           </div>
 
+          {session.data?.user.role === "admin" ? (
+            <Link className="hover:text-black text-gray-500" href="/admin-portal">Admin Portal</Link>
+          ) : null
+          }
           {session.data ? ((path !== "/auth") &&<MyUser />) :
           ((path !== "/auth") &&
 
             <div>
-              <Button className="px-6 rounded-3xl" onClick={() => router.push("/auth")}>Log In</Button>
+              <Button className="px-6 rounded-3xl bg-[#1164A3] hover:bg-[#0d4d82]" onClick={() => router.push("/auth")}>Log In</Button>
             </div>
           )
           }

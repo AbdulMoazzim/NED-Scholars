@@ -7,7 +7,7 @@ export default function Sidebar({activeTab,setFormData, setActiveTab, sidebarOpe
   return (
     <>
     {/* Mobile Sidebar Toggle */}
-          <div className="lg:hidden fixed top-4 left-4 z-30">
+          <div className="lg:hidden fixed top-4 left-4 pt-[90px] z-30">
             <button
               onClick={() => setSidebarOpen(!sidebarOpen)}
               className="p-3 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
@@ -17,17 +17,17 @@ export default function Sidebar({activeTab,setFormData, setActiveTab, sidebarOpe
           </div>
     
           {/* Sidebar */}
-          <div className={`fixed left-0 pt-[100px] top-0 h-full w-80 bg-gradient-to-b from-indigo-600 to-purple-700 transform transition-transform duration-300 z-40 ${
+          <div className={`fixed overflow-auto left-0 pt-[100px] top-0 h-full  w-80 bg-gradient-to-b from-[#1164A3] to-[#68B9C4] transform transition-transform duration-300 z-40 ${
             sidebarOpen ? 'translate-x-0' : '-translate-x-full'
           } lg:translate-x-0`}>
-            <div className="p-8">
+            <div className="p-8 overflow-y-auto">
               <div className="flex items-center space-x-3 mb-12">
                 <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
                   <Edit className="w-6 h-6 text-white" />
                 </div>
                 <div>
                   <h1 className="text-2xl font-bold text-white">Admin Portal</h1>
-                  <p className="text-indigo-200 text-sm">Content Management</p>
+                  <p className="text-white/80 text-sm">Content Management</p>
                 </div>
               </div>
     
@@ -43,7 +43,7 @@ export default function Sidebar({activeTab,setFormData, setActiveTab, sidebarOpe
                     }}
                     className={`w-full flex items-center space-x-4 p-4 rounded-xl transition-all duration-300 group ${
                       activeTab === item.id 
-                        ? 'bg-white text-indigo-600 shadow-lg transform scale-105' 
+                        ? 'bg-white text-[#1164A3] shadow-lg transform scale-105' 
                         : 'text-white hover:bg-white/10 hover:transform hover:scale-102'
                     }`}
                   >
@@ -56,7 +56,7 @@ export default function Sidebar({activeTab,setFormData, setActiveTab, sidebarOpe
                     </div>
                     <div className="text-left">
                       <div className="font-semibold">{item.label}</div>
-                      <div className={`text-sm ${activeTab === item.id ? 'text-indigo-400' : 'text-indigo-200'}`}>
+                      <div className={`text-sm ${activeTab === item.id ? 'text-[#68B9C4]' : 'text-white/70'}`}>
                         Manage content
                       </div>
                     </div>

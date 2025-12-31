@@ -30,37 +30,37 @@ export default function GupShupPage() {
       icon: <Users className="w-6 h-6" />,
       category: "Politics",
       description: "Policy makers, activists, community leaders",
-      color: "from-blue-600 to-cyan-600",
+      color: "from-[#1164A3] to-[#68B9C4]",
     },
     {
       icon: <Star className="w-6 h-6" />,
       category: "Entertainment",
       description: "Artists, musicians, content creators",
-      color: "from-pink-600 to-purple-600",
+      color: "from-[#82B4CC] to-[#B0A3B3]",
     },
     {
       icon: <Heart className="w-6 h-6" />,
       category: "Social Activism",
       description: "Change makers, NGO leaders, volunteers",
-      color: "from-red-600 to-orange-600",
+      color: "from-[#68B9C4] to-[#82B4CC]",
     },
     {
       icon: <GraduationCap className="w-6 h-6" />,
       category: "Academia",
       description: "Professors, researchers, thought leaders",
-      color: "from-green-600 to-emerald-600",
+      color: "from-[#1164A3] to-[#82B4CC]",
     },
     {
       icon: <BookOpen className="w-6 h-6" />,
       category: "Religion",
       description: "Scholars, spiritual guides, philosophers",
-      color: "from-purple-600 to-indigo-600",
+      color: "from-[#68B9C4] to-[#82B4CC]",
     },
     {
       icon: <Briefcase className="w-6 h-6" />,
       category: "Business",
       description: "Entrepreneurs, executives, innovators",
-      color: "from-yellow-600 to-orange-600",
+      color: "from-[#82B4CC] to-[#B0A3B3]",
     },
   ];
 
@@ -96,19 +96,16 @@ export default function GupShupPage() {
       icon: <GraduationCap className="w-6 h-6" />,
       title: "University Students",
       description: "Especially in engineering, sciences, and management",
-      emoji: "🎓",
     },
     {
       icon: <Briefcase className="w-6 h-6" />,
       title: "Professionals",
       description: "Seeking certifications or career insights",
-      emoji: "💼",
     },
     {
       icon: <Users className="w-6 h-6" />,
       title: "Alumni & Mentors",
       description: "Community supporters and experienced guides",
-      emoji: "🤝",
     },
   ];
 
@@ -194,7 +191,7 @@ export default function GupShupPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 text-white py-16">
+      <section className="bg-gradient-to-r from-[#1164A3] via-[#68B9C4] to-[#82B4CC] text-white py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex justify-center mb-4">
@@ -206,10 +203,10 @@ export default function GupShupPage() {
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               &quot;Gup Shup&quot;
             </h1>
-            <p className="text-2xl text-orange-100 mb-4">
+            <p className="text-2xl text-white/90 mb-4">
               Casual Conversations. Meaningful Insights.
             </p>
-            <p className="text-lg text-white/90 max-w-3xl mx-auto">
+            <p className="text-lg text-white/80 max-w-3xl mx-auto">
               In the spirit of open dialogue and diverse perspectives, NED
               Scholars hosts &quot;Gup Shup&quot;—a monthly virtual gathering inspired by
               the Urdu term for friendly conversation.
@@ -223,16 +220,16 @@ export default function GupShupPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">About the Event</Badge>
+              <Badge className="mb-4 bg-[#68B9C4] text-white">About the Event</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 What is Gup Shup?
               </h2>
             </div>
 
-            <Card className="shadow-xl mb-8">
+            <Card className="shadow-xl mb-8 border-[#82B4CC]/20">
               <CardContent className="p-8">
                 <div className="flex items-start space-x-4 mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-r from-orange-600 to-pink-600 rounded-full flex items-center justify-center text-white flex-shrink-0">
+                  <div className="w-12 h-12 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-full flex items-center justify-center text-white flex-shrink-0">
                     <MessageCircle className="w-6 h-6" />
                   </div>
                   <div>
@@ -259,7 +256,7 @@ export default function GupShupPage() {
               {guestCategories.map((category, index) => (
                 <Card
                   key={index}
-                  className="hover:shadow-xl transition-all duration-300"
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
                 >
                   <CardContent className="p-6">
                     <div
@@ -282,11 +279,11 @@ export default function GupShupPage() {
       </section>
 
       {/* Event Format */}
-      <section className="py-16 bg-gradient-to-r from-orange-50 to-pink-50">
+      <section className="py-16 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">How It Works</Badge>
+              <Badge className="mb-4 bg-[#1164A3] text-white">How It Works</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 Event Format
               </h2>
@@ -299,16 +296,16 @@ export default function GupShupPage() {
               {eventFormat.map((format, index) => (
                 <Card
                   key={index}
-                  className="hover:shadow-xl transition-all duration-300"
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
                 >
                   <CardContent className="p-8">
                     <div className="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-6">
-                      <div className="w-20 h-20 bg-gradient-to-r from-orange-600 to-pink-600 rounded-2xl flex items-center justify-center text-white flex-shrink-0">
+                      <div className="w-20 h-20 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-2xl flex items-center justify-center text-white flex-shrink-0">
                         {format.icon}
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center space-x-3 mb-2">
-                          <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                          <div className="w-8 h-8 bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] rounded-full flex items-center justify-center text-white font-bold text-sm">
                             {format.step}
                           </div>
                           <h3 className="text-xl font-bold text-gray-800">
@@ -316,7 +313,7 @@ export default function GupShupPage() {
                           </h3>
                         </div>
                         <div className="flex items-center space-x-4 mb-3">
-                          <Badge variant="secondary" className="flex items-center">
+                          <Badge className="flex items-center bg-[#82B4CC] text-white">
                             <Clock className="w-3 h-3 mr-1" />
                             {format.duration}
                           </Badge>
@@ -337,9 +334,9 @@ export default function GupShupPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">Join Us</Badge>
+              <Badge className="mb-4 bg-[#68B9C4] text-white">Join Us</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                📌 Who Should Attend
+                Who Should Attend
               </h2>
               <p className="text-gray-600 text-lg">
                 Everyone is welcome to join our monthly conversations
@@ -350,11 +347,10 @@ export default function GupShupPage() {
               {attendeeCategories.map((category, index) => (
                 <Card
                   key={index}
-                  className="hover:shadow-xl transition-all duration-300"
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
                 >
                   <CardContent className="p-6 text-center">
-                    <div className="text-5xl mb-4">{category.emoji}</div>
-                    <div className="w-12 h-12 bg-gradient-to-r from-orange-600 to-pink-600 rounded-full flex items-center justify-center text-white mx-auto mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-full flex items-center justify-center text-white mx-auto mb-4">
                       {category.icon}
                     </div>
                     <h4 className="font-bold text-gray-800 mb-2 text-lg">
@@ -369,10 +365,10 @@ export default function GupShupPage() {
             </div>
 
             {/* Event Highlights */}
-            <Card className="shadow-xl bg-gradient-to-r from-blue-50 to-purple-50">
+            <Card className="shadow-xl bg-gradient-to-r from-[#82B4CC]/20 to-[#B0A3B3]/20 border-[#82B4CC]/20">
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center flex items-center justify-center">
-                  <Star className="w-8 h-8 text-yellow-500 mr-3" />
+                  <Star className="w-8 h-8 text-[#82B4CC] mr-3" />
                   Event Highlights
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -381,7 +377,7 @@ export default function GupShupPage() {
                       key={index}
                       className="flex flex-col items-center text-center"
                     >
-                      <div className="w-16 h-16 bg-gradient-to-r from-green-600 to-blue-600 rounded-full flex items-center justify-center text-white mb-4">
+                      <div className="w-16 h-16 bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] rounded-full flex items-center justify-center text-white mb-4">
                         {highlight.icon}
                       </div>
                       <h5 className="font-bold text-gray-800 mb-2 text-lg flex items-center">
@@ -399,11 +395,11 @@ export default function GupShupPage() {
       </section>
 
       {/* Benefits */}
-      <section className="py-16 bg-gradient-to-r from-purple-50 to-pink-50">
+      <section className="py-16 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">Why Attend</Badge>
+              <Badge className="mb-4 bg-[#1164A3] text-white">Why Attend</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 Benefits of Attending
               </h2>
@@ -416,16 +412,16 @@ export default function GupShupPage() {
               {benefitsOfAttending.map((item, index) => (
                 <Card
                   key={index}
-                  className="hover:shadow-xl transition-all duration-300"
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
                 >
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-orange-600 to-pink-600 rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                      <div className="w-12 h-12 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-lg flex items-center justify-center text-white flex-shrink-0">
                         {item.icon}
                       </div>
                       <div className="flex-1">
                         <p className="text-gray-700 font-medium flex items-center">
-                          <CheckCircle2 className="w-5 h-5 text-green-600 mr-2 flex-shrink-0" />
+                          <CheckCircle2 className="w-5 h-5 text-[#68B9C4] mr-2 flex-shrink-0" />
                           {item.benefit}
                         </p>
                       </div>
@@ -443,7 +439,7 @@ export default function GupShupPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">Watch & Learn</Badge>
+              <Badge className="mb-4 bg-[#68B9C4] text-white">Watch & Learn</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 Previous Gup Shup Sessions
               </h2>
@@ -456,7 +452,7 @@ export default function GupShupPage() {
               {previousSessions.map((session) => (
                 <Card
                   key={session.id}
-                  className="hover:shadow-xl transition-all duration-300 cursor-pointer group"
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300 cursor-pointer group"
                 >
                   <CardContent className="p-0">
                     <div className="relative overflow-hidden">
@@ -466,7 +462,7 @@ export default function GupShupPage() {
                         className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
                       />
                       <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center">
+                        <div className="w-16 h-16 bg-[#1164A3] rounded-full flex items-center justify-center">
                           <Play className="w-8 h-8 text-white ml-1" />
                         </div>
                       </div>
@@ -476,10 +472,10 @@ export default function GupShupPage() {
                       </Badge>
                     </div>
                     <div className="p-6">
-                      <Badge variant="secondary" className="mb-3">
+                      <Badge className="mb-3 bg-[#82B4CC] text-white">
                         {session.category}
                       </Badge>
-                      <h4 className="font-bold text-gray-800 mb-2 text-lg group-hover:text-orange-600 transition-colors">
+                      <h4 className="font-bold text-gray-800 mb-2 text-lg group-hover:text-[#1164A3] transition-colors">
                         {session.title}
                       </h4>
                       <p className="text-gray-600 text-sm mb-2">
@@ -494,7 +490,7 @@ export default function GupShupPage() {
                           href={session.youtubeUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-orange-600 hover:text-orange-700 text-sm font-medium flex items-center"
+                          className="text-[#1164A3] hover:text-[#68B9C4] text-sm font-medium flex items-center"
                         >
                           Watch Now
                           <ArrowRight className="w-4 h-4 ml-1" />
@@ -507,7 +503,7 @@ export default function GupShupPage() {
             </div>
 
             <div className="text-center mt-8">
-              <button className="bg-gradient-to-r from-red-600 to-pink-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center">
+              <button className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center">
                 <Video className="w-5 h-5 mr-2" />
                 View All Sessions
                 <ArrowRight className="w-5 h-5 ml-2" />
@@ -518,7 +514,7 @@ export default function GupShupPage() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-16 bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 text-white">
+      <section className="py-16 bg-gradient-to-r from-[#1164A3] via-[#68B9C4] to-[#82B4CC] text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex justify-center mb-6">
@@ -527,13 +523,13 @@ export default function GupShupPage() {
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Join Our Next Gup Shup!
             </h2>
-            <p className="text-xl text-orange-100 mb-8">
+            <p className="text-xl text-white/90 mb-8">
               Be part of the conversation. Connect, learn, and grow with diverse
               voices from our community.
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
-              <button className="bg-white text-orange-600 px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center">
+              <button className="bg-white text-[#1164A3] px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center">
                 <Calendar className="w-5 h-5 mr-2" />
                 Register for Next Session
               </button>
@@ -543,7 +539,7 @@ export default function GupShupPage() {
               </button>
             </div>
 
-            <div className="flex justify-center space-x-6 text-sm text-orange-100">
+            <div className="flex justify-center space-x-6 text-sm text-white/90">
               <span className="flex items-center">
                 <Globe className="w-4 h-4 mr-2" />
                 100% Free
@@ -565,11 +561,11 @@ export default function GupShupPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <Card className="shadow-2xl bg-gradient-to-r from-orange-50 to-pink-50 border-l-4 border-orange-600">
+            <Card className="shadow-2xl bg-gradient-to-r from-[#82B4CC]/20 to-[#B0A3B3]/20 border-l-4 border-[#1164A3]">
               <CardContent className="p-8 md:p-12 text-center">
                 <blockquote className="text-2xl md:text-3xl font-semibold text-gray-800 mb-6">
                   &quot;The best conversations happen over chai—casual, genuine, and
-                  full of unexpected insights.
+                  full of unexpected insights.&quot;
                 </blockquote>
                 <p className="text-lg text-gray-600">
                   Join us for your monthly dose of Gup Shup

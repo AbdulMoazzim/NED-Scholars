@@ -4,3 +4,6 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export function ErrorMsg(msg: string) {
+  return `Error Occurred during ${msg}`;
+}

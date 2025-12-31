@@ -35,28 +35,28 @@ export default function Dare2DesignPage() {
       title: "Creativity & Innovation",
       description:
         "Nurturing creative thinking and innovative problem-solving approaches",
-      color: "from-purple-600 to-pink-600",
+      color: "from-[#82B4CC] to-[#B0A3B3]",
     },
     {
       icon: <Target className="w-8 h-8" />,
       title: "Problem-Solving",
       description:
         "Developing real-world solutions to address community challenges",
-      color: "from-blue-600 to-cyan-600",
+      color: "from-[#1164A3] to-[#68B9C4]",
     },
     {
       icon: <Rocket className="w-8 h-8" />,
       title: "STEM Education",
       description:
         "Building strong technical foundations in Science, Technology, Engineering, and Mathematics",
-      color: "from-orange-600 to-yellow-600",
+      color: "from-[#68B9C4] to-[#82B4CC]",
     },
     {
       icon: <Globe className="w-8 h-8" />,
       title: "Global Recognition",
       description:
         "Providing platforms to showcase innovations on international stages",
-      color: "from-green-600 to-blue-600",
+      color: "from-[#1164A3] to-[#82B4CC]",
     },
   ];
 
@@ -101,25 +101,25 @@ export default function Dare2DesignPage() {
       icon: <Calendar className="w-6 h-6" />,
       title: "5 March 2024",
       description: "2nd EMUiNVENT International Competition at NED University",
-      color: "bg-blue-100 text-blue-600",
+      color: "bg-[#82B4CC]/20 text-[#1164A3]",
     },
     {
       icon: <Users className="w-6 h-6" />,
       title: "25 Teams from Pakistan",
       description: "Competed in school and university categories",
-      color: "bg-purple-100 text-purple-600",
+      color: "bg-[#68B9C4]/20 text-[#1164A3]",
     },
     {
       icon: <Globe className="w-6 h-6" />,
       title: "Michigan, USA Pathway",
       description: "Qualified for Invention Convention in Michigan",
-      color: "bg-green-100 text-green-600",
+      color: "bg-[#B0A3B3]/30 text-[#1164A3]",
     },
     {
       icon: <Award className="w-6 h-6" />,
       title: "Awards & Recognition",
       description: "Certificates, gifts, and cash prizes for participants",
-      color: "bg-orange-100 text-orange-600",
+      color: "bg-[#82B4CC]/30 text-[#1164A3]",
     },
   ];
 
@@ -131,7 +131,7 @@ export default function Dare2DesignPage() {
       duration: "8 Weeks",
       participants: "Selected Teams",
       icon: <Users className="w-8 h-8" />,
-      color: "from-blue-600 to-purple-600",
+      color: "from-[#1164A3] to-[#68B9C4]",
     },
     {
       title: "One-Month Tech Course (Pre-Competition)",
@@ -140,7 +140,7 @@ export default function Dare2DesignPage() {
       duration: "1 Month",
       participants: "Multiple Batches",
       icon: <Laptop  className="w-8 h-8" />,
-      color: "from-green-600 to-blue-600",
+      color: "from-[#68B9C4] to-[#82B4CC]",
     },
     {
       title: "June 2024 Tech Course",
@@ -150,7 +150,7 @@ export default function Dare2DesignPage() {
       participants: "48 Students",
       budget: "Rs 600,000",
       icon: <Rocket className="w-8 h-8" />,
-      color: "from-orange-600 to-red-600",
+      color: "from-[#82B4CC] to-[#B0A3B3]",
     },
   ];
 
@@ -211,7 +211,7 @@ export default function Dare2DesignPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 text-white py-16">
+      <section className="bg-gradient-to-r from-[#1164A3] via-[#68B9C4] to-[#82B4CC] text-white py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-4 bg-white/20 text-white border-white/30">
@@ -220,10 +220,10 @@ export default function Dare2DesignPage() {
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Creativity & Problem Solving Through Invention Learning
             </h1>
-            <p className="text-xl text-pink-100 mb-4">
+            <p className="text-xl text-white/90 mb-4">
               Dare2Design by NED Scholars
             </p>
-            <p className="text-lg text-white/90">
+            <p className="text-lg text-white/80">
               Empowering Young Innovators to Shape the Future
             </p>
           </div>
@@ -235,7 +235,7 @@ export default function Dare2DesignPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">About the Program</Badge>
+              <Badge className="mb-4 bg-[#68B9C4] text-white border-[#68B9C4]">About the Program</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 Empowering Young Innovators
               </h2>
@@ -248,7 +248,7 @@ export default function Dare2DesignPage() {
               </p>
             </div>
 
-            <Card className="mb-8 shadow-lg">
+            <Card className="mb-8 shadow-lg border-[#82B4CC]/20">
               <CardContent className="p-8">
                 <p className="text-gray-700 text-lg leading-relaxed mb-6">
                   By providing mentorship, resources, and hands-on experience,
@@ -284,11 +284,11 @@ export default function Dare2DesignPage() {
               {programBenefits.map((benefit, index) => (
                 <Card
                   key={index}
-                  className="hover:shadow-xl transition-all duration-300"
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
                 >
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                      <div className="w-12 h-12 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-lg flex items-center justify-center text-white flex-shrink-0">
                         {benefit.icon}
                       </div>
                       <div>
@@ -309,11 +309,11 @@ export default function Dare2DesignPage() {
       </section>
 
       {/* EMUiNVENT 2024 */}
-      <section className="py-16 bg-gradient-to-r from-blue-50 to-purple-50">
+      <section className="py-16 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">International Competition</Badge>
+              <Badge className="mb-4 bg-[#1164A3] text-white border-[#1164A3]">International Competition</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 A Pathway to International Recognition
               </h2>
@@ -328,7 +328,7 @@ export default function Dare2DesignPage() {
               {emuinvent2024Highlights.map((highlight, index) => (
                 <Card
                   key={index}
-                  className="hover:shadow-xl transition-all duration-300"
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
                 >
                   <CardContent className="p-6 text-center">
                     <div
@@ -347,10 +347,10 @@ export default function Dare2DesignPage() {
               ))}
             </div>
 
-            <Card className="shadow-lg bg-white">
+            <Card className="shadow-lg bg-white border-[#82B4CC]/20">
               <CardContent className="p-8">
                 <div className="flex items-start space-x-4">
-                  <MapPin className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
+                  <MapPin className="w-6 h-6 text-[#1164A3] flex-shrink-0 mt-1" />
                   <div>
                     <h4 className="font-semibold text-gray-800 mb-3 text-lg">
                       Competition Journey
@@ -382,7 +382,7 @@ export default function Dare2DesignPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">Comprehensive Training</Badge>
+              <Badge className="mb-4 bg-[#68B9C4] text-white border-[#68B9C4]">Comprehensive Training</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 Sustaining Innovation Through Training and Funding
               </h2>
@@ -397,7 +397,7 @@ export default function Dare2DesignPage() {
               {trainingPrograms.map((program, index) => (
                 <Card
                   key={index}
-                  className="hover:shadow-xl transition-all duration-300"
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
                 >
                   <CardContent className="p-8">
                     <div className="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-6">
@@ -414,16 +414,16 @@ export default function Dare2DesignPage() {
                           {program.description}
                         </p>
                         <div className="flex flex-wrap gap-3">
-                          <Badge variant="secondary">
+                          <Badge className="bg-[#82B4CC] text-white">
                             <Calendar className="w-3 h-3 mr-1" />
                             {program.duration}
                           </Badge>
-                          <Badge variant="secondary">
+                          <Badge className="bg-[#68B9C4] text-white">
                             <Users className="w-3 h-3 mr-1" />
                             {program.participants}
                           </Badge>
                           {program.budget && (
-                            <Badge variant="secondary">
+                            <Badge className="bg-[#1164A3] text-white">
                               <DollarSign className="w-3 h-3 mr-1" />
                               {program.budget}
                             </Badge>
@@ -437,10 +437,10 @@ export default function Dare2DesignPage() {
             </div>
 
             {/* June 2024 Highlight */}
-            <Card className="mt-8 bg-gradient-to-r from-orange-50 to-yellow-50 border-l-4 border-orange-600 shadow-lg">
+            <Card className="mt-8 bg-gradient-to-r from-[#82B4CC]/20 to-[#B0A3B3]/20 border-l-4 border-[#1164A3] shadow-lg">
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
-                  <Zap className="w-8 h-8 text-orange-600 flex-shrink-0" />
+                  <Zap className="w-8 h-8 text-[#1164A3] flex-shrink-0" />
                   <div>
                     <h4 className="font-semibold text-gray-800 mb-2 text-lg">
                       June 2024 Success Story
@@ -465,7 +465,7 @@ export default function Dare2DesignPage() {
       </section>
 
       {/* Impact Metrics */}
-      <section className="py-16 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+      <section className="py-16 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
@@ -475,7 +475,7 @@ export default function Dare2DesignPage() {
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 By the Numbers
               </h2>
-              <p className="text-lg text-pink-100">
+              <p className="text-lg text-white/90">
                 Measuring success through tangible outcomes
               </p>
             </div>
@@ -494,7 +494,7 @@ export default function Dare2DesignPage() {
                       {metric.number}
                     </div>
                     <h4 className="font-semibold mb-1">{metric.label}</h4>
-                    <p className="text-sm text-pink-100">{metric.description}</p>
+                    <p className="text-sm text-white/90">{metric.description}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -508,7 +508,7 @@ export default function Dare2DesignPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">What Makes Us Different</Badge>
+              <Badge className="mb-4 bg-[#1164A3] text-white border-[#1164A3]">What Makes Us Different</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 Keys to Success
               </h2>
@@ -522,16 +522,16 @@ export default function Dare2DesignPage() {
               {successFactors.map((factor, index) => (
                 <Card
                   key={index}
-                  className="hover:shadow-xl transition-all duration-300"
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
                 >
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                      <div className="w-12 h-12 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-lg flex items-center justify-center text-white flex-shrink-0">
                         {factor.icon}
                       </div>
                       <div>
                         <h4 className="font-semibold text-gray-800 mb-2 flex items-center">
-                          <CheckCircle2 className="w-5 h-5 text-green-600 mr-2" />
+                          <CheckCircle2 className="w-5 h-5 text-[#68B9C4] mr-2" />
                           {factor.title}
                         </h4>
                         <p className="text-gray-600">{factor.description}</p>
@@ -546,12 +546,12 @@ export default function Dare2DesignPage() {
       </section>
 
       {/* Commitment Statement */}
-      <section className="py-16 bg-gradient-to-r from-blue-50 to-purple-50">
+      <section className="py-16 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <Card className="shadow-2xl">
+            <Card className="shadow-2xl border-[#82B4CC]/20">
               <CardContent className="p-8 md:p-12 text-center">
-                <div className="w-20 h-20 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-20 h-20 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-full flex items-center justify-center mx-auto mb-6">
                   <Rocket className="w-10 h-10 text-white" />
                 </div>
                 <h2 className="text-3xl font-bold text-gray-800 mb-6">
@@ -565,19 +565,19 @@ export default function Dare2DesignPage() {
                   problem solvers and leaders in STEM.
                 </p>
                 <div className="flex flex-wrap justify-center gap-4">
-                  <Badge className="px-4 py-2 text-base">
+                  <Badge className="px-4 py-2 text-base bg-[#1164A3] text-white">
                     <TrendingUp className="w-4 h-4 mr-2" />
                     Structured Training
                   </Badge>
-                  <Badge className="px-4 py-2 text-base">
+                  <Badge className="px-4 py-2 text-base bg-[#68B9C4] text-white">
                     <DollarSign className="w-4 h-4 mr-2" />
                     Financial Support
                   </Badge>
-                  <Badge className="px-4 py-2 text-base">
+                  <Badge className="px-4 py-2 text-base bg-[#82B4CC] text-white">
                     <Users className="w-4 h-4 mr-2" />
                     Expert Mentorship
                   </Badge>
-                  <Badge className="px-4 py-2 text-base">
+                  <Badge className="px-4 py-2 text-base bg-[#1164A3] text-white">
                     <Globe className="w-4 h-4 mr-2" />
                     Global Recognition
                   </Badge>
@@ -600,31 +600,28 @@ export default function Dare2DesignPage() {
               to empower young minds, there&apos;s a place for you in Dare2Design.
             </p>
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-              <button onClick={()=>{router.push("/register/student")}} className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
+              <button onClick={()=>{router.push("/register/student")}} className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
                 <Lightbulb className="w-5 h-5 mr-2" />
                 Apply as a Student
               </button>
-              <button className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
+              <button className="bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
                 <Heart className="w-5 h-5 mr-2" />
                 Support Innovation
               </button>
-              <button className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-full font-semibold hover:border-gray-400 transition-all duration-300 flex items-center justify-center">
-                <BookOpen className="w-5 h-5 mr-2" />
-                Learn More
-              </button>
+             
             </div>
           </div>
         </div>
       </section>
 
       {/* Final Quote */}
-      <section className="py-16 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 text-white">
+      <section className="py-16 bg-gradient-to-r from-[#1164A3] via-[#68B9C4] to-[#82B4CC] text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <blockquote className="text-2xl md:text-3xl font-semibold mb-6">
               &quot;Innovation distinguishes between a leader and a follower.&quot;
             </blockquote>
-            <p className="text-lg text-pink-100">
+            <p className="text-lg text-white/90">
               Join us in nurturing the next generation of innovators and leaders
             </p>
           </div>

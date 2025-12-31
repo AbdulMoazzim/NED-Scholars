@@ -1,6 +1,10 @@
 import { GetAllSuccessStories } from "@/app/actions/success-stories";
 import { Dispatch, ReactElement, ReactNode, SetStateAction } from "react";
 import { FORM_CONFIGS } from "../data/form-config";
+import { GetAllMembers } from "@/app/actions/team-member";
+import { GetAllRemembrances } from "@/app/actions/remembrance";
+import TransparencyPage from "@/app/about/transparency/page";
+import { Transparency } from "./form-types";
 
 // Define types for menu items
 export interface SubSubLinkItem {
@@ -20,18 +24,14 @@ export interface MenuItem {
   subItems?: SubLinkItem[];
 }
 
-
 export interface cardItems {
-  icon: ReactNode;
   title: string;
   description: string;
-  color?: string;
 }
 
 export interface Stats {
   number: string;
   label: string;
-  color?: string;
 }
 
 export interface Resource {
@@ -76,7 +76,7 @@ export interface SidebarNavItem {
 }
 
 export interface TeamMemberData {
-  slug:string;
+  slug: string;
   name: string;
   position: string;
   email: string;
@@ -126,12 +126,18 @@ export interface NewsData {
     | "RESEARCH"
     | "PARTNERSHIP";
 }
+export interface Remembrance {
+  description: string;
+  name: string;
+}
 
 export type ContentData =
   | TeamMemberData
   | SuccessStoryData
   | BlogData
-  | NewsData;
+  | NewsData
+  | Remembrance
+  | Transparency;
 
 export interface ContentFormProps {
   activeTab: string;
@@ -139,28 +145,41 @@ export interface ContentFormProps {
   formData: Partial<ContentData>;
   config: SideBarItem;
   errors: Record<string, string>;
-  setErrors: Dispatch<SetStateAction<Record<string,string>>>;
+  setErrors: Dispatch<SetStateAction<Record<string, string>>>;
 }
 
-export interface imageData {
+interface resourceData {
   url: string;
-  alt: string | null;  // Changed from string to string | null
   blogPostId: null | string;
   successStoryId: null | string;
   teamMemberId: null | string;
   newsUpdateId: null | string;
 }
-
-export interface videoData {
-  url: string;
-  title: string | null;  // Changed from string to string | null
-  blogPostId: null | string;
-  successStoryId: null | string;
-  teamMemberId: null | string;
-  newsUpdateId: null | string;
+export interface imageData extends resourceData {
+  remembranceId: null | string;
+  public_id: string;
+  alt: string | null; // Changed from string to string | null
 }
 
-export type SuccessStoriesData = Awaited<ReturnType<typeof GetAllSuccessStories>>;
+export interface videoData extends resourceData {
+  public_id: string;
+  title: string | null;
+}
+export interface urlData extends resourceData {
+  title: string | null;
+}
+export interface fileData {
+  public_id: string;
+  url: string;
+  scholarshipResourceId: null | string;
+  transparencyResourceId: null | string;
+}
+
+export type SuccessStoriesData = Awaited<
+  ReturnType<typeof GetAllSuccessStories>
+>;
+export type TeamMembersData = Awaited<ReturnType<typeof GetAllMembers>>;
+export type RemembranceData = Awaited<ReturnType<typeof GetAllRemembrances>>;
 
 // Type definitions for TypeScript
 export interface FieldConfig {

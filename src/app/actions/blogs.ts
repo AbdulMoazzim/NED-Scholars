@@ -2,7 +2,15 @@
 
 import { prisma } from "@/lib/auth";
 import { BlogData, Resource, YouTubeUrl } from "@/lib/types";
-import { HandleImages, HandleURLS, HandleVideos } from "@/lib/serverUtils";
+import {
+  createRollbackState,
+  deleteResource,
+  performRollback,
+  saveYoutubeUrlWithTracking,
+  uploadImageWithTracking,
+  uploadVideoWithTracking,
+} from "@/lib/serverUtils";
+import { ErrorMsg } from "@/lib/utils";
 
 export async function CreateBlog(blogData: {
   formData: BlogData;
@@ -10,34 +18,76 @@ export async function CreateBlog(blogData: {
   videos: Resource[];
   youtubeUrls: YouTubeUrl[];
 }) {
+  // Initialize rollback state
+  const rollbackState = createRollbackState("blogs");
+
   try {
     const createdBlog = await prisma.blogPost.create({
-      data: {...blogData.formData, slug: `${blogData.formData.title.split(" ").join("-")}-${crypto.randomUUID()}`},
+      data: {
+        ...blogData.formData,
+        slug: `${blogData.formData.title.split(" ").join("-")}-${Date.now()}`,
+      },
     });
+    rollbackState.entityId = createdBlog.id;
 
-    // Handle images
-    await HandleImages(
-      blogData.images,
-      `blogs/${createdBlog.id}`,
-      createdBlog.id,
-      "blogs"
-    );
+    if (blogData.images?.length > 0) {
+      for (const imageResource of blogData.images) {
+        const result = await uploadImageWithTracking(
+          imageResource,
+          "blogs",
+          createdBlog.id,
+          "blogs",
+          rollbackState
+        );
+        if (!result.success) {
+          throw new Error("Failed to upload image");
+        }
+      }
+    }
 
-    // Handle videos
-    await HandleVideos(
-      blogData.videos,
-      `blogs/${createdBlog.id}`,
-      createdBlog.id,
-      "blogs"
-    );
+    if (blogData.videos?.length > 0) {
+      for (const videoResource of blogData.videos) {
+        const result = await uploadVideoWithTracking(
+          videoResource,
+          "blogs",
+          createdBlog.id,
+          "blogs",
+          rollbackState
+        );
+        if (!result.success) {
+          throw new Error("Failed to upload video");
+        }
+      }
+    }
 
-    // Handle YouTube URLs
-    await HandleURLS(blogData.youtubeUrls, createdBlog.id, "blogs");
+    if (blogData.youtubeUrls?.length > 0) {
+      for (const ytUrl of blogData.youtubeUrls) {
+        if (ytUrl.url.trim()) {
+          const result = await saveYoutubeUrlWithTracking(
+            ytUrl.url,
+            ytUrl.title,
+            createdBlog.id,
+            "blogs",
+            rollbackState
+          );
+          if (!result.success) {
+            throw new Error("Failed to save YouTube URL");
+          }
+        }
+      }
+    }
 
     return { success: true, data: createdBlog };
   } catch (err) {
-    console.log("CreateBlog error:", err);
-    return { success: false, error: err };
+    console.error("❌ CreateBlog error:", err);
+    console.log("🔄 Starting rollback...");
+
+    await performRollback(rollbackState);
+
+    return {
+      success: false,
+      error: "Failed to create blog. All changes have been reverted.",
+    };
   }
 }
 
@@ -53,7 +103,7 @@ export async function GetAllBlogs() {
     return { success: true, data: blogs };
   } catch (err) {
     console.log(err);
-    return { success: false, error: err };
+    return { success: false, error: ErrorMsg("getting all blogs") };
   }
 }
 
@@ -70,27 +120,46 @@ export async function GetBlog(id: string) {
     return { success: true, data: blog };
   } catch (err) {
     console.log(err);
-    return { success: false, error: err };
+    return { success: false, error: ErrorMsg("getting blog") };
   }
 }
 
 export async function DeleteBlog(id: string) {
   try {
-    // Delete related media from Cloudinary if needed
+    const images = await prisma.image.findMany({ where: { blogPostId: id } });
+    images.forEach(async (image) => {
+      const result = await deleteResource(image.public_id);
+      if (!result) {
+        return {
+          success: false,
+          error: "Error occured during deleting Images",
+        };
+      }
+    });
+    const videos = await prisma.video.findMany({ where: { blogPostId: id } });
+    videos.forEach(async (video) => {
+      const result = await deleteResource(video.public_id);
+      if (!result) {
+        return {
+          success: false,
+          error: "Error occured during deleting videos",
+        };
+      }
+    });
     await prisma.blogPost.delete({ where: { id } });
     return { success: true };
   } catch (err) {
     console.log(err);
-    return { success: false, error: err };
+    return { success: false, error: ErrorMsg("deleting blog") };
   }
 }
 
 export async function UpdateBlog(id: string, data: BlogData) {
   try {
-    await prisma.blogPost.update({ where: { id }, data });
+    await prisma.blogPost.update({ where: { slug: id }, data });
     return { success: true };
   } catch (err) {
     console.log(err);
-    return { success: false, error: err };
+    return { success: false, error: ErrorMsg("updating blog") };
   }
 }

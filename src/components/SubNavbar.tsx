@@ -40,7 +40,7 @@ export default function SubNavbar({
               <h1 className="text-3xl text-[#333333] mb-4 px-3">{title}</h1>
               {subLinks.map((link, index) => {
                 return (
-                  <Link href={link.href} className="text-[16px]">
+                  <Link key={index} href={link.href} className="text-[16px]">
                   <div
                     className="w-[300px] py-2 px-3 hover:bg-[#F5F5F5] rounded"
                     key={index}

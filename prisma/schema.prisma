@@ -1,12 +1,6 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/app/generated/prisma"
+  output   = "../prisma/generated/prisma"
 }
 
 datasource db {
@@ -157,12 +151,11 @@ model NewsUpdate {
   @@map("news_updates")
 }
 
-
-
 // Images Model
 model Image {
   id        String   @id @default(cuid())
   url       String   @db.VarChar(2048)
+  public_id String
   alt       String?  @db.VarChar(512)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -184,6 +177,9 @@ model Image {
   webinarId      String?
   webinar        Webinar?      @relation(fields: [webinarId], references: [id], onDelete: Cascade)
 
+  remembranceId String?
+  remembrance   Remembrance? @relation(fields: [remembranceId], references: [id], onDelete: Cascade)
+
   @@map("images")
 }
 
@@ -191,6 +187,7 @@ model Image {
 model Video {
   id        String   @id @default(cuid())
   url       String   @db.VarChar(2048)
+  public_id String
   title     String?  @db.VarChar(512)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -240,6 +237,13 @@ model YoutubeUrl {
   @@map("youtube_urls")
 }
 
+model Remembrance {
+  id          String  @id @default(cuid())
+  name        String
+  description String
+  images      Image[]
+}
+
 // Enums for Blog Categories
 enum BlogCategory {
   TECHNOLOGY
@@ -272,57 +276,32 @@ enum NewsCategory {
   @@map("news_category")
 }
 
-enum Gender {
-  MALE
-  FEMALE
-  PREFER_NOT_TO_SAY
+
+model Resources {
+  id        String   @id @default(cuid())
+  url       String   @db.VarChar(2048)
+  public_id String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Foreign keys
+  scholarshipResourceId  String?
+  scholarshipResource    ScholarshipForm? @relation(fields: [scholarshipResourceId], references: [id], onDelete: Cascade)
+  transparencyResourceId String?
+  transparencyResource   Transparency?    @relation(fields: [transparencyResourceId], references: [id], onDelete: Cascade)
+
+  @@map("resources")
 }
 
-enum Status {
-  pending
-  under_review
-  approved
-  rejected
+model Transparency {
+  id        String      @id @default(cuid())
+  year      String      @db.VarChar(2048)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  files     Resources[]
+
+  @@map("transparency")
 }
-
-enum Area_of_Interest_For_Volunteers {
-  graphics
-  animations
-  website
-  media
-  ai_sw
-  medical
-  laptop_distribution
-  event_management
-}
-
-model ScholarshipForm {
-  id                        String   @id @default(cuid())
-  full_name                 String
-  email                     String
-  phone                     String
-  date_of_birth             DateTime
-  gender                    Gender
-  status                    Status
-  country                   String
-  city                      String
-  address                   String?
-  current_education_level   String
-  institution_name          String
-  field_of_study            String
-  gpa_or_percentage         String
-  expected_graduation_year  Int?
-  annual_family_income      String
-  why_deserve_scholarship   String   @db.VarChar(2048)
-  future_goals              String   @db.VarChar(2048)
-  academic_transcript_url   String
-  recommendation_letter_url String
-  createdAt                 DateTime @default(now())
-  updatedAt                 DateTime @updatedAt
-
-  @@map("schoilarship_form")
-}
-
 model PartnerForm {
   id                 String   @id @default(cuid())
   full_name          String
@@ -332,12 +311,38 @@ model PartnerForm {
   organization_name  String
   designation        String
   linkedin_profile   String?
+  status             String
   areas_of_expertise String
   education_level    String
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
 
-  @@map("partner_form")
+  @@map("partners")
+}
+model ScholarshipForm {
+  id                       String      @id @default(cuid())
+  full_name                String
+  email                    String
+  phone                    String
+  date_of_birth            DateTime
+  gender                   String
+  status                   String
+  country                  String
+  city                     String
+  address                  String?
+  current_education_level  String
+  institution_name         String
+  field_of_study           String
+  gpa_or_percentage        String
+  expected_graduation_year Int?
+  annual_family_income     String
+  why_deserve_scholarship  String      @db.VarChar(2048)
+  future_goals             String      @db.VarChar(2048)
+  resources                Resources[]
+  createdAt                DateTime    @default(now())
+  updatedAt                DateTime    @updatedAt
+
+  @@map("schoilarship_form")
 }
 
 model StudentForm {
@@ -347,12 +352,13 @@ model StudentForm {
   phone             String
   why_join          String   @db.VarChar(2048)
   education_level   String
+  status            String
   field_of_study    String
   organization_name String
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
 
-  @@map("student_form")
+  @@map("students")
 }
 
 model MentorForm {
@@ -363,50 +369,35 @@ model MentorForm {
   why_join           String   @db.VarChar(2048)
   designation        String
   linkedin_profile   String?
+  status             String
   field_of_study     String
   experience_years   Int
   areas_of_expertise String
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
 
-  @@map("mentor_form")
+  @@map("mentors")
 }
 
 model VolenteerForm {
-  id                      String                          @id @default(cuid())
+  id                      String   @id @default(cuid())
   full_name               String
   email                   String
   phone                   String
   date_of_birth           DateTime
-  gender                  Gender
-  status                  Status
+  gender                  String
+  status                  String
   country                 String
   city                    String
   current_education_level String
-  areas_of_interest       Area_of_Interest_For_Volunteers
+  areas_of_interest       String
   skills                  String
-  createdAt               DateTime                        @default(now())
-  updatedAt               DateTime                        @updatedAt
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
 
-  @@map("volunteer_form")
+  @@map("volunteers")
 }
 
-enum attendence_mode {
-  virtual
-  physical
-}
-
-enum AttendanceMode {
-  virtual
-  physical
-}
-
-enum EventStatus {
-  upcoming
-  ongoing
-  completed
-  cancelled
-}
 
 model Seminar {
   id          String    @id @default(cuid())
@@ -425,7 +416,7 @@ model Seminar {
   images Image[]
   videos Video[] // For post-webinar recording
   // Meta
-  status EventStatus @default(upcoming)
+  status String @default("upcoming")
 
   // Relationships
   attendees  AttendeeSeminarForm[]
@@ -457,7 +448,7 @@ model Webinar {
   videos Video[] // For post-webinar recording
 
   // Meta
-  status EventStatus @default(upcoming)
+  status String @default("upcoming")
 
   // Relationships
   attendees AttendeeWebinarForm[]
@@ -483,7 +474,7 @@ model AttendeeSeminarForm {
   phone     String
 
   // Attendance
-  attendance_mode AttendanceMode
+  attendance_mode String
 
   // Foreign Key
   seminarId String?
@@ -498,7 +489,7 @@ model AttendeeSeminarForm {
 
   @@index([seminarId])
   @@index([email])
-  @@map("attendee_seminar_form")
+  @@map("attendee_seminar")
 }
 
 model AttendeeWebinarForm {
@@ -507,7 +498,7 @@ model AttendeeWebinarForm {
   full_name       String
   email           String
   phone           String
-  attendance_mode AttendanceMode @default(virtual)
+  attendance_mode String @default("virtual")
 
   // Foreign Key
   webinarId String?
@@ -522,7 +513,7 @@ model AttendeeWebinarForm {
 
   @@index([webinarId])
   @@index([email])
-  @@map("attendee_webinar_form")
+  @@map("attendee_webinar")
 }
 
 model PresenterSeminarForm {
@@ -553,16 +544,19 @@ model PresenterSeminarForm {
   seminar   Seminar? @relation(fields: [seminarId], references: [id], onDelete: SetNull)
 
   // Status
-  application_status Status @default(pending)
+  application_status String @default("pending")
 
   // Timestamps
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
-  reviewed_at    DateTime?
-  scheduled_date DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@index([seminarId])
   @@index([email])
   @@index([application_status])
-  @@map("presenter_seminar_form")
+  @@map("presenter_seminar")
 }
+
+model subscriptions {
+  id String @id @default(cuid())
+  email String
+} 

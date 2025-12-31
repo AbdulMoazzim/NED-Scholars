@@ -50,9 +50,9 @@ export const FORM_CONFIGS = {
         placeholder: "Select your gender",
         required: true,
         options: [
-          { value: "male", label: "Male" },
-          { value: "female", label: "Female" },
-          { value: "prefer_not_to_say", label: "Prefer not to say" },
+          { value: "MALE", label: "Male" },
+          { value: "FEMALE", label: "Female" },
+          { value: "PREFER_NOT_TO_SAY", label: "Prefer not to say" },
         ],
       },
       status: {
@@ -527,9 +527,9 @@ export const FORM_CONFIGS = {
         placeholder: "Select your gender",
         required: true,
         options: [
-          { value: "male", label: "Male" },
-          { value: "female", label: "Female" },
-          { value: "prefer_not_to_say", label: "Prefer not to say" },
+          { value: "MALE", label: "Male" },
+          { value: "FEMALE", label: "Female" },
+          { value: "PREFER_NOT_TO_SAY", label: "Prefer not to say" },
         ],
       },
       status: {

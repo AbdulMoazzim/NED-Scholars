@@ -31,21 +31,21 @@ export default function MentorshipProgramPage() {
       title: "Balancing Work & Studies",
       description:
         "Many students take on part-time jobs not just for themselves, but to support their families financially",
-      color: "bg-red-100 text-red-600",
+      color: "bg-[#82B4CC]/20 text-[#1164A3]",
     },
     {
       icon: <Building2 className="w-6 h-6" />,
       title: "Lack of Professional Exposure",
       description:
         "Without industry connections, they struggle to secure internships, research opportunities, or career mentorship",
-      color: "bg-orange-100 text-orange-600",
+      color: "bg-[#68B9C4]/20 text-[#1164A3]",
     },
     {
       icon: <AlertTriangle className="w-6 h-6" />,
       title: "Time Management & Stress",
       description:
         "Juggling academics, work, and skill development requires structured planning—something a mentor can help with",
-      color: "bg-yellow-100 text-yellow-600",
+      color: "bg-[#B0A3B3]/30 text-[#1164A3]",
     },
   ];
 
@@ -55,11 +55,11 @@ export default function MentorshipProgramPage() {
       title: "Personalized Guidance",
       description: "Mentors work one-on-one with scholars to:",
       benefits: [
-        {color: "bg-blue-50", text: "Develop a work-study-life balance plan"},
-        {color: "bg-green-50", text: "Identify skill-building opportunities (certifications, workshops)"},
-        {color: "bg-purple-50", text: "Navigate career pathways (industry vs. academia, freelancing, global opportunities)"},
+        {color: "bg-[#82B4CC]/20", text: "Develop a work-study-life balance plan"},
+        {color: "bg-[#68B9C4]/20", text: "Identify skill-building opportunities (certifications, workshops)"},
+        {color: "bg-[#B0A3B3]/20", text: "Navigate career pathways (industry vs. academia, freelancing, global opportunities)"},
       ],
-      color: "from-blue-600 to-cyan-600",
+      color: "from-[#1164A3] to-[#68B9C4]",
       step: 1,
     },
     {
@@ -67,11 +67,11 @@ export default function MentorshipProgramPage() {
       title: "Professional Development",
       description: "Mentors provide:",
       benefits: [
-        {color: "bg-blue-50", text: "Resume & interview coaching"},
-        {color: "bg-green-50", text: "Networking opportunities"},
-        {color: "bg-purple-50", text: "Insights into industry trends (especially in STEM fields)"},
+        {color: "bg-[#82B4CC]/20", text: "Resume & interview coaching"},
+        {color: "bg-[#68B9C4]/20", text: "Networking opportunities"},
+        {color: "bg-[#B0A3B3]/20", text: "Insights into industry trends (especially in STEM fields)"},
       ],
-      color: "from-purple-600 to-pink-600",
+      color: "from-[#68B9C4] to-[#82B4CC]",
       step: 2,
     },
     {
@@ -80,11 +80,11 @@ export default function MentorshipProgramPage() {
       description:
         "Many scholars face self-doubt, imposter syndrome, or family pressures. Mentors act as trusted advisors, helping them stay focused and confident.",
       benefits: [
-        {color: "bg-blue-50", text: "Build confidence and self-belief"},
-        {color: "bg-green-50", text: "Navigate imposter syndrome"},
-        {color: "bg-purple-50", text: "Handle family and academic pressures"},
+        {color: "bg-[#82B4CC]/20", text: "Build confidence and self-belief"},
+        {color: "bg-[#68B9C4]/20", text: "Navigate imposter syndrome"},
+        {color: "bg-[#B0A3B3]/20", text: "Handle family and academic pressures"},
       ],
-      color: "from-pink-600 to-red-600",
+      color: "from-[#82B4CC] to-[#B0A3B3]",
       step: 3,
     },
   ];
@@ -142,7 +142,6 @@ export default function MentorshipProgramPage() {
     {
       name: "Ahmed Hassan",
       year: "3rd Year Mechanical Engineering",
-      image: "/api/placeholder/100/100",
       quote:
         "My mentor helped me balance my part-time job with my studies and even connected me with an internship opportunity. I couldn't have done it without their guidance.",
       mentorName: "Eng. Sarah Khan",
@@ -150,7 +149,6 @@ export default function MentorshipProgramPage() {
     {
       name: "Fatima Malik",
       year: "Final Year Computer Science",
-      image: "/api/placeholder/100/100",
       quote:
         "Coming from a family with no engineers, I felt lost navigating career options. My mentor became the role model I needed and helped me secure a position at a tech startup.",
       mentorName: "Dr. Ali Ahmed",
@@ -158,7 +156,6 @@ export default function MentorshipProgramPage() {
     {
       name: "Bilal Raza",
       year: "2nd Year Electrical Engineering",
-      image: "/api/placeholder/100/100",
       quote:
         "The emotional support from my mentor was invaluable. They helped me overcome imposter syndrome and believe in my abilities during the toughest semester.",
       mentorName: "Eng. Maria Siddiqui",
@@ -172,7 +169,6 @@ export default function MentorshipProgramPage() {
       title: "Senior Data Scientist",
       company: "Tech Innovation Labs",
       location: "San Francisco, USA",
-      image: "/api/placeholder/120/120",
       yearsAsMentor: 3,
       studentsGuided: 8,
       specialty: "AI/ML Career Guidance",
@@ -184,7 +180,6 @@ export default function MentorshipProgramPage() {
       title: "Principal Engineer",
       company: "Siemens Pakistan",
       location: "Karachi, Pakistan",
-      image: "/api/placeholder/120/120",
       yearsAsMentor: 5,
       studentsGuided: 15,
       specialty: "Engineering & Project Management",
@@ -196,7 +191,6 @@ export default function MentorshipProgramPage() {
       title: "Product Manager",
       company: "Microsoft",
       location: "Seattle, USA",
-      image: "/api/placeholder/120/120",
       yearsAsMentor: 2,
       studentsGuided: 6,
       specialty: "Tech Product Management",
@@ -208,7 +202,7 @@ export default function MentorshipProgramPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white py-16">
+      <section className="bg-gradient-to-r from-[#1164A3] via-[#68B9C4] to-[#82B4CC] text-white py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-4 bg-white/20 text-white border-white/30">
@@ -217,7 +211,7 @@ export default function MentorshipProgramPage() {
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Guiding the Next Generation of Leaders
             </h1>
-            <p className="text-xl text-blue-100">
+            <p className="text-xl text-white/90">
               Connecting talented students with experienced professionals for
               meaningful growth
             </p>
@@ -230,16 +224,16 @@ export default function MentorshipProgramPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">Our Mission</Badge>
+              <Badge className="mb-4 bg-[#68B9C4] text-white border-[#68B9C4]">Our Mission</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 Why Mentorship Matters
               </h2>
             </div>
 
-            <Card className="shadow-xl mb-8">
+            <Card className="shadow-xl mb-8 border-[#82B4CC]/20">
               <CardContent className="p-8">
                 <div className="flex items-start space-x-4 mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white flex-shrink-0">
+                  <div className="w-12 h-12 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-full flex items-center justify-center text-white flex-shrink-0">
                     <Users className="w-6 h-6" />
                   </div>
                   <div>
@@ -271,7 +265,7 @@ export default function MentorshipProgramPage() {
                 {scholarChallenges.map((challenge, index) => (
                   <Card
                     key={index}
-                    className="hover:shadow-xl transition-all duration-300"
+                    className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
                   >
                     <CardContent className="p-6">
                       <div
@@ -291,10 +285,10 @@ export default function MentorshipProgramPage() {
             </div>
 
             {/* Quote */}
-            <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-l-4 border-blue-600">
+            <Card className="bg-gradient-to-r from-[#82B4CC]/20 to-[#B0A3B3]/20 border-l-4 border-[#1164A3]">
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
-                  <div className="text-blue-600 text-4xl">&quot;</div>
+                  <div className="text-[#1164A3] text-4xl">&quot;</div>
                   <p className="text-lg text-gray-700 italic">
                     A mentor does more than give advice—they help turn struggles
                     into strategies and dreams into reality.
@@ -307,11 +301,11 @@ export default function MentorshipProgramPage() {
       </section>
 
       {/* How It Works */}
-      <section className="py-16 bg-gradient-to-r from-blue-50 to-purple-50">
+      <section className="py-16 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">Our Approach</Badge>
+              <Badge className="mb-4 bg-[#1164A3] text-white border-[#1164A3]">Our Approach</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 How Our Mentorship Program Works
               </h2>
@@ -324,7 +318,7 @@ export default function MentorshipProgramPage() {
               {programComponents.map((component, index) => (
                 <Card
                   key={index}
-                  className="hover:shadow-xl transition-all duration-300"
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
                 >
                   <CardContent className="p-8">
                     <div className="flex flex-col md:flex-row  items-start md:items-center space-y-4 md:space-y-0 md:space-x-6 mb-6">
@@ -335,7 +329,7 @@ export default function MentorshipProgramPage() {
                       </div>
                       <div className="flex-1 ">
                         <div className="flex items-center space-x-3 mb-2">
-                          <div className="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                          <div className="w-8 h-8 bg-[#1164A3] rounded-full flex items-center justify-center text-white font-bold text-sm">
                             {component.step}
                           </div>
                           <h3 className="text-2xl font-bold text-gray-800">
@@ -352,9 +346,9 @@ export default function MentorshipProgramPage() {
                       {component.benefits.map((benefit, idx) => (
                         <div
                           key={idx}
-                          className={`flex items-start space-x-2 p-3 bg-blue-50 rounded-lg `+benefit.color}
+                          className={`flex items-start space-x-2 p-3 rounded-lg `+benefit.color}
                         >
-                          <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-5 h-5 text-[#68B9C4] flex-shrink-0 mt-0.5" />
                           <span className="text-sm text-gray-700">
                             {benefit.text}
                           </span>
@@ -374,7 +368,7 @@ export default function MentorshipProgramPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">Success Stories</Badge>
+              <Badge className="mb-4 bg-[#68B9C4] text-white border-[#68B9C4]">Success Stories</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 Student Testimonials
               </h2>
@@ -388,15 +382,10 @@ export default function MentorshipProgramPage() {
               {studentTestimonials.map((testimonial, index) => (
                 <Card
                   key={index}
-                  className="hover:shadow-xl transition-all duration-300"
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
                 >
                   <CardContent className="p-6">
                     <div className="flex items-center space-x-4 mb-4">
-                      <img
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        className="w-16 h-16 rounded-full object-cover"
-                      />
                       <div>
                         <h4 className="font-bold text-gray-800">
                           {testimonial.name}
@@ -412,7 +401,7 @@ export default function MentorshipProgramPage() {
                         {[...Array(5)].map((_, i) => (
                           <Star
                             key={i}
-                            className="w-4 h-4 fill-yellow-400 text-yellow-400"
+                            className="w-4 h-4 fill-[#82B4CC] text-[#82B4CC]"
                           />
                         ))}
                       </div>
@@ -436,11 +425,11 @@ export default function MentorshipProgramPage() {
       </section>
 
       {/* Mentor Spotlights */}
-      <section className="py-16 bg-gradient-to-r from-purple-50 to-pink-50">
+      <section className="py-16 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">Meet Our Mentors</Badge>
+              <Badge className="mb-4 bg-[#1164A3] text-white border-[#1164A3]">Meet Our Mentors</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 Mentor Spotlights
               </h2>
@@ -453,19 +442,15 @@ export default function MentorshipProgramPage() {
               {mentorSpotlights.map((mentor, index) => (
                 <Card
                   key={index}
-                  className="hover:shadow-xl transition-all duration-300"
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
                 >
                   <CardContent className="p-6 text-center">
-                    <img
-                      src={mentor.image}
-                      alt={mentor.name}
-                      className="w-24 h-24 rounded-full object-cover mx-auto mb-4 border-4 border-purple-200"
-                    />
+                   
                     <h4 className="font-bold text-gray-800 text-lg mb-1">
                       {mentor.name}
                     </h4>
                     <p className="text-sm text-gray-600 mb-1">{mentor.title}</p>
-                    <p className="text-sm text-purple-600 font-medium mb-2">
+                    <p className="text-sm text-[#1164A3] font-medium mb-2">
                       {mentor.company}
                     </p>
                     <div className="flex items-center justify-center text-xs text-gray-500 mb-4">
@@ -474,20 +459,20 @@ export default function MentorshipProgramPage() {
                     </div>
 
                     <div className="grid grid-cols-3 gap-2 mb-4 text-center">
-                      <div className="bg-blue-50 p-2 rounded">
-                        <div className="font-bold text-blue-600">
+                      <div className="bg-[#82B4CC]/20 p-2 rounded">
+                        <div className="font-bold text-[#1164A3]">
                           {mentor.yearsAsMentor}
                         </div>
                         <div className="text-xs text-gray-600">Years</div>
                       </div>
-                      <div className="bg-green-50 p-2 rounded">
-                        <div className="font-bold text-green-600">
+                      <div className="bg-[#68B9C4]/20 p-2 rounded">
+                        <div className="font-bold text-[#1164A3]">
                           {mentor.studentsGuided}
                         </div>
                         <div className="text-xs text-gray-600">Students</div>
                       </div>
-                      <div className="bg-purple-50 p-2 rounded">
-                        <div className="text-xs text-purple-600 font-medium">
+                      <div className="bg-[#B0A3B3]/30 p-2 rounded">
+                        <div className="text-xs text-[#1164A3] font-medium">
                           {mentor.specialty.split(" ")[0]}
                         </div>
                       </div>
@@ -511,7 +496,7 @@ export default function MentorshipProgramPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">Why Become a Mentor</Badge>
+              <Badge className="mb-4 bg-[#68B9C4] text-white border-[#68B9C4]">Why Become a Mentor</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 What You&apos;ll Gain as a Mentor
               </h2>
@@ -524,11 +509,11 @@ export default function MentorshipProgramPage() {
               {mentorBenefits.map((item, index) => (
                 <Card
                   key={index}
-                  className="hover:shadow-xl transition-all duration-300"
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
                 >
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                      <div className="w-12 h-12 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-lg flex items-center justify-center text-white flex-shrink-0">
                         {item.icon}
                       </div>
                       <p className="text-gray-700 font-medium flex-1">
@@ -544,14 +529,14 @@ export default function MentorshipProgramPage() {
       </section>
 
       {/* Join as a Mentor */}
-      <section className="py-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+      <section className="py-16 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Join Us as a Mentor
               </h2>
-              <p className="text-xl text-blue-100 mb-8">
+              <p className="text-xl text-white/90 mb-8">
                 Are you a professional in engineering, tech, business, or
                 academia? Your experience can change a student&apos;s life.
               </p>
@@ -568,7 +553,7 @@ export default function MentorshipProgramPage() {
                       {detail.icon}
                     </div>
                     <h4 className="font-bold mb-2 text-lg">{detail.title}</h4>
-                    <p className="text-sm text-blue-100">{detail.description}</p>
+                    <p className="text-sm text-white/90">{detail.description}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -581,24 +566,24 @@ export default function MentorshipProgramPage() {
                 </h3>
                 <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8">
                   <div className="flex items-center space-x-3">
-                    <Mail className="w-6 h-6 text-blue-600" />
+                    <Mail className="w-6 h-6 text-[#1164A3]" />
                     <div>
                       <p className="text-sm text-gray-600">Email us at:</p>
                       <a
                         href="mailto:mentorship@nedscholars.org"
-                        className="text-blue-600 hover:underline font-semibold"
+                        className="text-[#1164A3] hover:underline font-semibold"
                       >
                         mentorship@nedscholars.org
                       </a>
                     </div>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <Globe className="w-6 h-6 text-blue-600" />
+                    <Globe className="w-6 h-6 text-[#1164A3]" />
                     <div>
                       <p className="text-sm text-gray-600">Learn more:</p>
                       <a
                         href="https://www.nedscholars.org/mentorship"
-                        className="text-blue-600 hover:underline font-semibold"
+                        className="text-[#1164A3] hover:underline font-semibold"
                       >
                         www.nedscholars.org/mentorship
                       </a>
@@ -609,7 +594,7 @@ export default function MentorshipProgramPage() {
             </Card>
 
             <div className="text-center mt-8">
-              <button onClick={()=> {router.push("/register/mentor")}} className="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center">
+              <button onClick={()=> {router.push("/register/mentor")}} className="bg-white text-[#1164A3] px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center">
                 <UserCheck className="w-5 h-5 mr-2" />
                 Apply to Become a Mentor
                 <ArrowRight className="w-5 h-5 ml-2" />
@@ -623,10 +608,10 @@ export default function MentorshipProgramPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <Card className="shadow-2xl bg-gradient-to-r from-blue-50 to-purple-50 border-l-4 border-blue-600">
+            <Card className="shadow-2xl bg-gradient-to-r from-[#82B4CC]/20 to-[#B0A3B3]/20 border-l-4 border-[#1164A3]">
               <CardContent className="p-8 md:p-12">
                 <div className="text-center">
-                  <div className="w-20 h-20 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <div className="w-20 h-20 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-full flex items-center justify-center mx-auto mb-6">
                     <Heart className="w-10 h-10 text-white" />
                   </div>
                   <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
@@ -638,13 +623,13 @@ export default function MentorshipProgramPage() {
                   </p>
                   <div className="flex justify-center space-x-8 text-sm">
                     <div className="text-center">
-                      <div className="text-3xl font-bold text-blue-600">
+                      <div className="text-3xl font-bold text-[#1164A3]">
                         1-2
                       </div>
                       <div className="text-gray-600">hours/month</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-3xl font-bold text-purple-600">
+                      <div className="text-3xl font-bold text-[#68B9C4]">
                         ∞
                       </div>
                       <div className="text-gray-600">impact</div>

@@ -1,8 +1,16 @@
-"use server"
+"use server";
 
-import { prisma } from "@/lib/auth"
+import { prisma } from "@/lib/auth";
 import { Resource, SuccessStoryData, YouTubeUrl } from "@/lib/types";
-import { HandleImages, HandleURLS, HandleVideos } from "@/lib/serverUtils";
+import {
+  createRollbackState,
+  deleteResource,
+  performRollback,
+  saveYoutubeUrlWithTracking,
+  uploadImageWithTracking,
+  uploadVideoWithTracking,
+} from "@/lib/serverUtils";
+import { ErrorMsg } from "@/lib/utils";
 
 export async function CreateSuccessStory(storyData: {
   formData: SuccessStoryData;
@@ -10,25 +18,78 @@ export async function CreateSuccessStory(storyData: {
   videos: Resource[];
   youtubeUrls: YouTubeUrl[];
 }) {
+  const rollbackState = createRollbackState("success-story");
+
   try {
     const createdStory = await prisma.successStory.create({
-      data: {...storyData.formData, slug: storyData.formData.studentName.split(" ").join("-")+"-"+crypto.randomUUID()}
+      data: {
+        ...storyData.formData,
+        slug:
+          storyData.formData.studentName.split(" ").join("-") +
+          "-" +
+          Date.now(),
+      },
     });
+    rollbackState.entityId = createdStory.id;
 
-    // Handle images
-    await HandleImages(storyData.images, `success-story/${createdStory.id}`, createdStory.id, "success-story");
-    
-    // Handle videos
-    await HandleVideos(storyData.videos, `success-story/${createdStory.id}`, createdStory.id, "success-story");
-    
-    // Handle YouTube URLs
-    await HandleURLS(storyData.youtubeUrls, createdStory.id, "success-story");
-    
+    if (storyData.images?.length > 0) {
+      for (const imageResource of storyData.images) {
+        const result = await uploadImageWithTracking(
+          imageResource,
+          "success-story",
+          createdStory.id,
+          "success-story",
+          rollbackState
+        );
+        if (!result.success) {
+          throw new Error("Failed to upload image");
+        }
+      }
+    }
+
+    if (storyData.videos?.length > 0) {
+      for (const videoResource of storyData.videos) {
+        const result = await uploadVideoWithTracking(
+          videoResource,
+          "success-story",
+          createdStory.id,
+          "success-story",
+          rollbackState
+        );
+        if (!result.success) {
+          throw new Error("Failed to upload video");
+        }
+      }
+    }
+
+    if (storyData.youtubeUrls?.length > 0) {
+      for (const ytUrl of storyData.youtubeUrls) {
+        if (ytUrl.url.trim()) {
+          const result = await saveYoutubeUrlWithTracking(
+            ytUrl.url,
+            ytUrl.title,
+            createdStory.id,
+            "success-story",
+            rollbackState
+          );
+          if (!result.success) {
+            throw new Error("Failed to save YouTube URL");
+          }
+        }
+      }
+    }
 
     return { success: true, data: createdStory };
   } catch (err) {
-    console.log("CreateSuccessStory error:", err);
-    return { success: false, error: "Server Internal Error" };
+    console.error("❌ Create success-story error:", err);
+    console.log("🔄 Starting rollback...");
+
+    await performRollback(rollbackState);
+
+    return {
+      success: false,
+      error: "Failed to create success-story. All changes have been reverted.",
+    };
   }
 }
 
@@ -41,18 +102,22 @@ export async function GetAllSuccessStories() {
         youtubeUrls: true,
       },
     });
-    const parsedStories = stories.map(story => ({...story, createdAt: story.createdAt.toISOString(), updatedAt: story.updatedAt.toISOString()}))
+    const parsedStories = stories.map((story) => ({
+      ...story,
+      createdAt: story.createdAt.toISOString(),
+      updatedAt: story.updatedAt.toISOString(),
+    }));
     return { success: true, data: parsedStories };
   } catch (err) {
     console.log(err);
-    return { success: false, error: "Server Internal Error" };
+    return { success: false, error: ErrorMsg("getting all success-stories") };
   }
 }
 
-export async function GetSuccessStory(id: string) {
+export async function GetSuccessStory(slug: string) {
   try {
     const story = await prisma.successStory.findUnique({
-      where: { id },
+      where: { slug },
       include: {
         images: true,
         videos: true,
@@ -62,27 +127,50 @@ export async function GetSuccessStory(id: string) {
     return { success: true, data: story };
   } catch (err) {
     console.log(err);
-    return { success: false, error: "Server Internal Error" };
+    return { success: false, error: ErrorMsg("getting success-story") };
   }
 }
 
 export async function DeleteSuccessStory(id: string) {
   try {
-    // Delete related media from Cloudinary if needed
+    const images = await prisma.image.findMany({
+      where: { successStoryId: id },
+    });
+    images.forEach(async (image) => {
+      const result = await deleteResource(image.public_id);
+      if (!result) {
+        return {
+          success: false,
+          error: "Error occured during deleting Images",
+        };
+      }
+    });
+    const videos = await prisma.video.findMany({
+      where: { successStoryId: id },
+    });
+    videos.forEach(async (video) => {
+      const result = await deleteResource(video.public_id);
+      if (!result) {
+        return {
+          success: false,
+          error: "Error occured during deleting videos",
+        };
+      }
+    });
     await prisma.successStory.delete({ where: { id } });
     return { success: true };
   } catch (err) {
     console.log(err);
-    return { success: false, error: "Server Internal Error" };
+    return { success: false, error: ErrorMsg("deleting success-story") };
   }
 }
 
 export async function UpdateSuccessStory(id: string, data: SuccessStoryData) {
   try {
-    await prisma.successStory.update({ where: { id }, data });
+      await prisma.successStory.update({ where: { slug: id }, data });
     return { success: true };
   } catch (err) {
     console.log(err);
-    return { success: false, error: "Server Internal Error" };
+    return { success: false, error: ErrorMsg("updating success-story") };
   }
 }

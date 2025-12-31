@@ -10,7 +10,8 @@ export const menuItems: MenuItem[] = [
         { title: 'Our Journey', href: '/about/journey' },
         { title: 'Causes To Support', href: '/about/causes-to-support' },
         { title: 'Transparency', href: '/about/transparency' },
-        { title: 'Remembrance', href: '/about/remembrance' }
+        { title: 'Remembrance', href: '/about/remembrance' },
+        { title: 'Acknowledgement', href: '/about/acknowledgement' }
       ]
     },
     {

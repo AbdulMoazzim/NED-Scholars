@@ -125,7 +125,7 @@ export default function ScholarshipGuidelines() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
+      <section className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-4 bg-white/20 text-white border-white/30">
@@ -134,7 +134,7 @@ export default function ScholarshipGuidelines() {
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Guidelines and Selection Process
             </h1>
-            <p className="text-xl text-blue-100">
+            <p className="text-xl text-white/90">
               NED University of Engineering and Technology, Pakistan
             </p>
           </div>
@@ -154,17 +154,17 @@ export default function ScholarshipGuidelines() {
               </p>
             </div>
 
-            <Card className="mb-8 shadow-lg">
+            <Card className="mb-8 shadow-lg border-[#1164A3]/20">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
-                  <Award className="w-6 h-6 text-blue-600" />
+                  <Award className="w-6 h-6 text-[#1164A3]" />
                   <span>Key Guidelines</span>
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-4">
                   <li className="flex items-start space-x-3">
-                    <CheckCircle2 className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                    <CheckCircle2 className="w-5 h-5 text-[#68B9C4] mt-1 flex-shrink-0" />
                     <span className="text-gray-700">
                       Scholarships are awarded on a{" "}
                       <span className="font-semibold">&quot;need-cum-merit&quot;</span>{" "}
@@ -172,7 +172,7 @@ export default function ScholarshipGuidelines() {
                     </span>
                   </li>
                   <li className="flex items-start space-x-3">
-                    <Calendar className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
+                    <Calendar className="w-5 h-5 text-[#1164A3] mt-1 flex-shrink-0" />
                     <span className="text-gray-700">
                       Applications are accepted and reviewed in{" "}
                       <span className="font-semibold">
@@ -182,7 +182,7 @@ export default function ScholarshipGuidelines() {
                     </span>
                   </li>
                   <li className="flex items-start space-x-3">
-                    <Users className="w-5 h-5 text-purple-600 mt-1 flex-shrink-0" />
+                    <Users className="w-5 h-5 text-[#82B4CC] mt-1 flex-shrink-0" />
                     <span className="text-gray-700">
                       The{" "}
                       <span className="font-semibold">
@@ -192,7 +192,7 @@ export default function ScholarshipGuidelines() {
                     </span>
                   </li>
                   <li className="flex items-start space-x-3">
-                    <Video className="w-5 h-5 text-red-600 mt-1 flex-shrink-0" />
+                    <Video className="w-5 h-5 text-[#1164A3] mt-1 flex-shrink-0" />
                     <span className="text-gray-700">
                       Selection is done through an{" "}
                       <span className="font-semibold">interview process</span>{" "}
@@ -200,7 +200,7 @@ export default function ScholarshipGuidelines() {
                     </span>
                   </li>
                   <li className="flex items-start space-x-3">
-                    <Calendar className="w-5 h-5 text-orange-600 mt-1 flex-shrink-0" />
+                    <Calendar className="w-5 h-5 text-[#68B9C4] mt-1 flex-shrink-0" />
                     <span className="text-gray-700">
                       Interviews are conducted in{" "}
                       <span className="font-semibold">
@@ -210,7 +210,7 @@ export default function ScholarshipGuidelines() {
                     </span>
                   </li>
                   <li className="flex items-start space-x-3">
-                    <Users className="w-5 h-5 text-indigo-600 mt-1 flex-shrink-0" />
+                    <Users className="w-5 h-5 text-[#82B4CC] mt-1 flex-shrink-0" />
                     <span className="text-gray-700">
                       The NED Controller of Students Affairs distributes
                       scholarships.
@@ -221,31 +221,31 @@ export default function ScholarshipGuidelines() {
             </Card>
 
             {/* Eligibility Section */}
-            <Card className="shadow-lg">
+            <Card className="shadow-lg border-[#1164A3]/20">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-6 h-6 text-green-600" />
+                  <CheckCircle2 className="w-6 h-6 text-[#68B9C4]" />
                   <span>Eligibility Criteria</span>
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  <div className="bg-green-50 border-l-4 border-green-600 p-4 rounded">
-                    <p className="font-semibold text-green-900 mb-2">
+                  <div className="bg-[#68B9C4]/10 border-l-4 border-[#68B9C4] p-4 rounded">
+                    <p className="font-semibold text-[#1164A3] mb-2">
                       Primary Eligibility:
                     </p>
-                    <p className="text-green-800">
+                    <p className="text-gray-700">
                       All Bachelor of Engineering{" "}
                       <span className="font-semibold">first-year</span>{" "}
                       engineering students are eligible for applying.
                     </p>
                   </div>
 
-                  <div className="bg-blue-50 border-l-4 border-blue-600 p-4 rounded">
-                    <p className="font-semibold text-blue-900 mb-2">
+                  <div className="bg-[#82B4CC]/10 border-l-4 border-[#82B4CC] p-4 rounded">
+                    <p className="font-semibold text-[#1164A3] mb-2">
                       Additional Opportunities:
                     </p>
-                    <p className="text-blue-800">
+                    <p className="text-gray-700">
                       Few scholarships are available for students in the{" "}
                       <span className="font-semibold">
                         second, third, and fourth year
@@ -254,11 +254,11 @@ export default function ScholarshipGuidelines() {
                     </p>
                   </div>
 
-                  <div className="bg-purple-50 border-l-4 border-purple-600 p-4 rounded">
-                    <p className="font-semibold text-purple-900 mb-2">
+                  <div className="bg-[#B0A3B3]/20 border-l-4 border-[#B0A3B3] p-4 rounded">
+                    <p className="font-semibold text-[#1164A3] mb-2">
                       Limited Availability:
                     </p>
-                    <p className="text-purple-800">
+                    <p className="text-gray-700">
                       A small number of scholarships are available for{" "}
                       <span className="font-semibold">non-NEDian</span>{" "}
                       students.
@@ -272,11 +272,13 @@ export default function ScholarshipGuidelines() {
       </section>
 
       {/* Selection Committee Section */}
-      <section className="py-16 bg-gradient-to-r from-gray-50 to-blue-50">
+      <section className="py-16 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">Our Selection Committee</Badge>
+              <Badge className="mb-4 bg-[#68B9C4] text-white border-[#68B9C4]">
+                Our Selection Committee
+              </Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 Meet Our Selection Committee
               </h2>
@@ -289,11 +291,11 @@ export default function ScholarshipGuidelines() {
               {selectionCommittee.map((member, index) => (
                 <Card
                   key={index}
-                  className="hover:shadow-xl transition-all duration-300"
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
                 >
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                      <div className="w-12 h-12 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-full flex items-center justify-center flex-shrink-0">
                         <Users className="w-6 h-6 text-white" />
                       </div>
                       <div>
@@ -316,7 +318,9 @@ export default function ScholarshipGuidelines() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">Step-by-Step Process</Badge>
+              <Badge className="mb-4 bg-[#1164A3] text-white border-[#1164A3]">
+                Step-by-Step Process
+              </Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 13-Step Selection Process
               </h2>
@@ -329,18 +333,18 @@ export default function ScholarshipGuidelines() {
               {selectionSteps.map((step, index) => (
                 <Card
                   key={index}
-                  className="hover:shadow-lg transition-all duration-300"
+                  className="hover:shadow-lg hover:border-[#1164A3] transition-all duration-300"
                 >
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
                       <div className="flex-shrink-0">
-                        <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                        <div className="w-12 h-12 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-full flex items-center justify-center text-white font-bold text-lg">
                           {step.step}
                         </div>
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center space-x-3 mb-2">
-                          <div className="text-blue-600">{step.icon}</div>
+                          <div className="text-[#1164A3]">{step.icon}</div>
                           <h4 className="font-semibold text-lg text-gray-800">
                             {step.title}
                           </h4>
@@ -357,7 +361,7 @@ export default function ScholarshipGuidelines() {
       </section>
 
       {/* Important Notes Section */}
-      <section className="py-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+      <section className="py-16 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-8">
@@ -373,7 +377,7 @@ export default function ScholarshipGuidelines() {
                     <Home className="w-6 h-6 flex-shrink-0 mt-1" />
                     <div>
                       <h4 className="font-semibold mb-2">Home Verification</h4>
-                      <p className="text-blue-100">
+                      <p className="text-white/90">
                         20% of scholars&quot; homes are randomly visited to ensure
                         the truthfulness of applications.
                       </p>
@@ -388,7 +392,7 @@ export default function ScholarshipGuidelines() {
                     <Video className="w-6 h-6 flex-shrink-0 mt-1" />
                     <div>
                       <h4 className="font-semibold mb-2">Recorded Interviews</h4>
-                      <p className="text-blue-100">
+                      <p className="text-white/90">
                         All interviews are recorded for evaluation and
                         transparency purposes.
                       </p>
@@ -403,7 +407,7 @@ export default function ScholarshipGuidelines() {
                     <Users className="w-6 h-6 flex-shrink-0 mt-1" />
                     <div>
                       <h4 className="font-semibold mb-2">Parent Participation</h4>
-                      <p className="text-blue-100">
+                      <p className="text-white/90">
                         Parents/guardians must be present during the online
                         interview process.
                       </p>
@@ -418,7 +422,7 @@ export default function ScholarshipGuidelines() {
                     <Award className="w-6 h-6 flex-shrink-0 mt-1" />
                     <div>
                       <h4 className="font-semibold mb-2">Need-Cum-Merit Based</h4>
-                      <p className="text-blue-100">
+                      <p className="text-white/90">
                         Selection considers both financial need and academic
                         merit of the applicants.
                       </p>
@@ -444,11 +448,11 @@ export default function ScholarshipGuidelines() {
               ready.
             </p>
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-              <button onClick={()=>{router.push("/register/scholarship")}} className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+              <button 
+                onClick={()=>{router.push("/register/scholarship")}} 
+                className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+              >
                 Apply Now
-              </button>
-              <button className="border-2 border-gray-300 text-gray-700 px-8 py-3 rounded-full font-semibold hover:border-gray-400 transition-all duration-300">
-                Learn More
               </button>
             </div>
           </div>

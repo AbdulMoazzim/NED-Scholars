@@ -5,10 +5,10 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { programs } from "@/data/CausesSupportData";
 import { stats } from "@/data/CausesSupportData";
-import CustomCard from "@/components/Card";
-import StatCard from "@/components/Stats";
 import causesToSupport from "../../../../public/causes_to_support.png"
 import Image from "next/image";
+import StatCard from "@/components/Stats";
+import CustomCard from "@/components/Card";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -110,7 +110,7 @@ const SupportPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-600 to-indigo-700">
+    <div className="min-h-screen bg-gradient-to-br from-[#1164A3] via-[#68B9C4] to-[#82B4CC]">
       {/* Hero Section */}
       <section
         className="text-center py-20 px-5 text-white"
@@ -124,7 +124,7 @@ const SupportPage: React.FC = () => {
             Empowering aspiring scholars pursuing their dreams in STEM
           </p>
           <button
-            className="bg-gradient-to-r from-red-500 to-orange-500 text-white px-12 py-5 text-xl font-bold rounded-full hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            className="bg-white text-[#1164A3] px-12 py-5 text-xl font-bold rounded-full hover:shadow-xl hover:bg-[#82B4CC] hover:text-white transition-all duration-300 transform hover:-translate-y-1"
             onClick={handleMainDonate}
           >
             Donate Now & Make a Difference
@@ -142,7 +142,7 @@ const SupportPage: React.FC = () => {
             >
               Our Impact Programs
             </h2>
-            <div className="w-2/5 h-1 bg-gradient-to-r from-indigo-500 to-purple-600 mx-auto rounded-full"></div>
+            <div className="w-2/5 h-1 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] mx-auto rounded-full"></div>
             <div className="flex w-full justify-center">
             <Image src={causesToSupport} alt="Causes-to-Support banner"/>
             </div>

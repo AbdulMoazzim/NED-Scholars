@@ -26,17 +26,17 @@ export const milestones = [
 ];
 
 export const memorialScholarships = [
-  { name: 'Abu Ather Memorial Scholarship', icon: '🎓' },
-  { name: 'Haroon Memorial Scholarship', icon: '📚' },
-  { name: 'Shabir Memorial Scholarship', icon: '🏆' },
-  { name: 'Waqar Memorial Scholarship', icon: '💡' }
+  { name: 'Abu Ather Memorial Scholarship' },
+  { name: 'Haroon Memorial Scholarship' },
+  { name: 'Shabir Memorial Scholarship'},
+  { name: 'Waqar Memorial Scholarship'}
 ];
 
 export const stats = [
-  { number: '95%', label: 'Donor Satisfaction', color: 'text-green-400' },
-  { number: '80%', label: 'STEM Support', color: 'text-blue-400' },
-  { number: '17+', label: 'Years of Impact', color: 'text-purple-400' },
-  { number: '500+', label: 'Students Supported', color: 'text-orange-400' }
+  { number: '95%', label: 'Donor Satisfaction' },
+  { number: '80%', label: 'STEM Support' },
+  { number: '17+', label: 'Years of Impact' },
+  { number: '500+', label: 'Students Supported' }
 ];
 
 export const values = [

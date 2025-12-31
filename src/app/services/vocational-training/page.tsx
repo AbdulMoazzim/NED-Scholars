@@ -40,7 +40,7 @@ export default function VocationalTrainingPage() {
       label: "Women in Formal Workforce",
       description: "Only 22% of women participate in formal employment",
       source: "World Bank, 2023",
-      color: "from-red-600 to-orange-600",
+      color: "from-[#1164A3] to-[#68B9C4]",
     },
     {
       icon: <GraduationCap className="w-8 h-8" />,
@@ -48,7 +48,7 @@ export default function VocationalTrainingPage() {
       label: "Girls Drop Out",
       description: "Before completing secondary education",
       source: "UNICEF Pakistan, 2023",
-      color: "from-orange-600 to-yellow-600",
+      color: "from-[#68B9C4] to-[#82B4CC]",
     },
     {
       icon: <Home className="w-8 h-8" />,
@@ -56,7 +56,7 @@ export default function VocationalTrainingPage() {
       label: "Prefer Early Marriage",
       description: "Rural families prioritize marriage over education",
       source: "Pakistan Bureau of Statistics, 2022",
-      color: "from-purple-600 to-pink-600",
+      color: "from-[#82B4CC] to-[#B0A3B3]",
     },
     {
       icon: <AlertTriangle className="w-8 h-8" />,
@@ -64,7 +64,7 @@ export default function VocationalTrainingPage() {
       label: "Have Access to Training",
       description: "Low-income women lack vocational opportunities",
       source: "ILO Report, 2023",
-      color: "from-blue-600 to-cyan-600",
+      color: "from-[#1164A3] to-[#82B4CC]",
     },
   ];
 
@@ -73,19 +73,19 @@ export default function VocationalTrainingPage() {
       icon: <TrendingUp className="w-6 h-6" />,
       title: "High Female Dropout Rates",
       description: "Most girls left school after 7th or 8th grade",
-      color: "bg-red-100 text-red-600",
+      color: "bg-[#82B4CC]/20 text-[#1164A3]",
     },
     {
       icon: <Home className="w-6 h-6" />,
       title: "Early Marriage Pressures",
       description: "Families prioritized marriage over education",
-      color: "bg-orange-100 text-orange-600",
+      color: "bg-[#68B9C4]/20 text-[#1164A3]",
     },
     {
       icon: <Briefcase className="w-6 h-6" />,
       title: "Boys Forced into Labor",
       description: "Sons pushed into low-wage jobs to support households",
-      color: "bg-yellow-100 text-yellow-600",
+      color: "bg-[#B0A3B3]/30 text-[#1164A3]",
     },
   ];
 
@@ -99,7 +99,7 @@ export default function VocationalTrainingPage() {
       trainees: "110 girls trained since launch",
       achievement: "Sewing machines awarded to top-performing students",
       nextStep: "Social media & app-based marketplace for their products",
-      color: "from-blue-600 to-cyan-600",
+      color: "from-[#1164A3] to-[#68B9C4]",
     },
     {
       name: "Khadija Qazi School",
@@ -108,7 +108,7 @@ export default function VocationalTrainingPage() {
       since: "2025",
       focus: "Technical trades expansion",
       courses: ["Electrician training", "Plumbing & pipefitting", "AC repair & maintenance"],
-      color: "from-purple-600 to-pink-600",
+      color: "from-[#68B9C4] to-[#82B4CC]",
     },
   ];
 
@@ -117,33 +117,33 @@ export default function VocationalTrainingPage() {
       icon: <Calendar className="w-8 h-8" />,
       title: "Training Structure",
       benefits: [
-        {color: "bg-blue-50", text: "After-school sessions (3-4 hours daily)"},
-        {color: "bg-green-50", text: "Hands-on skill development (No theoretical overload)"},
-        {color: "bg-purple-50", text: "Certification upon completion (Recognized by local businesses)"},
+        {color: "bg-[#82B4CC]/20", text: "After-school sessions (3-4 hours daily)"},
+        {color: "bg-[#68B9C4]/20", text: "Hands-on skill development (No theoretical overload)"},
+        {color: "bg-[#B0A3B3]/20", text: "Certification upon completion (Recognized by local businesses)"},
       ],
-      color: "from-blue-600 to-cyan-600",
+      color: "from-[#1164A3] to-[#68B9C4]",
       step: 1,
     },
     {
       icon: <DollarSign className="w-8 h-8" />,
       title: "Economic Empowerment",
       benefits: [
-        {color: "bg-blue-50", text: "Earning potential: $80–$150/month for trained girls"},
-        {color: "bg-green-50", text: '"Darzi" App (Under Development) – Connects girls with customers'},
-        {color: "bg-purple-50", text: "NEDUET Stalls – Showcase and sell handmade products"},
+        {color: "bg-[#82B4CC]/20", text: "Earning potential: $80–$150/month for trained girls"},
+        {color: "bg-[#68B9C4]/20", text: '"Darzi" App (Under Development) – Connects girls with customers'},
+        {color: "bg-[#B0A3B3]/20", text: "NEDUET Stalls – Showcase and sell handmade products"},
       ],
-      color: "from-green-600 to-emerald-600",
+      color: "from-[#68B9C4] to-[#82B4CC]",
       step: 2,
     },
     {
       icon: <TrendingUp className="w-8 h-8" />,
       title: "Long-Term Sustainability",
       benefits: [
-        {color: "bg-blue-50", text: "Micro-entrepreneurship model – Girls support their families"},
-        {color: "bg-green-50", text: "Community impact – Reduced early marriages, increased independence"},
-        {color: "bg-purple-50", text: "Scalability – Replicable in other underserved areas"},
+        {color: "bg-[#82B4CC]/20", text: "Micro-entrepreneurship model – Girls support their families"},
+        {color: "bg-[#68B9C4]/20", text: "Community impact – Reduced early marriages, increased independence"},
+        {color: "bg-[#B0A3B3]/20", text: "Scalability – Replicable in other underserved areas"},
       ],
-      color: "from-purple-600 to-pink-600",
+      color: "from-[#82B4CC] to-[#B0A3B3]",
       step: 3,
     },
   ];
@@ -154,21 +154,21 @@ export default function VocationalTrainingPage() {
       image: "/api/placeholder/100/100",
       story: "Went from school dropout to earning $50/month stitching clothes",
       emoji: "📌",
-      color: "from-blue-600 to-cyan-600",
+      color: "from-[#1164A3] to-[#68B9C4]",
     },
     {
       name: "Fatima, 19",
       image: "/api/placeholder/100/100",
       story: "Received a sewing machine and now trains other girls",
       emoji: "📌",
-      color: "from-green-600 to-emerald-600",
+      color: "from-[#68B9C4] to-[#82B4CC]",
     },
     {
       name: "Sana, 20",
       image: "/api/placeholder/100/100",
       story: "Supports her siblings' education with her stitching income",
       emoji: "📌",
-      color: "from-purple-600 to-pink-600",
+      color: "from-[#82B4CC] to-[#B0A3B3]",
     },
   ];
 
@@ -177,19 +177,19 @@ export default function VocationalTrainingPage() {
       amount: "$80",
       description: "Sponsors one sewing machine for a trainee",
       icon: <Scissors className="w-6 h-6" />,
-      color: "from-blue-600 to-cyan-600",
+      color: "from-[#1164A3] to-[#68B9C4]",
     },
     {
       amount: "$1,200",
       description: "Covers a 6-month vocational course for 10 girls",
       icon: <Users className="w-6 h-6" />,
-      color: "from-green-600 to-emerald-600",
+      color: "from-[#68B9C4] to-[#82B4CC]",
     },
     {
       amount: "$5,000",
       description: "Establishes a new training center (electrician/plumbing)",
       icon: <Building2 className="w-6 h-6" />,
-      color: "from-purple-600 to-pink-600",
+      color: "from-[#82B4CC] to-[#B0A3B3]",
     },
   ];
 
@@ -225,7 +225,7 @@ export default function VocationalTrainingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 text-white py-16">
+      <section className="bg-gradient-to-r from-[#1164A3] via-[#68B9C4] to-[#82B4CC] text-white py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-4 bg-white/20 text-white border-white/30">
@@ -234,7 +234,7 @@ export default function VocationalTrainingPage() {
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Vocational Training Program
             </h1>
-            <p className="text-xl text-pink-100">
+            <p className="text-xl text-white/90">
               Empowering Women Through Skills Development
             </p>
           </div>
@@ -246,7 +246,7 @@ export default function VocationalTrainingPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4 bg-red-100 text-red-600">
+              <Badge className="mb-4 bg-[#1164A3] text-white border-[#1164A3]">
                 National Crisis
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
@@ -263,7 +263,7 @@ export default function VocationalTrainingPage() {
               {crisisStatistics.map((stat, index) => (
                 <Card
                   key={index}
-                  className="hover:shadow-xl transition-all duration-300"
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
                 >
                   <CardContent className="p-6 text-center">
                     <div
@@ -271,7 +271,7 @@ export default function VocationalTrainingPage() {
                     >
                       {stat.icon}
                     </div>
-                    <div className="text-4xl font-bold text-gray-800 mb-2">
+                    <div className="text-4xl font-bold text-[#1164A3] mb-2">
                       {stat.number}
                     </div>
                     <h4 className="font-semibold text-gray-800 mb-2">
@@ -289,10 +289,10 @@ export default function VocationalTrainingPage() {
             </div>
 
             {/* Quote */}
-            <Card className="bg-gradient-to-r from-red-50 to-orange-50 border-l-4 border-red-600">
+            <Card className="bg-gradient-to-r from-[#82B4CC]/20 to-[#68B9C4]/20 border-l-4 border-[#1164A3]">
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
-                  <div className="text-red-600 text-4xl">&quot;</div>
+                  <div className="text-[#1164A3] text-4xl">&quot;</div>
                   <p className="text-lg text-gray-700 italic">
                     When girls are denied education and employment, entire
                     communities suffer. Vocational training is not just a
@@ -306,11 +306,11 @@ export default function VocationalTrainingPage() {
       </section>
 
       {/* Program Origin */}
-      <section className="py-16 bg-gradient-to-r from-purple-50 to-pink-50">
+      <section className="py-16 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">Our Story</Badge>
+              <Badge className="mb-4 bg-[#68B9C4] text-white border-[#68B9C4]">Our Story</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 How NED Scholars&apos; Vocational Training Program Began
               </h2>
@@ -324,7 +324,7 @@ export default function VocationalTrainingPage() {
               {discoveredTrends.map((trend, index) => (
                 <Card
                   key={index}
-                  className="hover:shadow-xl transition-all duration-300"
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
                 >
                   <CardContent className="p-6">
                     <div
@@ -333,7 +333,7 @@ export default function VocationalTrainingPage() {
                       {trend.icon}
                     </div>
                     <h4 className="font-bold text-gray-800 mb-2 flex items-center">
-                      <CheckCircle2 className="w-5 h-5 text-green-600 mr-2" />
+                      <CheckCircle2 className="w-5 h-5 text-[#68B9C4] mr-2" />
                       {trend.title}
                     </h4>
                     <p className="text-gray-600">{trend.description}</p>
@@ -342,7 +342,7 @@ export default function VocationalTrainingPage() {
               ))}
             </div>
 
-            <Card className="shadow-xl bg-gradient-to-r from-blue-50 to-purple-50">
+            <Card className="shadow-xl bg-gradient-to-r from-[#82B4CC]/20 to-[#B0A3B3]/20 border-[#1164A3]/20">
               <CardContent className="p-8">
                 <div className="text-center">
                   <h3 className="text-2xl font-bold text-gray-800 mb-4">
@@ -366,7 +366,7 @@ export default function VocationalTrainingPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">Our Centers</Badge>
+              <Badge className="mb-4 bg-[#1164A3] text-white border-[#1164A3]">Our Centers</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 Training Centers
               </h2>
@@ -379,7 +379,7 @@ export default function VocationalTrainingPage() {
               {trainingCenters.map((center, index) => (
                 <Card
                   key={index}
-                  className="hover:shadow-xl transition-all duration-300"
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
                 >
                   <CardContent className="p-8">
                     <div className="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-6 mb-6">
@@ -394,11 +394,7 @@ export default function VocationalTrainingPage() {
                             {center.name}
                           </h3>
                           <Badge
-                            variant={
-                              center.status === "Active"
-                                ? "default"
-                                : "secondary"
-                            }
+                            className={center.status === "Active" ? "bg-[#68B9C4] text-white" : "bg-gray-200"}
                           >
                             {center.status}
                           </Badge>
@@ -422,9 +418,9 @@ export default function VocationalTrainingPage() {
 
                     {center.status === "Active" ? (
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div className="bg-blue-50 p-4 rounded-lg">
+                        <div className="bg-[#82B4CC]/20 p-4 rounded-lg">
                           <div className="flex items-center space-x-2 mb-2">
-                            <Users className="w-5 h-5 text-blue-600" />
+                            <Users className="w-5 h-5 text-[#1164A3]" />
                             <h5 className="font-semibold text-gray-800">
                               Trainees
                             </h5>
@@ -433,9 +429,9 @@ export default function VocationalTrainingPage() {
                             {center.trainees}
                           </p>
                         </div>
-                        <div className="bg-green-50 p-4 rounded-lg">
+                        <div className="bg-[#68B9C4]/20 p-4 rounded-lg">
                           <div className="flex items-center space-x-2 mb-2">
-                            <Award className="w-5 h-5 text-green-600" />
+                            <Award className="w-5 h-5 text-[#1164A3]" />
                             <h5 className="font-semibold text-gray-800">
                               Achievement
                             </h5>
@@ -444,9 +440,9 @@ export default function VocationalTrainingPage() {
                             {center.achievement}
                           </p>
                         </div>
-                        <div className="bg-purple-50 p-4 rounded-lg">
+                        <div className="bg-[#B0A3B3]/20 p-4 rounded-lg">
                           <div className="flex items-center space-x-2 mb-2">
-                            <Rocket className="w-5 h-5 text-purple-600" />
+                            <Rocket className="w-5 h-5 text-[#1164A3]" />
                             <h5 className="font-semibold text-gray-800">
                               Next Step
                             </h5>
@@ -457,9 +453,9 @@ export default function VocationalTrainingPage() {
                         </div>
                       </div>
                     ) : (
-                      <div className="bg-purple-50 p-6 rounded-lg">
+                      <div className="bg-[#B0A3B3]/20 p-6 rounded-lg">
                         <h5 className="font-semibold text-gray-800 mb-3 flex items-center">
-                          <Star className="w-5 h-5 text-purple-600 mr-2" />
+                          <Star className="w-5 h-5 text-[#1164A3] mr-2" />
                           Planned Courses:
                         </h5>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -468,7 +464,7 @@ export default function VocationalTrainingPage() {
                               key={idx}
                               className="flex items-start space-x-2 bg-white p-3 rounded"
                             >
-                              <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                              <CheckCircle2 className="w-4 h-4 text-[#68B9C4] flex-shrink-0 mt-0.5" />
                               <span className="text-sm text-gray-700">
                                 {course}
                               </span>
@@ -486,11 +482,11 @@ export default function VocationalTrainingPage() {
       </section>
 
       {/* How It Works */}
-      <section className="py-16 bg-gradient-to-r from-blue-50 to-purple-50">
+      <section className="py-16 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">Our Approach</Badge>
+              <Badge className="mb-4 bg-[#68B9C4] text-white border-[#68B9C4]">Our Approach</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 How the Program Works
               </h2>
@@ -503,7 +499,7 @@ export default function VocationalTrainingPage() {
               {programStructure.map((structure, index) => (
                 <Card
                   key={index}
-                  className="hover:shadow-xl transition-all duration-300"
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
                 >
                   <CardContent className="p-8">
                     <div className="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-6 mb-6">
@@ -514,7 +510,7 @@ export default function VocationalTrainingPage() {
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center space-x-3 mb-2">
-                          <div className="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                          <div className="w-8 h-8 bg-[#1164A3] rounded-full flex items-center justify-center text-white font-bold text-sm">
                             {structure.step}
                           </div>
                           <h3 className="text-2xl font-bold text-gray-800">
@@ -530,7 +526,7 @@ export default function VocationalTrainingPage() {
                           key={idx}
                           className={`flex items-start space-x-2 p-3 rounded-lg `+benefit.color}
                         >
-                          <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-5 h-5 text-[#1164A3] flex-shrink-0 mt-0.5" />
                           <span className="text-sm text-gray-700">
                             {benefit.text}
                           </span>
@@ -550,7 +546,7 @@ export default function VocationalTrainingPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">Real Impact</Badge>
+              <Badge className="mb-4 bg-[#1164A3] text-white border-[#1164A3]">Real Impact</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 Success Stories
               </h2>
@@ -563,7 +559,7 @@ export default function VocationalTrainingPage() {
               {successStories.map((story, index) => (
                 <Card
                   key={index}
-                  className="hover:shadow-xl transition-all duration-300"
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
                 >
                   <CardContent className="p-6">
                     <div
@@ -590,10 +586,10 @@ export default function VocationalTrainingPage() {
             </div>
 
             {/* Testimonial Quote */}
-            <Card className="bg-gradient-to-r from-pink-50 to-purple-50 border-l-4 border-pink-600 shadow-lg">
+            <Card className="bg-gradient-to-r from-[#82B4CC]/20 to-[#B0A3B3]/20 border-l-4 border-[#1164A3] shadow-lg">
               <CardContent className="p-8">
                 <div className="flex items-start space-x-4">
-                  <div className="text-pink-600 text-5xl">&quot;</div>
+                  <div className="text-[#1164A3] text-5xl">&quot;</div>
                   <div>
                     <p className="text-xl text-gray-700 italic mb-2">
                       This program didn&apos;t just teach me stitching—it gave me
@@ -611,11 +607,11 @@ export default function VocationalTrainingPage() {
       </section>
 
       {/* How You Can Help */}
-      <section className="py-16 bg-gradient-to-r from-purple-50 to-pink-50">
+      <section className="py-16 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">Get Involved</Badge>
+              <Badge className="mb-4 bg-[#68B9C4] text-white border-[#68B9C4]">Get Involved</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 How You Can Help
               </h2>
@@ -633,7 +629,7 @@ export default function VocationalTrainingPage() {
                 {fundingOptions.map((option, index) => (
                   <Card
                     key={index}
-                    className="hover:shadow-xl transition-all duration-300 cursor-pointer hover:-translate-y-1"
+                    className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300 cursor-pointer hover:-translate-y-1"
                   >
                     <CardContent className="p-6 text-center">
                       <div
@@ -641,7 +637,7 @@ export default function VocationalTrainingPage() {
                       >
                         {option.icon}
                       </div>
-                      <div className="text-3xl font-bold text-gray-800 mb-2">
+                      <div className="text-3xl font-bold text-[#1164A3] mb-2">
                         {option.amount}
                       </div>
                       <p className="text-gray-600">{option.description}</p>
@@ -660,11 +656,11 @@ export default function VocationalTrainingPage() {
                 {contributionWays.map((way, index) => (
                   <Card
                     key={index}
-                    className="hover:shadow-xl transition-all duration-300"
+                    className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
                   >
                     <CardContent className="p-6 text-center">
                       <div className="text-4xl mb-3">{way.emoji}</div>
-                      <div className="w-12 h-12 bg-gradient-to-r from-pink-600 to-purple-600 rounded-full flex items-center justify-center text-white mx-auto mb-3">
+                      <div className="w-12 h-12 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-full flex items-center justify-center text-white mx-auto mb-3">
                         {way.icon}
                       </div>
                       <h4 className="font-bold text-gray-800 mb-2">
@@ -678,27 +674,27 @@ export default function VocationalTrainingPage() {
             </div>
 
             {/* Contact Info */}
-            <Card className="shadow-lg bg-white">
+            <Card className="shadow-lg bg-white border-[#1164A3]/20">
               <CardContent className="p-8">
                 <h3 className="text-xl font-semibold text-gray-800 mb-6 text-center flex items-center justify-center">
-                  <Mail className="w-6 h-6 mr-2 text-pink-600" />
+                  <Mail className="w-6 h-6 mr-2 text-[#1164A3]" />
                   Contact Us
                 </h3>
                 <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8">
                   <div className="flex items-center space-x-3">
-                    <Mail className="w-6 h-6 text-pink-600" />
+                    <Mail className="w-6 h-6 text-[#1164A3]" />
                     <a
                       href="mailto:vocational@nedscholars.org"
-                      className="text-pink-600 hover:underline font-medium"
+                      className="text-[#1164A3] hover:underline font-medium"
                     >
                       vocational@nedscholars.org
                     </a>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <Globe className="w-6 h-6 text-pink-600" />
+                    <Globe className="w-6 h-6 text-[#1164A3]" />
                     <a
                       href="https://www.nedscholars.org/vocational-training"
-                      className="text-pink-600 hover:underline font-medium"
+                      className="text-[#1164A3] hover:underline font-medium"
                     >
                       www.nedscholars.org/vocational-training
                     </a>
@@ -711,7 +707,7 @@ export default function VocationalTrainingPage() {
       </section>
 
       {/* Key Takeaways */}
-      <section className="py-16 bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 text-white">
+      <section className="py-16 bg-gradient-to-r from-[#1164A3] via-[#68B9C4] to-[#82B4CC] text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
@@ -743,10 +739,10 @@ export default function VocationalTrainingPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <Card className="shadow-2xl bg-gradient-to-r from-pink-50 to-purple-50 border-l-4 border-pink-600">
+            <Card className="shadow-2xl bg-gradient-to-r from-[#82B4CC]/20 to-[#B0A3B3]/20 border-l-4 border-[#1164A3]">
               <CardContent className="p-8 md:p-12">
                 <div className="text-center">
-                  <div className="w-20 h-20 bg-gradient-to-r from-pink-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <div className="w-20 h-20 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-full flex items-center justify-center mx-auto mb-6">
                     <Heart className="w-10 h-10 text-white" />
                   </div>
                   <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
@@ -758,12 +754,12 @@ export default function VocationalTrainingPage() {
                     impact on a girl&apos;s future and her community.
                   </p>
                   <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                    <button className="bg-gradient-to-r from-pink-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center">
+                    <button className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center">
                       <Heart className="w-5 h-5 mr-2" />
                       Donate Now
                       <ArrowRight className="w-5 h-5 ml-2" />
                     </button>
-                    <button onClick={()=>{router.push("/register/partner")}} className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-full font-semibold hover:border-gray-400 transition-all duration-300 inline-flex items-center justify-center">
+                    <button onClick={()=>{router.push("/register/partner")}} className="border-2 border-[#1164A3] text-[#1164A3] px-8 py-4 rounded-full font-semibold hover:bg-[#1164A3] hover:text-white transition-all duration-300 inline-flex items-center justify-center">
                       <Users className="w-5 h-5 mr-2" />
                       Become a Partner
                     </button>

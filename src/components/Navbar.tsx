@@ -3,7 +3,6 @@
 import { menuItems } from "@/data/LinksData";
 import { SubLinkItem } from "@/lib/types";
 import { ChevronDown } from "lucide-react";
-import { Button } from "./ui/button";
 
 export default function Navbar({
   title,

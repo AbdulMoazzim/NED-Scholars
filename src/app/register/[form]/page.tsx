@@ -22,6 +22,7 @@ export async function generateStaticParams() {
 
 // Metadata for SEO
 export async function generateMetadata({ params }: { params: { form: string } }) {
+  const {form} = await params;
   const titles: Record<string, string> = {
     scholarship: "Scholarship Application | NED Scholars",
     partner: "Partner Application | NED Scholars",
@@ -34,7 +35,7 @@ export async function generateMetadata({ params }: { params: { form: string } })
   };
 
   return {
-    title: titles[params.form] || "Form | NED Scholars",
+    title: titles[form] || "Form | NED Scholars",
     description: "Join NED Scholars community and make a difference",
   };
 }

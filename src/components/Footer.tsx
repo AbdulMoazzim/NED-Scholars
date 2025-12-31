@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { GraduationCap, MapPin, Mail, Phone, Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
+import { GraduationCap, MapPin, Mail, Phone, Facebook, Instagram, Linkedin, Youtube, Github } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
@@ -88,11 +88,6 @@ export default function Footer() {
                   Donation methods
                 </Link>
               </li>
-              <li>
-                <Link href="/contact" className="hover:text-white transition-colors">
-                  Contact Us
-                </Link>
-              </li>
             </ul>
           </div>
 
@@ -164,11 +159,8 @@ export default function Footer() {
 
             {/* Bottom Links */}
             <div className="flex space-x-6 text-gray-400 text-sm mb-4 md:mb-0">
-              <Link href="/about-ned-scholars" className="hover:text-white transition-colors">
+              <Link href="/about" className="hover:text-white transition-colors">
                 About Ned Scholars
-              </Link>
-              <Link href="/careers" className="hover:text-white transition-colors">
-                Careers
               </Link>
               <Link href="/privacy-policy" className="hover:text-white transition-colors">
                 Privacy Policy
@@ -177,10 +169,12 @@ export default function Footer() {
 
             {/* Copyright */}
             <p className="text-gray-400 text-sm">
-              Copyright © 2014–24 by Ned Scholars
+              Copyright © 2016 by Ned Scholars
             </p>
           </div>
         </div>
+
+        <div className="flex w-full justify-center mt-3"><Github onClick={()=>{}} className="cursor-pointer p-2 border-white border-[1px] rounded-full"/></div>
       </div>
     </footer>
   );

@@ -216,28 +216,28 @@ export default function GuidelinesAndPrioritiesPage() {
       title: "Bachelor of Engineering - First Year",
       description: "All first-year engineering students at NED University are eligible",
       icon: Award,
-      color: "from-blue-600 to-purple-600",
+      color: "from-[#1164A3] to-[#68B9C4]",
     },
     {
       priority: "Second Priority",
       title: "Engineering Students - Years 2-4",
       description: "Limited scholarships for second, third, and fourth year engineering students",
       icon: Users,
-      color: "from-purple-600 to-pink-600",
+      color: "from-[#68B9C4] to-[#82B4CC]",
     },
     {
       priority: "Third Priority",
       title: "Non-Engineering NEDians",
       description: "Few scholarships available for non-engineering students",
       icon: Users,
-      color: "from-green-600 to-blue-600",
+      color: "from-[#82B4CC] to-[#B0A3B3]",
     },
     {
       priority: "Limited Availability",
       title: "Non-NEDian Students",
       description: "Small number of scholarships for students from other institutions",
       icon: AlertCircle,
-      color: "from-orange-600 to-red-600",
+      color: "from-[#B0A3B3] to-[#82B4CC]",
     },
   ];
 
@@ -253,9 +253,9 @@ export default function GuidelinesAndPrioritiesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-gray-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-r from-gray-50 to-[#82B4CC]/10">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
+      <section className="relative overflow-hidden bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white py-20">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-4 bg-white/20 text-white border-white/30 text-sm">
@@ -270,8 +270,8 @@ export default function GuidelinesAndPrioritiesPage() {
             </p>
             <Button
               size="lg"
-              className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-6 rounded-full shadow-xl transform hover:scale-105 transition-all duration-300"
-              onClick={() => router.push("/forms/scholarship")}
+              className="bg-white text-[#1164A3] hover:bg-gray-100 text-lg px-8 py-6 rounded-full shadow-xl transform hover:scale-105 transition-all duration-300"
+              onClick={() => router.push("/register/scholarship")}
             >
               Apply Now
               <ArrowRight className="ml-2 w-5 h-5" />
@@ -281,7 +281,7 @@ export default function GuidelinesAndPrioritiesPage() {
 
         {/* Decorative elements */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#68B9C4]/20 rounded-full blur-3xl"></div>
       </section>
 
       {/* Timeline Section */}
@@ -289,7 +289,7 @@ export default function GuidelinesAndPrioritiesPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">APPLICATION TIMELINE</Badge>
+              <Badge className="mb-4 bg-[#68B9C4] text-white border-[#68B9C4]">APPLICATION TIMELINE</Badge>
               <h2 className="text-4xl font-bold text-gray-800 mb-4">
                 Key Dates & Milestones
               </h2>
@@ -302,27 +302,27 @@ export default function GuidelinesAndPrioritiesPage() {
               {timeline.map((item, index) => (
                 <Card
                   key={index}
-                  className="hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-0 shadow-lg"
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300 hover:-translate-y-2 border-0 shadow-lg"
                 >
                   <CardContent className="p-6 text-center">
                     <div
                       className={cn(
                         "w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center",
-                        item.color === "blue" && "bg-blue-100",
-                        item.color === "purple" && "bg-purple-100",
-                        item.color === "green" && "bg-green-100"
+                        item.color === "blue" && "bg-[#82B4CC]/20",
+                        item.color === "purple" && "bg-[#B0A3B3]/30",
+                        item.color === "green" && "bg-[#68B9C4]/20"
                       )}
                     >
                       <item.icon
                         className={cn(
                           "w-8 h-8",
-                          item.color === "blue" && "text-blue-600",
-                          item.color === "purple" && "text-purple-600",
-                          item.color === "green" && "text-green-600"
+                          item.color === "blue" && "text-[#1164A3]",
+                          item.color === "purple" && "text-[#1164A3]",
+                          item.color === "green" && "text-[#68B9C4]"
                         )}
                       />
                     </div>
-                    <Badge variant="secondary" className="mb-3">
+                    <Badge className="mb-3 bg-[#82B4CC] text-white">
                       {item.month}
                     </Badge>
                     <h3 className="text-xl font-bold text-gray-800 mb-2">
@@ -342,7 +342,7 @@ export default function GuidelinesAndPrioritiesPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">CORE PRINCIPLES</Badge>
+              <Badge className="mb-4 bg-[#1164A3] text-white border-[#1164A3]">CORE PRINCIPLES</Badge>
               <h2 className="text-4xl font-bold text-gray-800 mb-4">
                 Our Approach
               </h2>
@@ -353,7 +353,7 @@ export default function GuidelinesAndPrioritiesPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <Card className="border-0 shadow-xl">
-                <CardHeader className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+                <CardHeader className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white">
                   <CardTitle className="flex items-center gap-2">
                     <Shield className="w-5 h-5" />
                     Need-Cum-Merit Basis
@@ -367,19 +367,19 @@ export default function GuidelinesAndPrioritiesPage() {
                   </p>
                   <div className="space-y-2">
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="w-5 h-5 text-[#68B9C4] mt-0.5 flex-shrink-0" />
                       <span className="text-gray-600">
                         Financial need assessment
                       </span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="w-5 h-5 text-[#68B9C4] mt-0.5 flex-shrink-0" />
                       <span className="text-gray-600">
                         Academic performance review
                       </span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="w-5 h-5 text-[#68B9C4] mt-0.5 flex-shrink-0" />
                       <span className="text-gray-600">
                         Holistic evaluation process
                       </span>
@@ -389,7 +389,7 @@ export default function GuidelinesAndPrioritiesPage() {
               </Card>
 
               <Card className="border-0 shadow-xl">
-                <CardHeader className="bg-gradient-to-r from-green-600 to-blue-600 text-white">
+                <CardHeader className="bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] text-white">
                   <CardTitle className="flex items-center gap-2">
                     <Users className="w-5 h-5" />
                     Administration
@@ -403,19 +403,19 @@ export default function GuidelinesAndPrioritiesPage() {
                   </p>
                   <div className="space-y-2">
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="w-5 h-5 text-[#68B9C4] mt-0.5 flex-shrink-0" />
                       <span className="text-gray-600">
                         NED CSA manages applications
                       </span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="w-5 h-5 text-[#68B9C4] mt-0.5 flex-shrink-0" />
                       <span className="text-gray-600">
                         Alumni representatives conduct interviews
                       </span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="w-5 h-5 text-[#68B9C4] mt-0.5 flex-shrink-0" />
                       <span className="text-gray-600">
                         Transparent selection process
                       </span>
@@ -429,11 +429,11 @@ export default function GuidelinesAndPrioritiesPage() {
       </section>
 
       {/* Eligibility Priorities */}
-      <section className="py-16 bg-gradient-to-r from-blue-50 to-purple-50">
+      <section className="py-16 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">PRIORITY LEVELS</Badge>
+              <Badge className="mb-4 bg-[#68B9C4] text-white border-[#68B9C4]">PRIORITY LEVELS</Badge>
               <h2 className="text-4xl font-bold text-gray-800 mb-4">
                 Student Eligibility Priorities
               </h2>
@@ -446,7 +446,7 @@ export default function GuidelinesAndPrioritiesPage() {
               {eligibilityPriorities.map((priority, index) => (
                 <Card
                   key={index}
-                  className="overflow-hidden border-0 shadow-lg hover:shadow-xl transition-shadow"
+                  className="overflow-hidden border-0 shadow-lg hover:shadow-xl hover:border-[#1164A3] transition-all"
                 >
                   <div className={cn("bg-gradient-to-r h-2", priority.color)}></div>
                   <CardContent className="p-6">
@@ -461,7 +461,7 @@ export default function GuidelinesAndPrioritiesPage() {
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
-                          <Badge variant="secondary">{priority.priority}</Badge>
+                          <Badge className="bg-[#82B4CC] text-white">{priority.priority}</Badge>
                           <h3 className="text-xl font-bold text-gray-800">
                             {priority.title}
                           </h3>
@@ -482,7 +482,7 @@ export default function GuidelinesAndPrioritiesPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">OUR TEAM</Badge>
+              <Badge className="mb-4 bg-[#1164A3] text-white border-[#1164A3]">OUR TEAM</Badge>
               <h2 className="text-4xl font-bold text-gray-800 mb-4">
                 Selection Committee
               </h2>
@@ -493,7 +493,7 @@ export default function GuidelinesAndPrioritiesPage() {
             </div>
 
             <Card className="border-0 shadow-xl">
-              <CardHeader className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+              <CardHeader className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white">
                 <CardTitle className="flex items-center gap-2">
                   <Users className="w-5 h-5" />
                   Committee Members
@@ -504,10 +504,10 @@ export default function GuidelinesAndPrioritiesPage() {
                   {selectionCommittee.map((member, index) => (
                     <div
                       key={index}
-                      className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                      className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg hover:bg-[#82B4CC]/10 transition-colors"
                     >
-                      <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                        <UserCheck className="w-5 h-5 text-blue-600" />
+                      <div className="w-10 h-10 bg-[#82B4CC]/20 rounded-full flex items-center justify-center flex-shrink-0">
+                        <UserCheck className="w-5 h-5 text-[#1164A3]" />
                       </div>
                       <div>
                         <p className="font-semibold text-gray-800">
@@ -525,11 +525,11 @@ export default function GuidelinesAndPrioritiesPage() {
       </section>
 
       {/* Selection Process Steps */}
-      <section className="py-16 bg-gradient-to-r from-gray-50 to-blue-50">
+      <section className="py-16 bg-gradient-to-r from-gray-50 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">STEP-BY-STEP</Badge>
+              <Badge className="mb-4 bg-[#68B9C4] text-white border-[#68B9C4]">STEP-BY-STEP</Badge>
               <h2 className="text-4xl font-bold text-gray-800 mb-4">
                 Complete Selection Process
               </h2>
@@ -543,19 +543,19 @@ export default function GuidelinesAndPrioritiesPage() {
               {selectionSteps.map((step, index) => (
                 <Card
                   key={index}
-                  className="border-0 shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="border-[#82B4CC]/20 shadow-lg hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
                 >
                   <CardContent className="p-6">
                     <div className="flex items-start gap-6">
                       <div className="flex-shrink-0">
-                        <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                        <div className="w-16 h-16 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
                           {step.step}
                         </div>
                       </div>
                       <div className="flex-1">
                         <div className="flex items-start gap-4 mb-3">
-                          <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <step.icon className="w-5 h-5 text-blue-600" />
+                          <div className="w-10 h-10 bg-[#82B4CC]/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <step.icon className="w-5 h-5 text-[#1164A3]" />
                           </div>
                           <div>
                             <h3 className="text-xl font-bold text-gray-800 mb-1">
@@ -569,7 +569,7 @@ export default function GuidelinesAndPrioritiesPage() {
                         <div className="ml-14 space-y-2">
                           {step.details.map((detail, idx) => (
                             <div key={idx} className="flex items-start gap-2">
-                              <CheckCircle2 className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
+                              <CheckCircle2 className="w-4 h-4 text-[#68B9C4] mt-0.5 flex-shrink-0" />
                               <span className="text-sm text-gray-600">
                                 {detail}
                               </span>
@@ -591,7 +591,7 @@ export default function GuidelinesAndPrioritiesPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">INTERVIEW PROCESS</Badge>
+              <Badge className="mb-4 bg-[#1164A3] text-white border-[#1164A3]">INTERVIEW PROCESS</Badge>
               <h2 className="text-4xl font-bold text-gray-800 mb-4">
                 What to Expect in Interviews
               </h2>
@@ -602,7 +602,7 @@ export default function GuidelinesAndPrioritiesPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <Card className="border-0 shadow-xl">
-                <CardHeader className="bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+                <CardHeader className="bg-gradient-to-r from-[#82B4CC] to-[#B0A3B3] text-white">
                   <CardTitle className="flex items-center gap-2">
                     <Video className="w-5 h-5" />
                     Interview Requirements
@@ -611,7 +611,7 @@ export default function GuidelinesAndPrioritiesPage() {
                 <CardContent className="p-6">
                   <div className="space-y-4">
                     <div className="flex items-start gap-3">
-                      <AlertCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                      <AlertCircle className="w-5 h-5 text-[#1164A3] mt-0.5 flex-shrink-0" />
                       <div>
                         <p className="font-semibold text-gray-800 mb-1">
                           Online Platform
@@ -622,7 +622,7 @@ export default function GuidelinesAndPrioritiesPage() {
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <AlertCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                      <AlertCircle className="w-5 h-5 text-[#1164A3] mt-0.5 flex-shrink-0" />
                       <div>
                         <p className="font-semibold text-gray-800 mb-1">
                           Parents Must Attend
@@ -633,7 +633,7 @@ export default function GuidelinesAndPrioritiesPage() {
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <AlertCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                      <AlertCircle className="w-5 h-5 text-[#1164A3] mt-0.5 flex-shrink-0" />
                       <div>
                         <p className="font-semibold text-gray-800 mb-1">
                           Recording
@@ -644,7 +644,7 @@ export default function GuidelinesAndPrioritiesPage() {
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <AlertCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                      <AlertCircle className="w-5 h-5 text-[#1164A3] mt-0.5 flex-shrink-0" />
                       <div>
                         <p className="font-semibold text-gray-800 mb-1">
                           Evaluation Form
@@ -659,7 +659,7 @@ export default function GuidelinesAndPrioritiesPage() {
               </Card>
 
               <Card className="border-0 shadow-xl">
-                <CardHeader className="bg-gradient-to-r from-green-600 to-blue-600 text-white">
+                <CardHeader className="bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] text-white">
                   <CardTitle className="flex items-center gap-2">
                     <MessageSquare className="w-5 h-5" />
                     Topics Discussed
@@ -669,8 +669,8 @@ export default function GuidelinesAndPrioritiesPage() {
                   <div className="space-y-3">
                     {interviewQuestions.map((question, index) => (
                       <div key={index} className="flex items-start gap-2">
-                        <div className="w-5 h-5 bg-green-100 rounded flex items-center justify-center flex-shrink-0 mt-0.5">
-                          <span className="text-xs text-green-600 font-bold">
+                        <div className="w-5 h-5 bg-[#68B9C4]/20 rounded flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <span className="text-xs text-[#1164A3] font-bold">
                             {index + 1}
                           </span>
                         </div>
@@ -686,11 +686,11 @@ export default function GuidelinesAndPrioritiesPage() {
       </section>
 
       {/* Verification Process */}
-      <section className="py-16 bg-gradient-to-r from-blue-50 to-purple-50">
+      <section className="py-16 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <Card className="border-0 shadow-xl">
-              <CardHeader className="bg-gradient-to-r from-orange-600 to-red-600 text-white">
+              <CardHeader className="bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] text-white">
                 <CardTitle className="flex items-center gap-2">
                   <Shield className="w-5 h-5" />
                   Verification & Transparency
@@ -701,9 +701,9 @@ export default function GuidelinesAndPrioritiesPage() {
                   To ensure the integrity of our selection process and verify
                   the accuracy of applications:
                 </p>
-                <div className="bg-orange-50 border-l-4 border-orange-500 p-4 mb-6">
+                <div className="bg-[#82B4CC]/10 border-l-4 border-[#68B9C4] p-4 mb-6">
                   <div className="flex items-start gap-3">
-                    <Home className="w-6 h-6 text-orange-600 flex-shrink-0 mt-0.5" />
+                    <Home className="w-6 h-6 text-[#1164A3] flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="font-semibold text-gray-800 mb-2">
                         Random Home Visits
@@ -718,19 +718,19 @@ export default function GuidelinesAndPrioritiesPage() {
                 </div>
                 <div className="space-y-3">
                   <div className="flex items-start gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-5 h-5 text-[#68B9C4] mt-0.5 flex-shrink-0" />
                     <span className="text-gray-700">
                       Verification of financial information
                     </span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-5 h-5 text-[#68B9C4] mt-0.5 flex-shrink-0" />
                     <span className="text-gray-700">
                       Confirmation of family circumstances
                     </span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-5 h-5 text-[#68B9C4] mt-0.5 flex-shrink-0" />
                     <span className="text-gray-700">
                       Ensures fairness in selection
                     </span>
@@ -747,7 +747,7 @@ export default function GuidelinesAndPrioritiesPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-8">
-              <Badge className="mb-4">STAY CONNECTED</Badge>
+              <Badge className="mb-4 bg-[#68B9C4] text-white border-[#68B9C4]">STAY CONNECTED</Badge>
               <h2 className="text-4xl font-bold text-gray-800 mb-4">
                 Join Our Community
               </h2>
@@ -794,9 +794,9 @@ export default function GuidelinesAndPrioritiesPage() {
                     href="https://linkedin.com/company/nedscholars"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-col items-center gap-3 p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors group"
+                    className="flex flex-col items-center gap-3 p-4 bg-[#82B4CC]/10 rounded-lg hover:bg-[#82B4CC]/20 transition-colors group"
                   >
-                    <div className="w-12 h-12 bg-blue-700 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <div className="w-12 h-12 bg-[#1164A3] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
                       <Linkedin className="w-6 h-6 text-white" />
                     </div>
                     <div className="text-center">
@@ -811,7 +811,7 @@ export default function GuidelinesAndPrioritiesPage() {
                     rel="noopener noreferrer"
                     className="flex flex-col items-center gap-3 p-4 bg-pink-50 rounded-lg hover:bg-pink-100 transition-colors group"
                   >
-                    <div className="w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <div className="w-12 h-12 bg-gradient-to-r from-[#82B4CC] to-[#B0A3B3] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
                       <Instagram className="w-6 h-6 text-white" />
                     </div>
                     <div className="text-center">
@@ -827,7 +827,7 @@ export default function GuidelinesAndPrioritiesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+      <section className="py-20 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -840,8 +840,8 @@ export default function GuidelinesAndPrioritiesPage() {
             <div className="flex flex-wrap justify-center gap-4">
               <Button
                 size="lg"
-                className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-10 py-6 rounded-full shadow-xl transform hover:scale-105 transition-all duration-300"
-                onClick={() => router.push("/forms/scholarship")}
+                className="bg-white text-[#1164A3] hover:bg-gray-100 text-lg px-10 py-6 rounded-full shadow-xl transform hover:scale-105 transition-all duration-300"
+                onClick={() => router.push("/register/scholarship")}
               >
                 Start Your Application
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -849,8 +849,8 @@ export default function GuidelinesAndPrioritiesPage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-white text-white hover:bg-white hover:text-blue-600 text-lg px-10 py-6 rounded-full"
-                onClick={() => router.push("/services/scholarship/eligibility")}
+                className="border-2 border-white text-[#1164A3] text-lg px-10 py-6 rounded-full"
+                onClick={() => router.push("/services/scholarships/eligible-criteria")}
               >
                 Check Eligibility
               </Button>

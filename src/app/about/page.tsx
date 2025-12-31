@@ -65,14 +65,14 @@ const MilestoneCard: React.FC<{ milestone: typeof milestones[0]; index: number }
   return (
     <div ref={cardRef} className={`flex items-center gap-8 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} mb-16`}>
       <div className="flex-shrink-0">
-        <div className="w-24 h-24 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white text-3xl shadow-lg">
+        <div className="w-24 h-24 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-full flex items-center justify-center text-white text-3xl shadow-lg">
           {milestone.icon}
         </div>
         <div className="text-center mt-4">
-          <span className="text-2xl font-bold text-indigo-600">{milestone.year}</span>
+          <span className="text-2xl font-bold text-[#1164A3]">{milestone.year}</span>
         </div>
       </div>
-      <div className="flex-1 bg-white p-6 rounded-xl shadow-lg border-l-4 border-indigo-500">
+      <div className="flex-1 bg-white p-6 rounded-xl shadow-lg border-l-4 border-[#1164A3]">
         <h3 className="text-2xl font-bold text-gray-800 mb-3">{milestone.title}</h3>
         <p className="text-gray-600 leading-relaxed">{milestone.description}</p>
       </div>
@@ -150,9 +150,9 @@ const About: React.FC = () => {
 
   return (
 
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-[#82B4CC]/10">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-indigo-600 via-purple-600 to-blue-700 text-white py-20">
+        <section className="bg-gradient-to-br from-[#1164A3] via-[#68B9C4] to-[#82B4CC] text-white py-20">
           <div className="max-w-6xl mx-auto px-5 text-center">
             <div ref={heroRef}>
               <h1 className="text-5xl md:text-6xl font-bold mb-6 text-shadow-lg">About NED Scholars</h1>
@@ -180,7 +180,7 @@ const About: React.FC = () => {
             
             <div className="relative">
               {/* Timeline line */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-indigo-500 to-purple-600 rounded-full hidden md:block"></div>
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-[#1164A3] to-[#68B9C4] rounded-full hidden md:block"></div>
               
               {milestones.map((milestone, index) => (
                 <MilestoneCard key={milestone.year} milestone={milestone} index={index} />
@@ -190,7 +190,7 @@ const About: React.FC = () => {
         </section>
 
         {/* Memorial Scholarships */}
-        <section className="py-20 bg-gradient-to-br from-gray-50 to-indigo-50">
+        <section className="py-20 bg-gradient-to-br from-gray-50 to-[#82B4CC]/10">
           <div className="max-w-6xl mx-auto px-5">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold mb-6 text-gray-800">Memorial Scholarships</h2>
@@ -200,9 +200,8 @@ const About: React.FC = () => {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {memorialScholarships.map((scholarship, index) => (
-                <div key={scholarship.name} className="bg-white p-6 rounded-xl shadow-lg text-center border border-gray-100 hover:shadow-xl transition-all duration-300">
-                  <div className="text-3xl mb-4">{scholarship.icon}</div>
+              {memorialScholarships.map((scholarship) => (
+                <div key={scholarship.name} className="bg-white p-6 rounded-xl shadow-lg text-center border border-[#82B4CC]/30 hover:shadow-xl hover:border-[#1164A3] transition-all duration-300">
                   <h3 className="font-semibold text-gray-800">{scholarship.name}</h3>
                 </div>
               ))}
@@ -218,7 +217,7 @@ const About: React.FC = () => {
                 <h2 className="text-4xl font-bold mb-6 text-gray-800">Our Mission</h2>
                 <div className="space-y-6 text-gray-600 leading-relaxed">
                   <p>
-                    Originally known as the MECH 80-81 ALUMNI Scholarship, NED Scholars was started by a small group of NEDians from the Mechanical Engineering Batch 80-81 in 2007. Under the program, scholarships are awarded on a "need-cum-merit" basis to deserving students.
+                    Originally known as the MECH 80-81 ALUMNI Scholarship, NED Scholars was started by a small group of NEDians from the Mechanical Engineering Batch 80-81 in 2007. Under the program, scholarships are awarded on a &quot;need-cum-merit&quot; basis to deserving students.
                   </p>
                   <p>
                     Since 2015, we have opened the scholarship to students from various countries in STEM (Science Technology Engineering and Math) education. Currently we are entertaining applicants from Pakistan and USA on need-cum-merit basis.
@@ -233,13 +232,13 @@ const About: React.FC = () => {
                 <h2 className="text-4xl font-bold mb-6 text-gray-800">The Challenge We Address</h2>
                 <div className="space-y-6 text-gray-600 leading-relaxed">
                   <p>
-                    We are living in a world that is supposed to be "flat", providing equal opportunities to all. But in reality, the model fails in academics, especially when we talk about a society with "class segregation" as in Pakistan.
+                    We are living in a world that is supposed to be &quot;flat&quot;, providing equal opportunities to all. But in reality, the model fails in academics, especially when we talk about a society with &quot;class segregation&quot; as in Pakistan.
                   </p>
                   <p>
-                    With the advent and introduction of computers and the Internet, the "competition field for success" is not flat any more, but rather tilted. It is tilted towards students who have access to personal computers, high-speed Internet, and modern learning resources.
+                    With the advent and introduction of computers and the Internet, the &quot;competition field for success&quot; is not flat any more, but rather tilted. It is tilted towards students who have access to personal computers, high-speed Internet, and modern learning resources.
                   </p>
                   <p>
-                    NED Scholars is an effort to support students on a "need-cum-merit" basis, in an effort to create a level field for them to compete. These scholars come from lower middle class and poor families, lacking in resources, professionalism, self-esteem, and motivation.
+                    NED Scholars is an effort to support students on a &quot;need-cum-merit&quot; basis, in an effort to create a level field for them to compete. These scholars come from lower middle class and poor families, lacking in resources, professionalism, self-esteem, and motivation.
                   </p>
                 </div>
               </div>
@@ -248,7 +247,7 @@ const About: React.FC = () => {
         </section>
 
         {/* Our Values */}
-        <section className="py-20 bg-gradient-to-br from-indigo-50 to-purple-50">
+        <section className="py-20 bg-gradient-to-br from-[#82B4CC]/10 to-[#B0A3B3]/10">
           <div className="max-w-6xl mx-auto px-5">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold mb-6 text-gray-800">Our Core Values</h2>
@@ -266,17 +265,17 @@ const About: React.FC = () => {
         </section>
 
         {/* Call to Action */}
-        <section className="py-20 bg-[#172030] text-white">
+        <section className="py-20 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white">
           <div className="max-w-4xl mx-auto px-5 text-center">
             <h2 className="text-4xl font-bold mb-6">Join Our Mission</h2>
             <p className="text-xl mb-8 opacity-90">
               Help us continue leveling the playing field for talented students who need support to reach their full potential.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="border-2 border-[#51A2FF] text-[#51A2FF] px-8 py-4 rounded-full font-bold  transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+              <button className="border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-[#1164A3] transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
                 Donate Now
               </button>
-              <button className="border-2 border-[#51A2FF] text-[#51A2FF] px-8 py-4 rounded-full font-bold  transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+              <button className="bg-white text-[#1164A3] px-8 py-4 rounded-full font-bold hover:bg-[#82B4CC] hover:text-white transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
                 Become a Mentor
               </button>
             </div>

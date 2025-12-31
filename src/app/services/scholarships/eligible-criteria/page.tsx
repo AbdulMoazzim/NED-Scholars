@@ -13,11 +13,10 @@ import {
   ArrowRight,
   FileCheck,
 } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 export default function EligibilityCriteriaPage() {
-  const router = useRouter();
 
   const eligibilityCriteria = [
     {
@@ -68,33 +67,33 @@ export default function EligibilityCriteriaPage() {
     {
       priority: "High Priority",
       description: "Undergraduate Engineering students from NED University",
-      color: "from-blue-600 to-purple-600",
+      color: "from-[#1164A3] to-[#68B9C4]",
     },
     {
       priority: "Medium Priority",
       description: "Non-Engineering NEDians in 2nd, 3rd, and 4th year",
-      color: "from-green-600 to-blue-600",
+      color: "from-[#68B9C4] to-[#82B4CC]",
     },
     {
       priority: "Available",
       description: "Non-NEDian STEM students (limited slots)",
-      color: "from-orange-600 to-red-600",
+      color: "from-[#82B4CC] to-[#B0A3B3]",
     },
   ];
 
   const colorClasses = {
-    blue: "bg-blue-100 text-blue-600",
-    green: "bg-green-100 text-green-600",
-    purple: "bg-purple-100 text-purple-600",
-    orange: "bg-orange-100 text-orange-600",
-    red: "bg-red-100 text-red-600",
-    indigo: "bg-indigo-100 text-indigo-600",
+    blue: "bg-[#82B4CC]/20 text-[#1164A3]",
+    green: "bg-[#68B9C4]/20 text-[#1164A3]",
+    purple: "bg-[#B0A3B3]/30 text-[#1164A3]",
+    orange: "bg-[#82B4CC]/30 text-[#1164A3]",
+    red: "bg-[#68B9C4]/30 text-[#1164A3]",
+    indigo: "bg-[#B0A3B3]/40 text-[#1164A3]",
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-gray-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-r from-gray-50 to-[#82B4CC]/10">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
+      <section className="relative overflow-hidden bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white py-20">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-4 bg-white/20 text-white border-white/30 text-sm">
@@ -110,19 +109,11 @@ export default function EligibilityCriteriaPage() {
             <div className="flex flex-wrap justify-center gap-4">
               <Button
                 size="lg"
-                className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-6 rounded-full shadow-xl transform hover:scale-105 transition-all duration-300"
-                onClick={() => router.push("/forms/scholarship")}
+                className="bg-white text-[#1164A3] hover:bg-gray-100 text-lg px-8 py-6 rounded-full shadow-xl transform hover:scale-105 transition-all duration-300"
+                onClick={() => redirect("/register/scholarship")}
               >
                 Apply Now
                 <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-2 border-white text-white hover:bg-white hover:text-blue-600 text-lg px-8 py-6 rounded-full"
-                onClick={() => router.push("/about")}
-              >
-                Learn More
               </Button>
             </div>
           </div>
@@ -130,14 +121,14 @@ export default function EligibilityCriteriaPage() {
 
         {/* Decorative elements */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#68B9C4]/20 rounded-full blur-3xl"></div>
       </section>
 
       {/* Quick Check Section */}
       <section className="py-16 -mt-10 relative z-20">
         <div className="container mx-auto px-4">
           <Card className="max-w-4xl mx-auto shadow-2xl border-0">
-            <CardHeader className="bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-t-xl">
+            <CardHeader className="bg-gradient-to-r from-[#68B9C4] to-[#1164A3] text-white rounded-t-xl">
               <CardTitle className="text-2xl flex items-center gap-2">
                 <CheckCircle2 className="w-6 h-6" />
                 Quick Eligibility Check
@@ -158,8 +149,8 @@ export default function EligibilityCriteriaPage() {
                   "Commitment to educational goals",
                 ].map((item, index) => (
                   <div key={index} className="flex items-start gap-3">
-                    <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <CheckCircle2 className="w-4 h-4 text-green-600" />
+                    <div className="w-6 h-6 bg-[#68B9C4]/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <CheckCircle2 className="w-4 h-4 text-[#68B9C4]" />
                     </div>
                     <p className="text-gray-700">{item}</p>
                   </div>
@@ -174,7 +165,7 @@ export default function EligibilityCriteriaPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <Badge className="mb-4">DETAILED CRITERIA</Badge>
+            <Badge className="mb-4 bg-[#68B9C4] text-white border-[#68B9C4]">DETAILED CRITERIA</Badge>
             <h2 className="text-4xl font-bold text-gray-800 mb-4">
               Who Can Apply?
             </h2>
@@ -188,7 +179,7 @@ export default function EligibilityCriteriaPage() {
             {eligibilityCriteria.map((criterion, index) => (
               <Card
                 key={index}
-                className="hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-0 shadow-lg"
+                className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300 hover:-translate-y-2 border-[#82B4CC]/20 shadow-lg"
               >
                 <CardContent className="p-6">
                   <div
@@ -218,7 +209,7 @@ export default function EligibilityCriteriaPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">SELECTION PREFERENCE</Badge>
+              <Badge className="mb-4 bg-[#1164A3] text-white border-[#1164A3]">SELECTION PREFERENCE</Badge>
               <h2 className="text-4xl font-bold text-gray-800 mb-4">
                 Priority Levels
               </h2>
@@ -232,7 +223,7 @@ export default function EligibilityCriteriaPage() {
               {preferences.map((pref, index) => (
                 <Card
                   key={index}
-                  className="overflow-hidden border-0 shadow-lg hover:shadow-xl transition-shadow"
+                  className="overflow-hidden border-[#82B4CC]/20 shadow-lg hover:shadow-xl hover:border-[#1164A3] transition-all"
                 >
                   <div
                     className={cn(
@@ -249,8 +240,7 @@ export default function EligibilityCriteriaPage() {
                         <p className="text-gray-600">{pref.description}</p>
                       </div>
                       <Badge
-                        variant="secondary"
-                        className="text-base px-4 py-2"
+                        className="text-base px-4 py-2 bg-[#82B4CC] text-white"
                       >
                         Priority {index + 1}
                       </Badge>
@@ -264,11 +254,11 @@ export default function EligibilityCriteriaPage() {
       </section>
 
       {/* Key Requirements Section */}
-      <section className="py-16 bg-gradient-to-r from-blue-50 to-purple-50">
+      <section className="py-16 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">IMPORTANT INFORMATION</Badge>
+              <Badge className="mb-4 bg-[#68B9C4] text-white border-[#68B9C4]">IMPORTANT INFORMATION</Badge>
               <h2 className="text-4xl font-bold text-gray-800 mb-4">
                 Key Requirements
               </h2>
@@ -277,7 +267,7 @@ export default function EligibilityCriteriaPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Need-Cum-Merit Basis */}
               <Card className="border-0 shadow-xl">
-                <CardHeader className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+                <CardHeader className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white">
                   <CardTitle className="flex items-center gap-2">
                     <Award className="w-5 h-5" />
                     Need-Cum-Merit Basis
@@ -289,7 +279,7 @@ export default function EligibilityCriteriaPage() {
                   </p>
                   <div className="space-y-3">
                     <div className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2"></div>
+                      <div className="w-2 h-2 bg-[#1164A3] rounded-full mt-2"></div>
                       <div>
                         <p className="font-semibold text-gray-800">
                           Financial Need
@@ -300,7 +290,7 @@ export default function EligibilityCriteriaPage() {
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-purple-600 rounded-full mt-2"></div>
+                      <div className="w-2 h-2 bg-[#68B9C4] rounded-full mt-2"></div>
                       <div>
                         <p className="font-semibold text-gray-800">
                           Academic Merit
@@ -316,7 +306,7 @@ export default function EligibilityCriteriaPage() {
 
               {/* STEM Focus */}
               <Card className="border-0 shadow-xl">
-                <CardHeader className="bg-gradient-to-r from-green-600 to-blue-600 text-white">
+                <CardHeader className="bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] text-white">
                   <CardTitle className="flex items-center gap-2">
                     <BookOpen className="w-5 h-5" />
                     STEM Education Focus
@@ -341,7 +331,7 @@ export default function EligibilityCriteriaPage() {
                         key={i}
                         className="flex items-center gap-2 text-sm text-gray-700"
                       >
-                        <CheckCircle2 className="w-4 h-4 text-green-600" />
+                        <CheckCircle2 className="w-4 h-4 text-[#68B9C4]" />
                         {field}
                       </div>
                     ))}
@@ -354,7 +344,7 @@ export default function EligibilityCriteriaPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+      <section className="py-20 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -368,19 +358,11 @@ export default function EligibilityCriteriaPage() {
             <div className="flex flex-wrap justify-center gap-4">
               <Button
                 size="lg"
-                className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-10 py-6 rounded-full shadow-xl transform hover:scale-105 transition-all duration-300"
-                onClick={() => router.push("/forms/scholarship")}
+                className="bg-white text-[#1164A3] hover:bg-gray-100 text-lg px-10 py-6 rounded-full shadow-xl transform hover:scale-105 transition-all duration-300"
+                onClick={() => redirect("/register/scholarship")}
               >
                 Start Your Application
                 <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-2 border-white text-white hover:bg-white hover:text-blue-600 text-lg px-10 py-6 rounded-full"
-                onClick={() => router.push("/contact")}
-              >
-                Have Questions? Contact Us
               </Button>
             </div>
           </div>
@@ -391,11 +373,11 @@ export default function EligibilityCriteriaPage() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <Card className="border-2 border-blue-200 bg-blue-50">
+            <Card className="border-2 border-[#82B4CC] bg-[#82B4CC]/10">
               <CardContent className="p-8">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <AlertCircle className="w-6 h-6 text-blue-600" />
+                  <div className="w-12 h-12 bg-[#82B4CC]/20 rounded-full flex items-center justify-center flex-shrink-0">
+                    <AlertCircle className="w-6 h-6 text-[#1164A3]" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-gray-800 mb-3">

@@ -36,27 +36,27 @@ export default function CoachingCenterPage() {
       title: "Declining College Attendance",
       description:
         "Thousands of Intermediate students skip regular classes for coaching",
-      color: "bg-red-100 text-red-600",
+      color: "bg-[#82B4CC]/20 text-[#1164A3]",
     },
     {
       icon: <DollarSign className="w-6 h-6" />,
       title: "Exploitation of Teachers",
       description:
         "Qualified educators work for minimal wages (often <$100/month)",
-      color: "bg-orange-100 text-orange-600",
+      color: "bg-[#68B9C4]/20 text-[#1164A3]",
     },
     {
       icon: <AlertTriangle className="w-6 h-6" />,
       title: "Financial Burden on Families",
       description:
         "Quality coaching costs 5,000-15,000 PKR/month ($18-$54)",
-      color: "bg-yellow-100 text-yellow-600",
+      color: "bg-[#B0A3B3]/30 text-[#1164A3]",
     },
     {
       icon: <Building2 className="w-6 h-6" />,
       title: "Lack of Standardized Quality",
       description: "No regulation of teaching standards across centers",
-      color: "bg-purple-100 text-purple-600",
+      color: "bg-[#82B4CC]/30 text-[#1164A3]",
     },
   ];
 
@@ -121,7 +121,7 @@ export default function CoachingCenterPage() {
       students: 120,
       teachers: 6,
       focus: "Mathematics/Science",
-      color: "from-blue-600 to-cyan-600",
+      color: "from-[#1164A3] to-[#68B9C4]",
     },
     {
       name: "Kemari Center",
@@ -129,7 +129,7 @@ export default function CoachingCenterPage() {
       students: 90,
       teachers: 4,
       focus: "Cambridge O/A Level",
-      color: "from-purple-600 to-pink-600",
+      color: "from-[#68B9C4] to-[#82B4CC]",
     },
   ];
 
@@ -139,28 +139,28 @@ export default function CoachingCenterPage() {
       title: "Scholar-to-Teacher Pipeline",
       description: "Current NED students gain teaching experience",
       detail: "Clear path to center ownership",
-      color: "from-blue-600 to-purple-600",
+      color: "from-[#1164A3] to-[#68B9C4]",
     },
     {
       icon: <Lightbulb className="w-8 h-8" />,
       title: "Enhanced Curriculum",
       description: "Regular STEM workshops",
       detail: "Digital literacy integration",
-      color: "from-green-600 to-blue-600",
+      color: "from-[#68B9C4] to-[#82B4CC]",
     },
     {
       icon: <Heart className="w-8 h-8" />,
       title: "Community-Based Approach",
       description: "Centers located in underserved neighborhoods",
       detail: "Parent education seminars",
-      color: "from-pink-600 to-red-600",
+      color: "from-[#82B4CC] to-[#B0A3B3]",
     },
     {
       icon: <Rocket className="w-8 h-8" />,
       title: "Sustainable Model",
       description: "Revenue reinvested in facility upgrades",
       detail: "Scaling through franchise model",
-      color: "from-orange-600 to-yellow-600",
+      color: "from-[#1164A3] to-[#82B4CC]",
     },
   ];
 
@@ -196,19 +196,19 @@ export default function CoachingCenterPage() {
       amount: "$5,000",
       description: "Establishes one new center",
       icon: <Building2 className="w-6 h-6" />,
-      color: "from-green-600 to-emerald-600",
+      color: "from-[#68B9C4] to-[#82B4CC]",
     },
     {
       amount: "$50",
       description: "Sponsors a student for one year",
       icon: <Users className="w-6 h-6" />,
-      color: "from-blue-600 to-cyan-600",
+      color: "from-[#1164A3] to-[#68B9C4]",
     },
     {
       amount: "$300",
       description: "Covers teacher training for one scholar",
       icon: <GraduationCap className="w-6 h-6" />,
-      color: "from-purple-600 to-pink-600",
+      color: "from-[#82B4CC] to-[#B0A3B3]",
     },
   ];
 
@@ -241,7 +241,7 @@ export default function CoachingCenterPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white py-16">
+      <section className="bg-gradient-to-r from-[#1164A3] via-[#68B9C4] to-[#82B4CC] text-white py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-4 bg-white/20 text-white border-white/30">
@@ -250,7 +250,7 @@ export default function CoachingCenterPage() {
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               NED Scholars Coaching Center Initiative
             </h1>
-            <p className="text-xl text-blue-100">
+            <p className="text-xl text-white/90">
               Revolutionizing Affordable Education in Pakistan
             </p>
           </div>
@@ -262,7 +262,7 @@ export default function CoachingCenterPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">Industry Analysis</Badge>
+              <Badge className="mb-4 bg-[#68B9C4] text-white border-[#68B9C4]">Industry Analysis</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 The Coaching Center Landscape in Pakistan
               </h2>
@@ -277,10 +277,10 @@ export default function CoachingCenterPage() {
                 {examTypes.map((exam, index) => (
                   <Card
                     key={index}
-                    className="hover:shadow-lg transition-all duration-300"
+                    className="hover:shadow-lg hover:border-[#1164A3] transition-all duration-300"
                   >
                     <CardContent className="p-6 text-center">
-                      <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white mx-auto mb-3">
+                      <div className="w-12 h-12 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-full flex items-center justify-center text-white mx-auto mb-3">
                         {exam.icon}
                       </div>
                       <h4 className="font-semibold text-gray-800 mb-1">
@@ -302,7 +302,7 @@ export default function CoachingCenterPage() {
                 {systemChallenges.map((challenge, index) => (
                   <Card
                     key={index}
-                    className="hover:shadow-xl transition-all duration-300"
+                    className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
                   >
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-4">
@@ -313,7 +313,7 @@ export default function CoachingCenterPage() {
                         </div>
                         <div>
                           <div className="flex items-center mb-2">
-                            <CheckCircle2 className="w-5 h-5 text-blue-600 mr-2" />
+                            <CheckCircle2 className="w-5 h-5 text-[#68B9C4] mr-2" />
                             <h4 className="font-semibold text-gray-800">
                               {challenge.title}
                             </h4>
@@ -330,10 +330,10 @@ export default function CoachingCenterPage() {
             </div>
 
             {/* Quote */}
-            <Card className="bg-gradient-to-r from-red-50 to-orange-50 border-l-4 border-red-600">
+            <Card className="bg-gradient-to-r from-[#82B4CC]/20 to-[#B0A3B3]/20 border-l-4 border-[#1164A3]">
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
-                  <div className="text-red-600 text-4xl">&quot;</div>
+                  <div className="text-[#1164A3] text-4xl">&quot;</div>
                   <p className="text-lg text-gray-700 italic">
                     When education becomes a business rather than a right,
                     students and teachers both lose.
@@ -346,11 +346,11 @@ export default function CoachingCenterPage() {
       </section>
 
       {/* Our Model */}
-      <section className="py-16 bg-gradient-to-r from-blue-50 to-purple-50">
+      <section className="py-16 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">Our Solution</Badge>
+              <Badge className="mb-4 bg-[#1164A3] text-white border-[#1164A3]">Our Solution</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 NED Scholars&apos; Innovative Coaching Center Model
               </h2>
@@ -363,10 +363,10 @@ export default function CoachingCenterPage() {
             {/* Dual Mission Structure */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
               {/* For Students */}
-              <Card className="shadow-lg">
+              <Card className="shadow-lg border-[#82B4CC]/20">
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full flex items-center justify-center text-white font-bold">
+                    <div className="w-10 h-10 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-full flex items-center justify-center text-white font-bold">
                       1
                     </div>
                     <span>For Students</span>
@@ -377,14 +377,14 @@ export default function CoachingCenterPage() {
                     {studentBenefits.map((benefit, index) => (
                       <div
                         key={index}
-                        className="flex items-start space-x-3 p-3 bg-blue-50 rounded-lg"
+                        className="flex items-start space-x-3 p-3 bg-[#82B4CC]/20 rounded-lg"
                       >
-                        <div className="text-blue-600 flex-shrink-0">
+                        <div className="text-[#1164A3] flex-shrink-0">
                           {benefit.icon}
                         </div>
                         <div>
                           <h5 className="font-semibold text-gray-800 mb-1 flex items-center">
-                            <CheckCircle2 className="w-4 h-4 text-green-600 mr-2" />
+                            <CheckCircle2 className="w-4 h-4 text-[#68B9C4] mr-2" />
                             {benefit.title}
                           </h5>
                           <p className="text-sm text-gray-600">
@@ -398,10 +398,10 @@ export default function CoachingCenterPage() {
               </Card>
 
               {/* For Teachers */}
-              <Card className="shadow-lg">
+              <Card className="shadow-lg border-[#82B4CC]/20">
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center text-white font-bold">
+                    <div className="w-10 h-10 bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] rounded-full flex items-center justify-center text-white font-bold">
                       2
                     </div>
                     <span>For NED Scholars (Teachers)</span>
@@ -412,14 +412,14 @@ export default function CoachingCenterPage() {
                     {teacherBenefits.map((benefit, index) => (
                       <div
                         key={index}
-                        className="flex items-start space-x-3 p-3 bg-purple-50 rounded-lg"
+                        className="flex items-start space-x-3 p-3 bg-[#B0A3B3]/20 rounded-lg"
                       >
-                        <div className="text-purple-600 flex-shrink-0">
+                        <div className="text-[#1164A3] flex-shrink-0">
                           {benefit.icon}
                         </div>
                         <div>
                           <h5 className="font-semibold text-gray-800 mb-1 flex items-center">
-                            <CheckCircle2 className="w-4 h-4 text-green-600 mr-2" />
+                            <CheckCircle2 className="w-4 h-4 text-[#68B9C4] mr-2" />
                             {benefit.title}
                           </h5>
                           <p className="text-sm text-gray-600">
@@ -442,7 +442,7 @@ export default function CoachingCenterPage() {
                 {currentCenters.map((center, index) => (
                   <Card
                     key={index}
-                    className="hover:shadow-xl transition-all duration-300"
+                    className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
                   >
                     <CardContent className="p-6">
                       <div
@@ -456,17 +456,17 @@ export default function CoachingCenterPage() {
                       <div className="space-y-2">
                         <div className="flex items-center justify-between">
                           <span className="text-gray-600">Students:</span>
-                          <Badge variant="secondary">{center.students}</Badge>
+                          <Badge className="bg-[#82B4CC] text-white">{center.students}</Badge>
                         </div>
                         <div className="flex items-center justify-between">
                           <span className="text-gray-600">Teachers:</span>
-                          <Badge variant="secondary">
+                          <Badge className="bg-[#68B9C4] text-white">
                             {center.teachers} NED Scholars
                           </Badge>
                         </div>
                         <div className="flex items-center justify-between">
                           <span className="text-gray-600">Focus:</span>
-                          <Badge className="bg-blue-100 text-blue-700">
+                          <Badge className="bg-[#1164A3] text-white">
                             {center.focus}
                           </Badge>
                         </div>
@@ -478,22 +478,22 @@ export default function CoachingCenterPage() {
             </div>
 
             {/* Pricing Model */}
-            <Card className="shadow-lg bg-gradient-to-r from-green-50 to-emerald-50 border-l-4 border-green-600">
+            <Card className="shadow-lg bg-gradient-to-r from-[#68B9C4]/20 to-[#82B4CC]/20 border-l-4 border-[#1164A3]">
               <CardContent className="p-6">
                 <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                  <DollarSign className="w-6 h-6 text-green-600 mr-2" />
+                  <DollarSign className="w-6 h-6 text-[#1164A3] mr-2" />
                   Pricing Model
                 </h3>
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3">
-                    <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0" />
+                    <CheckCircle2 className="w-5 h-5 text-[#68B9C4] flex-shrink-0" />
                     <p className="text-gray-700">
                       <span className="font-semibold">$50/year per student</span>{" "}
                       (75% subsidized by NED Scholars)
                     </p>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0" />
+                    <CheckCircle2 className="w-5 h-5 text-[#68B9C4] flex-shrink-0" />
                     <p className="text-gray-700">
                       Sliding scale available for extreme need cases
                     </p>
@@ -510,7 +510,7 @@ export default function CoachingCenterPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">What Sets Us Apart</Badge>
+              <Badge className="mb-4 bg-[#68B9C4] text-white border-[#68B9C4]">What Sets Us Apart</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 Program Differentiators
               </h2>
@@ -523,7 +523,7 @@ export default function CoachingCenterPage() {
               {differentiators.map((diff, index) => (
                 <Card
                   key={index}
-                  className="hover:shadow-xl transition-all duration-300"
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
                 >
                   <CardContent className="p-6">
                     <div
@@ -543,10 +543,10 @@ export default function CoachingCenterPage() {
               ))}
             </div>
 
-            <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-l-4 border-blue-600">
+            <Card className="bg-gradient-to-r from-[#82B4CC]/20 to-[#B0A3B3]/20 border-l-4 border-[#1164A3]">
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
-                  <div className="text-blue-600 text-3xl">&quot;</div>
+                  <div className="text-[#1164A3] text-3xl">&quot;</div>
                   <p className="text-lg text-gray-700 italic font-medium">
                     We&apos;re not running coaching centers - we&apos;re building
                     community education hubs.
@@ -559,11 +559,11 @@ export default function CoachingCenterPage() {
       </section>
 
       {/* Impact & Expansion */}
-      <section className="py-16 bg-gradient-to-r from-green-50 to-blue-50">
+      <section className="py-16 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">Growth & Results</Badge>
+              <Badge className="mb-4 bg-[#1164A3] text-white border-[#1164A3]">Growth & Results</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 Impact & Expansion Plans
               </h2>
@@ -578,15 +578,15 @@ export default function CoachingCenterPage() {
                 {achievements2024.map((achievement, index) => (
                   <Card
                     key={index}
-                    className="hover:shadow-xl transition-all duration-300"
+                    className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
                   >
                     <CardContent className="p-6 text-center">
-                      <div className="w-16 h-16 bg-gradient-to-r from-green-600 to-blue-600 rounded-full flex items-center justify-center text-white mx-auto mb-4">
+                      <div className="w-16 h-16 bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] rounded-full flex items-center justify-center text-white mx-auto mb-4">
                         {achievement.icon}
                       </div>
                       <div className="flex items-center justify-center mb-2">
-                        <CheckCircle2 className="w-5 h-5 text-green-600 mr-2" />
-                        <div className="text-4xl font-bold text-gray-800">
+                        <CheckCircle2 className="w-5 h-5 text-[#68B9C4] mr-2" />
+                        <div className="text-4xl font-bold text-[#1164A3]">
                           {achievement.number}
                         </div>
                       </div>
@@ -605,10 +605,10 @@ export default function CoachingCenterPage() {
             {/* Future Roadmap */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* 2025 Plans */}
-              <Card className="shadow-lg">
+              <Card className="shadow-lg border-[#82B4CC]/20">
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-3">
-                    <Calendar className="w-6 h-6 text-blue-600" />
+                    <Calendar className="w-6 h-6 text-[#1164A3]" />
                     <span>2025 Expansion</span>
                   </CardTitle>
                 </CardHeader>
@@ -621,9 +621,9 @@ export default function CoachingCenterPage() {
                     {expansionPlans2025.map((location, index) => (
                       <div
                         key={index}
-                        className="flex items-center space-x-3 p-3 bg-blue-50 rounded-lg"
+                        className="flex items-center space-x-3 p-3 bg-[#82B4CC]/20 rounded-lg"
                       >
-                        <div className="text-blue-600">{location.icon}</div>
+                        <div className="text-[#1164A3]">{location.icon}</div>
                         <span className="font-medium text-gray-800">
                           {location.name}
                         </span>
@@ -634,24 +634,24 @@ export default function CoachingCenterPage() {
               </Card>
 
               {/* 2026 Plans */}
-              <Card className="shadow-lg">
+              <Card className="shadow-lg border-[#82B4CC]/20">
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-3">
-                    <Calendar className="w-6 h-6 text-purple-600" />
+                    <Calendar className="w-6 h-6 text-[#68B9C4]" />
                     <span>2026 Goals</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     <div className="flex items-start space-x-3">
-                      <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
+                      <CheckCircle2 className="w-5 h-5 text-[#68B9C4] flex-shrink-0 mt-1" />
                       <p className="text-gray-700">
                         <span className="mr-2">📌</span>
                         Develop standardized teacher training program
                       </p>
                     </div>
                     <div className="flex items-start space-x-3">
-                      <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
+                      <CheckCircle2 className="w-5 h-5 text-[#68B9C4] flex-shrink-0 mt-1" />
                       <p className="text-gray-700">
                         <span className="mr-2">📌</span>
                         Launch virtual coaching platform
@@ -670,7 +670,7 @@ export default function CoachingCenterPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4">Get Involved</Badge>
+              <Badge className="mb-4 bg-[#1164A3] text-white border-[#1164A3]">Get Involved</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 How You Can Support
               </h2>
@@ -688,7 +688,7 @@ export default function CoachingCenterPage() {
                 {fundingOptions.map((option, index) => (
                   <Card
                     key={index}
-                    className="hover:shadow-xl transition-all duration-300 cursor-pointer hover:-translate-y-1"
+                    className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300 cursor-pointer hover:-translate-y-1"
                   >
                     <CardContent className="p-6 text-center">
                       <div
@@ -696,7 +696,7 @@ export default function CoachingCenterPage() {
                       >
                         {option.icon}
                       </div>
-                      <div className="text-3xl font-bold text-gray-800 mb-2">
+                      <div className="text-3xl font-bold text-[#1164A3] mb-2">
                         {option.amount}
                       </div>
                       <p className="text-gray-600">{option.description}</p>
@@ -715,11 +715,11 @@ export default function CoachingCenterPage() {
                 {participationOptions.map((option, index) => (
                   <Card
                     key={index}
-                    className="hover:shadow-xl transition-all duration-300"
+                    className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
                   >
                     <CardContent className="p-6 text-center">
                       <div className="text-4xl mb-3">{option.emoji}</div>
-                      <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white mx-auto mb-3">
+                      <div className="w-12 h-12 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-full flex items-center justify-center text-white mx-auto mb-3">
                         {option.icon}
                       </div>
                       <h4 className="font-semibold text-gray-800">
@@ -732,27 +732,27 @@ export default function CoachingCenterPage() {
             </div>
 
             {/* Contact Info */}
-            <Card className="shadow-lg bg-white">
+            <Card className="shadow-lg bg-white border-[#82B4CC]/20">
               <CardContent className="p-8">
                 <h3 className="text-xl font-semibold text-gray-800 mb-6 text-center flex items-center justify-center">
-                  <Mail className="w-6 h-6 mr-2 text-blue-600" />
+                  <Mail className="w-6 h-6 mr-2 text-[#1164A3]" />
                   Contact Us
                 </h3>
                 <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8">
                   <div className="flex items-center space-x-3">
-                    <Mail className="w-6 h-6 text-blue-600" />
+                    <Mail className="w-6 h-6 text-[#1164A3]" />
                     <a
                       href="mailto:coaching@nedscholars.org"
-                      className="text-blue-600 hover:underline font-medium"
+                      className="text-[#1164A3] hover:underline font-medium"
                     >
                       coaching@nedscholars.org
                     </a>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <Globe className="w-6 h-6 text-blue-600" />
+                    <Globe className="w-6 h-6 text-[#1164A3]" />
                     <a
                       href="https://www.nedscholars.org/coaching-centers"
-                      className="text-blue-600 hover:underline font-medium"
+                      className="text-[#1164A3] hover:underline font-medium"
                     >
                       www.nedscholars.org/coaching-centers
                     </a>
@@ -765,7 +765,7 @@ export default function CoachingCenterPage() {
       </section>
 
       {/* Key Highlights */}
-      <section className="py-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+      <section className="py-16 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
@@ -797,21 +797,21 @@ export default function CoachingCenterPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <Card className="shadow-2xl bg-gradient-to-r from-gray-50 to-blue-50 border-l-4 border-blue-600">
+            <Card className="shadow-2xl bg-gradient-to-r from-[#82B4CC]/20 to-[#B0A3B3]/20 border-l-4 border-[#1164A3]">
               <CardContent className="p-8 md:p-12">
                 <div className="text-center mb-8"> 
                   <blockquote className="text-2xl font-semibold text-gray-800 mb-6">
                     &quot; Real change starts at the community level. Help us redefine
-                    education access in Pakistan.
+                    education access in Pakistan.&quot;
                   </blockquote>
                 </div>
 
                 <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                  <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
+                  <button className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
                     <Heart className="w-5 h-5 mr-2" />
                     Support Our Centers
                   </button>
-                  <button onClick={()=> {router.push("/register/partner")}} className="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
+                  <button onClick={()=> {router.push("/register/partner")}} className="bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
                     <Users className="w-5 h-5 mr-2" />
                     Become a Partner
                   </button>

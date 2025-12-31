@@ -21,7 +21,7 @@ import { GetAllSuccessStories } from "./actions/success-stories";
 import SuccessStoriesComponent from "@/components/Success-stories-card";
 import { SuccessStoriesData } from "@/lib/types";
 
-gsap.registerPlugin(useGSAP); // register the hook to avoid React version discrepancies
+gsap.registerPlugin(useGSAP);
 
 const NedScholarsHomepage = () => {
   const [currentBanner, setCurrentBanner] = useState(0);
@@ -32,10 +32,10 @@ const NedScholarsHomepage = () => {
   useGSAP(
     () => {
       gsap.to(".animate-strip", {
-        x: "-50%", // Move exactly half the width since we have 2 identical sets
+        x: "-50%",
         repeat: -1,
         ease: "none",
-        duration: 50, // Adjust speed as needed (higher = slower)
+        duration: 50,
       });
     },
     { scope: container }
@@ -43,7 +43,7 @@ const NedScholarsHomepage = () => {
   
   useEffect(() => {
     async function load() {
-      const data = await GetAllSuccessStories(); // server call
+      const data = await GetAllSuccessStories();
       if (data.success) {  
         setSuccessStories(data);
       }
@@ -67,51 +67,6 @@ const NedScholarsHomepage = () => {
 
   return (
     <div>
-      {/* Hero Banner
-      <section className="relative overflow-hidden">
-        <div className={`bg-gradient-to-r ${banners[currentBanner].gradient} text-white py-20 transition-all duration-1000`}>
-          <div className="container mx-auto px-4 text-center relative">
-            <Badge className="mb-4 bg-white/20 text-white border-white/30">
-              {banners[currentBanner].title}
-            </Badge>
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in">
-              {banners[currentBanner].subtitle}
-            </h2>
-            <p className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto opacity-90">
-              {banners[currentBanner].description}
-            </p>
-            <Button size="lg" className="bg-white text-gray-800 hover:bg-gray-100 text-lg px-8 py-4 rounded-full shadow-2xl transform hover:scale-105 transition-all duration-300">
-              {banners[currentBanner].buttonText}
-            </Button> */}
-
-      {/* Banner Navigation */}
-      {/* <div className="absolute top-1/2 left-4 transform -translate-y-1/2">
-              <Button variant="ghost" size="sm" onClick={prevBanner} className="text-white hover:bg-white/20">
-                <ChevronLeft className="w-6 h-6" />
-              </Button>
-            </div>
-            <div className="absolute top-1/2 right-4 transform -translate-y-1/2">
-              <Button variant="ghost" size="sm" onClick={nextBanner} className="text-white hover:bg-white/20">
-                <ChevronRight className="w-6 h-6" />
-              </Button>
-            </div>
-            
-            {/* Banner Indicators */}
-      {/* <div className="flex justify-center space-x-2 mt-8">
-              {banners.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentBanner(index)}
-                  className={`w-3 h-3 rounded-full transition-all ${
-                    index === currentBanner ? 'bg-white' : 'bg-white/50'
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section> */}
-
       {/* Smart Spending Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
@@ -126,8 +81,17 @@ const NedScholarsHomepage = () => {
               excellence.
             </p>
             <div className="flex justify-center space-x-4 mt-6">
-              <Button variant="default">Get Started</Button>
-              <Button variant="outline">Learn More</Button>
+              <Button 
+                className="bg-[#1164A3] hover:bg-[#0d4d82] text-white"
+              >
+                Get Started
+              </Button>
+              <Button 
+                variant="outline" 
+                className="border-[#1164A3] text-[#1164A3] hover:bg-[#1164A3] hover:text-white"
+              >
+                Learn More
+              </Button>
             </div>
           </div>
 
@@ -142,10 +106,12 @@ const NedScholarsHomepage = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16">
+      <section className="py-16 bg-[#B0A3B3]/10">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <Badge className="mb-4">Events And Announcements</Badge>
+            <Badge className="mb-4 bg-[#1164A3] text-white border-[#1164A3]">
+              Events And Announcements
+            </Badge>
             <h3 className="text-3xl font-bold text-gray-800">
               Our Impact in Numbers
             </h3>
@@ -161,10 +127,10 @@ const NedScholarsHomepage = () => {
                 {stats.map((stat, index) => (
                   <Card
                     key={index}
-                    className="text-center bg-[#F5F5F5] border-0 w-[300px]"
+                    className="text-center bg-white border-[#68B9C4]/20 w-[300px] hover:border-[#1164A3] transition-all"
                   >
                     <CardHeader>
-                      <div className="text-[56px] font-semibold text-gray-800">
+                      <div className="text-[56px] font-semibold text-[#1164A3]">
                         {stat.value}
                       </div>
                     </CardHeader>
@@ -180,10 +146,10 @@ const NedScholarsHomepage = () => {
                 {stats.map((stat, index) => (
                   <Card
                     key={`dup-${index}`}
-                    className="text-center bg-[#F5F5F5] border-0 w-[300px]"
+                    className="text-center bg-white border-[#68B9C4]/20 w-[300px] hover:border-[#1164A3] transition-all"
                   >
                     <CardHeader>
-                      <div className="text-[56px] font-semibold text-gray-800">
+                      <div className="text-[56px] font-semibold text-[#1164A3]">
                         {stat.value}
                       </div>
                     </CardHeader>
@@ -203,7 +169,9 @@ const NedScholarsHomepage = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <Badge className="mb-4">ABOUT NED Scholars</Badge>
+              <Badge className="mb-4 bg-[#68B9C4] text-white border-[#68B9C4]">
+                ABOUT NED Scholars
+              </Badge>
               <h3 className="text-4xl font-bold text-gray-800 mb-6">
                 Empowering Minds, Shaping Futures
               </h3>
@@ -215,8 +183,8 @@ const NedScholarsHomepage = () => {
 
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <DollarSign className="w-4 h-4 text-blue-600" />
+                  <div className="w-8 h-8 bg-[#82B4CC]/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <DollarSign className="w-4 h-4 text-[#1164A3]" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-800 mb-2">
@@ -230,8 +198,8 @@ const NedScholarsHomepage = () => {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <Laptop className="w-4 h-4 text-green-600" />
+                  <div className="w-8 h-8 bg-[#68B9C4]/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <Laptop className="w-4 h-4 text-[#1164A3]" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-800 mb-2">
@@ -245,8 +213,8 @@ const NedScholarsHomepage = () => {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <BookOpen className="w-4 h-4 text-purple-600" />
+                  <div className="w-8 h-8 bg-[#B0A3B3]/30 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <BookOpen className="w-4 h-4 text-[#1164A3]" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-800 mb-2">
@@ -260,11 +228,16 @@ const NedScholarsHomepage = () => {
                 </div>
               </div>
 
-              <Button className="mt-4" onClick={()=>{router.push("/about")}}>About Us</Button>
+              <Button 
+                className="mt-4 bg-[#1164A3] hover:bg-[#0d4d82] text-white" 
+                onClick={()=>{router.push("/about")}}
+              >
+                About Us
+              </Button>
             </div>
 
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-3xl transform rotate-6"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] rounded-3xl transform rotate-6"></div>
               <img
                 src="/api/placeholder/500/600"
                 alt="Students studying"
@@ -276,14 +249,14 @@ const NedScholarsHomepage = () => {
       </section>
 
       {/* Mission Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-50 to-purple-50">
+      <section className="py-20 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative">
-              <div className="absolute -top-4 -left-4 w-full h-full bg-gradient-to-r from-green-400 to-blue-500 rounded-3xl opacity-20"></div>
-              <Card className="relative bg-white p-8 rounded-3xl shadow-xl">
+              <div className="absolute -top-4 -left-4 w-full h-full bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] rounded-3xl opacity-20"></div>
+              <Card className="relative bg-white p-8 rounded-3xl shadow-xl border-[#68B9C4]/20">
                 <CardContent className="text-center">
-                  <Target className="w-16 h-16 mx-auto text-blue-600 mb-6" />
+                  <Target className="w-16 h-16 mx-auto text-[#1164A3] mb-6" />
                   <h4 className="text-2xl font-bold text-gray-800 mb-4">
                     Our Mission
                   </h4>
@@ -295,22 +268,30 @@ const NedScholarsHomepage = () => {
                       <span className="text-gray-700">
                         Scholarship Allocation
                       </span>
-                      <span className="font-bold text-blue-600">95%</span>
+                      <span className="font-bold text-[#1164A3]">95%</span>
                     </div>
-                    <Progress value={95} className="h-2" />
+                    <Progress 
+                      value={95} 
+                      className="h-2 [&>div]:bg-[#1164A3]" 
+                    />
 
                     <div className="flex justify-between items-center">
                       <span className="text-gray-700">STEM Allocation</span>
-                      <span className="font-bold text-green-600">5%</span>
+                      <span className="font-bold text-[#68B9C4]">5%</span>
                     </div>
-                    <Progress value={5} className="h-2" />
+                    <Progress 
+                      value={5} 
+                      className="h-2 [&>div]:bg-[#68B9C4]" 
+                    />
                   </div>
                 </CardContent>
               </Card>
             </div>
 
             <div>
-              <Badge className="mb-4">OUR MISSIONS</Badge>
+              <Badge className="mb-4 bg-[#1164A3] text-white border-[#1164A3]">
+                OUR MISSIONS
+              </Badge>
               <h3 className="text-4xl font-bold text-gray-800 mb-6">
                 Every student should have the chance to learn and grow
               </h3>
@@ -329,7 +310,7 @@ const NedScholarsHomepage = () => {
 
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
+                  <div className="w-6 h-6 bg-[#1164A3] rounded-full flex items-center justify-center">
                     <span className="text-white text-xs">✓</span>
                   </div>
                   <p className="text-gray-700">
@@ -339,7 +320,7 @@ const NedScholarsHomepage = () => {
                 </div>
 
                 <div className="flex items-center space-x-3">
-                  <div className="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center">
+                  <div className="w-6 h-6 bg-[#68B9C4] rounded-full flex items-center justify-center">
                     <span className="text-white text-xs">✓</span>
                   </div>
                   <p className="text-gray-700">
@@ -349,7 +330,7 @@ const NedScholarsHomepage = () => {
                 </div>
 
                 <div className="flex items-center space-x-3">
-                  <div className="w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center">
+                  <div className="w-6 h-6 bg-[#82B4CC] rounded-full flex items-center justify-center">
                     <span className="text-white text-xs">✓</span>
                   </div>
                   <p className="text-gray-700">
@@ -377,10 +358,10 @@ const NedScholarsHomepage = () => {
             {paymentMethods.map((method, index) => (
               <Card
                 key={index}
-                className="hover:shadow-lg transition-all duration-300 cursor-pointer hover:-translate-y-1"
+                className="hover:shadow-lg hover:border-[#1164A3] transition-all duration-300 cursor-pointer hover:-translate-y-1"
               >
                 <CardContent className="p-6 text-center">
-                  <method.icon className="w-12 h-12 mx-auto mb-4 text-gray-600" />
+                  <method.icon className="w-12 h-12 mx-auto mb-4 text-[#1164A3]" />
                   <p className="text-sm font-medium text-gray-800">
                     {method.name}
                   </p>
@@ -394,11 +375,13 @@ const NedScholarsHomepage = () => {
       {/* Causes Section */}
       <section
         id="causes"
-        className="py-20 bg-gradient-to-r from-gray-50 to-blue-50"
+        className="py-20 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10"
       >
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <Badge className="mb-4">CAUSES TO SUPPORT</Badge>
+            <Badge className="mb-4 bg-[#68B9C4] text-white border-[#68B9C4]">
+              CAUSES TO SUPPORT
+            </Badge>
             <h3 className="text-4xl font-bold text-gray-800 mb-6">
               Your Support Fuels Their Dreams
             </h3>
@@ -416,16 +399,21 @@ const NedScholarsHomepage = () => {
             {causes.map((cause, index) => (
               <Card
                 key={index}
-                className="hover:shadow-xl transition-all duration-300"
+                className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
               >
                 <CardContent className="p-6">
                   <div className="flex justify-between items-center mb-4">
                     <h4 className="font-semibold text-gray-800">
                       {cause.name}
                     </h4>
-                    <Badge variant="secondary">{cause.percentage}%</Badge>
+                    <Badge className="bg-[#82B4CC] text-white">
+                      {cause.percentage}%
+                    </Badge>
                   </div>
-                  <Progress value={cause.percentage} className="h-3" />
+                  <Progress 
+                    value={cause.percentage} 
+                    className="h-3 [&>div]:bg-[#1164A3]" 
+                  />
                 </CardContent>
               </Card>
             ))}
@@ -435,7 +423,7 @@ const NedScholarsHomepage = () => {
             <Button
               size="lg"
               variant="outline"
-              className="border-2 border-black  hover:bg-black hover:text-white"
+              className="border-2 border-[#1164A3] text-[#1164A3] hover:bg-[#1164A3] hover:text-white"
               onClick={()=> {router.push("/about/causes-to-support")}}
             >
               View Details

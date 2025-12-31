@@ -1,0 +1,562 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../prisma/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id
+  name          String
+  email         String
+  emailVerified Boolean   @default(false)
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @default(now()) @updatedAt
+  role          String?
+  banned        Boolean?  @default(false)
+  banReason     String?
+  banExpires    DateTime?
+  sessions      Session[]
+  accounts      Account[]
+
+  @@unique([email])
+  @@map("user")
+}
+
+model Session {
+  id             String   @id
+  expiresAt      DateTime
+  token          String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  ipAddress      String?
+  userAgent      String?
+  userId         String
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  impersonatedBy String?
+
+  @@unique([token])
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@map("account")
+}
+
+model Verification {
+  id         String   @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now()) @updatedAt
+
+  @@map("verification")
+}
+
+// Team Members Model
+model TeamMember {
+  id           String       @id @default(cuid())
+  slug         String       @unique @db.VarChar(255)
+  name         String       @db.VarChar(2048)
+  position     String       @db.VarChar(2048)
+  email        String       @unique @db.VarChar(255)
+  phone        String?      @db.VarChar(50)
+  bio          String       @db.VarChar(2048)
+  expertise    String?      @db.VarChar(2048)
+  achievements String?      @db.VarChar(2048)
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  images       Image[]
+  videos       Video[]
+  youtubeUrls  YoutubeUrl[]
+
+  @@map("team_members")
+}
+
+// Success Stories Model
+model SuccessStory {
+  id              String       @id @default(cuid())
+  slug            String       @unique @db.VarChar(255)
+  studentName     String       @db.VarChar(2048)
+  year            Int
+  currentPosition String?      @db.VarChar(2048)
+  company         String?      @db.VarChar(2048)
+  story           String       @db.VarChar(2048)
+  impact          String?      @db.VarChar(2048)
+  advice          String?      @db.VarChar(2048)
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+  images          Image[]
+  videos          Video[]
+  youtubeUrls     YoutubeUrl[]
+
+  @@map("success_stories")
+}
+
+// Blog Posts Model
+model BlogPost {
+  id          String       @id @default(cuid())
+  slug        String       @unique @db.VarChar(255)
+  title       String       @db.VarChar(2048)
+  excerpt     String       @db.VarChar(2048)
+  content     String       @db.VarChar(2048)
+  author      String       @db.VarChar(2048)
+  category    BlogCategory
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  images      Image[]
+  videos      Video[]
+  youtubeUrls YoutubeUrl[]
+
+  @@map("blog_posts")
+}
+
+// News Updates Model
+model NewsUpdate {
+  id          String       @id @default(cuid())
+  slug        String       @unique @db.VarChar(255)
+  headline    String       @db.VarChar(2048)
+  summary     String       @db.VarChar(2048)
+  content     String       @db.VarChar(2048)
+  location    String?      @db.VarChar(2048)
+  eventDate   DateTime?
+  priority    NewsPriority
+  category    NewsCategory
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  images      Image[]
+  videos      Video[]
+  youtubeUrls YoutubeUrl[]
+
+  @@map("news_updates")
+}
+
+// Images Model
+model Image {
+  id        String   @id @default(cuid())
+  url       String   @db.VarChar(2048)
+  public_id String
+  alt       String?  @db.VarChar(512)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Foreign keys
+  blogPostId String?
+  blogPost   BlogPost? @relation(fields: [blogPostId], references: [id], onDelete: Cascade)
+
+  teamMemberId String?
+  teamMember   TeamMember? @relation(fields: [teamMemberId], references: [id], onDelete: Cascade)
+
+  newsUpdateId String?
+  newsUpdate   NewsUpdate? @relation(fields: [newsUpdateId], references: [id], onDelete: Cascade)
+
+  successStoryId String?
+  successStory   SuccessStory? @relation(fields: [successStoryId], references: [id], onDelete: Cascade)
+  seminarId      String?
+  seminar        Seminar?      @relation(fields: [seminarId], references: [id], onDelete: Cascade)
+  webinarId      String?
+  webinar        Webinar?      @relation(fields: [webinarId], references: [id], onDelete: Cascade)
+
+  remembranceId String?
+  remembrance   Remembrance? @relation(fields: [remembranceId], references: [id], onDelete: Cascade)
+
+  @@map("images")
+}
+
+// Videos Model
+model Video {
+  id        String   @id @default(cuid())
+  url       String   @db.VarChar(2048)
+  public_id String
+  title     String?  @db.VarChar(512)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Foreign keys
+  blogPostId String?
+  blogPost   BlogPost? @relation(fields: [blogPostId], references: [id], onDelete: Cascade)
+
+  teamMemberId String?
+  teamMember   TeamMember? @relation(fields: [teamMemberId], references: [id], onDelete: Cascade)
+
+  newsUpdateId String?
+  newsUpdate   NewsUpdate? @relation(fields: [newsUpdateId], references: [id], onDelete: Cascade)
+
+  successStoryId String?
+  successStory   SuccessStory? @relation(fields: [successStoryId], references: [id], onDelete: Cascade)
+
+  seminarId String?
+  seminar   Seminar? @relation(fields: [seminarId], references: [id], onDelete: Cascade)
+  webinarId String?
+  webinar   Webinar? @relation(fields: [webinarId], references: [id], onDelete: Cascade)
+
+  @@map("videos")
+}
+
+// YouTube URLs Model
+model YoutubeUrl {
+  id        String   @id @default(cuid())
+  url       String   @db.VarChar(2048)
+  title     String?  @db.VarChar(512)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Foreign keys
+  blogPostId String?
+  blogPost   BlogPost? @relation(fields: [blogPostId], references: [id], onDelete: Cascade)
+
+  teamMemberId String?
+  teamMember   TeamMember? @relation(fields: [teamMemberId], references: [id], onDelete: Cascade)
+
+  newsUpdateId String?
+  newsUpdate   NewsUpdate? @relation(fields: [newsUpdateId], references: [id], onDelete: Cascade)
+
+  successStoryId String?
+  successStory   SuccessStory? @relation(fields: [successStoryId], references: [id], onDelete: Cascade)
+
+  @@map("youtube_urls")
+}
+
+model Remembrance {
+  id          String  @id @default(cuid())
+  name        String
+  description String
+  images      Image[]
+}
+
+// Enums for Blog Categories
+enum BlogCategory {
+  TECHNOLOGY
+  EDUCATION
+  RESEARCH
+  INNOVATION
+  STUDENT_LIFE
+
+  @@map("blog_category")
+}
+
+// Enums for News Priority
+enum NewsPriority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+
+  @@map("news_priority")
+}
+
+// Enums for News Categories
+enum NewsCategory {
+  ANNOUNCEMENT
+  EVENT
+  ACHIEVEMENT
+  RESEARCH
+  PARTNERSHIP
+
+  @@map("news_category")
+}
+
+model Resources {
+  id        String   @id @default(cuid())
+  url       String   @db.VarChar(2048)
+  public_id String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Foreign keys
+  scholarshipResourceId  String?
+  scholarshipResource    ScholarshipForm? @relation(fields: [scholarshipResourceId], references: [id], onDelete: Cascade)
+  transparencyResourceId String?
+  transparencyResource   Transparency?    @relation(fields: [transparencyResourceId], references: [id], onDelete: Cascade)
+
+  @@map("resources")
+}
+
+model Transparency {
+  id        String      @id @default(cuid())
+  year      String      @db.VarChar(2048)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  files     Resources[]
+
+  @@map("transparency")
+}
+
+model PartnerForm {
+  id                 String   @id @default(cuid())
+  full_name          String
+  email              String
+  phone              String
+  why_join           String   @db.VarChar(2048)
+  organization_name  String
+  designation        String
+  linkedin_profile   String?
+  status             String
+  areas_of_expertise String
+  education_level    String
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  @@map("partners")
+}
+
+model ScholarshipForm {
+  id                       String      @id @default(cuid())
+  full_name                String
+  email                    String
+  phone                    String
+  date_of_birth            DateTime
+  gender                   String
+  status                   String
+  country                  String
+  city                     String
+  address                  String?
+  current_education_level  String
+  institution_name         String
+  field_of_study           String
+  gpa_or_percentage        String
+  expected_graduation_year Int?
+  annual_family_income     String
+  why_deserve_scholarship  String      @db.VarChar(2048)
+  future_goals             String      @db.VarChar(2048)
+  resources                Resources[]
+  createdAt                DateTime    @default(now())
+  updatedAt                DateTime    @updatedAt
+
+  @@map("schoilarship_form")
+}
+
+model StudentForm {
+  id                String   @id @default(cuid())
+  full_name         String
+  email             String
+  phone             String
+  why_join          String   @db.VarChar(2048)
+  education_level   String
+  status            String
+  field_of_study    String
+  organization_name String
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@map("students")
+}
+
+model MentorForm {
+  id                 String   @id @default(cuid())
+  full_name          String
+  email              String
+  phone              String
+  why_join           String   @db.VarChar(2048)
+  designation        String
+  linkedin_profile   String?
+  status             String
+  field_of_study     String
+  experience_years   Int
+  areas_of_expertise String
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  @@map("mentors")
+}
+
+model VolenteerForm {
+  id                      String   @id @default(cuid())
+  full_name               String
+  email                   String
+  phone                   String
+  date_of_birth           DateTime
+  gender                  String
+  status                  String
+  country                 String
+  city                    String
+  current_education_level String
+  areas_of_interest       String
+  skills                  String
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+
+  @@map("volunteers")
+}
+
+model Seminar {
+  id          String    @id @default(cuid())
+  title       String
+  description String    @db.Text
+  date        DateTime
+  endDate     DateTime?
+  location    String // Physical location address
+
+  // Capacity
+  maxCapacity      Int?
+  virtualCapacity  Int?
+  physicalCapacity Int?
+
+  // Images & Links
+  images Image[]
+  videos Video[] // For post-webinar recording
+  // Meta
+  status String  @default("upcoming")
+
+  // Relationships
+  attendees  AttendeeSeminarForm[]
+  presenters PresenterSeminarForm[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([date])
+  @@index([status])
+  @@map("seminars")
+}
+
+model Webinar {
+  id          String    @id @default(cuid())
+  title       String
+  description String    @db.Text
+  date        DateTime
+  endDate     DateTime?
+
+  // Webinar specific
+  meetingLink     String?
+  meetingPassword String?
+  platform        String? // Zoom, Google Meet, Teams, etc.
+  maxParticipants Int?
+
+  // Images & Links
+  images Image[]
+  videos Video[] // For post-webinar recording
+
+  // Meta
+  status String @default("upcoming")
+
+  // Relationships
+  attendees AttendeeWebinarForm[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([date])
+  @@index([status])
+  @@map("webinars")
+}
+
+// ============================================
+// ATTENDEE FORMS
+// ============================================
+
+model AttendeeSeminarForm {
+  id String @id @default(cuid())
+
+  // Basic Info
+  full_name String
+  email     String
+  phone     String
+
+  // Attendance
+  attendance_mode String
+
+  // Foreign Key
+  seminarId String?
+  seminar   Seminar? @relation(fields: [seminarId], references: [id], onDelete: Cascade)
+
+  // Status
+  registration_status String @default("waitlist") // confirmed, waitlist, cancelled
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([seminarId])
+  @@index([email])
+  @@map("attendee_seminar")
+}
+
+model AttendeeWebinarForm {
+  id String @id @default(cuid())
+
+  full_name       String
+  email           String
+  phone           String
+  attendance_mode String @default("virtual")
+
+  // Foreign Key
+  webinarId String?
+  webinar   Webinar? @relation(fields: [webinarId], references: [id], onDelete: Cascade)
+
+  // Status
+  registration_status String @default("confirmed")
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([webinarId])
+  @@index([email])
+  @@map("attendee_webinar")
+}
+
+model PresenterSeminarForm {
+  id String @id @default(cuid())
+
+  // Basic Info
+  full_name String
+  email     String
+  phone     String
+  country   String
+
+  // Professional
+  current_designation String
+  organization_name   String
+  linkedin_profile    String?
+
+  // Presentation Details
+  presentation_title String
+  presentation_topic String @db.Text
+  areas_of_expertise String @db.Text
+
+  // Motivation
+  why_present      String  @db.Text
+  impact_statement String? @db.Text
+
+  // Foreign Key
+  seminarId String?
+  seminar   Seminar? @relation(fields: [seminarId], references: [id], onDelete: SetNull)
+
+  // Status
+  application_status String @default("pending")
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([seminarId])
+  @@index([email])
+  @@index([application_status])
+  @@map("presenter_seminar")
+}
+
+model subscriptions {
+  id    String @id @default(cuid())
+  email String
+}

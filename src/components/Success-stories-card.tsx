@@ -26,14 +26,14 @@ export default function SuccessStoriesComponent({
   if (data.data) {
 
     return (
-      <div className={`min-h-screen px-4 ${path === "/save-a-child" ? "bg-transparent": "bg-gradient-to-br from-blue-50 via-white to-indigo-50"}`}>
+      <div className={`min-h-screen px-4 ${path === "/save-a-child" ? "bg-transparent": "bg-gradient-to-br from-[#B0A3B3]/10 via-white to-[#82B4CC]/10"}`}>
         <div className="max-w-7xl mx-auto">
           {/* Header Section */}
-          <div className="text-center mb-16">
+          <div className={`text-center mb-16 ${path === "/scholars/scholarships" ? "py-8":""}`}>
             <h1 className="text-5xl font-bold text-gray-900 mb-6 tracking-tight">
               Success Stories
             </h1>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 mx-auto mb-6 rounded-full"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] mx-auto mb-6 rounded-full"></div>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Meet some of our amazing scholars who are making a difference in the
               world
@@ -53,7 +53,7 @@ export default function SuccessStoriesComponent({
                 return (
                   <Card
                     key={index}
-                    className="group hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:-translate-y-3 hover:scale-105 overflow-hidden"
+                    className="group hover:shadow-2xl hover:border-[#1164A3] transition-all duration-500 cursor-pointer transform hover:-translate-y-3 hover:scale-105 overflow-hidden"
                   >
                     <CardContent className="p-8 h-full flex flex-col justify-between">
                       {/* Avatar/Image Section */}
@@ -67,19 +67,19 @@ export default function SuccessStoriesComponent({
                             />
                           </div>
                         ) : (
-                          <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-3xl text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+                          <div className="w-20 h-20 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-full flex items-center justify-center text-3xl text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
                             {story.studentName.charAt(0)}
                           </div>
                         )}
                       </div>
                       <div>
                         {/* Name and Position */}
-                        <h3 className="text-xl font-bold text-gray-900 mb-2 text-center group-hover:text-indigo-600 transition-colors duration-300">
+                        <h3 className="text-xl font-bold text-gray-900 mb-2 text-center group-hover:text-[#1164A3] transition-colors duration-300">
                           {story.studentName}
                         </h3>
   
                         {story.currentPosition && (
-                          <p className="text-sm text-indigo-600 font-medium mb-3 text-center">
+                          <p className="text-sm text-[#1164A3] font-medium mb-3 text-center">
                             {story.currentPosition}
                           </p>
                         )}
@@ -101,7 +101,7 @@ export default function SuccessStoriesComponent({
                       {/* Read More Button */}
                       <div className="flex justify-center">
                         <Link href={`/scholars/success-stories/${story.slug}`}>
-                          <Button className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white">
+                          <Button className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] hover:from-[#68B9C4] hover:to-[#82B4CC] text-white">
                             Read Story
                             <svg
                               className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"
@@ -133,8 +133,8 @@ export default function SuccessStoriesComponent({
           )}
         </div>
         {path !== "/scholars/scholarships" ? (
-          <div className="w-full text-center my-8">
-            <Button>
+          <div className="w-full text-center mt-8">
+            <Button className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] hover:from-[#68B9C4] hover:to-[#82B4CC] text-white">
               <Link href="/scholars/success-stories">
                 View More Success Stories
               </Link>

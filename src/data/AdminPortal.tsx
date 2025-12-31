@@ -3,15 +3,20 @@ import {
   Users, 
   BookOpen, 
   Award, 
-  FileText
+  FileText,
+  Video
 } from 'lucide-react';
 
 export const sidebarItems: SidebarNavItem[] = [
-    { id: 'team-members', label: 'Team Members', icon: <Users className="w-5 h-5" />, color: 'from-blue-500 to-blue-600' },
-    { id: 'success-stories', label: 'Success Stories', icon: <Award className="w-5 h-5" />, color: 'from-green-500 to-green-600' },
-    { id: 'blogs', label: 'Blogs', icon: <BookOpen className="w-5 h-5" />, color: 'from-purple-500 to-purple-600' },
-    { id: 'news', label: 'News & Updates', icon: <FileText className="w-5 h-5" />, color: 'from-orange-500 to-orange-600' },
-  ];
+    { id: 'team-members', label: 'Team Members', icon: <Users className="w-5 h-5" />, color: 'from-[#1164A3] to-[#68B9C4]' },
+    { id: 'remembrance', label: 'Remembrance', icon: <Users className="w-5 h-5" />, color: 'from-[#68B9C4] to-[#82B4CC]' },
+    { id: 'success-stories', label: 'Success Stories', icon: <Award className="w-5 h-5" />, color: 'from-[#82B4CC] to-[#B0A3B3]' },
+    { id: 'blogs', label: 'Blogs', icon: <BookOpen className="w-5 h-5" />, color: 'from-[#1164A3] to-[#82B4CC]' },
+    { id: 'news', label: 'News & Updates', icon: <FileText className="w-5 h-5" />, color: 'from-[#68B9C4] to-[#82B4CC]' },
+    { id: 'transparency', label: 'Transparency', icon: <FileText className="w-5 h-5" />, color: 'from-[#1164A3] to-[#68B9C4]' },
+    { id: 'form-responses', label: 'Form Responses', icon: <FileText className="w-5 h-5" />, color: 'from-[#82B4CC] to-[#B0A3B3]' },
+    { id: 'sessions', label: 'Sessions', icon: <Video className="w-5 h-5" />, color: 'from-[#68B9C4] to-[#82B4CC]' },
+];
 
 export const getFormConfig = (type: string) => {
     const configs: Record<string, SideBarItem> = {
@@ -68,7 +73,20 @@ export const getFormConfig = (type: string) => {
     , "RESEARCH"
     , "PARTNERSHIP"] },
         ]
-      }
+      },
+      'remembrance': {
+        title: 'Create Remembrance',
+        fields: [
+          { name: 'name', label: 'Name', type: 'text', required: true},
+          { name: 'description', label: 'Summary', type: 'textarea', required: true, rows: 15 },
+        ]
+      },
+      'transparency': {
+        title: 'Upload transparency files',
+        fields: [
+          { name: 'year', label: 'Year', type: 'text', required: true},
+        ]
+      },
     };
     return configs[type as keyof typeof configs] || configs['team-members'];
   };

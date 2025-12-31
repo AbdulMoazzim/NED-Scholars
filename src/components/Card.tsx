@@ -1,7 +1,7 @@
 "use client"
 
-import { gsap } from "gsap";
 import { cardItems } from "@/lib/types";
+import { gsap } from "gsap";
 import { useEffect, useRef } from "react";
 
 const CustomCard: React.FC<{ value: cardItems; index: number }> = ({ value, index }) => {
@@ -55,7 +55,6 @@ const CustomCard: React.FC<{ value: cardItems; index: number }> = ({ value, inde
 
   return (
     <div ref={cardRef} className="bg-white p-8 rounded-xl shadow-lg border border-gray-100 text-center">
-      <div className="text-4xl mb-4">{value.icon}</div>
       <h3 className="text-2xl font-bold text-gray-800 mb-4">{value.title}</h3>
       <p className="text-gray-600 leading-relaxed">{value.description}</p>
     </div>
