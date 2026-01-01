@@ -6,7 +6,6 @@ import { admin } from "better-auth/plugins";
 
 export const prisma = new PrismaClient();
 
-
 export const auth = betterAuth({
   database: prismaAdapter(prisma, {
     provider: "postgresql",
@@ -20,7 +19,7 @@ export const auth = betterAuth({
             clientSecret: process.env.GOOGLE_CLIENT_SECRET as string, 
     },
   }, 
-  baseURL: process.env.NODE_ENV === "development" ? process.env.BETTER_AUTH_URL_DEV : process.env.BETTER_AUTH_URL_PROD, 
+  baseURL: process.env.BETTER_AUTH_URL, 
   secret: process.env.BETTER_AUTH_SECRET,
   session: {
     expiresIn: 604800, // 7 days
