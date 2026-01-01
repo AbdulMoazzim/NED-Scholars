@@ -1,7 +1,7 @@
 import FormPage from "@/components/Form";
 
 
-export default async function Page({ params }: { params: { form: string } }) {
+export default async function Page({ params }:  {params:Promise< { form: string }> }) {
   const slug = await params;
   return <FormPage params={slug} />;
 }

@@ -11,7 +11,7 @@ import {
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 
-export default async function Page({ params }: { params: { slug: string } }) {
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const { data: story } = await GetSuccessStory(slug);
 

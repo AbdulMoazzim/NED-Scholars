@@ -9,7 +9,7 @@ import { DeleteMember, GetMember } from "@/app/actions/team-member";
 import { headers } from "next/headers";
 
 
-export default async function Page({ params }: { params: { "team-member": string } }) {
+export default async function Page({ params }: { params: Promise<{ "team-member": string }> }) {
   const webParams = await params;
   const slug = webParams["team-member"];
   console.log(slug)
