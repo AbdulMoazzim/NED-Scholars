@@ -102,6 +102,8 @@ export async function addVideo(
       successStoryId: null,
       teamMemberId: null,
       newsUpdateId: null,
+      webinarId: null,
+      seminarId: null,
     };
 
     switch (type) {
@@ -152,28 +154,30 @@ export async function addImage(
       teamMemberId: null,
       newsUpdateId: null,
       remembranceId: null,
+      webinarId: null,
+      seminarId: null,
     };
     switch (type) {
       case "team-member":
         imageData = { ...imageData, teamMemberId: foreignId };
         break;
-        case "success-stories":
-          imageData = { ...imageData, successStoryId: foreignId };
-          break;
-          case "news":
-            imageData = { ...imageData, newsUpdateId: foreignId };
-            
-            break;
-            case "remembrance":
-              imageData = { ...imageData, remembranceId: foreignId };
-              
-              break;
-              default:
-                imageData = { ...imageData, blogPostId: foreignId };
-                
-                break;
-              }
-              console.log(imageData)
+      case "success-stories":
+        imageData = { ...imageData, successStoryId: foreignId };
+        break;
+      case "news":
+        imageData = { ...imageData, newsUpdateId: foreignId };
+
+        break;
+      case "remembrance":
+        imageData = { ...imageData, remembranceId: foreignId };
+
+        break;
+      default:
+        imageData = { ...imageData, blogPostId: foreignId };
+
+        break;
+    }
+    console.log(imageData);
 
     const newUrl = await prisma.image.create({ data: imageData });
     return { success: true, data: newUrl, error: null };
