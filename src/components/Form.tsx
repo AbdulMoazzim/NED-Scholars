@@ -52,8 +52,7 @@ const FORM_SLUG_MAP: Record<string, keyof typeof FORM_CONFIGS> = {
   "seminar-presenter": "presenterSeminarForm",
 };
 
-export default function FormPage({ params }: { params: { form: string } }) {
-  const { form } = params;
+export default function FormPage({  form } : {form:string}) {
   const router = useRouter();
   const query =  useSearchParams()
   const [currentSection, setCurrentSection] = useState(0);

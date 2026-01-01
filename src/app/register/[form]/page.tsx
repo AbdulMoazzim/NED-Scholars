@@ -1,9 +1,9 @@
 import FormPage from "@/components/Form";
 
 
-export default async function Page({ params }:  {params:Promise< { form: string }> }) {
+export default async function Page({ params }:  {params: Promise<{ form: string }> }) {
   const slug = await params;
-  return <FormPage params={slug} />;
+  return <FormPage form={slug.form} />;
 }
 
 // Generate static params for all form types
@@ -21,7 +21,7 @@ export async function generateStaticParams() {
 }
 
 // Metadata for SEO
-export async function generateMetadata({ params }: { params: { form: string } }) {
+export async function generateMetadata({ params }: { params: Promise<{ form: string }> }) {
   const {form} = await params;
   const titles: Record<string, string> = {
     scholarship: "Scholarship Application | NED Scholars",
