@@ -80,19 +80,7 @@ const NedScholarsHomepage = () => {
               and enhance policy performance policy and policy delivery
               excellence.
             </p>
-            <div className="flex justify-center space-x-4 mt-6">
-              <Button 
-                className="bg-[#1164A3] hover:bg-[#0d4d82] text-white"
-              >
-                Get Started
-              </Button>
-              <Button 
-                variant="outline" 
-                className="border-[#1164A3] text-[#1164A3] hover:bg-[#1164A3] hover:text-white"
-              >
-                Learn More
-              </Button>
-            </div>
+           
           </div>
 
           <div className="relative max-w-2xl mx-auto">

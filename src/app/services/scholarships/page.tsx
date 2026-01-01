@@ -1,4 +1,3 @@
-"use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -13,11 +12,9 @@ import {
   Mail,
   Award,
 } from "lucide-react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function ScholarshipGuidelines() {
-
-  const router = useRouter();
   const selectionCommittee = [
     { name: "Mr. Abid Raza", role: "Entrepreneur and Industrialist" },
     { name: "Mr. Arif Khan", role: "Energy Consultant" },
@@ -447,12 +444,11 @@ export default function ScholarshipGuidelines() {
               ready.
             </p>
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-              <button 
-                onClick={()=>{router.push("/register/scholarship")}} 
+              <Link href="/register/scholarship" 
                 className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
               >
                 Apply Now
-              </button>
+              </Link>
             </div>
           </div>
         </div>

@@ -1,12 +1,9 @@
-"use client";
-
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
   Laptop,
   Wifi,
   TrendingUp,
-  AlertTriangle,
   CheckCircle2,
   Award,
   Users,
@@ -25,6 +22,7 @@ import {
   FileText,
   Video,
 } from "lucide-react";
+import Link from "next/link";
 
 export default function LaptopProgramPage() {
   const digitalDivideChallenges = [
@@ -632,11 +630,11 @@ export default function LaptopProgramPage() {
                   </div>
                 </div>
                 <div className="text-center">
-                  <button className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center">
+                  <Link href="/donation" className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center">
                     <Heart className="w-5 h-5 mr-2" />
                     Donate Now
                     <ArrowRight className="w-5 h-5 ml-2" />
-                  </button>
+                  </Link>
                 </div>
               </CardContent>
             </Card>

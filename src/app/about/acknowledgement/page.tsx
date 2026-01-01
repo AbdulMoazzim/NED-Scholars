@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Heart, Award, Users, Sparkles } from "lucide-react";
+import Link from "next/link";
 
 export default function AcknowledgementPage() {
   const donors = [
@@ -180,9 +181,9 @@ export default function AcknowledgementPage() {
               Be part of the legacy. Your contribution can change a student&apos;s life and shape the future of STEM education.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all">
+              <Link href="/donation" className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all">
                 Donate Now
-              </button>
+              </Link>
             </div>
           </div>
         </div>

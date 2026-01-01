@@ -12,6 +12,7 @@ import {
   Target,
   Sparkles
 } from "lucide-react";
+import Link from "next/link";
 
 export default function JourneyPage() {
   const timeline = [
@@ -381,9 +382,9 @@ export default function JourneyPage() {
             Together, we can continue to empower talented students and create opportunities for the next generation of STEM leaders.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-[#1164A3] px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+            <Link href="/donation" className="bg-white text-[#1164A3] px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
               Support a Scholar
-            </button>
+            </Link>
           </div>
         </div>
       </section>

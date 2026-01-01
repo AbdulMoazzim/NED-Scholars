@@ -556,7 +556,31 @@ model PresenterSeminarForm {
   @@map("presenter_seminar")
 }
 
-model subscriptions {
+model interships {
   id String @id @default(cuid())
-  email String
-} 
+  title            String
+  company          String
+  location         String
+  locationType     String
+  description      String
+  responsibilities String
+  requirements     String
+  category         String
+  duration         String
+  startDate DateTime?
+  endDate DateTime?
+  applicationDeadline DateTime?
+  applicationUrl String?
+  contactEmail String?
+  contactPhone String?
+  isPaid           Boolean
+  stipend String
+  skills           String[]
+  benefits String?
+  numberOfPositions Int?
+  status String?
+  featured Boolean?
+  slug             String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

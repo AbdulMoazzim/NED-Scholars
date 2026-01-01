@@ -1,5 +1,3 @@
-"use client";
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -19,10 +17,9 @@ import {
   Target,
   Award,
 } from "lucide-react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function VolunteersPage() {
-  const router = useRouter();
   const teams = [
     {
       id: "graphics",
@@ -391,7 +388,7 @@ export default function VolunteersPage() {
             </div>
 
             <div className="space-y-12">
-              {teams.map((team, index) => (
+              {teams.map((team) => (
                 <Card
                   key={team.id}
                   className="hover:shadow-2xl hover:border-[#1164A3] transition-all duration-300 overflow-hidden"
@@ -405,13 +402,13 @@ export default function VolunteersPage() {
                       <h3 className="text-2xl font-bold text-center mb-4">
                         {team.name}
                       </h3>
-                      <a
+                      <Link
                         href={team.formLink}
                         className="bg-white text-[#1164A3] px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 inline-flex items-center"
                       >
                         JOIN OUR TEAM
                         <ArrowRight className="w-4 h-4 ml-2" />
-                      </a>
+                      </Link>
                     </div>
 
                     {/* Team Content */}
@@ -465,9 +462,9 @@ export default function VolunteersPage() {
               your volunteer journey with NED Scholars today.
             </p>
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-              <button onClick={()=> router.push("/about/team")} className="bg-white text-[#1164A3] px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+              <Link href="/about/team" className="bg-white text-[#1164A3] px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                 View All Teams
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -539,9 +536,9 @@ export default function VolunteersPage() {
                   project, every contribution matters. Start your journey with
                   NED Scholars today.
                 </p>
-                <button onClick={()=> router.push("/register/volunteer")} className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-10 py-4 rounded-full font-bold text-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <Link href="/register/volunteer" className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-10 py-4 rounded-full font-bold text-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                   Start Volunteering Today
-                </button>
+                </Link>
               </CardContent>
             </Card>
           </div>

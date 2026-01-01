@@ -8,6 +8,7 @@ import { memorialScholarships, milestones, values } from '@/data/AboutData';
 import { stats } from '@/data/AboutData';
 import CustomCard from '@/components/Card';
 import StatCard from '@/components/Stats';
+import { useRouter } from 'next/navigation';
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -16,6 +17,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const MilestoneCard: React.FC<{ milestone: typeof milestones[0]; index: number }> = ({ milestone, index }) => {
   const cardRef = useRef<HTMLDivElement>(null);
+  
 
   useEffect(() => {
     const card = cardRef.current;
@@ -85,6 +87,7 @@ const About: React.FC = () => {
   const journeyTitleRef = useRef<HTMLHeadingElement>(null);
   const missionTextRef = useRef<HTMLDivElement>(null);
   const challengeTextRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   useEffect(() => {
     // Hero animation
@@ -272,10 +275,10 @@ const About: React.FC = () => {
               Help us continue leveling the playing field for talented students who need support to reach their full potential.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-[#1164A3] transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+              <button onClick={()=>{router.push("/donation")}} className="border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-[#1164A3] transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
                 Donate Now
               </button>
-              <button className="bg-white text-[#1164A3] px-8 py-4 rounded-full font-bold hover:bg-[#82B4CC] hover:text-white transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+              <button onClick={()=>{router.push("/register/mentor")}} className="bg-white text-[#1164A3] px-8 py-4 rounded-full font-bold hover:bg-[#82B4CC] hover:text-white transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
                 Become a Mentor
               </button>
             </div>

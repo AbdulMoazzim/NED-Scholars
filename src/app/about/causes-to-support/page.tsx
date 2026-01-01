@@ -9,6 +9,7 @@ import causesToSupport from "../../../../public/causes_to_support.png"
 import Image from "next/image";
 import StatCard from "@/components/Stats";
 import CustomCard from "@/components/Card";
+import { useRouter } from "next/navigation";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,6 +21,7 @@ const SupportPage: React.FC = () => {
   const programsSectionRef = useRef(null);
   const impactTitleRef = useRef<HTMLHeadingElement>(null);
   const impactSubtitleRef = useRef<HTMLParagraphElement>(null);
+  const router = useRouter();
 
   useEffect(() => {
     // Hero animations
@@ -98,16 +100,6 @@ const SupportPage: React.FC = () => {
     }
   }, []);
 
-  const handleMainDonate = () => {
-    const donateSection = document.getElementById("donate");
-    if (donateSection) {
-      gsap.to(window, {
-        duration: 1,
-        scrollTo: { y: donateSection, offsetY: 50 },
-        ease: "power2.inOut",
-      });
-    }
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1164A3] via-[#68B9C4] to-[#82B4CC]">
@@ -125,7 +117,7 @@ const SupportPage: React.FC = () => {
           </p>
           <button
             className="bg-white text-[#1164A3] px-12 py-5 text-xl font-bold rounded-full hover:shadow-xl hover:bg-[#82B4CC] hover:text-white transition-all duration-300 transform hover:-translate-y-1"
-            onClick={handleMainDonate}
+            onClick={()=> {router.push("/donation")}}
           >
             Donate Now & Make a Difference
           </button>

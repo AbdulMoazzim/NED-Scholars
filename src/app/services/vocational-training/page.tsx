@@ -1,4 +1,4 @@
-"use client";
+
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -22,12 +22,12 @@ import {
   GraduationCap,
   Building2,
   Rocket,
+  User,
 } from "lucide-react";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function VocationalTrainingPage() {
-  const router = useRouter();
   const crisisStatistics = [
     {
       icon: <Users className="w-8 h-8" />,
@@ -146,23 +146,20 @@ export default function VocationalTrainingPage() {
   const successStories = [
     {
       name: "Ayesha, 17",
-      image: "/api/placeholder/100/100",
+      image: <User className="text-white"/>,
       story: "Went from school dropout to earning $50/month stitching clothes",
-      emoji: "📌",
       color: "from-[#1164A3] to-[#68B9C4]",
     },
     {
       name: "Fatima, 19",
-      image: "/api/placeholder/100/100",
+      image: <User className="text-white"/>,
       story: "Received a sewing machine and now trains other girls",
-      emoji: "📌",
       color: "from-[#68B9C4] to-[#82B4CC]",
     },
     {
       name: "Sana, 20",
-      image: "/api/placeholder/100/100",
+      image: <User className="text-white"/>,
       story: "Supports her siblings' education with her stitching income",
-      emoji: "📌",
       color: "from-[#82B4CC] to-[#B0A3B3]",
     },
   ];
@@ -193,19 +190,16 @@ export default function VocationalTrainingPage() {
       icon: <Scissors className="w-6 h-6" />,
       title: "Donate a Sewing Machine",
       amount: "$80",
-      emoji: "🌱",
     },
     {
       icon: <GraduationCap className="w-6 h-6" />,
       title: "Sponsor a Trainee",
       amount: "$150 covers full training",
-      emoji: "📚",
     },
     {
       icon: <Heart className="w-6 h-6" />,
       title: "Partner with Us",
       amount: "Help expand to new locations",
-      emoji: "🤝",
     },
   ];
 
@@ -560,16 +554,9 @@ export default function VocationalTrainingPage() {
                     <div
                       className={`w-16 h-16 bg-gradient-to-r ${story.color} rounded-full flex items-center justify-center mx-auto mb-4`}
                     >
-                      <Image
-                      width={56}
-                      height={56}
-                        src={story.image}
-                        alt={story.name}
-                        className="rounded-full object-cover"
-                      />
+                      {story.image}
                     </div>
                     <div className="text-center mb-4">
-                      <span className="text-2xl mr-2">{story.emoji}</span>
                       <h4 className="font-bold text-gray-800 inline">
                         {story.name}
                       </h4>
@@ -654,7 +641,6 @@ export default function VocationalTrainingPage() {
                     className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
                   >
                     <CardContent className="p-6 text-center">
-                      <div className="text-4xl mb-3">{way.emoji}</div>
                       <div className="w-12 h-12 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-full flex items-center justify-center text-white mx-auto mb-3">
                         {way.icon}
                       </div>
@@ -749,15 +735,15 @@ export default function VocationalTrainingPage() {
                     impact on a girl&apos;s future and her community.
                   </p>
                   <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                    <button className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center">
+                    <Link href="/donation" className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center">
                       <Heart className="w-5 h-5 mr-2" />
                       Donate Now
                       <ArrowRight className="w-5 h-5 ml-2" />
-                    </button>
-                    <button onClick={()=>{router.push("/register/partner")}} className="border-2 border-[#1164A3] text-[#1164A3] px-8 py-4 rounded-full font-semibold hover:bg-[#1164A3] hover:text-white transition-all duration-300 inline-flex items-center justify-center">
+                    </Link>
+                    <Link href="/register/partner" className="border-2 border-[#1164A3] text-[#1164A3] px-8 py-4 rounded-full font-semibold hover:bg-[#1164A3] hover:text-white transition-all duration-300 inline-flex items-center justify-center">
                       <Users className="w-5 h-5 mr-2" />
                       Become a Partner
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </CardContent>

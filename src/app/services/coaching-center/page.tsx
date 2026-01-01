@@ -1,5 +1,3 @@
-"use client";
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -25,11 +23,9 @@ import {
   UserCheck,
   TrendingDown,
 } from "lucide-react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function CoachingCenterPage() {
-
-  const router = useRouter();
   const systemChallenges = [
     {
       icon: <TrendingDown className="w-6 h-6" />,
@@ -216,17 +212,14 @@ export default function CoachingCenterPage() {
     {
       icon: <UserCheck className="w-6 h-6" />,
       title: "Volunteer as a Guest Lecturer",
-      emoji: "👨‍🏫",
     },
     {
       icon: <BookOpen className="w-6 h-6" />,
       title: "Donate Educational Materials",
-      emoji: "📚",
     },
     {
       icon: <Heart className="w-6 h-6" />,
       title: "Partner as a Local Sponsor",
-      emoji: "🤝",
     },
   ];
 
@@ -614,7 +607,6 @@ export default function CoachingCenterPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-700 mb-4 flex items-center">
-                    <span className="mr-2">📌</span>
                     Open 3 additional centers in:
                   </p>
                   <div className="space-y-3">
@@ -646,14 +638,12 @@ export default function CoachingCenterPage() {
                     <div className="flex items-start space-x-3">
                       <CheckCircle2 className="w-5 h-5 text-[#68B9C4] flex-shrink-0 mt-1" />
                       <p className="text-gray-700">
-                        <span className="mr-2">📌</span>
                         Develop standardized teacher training program
                       </p>
                     </div>
                     <div className="flex items-start space-x-3">
                       <CheckCircle2 className="w-5 h-5 text-[#68B9C4] flex-shrink-0 mt-1" />
                       <p className="text-gray-700">
-                        <span className="mr-2">📌</span>
                         Launch virtual coaching platform
                       </p>
                     </div>
@@ -718,7 +708,6 @@ export default function CoachingCenterPage() {
                     className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
                   >
                     <CardContent className="p-6 text-center">
-                      <div className="text-4xl mb-3">{option.emoji}</div>
                       <div className="w-12 h-12 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-full flex items-center justify-center text-white mx-auto mb-3">
                         {option.icon}
                       </div>
@@ -807,14 +796,14 @@ export default function CoachingCenterPage() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                  <button className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
+                  <Link href="/donation" className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
                     <Heart className="w-5 h-5 mr-2" />
                     Support Our Centers
-                  </button>
-                  <button onClick={()=> {router.push("/register/partner")}} className="bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
+                  </Link>
+                  <Link href="/register/partner"  className="bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
                     <Users className="w-5 h-5 mr-2" />
                     Become a Partner
-                  </button>
+                  </Link>
                 </div>
               </CardContent>
             </Card>

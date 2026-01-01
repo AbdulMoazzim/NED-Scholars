@@ -1,6 +1,4 @@
-"use client";
-
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
   Lightbulb,
@@ -24,11 +22,9 @@ import {
   Heart,
   Laptop,
 } from "lucide-react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Dare2DesignPage() {
-  
-    const router = useRouter();
   const programPillars = [
     {
       icon: <Brain className="w-8 h-8" />,
@@ -600,14 +596,14 @@ export default function Dare2DesignPage() {
               to empower young minds, there&apos;s a place for you in Dare2Design.
             </p>
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-              <button onClick={()=>{router.push("/register/student")}} className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
+              <Link href="/register/student" className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
                 <Lightbulb className="w-5 h-5 mr-2" />
                 Apply as a Student
-              </button>
-              <button className="bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
+              </Link>
+              <Link href="/donation" className="bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
                 <Heart className="w-5 h-5 mr-2" />
                 Support Innovation
-              </button>
+              </Link>
              
             </div>
           </div>

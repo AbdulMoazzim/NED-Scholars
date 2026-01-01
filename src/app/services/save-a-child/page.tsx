@@ -694,7 +694,7 @@ export default function EducationSupportPakistan() {
               Ready to Make a Difference?
             </h3>
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-              <button className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
+              <button onClick={()=> {router.push("/donation")}} className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
                 <Heart className="w-5 h-5 mr-2" />
                 Sponsor a Student Today
               </button>
