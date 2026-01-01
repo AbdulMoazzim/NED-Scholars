@@ -2,8 +2,14 @@
 
 import { prisma } from "@/lib/auth";
 import { CreateWebinarData, UpdateWebinarData } from "@/lib/form-types";
+import {
+  createRollbackState,
+  performRollback,
+  uploadImageWithTracking,
+  uploadVideoWithTracking,
+} from "@/lib/serverUtils";
+import { Resource } from "@/lib/types";
 import { ErrorMsg } from "@/lib/utils";
-
 
 export async function CreateWebinar(webinarData: CreateWebinarData) {
   try {
@@ -93,7 +99,13 @@ export async function GetUpcomingWebinars() {
   }
 }
 
-export async function UpdateWebinar(id: string, webinarData: UpdateWebinarData) {
+export async function UpdateWebinar(
+  id: string,
+  webinarData: UpdateWebinarData,
+  images: Resource[],
+  videos: Resource[]
+) {
+  const rollbackState = createRollbackState("webinar");
   try {
     const webinar = await prisma.webinar.update({
       where: { id },
@@ -104,10 +116,43 @@ export async function UpdateWebinar(id: string, webinarData: UpdateWebinarData) 
         videos: true,
       },
     });
+    rollbackState.entityId = webinar.id;
 
+    if (images?.length > 0) {
+      for (const imageResource of images) {
+        const result = await uploadImageWithTracking(
+          imageResource,
+          "webinar",
+          webinar.id,
+          "webinar",
+          rollbackState
+        );
+        if (!result.success) {
+          throw new Error("Failed to upload image");
+        }
+      }
+    }
+
+    if (videos?.length > 0) {
+      for (const videoResource of videos) {
+        const result = await uploadVideoWithTracking(
+          videoResource,
+          "webinar",
+          webinar.id,
+          "webinar",
+          rollbackState
+        );
+        if (!result.success) {
+          throw new Error("Failed to upload video");
+        }
+      }
+    }
     return { success: true, data: webinar };
   } catch (err) {
     console.error("UpdateWebinar error:", err);
+    console.log("🔄 Starting rollback...");
+
+    await performRollback(rollbackState);
     return { success: false, error: ErrorMsg("updating webinar") };
   }
 }
@@ -164,14 +209,15 @@ export async function GetWebinarStats(id: string) {
         (a) => a.registration_status === "cancelled"
       ).length,
       availableSlots: webinar.maxParticipants
-        ? webinar.maxParticipants - webinar.attendees.filter(
-            (a) => a.registration_status === "confirmed"
-          ).length
+        ? webinar.maxParticipants -
+          webinar.attendees.filter((a) => a.registration_status === "confirmed")
+            .length
         : null,
       fillPercentage: webinar.maxParticipants
         ? Math.round(
-            (webinar.attendees.filter((a) => a.registration_status === "confirmed")
-              .length /
+            (webinar.attendees.filter(
+              (a) => a.registration_status === "confirmed"
+            ).length /
               webinar.maxParticipants) *
               100
           )

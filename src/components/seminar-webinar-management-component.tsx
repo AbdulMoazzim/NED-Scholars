@@ -30,6 +30,9 @@ import {
   Award,
   TrendingUp,
   Loader2,
+  Upload,
+  Image as ImageIcon,
+  Film,
 } from "lucide-react";
 import {
   Dialog,
@@ -40,13 +43,14 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ApprovePresenterApplication, GetPresenterApplicationsWithoutSeminar, RejectPresenterApplication } from "@/app/actions/presenter-seminar-application";
-import { CreateSeminar, DeleteSeminar, GetAllSeminars, UpdateSeminar } from "@/app/actions/seminar";
+import { GetPresenterApplicationsWithoutSeminar, RejectPresenterApplication } from "@/app/actions/presenter-seminar-application";
+import { CreateSeminar, CreateSeminarForPresenter, DeleteSeminar, GetAllSeminars, UpdateSeminar } from "@/app/actions/seminar";
 import { CreateWebinar, DeleteWebinar, GetAllWebinars, UpdateWebinar } from "@/app/actions/webinar";
 import { UpdateWebinarAttendeeStatus } from "@/app/actions/webinar-attendee";
 import { toast } from "sonner";
 import { UpdateSeminarAttendeeStatus } from "@/app/actions/seminar-attendee";
 import { EventStatus, PresenterSeminar, Seminar, Webinar } from "@/lib/form-types";
+import { Resource } from "@/lib/types";
 
 type EditMode = {
   id: string;
@@ -59,10 +63,14 @@ export default function EventManagementDashboard() {
   const [seminars, setSeminars] = useState<Seminar[]>([]);
   const [pendingPresenters, setPendingPresenters] = useState<PresenterSeminar[]>([]);
   const [showDialog, setShowDialog] = useState(false);
+  const [showPresenterDialog, setShowPresenterDialog] = useState(false);
+  const [selectedPresenter, setSelectedPresenter] = useState<PresenterSeminar | null>(null);
   const [eventType, setEventType] = useState<"webinar" | "seminar">("webinar");
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [editMode, setEditMode] = useState<EditMode | null>(null);
+  const [images, setImages] = useState<Resource[]>([]);
+  const [videos, setVideos] = useState<Resource[]>([]);
 
   // Form states
   const [formData, setFormData] = useState({
@@ -128,6 +136,100 @@ export default function EventManagementDashboard() {
       status: "upcoming",
     });
     setEditMode(null);
+    setImages([]);
+    setVideos([]);
+  };
+
+  const validateForm = (): boolean => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    
+    const startDate = new Date(formData.date);
+    
+    // Validate start date is in the future
+    if (startDate < today && !editMode) {
+      toast.error("Start date must be in the future");
+      return false;
+    }
+
+    // Validate end date is after start date
+    if (formData.endDate) {
+      const endDate = new Date(formData.endDate);
+      if (endDate <= startDate) {
+        toast.error("End date must be after start date");
+        return false;
+      }
+    }
+
+    // Validate seminar capacities
+    if (eventType === "seminar") {
+      const maxCap = parseInt(formData.maxCapacity) || 0;
+      const virtualCap = parseInt(formData.virtualCapacity) || 0;
+      const physicalCap = parseInt(formData.physicalCapacity) || 0;
+
+      if (maxCap > 0 && (virtualCap + physicalCap) !== maxCap) {
+        toast.error("Max capacity must equal the sum of virtual and physical capacities");
+        return false;
+      }
+
+      if (maxCap === 0 && (virtualCap > 0 || physicalCap > 0)) {
+        toast.error("Please set max capacity when using virtual/physical capacities");
+        return false;
+      }
+    }
+
+    // Validate media uploads for completed status
+    if (formData.status === "completed") {
+      if (images.length === 0 && videos.length === 0) {
+        toast.error("Please add at least one image or video for completed events");
+        return false;
+      }
+    }
+
+    return true;
+  };
+
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) return;
+    const files = Array.from(e.target.files);
+    files.forEach((file) => {
+      setImages((prev) => [
+        ...prev,
+        {
+          id: (Date.now() + Math.random()).toString(),
+          file,
+          name: file.name,
+        },
+      ]);
+    });
+  };
+
+  const handleVideoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) return;
+    const files = Array.from(e.target.files);
+    files.forEach((file) => {
+      if (file.size < 10 * 1024 * 1024) { // 10MB limit
+        setVideos((prev) => [
+          ...prev,
+          {
+            id: (Date.now() + Math.random()).toString(),
+            file,
+            name: file.name,
+            size: (file.size / 1024 / 1024).toFixed(2) + " MB",
+          },
+        ]);
+      } else {
+        toast.error("Video must be less than 10MB");
+      }
+    });
+  };
+
+  const removeImage = (id: string) => {
+    setImages((prev) => prev.filter((img) => img.id !== id));
+  };
+
+  const removeVideo = (id: string) => {
+    setVideos((prev) => prev.filter((video) => video.id !== id));
   };
 
   const handleOpenDialog = (type: "webinar" | "seminar", event?: Webinar | Seminar) => {
@@ -161,6 +263,11 @@ export default function EventManagementDashboard() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validateForm()) {
+      return;
+    }
+
     setSaving(true);
 
     try {
@@ -178,7 +285,7 @@ export default function EventManagementDashboard() {
         };
 
         const result = editMode
-          ? await UpdateWebinar(editMode.id, webinarData)
+          ? await UpdateWebinar(editMode.id, webinarData, images, videos)
           : await CreateWebinar(webinarData);
 
         if (result.success) {
@@ -201,7 +308,7 @@ export default function EventManagementDashboard() {
         };
 
         const result = editMode
-          ? await UpdateSeminar(editMode.id, seminarData)
+          ? await UpdateSeminar(editMode.id, seminarData, images, videos)
           : await CreateSeminar(seminarData);
 
         if (result.success) {
@@ -221,23 +328,69 @@ export default function EventManagementDashboard() {
     }
   };
 
-  const handleApprovePresenter = async (presenterId: string, seminarId?: string) => {
-    try {
-      if (!seminarId) {
-        toast.info("Please create a seminar for this presenter first");
-        return;
-      }
+  const handleOpenPresenterDialog = (presenter: PresenterSeminar) => {
+    setSelectedPresenter(presenter);
+    // Pre-fill form with presenter data
+    setFormData({
+      title: presenter.presentation_title,
+      description: presenter.presentation_topic,
+      date: "",
+      endDate: "",
+      location: "",
+      meetingLink: "",
+      meetingPassword: "",
+      platform: "",
+      maxParticipants: "",
+      maxCapacity: "100", // Default capacity
+      virtualCapacity: "50",
+      physicalCapacity: "50",
+      status: "upcoming",
+    });
+    setShowPresenterDialog(true);
+  };
 
-      const result = await ApprovePresenterApplication(presenterId, seminarId);
-      
+  const handleApprovePresenter = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!selectedPresenter) return;
+    
+    if (!validateForm()) {
+      return;
+    }
+
+    setSaving(true);
+
+    try {
+      const seminarData = {
+        title: formData.title,
+        description: formData.description,
+        date: new Date(formData.date),
+        endDate: formData.endDate ? new Date(formData.endDate) : null,
+        location: formData.location,
+        maxCapacity: formData.maxCapacity ? parseInt(formData.maxCapacity) : null,
+        virtualCapacity: formData.virtualCapacity ? parseInt(formData.virtualCapacity) : null,
+        physicalCapacity: formData.physicalCapacity ? parseInt(formData.physicalCapacity) : null,
+        status: formData.status,
+      };
+
+      // Use the CreateSeminarForPresenter action that handles both in a transaction
+      const result = await CreateSeminarForPresenter(selectedPresenter.id, seminarData);
+
       if (result.success) {
-        toast.success("Presenter approved successfully");
+        toast.success("Presenter approved and seminar created successfully!");
         fetchAllData();
+        setShowPresenterDialog(false);
+        setSelectedPresenter(null);
+        resetForm();
+        // Switch to seminars tab to show the new seminar
+        setActiveTab("seminars");
       } else {
         throw new Error(result.error);
       }
     } catch {
-      toast.error("Failed to approve presenter");
+      toast.error("Failed to approve presenter and create seminar");
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -392,6 +545,7 @@ export default function EventManagementDashboard() {
               </TabsTrigger>
             </TabsList>
 
+            {/* Regular Create Event Dialog */}
             <Dialog open={showDialog} onOpenChange={(open) => {
               setShowDialog(open);
               if (!open) resetForm();
@@ -405,7 +559,7 @@ export default function EventManagementDashboard() {
                   Create Event
                 </Button>
               </DialogTrigger>
-              <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+              <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
                 <DialogHeader>
                   <DialogTitle>
                     {editMode ? "Update" : "Create New"} Event
@@ -434,7 +588,7 @@ export default function EventManagementDashboard() {
 
                   {/* Common Fields */}
                   <div>
-                    <Label className="pb-2">Title</Label>
+                    <Label className="pb-2">Title *</Label>
                     <Input
                       value={formData.title}
                       onChange={(e) => setFormData({ ...formData, title: e.target.value })}
@@ -444,7 +598,7 @@ export default function EventManagementDashboard() {
                   </div>
 
                   <div>
-                    <Label className="pb-2">Description</Label>
+                    <Label className="pb-2">Description *</Label>
                     <Textarea
                       value={formData.description}
                       onChange={(e) => setFormData({ ...formData, description: e.target.value })}
@@ -456,13 +610,14 @@ export default function EventManagementDashboard() {
 
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <Label className="pb-2">Start Date & Time</Label>
+                      <Label className="pb-2">Start Date & Time *</Label>
                       <Input
                         type="datetime-local"
                         value={formData.date}
                         onChange={(e) => setFormData({ ...formData, date: e.target.value })}
                         required
                       />
+                      <p className="text-xs text-gray-500 mt-1">Must be in the future</p>
                     </div>
                     <div>
                       <Label className="pb-2">End Date & Time</Label>
@@ -471,6 +626,7 @@ export default function EventManagementDashboard() {
                         value={formData.endDate}
                         onChange={(e) => setFormData({ ...formData, endDate: e.target.value })}
                       />
+                      <p className="text-xs text-gray-500 mt-1">Must be after start date</p>
                     </div>
                   </div>
 
@@ -487,6 +643,9 @@ export default function EventManagementDashboard() {
                         <SelectItem value="cancelled">Cancelled</SelectItem>
                       </SelectContent>
                     </Select>
+                    {formData.status === "completed" && (
+                      <p className="text-xs text-amber-600 mt-1">⚠️ Requires at least 1 image or video</p>
+                    )}
                   </div>
 
                   {/* Webinar-specific fields */}
@@ -532,6 +691,7 @@ export default function EventManagementDashboard() {
                           value={formData.maxParticipants}
                           onChange={(e) => setFormData({ ...formData, maxParticipants: e.target.value })}
                           placeholder="100"
+                          min="1"
                         />
                       </div>
                     </>
@@ -541,7 +701,7 @@ export default function EventManagementDashboard() {
                   {eventType === "seminar" && (
                     <>
                       <div>
-                        <Label className="pb-2">Location</Label>
+                        <Label className="pb-2">Location *</Label>
                         <Input
                           value={formData.location}
                           onChange={(e) => setFormData({ ...formData, location: e.target.value })}
@@ -552,13 +712,15 @@ export default function EventManagementDashboard() {
 
                       <div className="grid grid-cols-3 gap-4">
                         <div>
-                          <Label className="pb-2">Max Capacity</Label>
+                          <Label className="pb-2">Max Capacity *</Label>
                           <Input
                             type="number"
                             value={formData.maxCapacity}
                             onChange={(e) => setFormData({ ...formData, maxCapacity: e.target.value })}
                             placeholder="Total"
+                            min="1"
                           />
+                          <p className="text-xs text-gray-500 mt-1">Total capacity</p>
                         </div>
                         <div>
                           <Label className="pb-2">Virtual Capacity</Label>
@@ -567,6 +729,7 @@ export default function EventManagementDashboard() {
                             value={formData.virtualCapacity}
                             onChange={(e) => setFormData({ ...formData, virtualCapacity: e.target.value })}
                             placeholder="Virtual"
+                            min="0"
                           />
                         </div>
                         <div>
@@ -576,10 +739,86 @@ export default function EventManagementDashboard() {
                             value={formData.physicalCapacity}
                             onChange={(e) => setFormData({ ...formData, physicalCapacity: e.target.value })}
                             placeholder="Physical"
+                            min="0"
                           />
                         </div>
                       </div>
+                      <p className="text-xs text-amber-600">⚠️ Virtual + Physical must equal Max Capacity</p>
                     </>
+                  )}
+
+                  {/* Media Upload for Completed Events */}
+                  {formData.status === "completed" && (
+                    <div className="space-y-4 border-t pt-4">
+                      <h4 className="font-semibold text-gray-800">Event Media (Required for Completed Events)</h4>
+                      
+                      {/* Images */}
+                      <div>
+                        <Label className="pb-2 flex items-center gap-2">
+                          <ImageIcon className="w-4 h-4" />
+                          Images
+                        </Label>
+                        <Input
+                          type="file"
+                          accept="image/*"
+                          multiple
+                          onChange={handleImageUpload}
+                          className="cursor-pointer"
+                        />
+                        {images.length > 0 && (
+                          <div className="mt-2 space-y-2">
+                            {images.map((img) => (
+                              <div key={img.id} className="flex items-center justify-between p-2 bg-gray-50 rounded">
+                                <span className="text-sm truncate">{img.name}</span>
+                                <Button
+                                  type="button"
+                                  variant="ghost"
+                                  size="sm"
+                                  onClick={() => removeImage(img.id)}
+                                >
+                                  <Trash2 className="w-4 h-4 text-red-500" />
+                                </Button>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Videos */}
+                      <div>
+                        <Label className="pb-2 flex items-center gap-2">
+                          <Film className="w-4 h-4" />
+                          Videos (Max 10MB each)
+                        </Label>
+                        <Input
+                          type="file"
+                          accept="video/*"
+                          multiple
+                          onChange={handleVideoUpload}
+                          className="cursor-pointer"
+                        />
+                        {videos.length > 0 && (
+                          <div className="mt-2 space-y-2">
+                            {videos.map((vid) => (
+                              <div key={vid.id} className="flex items-center justify-between p-2 bg-gray-50 rounded">
+                                <div className="flex-1">
+                                  <span className="text-sm truncate block">{vid.name}</span>
+                                  <span className="text-xs text-gray-500">{vid.size}</span>
+                                </div>
+                                <Button
+                                  type="button"
+                                  variant="ghost"
+                                  size="sm"
+                                  onClick={() => removeVideo(vid.id)}
+                                >
+                                  <Trash2 className="w-4 h-4 text-red-500" />
+                                </Button>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
                   )}
 
                   <div className="flex justify-end gap-3 pt-4">
@@ -613,6 +852,157 @@ export default function EventManagementDashboard() {
               </DialogContent>
             </Dialog>
           </div>
+
+          {/* Presenter Approval Dialog */}
+          <Dialog open={showPresenterDialog} onOpenChange={(open) => {
+            setShowPresenterDialog(open);
+            if (!open) {
+              setSelectedPresenter(null);
+              resetForm();
+            }
+          }}>
+            <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+              <DialogHeader>
+                <DialogTitle>Create Seminar for {selectedPresenter?.full_name}</DialogTitle>
+                <DialogDescription>
+                  Set up the seminar details. The presenter will be automatically assigned and approved.
+                </DialogDescription>
+              </DialogHeader>
+
+              {selectedPresenter && (
+                <div className="mb-4 p-4 bg-[#82B4CC]/10 rounded-lg">
+                  <h4 className="font-semibold text-gray-800 mb-2">Presenter Information</h4>
+                  <div className="grid grid-cols-2 gap-2 text-sm">
+                    <div><span className="font-medium">Name:</span> {selectedPresenter.full_name}</div>
+                    <div><span className="font-medium">Email:</span> {selectedPresenter.email}</div>
+                    <div className="col-span-2"><span className="font-medium">Organization:</span> {selectedPresenter.organization_name}</div>
+                    <div className="col-span-2"><span className="font-medium">Presentation:</span> {selectedPresenter.presentation_title}</div>
+                  </div>
+                </div>
+              )}
+
+              <form onSubmit={handleApprovePresenter} className="space-y-4">
+                <div>
+                  <Label className="pb-2">Seminar Title *</Label>
+                  <Input
+                    value={formData.title}
+                    onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                    placeholder="Seminar title"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <Label className="pb-2">Description *</Label>
+                  <Textarea
+                    value={formData.description}
+                    onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                    placeholder="Seminar description"
+                    rows={4}
+                    required
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <Label className="pb-2">Start Date & Time *</Label>
+                    <Input
+                      type="datetime-local"
+                      value={formData.date}
+                      onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                      required
+                    />
+                    <p className="text-xs text-gray-500 mt-1">Must be in the future</p>
+                  </div>
+                  <div>
+                    <Label className="pb-2">End Date & Time</Label>
+                    <Input
+                      type="datetime-local"
+                      value={formData.endDate}
+                      onChange={(e) => setFormData({ ...formData, endDate: e.target.value })}
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <Label className="pb-2">Location *</Label>
+                  <Input
+                    value={formData.location}
+                    onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                    placeholder="Physical address"
+                    required
+                  />
+                </div>
+
+                <div className="grid grid-cols-3 gap-4">
+                  <div>
+                    <Label className="pb-2">Max Capacity *</Label>
+                    <Input
+                      type="number"
+                      value={formData.maxCapacity}
+                      onChange={(e) => setFormData({ ...formData, maxCapacity: e.target.value })}
+                      placeholder="Total"
+                      min="1"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <Label className="pb-2">Virtual Capacity</Label>
+                    <Input
+                      type="number"
+                      value={formData.virtualCapacity}
+                      onChange={(e) => setFormData({ ...formData, virtualCapacity: e.target.value })}
+                      placeholder="Virtual"
+                      min="0"
+                    />
+                  </div>
+                  <div>
+                    <Label className="pb-2">Physical Capacity</Label>
+                    <Input
+                      type="number"
+                      value={formData.physicalCapacity}
+                      onChange={(e) => setFormData({ ...formData, physicalCapacity: e.target.value })}
+                      placeholder="Physical"
+                      min="0"
+                    />
+                  </div>
+                </div>
+                <p className="text-xs text-amber-600">⚠️ Virtual + Physical must equal Max Capacity</p>
+
+                <div className="flex justify-end gap-3 pt-4">
+                  <Button 
+                    type="button" 
+                    variant="outline" 
+                    onClick={() => {
+                      setShowPresenterDialog(false);
+                      setSelectedPresenter(null);
+                      resetForm();
+                    }} 
+                    disabled={saving}
+                  >
+                    Cancel
+                  </Button>
+                  <Button 
+                    type="submit" 
+                    className="bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] text-white" 
+                    disabled={saving}
+                  >
+                    {saving ? (
+                      <>
+                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        Creating & Approving...
+                      </>
+                    ) : (
+                      <>
+                        <CheckCircle className="w-4 h-4 mr-2" />
+                        Create Seminar & Approve Presenter
+                      </>
+                    )}
+                  </Button>
+                </div>
+              </form>
+            </DialogContent>
+          </Dialog>
 
           {/* Webinars Tab */}
           <TabsContent value="webinars">
@@ -946,27 +1336,6 @@ export default function EventManagementDashboard() {
                                       </span>
                                     </div>
                                   </div>
-                                  {presenter.application_status === "pending" && (
-                                    <div className="flex gap-2 mt-4">
-                                      <Button
-                                        size="sm"
-                                        onClick={() => handleApprovePresenter(presenter.id, seminar.id)}
-                                        className="bg-[#68B9C4] text-white hover:bg-[#1164A3] flex-1"
-                                      >
-                                        <CheckCircle className="w-4 h-4 mr-1" />
-                                        Approve
-                                      </Button>
-                                      <Button
-                                        size="sm"
-                                        variant="outline"
-                                        onClick={() => handleRejectPresenter(presenter.id)}
-                                        className="border-red-500 text-red-500 hover:bg-red-500 hover:text-white flex-1"
-                                      >
-                                        <XCircle className="w-4 h-4 mr-1" />
-                                        Reject
-                                      </Button>
-                                    </div>
-                                  )}
                                 </div>
                               ))}
                             </div>
@@ -993,7 +1362,7 @@ export default function EventManagementDashboard() {
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600 mb-6">
-                  Review presenter applications without assigned seminars. Approve to create a new seminar for them.
+                  Review presenter applications without assigned seminars. Create a seminar to approve them.
                 </p>
                 
                 {pendingPresenters.length === 0 ? (
@@ -1067,11 +1436,11 @@ export default function EventManagementDashboard() {
 
                         <div className="flex gap-3">
                           <Button
-                            onClick={() => handleApprovePresenter(presenter.id)}
+                            onClick={() => handleOpenPresenterDialog(presenter)}
                             className="bg-[#68B9C4] text-white hover:bg-[#1164A3] flex-1"
                           >
                             <CheckCircle className="w-4 h-4 mr-2" />
-                            Approve & Create Seminar
+                            Create Seminar & Approve
                           </Button>
                           <Button
                             variant="outline"

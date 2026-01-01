@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { auth, prisma } from "@/lib/auth";
+import { auth } from "@/lib/auth";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Briefcase, Mail, Award, Trash2, Edit } from "lucide-react";

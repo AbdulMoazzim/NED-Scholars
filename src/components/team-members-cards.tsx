@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
-import { Briefcase, Mail, Award } from "lucide-react";
+import { Briefcase, Mail } from "lucide-react";
 import { TeamMembersData } from "@/lib/types";
 
 

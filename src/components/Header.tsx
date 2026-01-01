@@ -76,7 +76,6 @@ export default function Header() {
               isMenuOpen={isMenuOpen}
               setExpandedItem={setExpandedItem}
               setExpandedSubItem={setExpandedSubItem}
-              setIsMenuOpen={setIsMenuOpen}
               toggleMenu={toggleMenu}
             />
           </div>

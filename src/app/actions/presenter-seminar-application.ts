@@ -193,7 +193,7 @@ export async function ApprovePresenterApplication(
   }
 }
 
-export async function RejectPresenterApplication(id: string, reason?: string) {
+export async function RejectPresenterApplication(id: string) {
   try {
     const presenter = await prisma.presenterSeminarForm.update({
       where: { id },

@@ -12,7 +12,7 @@ import {
 import { signIn } from "@/lib/auth-client";
 
 const signInWithGooogle = async () => {
-  const data = await signIn.social({
+  await signIn.social({
     provider: "google",
     callbackURL: "/",
   });

@@ -31,7 +31,6 @@ import {
   Loader2,
   Clock,
 } from "lucide-react";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { GetUpcomingSeminars, GetAllSeminars } from "@/app/actions/seminar";
 import { Seminar } from "@/lib/form-types";

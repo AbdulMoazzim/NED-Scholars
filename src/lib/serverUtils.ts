@@ -142,6 +142,8 @@ export async function uploadImageWithTracking(
       teamMemberId: null,
       newsUpdateId: null,
       remembranceId: null,
+      webinarId: null,
+      seminarId: null,
     };
 
     // Set the appropriate foreign key
@@ -160,6 +162,12 @@ export async function uploadImageWithTracking(
         break;
       case "remembrance":
         imageData.remembranceId = entityId;
+        break;
+      case "webinar":
+        imageData.webinarId = entityId;
+        break;
+      case "seminar":
+        imageData.seminarId = entityId;
         break;
     }
 
@@ -209,6 +217,8 @@ export async function uploadVideoWithTracking(
       successStoryId: null,
       teamMemberId: null,
       newsUpdateId: null,
+      webinarId: null,
+      seminarId: null,
     };
 
     // Set the appropriate foreign key
@@ -224,6 +234,12 @@ export async function uploadVideoWithTracking(
         break;
       case "team":
         videoData.teamMemberId = entityId;
+        break;
+      case "webinar":
+        videoData.webinarId = entityId;
+        break;
+      case "seminar":
+        videoData.seminarId = entityId;
         break;
     }
 
@@ -386,15 +402,7 @@ export async function performRollback(rollbackState: RollbackState) {
             where: { id: rollbackState.entityId },
           });
           break;
-        case "seminar":
-          await prisma.seminar.delete({
-            where: { id: rollbackState.entityId },
-          });
-          break;
-        case "webinar":
-          await prisma.webinar.delete({
-            where: { id: rollbackState.entityId },
-          });
+        default:
           break;
       }
       results.entity = true;

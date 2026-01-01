@@ -64,13 +64,6 @@ export default function AcknowledgementPage() {
     "Mr. Rafiq Siwani"
   ];
 
-  // Split donors into columns for better display
-  const columnsCount = 3;
-  const itemsPerColumn = Math.ceil(donors.length / columnsCount);
-  const columns = Array.from({ length: columnsCount }, (_, i) =>
-    donors.slice(i * itemsPerColumn, (i + 1) * itemsPerColumn)
-  );
-
   const stats = [
     { icon: Heart, value: "58+", label: "Generous Donors" },
     { icon: Award, value: "Since 2007", label: "Years of Support" },

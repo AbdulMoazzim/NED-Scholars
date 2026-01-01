@@ -1,9 +1,8 @@
 import { GetAllSuccessStories } from "@/app/actions/success-stories";
-import { Dispatch, ReactElement, ReactNode, SetStateAction } from "react";
+import { Dispatch, ReactElement, SetStateAction } from "react";
 import { FORM_CONFIGS } from "../data/form-config";
 import { GetAllMembers } from "@/app/actions/team-member";
 import { GetAllRemembrances } from "@/app/actions/remembrance";
-import TransparencyPage from "@/app/about/transparency/page";
 import { Transparency } from "./form-types";
 
 // Define types for menu items
@@ -154,14 +153,19 @@ interface resourceData {
   successStoryId: null | string;
   teamMemberId: null | string;
   newsUpdateId: null | string;
+ 
 }
 export interface imageData extends resourceData {
+   seminarId: null | string;
+  webinarId: null | string;
   remembranceId: null | string;
   public_id: string;
   alt: string | null; // Changed from string to string | null
 }
 
 export interface videoData extends resourceData {
+   seminarId: null | string;
+  webinarId: null | string;
   public_id: string;
   title: string | null;
 }

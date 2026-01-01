@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
   Users,
@@ -10,20 +10,15 @@ import {
   DollarSign,
   Award,
   CheckCircle2,
-  Target,
-  Zap,
   Briefcase,
   Home,
   Scissors,
-  Wrench,
-  Smartphone,
   MapPin,
   Calendar,
   Mail,
   Globe,
   ArrowRight,
   Star,
-  ShoppingBag,
   GraduationCap,
   Building2,
   Rocket,

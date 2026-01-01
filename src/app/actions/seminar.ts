@@ -2,6 +2,13 @@
 
 import { prisma } from "@/lib/auth";
 import { CreateSeminarData, UpdateSeminarData } from "@/lib/form-types";
+import {
+  createRollbackState,
+  performRollback,
+  uploadImageWithTracking,
+  uploadVideoWithTracking,
+} from "@/lib/serverUtils";
+import { Resource } from "@/lib/types";
 import { ErrorMsg } from "@/lib/utils";
 
 export async function CreateSeminar(seminarData: CreateSeminarData) {
@@ -66,7 +73,10 @@ export async function CreateSeminarForPresenter(
     return { success: true, data: result };
   } catch (err) {
     console.error("CreateSeminarForPresenter error:", err);
-    return { success: false, error: ErrorMsg("creating seminar for presenter") };
+    return {
+      success: false,
+      error: ErrorMsg("creating seminar for presenter"),
+    };
   }
 }
 
@@ -144,7 +154,13 @@ export async function GetUpcomingSeminars() {
   }
 }
 
-export async function UpdateSeminar(id: string, seminarData: UpdateSeminarData) {
+export async function UpdateSeminar(
+  id: string,
+  seminarData: UpdateSeminarData,
+  images: Resource[],
+  videos: Resource[]
+) {
+  const rollbackState = createRollbackState("seminar");
   try {
     const seminar = await prisma.seminar.update({
       where: { id },
@@ -156,10 +172,43 @@ export async function UpdateSeminar(id: string, seminarData: UpdateSeminarData) 
         videos: true,
       },
     });
+    rollbackState.entityId = seminar.id;
 
+    if (images?.length > 0) {
+      for (const imageResource of images) {
+        const result = await uploadImageWithTracking(
+          imageResource,
+          "seminar",
+          seminar.id,
+          "seminar",
+          rollbackState
+        );
+        if (!result.success) {
+          throw new Error("Failed to upload image");
+        }
+      }
+    }
+
+    if (videos?.length > 0) {
+      for (const videoResource of videos) {
+        const result = await uploadVideoWithTracking(
+          videoResource,
+          "seminar",
+          seminar.id,
+          "seminar",
+          rollbackState
+        );
+        if (!result.success) {
+          throw new Error("Failed to upload video");
+        }
+      }
+    }
     return { success: true, data: seminar };
   } catch (err) {
     console.error("UpdateSeminar error:", err);
+    console.log("🔄 Starting rollback...");
+
+    await performRollback(rollbackState);
     return { success: false, error: ErrorMsg("updating seminar") };
   }
 }
@@ -215,7 +264,8 @@ export async function GetSeminarStats(id: string) {
     );
     const physicalAttendees = seminar.attendees.filter(
       (a) =>
-        a.attendance_mode === "physical" && a.registration_status === "confirmed"
+        a.attendance_mode === "physical" &&
+        a.registration_status === "confirmed"
     );
 
     const stats = {
@@ -235,8 +285,9 @@ export async function GetSeminarStats(id: string) {
       availableSlots: {
         total: seminar.maxCapacity
           ? seminar.maxCapacity -
-            seminar.attendees.filter((a) => a.registration_status === "confirmed")
-              .length
+            seminar.attendees.filter(
+              (a) => a.registration_status === "confirmed"
+            ).length
           : null,
         virtual: seminar.virtualCapacity
           ? seminar.virtualCapacity - virtualAttendees.length
@@ -248,17 +299,22 @@ export async function GetSeminarStats(id: string) {
       fillPercentage: {
         total: seminar.maxCapacity
           ? Math.round(
-              (seminar.attendees.filter((a) => a.registration_status === "confirmed")
-                .length /
+              (seminar.attendees.filter(
+                (a) => a.registration_status === "confirmed"
+              ).length /
                 seminar.maxCapacity) *
                 100
             )
           : null,
         virtual: seminar.virtualCapacity
-          ? Math.round((virtualAttendees.length / seminar.virtualCapacity) * 100)
+          ? Math.round(
+              (virtualAttendees.length / seminar.virtualCapacity) * 100
+            )
           : null,
         physical: seminar.physicalCapacity
-          ? Math.round((physicalAttendees.length / seminar.physicalCapacity) * 100)
+          ? Math.round(
+              (physicalAttendees.length / seminar.physicalCapacity) * 100
+            )
           : null,
       },
     };

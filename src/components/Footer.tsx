@@ -1,29 +1,21 @@
 "use client";
 
-import { useState } from "react";
 import { GraduationCap, MapPin, Mail, Phone, Facebook, Instagram, Linkedin, Youtube, Github } from "lucide-react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function Footer() {
   const path = usePathname();
-  const [email, setEmail] = useState("");
+  const router = useRouter();
 
   if (path.startsWith("/admin-portal")) {
     return null; 
   }
 
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle newsletter subscription
-    console.log("Newsletter subscription:", email);
-    setEmail("");
-  };
-
   return (
     <footer className="bg-gray-800 text-white py-16">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {/* Logo and Description Section */}
           <div>
             <div className="flex items-center space-x-3 mb-6">
@@ -35,34 +27,11 @@ export default function Footer() {
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               NED Scholars is a non-profit corporation. It operates exclusively for educational and charitable purposes within the meaning of Section 501 (c)(3) of the Internal Revenue Code.
             </p>
-            <button className="bg-cyan-400 hover:bg-cyan-500 text-gray-900 font-semibold px-6 py-2 rounded-full transition-colors">
+            <Link href="/donation" className="bg-cyan-400 hover:bg-cyan-500 text-gray-900 font-semibold px-6 py-2 rounded-full transition-colors">
               DONATE NOW
-            </button>
+            </Link>
           </div>
 
-          {/* Newsletter Section */}
-          <div>
-            <h5 className="font-semibold mb-4 text-lg">NEWSLETTER</h5>
-            <p className="text-gray-400 text-sm mb-4">
-              Subscribe our newsletter to get the latest news & updates.
-            </p>
-            <form onSubmit={handleNewsletterSubmit} className="flex">
-              <input
-                type="email"
-                placeholder="Your email address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 px-4 py-2 bg-white text-gray-900 rounded-l focus:outline-none text-sm"
-                required
-              />
-              <button
-                type="submit"
-                className="bg-white text-gray-900 px-4 py-2 rounded-r hover:bg-gray-100 transition-colors"
-              >
-                →
-              </button>
-            </form>
-          </div>
 
           {/* Useful Links Section */}
           <div>
@@ -84,7 +53,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/donation-methods" className="hover:text-white transition-colors">
+                <Link href="/donation" className="hover:text-white transition-colors">
                   Donation methods
                 </Link>
               </li>
@@ -174,7 +143,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex w-full justify-center mt-3"><Github onClick={()=>{}} className="cursor-pointer p-2 border-white border-[1px] rounded-full"/></div>
+        <div className="flex w-full justify-center mt-3"><Link href="https://github.com/AbdulMoazzim" target="_blank"><Github className="cursor-pointer p-2 border-white border-[1px] rounded-full"/></Link></div>
       </div>
     </footer>
   );

@@ -7,7 +7,6 @@ import {
   TrendingUp,
   Wallet,
 } from "lucide-react";
-import { successStories } from "./SuccessStories";
 
 export const banners = [
   {

@@ -1,22 +1,6 @@
 import { GetAllTransparencyFiles } from "@/app/actions/transparency";
-import { Transparency } from "@/lib/form-types";
 import { FileText, Download, Calendar } from "lucide-react";
 
-interface Resource {
-  id: string;
-  url: string;
-  public_id: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
-
-interface TransparencyData {
-  id: string;
-  year: string;
-  createdAt: Date;
-  updatedAt: Date;
-  files: Resource[];
-}
 
 const getFileName = (url: string) => {
   const parts = url.split('/');

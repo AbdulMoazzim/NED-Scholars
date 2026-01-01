@@ -12,7 +12,6 @@ import {
   Phone,
   Mail,
   Award,
-  MapPin,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 

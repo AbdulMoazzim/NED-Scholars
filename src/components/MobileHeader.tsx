@@ -2,12 +2,10 @@
 
 import { menuItems, ScholarshipData } from "@/data/LinksData";
 import { ChevronDown, X, ChevronRight } from "lucide-react";
-import { Button } from "./ui/button";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
-export default function MobileHeader({isMenuOpen, setIsMenuOpen, expandedItem, setExpandedItem, expandedSubItem, setExpandedSubItem, toggleMenu} : {
-  isMenuOpen: boolean, setIsMenuOpen: (arg: boolean)=> void, expandedItem: string, setExpandedItem: (arg: string)=> void, expandedSubItem: string, setExpandedSubItem: (arg: string) => void, toggleMenu: ()=> void
+export default function MobileHeader({isMenuOpen, expandedItem, setExpandedItem, expandedSubItem, setExpandedSubItem, toggleMenu} : {
+  isMenuOpen: boolean,  expandedItem: string, setExpandedItem: (arg: string)=> void, expandedSubItem: string, setExpandedSubItem: (arg: string) => void, toggleMenu: ()=> void
 }) {
 
 
@@ -25,9 +23,6 @@ export default function MobileHeader({isMenuOpen, setIsMenuOpen, expandedItem, s
     setExpandedSubItem(expandedSubItem === title ? "" : title);
   };
 
-  const router = useRouter();
-
-  
   return (
     <>
 
