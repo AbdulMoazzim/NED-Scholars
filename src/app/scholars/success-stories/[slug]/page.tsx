@@ -10,6 +10,7 @@ import {
 } from "@/app/actions/success-stories";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
+import { imageData, urlData, videoData } from "@/lib/types";
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -181,9 +182,9 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
                   Featured Videos
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {story.videos.map((video) => (
+                  {story.videos.map((video: videoData, index: number) => (
                     <div
-                      key={video.id}
+                      key={index}
                       className="aspect-video rounded-xl overflow-hidden shadow-lg"
                     >
                       <video
@@ -206,7 +207,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
                   Watch on YouTube
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {story.youtubeUrls.map((url, index) => {
+                  {story.youtubeUrls.map((url: urlData, index: number) => {
                     return (
                       <div
                         key={index}
@@ -236,9 +237,9 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
                   Photo Gallery
                 </h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {story.images.slice(1).map((image) => (
+                  {story.images.slice(1).map((image: imageData, index: number) => (
                     <div
-                      key={image.id}
+                      key={index}
                       className="aspect-square rounded-xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300"
                     >
                       <img

@@ -7,6 +7,7 @@ import { redirect } from "next/navigation";
 import { DeleteRemembrance, GetRemembrance } from "@/app/actions/remembrance";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
+import { imageData } from "@/lib/types";
 
 
 export default async function RemembranceDetailPage({
@@ -144,9 +145,9 @@ export default async function RemembranceDetailPage({
                     Photo Memories
                   </h3>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    {data.images.slice(1).map((image) => (
+                    {data.images.slice(1).map((image: imageData, index: number) => (
                       <div
-                        key={image.id}
+                        key={index}
                         className="aspect-square rounded-xl overflow-hidden shadow-lg border-2 border-[#82B4CC]/30 hover:border-[#1164A3] hover:scale-105 transition-all duration-300"
                       >
                         <img
@@ -161,7 +162,7 @@ export default async function RemembranceDetailPage({
               )}
   
               {/* All Images Gallery (show all if only one image exists) */}
-              {data.images && data.images.length > 0 && data.images.slice(1).map((image, index) => (
+              {data.images && data.images.length > 0 && data.images.slice(1).map((image: imageData, index: number) => (
                 <div className="mt-12" key={index}>
                   <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
                     <ImageIcon className="w-6 h-6 text-[#1164A3]" />

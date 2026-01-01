@@ -7,6 +7,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { DeleteMember, GetMember } from "@/app/actions/team-member";
 import { headers } from "next/headers";
+import { imageData, urlData, videoData } from "@/lib/types";
 
 
 export default async function Page({ params }: { params: Promise<{ "team-member": string }> }) {
@@ -186,9 +187,9 @@ export default async function Page({ params }: { params: Promise<{ "team-member"
                   Featured Videos
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {member.videos.map((video) => (
+                  {member.videos.map((video: videoData, index: number) => (
                     <div
-                      key={video.id}
+                      key={index}
                       className="aspect-video rounded-xl overflow-hidden shadow-lg border-2 border-[#82B4CC]/30 hover:border-[#1164A3] transition-colors"
                     >
                       <video
@@ -211,7 +212,7 @@ export default async function Page({ params }: { params: Promise<{ "team-member"
                   Watch on YouTube
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {member.youtubeUrls.map((url, index) => {
+                  {member.youtubeUrls.map((url: urlData, index: number) => {
                     console.log(url.url)
                     return (
                       <div
@@ -238,9 +239,9 @@ export default async function Page({ params }: { params: Promise<{ "team-member"
                   Photo Gallery
                 </h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {member.images.slice(1).map((image) => (
+                  {member.images.slice(1).map((image: imageData, index:number) => (
                     <div
-                      key={image.id}
+                      key={index}
                       className="aspect-square rounded-xl overflow-hidden shadow-lg border-2 border-[#82B4CC]/30 hover:border-[#1164A3] hover:scale-105 transition-all duration-300"
                     >
                       <img
