@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## About NED Scholars
 
-## Getting Started
+**NED Scholars** is a platform designed to support students of NED University by providing centralized access to scholarships, guidance, and academic resources.  
+The goal of the project is to make financial aid information **easy to discover, understand, and apply for**, while also building a supportive community around student success.
 
-First, run the development server:
+### Why We Built It
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Many students miss opportunities because scholarship details are scattered, deadlines are unclear, or the application process feels confusing.  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+NED Scholars helps by:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- 📌 Bringing verified scholarships into one place  
+- 📝 Explaining eligibility and application details clearly  
+- ⏰ Highlighting important deadlines  
+- 💡 Providing tips and guidance for stronger applications  
+- 🤝 Creating a supportive environment for students
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Features
 
-## Learn More
+- 🎓 **Scholarship Listings** – curated and regularly updated opportunities  
+- 📄 **Application Guidance** – tips, templates, and FAQs  
+- 🔔 **Deadline Reminders** – stay on top of important dates  
+- 🗂 **Resources Section** – useful documents and study material  
+- 🤝 **Community Support** – encourages sharing and collaboration  
 
-To learn more about Next.js, take a look at the following resources:
+### Technology
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+NED Scholars is built using **Next.js**, leveraging:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Server-side rendering  
+- Modern app routing  
+- Optimized performance  
+- A smooth, user-friendly experience  
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Feel free to contribute ideas, report issues, or suggest improvements — this project grows stronger with community support!
