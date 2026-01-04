@@ -40,19 +40,12 @@ import {
   Star,
   Calendar,
   Users,
-  Video,
   Loader2,
   Search,
   Filter,
-  MessageCircle,
   CheckCircle,
-  Clock,
-  Mail,
-  Play,
-  User,
   AlertCircle,
   X,
-  Upload,
 } from "lucide-react";
 import {
   GetAllGupShupSessions,
@@ -288,7 +281,7 @@ export default function GupShupManagement() {
 
     // Set existing image preview if available
     if (session.thumbnailImage) {
-      setImagePreview(session.thumbnailImage.url);
+      setImagePreview(session.thumbnailImage[0].url);
     }
 
     setIsFormOpen(true);

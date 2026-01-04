@@ -30,7 +30,6 @@ import {
   Award,
   TrendingUp,
   Loader2,
-  Upload,
   Image as ImageIcon,
   Film,
 } from "lucide-react";

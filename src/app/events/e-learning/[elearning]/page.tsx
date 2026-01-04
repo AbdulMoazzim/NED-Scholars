@@ -72,7 +72,6 @@ interface EnrollmentFormData {
 }
 
 export default function CourseDetailsPage({
-  params,
 }: {
   params: Promise<{ elearning: string }>;
 }) {

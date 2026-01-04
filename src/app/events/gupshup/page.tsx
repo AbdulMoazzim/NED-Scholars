@@ -29,7 +29,6 @@ import {
   Briefcase,
   GraduationCap,
   Video,
-  Play,
   ArrowRight,
   CheckCircle2,
   Star,
