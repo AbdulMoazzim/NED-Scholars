@@ -1,11 +1,11 @@
-
-
 export const FORM_CONFIGS = {
   scholarshipForm: {
     title: "Scholarship Application Form",
-    description: "Apply for our scholarship program to support your educational journey",
+    description:
+      "Apply for our scholarship program to support your educational journey",
     submitButtonText: "Submit Application",
-    successMessage: "Your scholarship application has been submitted successfully!",
+    successMessage:
+      "Your scholarship application has been submitted successfully!",
     fields: {
       full_name: {
         type: "text",
@@ -137,7 +137,8 @@ export const FORM_CONFIGS = {
       why_deserve_scholarship: {
         type: "textarea",
         label: "Why Do You Deserve This Scholarship?",
-        placeholder: "Explain your financial need, academic achievements, and how this scholarship will help you...",
+        placeholder:
+          "Explain your financial need, academic achievements, and how this scholarship will help you...",
         required: true,
         rows: 6,
         validation: {
@@ -148,7 +149,8 @@ export const FORM_CONFIGS = {
       future_goals: {
         type: "textarea",
         label: "Future Goals",
-        placeholder: "Describe your career aspirations and how this scholarship aligns with your goals...",
+        placeholder:
+          "Describe your career aspirations and how this scholarship aligns with your goals...",
         required: true,
         rows: 6,
         validation: {
@@ -221,7 +223,8 @@ export const FORM_CONFIGS = {
     title: "Partner Application Form",
     description: "Join us as a partner and collaborate to make an impact",
     submitButtonText: "Submit Partnership Application",
-    successMessage: "Thank you for your interest! We'll review your application and get back to you soon.",
+    successMessage:
+      "Thank you for your interest! We'll review your application and get back to you soon.",
     fields: {
       full_name: {
         type: "text",
@@ -244,7 +247,8 @@ export const FORM_CONFIGS = {
       why_join: {
         type: "textarea",
         label: "Why Do You Want to Join as a Partner?",
-        placeholder: "Tell us about your motivation and what you hope to achieve through this partnership...",
+        placeholder:
+          "Tell us about your motivation and what you hope to achieve through this partnership...",
         required: true,
         rows: 6,
         validation: {
@@ -320,7 +324,8 @@ export const FORM_CONFIGS = {
     title: "Student Registration Form",
     description: "Join our community of learners and grow together",
     submitButtonText: "Register as Student",
-    successMessage: "Welcome! Your registration is complete. Check your email for next steps.",
+    successMessage:
+      "Welcome! Your registration is complete. Check your email for next steps.",
     fields: {
       full_name: {
         type: "text",
@@ -343,7 +348,8 @@ export const FORM_CONFIGS = {
       why_join: {
         type: "textarea",
         label: "Why Do You Want to Join?",
-        placeholder: "Share your learning goals and what you hope to achieve...",
+        placeholder:
+          "Share your learning goals and what you hope to achieve...",
         required: true,
         rows: 6,
         validation: {
@@ -399,7 +405,8 @@ export const FORM_CONFIGS = {
     title: "Mentor Application Form",
     description: "Share your knowledge and experience by becoming a mentor",
     submitButtonText: "Apply as Mentor",
-    successMessage: "Thank you for applying! We'll review your application and contact you soon.",
+    successMessage:
+      "Thank you for applying! We'll review your application and contact you soon.",
     fields: {
       full_name: {
         type: "text",
@@ -422,7 +429,8 @@ export const FORM_CONFIGS = {
       why_join: {
         type: "textarea",
         label: "Why Do You Want to Become a Mentor?",
-        placeholder: "Share your passion for mentoring and what you hope to contribute...",
+        placeholder:
+          "Share your passion for mentoring and what you hope to contribute...",
         required: true,
         rows: 6,
         validation: {
@@ -461,7 +469,8 @@ export const FORM_CONFIGS = {
       areas_of_expertise: {
         type: "textarea",
         label: "Areas of Expertise",
-        placeholder: "List specific skills, technologies, or domains you can mentor in...",
+        placeholder:
+          "List specific skills, technologies, or domains you can mentor in...",
         required: true,
         rows: 4,
       },
@@ -495,7 +504,8 @@ export const FORM_CONFIGS = {
     title: "Volunteer Registration Form",
     description: "Make a difference by volunteering with us",
     submitButtonText: "Register as Volunteer",
-    successMessage: "Thank you for registering! We'll be in touch with volunteer opportunities.",
+    successMessage:
+      "Thank you for registering! We'll be in touch with volunteer opportunities.",
     fields: {
       full_name: {
         type: "text",
@@ -591,7 +601,8 @@ export const FORM_CONFIGS = {
       skills: {
         type: "textarea",
         label: "Skills",
-        placeholder: "List your relevant skills (e.g., communication, project management, graphic design)...",
+        placeholder:
+          "List your relevant skills (e.g., communication, project management, graphic design)...",
         required: true,
         rows: 4,
       },
@@ -627,7 +638,8 @@ export const FORM_CONFIGS = {
     title: "Seminar Registration",
     description: "Register to attend our upcoming seminar",
     submitButtonText: "Register for Seminar",
-    successMessage: "Registration successful! You'll receive a confirmation email shortly.",
+    successMessage:
+      "Registration successful! You'll receive a confirmation email shortly.",
     fields: {
       full_name: {
         type: "text",
@@ -774,7 +786,8 @@ export const FORM_CONFIGS = {
       presentation_topic: {
         type: "textarea",
         label: "Presentation Topic & Abstract",
-        placeholder: "Provide a detailed description of your presentation topic...",
+        placeholder:
+          "Provide a detailed description of your presentation topic...",
         required: true,
         rows: 6,
         helperText: "Describe what you'll cover in your presentation",
@@ -782,7 +795,8 @@ export const FORM_CONFIGS = {
       areas_of_expertise: {
         type: "textarea",
         label: "Areas of Expertise",
-        placeholder: "List your key areas of expertise relevant to this presentation...",
+        placeholder:
+          "List your key areas of expertise relevant to this presentation...",
         required: true,
         rows: 4,
       },
@@ -796,7 +810,8 @@ export const FORM_CONFIGS = {
       impact_statement: {
         type: "textarea",
         label: "Expected Impact (Optional)",
-        placeholder: "What impact do you hope your presentation will have on attendees?",
+        placeholder:
+          "What impact do you hope your presentation will have on attendees?",
         required: false,
         rows: 4,
       },
@@ -846,5 +861,460 @@ export const FORM_CONFIGS = {
       },
     ],
   },
-};
+  industrialVisitForm: {
+    title: "Industrial Visit Registration",
+    description:
+      "Register for our industrial visit and gain real-world industry exposure",
+    submitButtonText: "Complete Registration",
+    successMessage:
+      "Registration successful! You'll receive a confirmation email with visit details shortly.",
+    fields: {
+      fullName: {
+        type: "text",
+        label: "Full Name",
+        placeholder: "Enter your full name",
+        required: true,
+        validation: {
+          minLength: 2,
+          maxLength: 255,
+        },
+      },
+      email: {
+        type: "email",
+        label: "Email Address",
+        placeholder: "your.email@example.com",
+        required: true,
+        validation: {
+          pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+        },
+      },
+      phone: {
+        type: "tel",
+        label: "Phone Number",
+        placeholder: "+92 300 1234567",
+        required: true,
+        validation: {
+          pattern: /^[\d\s\-\+\(\)]+$/,
+        },
+      },
+      cnic: {
+        type: "text",
+        label: "CNIC Number (Optional)",
+        placeholder: "12345-1234567-1",
+        required: false,
+        validation: {
+          pattern: /^\d{5}-\d{7}-\d{1}$/,
+        },
+        helperText: "Format: 12345-1234567-1",
+      },
+      university: {
+        type: "text",
+        label: "University/Institution",
+        placeholder: "e.g., NED University of Engineering & Technology",
+        required: true,
+      },
+      department: {
+        type: "text",
+        label: "Department",
+        placeholder: "e.g., Mechanical Engineering, Computer Science",
+        required: true,
+      },
+      semester: {
+        type: "select",
+        label: "Current Semester",
+        placeholder: "Select your semester",
+        required: true,
+        options: [
+          { value: "1st", label: "1st Semester" },
+          { value: "2nd", label: "2nd Semester" },
+          { value: "3rd", label: "3rd Semester" },
+          { value: "4th", label: "4th Semester" },
+          { value: "5th", label: "5th Semester" },
+          { value: "6th", label: "6th Semester" },
+          { value: "7th", label: "7th Semester" },
+          { value: "8th", label: "8th Semester" },
+          { value: "graduate", label: "Graduate" },
+          { value: "postgraduate", label: "Postgraduate" },
+        ],
+      },
+      rollNumber: {
+        type: "text",
+        label: "Roll Number (Optional)",
+        placeholder: "e.g., ME-2021-123",
+        required: false,
+      },
+      emergencyContact: {
+        type: "text",
+        label: "Emergency Contact Name",
+        placeholder: "e.g., Father - Ahmed Ali",
+        required: true,
+        helperText: "Name and relationship (e.g., Father - John Doe)",
+      },
+      emergencyPhone: {
+        type: "tel",
+        label: "Emergency Contact Phone",
+        placeholder: "+92 300 7654321",
+        required: true,
+        validation: {
+          pattern: /^[\d\s\-\+\(\)]+$/,
+        },
+      },
+      visitId: {
+        type: "hidden",
+        label: "Visit ID",
+        required: true,
+        hidden: true,
+      },
+      registrationStatus: {
+        type: "hidden",
+        label: "Registration Status",
+        defaultValue: "registered",
+        hidden: true,
+      },
+    },
+    sections: [
+      {
+        heading: "Personal Information",
+        description: "Tell us about yourself",
+        fields: ["fullName", "email", "phone", "cnic"],
+      },
+      {
+        heading: "Academic Information",
+        description: "Your educational details",
+        fields: ["university", "department", "semester", "rollNumber"],
+      },
+      {
+        heading: "Emergency Contact",
+        description: "Required for safety purposes",
+        fields: ["emergencyContact", "emergencyPhone"],
+      },
+    ],
+  },
+  internshipApplication: {
+    title: "Internship Application",
+    description:
+      "Apply for this internship opportunity and take the next step in your career",
+    submitButtonText: "Submit Application",
+    successMessage:
+      "Application submitted successfully! We'll review your application and get back to you soon.",
 
+    fields: {
+      // Personal Information
+      fullName: {
+        type: "text",
+        label: "Full Name",
+        placeholder: "Enter your full name",
+        required: true,
+        validation: {
+          minLength: 3,
+          maxLength: 100,
+        },
+      },
+      email: {
+        type: "email",
+        label: "Email Address",
+        placeholder: "your.email@example.com",
+        required: true,
+        validation: {
+          pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+          message: "Please enter a valid email address",
+        },
+      },
+      phone: {
+        type: "tel",
+        label: "Phone Number",
+        placeholder: "+92-300-1234567",
+        required: true,
+        validation: {
+          pattern: /^[\d\s\-\+\(\)]+$/,
+          message: "Please enter a valid phone number",
+        },
+      },
+      cnic: {
+        type: "text",
+        label: "CNIC (Optional)",
+        placeholder: "12345-1234567-1",
+        required: false,
+        validation: {
+          pattern: /^\d{5}-\d{7}-\d{1}$/,
+          message: "CNIC must be in format: 12345-1234567-1",
+        },
+      },
+
+      // Academic Information
+      university: {
+        type: "text",
+        label: "University/Institution",
+        placeholder: "NED University of Engineering and Technology",
+        required: true,
+        validation: {
+          minLength: 3,
+          maxLength: 200,
+        },
+      },
+      department: {
+        type: "text",
+        label: "Department/Major",
+        placeholder: "Computer Science",
+        required: true,
+        validation: {
+          minLength: 2,
+          maxLength: 100,
+        },
+      },
+      semester: {
+        type: "select",
+        label: "Current Semester",
+        required: true,
+        options: [
+          { label: "1st Semester", value: "1st Semester" },
+          { label: "2nd Semester", value: "2nd Semester" },
+          { label: "3rd Semester", value: "3rd Semester" },
+          { label: "4th Semester", value: "4th Semester" },
+          { label: "5th Semester", value: "5th Semester" },
+          { label: "6th Semester", value: "6th Semester" },
+          { label: "7th Semester", value: "7th Semester" },
+          { label: "8th Semester", value: "8th Semester" },
+          { label: "Graduate", value: "Graduate" },
+          { label: "Postgraduate", value: "Postgraduate" },
+        ],
+      },
+      cgpa: {
+        type: "text",
+        label: "CGPA",
+        placeholder: "3.5/4.0 or 3.5",
+        required: true,
+        helperText: "Enter your current CGPA (e.g., 3.5/4.0)",
+        validation: {
+          pattern: /^\d+\.?\d*(\s*\/\s*\d+\.?\d*)?$/,
+          message: "Please enter a valid CGPA (e.g., 3.5 or 3.5/4.0)",
+        },
+      },
+      expectedGraduation: {
+        type: "text",
+        label: "Expected Graduation",
+        placeholder: "June 2025",
+        required: true,
+        helperText: "Month and Year (e.g., June 2025)",
+        validation: {
+          minLength: 3,
+          maxLength: 50,
+        },
+      },
+
+      // Professional Information
+      resume: {
+        type: "file",
+        label: "Resume/CV URL",
+        placeholder: "Upload your Resume/CV",
+        required: true,
+        accept: ".pdf,.doc,.docx",
+        helperText: "Upload PDF or Word document (Max 5MB)",
+      },
+      coverLetter: {
+        type: "textarea",
+        label: "Cover Letter (Optional)",
+        placeholder:
+          "Tell us why you're interested in this internship and what makes you a good fit...",
+        required: false,
+        helperText: "Share your motivation and relevant experience",
+        validation: {
+          maxLength: 2000,
+        },
+      },
+      linkedIn: {
+        type: "text",
+        label: "LinkedIn Profile (Optional)",
+        placeholder: "https://www.linkedin.com/in/your-profile",
+        required: false,
+        validation: {
+          pattern: /^https?:\/\/.+/,
+          message: "Please enter a valid URL",
+        },
+      },
+      portfolio: {
+        type: "text",
+        label: "Portfolio/GitHub (Optional)",
+        placeholder: "https://github.com/yourusername or your portfolio link",
+        required: false,
+        helperText: "Showcase your projects and work",
+        validation: {
+          pattern: /^https?:\/\/.+/,
+          message: "Please enter a valid URL",
+        },
+      },
+
+      // Skills & Experience
+      skills: {
+        type: "text",
+        label: "Skills",
+        placeholder: "React, Node.js, Python, SQL, Git",
+        required: true,
+        helperText: "Enter your skills separated by commas",
+        validation: {
+          minLength: 3,
+          maxLength: 500,
+          message: "Please list at least one skill",
+        },
+      },
+      previousExperience: {
+        type: "textarea",
+        label: "Previous Experience (Optional)",
+        placeholder:
+          "Describe any relevant internships, projects, or work experience...",
+        required: false,
+        helperText:
+          "Include internships, freelance work, or significant projects",
+        validation: {
+          maxLength: 2000,
+        },
+      },
+
+      
+
+      // Hidden field for internship ID
+      internshipId: {
+        type: "hidden",
+        label: "",
+        required: true,
+      },
+    },
+
+    sections: [
+      {
+        heading: "Personal Information",
+        description: "Tell us about yourself",
+        fields: ["fullName", "email", "phone", "cnic"],
+      },
+      {
+        heading: "Academic Information",
+        description: "Your educational background",
+        fields: [
+          "university",
+          "department",
+          "semester",
+          "cgpa",
+          "expectedGraduation",
+        ],
+      },
+      {
+        heading: "Professional Information",
+        description: "Share your professional profile",
+        fields: ["resume", "coverLetter", "linkedIn", "portfolio"],
+      },
+      {
+        heading: "Skills & Experience",
+        description: "Showcase your abilities",
+        fields: ["skills", "previousExperience"],
+      }
+    ],
+  },gupShupRegistration: {
+  title: "Gup Shup Registration",
+  description: "Join us for meaningful conversation",
+  submitButtonText: "Complete Registration",
+  successMessage: "Registration successful! You'll receive a confirmation email with session details.",
+  
+  fields: {
+    // Personal Information
+    fullName: {
+      type: "text",
+      label: "Full Name",
+      placeholder: "Enter your full name",
+      required: true,
+      validation: {
+        minLength: 3,
+        maxLength: 100,
+      },
+    },
+    email: {
+      type: "email",
+      label: "Email Address",
+      placeholder: "your.email@example.com",
+      required: true,
+      validation: {
+        pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+        message: "Please enter a valid email address",
+      },
+    },
+    phone: {
+      type: "tel",
+      label: "Phone Number (Optional)",
+      placeholder: "+92-300-1234567",
+      required: false,
+      validation: {
+        pattern: /^[\d\s\-\+\(\)]+$/,
+        message: "Please enter a valid phone number",
+      },
+    },
+
+    // Additional Details
+    organization: {
+      type: "text",
+      label: "Organization/University",
+      placeholder: "e.g., NED University, XYZ Company",
+      required: false,
+      helperText: "Your affiliation or workplace",
+      validation: {
+        maxLength: 200,
+      },
+    },
+    designation: {
+      type: "text",
+      label: "Designation",
+      placeholder: "e.g., Student, Professional, Researcher",
+      required: false,
+      helperText: "Your role or position",
+      validation: {
+        maxLength: 100,
+      },
+    },
+
+    // Interest & Questions
+    whyAttending: {
+      type: "textarea",
+      label: "Why do you want to attend? (Optional)",
+      placeholder: "Share what interests you about this session...",
+      required: false,
+      helperText: "Help us understand your motivation",
+      validation: {
+        maxLength: 500,
+      },
+    },
+    questionsForSpeaker: {
+      type: "textarea",
+      label: "Questions for Speaker (Optional)",
+      placeholder: "Submit questions you'd like to ask during the Q&A...",
+      required: false,
+      helperText: "Your questions may be selected during the session",
+      validation: {
+        maxLength: 500,
+      },
+    },
+
+    // Hidden field for session ID
+    sessionId: {
+      type: "hidden",
+      label: "",
+      required: true,
+    },
+  },
+  
+  sections: [
+    {
+      heading: "Personal Information",
+      description: "Tell us about yourself",
+      fields: ["fullName", "email", "phone"],
+    },
+    {
+      heading: "Additional Details",
+      description: "Help us know you better",
+      fields: ["organization", "designation"],
+    },
+    {
+      heading: "Your Interest",
+      description: "Share your thoughts and questions",
+      fields: ["whyAttending", "questionsForSpeaker"],
+    },
+  ],
+}
+};

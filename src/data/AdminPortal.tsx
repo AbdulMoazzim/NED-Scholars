@@ -4,7 +4,8 @@ import {
   BookOpen, 
   Award, 
   FileText,
-  Video
+  Video,
+  Route
 } from 'lucide-react';
 
 export const sidebarItems: SidebarNavItem[] = [
@@ -16,6 +17,10 @@ export const sidebarItems: SidebarNavItem[] = [
     { id: 'transparency', label: 'Transparency', icon: <FileText className="w-5 h-5" />, color: 'from-[#1164A3] to-[#68B9C4]' },
     { id: 'form-responses', label: 'Form Responses', icon: <FileText className="w-5 h-5" />, color: 'from-[#82B4CC] to-[#B0A3B3]' },
     { id: 'sessions', label: 'Sessions', icon: <Video className="w-5 h-5" />, color: 'from-[#68B9C4] to-[#82B4CC]' },
+    { id: 'industrial-visits', label: 'Industrial Visits', icon: <Route className="w-5 h-5" />, color: 'from-[#68B9C4] to-[#82B4CC]' },
+    { id: 'internships', label: 'Internships', icon: <Route className="w-5 h-5" />, color: 'from-[#68B9C4] to-[#82B4CC]' },
+    { id: 'gupshup', label: 'GupShup Sessions', icon: <Route className="w-5 h-5" />, color: 'from-[#68B9C4] to-[#82B4CC]' },
+    { id: 'elearning', label: 'E-Learning', icon: <BookOpen className="w-5 h-5" />, color: 'from-[#68B9C4] to-[#82B4CC]' },
 ];
 
 export const getFormConfig = (type: string) => {

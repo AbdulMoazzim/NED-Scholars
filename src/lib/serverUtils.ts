@@ -83,6 +83,7 @@ export async function uploadResourceWithTracking(
       scholarshipResourceId: null,
       transparencyResourceId: null,
       public_id: uploadedResource.public_id,
+      resumeId: ""
     };
 
     // Set the appropriate foreign key
@@ -92,6 +93,9 @@ export async function uploadResourceWithTracking(
         break;
       case "transparency":
         resourceData.transparencyResourceId = entityId;
+        break;
+      case "internships":
+        resourceData.resumeId = entityId;
         break;
     }
 
@@ -144,6 +148,8 @@ export async function uploadImageWithTracking(
       remembranceId: null,
       webinarId: null,
       seminarId: null,
+      industrialVisitId: null,
+      gupshupId: ""
     };
 
     // Set the appropriate foreign key
@@ -168,6 +174,12 @@ export async function uploadImageWithTracking(
         break;
       case "seminar":
         imageData.seminarId = entityId;
+        break;
+      case "industrial-visit":
+        imageData.industrialVisitId = entityId;
+        break;
+      default:
+        imageData.gupshupId = entityId;
         break;
     }
 
@@ -219,6 +231,7 @@ export async function uploadVideoWithTracking(
       newsUpdateId: null,
       webinarId: null,
       seminarId: null,
+      industrialVisitId: null
     };
 
     // Set the appropriate foreign key
@@ -240,6 +253,9 @@ export async function uploadVideoWithTracking(
         break;
       case "seminar":
         videoData.seminarId = entityId;
+        break;
+      case "industrial-visit":
+        videoData.industrialVisitId = entityId;
         break;
     }
 
@@ -399,6 +415,11 @@ export async function performRollback(rollbackState: RollbackState) {
           break;
         case "scholarship":
           await prisma.scholarshipForm.delete({
+            where: { id: rollbackState.entityId },
+          });
+          break;
+        case "gupshup":
+          await prisma.gupShupSession.delete({
             where: { id: rollbackState.entityId },
           });
           break;

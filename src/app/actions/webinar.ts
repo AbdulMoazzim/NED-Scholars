@@ -88,6 +88,7 @@ export async function GetUpcomingWebinars() {
       include: {
         attendees: true,
         images: true,
+        videos: true
       },
       orderBy: { date: "asc" },
     });

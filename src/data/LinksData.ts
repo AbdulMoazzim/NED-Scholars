@@ -34,9 +34,9 @@ export const menuItems: MenuItem[] = [
       title: 'Programs',
       href: '/programs',
       subItems: [
-        { title: 'Seminar', href: '/programs/seminar' },
-        { title: 'Webinar', href: '/programs/webinar' },
-        { title: 'Internship', href: '/programs/internship' }
+        { title: 'Seminar', href: '/programs/seminars' },
+        { title: 'Webinar', href: '/programs/webinars' },
+        { title: 'Internship', href: '/programs/internships' }
       ]
     },
     {
@@ -52,23 +52,13 @@ export const menuItems: MenuItem[] = [
       href: '/events',
       subItems: [
         { title: 'Gupshup', href: '/events/gupshup' },
-        { title: 'Industrial Visit', href: '/events/industrial-visit' },
+        { title: 'Industrial Visit', href: '/events/industrial-visits' },
         { title: 'E-learning', href: '/events/e-learning' }
       ]
     },
     {
       title: 'Donate Now',
-      href: '/donate',
-      subItems: [
-        { title: 'Donation Method', href: '/donate/methods' },
-        { title: 'Donation in Pakistan', href: '/donate/pakistan' },
-        { title: 'One-Time Donation Using PayPal', href: '/donate/paypal-onetime' },
-        { title: 'Monthly Donation Using PayPal', href: '/donate/paypal-monthly' },
-        { title: 'Money Transfer Using Zelle', href: '/donate/zelle' },
-        { title: 'Money Transfer Using Zeffy', href: '/donate/zeffy' },
-        { title: 'Money Transfer Using Citizen', href: '/donate/citizen' },
-        { title: 'Donate by Mail', href: '/donate/mail' }
-      ]
+      href: '/donation',
     }
   ];
 

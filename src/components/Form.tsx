@@ -21,6 +21,9 @@ import { ArrowLeft, CheckCircle2, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { FormConfig, Resource } from "@/lib/types";
 import {
+  CreateGupShupRegistrationData,
+  CreateInternshipApplication,
+  CreateRegistrationData,
   createSeminarAttendeeData,
   CreateSeminarPresenterData,
   createWebinarAttendeeData,
@@ -40,6 +43,10 @@ import { RegisterWebinarAttendee } from "@/app/actions/webinar-attendee";
 import { RegisterSeminarAttendee } from "@/app/actions/seminar-attendee";
 import { SendEmail } from "@/lib/email-sender";
 import { SubmitPresenterApplication } from "@/app/actions/presenter-seminar-application";
+import { RegisterForVisit } from "@/app/actions/industrial-visit";
+import { useSession } from "@/lib/auth-client";
+import { SubmitInternshipApplication } from "@/app/actions/internships";
+import { RegisterForGupShupSession } from "@/app/actions/gupshup";
 // Map form slugs to form config keys
 const FORM_SLUG_MAP: Record<string, keyof typeof FORM_CONFIGS> = {
   scholarship: "scholarshipForm",
@@ -50,17 +57,21 @@ const FORM_SLUG_MAP: Record<string, keyof typeof FORM_CONFIGS> = {
   "seminar-attendee": "attendeeSeminarForm",
   "webinar-attendee": "attendeeWebinarForm",
   "seminar-presenter": "presenterSeminarForm",
+  "industrial-visit-attendee": "industrialVisitForm",
+  "internship-application": "internshipApplication",
+  "gupshup-registration": "gupShupRegistration",
 };
 
-export default function FormPage({  form } : {form:string}) {
+export default function FormPage({ form }: { form: string }) {
   const router = useRouter();
-  const query =  useSearchParams()
+  const query = useSearchParams();
   const [currentSection, setCurrentSection] = useState(0);
   const [formData, setFormData] = useState<Record<string, string>>({});
   const [files, setFiles] = useState<Resource[]>([]);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const session = useSession();
 
   // Get form configuration based on slug
   const formConfigKey = FORM_SLUG_MAP[form];
@@ -411,6 +422,162 @@ export default function FormPage({  form } : {form:string}) {
             }
           }
           break;
+
+        case "industrial-visit-attendee":
+          const visitId = query.get("visitId");
+
+          if (!visitId) {
+            toast.error("Visit ID is required");
+            setIsSubmitting(false);
+            return;
+          }
+
+          const visitRegistrationData: CreateRegistrationData = {
+            userId: session.data?.user.id || "",
+            fullName: formData?.fullName ?? "",
+            email: formData?.email ?? "",
+            phone: formData?.phone ?? "",
+            cnic: formData?.cnic || undefined,
+            university: formData?.university ?? "",
+            department: formData?.department ?? "",
+            semester: formData?.semester ?? "",
+            rollNumber: formData?.rollNumber || undefined,
+            emergencyContact: formData?.emergencyContact ?? "",
+            emergencyPhone: formData?.emergencyPhone ?? "",
+            visitId: visitId,
+          };
+
+          const visitRegistrationResult = await RegisterForVisit(
+            visitRegistrationData
+          );
+          bool = visitRegistrationResult.success;
+
+          if (bool) {
+            await SendEmail(
+              visitRegistrationData.fullName,
+              visitRegistrationData.email
+            );
+            toast.success("Registration successful!");
+          } else {
+            toast.error(visitRegistrationResult.error || "Registration failed");
+          }
+          break;
+        case "internship-application":
+          const internshipId = query.get("internshipId");
+
+          if (!internshipId) {
+            toast.error("Internship ID is required");
+            setIsSubmitting(false);
+            return;
+          }
+
+          // Convert skills from comma-separated string to array
+          const skillsArray = formData.skills
+            ? formData.skills
+                .split(",")
+                .map((skill) => skill.trim())
+                .filter(Boolean)
+            : [];
+
+          const internshipApplicationData: CreateInternshipApplication = {
+            fullName: formData.fullName ?? "",
+            email: formData.email ?? "",
+            phone: formData.phone ?? "",
+            cnic: formData.cnic || null,
+            university: formData.university ?? "",
+            department: formData.department ?? "",
+            semester: formData.semester ?? "",
+            cgpa: formData.cgpa ?? "",
+            expectedGraduation: formData.expectedGraduation ?? "",
+            coverLetter: formData.coverLetter ?? "",
+            linkedIn: formData.linkedIn || null,
+            portfolio: formData.portfolio || null,
+            skills: skillsArray,
+            previousExperience: formData.previousExperience || null,
+            applicationStatus: "submitted",
+            notes: null,
+            internshipId: internshipId,
+          };
+
+          // Get the resume file from files array
+          const resumeFile = files.find(
+            (f) =>
+              f.name.toLowerCase().includes("resume") ||
+              f.name.toLowerCase().includes("cv")
+          );
+
+          if (!resumeFile) {
+            toast.error("Resume is required");
+            setIsSubmitting(false);
+            return;
+          }
+
+          const internshipResult = await SubmitInternshipApplication(
+            internshipApplicationData,
+            resumeFile
+          );
+
+          bool = internshipResult.success;
+
+          if (bool) {
+            await SendEmail(
+              internshipApplicationData.fullName,
+              internshipApplicationData.email
+            );
+            toast.success("Application submitted successfully!");
+            setIsSuccess(true);
+          } else {
+            toast.error(
+              internshipResult.error || "Failed to submit application"
+            );
+          }
+          return;
+
+        case "gupshup-registration":
+          const sessionId = query.get("sessionId");
+
+          if (!sessionId) {
+            toast.error("Session ID is required");
+            setIsSubmitting(false);
+            return;
+          }
+
+          const gupshupRegistrationData: CreateGupShupRegistrationData = {
+            fullName: formData.fullName ?? "",
+            email: formData.email ?? "",
+            phone: formData.phone || null,
+            organization: formData.organization || null,
+            designation: formData.designation || null,
+            whyAttending: formData.whyAttending || null,
+            questionsForSpeaker: formData.questionsForSpeaker || null,
+            sessionId: sessionId,
+            userId: session.data?.user.id || "",
+          };
+
+          const gupshupResult = await RegisterForGupShupSession(
+            gupshupRegistrationData
+          );
+
+          bool = gupshupResult.success;
+
+          if (bool) {
+            await SendEmail(
+              gupshupRegistrationData.fullName,
+              gupshupRegistrationData.email
+            );
+
+            if (gupshupResult.data?.registrationStatus === "waitlist") {
+              toast.info(
+                "You've been added to the waitlist. We'll notify you if a spot opens up."
+              );
+            } else {
+              toast.success("Registration successful!");
+            }
+            setIsSuccess(true);
+          } else {
+            toast.error(gupshupResult.error || "Registration failed");
+          }
+          return;
       }
       if (bool) {
         toast("Application submitted successfully");

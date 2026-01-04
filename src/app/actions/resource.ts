@@ -104,6 +104,7 @@ export async function addVideo(
       newsUpdateId: null,
       webinarId: null,
       seminarId: null,
+      industrialVisitId: null
     };
 
     switch (type) {
@@ -156,6 +157,8 @@ export async function addImage(
       remembranceId: null,
       webinarId: null,
       seminarId: null,
+      industrialVisitId: null,
+      gupshupId: ""
     };
     switch (type) {
       case "team-member":

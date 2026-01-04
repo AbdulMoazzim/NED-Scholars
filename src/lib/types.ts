@@ -158,13 +158,16 @@ interface resourceData {
 export interface imageData extends resourceData {
    seminarId: null | string;
   webinarId: null | string;
+  industrialVisitId: null | string;
   remembranceId: null | string;
+  gupshupId: string;
   public_id: string;
   alt: string | null; // Changed from string to string | null
 }
 
 export interface videoData extends resourceData {
    seminarId: null | string;
+   industrialVisitId : null | string;
   webinarId: null | string;
   public_id: string;
   title: string | null;
@@ -177,6 +180,7 @@ export interface fileData {
   url: string;
   scholarshipResourceId: null | string;
   transparencyResourceId: null | string;
+  resumeId: string
 }
 
 export type SuccessStoriesData = Awaited<

@@ -143,6 +143,7 @@ export async function GetUpcomingSeminars() {
         attendees: true,
         presenters: true,
         images: true,
+        videos: true,
       },
       orderBy: { date: "asc" },
     });

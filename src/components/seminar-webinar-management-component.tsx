@@ -49,7 +49,7 @@ import { CreateWebinar, DeleteWebinar, GetAllWebinars, UpdateWebinar } from "@/a
 import { UpdateWebinarAttendeeStatus } from "@/app/actions/webinar-attendee";
 import { toast } from "sonner";
 import { UpdateSeminarAttendeeStatus } from "@/app/actions/seminar-attendee";
-import { EventStatus, PresenterSeminar, Seminar, Webinar } from "@/lib/form-types";
+import {  PresenterSeminar, Seminar, Webinar } from "@/lib/form-types";
 import { Resource } from "@/lib/types";
 
 type EditMode = {
@@ -86,7 +86,7 @@ export default function EventManagementDashboard() {
     maxCapacity: "",
     virtualCapacity: "",
     physicalCapacity: "",
-    status: "upcoming" as EventStatus,
+    status: "upcoming",
   });
 
   // Fetch data on mount
@@ -475,7 +475,7 @@ export default function EventManagementDashboard() {
     }
   };
 
-  const getStatusColor = (status: EventStatus) => {
+  const getStatusColor = (status: string) => {
     switch (status) {
       case "upcoming":
         return "bg-[#1164A3] text-white";
@@ -632,7 +632,7 @@ export default function EventManagementDashboard() {
 
                   <div>
                     <Label className="pb-2">Status</Label>
-                    <Select value={formData.status} onValueChange={(value: EventStatus) => setFormData({ ...formData, status: value })}>
+                    <Select value={formData.status} onValueChange={(value: string) => setFormData({ ...formData, status: value })}>
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>

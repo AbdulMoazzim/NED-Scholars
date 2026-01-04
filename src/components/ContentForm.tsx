@@ -30,6 +30,11 @@ import { Transparency } from "@/lib/form-types";
 import { CreateTransparency } from "@/app/actions/transparency";
 import FormResponsesViewer from "./form-data-component";
 import EventManagementDashboard from "./seminar-webinar-management-component";
+import IndustrialVisitsManagement from "./industrial-visit-management";
+import InternshipManagement from "./internship-management";
+import GupShupManagement from "./gupshup-management";
+import ELearningPage from "@/app/events/e-learning/page";
+import CourseManagement from "./elearning-management";
 
 export const ContentForm = ({
   config,
@@ -79,7 +84,6 @@ export const ContentForm = ({
         }
       }
     });
-    console.log(errors);
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -281,7 +285,11 @@ export const ContentForm = ({
     <>
       {activeTab === "form-responses" ? (
         <FormResponsesViewer />
-      ) : activeTab === "sessions" ? <EventManagementDashboard /> : (
+      ) : activeTab === "sessions" ? <EventManagementDashboard /> : 
+       activeTab === "internships" ? <InternshipManagement /> : 
+       activeTab === "gupshup" ? <GupShupManagement /> : 
+       activeTab === "elearning" ? <CourseManagement /> : 
+        activeTab === "industrial-visits" ? <IndustrialVisitsManagement /> : (
         <div className="p-4 lg:p-8 pt-[60px]">
           {/* Header */}
           <div className="bg-white rounded-2xl shadow-lg p-8 mb-8 border border-[#82B4CC]/20">

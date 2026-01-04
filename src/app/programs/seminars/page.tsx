@@ -35,12 +35,18 @@ import { useRouter } from "next/navigation";
 import { GetUpcomingSeminars, GetAllSeminars } from "@/app/actions/seminar";
 import { Seminar } from "@/lib/form-types";
 import { toast } from "sonner";
+import Image from "next/image";
 
 export default function SeminarSeriesNewPage() {
   const router = useRouter();
   const [upcomingSeminars, setUpcomingSeminars] = useState<Seminar[]>([]);
   const [previousSeminars, setPreviousSeminars] = useState<Seminar[]>([]);
   const [loading, setLoading] = useState(true);
+  const [viewMoreData, setviewMoreData] = useState(6);
+
+  const handleViewButton = (()=> {
+    setviewMoreData(previousSeminars.length);
+  })
 
   useEffect(() => {
     fetchSeminars();
@@ -396,7 +402,7 @@ export default function SeminarSeriesNewPage() {
       </section>
 
       {/* Upcoming Seminars */}
-      <section className="py-20 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
+       <section className="py-20 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
@@ -430,31 +436,53 @@ export default function SeminarSeriesNewPage() {
                 {upcomingSeminars.map((seminar, index) => (
                   <Card
                     key={seminar.id}
-                    className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
+                    className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300 cursor-pointer overflow-hidden group"
+                    onClick={() => router.push(`/seminars/${seminar.id}`)}
                   >
-                    <CardContent className="p-8">
-                      <div className="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-6">
-                        <div
-                          className={`w-20 h-20 bg-gradient-to-r ${getSeminarColor(index)} rounded-2xl flex items-center justify-center text-white flex-shrink-0`}
-                        >
-                          <Users className="w-10 h-10" />
-                        </div>
-                        <div className="flex-1">
-                          <div className="flex flex-wrap items-center gap-2 mb-2">
-                            <Badge className="bg-[#82B4CC] text-white">
-                              {seminar.location}
-                            </Badge>
-                            <Badge className="bg-[#68B9C4] text-white">
-                              {seminar.status}
-                            </Badge>
+                    <CardContent className="p-0">
+                      <div className="flex flex-col md:flex-row">
+                        {/* Image Section */}
+                        {seminar.images && seminar.images.length > 0 ? (
+                          <div className="relative w-full md:w-64 h-48 md:h-auto overflow-hidden bg-gradient-to-br from-[#1164A3]/20 to-[#68B9C4]/20 flex-shrink-0">
+                            <Image
+                              src={seminar.images[0].url}
+                              alt={seminar.images[0].alt || seminar.title}
+                              fill
+                              className="object-cover group-hover:scale-110 transition-transform duration-500"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                            <div className="absolute top-3 left-3 flex flex-wrap gap-2">
+                              <Badge className="bg-black/70 text-white border-0">
+                                {seminar.location}
+                              </Badge>
+                              <Badge className="bg-black/70 text-white border-0">
+                                {seminar.status}
+                              </Badge>
+                            </div>
                           </div>
-                          <h3 className="text-xl font-bold text-gray-800 mb-2">
+                        ) : (
+                          <div className={`relative w-full md:w-64 h-48 md:h-auto bg-gradient-to-r ${getSeminarColor(index)} flex items-center justify-center flex-shrink-0`}>
+                            <Users className="w-16 h-16 text-white opacity-30" />
+                            <div className="absolute top-3 left-3 flex flex-wrap gap-2">
+                              <Badge className="bg-white/20 text-white border-white/30">
+                                {seminar.location}
+                              </Badge>
+                              <Badge className="bg-white/20 text-white border-white/30">
+                                {seminar.status}
+                              </Badge>
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Content Section */}
+                        <div className="flex-1 p-8">
+                          <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-[#1164A3] transition-colors">
                             {seminar.title}
                           </h3>
                           <p className="text-gray-600 mb-3 line-clamp-2">
                             {seminar.description}
                           </p>
-                          <div className="flex flex-wrap gap-4 text-sm text-gray-600">
+                          <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-4">
                             <span className="flex items-center">
                               <Calendar className="w-4 h-4 mr-1" />
                               {formatDate(seminar.date)}
@@ -475,16 +503,17 @@ export default function SeminarSeriesNewPage() {
                               </span>
                             )}
                           </div>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              router.push(`/register/seminar-attendee?seminarId=${seminar.id}`);
+                            }}
+                            className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 flex items-center"
+                          >
+                            Register Now
+                            <ArrowRight className="w-4 h-4 ml-2" />
+                          </button>
                         </div>
-                        <button
-                          onClick={() => {
-                            router.push(`/register/seminar-attendee?seminarId=${seminar.id}`);
-                          }}
-                          className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 flex items-center whitespace-nowrap"
-                        >
-                          Register Now
-                          <ArrowRight className="w-4 h-4 ml-2" />
-                        </button>
                       </div>
                     </CardContent>
                   </Card>
@@ -612,27 +641,48 @@ export default function SeminarSeriesNewPage() {
             ) : (
               <>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {previousSeminars.slice(0, 6).map((seminar) => (
+                  {previousSeminars.slice(0, viewMoreData).map((seminar) => (
                     <Card
                       key={seminar.id}
                       className="hover:shadow-2xl hover:border-[#1164A3] transition-all duration-300 cursor-pointer group overflow-hidden"
+                      onClick={() => router.push(`/programs/seminars/${seminar.id}`)}
                     >
-                      <div className="relative overflow-hidden bg-gradient-to-br from-[#1164A3]/20 to-[#68B9C4]/20 h-48 flex items-center justify-center">
-                        <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors duration-300" />
-                        <Users className="w-16 h-16 text-[#1164A3] opacity-50" />
-                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <div className="w-16 h-16 bg-[#1164A3] rounded-full flex items-center justify-center">
-                            <Play className="w-8 h-8 text-white ml-1" />
+                      {/* Image or gradient background */}
+                      {seminar.images && seminar.images.length > 0 ? (
+                        <div className="relative overflow-hidden h-48">
+                          <Image
+                            src={seminar.images[0].url}
+                            alt={seminar.images[0].alt || seminar.title}
+                            fill
+                            className="object-cover group-hover:scale-110 transition-transform duration-500"
+                          />
+                          <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors duration-300" />
+                          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                           </div>
+                          <Badge className="absolute top-3 right-3 bg-black/70 text-white border-0">
+                            <Users className="w-3 h-3 mr-1" />
+                            {seminar.attendees.length}
+                          </Badge>
+                          <Badge className="absolute bottom-3 right-3 bg-black/70 text-white border-0">
+                            {calculateDuration(seminar.date, seminar.endDate || undefined)}
+                          </Badge>
                         </div>
-                        <Badge className="absolute top-3 right-3 bg-black/70 text-white border-0">
-                          <Users className="w-3 h-3 mr-1" />
-                          {seminar.attendees.length}
-                        </Badge>
-                        <Badge className="absolute bottom-3 right-3 bg-black/70 text-white border-0">
-                          {calculateDuration(seminar.date, seminar.endDate || undefined)}
-                        </Badge>
-                      </div>
+                      ) : (
+                        <div className="relative overflow-hidden bg-gradient-to-br from-[#1164A3]/20 to-[#68B9C4]/20 h-48 flex items-center justify-center">
+                          <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors duration-300" />
+                          <Users className="w-16 h-16 text-[#1164A3] opacity-50" />
+                          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          </div>
+                          <Badge className="absolute top-3 right-3 bg-black/70 text-white border-0">
+                            <Users className="w-3 h-3 mr-1" />
+                            {seminar.attendees.length}
+                          </Badge>
+                          <Badge className="absolute bottom-3 right-3 bg-black/70 text-white border-0">
+                            {calculateDuration(seminar.date, seminar.endDate || undefined)}
+                          </Badge>
+                        </div>
+                      )}
+
                       <CardContent className="p-6">
                         <div className="flex items-center justify-between mb-2">
                           <Badge className="bg-[#82B4CC] text-white">
@@ -663,10 +713,10 @@ export default function SeminarSeriesNewPage() {
                   ))}
                 </div>
 
-                {previousSeminars.length > 6 && (
+                {previousSeminars.length > 6 && viewMoreData > 6 && (
                   <div className="text-center mt-12">
                     <button
-                      onClick={() => router.push("/seminars/archive")}
+                      onClick={() => handleViewButton()}
                       className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-10 py-4 rounded-full font-bold text-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 inline-flex items-center"
                     >
                       <Video className="w-6 h-6 mr-3" />
@@ -887,17 +937,6 @@ export default function SeminarSeriesNewPage() {
                 </div>
 
                 <div className="space-y-4 mb-6">
-                  <div className="flex items-center space-x-3">
-                    <Mail className="w-6 h-6 text-[#1164A3]" />
-                    <div>
-                      <a
-                        href="mailto:seminars@nedscholars.org"
-                        className="text-[#1164A3] hover:underline font-bold"
-                      >
-                        seminars@nedscholars.org
-                      </a>
-                    </div>
-                  </div>
                   <div className="flex items-center space-x-3">
                     <Plane className="w-6 h-6 text-[#1164A3]" />
                     <p className="text-sm text-gray-700 font-medium">
