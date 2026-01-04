@@ -320,7 +320,188 @@ export default function IndustrialVisitsPage() {
         </div>
       </section>
 
-      {/* My Registrations Section */}
+     
+
+      {/* Overview Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <Card className="shadow-2xl mb-12 border-[#82B4CC]/20">
+              <CardContent className="p-10">
+                <div className="flex items-start space-x-6">
+                  <div className="w-16 h-16 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-2xl flex items-center justify-center text-white flex-shrink-0">
+                    <Factory className="w-8 h-8" />
+                  </div>
+                  <div className="flex-1">
+                    <h2 className="text-3xl font-bold text-gray-800 mb-6">
+                      Overview
+                    </h2>
+                    <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                      Industrial Visits are an integral part of experiential learning
+                      by NED Scholars. These visits are designed to bridge the gap
+                      between theoretical education and real-world industrial
+                      practices by exposing students to professional environments,
+                      modern technologies, and industry workflows.
+                    </p>
+                    <p className="text-lg text-gray-700 leading-relaxed">
+                      By witnessing production processes, quality control systems, and
+                      organizational structures, students gain a clearer understanding
+                      of how theoretical knowledge is applied in professional
+                      settings.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Objectives Section */}
+      <section className="py-20 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <Badge className="mb-4 text-base bg-[#68B9C4] text-white">
+                Our Mission
+              </Badge>
+              <h2 className="text-4xl font-bold text-gray-800 mb-4">
+                Objectives of Industrial Visits
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {objectives.map((objective, index) => (
+                <Card
+                  key={index}
+                  className="hover:shadow-2xl hover:border-[#1164A3] transition-all duration-300"
+                >
+                  <CardContent className="p-8 text-center">
+                    <div
+                      className={`w-20 h-20 rounded-full bg-gradient-to-r ${objective.color} flex items-center justify-center text-white mx-auto mb-6`}
+                    >
+                      {objective.icon}
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-800 mb-3">
+                      {objective.title}
+                    </h3>
+                    <p className="text-gray-600">{objective.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Learning Outcomes */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <Badge className="mb-4 text-base bg-[#1164A3] text-white">
+                What You&apos;ll Gain
+              </Badge>
+              <h2 className="text-4xl font-bold text-gray-800 mb-4">
+                Learning Outcomes
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Through Industrial Visits, students are able to develop practical
+                skills and gain real-world insights
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {learningOutcomes.map((outcome, index) => (
+                <Card
+                  key={index}
+                  className="border-[#82B4CC]/30 hover:border-[#1164A3] transition-all"
+                >
+                  <CardContent className="p-6 flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-lg bg-[#1164A3]/10 flex items-center justify-center text-[#1164A3] flex-shrink-0">
+                      {outcome.icon}
+                    </div>
+                    <p className="text-gray-700 font-medium pt-2">{outcome.text}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+
+      {/* Industries Covered */}
+      <section className="py-20 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <Badge className="mb-4 text-base bg-[#68B9C4] text-white">
+                Diverse Opportunities
+              </Badge>
+              <h2 className="text-4xl font-bold text-gray-800 mb-4">
+                Industries Covered
+              </h2>
+              <p className="text-xl text-gray-600">
+                Our Industrial Visit program includes visits to various sectors
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {industries.map((industry, index) => (
+                <Card
+                  key={index}
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all"
+                >
+                  <CardContent className="p-6 text-center">
+                    <div
+                      className={`w-16 h-16 rounded-xl bg-gradient-to-r ${industry.color} flex items-center justify-center text-white mx-auto mb-4`}
+                    >
+                      {industry.icon}
+                    </div>
+                    <h4 className="font-semibold text-gray-800">{industry.name}</h4>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Student Benefits */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <Badge className="mb-4 text-base bg-[#1164A3] text-white">
+                Your Advantage
+              </Badge>
+              <h2 className="text-4xl font-bold text-gray-800 mb-4">
+                Student Benefits
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {benefits.map((benefit, index) => (
+                <Card
+                  key={index}
+                  className="border-[#82B4CC]/30 hover:shadow-lg transition-all"
+                >
+                  <CardContent className="p-6 flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-lg bg-[#68B9C4]/10 flex items-center justify-center text-[#68B9C4]">
+                      {benefit.icon}
+                    </div>
+                    <p className="text-gray-700 font-medium">{benefit.text}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+       {/* My Registrations Section */}
       {session && userRegistrations.length > 0 && (
         <section className="py-12 bg-gradient-to-r from-[#B0A3B3]/5 to-[#82B4CC]/5">
           <div className="container mx-auto px-4">
@@ -552,183 +733,6 @@ export default function IndustrialVisitsPage() {
           </div>
         </section>
       )}
-
-      {/* Overview Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <Card className="shadow-2xl mb-12 border-[#82B4CC]/20">
-              <CardContent className="p-10">
-                <div className="flex items-start space-x-6">
-                  <div className="w-16 h-16 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-2xl flex items-center justify-center text-white flex-shrink-0">
-                    <Factory className="w-8 h-8" />
-                  </div>
-                  <div className="flex-1">
-                    <h2 className="text-3xl font-bold text-gray-800 mb-6">
-                      Overview
-                    </h2>
-                    <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                      Industrial Visits are an integral part of experiential learning
-                      by NED Scholars. These visits are designed to bridge the gap
-                      between theoretical education and real-world industrial
-                      practices by exposing students to professional environments,
-                      modern technologies, and industry workflows.
-                    </p>
-                    <p className="text-lg text-gray-700 leading-relaxed">
-                      By witnessing production processes, quality control systems, and
-                      organizational structures, students gain a clearer understanding
-                      of how theoretical knowledge is applied in professional
-                      settings.
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Objectives Section */}
-      <section className="py-20 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <Badge className="mb-4 text-base bg-[#68B9C4] text-white">
-                Our Mission
-              </Badge>
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">
-                Objectives of Industrial Visits
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {objectives.map((objective, index) => (
-                <Card
-                  key={index}
-                  className="hover:shadow-2xl hover:border-[#1164A3] transition-all duration-300"
-                >
-                  <CardContent className="p-8 text-center">
-                    <div
-                      className={`w-20 h-20 rounded-full bg-gradient-to-r ${objective.color} flex items-center justify-center text-white mx-auto mb-6`}
-                    >
-                      {objective.icon}
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-800 mb-3">
-                      {objective.title}
-                    </h3>
-                    <p className="text-gray-600">{objective.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Learning Outcomes */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <Badge className="mb-4 text-base bg-[#1164A3] text-white">
-                What You&apos;ll Gain
-              </Badge>
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">
-                Learning Outcomes
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Through Industrial Visits, students are able to develop practical
-                skills and gain real-world insights
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {learningOutcomes.map((outcome, index) => (
-                <Card
-                  key={index}
-                  className="border-[#82B4CC]/30 hover:border-[#1164A3] transition-all"
-                >
-                  <CardContent className="p-6 flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-[#1164A3]/10 flex items-center justify-center text-[#1164A3] flex-shrink-0">
-                      {outcome.icon}
-                    </div>
-                    <p className="text-gray-700 font-medium pt-2">{outcome.text}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Industries Covered */}
-      <section className="py-20 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <Badge className="mb-4 text-base bg-[#68B9C4] text-white">
-                Diverse Opportunities
-              </Badge>
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">
-                Industries Covered
-              </h2>
-              <p className="text-xl text-gray-600">
-                Our Industrial Visit program includes visits to various sectors
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {industries.map((industry, index) => (
-                <Card
-                  key={index}
-                  className="hover:shadow-xl hover:border-[#1164A3] transition-all"
-                >
-                  <CardContent className="p-6 text-center">
-                    <div
-                      className={`w-16 h-16 rounded-xl bg-gradient-to-r ${industry.color} flex items-center justify-center text-white mx-auto mb-4`}
-                    >
-                      {industry.icon}
-                    </div>
-                    <h4 className="font-semibold text-gray-800">{industry.name}</h4>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Student Benefits */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <Badge className="mb-4 text-base bg-[#1164A3] text-white">
-                Your Advantage
-              </Badge>
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">
-                Student Benefits
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {benefits.map((benefit, index) => (
-                <Card
-                  key={index}
-                  className="border-[#82B4CC]/30 hover:shadow-lg transition-all"
-                >
-                  <CardContent className="p-6 flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-[#68B9C4]/10 flex items-center justify-center text-[#68B9C4]">
-                      {benefit.icon}
-                    </div>
-                    <p className="text-gray-700 font-medium">{benefit.text}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Upcoming Visits */}
       <section className="py-20 bg-gradient-to-r from-gray-50 to-[#82B4CC]/10">

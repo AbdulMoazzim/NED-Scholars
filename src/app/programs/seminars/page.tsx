@@ -672,13 +672,6 @@ export default function SeminarSeriesNewPage() {
                           <Users className="w-16 h-16 text-[#1164A3] opacity-50" />
                           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                           </div>
-                          <Badge className="absolute top-3 right-3 bg-black/70 text-white border-0">
-                            <Users className="w-3 h-3 mr-1" />
-                            {seminar.attendees.length}
-                          </Badge>
-                          <Badge className="absolute bottom-3 right-3 bg-black/70 text-white border-0">
-                            {calculateDuration(seminar.date, seminar.endDate || undefined)}
-                          </Badge>
                         </div>
                       )}
 

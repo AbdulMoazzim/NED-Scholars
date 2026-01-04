@@ -55,7 +55,6 @@ export default function Header() {
               setSubHeader={setSubHeader}
               subLinks={subHeader.subItems || []}
               title={subHeader.title}
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
             />
 
           {/* Mobile Header - visible only on mobile */}

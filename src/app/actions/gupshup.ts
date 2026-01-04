@@ -206,10 +206,12 @@ export async function UpdateGupShupSession(
         include: { thumbnailImage: true },
       });
       if (previousSession) {
-        await deleteImage(
-          previousSession?.thumbnailImage?.id || "",
-          previousSession.thumbnailImage?.public_id || ""
-        );
+        if (previousSession?.thumbnailImage.length > 0) {
+          await deleteImage(
+            previousSession?.thumbnailImage[0].id || "",
+            previousSession.thumbnailImage[0].public_id || ""
+          );
+        }
       }
     }
     const session = await prisma.gupShupSession.update({

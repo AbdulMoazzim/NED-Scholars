@@ -45,6 +45,8 @@ import {
   Phone,
   User,
   Sparkles,
+  Edit,
+  X,
 } from "lucide-react";
 import {
   GetCourseBySlug,
@@ -97,6 +99,7 @@ export default function CourseDetailsPage({
   const [tempRating, setTempRating] = useState(0);
   const [reviewText, setReviewText] = useState("");
   const [submittingReview, setSubmittingReview] = useState(false);
+  const [isEditingReview, setIsEditingReview] = useState(false);
 
   // Fetch user enrollment
   useEffect(() => {
@@ -115,13 +118,27 @@ export default function CourseDetailsPage({
           (e) => e.courseId === course.id
         );
         if (enrollment) {
-          setEnrolling(session.data?.user.id === enrollment.userId)
+          setEnrolling(session.data?.user.id === enrollment.userId);
           setUserEnrollment(enrollment);
         }
       }
     } catch (error) {
       console.error("Error fetching enrollment:", error);
     }
+  };
+
+  const handleEditReview = () => {
+    if (userEnrollment) {
+      setTempRating(userEnrollment.rating || 0);
+      setReviewText(userEnrollment.review || "");
+      setIsEditingReview(true);
+    }
+  };
+
+  const handleCancelEdit = () => {
+    setTempRating(0);
+    setReviewText("");
+    setIsEditingReview(false);
   };
 
   const handleSubmitReview = async () => {
@@ -136,7 +153,12 @@ export default function CourseDetailsPage({
       );
 
       if (result.success) {
-        toast.success("Review submitted successfully!");
+        toast.success(
+          isEditingReview
+            ? "Review updated successfully!"
+            : "Review submitted successfully!"
+        );
+        setIsEditingReview(false);
         fetchUserEnrollment();
         setTempRating(0);
         setReviewText("");
@@ -157,10 +179,13 @@ export default function CourseDetailsPage({
     }
     fetchCourse();
   }, [pageParams?.elearning]);
+
   const fetchCourse = async () => {
     setLoading(true);
     try {
-      const result = await GetCourseBySlug(pageParams?.elearning as string || "");
+      const result = await GetCourseBySlug(
+        (pageParams?.elearning as string) || ""
+      );
       if (result.success && result.data) {
         setCourse(result.data as Course);
       } else {
@@ -204,6 +229,7 @@ export default function CourseDetailsPage({
           organization: "",
           department: "",
         });
+        fetchUserEnrollment();
       } else {
         toast.error(result.error || "Failed to enroll");
       }
@@ -346,265 +372,257 @@ export default function CourseDetailsPage({
               </div>
 
               {/* Enrollment Card */}
+              <div className="lg:col-span-1">
+                <Card className="bg-white shadow-2xl">
+                  <CardContent className="p-6">
+                    <div className="text-center mb-6">
+                      {course.isFree ? (
+                        <div className="text-4xl font-bold text-[#1164A3] mb-2">
+                          Free
+                        </div>
+                      ) : (
+                        <div className="text-4xl font-bold text-[#1164A3] mb-2">
+                          {course.currency} {course.price}
+                        </div>
+                      )}
+                      <p className="text-gray-600">Full lifetime access</p>
+                    </div>
 
-              
-                <div className="lg:col-span-1">
-                  <Card className="bg-white shadow-2xl">
-                    <CardContent className="p-6">
-                      <div className="text-center mb-6">
-                        {course.isFree ? (
-                          <div className="text-4xl font-bold text-[#1164A3] mb-2">
-                            Free
-                          </div>
-                        ) : (
-                          <div className="text-4xl font-bold text-[#1164A3] mb-2">
-                            {course.currency} {course.price}
-                          </div>
-                        )}
-                        <p className="text-gray-600">Full lifetime access</p>
-                      </div>
-
-                      <Dialog
-                        open={showEnrollDialog}
-                        onOpenChange={setShowEnrollDialog}
-                      >
-                        <DialogTrigger asChild disabled={enrolling}>
-                          <Button className="w-full bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white text-lg py-6">
-                            <GraduationCap className="w-5 h-5 mr-2" />
-                            {enrolling ? `Enrolled` :`Enroll Now`}
-                          </Button>
-                        </DialogTrigger>
-                        <DialogContent className="max-w-md">
-                          <DialogHeader>
-                            <DialogTitle>Enroll in Course</DialogTitle>
-                            <DialogDescription>
-                              Please fill in your details to enroll in this
-                              course
-                            </DialogDescription>
-                          </DialogHeader>
-                          <div className="space-y-4 mt-4">
-                            <div>
-                              <Label className="pb-2" htmlFor="fullName">
-                                Full Name{" "}
-                                <span className="text-red-500">*</span>
-                              </Label>
-                              <div className="relative">
-                                <User className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
-                                <Input
-                                  id="fullName"
-                                  placeholder="John Doe"
-                                  value={formData.fullName}
-                                  onChange={(e) =>
-                                    setFormData({
-                                      ...formData,
-                                      fullName: e.target.value,
-                                    })
-                                  }
-                                  className="pl-10"
-                                />
-                              </div>
-                            </div>
-                            <div>
-                              <Label className="pb-2" htmlFor="email">
-                                Email <span className="text-red-500">*</span>
-                              </Label>
-                              <div className="relative">
-                                <Mail className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
-                                <Input
-                                  id="email"
-                                  type="email"
-                                  placeholder="john@example.com"
-                                  value={formData.email}
-                                  onChange={(e) =>
-                                    setFormData({
-                                      ...formData,
-                                      email: e.target.value,
-                                    })
-                                  }
-                                  className="pl-10"
-                                />
-                              </div>
-                            </div>
-                            <div>
-                              <Label className="pb-2" htmlFor="phone">
-                                Phone
-                              </Label>
-                              <div className="relative">
-                                <Phone className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
-                                <Input
-                                  id="phone"
-                                  placeholder="+92 300 1234567"
-                                  value={formData.phone}
-                                  onChange={(e) =>
-                                    setFormData({
-                                      ...formData,
-                                      phone: e.target.value,
-                                    })
-                                  }
-                                  className="pl-10"
-                                />
-                              </div>
-                            </div>
-                            <div>
-                              <Label className="pb-2" htmlFor="currentStatus">
-                                Current Status{" "}
-                                <span className="text-red-500">*</span>
-                              </Label>
-                              <Select
-                                value={formData.currentStatus}
-                                onValueChange={(value) =>
-                                  setFormData({
-                                    ...formData,
-                                    currentStatus: value,
-                                  })
-                                }
-                              >
-                                <SelectTrigger>
-                                  <SelectValue placeholder="Select your status" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                  <SelectItem value="student">
-                                    Student
-                                  </SelectItem>
-                                  <SelectItem value="professional">
-                                    Professional
-                                  </SelectItem>
-                                  <SelectItem value="faculty">
-                                    Faculty
-                                  </SelectItem>
-                                  <SelectItem value="researcher">
-                                    Researcher
-                                  </SelectItem>
-                                  <SelectItem value="other">Other</SelectItem>
-                                </SelectContent>
-                              </Select>
-                            </div>
-                            <div>
-                              <Label className="pb-2" htmlFor="organization">
-                                Organization
-                              </Label>
-                              <div className="relative">
-                                <Building className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
-                                <Input
-                                  id="organization"
-                                  placeholder="Your university or company"
-                                  value={formData.organization}
-                                  onChange={(e) =>
-                                    setFormData({
-                                      ...formData,
-                                      organization: e.target.value,
-                                    })
-                                  }
-                                  className="pl-10"
-                                />
-                              </div>
-                            </div>
-                            <div>
-                              <Label className="pb-2" htmlFor="department">
-                                Department
-                              </Label>
+                    <Dialog
+                      open={showEnrollDialog}
+                      onOpenChange={setShowEnrollDialog}
+                    >
+                      <DialogTrigger asChild disabled={enrolling}>
+                        <Button
+                          disabled={enrolling}
+                          className="w-full bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white text-lg py-6"
+                        >
+                          <GraduationCap className="w-5 h-5 mr-2" />
+                          {enrolling ? `Enrolled` : `Enroll Now`}
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-md">
+                        <DialogHeader>
+                          <DialogTitle>Enroll in Course</DialogTitle>
+                          <DialogDescription>
+                            Please fill in your details to enroll in this course
+                          </DialogDescription>
+                        </DialogHeader>
+                        <div className="space-y-4 mt-4">
+                          <div>
+                            <Label htmlFor="fullName">
+                              Full Name <span className="text-red-500">*</span>
+                            </Label>
+                            <div className="relative">
+                              <User className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
                               <Input
-                                id="department"
-                                placeholder="e.g., Computer Science"
-                                value={formData.department}
+                                id="fullName"
+                                placeholder="John Doe"
+                                value={formData.fullName}
                                 onChange={(e) =>
                                   setFormData({
                                     ...formData,
-                                    department: e.target.value,
+                                    fullName: e.target.value,
                                   })
                                 }
+                                className="pl-10"
                               />
                             </div>
-                            <Button
-                              onClick={handleEnrollment}
-                              disabled={enrolling}
-                              className="w-full bg-gradient-to-r from-[#1164A3] to-[#68B9C4]"
-                            >
-                              {enrolling ? (
-                                <>
-                                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                                  Enrolling...
-                                </>
-                              ) : (
-                                <>
-                                  <CheckCircle className="w-4 h-4 mr-2" />
-                                  Complete Enrollment
-                                </>
-                              )}
-                            </Button>
                           </div>
-                        </DialogContent>
-                      </Dialog>
+                          <div>
+                            <Label htmlFor="email">
+                              Email <span className="text-red-500">*</span>
+                            </Label>
+                            <div className="relative">
+                              <Mail className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
+                              <Input
+                                id="email"
+                                type="email"
+                                placeholder="john@example.com"
+                                value={formData.email}
+                                onChange={(e) =>
+                                  setFormData({
+                                    ...formData,
+                                    email: e.target.value,
+                                  })
+                                }
+                                className="pl-10"
+                              />
+                            </div>
+                          </div>
+                          <div>
+                            <Label htmlFor="phone">Phone</Label>
+                            <div className="relative">
+                              <Phone className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
+                              <Input
+                                id="phone"
+                                placeholder="+92 300 1234567"
+                                value={formData.phone}
+                                onChange={(e) =>
+                                  setFormData({
+                                    ...formData,
+                                    phone: e.target.value,
+                                  })
+                                }
+                                className="pl-10"
+                              />
+                            </div>
+                          </div>
+                          <div>
+                            <Label htmlFor="currentStatus">
+                              Current Status{" "}
+                              <span className="text-red-500">*</span>
+                            </Label>
+                            <Select
+                              value={formData.currentStatus}
+                              onValueChange={(value) =>
+                                setFormData({
+                                  ...formData,
+                                  currentStatus: value,
+                                })
+                              }
+                            >
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select your status" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="student">Student</SelectItem>
+                                <SelectItem value="professional">
+                                  Professional
+                                </SelectItem>
+                                <SelectItem value="faculty">Faculty</SelectItem>
+                                <SelectItem value="researcher">
+                                  Researcher
+                                </SelectItem>
+                                <SelectItem value="other">Other</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+                          <div>
+                            <Label htmlFor="organization">Organization</Label>
+                            <div className="relative">
+                              <Building className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
+                              <Input
+                                id="organization"
+                                placeholder="Your university or company"
+                                value={formData.organization}
+                                onChange={(e) =>
+                                  setFormData({
+                                    ...formData,
+                                    organization: e.target.value,
+                                  })
+                                }
+                                className="pl-10"
+                              />
+                            </div>
+                          </div>
+                          <div>
+                            <Label htmlFor="department">Department</Label>
+                            <Input
+                              id="department"
+                              placeholder="e.g., Computer Science"
+                              value={formData.department}
+                              onChange={(e) =>
+                                setFormData({
+                                  ...formData,
+                                  department: e.target.value,
+                                })
+                              }
+                            />
+                          </div>
+                          <Button
+                            onClick={handleEnrollment}
+                            disabled={enrolling}
+                            className="w-full bg-gradient-to-r from-[#1164A3] to-[#68B9C4]"
+                          >
+                            {enrolling ? (
+                              <>
+                                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                                Enrolling...
+                              </>
+                            ) : (
+                              <>
+                                <CheckCircle className="w-4 h-4 mr-2" />
+                                Complete Enrollment
+                              </>
+                            )}
+                          </Button>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
 
-                      {course.youtubeUrl && (
-                        <Button
-                          variant="outline"
-                          className="w-full mt-3 border-red-500 text-red-500 hover:bg-red-50"
-                          onClick={() =>
-                            window.open(course.youtubeUrl || "", "_blank")
-                          }
-                        >
-                          <Youtube className="w-4 h-4 mr-2" />
-                          Watch on YouTube
-                        </Button>
-                      )}
-                      {course.thumbnailUrl && (
+                    {course.youtubeUrl && (
+                      <Button
+                        variant="outline"
+                        className="w-full mt-3 border-red-500 text-red-500 hover:bg-red-50"
+                        onClick={() =>
+                          window.open(course.youtubeUrl || "", "_blank")
+                        }
+                      >
+                        <Youtube className="w-4 h-4 mr-2" />
+                        Watch on YouTube
+                      </Button>
+                    )}
+                    {course.thumbnailUrl && (
+                      <div className="w-full mt-3 relative h-48">
                         <Image
                           fill
                           alt="thumbnail"
                           src={course.thumbnailUrl}
-                          className="w-full mt-3 border-red-500 text-red-500 hover:bg-red-50"
+                          className="object-cover rounded-lg"
                         />
-                      )}
-                      {course.videoUrl && (
-                        <Button
-                          variant="outline"
-                          className="w-full mt-3 border-red-500 text-red-500 hover:bg-red-50"
-                          onClick={() =>
-                            window.open(course.videoUrl || "", "_blank")
-                          }
-                        >
-                          <Youtube className="w-4 h-4 mr-2" />
-                          Watch Now
-                        </Button>
-                      )}
-
-                      <Separator className="my-6" />
-
-                      <div className="space-y-3 text-sm">
-                        <div className="flex items-center gap-2 text-gray-700">
-                          <CheckCircle className="w-5 h-5 text-[#68B9C4]" />
-                          <span>Lifetime access</span>
-                        </div>
-                        <div className="flex items-center gap-2 text-gray-700">
-                          <CheckCircle className="w-5 h-5 text-[#68B9C4]" />
-                          <span>Certificate of completion</span>
-                        </div>
-                        <div className="flex items-center gap-2 text-gray-700">
-                          <CheckCircle className="w-5 h-5 text-[#68B9C4]" />
-                          <span>Self-paced learning</span>
-                        </div>
-                        {course.modules && (
-                          <div className="flex items-center gap-2 text-gray-700">
-                            <CheckCircle className="w-5 h-5 text-[#68B9C4]" />
-                            <span>{course.modules} modules</span>
-                          </div>
-                        )}
-                        {course.lessons && (
-                          <div className="flex items-center gap-2 text-gray-700">
-                            <CheckCircle className="w-5 h-5 text-[#68B9C4]" />
-                            <span>{course.lessons} lessons</span>
-                          </div>
-                        )}
                       </div>
-                    </CardContent>
-                  </Card>
-                </div>
+                    )}
+                    {course.videoUrl && (
+                      <Button
+                        variant="outline"
+                        className="w-full mt-3 border-red-500 text-red-500 hover:bg-red-50"
+                        onClick={() =>
+                          window.open(course.videoUrl || "", "_blank")
+                        }
+                      >
+                        <Youtube className="w-4 h-4 mr-2" />
+                        Watch Now
+                      </Button>
+                    )}
+
+                    <Separator className="my-6" />
+
+                    <div className="space-y-3 text-sm">
+                      <div className="flex items-center gap-2 text-gray-700">
+                        <CheckCircle className="w-5 h-5 text-[#68B9C4]" />
+                        <span>Lifetime access</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-gray-700">
+                        <CheckCircle className="w-5 h-5 text-[#68B9C4]" />
+                        <span>Certificate of completion</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-gray-700">
+                        <CheckCircle className="w-5 h-5 text-[#68B9C4]" />
+                        <span>Self-paced learning</span>
+                      </div>
+                      {course.modules && (
+                        <div className="flex items-center gap-2 text-gray-700">
+                          <CheckCircle className="w-5 h-5 text-[#68B9C4]" />
+                          <span>{course.modules} modules</span>
+                        </div>
+                      )}
+                      {course.lessons && (
+                        <div className="flex items-center gap-2 text-gray-700">
+                          <CheckCircle className="w-5 h-5 text-[#68B9C4]" />
+                          <span>{course.lessons} lessons</span>
+                        </div>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
+      {/* My Enrollment Section */}
       {session && userEnrollment && (
         <section className="py-12 bg-gradient-to-r from-[#B0A3B3]/5 to-[#82B4CC]/5">
           <div className="container mx-auto px-4">
@@ -619,9 +637,7 @@ export default function CourseDetailsPage({
                 <CardContent className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
-                      <Label className="pb-2 text-sm text-gray-600">
-                        Status
-                      </Label>
+                      <Label className="text-sm text-gray-600">Status</Label>
                       <Badge
                         className={getEnrollmentStatusColor(
                           userEnrollment.status
@@ -631,7 +647,7 @@ export default function CourseDetailsPage({
                       </Badge>
                     </div>
                     <div>
-                      <Label className="pb-2 text-sm text-gray-600">
+                      <Label className="text-sm text-gray-600">
                         Enrolled Date
                       </Label>
                       <p className="font-medium">
@@ -640,9 +656,9 @@ export default function CourseDetailsPage({
                         ).toLocaleDateString()}
                       </p>
                     </div>
-                    {userEnrollment.rating && (
+                    {userEnrollment.rating && !isEditingReview && (
                       <div>
-                        <Label className="pb-2 text-sm text-gray-600">
+                        <Label className="text-sm text-gray-600">
                           Your Rating
                         </Label>
                         <div className="flex items-center gap-1">
@@ -661,15 +677,29 @@ export default function CourseDetailsPage({
                     )}
                   </div>
 
-                  {/* Feedback Form */}
-                  {!userEnrollment.rating && (
+                  {/* Feedback Form (for new reviews or editing) */}
+                  {(!userEnrollment.rating || isEditingReview) && (
                     <div className="border-t pt-6">
-                      <h3 className="text-lg font-semibold mb-4">
-                        Rate This Course
-                      </h3>
+                      <div className="flex items-center justify-between mb-4">
+                        <h3 className="text-lg font-semibold">
+                          {isEditingReview
+                            ? "Edit Your Review"
+                            : "Rate This Course"}
+                        </h3>
+                        {isEditingReview && (
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={handleCancelEdit}
+                          >
+                            <X className="w-4 h-4 mr-2" />
+                            Cancel
+                          </Button>
+                        )}
+                      </div>
                       <div className="space-y-4">
                         <div>
-                          <Label className="pb-2">Rating</Label>
+                          <Label>Rating</Label>
                           <div className="flex items-center gap-2 mt-2">
                             {[1, 2, 3, 4, 5].map((star) => (
                               <button
@@ -705,12 +735,16 @@ export default function CourseDetailsPage({
                           {submittingReview ? (
                             <>
                               <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                              Submitting...
+                              {isEditingReview
+                                ? "Updating..."
+                                : "Submitting..."}
                             </>
                           ) : (
                             <>
                               <CheckCircle className="w-4 h-4 mr-2" />
-                              Submit Review
+                              {isEditingReview
+                                ? "Update Review"
+                                : "Submit Review"}
                             </>
                           )}
                         </Button>
@@ -718,16 +752,41 @@ export default function CourseDetailsPage({
                     </div>
                   )}
 
-                  {/* Display existing review */}
-                  {userEnrollment.rating && userEnrollment.review && (
+                  {/* Display existing review (when not editing) */}
+                  {userEnrollment.rating && !isEditingReview && (
                     <div className="border-t pt-6">
-                      <h3 className="text-lg font-semibold mb-4">
-                        Your Review
-                      </h3>
+                      <div className="flex items-center justify-between mb-4">
+                        <h3 className="text-lg font-semibold">Your Review</h3>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={handleEditReview}
+                        >
+                          <Edit className="w-4 h-4 mr-2" />
+                          Edit Review
+                        </Button>
+                      </div>
                       <div className="bg-gray-50 p-4 rounded-lg">
-                        <p className="text-gray-700 italic mb-2">
-                          &quot;{userEnrollment.review}&quot;
-                        </p>
+                        <div className="flex items-center gap-2 mb-2">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <Star
+                              key={star}
+                              className={`w-5 h-5 ${
+                                star <= (userEnrollment.rating || 0)
+                                  ? "fill-yellow-400 text-yellow-400"
+                                  : "text-gray-300"
+                              }`}
+                            />
+                          ))}
+                          <span className="ml-2 font-semibold">
+                            {userEnrollment.rating}/5
+                          </span>
+                        </div>
+                        {userEnrollment.review && (
+                          <p className="text-gray-700 italic mb-2">
+                            &quot;{userEnrollment.review}&quot;
+                          </p>
+                        )}
                         {userEnrollment.reviewDate && (
                           <p className="text-xs text-gray-500">
                             Reviewed on{" "}

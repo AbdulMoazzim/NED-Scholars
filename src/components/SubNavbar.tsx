@@ -2,32 +2,29 @@ import Link from "next/link";
 import {
   Card,
   CardContent,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { Button } from "./ui/button";
 import { SubLinkItem } from "@/lib/types";
-import { ScholarshipData } from "@/data/LinksData";
+import { ScholarshipData, NavDescriptions } from "@/data/LinksData";
 
 export default function SubNavbar({
   setSubHeader,
   subLinks,
   title,
-  description,
 }: {
   subLinks: SubLinkItem[];
   title: string;
-  description: string;
   setSubHeader: (item: SubLinkItem) => void;
 }) {
   const subTitle = subLinks.length > 0 ? subLinks[0].title : "";
+  const description = NavDescriptions[title] || "Explore our offerings and discover how we can support your educational journey.";
   
   return (
     <>
       {title && (
         <div
-          className={`w-screen hidden lg:flex justify-between items-center text-sm text-gray-600 py-9 absolute z-50 mt-[460] h-[400px] bg-white `}
+          className={`w-screen hidden lg:flex justify-between items-center text-sm text-gray-600 py-9 absolute z-50 mt-[460] h-[400px] bg-white shadow-lg`}
           onMouseEnter={() => {
             setSubHeader({ title: title, href: "", subItems: subLinks });
           }}
@@ -41,13 +38,12 @@ export default function SubNavbar({
               {subLinks.map((link, index) => {
                 return (
                   <Link key={index} href={link.href} className="text-[16px]">
-                  <div
-                    className="w-[300px] py-2 px-3 hover:bg-[#F5F5F5] rounded"
-                    key={index}
-                  >
+                    <div
+                      className="w-[300px] py-2 px-3 hover:bg-[#F5F5F5] rounded transition-colors"
+                    >
                       {link.title}
-                  </div>
-                    </Link>
+                    </div>
+                  </Link>
                 );
               })}
             </div>
@@ -59,7 +55,7 @@ export default function SubNavbar({
                 {ScholarshipData.map((link, index) => {
                   return (
                     <div
-                      className="w-[300px] py-2 px-3 hover:bg-[#F5F5F5] rounded"
+                      className="w-[300px] py-2 px-3 hover:bg-[#F5F5F5] rounded transition-colors"
                       key={index}
                     >
                       <Link href={link.href} className="text-[16px]">
@@ -72,18 +68,13 @@ export default function SubNavbar({
             )}
           </div>
           <div className="w-1/2 flex justify-center items-center">
-            <Card className="w-4/5 bg-[#FEF6CD]">
+            <Card className="w-4/5 bg-[#FEF6CD] border-[#E5D9A0]">
               <CardHeader>
-                <CardTitle>{title}</CardTitle>
+                <CardTitle className="text-[#333333] text-3xl">{title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p>{description}</p>
+                <p className="text-[#555555] leading-relaxed">{description}</p>
               </CardContent>
-              <CardFooter className="flex-col gap-2">
-                <Button variant="default" className="w-full">
-                  Learn More!
-                </Button>
-              </CardFooter>
             </Card>
           </div>
         </div>

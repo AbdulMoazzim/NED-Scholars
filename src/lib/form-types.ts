@@ -154,8 +154,8 @@ export interface Webinar {
   attendees: AttendeeWebinar[];
   createdAt: Date;
   updatedAt: Date;
-  images: imageData[];
-  videos: videoData[];
+  images: ImagesWithId[];
+  videos: VideosWithId[];
 }
 
 export interface Seminar {
@@ -173,8 +173,15 @@ export interface Seminar {
   presenters: PresenterSeminar[];
   createdAt: Date;
   updatedAt: Date;
-  images: imageData[];
-  videos: videoData[];
+  images: ImagesWithId[];
+  videos: VideosWithId[];
+}
+
+interface ImagesWithId extends imageData {
+  id: string
+}
+interface VideosWithId extends videoData {
+  id: string
 }
 
 export interface AttendeeWebinar {
@@ -245,8 +252,8 @@ export interface IndustrialVisit {
   slug: string;
   createdAt: Date;
   updatedAt: Date;
-  videos: videoData[];
-  images: imageData[];
+  videos: VideosWithId[];
+  images: ImagesWithId[];
   _count?: {
     registrations: number;
   };
@@ -387,7 +394,7 @@ export interface GupShupSession {
   mainTopic: string;
   discussionPoints: string | null;
   expectedOutcome: string | null;
-  thumbnailImage: imageData | null;
+  thumbnailImage: imageData[] | null;
   youtubeUrl: string | null;
   maxAttendees: number | null;
   requiresRegistration: boolean;

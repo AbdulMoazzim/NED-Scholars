@@ -104,7 +104,7 @@ export async function addVideo(
       newsUpdateId: null,
       webinarId: null,
       seminarId: null,
-      industrialVisitId: null
+      industrialVisitId: null,
     };
 
     switch (type) {
@@ -116,6 +116,18 @@ export async function addVideo(
         break;
       case "news":
         videoData = { ...videoData, newsUpdateId: foreignId };
+
+        break;
+      case "seminar":
+        videoData = { ...videoData, seminarId: foreignId };
+
+        break;
+      case "webinar":
+        videoData = { ...videoData, webinarId: foreignId };
+
+        break;
+      case "industrial-visit":
+        videoData = { ...videoData, industrialVisitId: foreignId };
 
         break;
       default:
@@ -158,7 +170,7 @@ export async function addImage(
       webinarId: null,
       seminarId: null,
       industrialVisitId: null,
-      gupshupId: ""
+      gupshupId: null,
     };
     switch (type) {
       case "team-member":
@@ -173,6 +185,22 @@ export async function addImage(
         break;
       case "remembrance":
         imageData = { ...imageData, remembranceId: foreignId };
+
+        break;
+      case "seminar":
+        imageData = { ...imageData, seminarId: foreignId };
+
+        break;
+      case "webinar":
+        imageData = { ...imageData, webinarId: foreignId };
+
+        break;
+      case "industrial-visit":
+        imageData = { ...imageData, industrialVisitId: foreignId };
+
+        break;
+      case "gupshup":
+        imageData = { ...imageData, gupshupId: foreignId };
 
         break;
       default:

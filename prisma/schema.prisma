@@ -182,8 +182,8 @@ model Image {
 
   industrialVisitId String?
   industrialVisit   IndustrialVisit? @relation(fields: [industrialVisitId], references: [id], onDelete: Cascade)
-  gupshupId String  @unique
-  gupshup   GupShupSession @relation(fields: [gupshupId], references: [id], onDelete: Cascade)
+  gupshupId String?
+  gupshup   GupShupSession? @relation(fields: [gupshupId], references: [id], onDelete: Cascade)
 
   @@map("images")
 }
@@ -766,7 +766,7 @@ model GupShupSession {
   expectedOutcome      String?                   @db.Text
   
   // Media
-  thumbnailImage       Image?
+  thumbnailImage       Image[]
   youtubeUrl           String?                   // For recorded sessions
   
   // Capacity & Registration

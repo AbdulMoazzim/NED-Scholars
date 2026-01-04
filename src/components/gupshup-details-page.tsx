@@ -363,13 +363,13 @@ console.log(userRegistration)
                 )}
 
                 {/* Thumbnail Image */}
-                {session.thumbnailImage && (
+                {session.thumbnailImage && session.thumbnailImage.length === 1 &&(
                   <Card className="border-[#82B4CC]/30 shadow-lg overflow-hidden">
                     <CardContent className="p-0">
                       <div className="relative h-96">
                         <Image
-                          src={session.thumbnailImage.url}
-                          alt={session.thumbnailImage.alt || "Thumbnail Image"}
+                          src={session.thumbnailImage[0].url}
+                          alt={session.thumbnailImage[0].alt || "Thumbnail Image"}
                           fill
                           className="object-cover"
                         />

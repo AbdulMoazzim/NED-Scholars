@@ -56,9 +56,7 @@ export default function Sidebar({activeTab,setFormData, setActiveTab, sidebarOpe
                     </div>
                     <div className="text-left">
                       <div className="font-semibold">{item.label}</div>
-                      <div className={`text-sm ${activeTab === item.id ? 'text-[#68B9C4]' : 'text-white/70'}`}>
-                        Manage content
-                      </div>
+                      
                     </div>
                   </button>
                 ))}

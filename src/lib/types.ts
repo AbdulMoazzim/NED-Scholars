@@ -160,7 +160,7 @@ export interface imageData extends resourceData {
   webinarId: null | string;
   industrialVisitId: null | string;
   remembranceId: null | string;
-  gupshupId: string;
+  gupshupId: string | null;
   public_id: string;
   alt: string | null; // Changed from string to string | null
 }

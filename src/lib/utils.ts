@@ -9,7 +9,7 @@ export function ErrorMsg(msg: string) {
 }
 export const getEnrollmentStatusColor = (status: string) => {
   const colors: Record<string, string> = {
-    enrolled: "bg-blue-500 text-white",
+    enrolled: "bg-[#1164A3] text-white",
     in_progress: "bg-amber-500 text-white",
     completed: "bg-green-500 text-white",
     dropped: "bg-red-500 text-white",

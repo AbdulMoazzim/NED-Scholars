@@ -6,6 +6,26 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import {
   Users,
   MapPin,
@@ -22,12 +42,22 @@ import {
   Award,
   Monitor,
   Building2,
+  Plus,
+  Trash2,
+  Upload,
 } from "lucide-react";
 import { GetSeminar } from "@/app/actions/seminar";
 import { GetWebinar } from "@/app/actions/webinar";
+import {
+  addImage,
+  addVideo,
+  deleteImage,
+  deleteVideo,
+} from "@/app/actions/resource";
 import { toast } from "sonner";
 import Image from "next/image";
 import type { Seminar, Webinar } from "@/lib/form-types";
+import { useSession } from "@/lib/auth-client";
 
 type EventType = "seminar" | "webinar";
 
@@ -38,12 +68,30 @@ interface DetailPageProps {
 
 export default function EventDetailPage({ id, type }: DetailPageProps) {
   const router = useRouter();
+  const session = useSession();
   const [event, setEvent] = useState<Seminar | Webinar | null>(null);
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState<number>(0);
   const [activeMediaTab, setActiveMediaTab] = useState<"images" | "videos">(
     "images"
   );
+
+  // Media management states
+  const [showAddImageDialog, setShowAddImageDialog] = useState(false);
+  const [showAddVideoDialog, setShowAddVideoDialog] = useState(false);
+  const [uploadingImage, setUploadingImage] = useState(false);
+  const [uploadingVideo, setUploadingVideo] = useState(false);
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [videoFile, setVideoFile] = useState<File | null>(null);
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [mediaToDelete, setMediaToDelete] = useState<{
+    id: string;
+    publicId: string;
+    type: "image" | "video";
+  } | null>(null);
+
+  // Check if user is admin
+  const isAdmin = session.data?.user?.role === "admin";
 
   useEffect(() => {
     fetchEvent();
@@ -67,6 +115,103 @@ export default function EventDetailPage({ id, type }: DetailPageProps) {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleAddImage = async () => {
+    if (!imageFile || !event) return;
+
+    setUploadingImage(true);
+    try {
+      const result = await addImage(
+        {id: (Date.now() + Math.random()).toString(), file: imageFile, name: imageFile.name },
+        type,
+        event.id,
+        `${type}s`
+      );
+
+      if (result.success) {
+        toast.success("Image uploaded successfully!");
+        setShowAddImageDialog(false);
+        setImageFile(null);
+        fetchEvent(); // Refresh event data
+      } else {
+        toast.error(result.error || "Failed to upload image");
+      }
+    } catch (error) {
+      toast.error("An error occurred while uploading image");
+      console.error("Upload error:", error);
+    } finally {
+      setUploadingImage(false);
+    }
+  };
+
+  const handleAddVideo = async () => {
+    if (!videoFile || !event) return;
+
+    setUploadingVideo(true);
+    try {
+      const result = await addVideo(
+        {id: (Date.now() + Math.random()).toString(), file: videoFile, name: videoFile.name },
+        type,
+        event.id,
+        `${type}s`
+      );
+
+      if (result.success) {
+        toast.success("Video uploaded successfully!");
+        setShowAddVideoDialog(false);
+        setVideoFile(null);
+        fetchEvent(); // Refresh event data
+      } else {
+        toast.error(result.error || "Failed to upload video");
+      }
+    } catch (error) {
+      toast.error("An error occurred while uploading video");
+      console.error("Upload error:", error);
+    } finally {
+      setUploadingVideo(false);
+    }
+  };
+
+  const handleDeleteMedia = async () => {
+    if (!mediaToDelete) return;
+
+    try {
+      const result =
+        mediaToDelete.type === "image"
+          ? await deleteImage(mediaToDelete.id, mediaToDelete.publicId)
+          : await deleteVideo(mediaToDelete.id, mediaToDelete.publicId);
+
+      if (result.success) {
+        toast.success(
+          `${mediaToDelete.type === "image" ? "Image" : "Video"} deleted successfully!`
+        );
+        setDeleteDialogOpen(false);
+        setMediaToDelete(null);
+        fetchEvent(); // Refresh event data
+        
+        // Reset selected image if it was deleted
+        if (mediaToDelete.type === "image" && selectedImage > 0) {
+          setSelectedImage(0);
+        }
+      } else {
+        toast.error(
+          `Failed to delete ${mediaToDelete.type === "image" ? "image" : "video"}`
+        );
+      }
+    } catch (error) {
+      toast.error("An error occurred while deleting media");
+      console.error("Delete error:", error);
+    }
+  };
+
+  const confirmDelete = (
+    id: string,
+    publicId: string,
+    type: "image" | "video"
+  ) => {
+    setMediaToDelete({ id, publicId, type });
+    setDeleteDialogOpen(true);
   };
 
   const getStatusColor = (status: string) => {
@@ -214,119 +359,336 @@ export default function EventDetailPage({ id, type }: DetailPageProps) {
               {/* Left Column - Main Content */}
               <div className="lg:col-span-2 space-y-8">
                 {/* Media Section */}
-                {((event.images && event.images.length > 0) ||
-                  (event.videos && event.videos.length > 0)) && (
-                  <Card className="border-[#82B4CC]/30 shadow-lg overflow-hidden">
-                    <CardContent className="p-0">
-                      <Tabs
-                        value={activeMediaTab}
-                        onValueChange={(val) =>
-                          setActiveMediaTab(val as "images" | "videos")
-                        }
-                      >
-                        <div className="bg-gray-50 px-6 py-4 border-b">
-                          <TabsList className="w-full grid grid-cols-2">
-                            <TabsTrigger
-                              value="images"
-                              disabled={
-                                !event.images || event.images.length === 0
-                              }
-                            >
+                <Card className="border-[#82B4CC]/30 shadow-lg overflow-hidden">
+                  <CardContent className="p-0">
+                    <Tabs
+                      value={activeMediaTab}
+                      onValueChange={(val) =>
+                        setActiveMediaTab(val as "images" | "videos")
+                      }
+                    >
+                      <div className="bg-gray-50 px-6 py-4 border-b">
+                        <div className="flex items-center justify-between">
+                          <TabsList className="grid grid-cols-2 w-full max-w-md">
+                            <TabsTrigger value="images">
                               <ImageIcon className="w-4 h-4 mr-2" />
                               Images ({event.images?.length || 0})
                             </TabsTrigger>
-                            <TabsTrigger
-                              value="videos"
-                              disabled={
-                                !event.videos || event.videos.length === 0
-                              }
-                            >
+                            <TabsTrigger value="videos">
                               <VideoIcon className="w-4 h-4 mr-2" />
                               Videos ({event.videos?.length || 0})
                             </TabsTrigger>
                           </TabsList>
-                        </div>
 
-                        {/* Images Tab */}
-                        <TabsContent value="images" className="p-0 m-0">
-                          {event.images && event.images.length > 0 && (
-                            <div>
-                              <div className="relative h-96 bg-gray-100">
-                                <Image
-                                  src={event.images[selectedImage].url}
-                                  alt={
-                                    event.images[selectedImage].alt ||
-                                    event.title
-                                  }
-                                  fill
-                                  className="object-cover"
-                                />
-                              </div>
-
-                              {event.images.length > 1 && (
-                                <div className="grid grid-cols-4 md:grid-cols-6 gap-2 p-4 bg-gray-50">
-                                  {event.images.map((image, index) => (
-                                    <button
-                                      key={index}
-                                      onClick={() => setSelectedImage(index)}
-                                      className={`relative aspect-square rounded overflow-hidden border-2 transition-all ${
-                                        selectedImage === index
-                                          ? "border-[#1164A3] scale-105"
-                                          : "border-transparent hover:border-[#68B9C4]"
-                                      }`}
+                          {/* Add Media Buttons (Admin Only) */}
+                          {isAdmin && (
+                            <div className="flex gap-2">
+                              {activeMediaTab === "images" && (
+                                <Dialog
+                                  open={showAddImageDialog}
+                                  onOpenChange={setShowAddImageDialog}
+                                >
+                                  <DialogTrigger asChild>
+                                    <Button
+                                      size="sm"
+                                      className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4]"
                                     >
-                                      <Image
-                                        src={image.url}
-                                        alt={image.alt || `Image ${index + 1}`}
-                                        fill
-                                        className="object-cover"
-                                      />
-                                    </button>
-                                  ))}
-                                </div>
+                                      <Plus className="w-4 h-4 mr-2" />
+                                      Add Image
+                                    </Button>
+                                  </DialogTrigger>
+                                  <DialogContent>
+                                    <DialogHeader>
+                                      <DialogTitle>Upload Image</DialogTitle>
+                                      <DialogDescription>
+                                        Add a new image to this event
+                                      </DialogDescription>
+                                    </DialogHeader>
+                                    <div className="space-y-4 py-4">
+                                      <div>
+                                        <Label htmlFor="image-upload">
+                                          Select Image
+                                        </Label>
+                                        <Input
+                                          id="image-upload"
+                                          type="file"
+                                          accept="image/*"
+                                          onChange={(e) =>
+                                            setImageFile(
+                                              e.target.files?.[0] || null
+                                            )
+                                          }
+                                          className="mt-2"
+                                        />
+                                      </div>
+                                      {imageFile && (
+                                        <div className="p-4 bg-gray-50 rounded border">
+                                          <p className="text-sm text-gray-600">
+                                            Selected: {imageFile.name}
+                                          </p>
+                                        </div>
+                                      )}
+                                    </div>
+                                    <div className="flex gap-2">
+                                      <Button
+                                        onClick={handleAddImage}
+                                        disabled={!imageFile || uploadingImage}
+                                        className="flex-1 bg-gradient-to-r from-[#1164A3] to-[#68B9C4]"
+                                      >
+                                        {uploadingImage ? (
+                                          <>
+                                            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                                            Uploading...
+                                          </>
+                                        ) : (
+                                          <>
+                                            <Upload className="w-4 h-4 mr-2" />
+                                            Upload
+                                          </>
+                                        )}
+                                      </Button>
+                                      <Button
+                                        variant="outline"
+                                        onClick={() => {
+                                          setShowAddImageDialog(false);
+                                          setImageFile(null);
+                                        }}
+                                        className="flex-1"
+                                      >
+                                        Cancel
+                                      </Button>
+                                    </div>
+                                  </DialogContent>
+                                </Dialog>
+                              )}
+
+                              {activeMediaTab === "videos" && (
+                                <Dialog
+                                  open={showAddVideoDialog}
+                                  onOpenChange={setShowAddVideoDialog}
+                                >
+                                  <DialogTrigger asChild>
+                                    <Button
+                                      size="sm"
+                                      className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4]"
+                                    >
+                                      <Plus className="w-4 h-4 mr-2" />
+                                      Add Video
+                                    </Button>
+                                  </DialogTrigger>
+                                  <DialogContent>
+                                    <DialogHeader>
+                                      <DialogTitle>Upload Video</DialogTitle>
+                                      <DialogDescription>
+                                        Add a new video to this event
+                                      </DialogDescription>
+                                    </DialogHeader>
+                                    <div className="space-y-4 py-4">
+                                      <div>
+                                        <Label htmlFor="video-upload">
+                                          Select Video
+                                        </Label>
+                                        <Input
+                                          id="video-upload"
+                                          type="file"
+                                          accept="video/*"
+                                          onChange={(e) =>
+                                            setVideoFile(
+                                              e.target.files?.[0] || null
+                                            )
+                                          }
+                                          className="mt-2"
+                                        />
+                                      </div>
+                                      {videoFile && (
+                                        <div className="p-4 bg-gray-50 rounded border">
+                                          <p className="text-sm text-gray-600">
+                                            Selected: {videoFile.name}
+                                          </p>
+                                        </div>
+                                      )}
+                                    </div>
+                                    <div className="flex gap-2">
+                                      <Button
+                                        onClick={handleAddVideo}
+                                        disabled={!videoFile || uploadingVideo}
+                                        className="flex-1 bg-gradient-to-r from-[#1164A3] to-[#68B9C4]"
+                                      >
+                                        {uploadingVideo ? (
+                                          <>
+                                            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                                            Uploading...
+                                          </>
+                                        ) : (
+                                          <>
+                                            <Upload className="w-4 h-4 mr-2" />
+                                            Upload
+                                          </>
+                                        )}
+                                      </Button>
+                                      <Button
+                                        variant="outline"
+                                        onClick={() => {
+                                          setShowAddVideoDialog(false);
+                                          setVideoFile(null);
+                                        }}
+                                        className="flex-1"
+                                      >
+                                        Cancel
+                                      </Button>
+                                    </div>
+                                  </DialogContent>
+                                </Dialog>
                               )}
                             </div>
                           )}
-                        </TabsContent>
+                        </div>
+                      </div>
 
-                        {/* Videos Tab */}
-                        <TabsContent value="videos" className="p-4 m-0">
-                          {event.videos && event.videos.length > 0 ? (
-                            <div className="space-y-4">
-                              {event.videos.map((video, index) => (
-                                <Card
-                                  key={index}
-                                  className="border-[#82B4CC]/30"
+                      {/* Images Tab */}
+                      <TabsContent value="images" className="p-0 m-0">
+                        {event.images && event.images.length > 0 ? (
+                          <div>
+                            <div className="relative h-96 bg-gray-100 group">
+                              <Image
+                                src={event.images[selectedImage].url}
+                                alt={
+                                  event.images[selectedImage].alt || event.title
+                                }
+                                fill
+                                className="object-cover"
+                              />
+                              {/* Delete Button (Admin Only) */}
+                              {isAdmin && (
+                                <Button
+                                  size="sm"
+                                  variant="destructive"
+                                  className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity"
+                                  onClick={() =>
+                                    confirmDelete(
+                                      event.images![selectedImage].id,
+                                      event.images![selectedImage].public_id,
+                                      "image"
+                                    )
+                                  }
                                 >
-                                  <CardContent className="p-4">
-                                    <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden mb-3">
-                                      <video controls className="w-full h-full">
-                                        <source
-                                          src={video.url}
-                                          title={video.title || "video"}
-                                          type="video/mp4"
-                                        />
-                                        Your browser does not support the video
-                                        tag.
-                                      </video>
-                                    </div>
-                                  </CardContent>
-                                </Card>
-                              ))}
+                                  <Trash2 className="w-4 h-4 mr-2" />
+                                  Delete
+                                </Button>
+                              )}
                             </div>
-                          ) : (
-                            <div className="text-center py-12">
-                              <VideoIcon className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                              <p className="text-gray-600">
-                                No videos available
-                              </p>
-                            </div>
-                          )}
-                        </TabsContent>
-                      </Tabs>
-                    </CardContent>
-                  </Card>
-                )}
+
+                            {event.images.length > 1 && (
+                              <div className="grid grid-cols-4 md:grid-cols-6 gap-2 p-4 bg-gray-50">
+                                {event.images.map((image, index) => (
+                                  <button
+                                    key={index}
+                                    onClick={() => setSelectedImage(index)}
+                                    className={`relative aspect-square rounded overflow-hidden border-2 transition-all ${
+                                      selectedImage === index
+                                        ? "border-[#1164A3] scale-105"
+                                        : "border-transparent hover:border-[#68B9C4]"
+                                    }`}
+                                  >
+                                    <Image
+                                      src={image.url}
+                                      alt={image.alt || `Image ${index + 1}`}
+                                      fill
+                                      className="object-cover"
+                                    />
+                                  </button>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        ) : (
+                          <div className="text-center py-20">
+                            <ImageIcon className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+                            <p className="text-gray-600 mb-4">
+                              No images available
+                            </p>
+                            {isAdmin && (
+                              <Button
+                                onClick={() => setShowAddImageDialog(true)}
+                                className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4]"
+                              >
+                                <Plus className="w-4 h-4 mr-2" />
+                                Add First Image
+                              </Button>
+                            )}
+                          </div>
+                        )}
+                      </TabsContent>
+
+                      {/* Videos Tab */}
+                      <TabsContent value="videos" className="p-4 m-0">
+                        {event.videos && event.videos.length > 0 ? (
+                          <div className="space-y-4">
+                            {event.videos.map((video, index) => (
+                              <Card
+                                key={index}
+                                className="border-[#82B4CC]/30 relative group"
+                              >
+                                <CardContent className="p-4">
+                                  {/* Delete Button (Admin Only) */}
+                                  {isAdmin && (
+                                    <Button
+                                      size="sm"
+                                      variant="destructive"
+                                      className="absolute top-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity"
+                                      onClick={() =>
+                                        confirmDelete(
+                                          video.id,
+                                          video.public_id,
+                                          "video"
+                                        )
+                                      }
+                                    >
+                                      <Trash2 className="w-4 h-4 mr-2" />
+                                      Delete
+                                    </Button>
+                                  )}
+                                  <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden mb-3">
+                                    <video controls className="w-full h-full">
+                                      <source
+                                        src={video.url}
+                                        title={video.title || "video"}
+                                        type="video/mp4"
+                                      />
+                                      Your browser does not support the video
+                                      tag.
+                                    </video>
+                                  </div>
+                                  {video.title && (
+                                    <p className="text-sm font-medium text-gray-700">
+                                      {video.title}
+                                    </p>
+                                  )}
+                                </CardContent>
+                              </Card>
+                            ))}
+                          </div>
+                        ) : (
+                          <div className="text-center py-20">
+                            <VideoIcon className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+                            <p className="text-gray-600 mb-4">
+                              No videos available
+                            </p>
+                            {isAdmin && (
+                              <Button
+                                onClick={() => setShowAddVideoDialog(true)}
+                                className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4]"
+                              >
+                                <Plus className="w-4 h-4 mr-2" />
+                                Add First Video
+                              </Button>
+                            )}
+                          </div>
+                        )}
+                      </TabsContent>
+                    </Tabs>
+                  </CardContent>
+                </Card>
 
                 {/* Description */}
                 <Card className="border-[#82B4CC]/30 shadow-lg">
@@ -343,6 +705,7 @@ export default function EventDetailPage({ id, type }: DetailPageProps) {
                   </CardContent>
                 </Card>
               </div>
+
               {/* Right Column - Sidebar */}
               <div className="space-y-6">
                 {/* Registration Card */}
@@ -522,6 +885,31 @@ export default function EventDetailPage({ id, type }: DetailPageProps) {
           </div>
         </div>
       </section>
+
+      {/* Delete Confirmation Dialog */}
+      <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This will permanently delete this{" "}
+              {mediaToDelete?.type === "image" ? "image" : "video"}. This action
+              cannot be undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel onClick={() => setMediaToDelete(null)}>
+              Cancel
+            </AlertDialogCancel>
+            <AlertDialogAction
+              onClick={handleDeleteMedia}
+              className="bg-red-600 hover:bg-red-700"
+            >
+              Delete
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

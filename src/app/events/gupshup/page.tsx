@@ -311,6 +311,161 @@ export default function GupShupPage() {
         </div>
       </section>
 
+      
+
+      {/* What is Gup Shup */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <Badge className="mb-4 bg-[#68B9C4] text-white">About the Event</Badge>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                What is Gup Shup?
+              </h2>
+            </div>
+
+            <Card className="shadow-xl mb-8 border-[#82B4CC]/20">
+              <CardContent className="p-8">
+                <div className="flex items-start space-x-4 mb-6">
+                  <div className="w-12 h-12 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-full flex items-center justify-center text-white flex-shrink-0">
+                    <MessageCircle className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <p className="text-lg text-gray-700 leading-relaxed mb-4">
+                      Each Gup Shup features a guest speaker from any walk of
+                      life—politics, entertainment, social activism, academia,
+                      or religion—who delivers a 10–15 minute talk on a topic
+                      of personal or public interest.
+                    </p>
+                    <p className="text-lg text-gray-700 leading-relaxed flex items-start">
+                      The floor is then opened for live discussion, open mic
+                      questions, and spirited exchange of ideas—allowing
+                      everyone to connect beyond formalities and learn from one
+                      another in an informal, inclusive environment.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Guest Categories */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {guestCategories.map((category, index) => (
+                <Card
+                  key={index}
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
+                >
+                  <CardContent className="p-6">
+                    <div
+                      className={`w-14 h-14 bg-gradient-to-r ${category.color} rounded-2xl flex items-center justify-center text-white mb-4`}
+                    >
+                      {category.icon}
+                    </div>
+                    <h4 className="font-bold text-gray-800 mb-2 text-lg">
+                      {category.category}
+                    </h4>
+                    <p className="text-sm text-gray-600">
+                      {category.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Event Format */}
+      <section className="py-16 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <Badge className="mb-4 bg-[#1164A3] text-white">How It Works</Badge>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                Event Format
+              </h2>
+              <p className="text-gray-600 text-lg">
+                A structured yet informal three-part experience
+              </p>
+            </div>
+
+            <div className="space-y-6">
+              {eventFormat.map((format, index) => (
+                <Card
+                  key={index}
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
+                >
+                  <CardContent className="p-8">
+                    <div className="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-6">
+                      <div className="w-20 h-20 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-2xl flex items-center justify-center text-white flex-shrink-0">
+                        {format.icon}
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center space-x-3 mb-2">
+                          <div className="w-8 h-8 bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] rounded-full flex items-center justify-center text-white font-bold text-sm">
+                            {format.step}
+                          </div>
+                          <h3 className="text-xl font-bold text-gray-800">
+                            {format.title}
+                          </h3>
+                        </div>
+                        <div className="flex items-center space-x-4 mb-3">
+                          <Badge className="flex items-center bg-[#82B4CC] text-white">
+                            <Clock className="w-3 h-3 mr-1" />
+                            {format.duration}
+                          </Badge>
+                        </div>
+                        <p className="text-gray-600">{format.description}</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <Badge className="mb-4 bg-[#1164A3] text-white">Why Attend</Badge>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                Benefits of Attending
+              </h2>
+              <p className="text-gray-600 text-lg">
+                What you&apos;ll gain from participating in Gup Shup
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {benefitsOfAttending.map((item, index) => (
+                <Card
+                  key={index}
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
+                >
+                  <CardContent className="p-6">
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                        {item.icon}
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-gray-700 font-medium flex items-center">
+                          <CheckCircle2 className="w-5 h-5 text-[#68B9C4] mr-2 flex-shrink-0" />
+                          {item.benefit}
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* My Registrations Section */}
       {session && userRegistrations.length > 0 && (
         <section className="py-12 bg-gradient-to-r from-[#B0A3B3]/5 to-[#82B4CC]/5">
@@ -479,11 +634,7 @@ export default function GupShupPage() {
                                                 </span>
                                               </div>
                                             )}
-                                            {sess.youtubeUrl && (
-                                              <div className="flex items-center gap-2 text-sm text-gray-600">
-                                                <Video className="w-4 h-4 text-[#68B9C4]" />
-                                              </div>
-                                            )}
+                                            
                                           </div>
 
                                           <div className="flex flex-wrap gap-2 mb-3">
@@ -541,159 +692,6 @@ export default function GupShupPage() {
           </div>
         </section>
       )}
-
-      {/* What is Gup Shup */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <Badge className="mb-4 bg-[#68B9C4] text-white">About the Event</Badge>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                What is Gup Shup?
-              </h2>
-            </div>
-
-            <Card className="shadow-xl mb-8 border-[#82B4CC]/20">
-              <CardContent className="p-8">
-                <div className="flex items-start space-x-4 mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-full flex items-center justify-center text-white flex-shrink-0">
-                    <MessageCircle className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <p className="text-lg text-gray-700 leading-relaxed mb-4">
-                      Each Gup Shup features a guest speaker from any walk of
-                      life—politics, entertainment, social activism, academia,
-                      or religion—who delivers a 10–15 minute talk on a topic
-                      of personal or public interest.
-                    </p>
-                    <p className="text-lg text-gray-700 leading-relaxed flex items-start">
-                      The floor is then opened for live discussion, open mic
-                      questions, and spirited exchange of ideas—allowing
-                      everyone to connect beyond formalities and learn from one
-                      another in an informal, inclusive environment.
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Guest Categories */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {guestCategories.map((category, index) => (
-                <Card
-                  key={index}
-                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
-                >
-                  <CardContent className="p-6">
-                    <div
-                      className={`w-14 h-14 bg-gradient-to-r ${category.color} rounded-2xl flex items-center justify-center text-white mb-4`}
-                    >
-                      {category.icon}
-                    </div>
-                    <h4 className="font-bold text-gray-800 mb-2 text-lg">
-                      {category.category}
-                    </h4>
-                    <p className="text-sm text-gray-600">
-                      {category.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Event Format */}
-      <section className="py-16 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <Badge className="mb-4 bg-[#1164A3] text-white">How It Works</Badge>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                Event Format
-              </h2>
-              <p className="text-gray-600 text-lg">
-                A structured yet informal three-part experience
-              </p>
-            </div>
-
-            <div className="space-y-6">
-              {eventFormat.map((format, index) => (
-                <Card
-                  key={index}
-                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
-                >
-                  <CardContent className="p-8">
-                    <div className="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-6">
-                      <div className="w-20 h-20 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-2xl flex items-center justify-center text-white flex-shrink-0">
-                        {format.icon}
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-center space-x-3 mb-2">
-                          <div className="w-8 h-8 bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] rounded-full flex items-center justify-center text-white font-bold text-sm">
-                            {format.step}
-                          </div>
-                          <h3 className="text-xl font-bold text-gray-800">
-                            {format.title}
-                          </h3>
-                        </div>
-                        <div className="flex items-center space-x-4 mb-3">
-                          <Badge className="flex items-center bg-[#82B4CC] text-white">
-                            <Clock className="w-3 h-3 mr-1" />
-                            {format.duration}
-                          </Badge>
-                        </div>
-                        <p className="text-gray-600">{format.description}</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <Badge className="mb-4 bg-[#1164A3] text-white">Why Attend</Badge>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                Benefits of Attending
-              </h2>
-              <p className="text-gray-600 text-lg">
-                What you&apos;ll gain from participating in Gup Shup
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {benefitsOfAttending.map((item, index) => (
-                <Card
-                  key={index}
-                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
-                >
-                  <CardContent className="p-6">
-                    <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                        {item.icon}
-                      </div>
-                      <div className="flex-1">
-                        <p className="text-gray-700 font-medium flex items-center">
-                          <CheckCircle2 className="w-5 h-5 text-[#68B9C4] mr-2 flex-shrink-0" />
-                          {item.benefit}
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Upcoming Sessions */}
       <section className="py-20 bg-gradient-to-r from-gray-50 to-[#82B4CC]/10">
@@ -902,8 +900,8 @@ export default function GupShupPage() {
                       <div className="relative overflow-hidden h-48">
                         {session.thumbnailImage ? (
                           <Image
-                            src={session.thumbnailImage.url}
-                            alt={session.thumbnailImage.alt || session.title}
+                            src={session.thumbnailImage[0].url}
+                            alt={session.thumbnailImage[0].alt || session.title}
                             fill
                             className="object-cover group-hover:scale-110 transition-transform duration-300"
                           />
@@ -912,11 +910,7 @@ export default function GupShupPage() {
                             <Coffee className="w-16 h-16 text-white opacity-50" />
                           </div>
                         )}
-                        <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <div className="w-16 h-16 bg-[#1164A3] rounded-full flex items-center justify-center">
-                            <Play className="w-8 h-8 text-white ml-1" />
-                          </div>
-                        </div>
+                        
                       </div>
                       <div className="p-6">
                         <Badge className="mb-3 bg-[#82B4CC] text-white">
