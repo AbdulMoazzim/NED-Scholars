@@ -16,7 +16,6 @@ import {
   Building2,
   Shield,
   Truck,
-  CheckCircle,
   ArrowLeft,
   FileText,
   Target,

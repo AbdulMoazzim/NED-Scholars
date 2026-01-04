@@ -15,7 +15,6 @@ import {
   Video,
   MapPin,
   Calendar,
-  Mail,
   CheckCircle2,
   Play,
   ArrowRight,

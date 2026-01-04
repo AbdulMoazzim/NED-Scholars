@@ -33,7 +33,6 @@ import EventManagementDashboard from "./seminar-webinar-management-component";
 import IndustrialVisitsManagement from "./industrial-visit-management";
 import InternshipManagement from "./internship-management";
 import GupShupManagement from "./gupshup-management";
-import ELearningPage from "@/app/events/e-learning/page";
 import CourseManagement from "./elearning-management";
 
 export const ContentForm = ({

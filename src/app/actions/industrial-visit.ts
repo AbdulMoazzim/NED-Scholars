@@ -1,7 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/auth";
-import { CreateRegistrationData, CreateVisitData, UpdateVisitData, UpdateWebinarData } from "@/lib/form-types";
+import { CreateRegistrationData, CreateVisitData, UpdateVisitData } from "@/lib/form-types";
 import { createRollbackState, performRollback, uploadImageWithTracking, uploadVideoWithTracking } from "@/lib/serverUtils";
 import { Resource } from "@/lib/types";
 import { ErrorMsg } from "@/lib/utils";

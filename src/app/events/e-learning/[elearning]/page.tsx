@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode, useEffect, useLayoutEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -72,7 +72,7 @@ interface EnrollmentFormData {
 export default function CourseDetailsPage({
   params,
 }: {
-  params: { elearning: string };
+  params: Promise<{ elearning: string }>;
 }) {
   const router = useRouter();
   const session = useSession();
@@ -90,6 +90,7 @@ export default function CourseDetailsPage({
     department: "",
   });
 
+  const pageParams = useParams();
   const [userEnrollment, setUserEnrollment] = useState<CourseEnrollment | null>(
     null
   );
@@ -155,12 +156,11 @@ export default function CourseDetailsPage({
       router.push("/auth");
     }
     fetchCourse();
-  }, [params.elearning]);
-
+  }, [pageParams?.elearning]);
   const fetchCourse = async () => {
     setLoading(true);
     try {
-      const result = await GetCourseBySlug(params.elearning);
+      const result = await GetCourseBySlug(pageParams?.elearning as string || "");
       if (result.success && result.data) {
         setCourse(result.data as Course);
       } else {

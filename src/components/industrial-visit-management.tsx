@@ -76,13 +76,9 @@ import {
   Filter,
   Loader2,
   Star,
-  UserCheck,
-  FileText,
   BarChart3,
-  Sparkles,
   Mail,
   Phone,
-  Upload,
   Image as ImageIcon,
   Film,
 } from "lucide-react";

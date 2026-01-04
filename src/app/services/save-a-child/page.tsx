@@ -6,10 +6,8 @@ import {
   CheckCircle2,
   TrendingUp,
   Users,
-  Award,
   BookOpen,
   Laptop,
-  Target,
   Heart,
   Briefcase,
   GraduationCap,
@@ -140,27 +138,6 @@ export default function EducationSupportPakistan() {
       title: "EMUiNVENT",
       description: "National & global invention competitions",
       color: "from-[#1164A3] to-[#68B9C4]",
-    },
-  ];
-
-  const successStories = [
-    {
-      name: "Amina, 16",
-      story: "From struggling with school fees to winning EMUiNVENT Pakistan 2023",
-      icon: <Trophy className="w-6 h-6" />,
-      color: "from-[#82B4CC] to-[#B0A3B3]",
-    },
-    {
-      name: "Rizwan, 18",
-      story: "Now interning at a tech startup after Dare2Design training",
-      icon: <Briefcase className="w-6 h-6" />,
-      color: "from-[#1164A3] to-[#68B9C4]",
-    },
-    {
-      name: "Sana, 17",
-      story: "Developed a low-cost water filter in TechAThon",
-      icon: <Lightbulb className="w-6 h-6" />,
-      color: "from-[#68B9C4] to-[#82B4CC]",
     },
   ];
 

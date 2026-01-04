@@ -1,12 +1,11 @@
 "use client";
 
 import { GraduationCap, MapPin, Mail, Phone, Facebook, Instagram, Linkedin, Youtube, Github } from "lucide-react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 export default function Footer() {
   const path = usePathname();
-  const router = useRouter();
 
   if (path.startsWith("/admin-portal")) {
     return null; 

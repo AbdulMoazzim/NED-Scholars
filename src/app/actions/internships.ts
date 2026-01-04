@@ -11,7 +11,7 @@ import {
   performRollback,
   uploadResourceWithTracking,
 } from "@/lib/serverUtils";
-import { fileData, Resource } from "@/lib/types";
+import {Resource } from "@/lib/types";
 import { ErrorMsg } from "@/lib/utils";
 
 // Create Internship

@@ -29,8 +29,6 @@ import {
   Filter,
   Loader2,
   ExternalLink,
-  Mail,
-  Phone,
   Sparkles,
 } from "lucide-react";
 // import { GetActiveInternships } from "@/app/actions/internships";

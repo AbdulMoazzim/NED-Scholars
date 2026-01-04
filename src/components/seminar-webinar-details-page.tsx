@@ -14,21 +14,14 @@ import {
   Video as VideoIcon,
   ArrowLeft,
   FileText,
-  Target,
-  Lightbulb,
   AlertCircle,
   Loader2,
-  Play,
   Image as ImageIcon,
-  Star,
   User,
   Mail,
   Award,
-  CheckCircle,
-  Globe,
   Monitor,
   Building2,
-  Phone,
 } from "lucide-react";
 import { GetSeminar } from "@/app/actions/seminar";
 import { GetWebinar } from "@/app/actions/webinar";
