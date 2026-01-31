@@ -24,7 +24,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import bannerImage from "../../../data/images/services/laptop_destribution.png";
+import bannerImage from "../../../data/images/Services/laptop_destribution.png";
 
 export default function LaptopProgramPage() {
   const digitalDivideChallenges = [
