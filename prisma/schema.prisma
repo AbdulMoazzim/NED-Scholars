@@ -182,8 +182,8 @@ model Image {
 
   industrialVisitId String?
   industrialVisit   IndustrialVisit? @relation(fields: [industrialVisitId], references: [id], onDelete: Cascade)
-  gupshupId String?
-  gupshup   GupShupSession? @relation(fields: [gupshupId], references: [id], onDelete: Cascade)
+  gupshupId         String?
+  gupshup           GupShupSession?  @relation(fields: [gupshupId], references: [id], onDelete: Cascade)
 
   @@map("images")
 }
@@ -298,8 +298,8 @@ model Resources {
   transparencyResource   Transparency? @relation(fields: [transparencyResourceId], references: [id], onDelete: Cascade)
 
   // Internship application files
-  resumeId String          @unique
-  resume   InternshipApplication @relation(fields: [resumeId], references: [id],onDelete: Cascade)
+  resumeId String                @unique
+  resume   InternshipApplication @relation(fields: [resumeId], references: [id], onDelete: Cascade)
 
   @@map("resources")
 }
@@ -717,7 +717,7 @@ model InternshipApplication {
   expectedGraduation String
 
   // Resume
-  resume Resources? 
+  resume Resources?
 
   // Cover letter
   coverLetter String?
@@ -741,129 +741,128 @@ model InternshipApplication {
 }
 
 model GupShupSession {
-  id                   String                    @id @default(cuid())
-  title                String
-  slug                 String                    @unique
-  description          String                    @db.Text
-  
+  id          String @id @default(cuid())
+  title       String
+  slug        String @unique
+  description String @db.Text
+
   // Speaker/Guest Information
-  speakerName          String
-  speakerBio           String?                   @db.Text
-  speakerEmail         String?
-  category             String
-  
+  speakerName  String
+  speakerBio   String? @db.Text
+  speakerEmail String?
+  category     String
+
   // Session Details
-  date                 DateTime
-  startTime            String                    // e.g., "7:00 PM"
-  duration             String                    // e.g., "60 minutes"
-  platform             String?                   // e.g., "Zoom", "Google Meet"
-  meetingLink          String?
-  meetingPassword      String?
-  
+  date            DateTime
+  startTime       String // e.g., "7:00 PM"
+  duration        String // e.g., "60 minutes"
+  platform        String? // e.g., "Zoom", "Google Meet"
+  meetingLink     String?
+  meetingPassword String?
+
   // Topics & Format
-  mainTopic            String                    @db.Text
-  discussionPoints     String?                   @db.Text
-  expectedOutcome      String?                   @db.Text
-  
+  mainTopic        String  @db.Text
+  discussionPoints String? @db.Text
+  expectedOutcome  String? @db.Text
+
   // Media
-  thumbnailImage       Image[]
-  youtubeUrl           String?                   // For recorded sessions
-  
+  thumbnailImage Image[]
+  youtubeUrl     String? // For recorded sessions
+
   // Capacity & Registration
-  maxAttendees         Int?                      @default(100)
-  requiresRegistration Boolean                   @default(true)
+  maxAttendees         Int?      @default(100)
+  requiresRegistration Boolean   @default(true)
   registrationDeadline DateTime?
-  
+
   // Status & Visibility
-  status               String             @default("upcoming")
-  featured             Boolean                   @default(false)
-  isPublic             Boolean                   @default(true)
-  
+  status   String  @default("upcoming")
+  featured Boolean @default(false)
+  isPublic Boolean @default(true)
+
   // Relations
-  registrations        GupShupRegistration[]
-  
+  registrations GupShupRegistration[]
+
   // Timestamps
-  createdAt            DateTime                  @default(now())
-  updatedAt            DateTime                  @updatedAt
-  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   @@index([slug])
   @@index([featured])
 }
 
 model GupShupRegistration {
-  id                   String                    @id @default(cuid())
+  id     String @id @default(cuid())
   userId String
-  
+
   // Attendee Information
-  fullName             String
-  email                String
-  phone                String?
-  
+  fullName String
+  email    String
+  phone    String?
+
   // Additional Info
-  organization         String?                   // University, Company, etc.
-  designation          String?                   // Student, Professional, etc.
-  
+  organization String? // University, Company, etc.
+  designation  String? // Student, Professional, etc.
+
   // Interest & Questions
-  whyAttending         String?                   @db.Text
-  questionsForSpeaker  String?                   @db.Text
-  
+  whyAttending        String? @db.Text
+  questionsForSpeaker String? @db.Text
+
   // Registration Status
-  registrationStatus   String       @default("confirmed")
-  attended             Boolean                   @default(false)
-  
+  registrationStatus String  @default("confirmed")
+  attended           Boolean @default(false)
+
   // Feedback (Post-session)
-  rating               Int?                      // 1-5 stars
-  feedback             String?                   @db.Text
-  feedbackDate         DateTime?
-  
+  rating       Int? // 1-5 stars
+  feedback     String?   @db.Text
+  feedbackDate DateTime?
+
   // Relations
-  session              GupShupSession            @relation(fields: [sessionId], references: [id], onDelete: Cascade)
-  sessionId            String
-  
+  session   GupShupSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  sessionId String
+
   // Timestamps
-  createdAt            DateTime                  @default(now())
-  updatedAt            DateTime                  @updatedAt
-  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([email, sessionId]) // Prevent duplicate registrations
   @@index([sessionId])
   @@index([email])
-  @@unique([email, sessionId]) // Prevent duplicate registrations
 }
 
-
 model Course {
-  id                String   @id @default(cuid())
-  title             String
-  instructor        String
-  instructorTitle   String?
-  instructorBio     String?  @db.Text
-  overview          String   @db.Text
-  description       String   @db.Text
-  learningOutcomes  String   @db.Text
-  category          String
-  level             String @default("beginner")
-  thumbnailUrl      String?
-  youtubeUrl        String?
-  videoUrl          String?
-  duration          String?
-  targetAudience    String   @db.Text
-  prerequisites     String?  @db.Text
-  syllabus          String?  @db.Text
-  modules           Int?
-  lessons           Int?
-  isFree            Boolean  @default(true)
-  price             Float?
-  currency          String?  @default("USD")
-  status            String @default("active")
-  featured          Boolean  @default(false)
-  rating            Float?
-  enrollmentCount   Int      @default(0)
-  slug              String   @unique
-  tags              String[]
-  
-  enrollments       CourseEnrollment[]
-  
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
+  id               String   @id @default(cuid())
+  title            String
+  instructor       String
+  instructorTitle  String?
+  instructorBio    String?  @db.Text
+  overview         String   @db.Text
+  description      String   @db.Text
+  learningOutcomes String   @db.Text
+  category         String
+  level            String   @default("beginner")
+  thumbnailUrl     String?
+  youtubeUrl       String?
+  videoUrl         String?
+  duration         String?
+  targetAudience   String   @db.Text
+  prerequisites    String?  @db.Text
+  syllabus         String?  @db.Text
+  modules          Int?
+  lessons          Int?
+  isFree           Boolean  @default(true)
+  price            Float?
+  currency         String?  @default("USD")
+  status           String   @default("active")
+  featured         Boolean  @default(false)
+  rating           Float?
+  enrollmentCount  Int      @default(0)
+  slug             String   @unique
+  tags             String[]
+
+  enrollments CourseEnrollment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@index([category])
   @@index([level])
@@ -873,27 +872,27 @@ model Course {
 }
 
 model CourseEnrollment {
-  id                String   @id @default(cuid())
-  userId String
-  fullName          String
-  email             String
-  phone             String?
-  currentStatus     String
-  organization      String?
-  department        String?
-  
-  courseId          String
-  course            Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
-  
-  status            String @default("enrolled")
-  enrollmentDate    DateTime @default(now())
-  
-  rating            Float?
-  review            String?  @db.Text
-  reviewDate        DateTime?
-  
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
+  id            String  @id @default(cuid())
+  userId        String
+  fullName      String
+  email         String
+  phone         String?
+  currentStatus String
+  organization  String?
+  department    String?
+
+  courseId String
+  course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  status         String   @default("enrolled")
+  enrollmentDate DateTime @default(now())
+
+  rating     Float?
+  review     String?   @db.Text
+  reviewDate DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@unique([email, courseId])
   @@index([courseId])

@@ -15,7 +15,6 @@ import {
   Video,
   MapPin,
   Calendar,
-  CheckCircle2,
   Play,
   ArrowRight,
   GraduationCap,
@@ -35,6 +34,7 @@ import { GetUpcomingSeminars, GetAllSeminars } from "@/app/actions/seminar";
 import { Seminar } from "@/lib/form-types";
 import { toast } from "sonner";
 import Image from "next/image";
+import bannerImage from "../../../data/images/Programs/seminar.png";
 
 export default function SeminarSeriesNewPage() {
   const router = useRouter();
@@ -115,25 +115,21 @@ export default function SeminarSeriesNewPage() {
       icon: <Laptop className="w-6 h-6" />,
       title: "Live Technology Demonstrations",
       description: "Hands-on showcases of emerging technologies in action",
-      emoji: "✔",
     },
     {
       icon: <TrendingUp className="w-6 h-6" />,
       title: "Career Success Stories",
       description: "Learn from professionals who've achieved global success",
-      emoji: "✔",
     },
     {
       icon: <Network className="w-6 h-6" />,
       title: "Networking Opportunities",
       description: "Connect with industry professionals and ambitious peers",
-      emoji: "✔",
     },
     {
       icon: <MessageCircle className="w-6 h-6" />,
       title: "Interactive Q&A Sessions",
       description: "Get personalized answers to your career questions",
-      emoji: "✔",
     },
   ];
 
@@ -310,13 +306,27 @@ export default function SeminarSeriesNewPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-[#1164A3] via-[#68B9C4] to-[#82B4CC] text-white py-20">
-        <div className="container mx-auto px-4">
+
+      <section className="relative w-full h-[500px] md:h-[600px] overflow-hidden">
+                          <Image
+                            src={bannerImage.src}
+                            alt="banner"
+                            fill
+                            priority
+                            quality={90}
+                            className="object-cover"
+                          />
+                          {/* Overlay */}
+                          <div className="absolute inset-0 opacity-40 bg-gradient-to-r from-[#1164A3]/90 via-[#68B9C4]/75 to-[#82B4CC]/60" />
+                          
+                          {/* Content */}
+                          <div className="relative z-10 h-full flex items-center">
+                          <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-4 bg-white/20 text-white border-white/30 text-base px-4 py-2">
               Knowledge Exchange Platform
             </Badge>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
               NED Scholars Seminar Series
             </h1>
             <p className="text-2xl text-white/90 mb-4">
@@ -327,7 +337,8 @@ export default function SeminarSeriesNewPage() {
             </p>
           </div>
         </div>
-      </section>
+                          </div>
+                        </section>
 
       {/* Introduction */}
       <section className="py-20">
@@ -368,9 +379,6 @@ export default function SeminarSeriesNewPage() {
                       </div>
                       <div>
                         <h4 className="font-semibold text-gray-800 mb-1 flex items-center">
-                          <span className="text-[#68B9C4] mr-2">
-                            {feature.emoji}
-                          </span>
                           {feature.title}
                         </h4>
                         <p className="text-sm text-gray-600">
@@ -393,6 +401,7 @@ export default function SeminarSeriesNewPage() {
                     thriving globally, they realize their own potential is
                     limitless.
                   </p>
+                  <div className="text-[#1164A3] text-6xl leading-none">&quot;</div>
                 </div>
               </CardContent>
             </Card>
@@ -443,10 +452,9 @@ export default function SeminarSeriesNewPage() {
                         {/* Image Section */}
                         {seminar.images && seminar.images.length > 0 ? (
                           <div className="relative w-full md:w-64 h-48 md:h-auto overflow-hidden bg-gradient-to-br from-[#1164A3]/20 to-[#68B9C4]/20 flex-shrink-0">
-                            <Image
+                            <img
                               src={seminar.images[0].url}
                               alt={seminar.images[0].alt || seminar.title}
-                              fill
                               className="object-cover group-hover:scale-110 transition-transform duration-500"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -528,7 +536,7 @@ export default function SeminarSeriesNewPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <Badge className="mb-4 text-base bg-[#68B9C4] text-white">🎓 Career Enhancement</Badge>
+              <Badge className="mb-4 text-base bg-[#68B9C4] text-white">Career Enhancement</Badge>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
                 Specialized Certification Training Opportunities
               </h2>
@@ -649,10 +657,9 @@ export default function SeminarSeriesNewPage() {
                       {/* Image or gradient background */}
                       {seminar.images && seminar.images.length > 0 ? (
                         <div className="relative overflow-hidden h-48">
-                          <Image
+                          <img
                             src={seminar.images[0].url}
                             alt={seminar.images[0].alt || seminar.title}
-                            fill
                             className="object-cover group-hover:scale-110 transition-transform duration-500"
                           />
                           <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors duration-300" />
@@ -897,7 +904,7 @@ export default function SeminarSeriesNewPage() {
 
             {/* Present as Expert */}
             <Card className="shadow-2xl border-2 border-[#82B4CC]/20">
-              <CardHeader className="bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
+              <CardHeader className="bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10 py-4">
                 <CardTitle className="flex items-center space-x-3 text-2xl">
                   <Users className="w-10 h-10 text-[#1164A3]" />
                   <span>Present as an Expert</span>
@@ -917,7 +924,6 @@ export default function SeminarSeriesNewPage() {
                       </div>
                       <div>
                         <h5 className="font-bold text-gray-800 flex items-center mb-1">
-                          <CheckCircle2 className="w-4 h-4 text-[#68B9C4] mr-2" />
                           {type.title}
                         </h5>
                         <p className="text-sm text-gray-600">
@@ -965,6 +971,7 @@ export default function SeminarSeriesNewPage() {
                     scholar seeking direction or an alum ready to guide, these
                     seminars are where futures take shape.
                   </p>
+                  <div className="text-7xl text-white leading-none">&quot;</div>
                 </div>
                 <p className="text-xl text-white/90 font-bold">
                   NED Scholars: Lighting the Spark of Innovation Since 2010

@@ -187,7 +187,7 @@ export const ContentForm = ({
             toast("Team member created successfully");
             resetForm();
           } else {
-            toast("Failed to create team member");
+            toast(memberResult.error);
           }
           break;
 
@@ -204,7 +204,7 @@ export const ContentForm = ({
             toast("Success story created successfully");
             resetForm();
           } else {
-            toast("Failed to create success story");
+            toast(storyResult.error);
           }
           break;
 
@@ -221,7 +221,7 @@ export const ContentForm = ({
             toast("Blog created successfully");
             resetForm();
           } else {
-            toast("Failed to create blog");
+            toast(blogResult.error);
           }
           break;
 
@@ -238,7 +238,7 @@ export const ContentForm = ({
             toast("News created successfully");
             resetForm();
           } else {
-            toast("Failed to create news");
+            toast(newsResult.error);
           }
           break;
         case "remembrance":
@@ -253,7 +253,7 @@ export const ContentForm = ({
             toast("Remembrance created successfully");
             resetForm();
           } else {
-            toast("Failed to create remembrance");
+            toast(remembranceResult.error);
           }
           break;
         case "transparency":
@@ -268,7 +268,7 @@ export const ContentForm = ({
             toast("Transparency files created successfully");
             resetForm();
           } else {
-            toast("Failed to create transparency files");
+            toast(transparencyResult.error);
           }
           break;
       }

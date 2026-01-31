@@ -1,8 +1,10 @@
 "use client";
 
-import { GraduationCap, MapPin, Mail, Phone, Facebook, Instagram, Linkedin, Youtube, Github } from "lucide-react";
+import {  MapPin, Mail, Phone, Facebook, Instagram, Linkedin, Youtube, Github } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
+import Icon from "../../public/logo.png";
 
 export default function Footer() {
   const path = usePathname();
@@ -12,21 +14,22 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-gray-800 text-white py-16">
+    <footer className="bg-[#1D1B1C] text-white py-16">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {/* Logo and Description Section */}
           <div>
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
-                <GraduationCap className="w-6 h-6 text-white" />
-              </div>
-              <h4 className="text-xl font-bold">NED Scholars</h4>
+              <div
+          className="flex items-center space-x-3"
+        >
+          <Image src={Icon} width={50} height={50} alt="icon" />
+        </div>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               NED Scholars is a non-profit corporation. It operates exclusively for educational and charitable purposes within the meaning of Section 501 (c)(3) of the Internal Revenue Code.
             </p>
-            <Link href="/donation" className="bg-cyan-400 hover:bg-cyan-500 text-gray-900 font-semibold px-6 py-2 rounded-full transition-colors">
+            <Link href="/donation" className="bg-[#1164A3] hover:bg-[#82B4CC] text-white font-semibold px-6 py-2 rounded-full transition-colors">
               DONATE NOW
             </Link>
           </div>
@@ -78,7 +81,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 flex-shrink-0" />
-                <a href="tel:+12487033544" className="hover:text-cyan-400 transition-colors text-cyan-400">
+                <a href="tel:+12487033544" className="hover:text-[#82B4CC] transition-colors text-[#1164A3]">
                   +12487033544
                 </a>
               </div>
@@ -91,49 +94,41 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             {/* Social Media Icons */}
             <div className="flex space-x-4 mb-4 md:mb-0">
-              <a
-                href="https://facebook.com"
+              <Link
+                href="https://www.facebook.com/share/1Api3iA1Qi/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-8 h-8 flex items-center justify-center bg-gray-700 hover:bg-gray-600 rounded transition-colors"
               >
                 <Facebook className="w-4 h-4" />
-              </a>
-              <a
-                href="https://instagram.com"
+              </Link>
+              <Link
+                href="https://www.instagram.com/ned.scholars?igsh=MWNzYnFuM2Y0YzZ5eQ=="
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-8 h-8 flex items-center justify-center bg-gray-700 hover:bg-gray-600 rounded transition-colors"
               >
                 <Instagram className="w-4 h-4" />
-              </a>
-              <a
-                href="https://linkedin.com"
+              </Link>
+              <Link
+                href="https://www.linkedin.com/company/ned-scholars-org"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-8 h-8 flex items-center justify-center bg-gray-700 hover:bg-gray-600 rounded transition-colors"
               >
                 <Linkedin className="w-4 h-4" />
-              </a>
-              <a
-                href="https://youtube.com"
+              </Link>
+              <Link
+                href="https://www.youtube.com/@NEDSCHOLARS"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-8 h-8 flex items-center justify-center bg-gray-700 hover:bg-gray-600 rounded transition-colors"
               >
                 <Youtube className="w-4 h-4" />
-              </a>
+              </Link>
             </div>
 
-            {/* Bottom Links */}
-            <div className="flex space-x-6 text-gray-400 text-sm mb-4 md:mb-0">
-              <Link href="/about" className="hover:text-white transition-colors">
-                About Ned Scholars
-              </Link>
-              <Link href="/privacy-policy" className="hover:text-white transition-colors">
-                Privacy Policy
-              </Link>
-            </div>
+            <div className="flex w-full justify-center mt-3"><Link href="https://github.com/AbdulMoazzim" target="_blank"><Github className="cursor-pointer p-2 border-white border-[1px] rounded-full"/></Link></div>
 
             {/* Copyright */}
             <p className="text-gray-400 text-sm">
@@ -142,7 +137,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex w-full justify-center mt-3"><Link href="https://github.com/AbdulMoazzim" target="_blank"><Github className="cursor-pointer p-2 border-white border-[1px] rounded-full"/></Link></div>
+        
       </div>
     </footer>
   );

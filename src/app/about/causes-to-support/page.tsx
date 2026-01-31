@@ -10,6 +10,7 @@ import Image from "next/image";
 import StatCard from "@/components/Stats";
 import CustomCard from "@/components/Card";
 import { useRouter } from "next/navigation";
+import bannerImage from "../../../data/images/About/causes to support.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -104,15 +105,26 @@ const SupportPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1164A3] via-[#68B9C4] to-[#82B4CC]">
       {/* Hero Section */}
-      <section
-        className="text-center py-20 px-5 text-white"
-        ref={heroSectionRef}
-      >
-        <div className="max-w-6xl mx-auto box">
-          <h1 className="text-6xl md:text-7xl font-bold mb-6 drop-shadow-lg">
+      
+       <section className="relative w-full h-[500px] md:h-[600px] overflow-hidden"  ref={heroSectionRef}>
+                          <Image
+                            src={bannerImage.src}
+                            alt="banner"
+                            fill
+                            priority
+                            quality={90}
+                            className="object-cover object-top"
+                          />
+                          {/* Overlay */}
+                          <div className="absolute inset-0 opacity-40 bg-gradient-to-r from-[#1164A3]/90 via-[#68B9C4]/75 to-[#82B4CC]/60" />
+                          
+                          {/* Content */}
+                          <div className="relative z-10 h-full flex items-center">
+                           <div className="max-w-6xl mx-auto box text-center">
+          <h1 className="text-6xl md:text-7xl font-bold mb-6 drop-shadow-lg text-white">
             NED Scholars
           </h1>
-          <p className="text-xl md:text-2xl mb-12 opacity-90 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl mb-12 opacity-90 max-w-3xl mx-auto text-white">
             Empowering aspiring scholars pursuing their dreams in STEM
           </p>
           <button
@@ -122,7 +134,8 @@ const SupportPage: React.FC = () => {
             Donate Now & Make a Difference
           </button>
         </div>
-      </section>
+                          </div>
+                        </section>
 
       {/* Programs Section */}
       <section className="bg-white py-20">

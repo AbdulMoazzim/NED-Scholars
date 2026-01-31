@@ -41,7 +41,7 @@ export default function TeamMembersComponent({
             <h1 className="text-5xl font-bold text-gray-900 mb-6 tracking-tight">
               Meet Our Team
             </h1>
-            <div className="w-24 h-1 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] mx-auto mb-6 rounded-full"></div>
+            <div className="w-[300px] h-1 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] mx-auto mb-6 rounded-full"></div>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Dedicated professionals working together to make a difference
             </p>

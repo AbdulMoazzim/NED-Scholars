@@ -18,14 +18,12 @@ import {
   ArrowRight,
   UserCheck,
   ClipboardList,
-  Phone,
-  Youtube,
-  Facebook,
-  Linkedin,
-  Instagram,
+  Phone
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
+import bannerImage from "../../../../data/images/Services/application selection proccess.png";
 
 export default function GuidelinesAndPrioritiesPage() {
   const router = useRouter();
@@ -34,14 +32,14 @@ export default function GuidelinesAndPrioritiesPage() {
     {
       month: "October - November",
       title: "Application Period",
-      description: "Applications are accepted and reviewed",
+      description: "Applications are accepted and reviewed during this period.",
       icon: Calendar,
       color: "blue",
     },
     {
       month: "December - January",
       title: "Interview Process",
-      description: "Online interviews conducted with applicants and parents",
+      description: "Online interviews are conducted with applicants and their parents.",
       icon: Video,
       color: "purple",
     },
@@ -71,9 +69,9 @@ export default function GuidelinesAndPrioritiesPage() {
       description: "Submit your application through our online portal",
       icon: FileText,
       details: [
-        "Complete all required fields",
+        "Fill in all required fields before submitting.",
         "Upload necessary documents",
-        "Submit before deadline",
+        "Submit by the deadline.",
       ],
     },
     {
@@ -255,16 +253,30 @@ export default function GuidelinesAndPrioritiesPage() {
   return (
     <div className="min-h-screen bg-gradient-to-r from-gray-50 to-[#82B4CC]/10">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white py-20">
-        <div className="container mx-auto px-4 relative z-10">
+      
+ <section className="relative w-full h-[500px] md:h-[600px] overflow-hidden">
+              <Image
+                src={bannerImage.src}
+                alt="banner"
+                fill
+                priority
+                quality={90}
+                className="object-cover"
+              />
+              {/* Overlay */}
+              <div className="absolute inset-0 opacity-40 bg-gradient-to-r from-[#1164A3]/90 via-[#68B9C4]/75 to-[#82B4CC]/60" />
+              
+              {/* Content */}
+              <div className="relative z-10 h-full flex items-center">
+                <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-4 bg-white/20 text-white border-white/30 text-sm">
               SCHOLARSHIP PROGRAM
             </Badge>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in text-white">
               Guidelines & Priorities
             </h1>
-            <p className="text-xl md:text-2xl mb-8 opacity-90 max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl mb-8 opacity-90 max-w-3xl mx-auto text-white">
               Understand our comprehensive selection process and what to expect
               when applying for NED Scholars scholarship program
             </p>
@@ -278,11 +290,9 @@ export default function GuidelinesAndPrioritiesPage() {
             </Button>
           </div>
         </div>
+              </div>
+            </section>
 
-        {/* Decorative elements */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#68B9C4]/20 rounded-full blur-3xl"></div>
-      </section>
 
       {/* Timeline Section */}
       <section className="py-16 -mt-10 relative z-20">
@@ -353,7 +363,7 @@ export default function GuidelinesAndPrioritiesPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <Card className="border-0 shadow-xl">
-                <CardHeader className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white">
+                <CardHeader className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white py-4">
                   <CardTitle className="flex items-center gap-2">
                     <Shield className="w-5 h-5" />
                     Need-Cum-Merit Basis
@@ -389,7 +399,7 @@ export default function GuidelinesAndPrioritiesPage() {
               </Card>
 
               <Card className="border-0 shadow-xl">
-                <CardHeader className="bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] text-white">
+                <CardHeader className="bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] text-white py-4">
                   <CardTitle className="flex items-center gap-2">
                     <Users className="w-5 h-5" />
                     Administration
@@ -493,7 +503,7 @@ export default function GuidelinesAndPrioritiesPage() {
             </div>
 
             <Card className="border-0 shadow-xl">
-              <CardHeader className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white">
+              <CardHeader className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white py-4">
                 <CardTitle className="flex items-center gap-2">
                   <Users className="w-5 h-5" />
                   Committee Members
@@ -546,12 +556,6 @@ export default function GuidelinesAndPrioritiesPage() {
                   className="border-[#82B4CC]/20 shadow-lg hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
                 >
                   <CardContent className="p-6">
-                    <div className="flex items-start gap-6">
-                      <div className="flex-shrink-0">
-                        <div className="w-16 h-16 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
-                          {step.step}
-                        </div>
-                      </div>
                       <div className="flex-1">
                         <div className="flex items-start gap-4 mb-3">
                           <div className="w-10 h-10 bg-[#82B4CC]/20 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -577,7 +581,6 @@ export default function GuidelinesAndPrioritiesPage() {
                           ))}
                         </div>
                       </div>
-                    </div>
                   </CardContent>
                 </Card>
               ))}
@@ -602,7 +605,7 @@ export default function GuidelinesAndPrioritiesPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <Card className="border-0 shadow-xl">
-                <CardHeader className="bg-gradient-to-r from-[#82B4CC] to-[#B0A3B3] text-white">
+                <CardHeader className="bg-gradient-to-r from-[#82B4CC] to-[#B0A3B3] text-white py-4">
                   <CardTitle className="flex items-center gap-2">
                     <Video className="w-5 h-5" />
                     Interview Requirements
@@ -659,7 +662,7 @@ export default function GuidelinesAndPrioritiesPage() {
               </Card>
 
               <Card className="border-0 shadow-xl">
-                <CardHeader className="bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] text-white">
+                <CardHeader className="bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] text-white py-4">
                   <CardTitle className="flex items-center gap-2">
                     <MessageSquare className="w-5 h-5" />
                     Topics Discussed
@@ -690,7 +693,7 @@ export default function GuidelinesAndPrioritiesPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <Card className="border-0 shadow-xl">
-              <CardHeader className="bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] text-white">
+              <CardHeader className="py-4 bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] text-white " >
                 <CardTitle className="flex items-center gap-2">
                   <Shield className="w-5 h-5" />
                   Verification & Transparency
@@ -742,89 +745,6 @@ export default function GuidelinesAndPrioritiesPage() {
         </div>
       </section>
 
-      {/* Social Media Engagement */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-8">
-              <Badge className="mb-4 bg-[#68B9C4] text-white border-[#68B9C4]">STAY CONNECTED</Badge>
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">
-                Join Our Community
-              </h2>
-              <p className="text-gray-600 text-lg mb-8">
-                All scholarship recipients must engage with our community on
-                social media
-              </p>
-            </div>
-
-            <Card className="border-0 shadow-xl">
-              <CardContent className="p-8">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                  <a
-                    href="https://youtube.com/@nedscholars"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex flex-col items-center gap-3 p-4 bg-red-50 rounded-lg hover:bg-red-100 transition-colors group"
-                  >
-                    <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <Youtube className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="text-center">
-                      <p className="font-semibold text-gray-800">YouTube</p>
-                      <p className="text-xs text-gray-600">Subscribe</p>
-                    </div>
-                  </a>
-
-                  <a
-                    href="https://facebook.com/nedscholars"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex flex-col items-center gap-3 p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors group"
-                  >
-                    <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <Facebook className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="text-center">
-                      <p className="font-semibold text-gray-800">Facebook</p>
-                      <p className="text-xs text-gray-600">Like & Friend</p>
-                    </div>
-                  </a>
-
-                  <a
-                    href="https://linkedin.com/company/nedscholars"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex flex-col items-center gap-3 p-4 bg-[#82B4CC]/10 rounded-lg hover:bg-[#82B4CC]/20 transition-colors group"
-                  >
-                    <div className="w-12 h-12 bg-[#1164A3] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <Linkedin className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="text-center">
-                      <p className="font-semibold text-gray-800">LinkedIn</p>
-                      <p className="text-xs text-gray-600">Follow</p>
-                    </div>
-                  </a>
-
-                  <a
-                    href="https://instagram.com/nedscholars"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex flex-col items-center gap-3 p-4 bg-pink-50 rounded-lg hover:bg-pink-100 transition-colors group"
-                  >
-                    <div className="w-12 h-12 bg-gradient-to-r from-[#82B4CC] to-[#B0A3B3] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <Instagram className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="text-center">
-                      <p className="font-semibold text-gray-800">Instagram</p>
-                      <p className="text-xs text-gray-600">Follow</p>
-                    </div>
-                  </a>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white">

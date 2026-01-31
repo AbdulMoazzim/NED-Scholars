@@ -31,10 +31,11 @@ import {
   ExternalLink,
   Sparkles,
 } from "lucide-react";
-// import { GetActiveInternships } from "@/app/actions/internships";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { GetActiveInternships } from "@/app/actions/internships";
+import bannerImage from "../../../data/images/Programs/internship.png";
+import Image from "next/image";
 
 interface Internship {
   id: string;
@@ -222,13 +223,28 @@ export default function InternshipsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-[#1164A3] via-[#68B9C4] to-[#82B4CC] text-white py-20">
-        <div className="container mx-auto px-4">
+
+
+       <section className="relative w-full h-[500px] md:h-[600px] overflow-hidden">
+                          <Image
+                            src={bannerImage.src}
+                            alt="banner"
+                            fill
+                            priority
+                            quality={90}
+                            className="object-cover"
+                          />
+                          {/* Overlay */}
+                          <div className="absolute inset-0 opacity-40 bg-gradient-to-r from-[#1164A3]/90 via-[#68B9C4]/75 to-[#82B4CC]/60" />
+                          
+                          {/* Content */}
+                          <div className="relative z-10 h-full flex items-center">
+                        <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-4 bg-white/20 text-white border-white/30 text-base px-4 py-2">
               Professional Development
             </Badge>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
               Internship Opportunities
             </h1>
             <p className="text-2xl text-white/90 mb-4">
@@ -240,7 +256,8 @@ export default function InternshipsPage() {
             </p>
           </div>
         </div>
-      </section>
+                          </div>
+                        </section>
 
       {/* Overview Section */}
       <section className="py-20">

@@ -45,7 +45,6 @@ import {
 import { GetUpcomingVisits, GetPastVisits,  GetAllRegistrationsByUser } from "@/app/actions/industrial-visit";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import type { IndustrialVisit, Registration } from "@/lib/form-types";
 import { useSession } from "@/lib/auth-client";
 
@@ -971,8 +970,7 @@ export default function IndustrialVisitsPage() {
                   >
                     {visit.images && visit.images.length > 0 && (
                       <div className="relative h-64 overflow-hidden">
-                        <Image
-                        fill
+                        <img
                           src={visit.images[0].url}
                           alt={visit.images[0].alt || visit.title}
                           className="object-cover"

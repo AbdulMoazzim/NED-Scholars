@@ -63,7 +63,7 @@ export default function MobileHeader({
         {/* Menu Items */}
         <div className="flex-1 overflow-y-auto p-4">
           <nav className="space-y-2">
-            {menuItems.slice(0, menuItems.length - 1).map((item, index) => (
+            {menuItems.slice(0, menuItems.length).map((item, index) => (
               <div
                 key={index}
                 className="border-b border-gray-100 last:border-b-0"
@@ -141,11 +141,6 @@ export default function MobileHeader({
                 )}
               </div>
             ))}
-            <div className="border-b border-gray-100 last:border-b-0 m-3">
-              <Link href="/donation" className="text-gray-800 font-medium">
-                Donate Now
-              </Link>
-            </div>
           </nav>
         </div>
       </div>

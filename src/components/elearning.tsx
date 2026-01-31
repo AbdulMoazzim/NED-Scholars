@@ -636,35 +636,7 @@ export default function ELearningPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-[#1164A3] via-[#68B9C4] to-[#82B4CC] text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-6">
-              Ready to Start Your Learning Journey?
-            </h2>
-            <p className="text-xl text-white/90 mb-8">
-              Join thousands of students enhancing their skills through our
-              expert-led online courses. Start learning today and unlock your
-              potential.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                onClick={() => {
-                  const coursesSection = document.querySelector(
-                    'section:has([class*="Course Catalog"])'
-                  );
-                  coursesSection?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="bg-white text-[#1164A3] hover:bg-gray-100 text-lg px-8 py-6"
-              >
-                <BookOpen className="w-5 h-5 mr-2" />
-                Browse Courses
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      
     </div>
   );
 }

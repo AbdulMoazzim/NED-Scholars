@@ -285,27 +285,41 @@ export default function GupShupPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-[#1164A3] via-[#68B9C4] to-[#82B4CC] text-white py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="flex justify-center mb-4">
-              <Coffee className="w-16 h-16 text-white" />
+      {/* Hero Section with Image Overlay */}
+      <section className="relative w-full h-[500px] md:h-[600px] overflow-hidden">
+        <Image
+          src="/images/gupshup-hero.jpg"
+          alt="Gup Shup - Casual Conversations"
+          fill
+          priority
+          quality={90}
+          className="object-cover"
+        />
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1164A3]/90 via-[#68B9C4]/75 to-[#82B4CC]/60" />
+        
+        {/* Content */}
+        <div className="relative z-10 h-full flex items-center">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <div className="flex justify-center mb-4">
+                <Coffee className="w-16 h-16 md:w-20 md:h-20 text-white" />
+              </div>
+              <Badge className="mb-4 bg-white/20 text-white border-white/30 text-base px-4 py-2">
+                Special Monthly Feature
+              </Badge>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-white">
+                &quot;Gup Shup&quot;
+              </h1>
+              <p className="text-2xl md:text-3xl text-white/95 mb-4 font-semibold">
+                Casual Conversations. Meaningful Insights.
+              </p>
+              <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+                In the spirit of open dialogue and diverse perspectives, NED
+                Scholars hosts &quot;Gup Shup&quot;—a monthly virtual gathering inspired by
+                the Urdu term for friendly conversation.
+              </p>
             </div>
-            <Badge className="mb-4 bg-white/20 text-white border-white/30 text-base px-4 py-2">
-              Special Monthly Feature
-            </Badge>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              &quot;Gup Shup&quot;
-            </h1>
-            <p className="text-2xl text-white/90 mb-4">
-              Casual Conversations. Meaningful Insights.
-            </p>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto">
-              In the spirit of open dialogue and diverse perspectives, NED
-              Scholars hosts &quot;Gup Shup&quot;—a monthly virtual gathering inspired by
-              the Urdu term for friendly conversation.
-            </p>
           </div>
         </div>
       </section>
@@ -452,7 +466,6 @@ export default function GupShupPage() {
                       </div>
                       <div className="flex-1">
                         <p className="text-gray-700 font-medium flex items-center">
-                          <CheckCircle2 className="w-5 h-5 text-[#68B9C4] mr-2 flex-shrink-0" />
                           {item.benefit}
                         </p>
                       </div>
@@ -898,10 +911,9 @@ export default function GupShupPage() {
                     <CardContent className="p-0">
                       <div className="relative overflow-hidden h-48">
                         {session.thumbnailImage ? (
-                          <Image
+                          <img
                             src={session.thumbnailImage[0].url}
                             alt={session.thumbnailImage[0].alt || session.title}
-                            fill
                             className="object-cover group-hover:scale-110 transition-transform duration-300"
                           />
                         ) : (
@@ -979,7 +991,7 @@ export default function GupShupPage() {
                     toast.info("No upcoming sessions at the moment. Check back soon!");
                   }
                 }}
-                className="bg-white text-[#1164A3] px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                className="bg-white text-[#1164A3]  px-8 py-4 rounded-full font-semibold hover:bg-white transition-all duration-300 transform hover:scale-105"
               >
                 <Calendar className="w-5 h-5 mr-2" />
                 {filteredUpcoming.length > 0 ? "Register for Next Session" : "Coming Soon"}

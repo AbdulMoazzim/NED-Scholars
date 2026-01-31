@@ -205,7 +205,7 @@ export default function WebinarSeriesPage() {
               <Video className="w-16 h-16 text-white" />
             </div>
             <Badge className="mb-4 bg-white/20 text-white border-white/30">
-              🌐 Online Learning Platform
+               Online Learning Platform
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               NED Scholars Webinar Series
@@ -259,7 +259,6 @@ export default function WebinarSeriesPage() {
                         {area.icon}
                       </div>
                       <div className="flex items-center justify-center mb-2">
-                        <CheckCircle2 className="w-5 h-5 text-[#68B9C4] mr-2" />
                         <h4 className="font-bold text-gray-800">{area.title}</h4>
                       </div>
                       <p className="text-sm text-gray-600">{area.description}</p>

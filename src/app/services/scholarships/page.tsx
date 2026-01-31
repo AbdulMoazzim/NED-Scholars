@@ -13,6 +13,8 @@ import {
   Award,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+import bannerImage from "../../../data/images/Services/scholarship detail.png";
 
 export default function ScholarshipGuidelines() {
   const selectionCommittee = [
@@ -121,13 +123,28 @@ export default function ScholarshipGuidelines() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white py-16">
-        <div className="container mx-auto px-4">
+     
+
+      <section className="relative w-full h-[500px] md:h-[600px] overflow-hidden">
+                    <Image
+                      src={bannerImage.src}
+                      alt="Gup Shup - Casual Conversations"
+                      fill
+                      priority
+                      quality={90}
+                      className="object-cover"
+                    />
+                    {/* Overlay */}
+                    <div className="absolute inset-0 opacity-40 bg-gradient-to-r from-[#1164A3]/90 via-[#68B9C4]/75 to-[#82B4CC]/60" />
+                    
+                    {/* Content */}
+                    <div className="relative z-10 h-full flex items-center">
+                      <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-4 bg-white/20 text-white border-white/30">
               Scholarship Information
             </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">
               Guidelines and Selection Process
             </h1>
             <p className="text-xl text-white/90">
@@ -135,7 +152,8 @@ export default function ScholarshipGuidelines() {
             </p>
           </div>
         </div>
-      </section>
+                    </div>
+                  </section>
 
       {/* Guidelines Section */}
       <section className="py-16">

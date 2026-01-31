@@ -5,22 +5,11 @@ import { GetAllMembers } from "@/app/actions/team-member";
 import { GetAllRemembrances } from "@/app/actions/remembrance";
 import { Transparency } from "./form-types";
 
-// Define types for menu items
-export interface SubSubLinkItem {
-  href: string;
-  title: string;
-}
-
-export interface SubLinkItem {
-  href: string;
-  title: string;
-  subItems?: SubSubLinkItem[];
-}
 
 export interface MenuItem {
   title: string;
   href: string;
-  subItems?: SubLinkItem[];
+  subItems?: MenuItem[];
 }
 
 export interface cardItems {

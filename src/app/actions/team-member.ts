@@ -21,6 +21,17 @@ export async function CreateTeamMember(teamData: {
   const rollbackState = createRollbackState("team");
 
   try {
+    const teamMember = await prisma.teamMember.findFirst({
+      where: {
+        email: teamData.formData.email
+      }
+    })
+
+    if (teamMember) return {
+      success: false,
+      error: "Email Entered Already. Try new email",
+    };
+
     const createdMember = await prisma.teamMember.create({
       data: {
         ...teamData.formData,

@@ -1,7 +1,8 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Heart, Award, Users, Sparkles } from "lucide-react";
-import Link from "next/link";
+import Image from "next/image";
+import bannerImage from "../../../data/images/About/acknowledgement.png";
 
 export default function AcknowledgementPage() {
   const donors = [
@@ -75,21 +76,37 @@ export default function AcknowledgementPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Banner */}
-      <section className="relative bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white py-20">
-        <div className="container mx-auto px-4">
+      
+
+      <section className="relative w-full h-[500px] md:h-[600px] overflow-hidden">
+                    <Image
+                      src={bannerImage.src}
+                      alt="banner"
+                      fill
+                      priority
+                      quality={90}
+                      className="object-cover object-top"
+                    />
+                    {/* Overlay */}
+                    <div className="absolute inset-0 opacity-40 bg-gradient-to-r from-[#1164A3]/90 via-[#68B9C4]/75 to-[#82B4CC]/60" />
+                    
+                    {/* Content */}
+                    <div className="relative z-10 h-full flex items-center">
+                      <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-6 bg-white/20 text-white border-white/30 px-4 py-2 text-sm">
               ACKNOWLEDGEMENT
             </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">
               Acknowledging a Legacy of Generosity
             </h1>
-            <p className="text-lg md:text-xl opacity-90 leading-relaxed">
+            <p className="text-lg md:text-xl opacity-90 leading-relaxed text-white">
               Since 2007, the success of the NED Scholarship has relied on the selfless contributions of our scholars and supporters. We extend our sincere thanks to all who made this possible.
             </p>
           </div>
         </div>
-      </section>
+                    </div>
+                  </section>
 
       {/* Stats Section */}
       <section className="py-16 bg-white">
@@ -170,24 +187,7 @@ export default function AcknowledgementPage() {
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="py-20 bg-gradient-to-r from-gray-50 to-[#82B4CC]/10">
-        <div className="container mx-auto px-4 text-center">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
-              Join Our Community of Donors
-            </h2>
-            <p className="text-lg text-gray-600 mb-8">
-              Be part of the legacy. Your contribution can change a student&apos;s life and shape the future of STEM education.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/donation" className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all">
-                Donate Now
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+  
     </div>
   );
 }

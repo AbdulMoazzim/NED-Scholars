@@ -527,7 +527,6 @@ export default function Dare2DesignPage() {
                       </div>
                       <div>
                         <h4 className="font-semibold text-gray-800 mb-2 flex items-center">
-                          <CheckCircle2 className="w-5 h-5 text-[#68B9C4] mr-2" />
                           {factor.title}
                         </h4>
                         <p className="text-gray-600">{factor.description}</p>

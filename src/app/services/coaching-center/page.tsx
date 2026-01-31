@@ -24,6 +24,8 @@ import {
   TrendingDown,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+import bannerImage from "../../../data/images/Services/coaching_center.png";
 
 export default function CoachingCenterPage() {
   const systemChallenges = [
@@ -70,7 +72,7 @@ export default function CoachingCenterPage() {
     {
       icon: <School className="w-5 h-5" />,
       name: "University Entrance Tests",
-      details: "NUST, FAST, NED, etc.",
+      details: "ECAT, MDCAT etc.",
     },
   ];
 
@@ -83,7 +85,7 @@ export default function CoachingCenterPage() {
     {
       icon: <Laptop className="w-6 h-6" />,
       title: "STEM-Focused Curriculum",
-      description: "Enhanced learning in Science, Technology, Engineering, Math",
+      description: "Enhanced learning in Science, Technology, Engineering, Mathematics",
     },
     {
       icon: <Briefcase className="w-6 h-6" />,
@@ -234,13 +236,27 @@ export default function CoachingCenterPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-[#1164A3] via-[#68B9C4] to-[#82B4CC] text-white py-16">
-        <div className="container mx-auto px-4">
+
+      <section className="relative w-full h-[500px] md:h-[600px] overflow-hidden">
+                    <Image
+                      src={bannerImage.src}
+                      alt="banner"
+                      fill
+                      priority
+                      quality={90}
+                      className="object-cover object-bottom"
+                    />
+                    {/* Overlay */}
+                    <div className="absolute inset-0 opacity-40 bg-gradient-to-r from-[#1164A3]/90 via-[#68B9C4]/75 to-[#82B4CC]/60" />
+                    
+                    {/* Content */}
+                    <div className="relative z-10 h-full flex items-center">
+                     <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-4 bg-white/20 text-white border-white/30">
               Social Enterprise Model
             </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white" >
               NED Scholars Coaching Center Initiative
             </h1>
             <p className="text-xl text-white/90">
@@ -248,7 +264,8 @@ export default function CoachingCenterPage() {
             </p>
           </div>
         </div>
-      </section>
+                    </div>
+                  </section>
 
       {/* Current Landscape */}
       <section className="py-16">
@@ -331,6 +348,7 @@ export default function CoachingCenterPage() {
                     When education becomes a business rather than a right,
                     students and teachers both lose.
                   </p>
+                  <div className="text-[#1164A3] text-4xl">&quot;</div>
                 </div>
               </CardContent>
             </Card>
@@ -536,17 +554,7 @@ export default function CoachingCenterPage() {
               ))}
             </div>
 
-            <Card className="bg-gradient-to-r from-[#82B4CC]/20 to-[#B0A3B3]/20 border-l-4 border-[#1164A3]">
-              <CardContent className="p-6">
-                <div className="flex items-start space-x-4">
-                  <div className="text-[#1164A3] text-3xl">&quot;</div>
-                  <p className="text-lg text-gray-700 italic font-medium">
-                    We&apos;re not running coaching centers - we&apos;re building
-                    community education hubs.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+          
           </div>
         </div>
       </section>

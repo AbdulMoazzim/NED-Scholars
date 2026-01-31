@@ -18,6 +18,8 @@ import {
   Award,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+import bannerImage from "../../../data/images/volunteer.png";
 
 export default function VolunteersPage() {
   const teams = [
@@ -302,8 +304,23 @@ export default function VolunteersPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-[#1164A3] via-[#68B9C4] to-[#82B4CC] text-white py-20">
-        <div className="container mx-auto px-4">
+     
+
+      <section className="relative w-full h-[500px] md:h-[600px] overflow-hidden">
+                    <Image
+                      src={bannerImage.src}
+                      alt="banner"
+                      fill
+                      priority
+                      quality={90}
+                      className="object-cover object-top"
+                    />
+                    {/* Overlay */}
+                    <div className="absolute inset-0 opacity-40 bg-gradient-to-r from-[#1164A3]/90 via-[#68B9C4]/75 to-[#82B4CC]/60" />
+                    
+                    {/* Content */}
+                    <div className="relative z-10 h-full flex items-center">
+                      <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex justify-center mb-4">
               <Users className="w-16 h-16 text-white" />
@@ -323,7 +340,8 @@ export default function VolunteersPage() {
             </p>
           </div>
         </div>
-      </section>
+                    </div>
+                  </section>
 
       {/* Introduction */}
       <section className="py-16">
