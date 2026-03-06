@@ -1,8 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { Heart, Award, Users, Sparkles } from "lucide-react";
-import Image from "next/image";
-import bannerImage from "../../../data/images/About/acknowledgement.png";
+import { Heart } from "lucide-react";
+import cardImage from "../../../data/images/About/acknowledgement.jpeg";
 
 export default function AcknowledgementPage() {
   const donors = [
@@ -66,66 +65,27 @@ export default function AcknowledgementPage() {
     "Mr. Rafiq Siwani"
   ];
 
-  const stats = [
-    { icon: Heart, value: "58+", label: "Generous Donors" },
-    { icon: Award, value: "Since 2007", label: "Years of Support" },
-    { icon: Users, value: "100+", label: "Scholars Helped" },
-    { icon: Sparkles, value: "Countless", label: "Lives Changed" }
-  ];
-
   return (
     <div className="min-h-screen">
       {/* Hero Banner */}
       
 
-      <section className="relative w-full h-[500px] md:h-[600px] overflow-hidden">
-                    <Image
-                      src={bannerImage.src}
-                      alt="banner"
-                      fill
-                      priority
-                      quality={90}
-                      className="object-cover object-top"
-                    />
-                    {/* Overlay */}
-                    <div className="absolute inset-0 opacity-40 bg-gradient-to-r from-[#1164A3]/90 via-[#68B9C4]/75 to-[#82B4CC]/60" />
-                    
-                    {/* Content */}
-                    <div className="relative z-10 h-full flex items-center">
-                      <div className="container mx-auto px-4">
+       <section className="relative bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white py-20">
+        <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-6 bg-white/20 text-white border-white/30 px-4 py-2 text-sm">
               ACKNOWLEDGEMENT
             </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Acknowledging a Legacy of Generosity
             </h1>
-            <p className="text-lg md:text-xl opacity-90 leading-relaxed text-white">
+            <p className="text-lg md:text-xl opacity-90 leading-relaxed">
               Since 2007, the success of the NED Scholarship has relied on the selfless contributions of our scholars and supporters. We extend our sincere thanks to all who made this possible.
             </p>
           </div>
         </div>
-                    </div>
-                  </section>
-
-      {/* Stats Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {stats.map((stat, index) => (
-              <Card key={index} className="text-center border-[#82B4CC]/30 shadow-lg hover:shadow-xl hover:border-[#1164A3] transition-all">
-                <CardContent className="p-6">
-                  <stat.icon className="w-10 h-10 mx-auto mb-3 text-[#1164A3]" />
-                  <div className="text-3xl font-bold text-gray-800 mb-1">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-gray-600">{stat.label}</div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
       </section>
+
 
       {/* Donors List Section */}
       <section className="py-20 bg-gradient-to-r from-gray-50 to-[#82B4CC]/10">
@@ -167,25 +127,43 @@ export default function AcknowledgementPage() {
 
       {/* Thank You Message */}
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <Card className="border-0 shadow-xl bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white ">
-              <CardContent className="p-12 text-center">
-                <Heart className="w-16 h-16 mx-auto mb-6 opacity-90" />
-                <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                  Your Generosity Creates Opportunities
-                </h2>
-                <p className="text-lg md:text-xl opacity-90 leading-relaxed mb-8">
-                  Every contribution, no matter the size, helps us empower deserving students to pursue their dreams in STEM education. Your support doesn&apos;t just provide financial aid—it opens doors, builds confidence, and creates future leaders.
-                </p>
-                <p className="text-xl font-semibold">
-                  From the bottom of our hearts, thank you.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+  <div className="container mx-auto px-4">
+    <div className="max-w-4xl mx-auto">
+      <Card className="border-0 shadow-xl overflow-hidden text-white py-0 h-[600px]">
+        <div
+          className="relative h-full"
+          style={{
+            backgroundImage: `url(${cardImage.src})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <div
+            className="absolute inset-0"
+            style={{
+              background: "linear-gradient(to right, rgba(17, 100, 163, 0.82), rgba(104, 185, 196, 0.82))",
+              opacity: 0.4
+            }}
+          />
+
+          {/* Content sits above the overlay */}
+          <CardContent className="relative z-10 p-12 text-center flex flex-col justify-center items-center h-full">
+            <Heart className="w-16 h-16 mx-auto mb-6 opacity-90" />
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Your Generosity Creates Opportunities
+            </h2>
+            <p className="text-lg md:text-xl opacity-90 leading-relaxed mb-8">
+              Every contribution, no matter the size, helps us empower deserving students to pursue their dreams in STEM education. Your support doesn&apos;t just provide financial aid—it opens doors, builds confidence, and creates future leaders.
+            </p>
+            <p className="text-xl font-semibold">
+              From the bottom of our hearts, thank you.
+            </p>
+          </CardContent>
         </div>
-      </section>
+      </Card>
+    </div>
+  </div>
+</section>
 
   
     </div>

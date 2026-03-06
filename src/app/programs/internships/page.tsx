@@ -30,12 +30,11 @@ import {
   Loader2,
   ExternalLink,
   Sparkles,
+  ArrowRight,
 } from "lucide-react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { GetActiveInternships } from "@/app/actions/internships";
-import bannerImage from "../../../data/images/Programs/internship.png";
-import Image from "next/image";
 
 interface Internship {
   id: string;
@@ -94,8 +93,6 @@ export default function InternshipsPage() {
 
   const filterInternships = () => {
     let filtered = [...internships];
-
-    // Search filter
     if (searchQuery) {
       filtered = filtered.filter(
         (int) =>
@@ -104,17 +101,12 @@ export default function InternshipsPage() {
           int.description.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
-
-    // Category filter
     if (categoryFilter !== "all") {
       filtered = filtered.filter((int) => int.category === categoryFilter);
     }
-
-    // Location filter
     if (locationFilter !== "all") {
       filtered = filtered.filter((int) => int.locationType === locationFilter);
     }
-
     setFilteredInternships(filtered);
   };
 
@@ -142,44 +134,35 @@ export default function InternshipsPage() {
     return colors[category] || "from-[#1164A3] to-[#68B9C4]";
   };
 
-  const formatCategory = (category: string) => {
-    return category
-      .split("_")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
-  };
+  const formatCategory = (category: string) =>
+    category.split("_").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
 
-  const formatLocationType = (type: string) => {
-    return type.charAt(0).toUpperCase() + type.slice(1);
-  };
+  const formatLocationType = (type: string) =>
+    type.charAt(0).toUpperCase() + type.slice(1);
 
   const overviewItems = [
     {
       icon: <Target className="w-8 h-8" />,
       title: "Hands-on Experience",
-      description:
-        "Apply theoretical knowledge in real work environments and gain practical skills",
+      description: "Apply theoretical knowledge in real work environments and gain practical skills",
       color: "from-[#1164A3] to-[#68B9C4]",
     },
     {
       icon: <Users className="w-8 h-8" />,
       title: "Professional Development",
-      description:
-        "Develop workplace skills, ethics, and understand organizational culture",
+      description: "Develop workplace skills, ethics, and understand organizational culture",
       color: "from-[#68B9C4] to-[#82B4CC]",
     },
     {
       icon: <TrendingUp className="w-8 h-8" />,
       title: "Career Readiness",
-      description:
-        "Enhance employability, build networks, and explore career paths",
+      description: "Enhance employability, build networks, and explore career paths",
       color: "from-[#82B4CC] to-[#B0A3B3]",
     },
     {
       icon: <Award className="w-8 h-8" />,
       title: "Industry Exposure",
-      description:
-        "Gain insight into expectations, responsibilities, and workflows",
+      description: "Gain insight into expectations, responsibilities, and workflows",
       color: "from-[#1164A3] to-[#82B4CC]",
     },
   ];
@@ -194,181 +177,197 @@ export default function InternshipsPage() {
   ];
 
   const benefits = [
-    {
-      icon: <Briefcase className="w-6 h-6" />,
-      text: "Real-world professional experience",
-    },
-    {
-      icon: <CheckCircle className="w-6 h-6" />,
-      text: "Strengthened CV and portfolio",
-    },
-    {
-      icon: <TrendingUp className="w-6 h-6" />,
-      text: "Improved job readiness",
-    },
-    {
-      icon: <Users className="w-6 h-6" />,
-      text: "Confidence and professional growth",
-    },
-    {
-      icon: <Target className="w-6 h-6" />,
-      text: "Career path exploration",
-    },
-    {
-      icon: <Award className="w-6 h-6" />,
-      text: "Industry connections",
-    },
+    { icon: <Briefcase className="w-6 h-6" />, text: "Real-world professional experience" },
+    { icon: <CheckCircle className="w-6 h-6" />, text: "Strengthened CV and portfolio" },
+    { icon: <TrendingUp className="w-6 h-6" />, text: "Improved job readiness" },
+    { icon: <Users className="w-6 h-6" />, text: "Confidence and professional growth" },
+    { icon: <Target className="w-6 h-6" />, text: "Career path exploration" },
+    { icon: <Award className="w-6 h-6" />, text: "Industry connections" },
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+
       {/* Hero Section */}
-
-
-       <section className="relative w-full h-[500px] md:h-[600px] overflow-hidden">
-                          <Image
-                            src={bannerImage.src}
-                            alt="banner"
-                            fill
-                            priority
-                            quality={90}
-                            className="object-cover"
-                          />
-                          {/* Overlay */}
-                          <div className="absolute inset-0 opacity-40 bg-gradient-to-r from-[#1164A3]/90 via-[#68B9C4]/75 to-[#82B4CC]/60" />
-                          
-                          {/* Content */}
-                          <div className="relative z-10 h-full flex items-center">
-                        <div className="container mx-auto px-4">
+      <section className="relative overflow-hidden bg-gradient-to-r from-[#1164A3] via-[#68B9C4] to-[#82B4CC] text-white py-20">
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-4 bg-white/20 text-white border-white/30 text-base px-4 py-2">
               Professional Development
             </Badge>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">
               Internship Opportunities
             </h1>
             <p className="text-2xl text-white/90 mb-4">
               Bridge the Gap Between Theory and Practice
             </p>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto">
+            <p className="text-xl text-white/80 max-w-3xl mx-auto mb-8">
               Connect with meaningful internship opportunities that complement your
               academic learning and prepare you for real-world challenges
             </p>
+            <a
+              href="#internships"
+              className="inline-flex items-center gap-2 bg-white text-[#1164A3] hover:bg-gray-100 text-lg px-8 py-4 rounded-full shadow-xl font-semibold transform hover:scale-105 transition-all duration-300"
+            >
+              Browse Opportunities
+              <ArrowRight className="w-5 h-5" />
+            </a>
           </div>
         </div>
-                          </div>
-                        </section>
+        <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#68B9C4]/20 rounded-full blur-3xl"></div>
+      </section>
 
-      {/* Overview Section */}
+      {/* Overview Section — image beside overview cards */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4 text-base bg-[#68B9C4] text-white">
-                Program Overview
-              </Badge>
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">
-                Why Internships Matter
-              </h2>
+              <Badge className="mb-4 text-base bg-[#68B9C4] text-white">Program Overview</Badge>
+              <h2 className="text-4xl font-bold text-gray-800 mb-4">Why Internships Matter</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Internships are a vital part of a student&apos;s academic and professional
-                development, providing hands-on experience that complements classroom
-                learning.
+                development, providing hands-on experience that complements classroom learning.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-              {overviewItems.map((item, index) => (
-                <Card
-                  key={index}
-                  className="hover:shadow-2xl hover:border-[#1164A3] transition-all duration-300"
-                >
-                  <CardContent className="p-8">
-                    <div className="flex items-start gap-6">
-                      <div
-                        className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${item.color} flex items-center justify-center text-white flex-shrink-0`}
-                      >
-                        {item.icon}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+              {/* Overview cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {overviewItems.map((item, index) => (
+                  <Card
+                    key={index}
+                    className="hover:shadow-2xl hover:border-[#1164A3] transition-all duration-300"
+                  >
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <div className={`w-14 h-14 rounded-2xl bg-gradient-to-r ${item.color} flex items-center justify-center text-white flex-shrink-0`}>
+                          {item.icon}
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-bold text-gray-800 mb-1">{item.title}</h3>
+                          <p className="text-gray-600 text-sm">{item.description}</p>
+                        </div>
                       </div>
-                      <div>
-                        <h3 className="text-xl font-bold text-gray-800 mb-2">
-                          {item.title}
-                        </h3>
-                        <p className="text-gray-600">{item.description}</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+
+              {/* Image */}
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[440px]">
+                <img
+                  src="/images/internships-overview.jpg"
+                  alt="Students gaining professional experience through internships"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
+                <div className="absolute bottom-5 left-5 right-5">
+                  <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
+                    Real-world experience that transforms academic learning into professional readiness
+                  </p>
+                </div>
+                <div className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl border-4 border-[#68B9C4]/30 -z-10" />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Learning Outcomes */}
+      {/* Learning Outcomes — image beside outcome cards */}
       <section className="py-20 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4 text-base bg-[#1164A3] text-white">
-                What You&apos;ll Gain
-              </Badge>
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">
-                Learning Outcomes
-              </h2>
+              <Badge className="mb-4 text-base bg-[#1164A3] text-white">What You&apos;ll Gain</Badge>
+              <h2 className="text-4xl font-bold text-gray-800 mb-4">Learning Outcomes</h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {learningOutcomes.map((outcome, index) => (
-                <Card
-                  key={index}
-                  className="border-[#82B4CC]/30 hover:border-[#1164A3] transition-all"
-                >
-                  <CardContent className="p-6 flex items-start gap-4">
-                    <CheckCircle className="w-6 h-6 text-[#68B9C4] flex-shrink-0 mt-1" />
-                    <p className="text-gray-700 font-medium">{outcome}</p>
-                  </CardContent>
-                </Card>
-              ))}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+              {/* Image */}
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[400px]">
+                <img
+                  src="/images/internships-outcomes.jpg"
+                  alt="Interns developing new skills in a professional setting"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
+                <div className="absolute bottom-5 left-5 right-5">
+                  <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
+                    Every internship is a step closer to the career you envision
+                  </p>
+                </div>
+                <div className="absolute -bottom-3 -left-3 w-full h-full rounded-2xl border-4 border-[#82B4CC]/30 -z-10" />
+              </div>
+
+              {/* Outcome cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {learningOutcomes.map((outcome, index) => (
+                  <Card
+                    key={index}
+                    className="border-[#82B4CC]/30 hover:border-[#1164A3] transition-all"
+                  >
+                    <CardContent className="p-5 flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-[#68B9C4] flex-shrink-0 mt-0.5" />
+                      <p className="text-gray-700 font-medium text-sm">{outcome}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Student Benefits */}
+      {/* Student Benefits — image beside benefit cards */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4 text-base bg-[#68B9C4] text-white">
-                Student Benefits
-              </Badge>
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">
-                How You&apos;lll Benefit
-              </h2>
+              <Badge className="mb-4 text-base bg-[#68B9C4] text-white">Student Benefits</Badge>
+              <h2 className="text-4xl font-bold text-gray-800 mb-4">How You&apos;ll Benefit</h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {benefits.map((benefit, index) => (
-                <Card
-                  key={index}
-                  className="border-[#82B4CC]/30 hover:shadow-lg transition-all"
-                >
-                  <CardContent className="p-6 flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-[#1164A3]/10 flex items-center justify-center text-[#1164A3]">
-                      {benefit.icon}
-                    </div>
-                    <p className="text-gray-700 font-medium">{benefit.text}</p>
-                  </CardContent>
-                </Card>
-              ))}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+              {/* Benefit cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {benefits.map((benefit, index) => (
+                  <Card
+                    key={index}
+                    className="border-[#82B4CC]/30 hover:shadow-lg hover:border-[#1164A3] transition-all"
+                  >
+                    <CardContent className="p-5 flex items-center gap-4">
+                      <div className="w-11 h-11 rounded-lg bg-[#1164A3]/10 flex items-center justify-center text-[#1164A3] flex-shrink-0">
+                        {benefit.icon}
+                      </div>
+                      <p className="text-gray-700 font-medium text-sm">{benefit.text}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+
+              {/* Image */}
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[400px]">
+                <img
+                  src="/images/internships-benefits.jpg"
+                  alt="Students building professional networks and growing their careers"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
+                <div className="absolute bottom-5 left-5 right-5">
+                  <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
+                    Build confidence, connections, and a competitive edge before graduation
+                  </p>
+                </div>
+                <div className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl border-4 border-[#68B9C4]/30 -z-10" />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Available Internships */}
-      <section className="py-20 bg-gradient-to-r from-gray-50 to-[#82B4CC]/10">
+      {/* Available Internships — wide banner image + listings */}
+      <section id="internships" className="py-20 bg-gradient-to-r from-gray-50 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
@@ -376,12 +375,27 @@ export default function InternshipsPage() {
                 <Sparkles className="w-4 h-4 mr-1 inline" />
                 Current Opportunities
               </Badge>
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">
-                Available Internships
-              </h2>
+              <h2 className="text-4xl font-bold text-gray-800 mb-4">Available Internships</h2>
               <p className="text-xl text-gray-600">
                 Explore opportunities in various fields and start your career journey
               </p>
+            </div>
+
+            {/* Wide image banner */}
+            <div className="relative rounded-2xl overflow-hidden shadow-xl mb-10 h-56 md:h-64">
+              <img
+                src="/images/internships-listings.jpg"
+                alt="Diverse internship opportunities across industries"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#1164A3]/65 to-transparent flex items-center">
+                <div className="px-10 max-w-lg">
+                  <h3 className="text-white text-2xl font-bold mb-2">Find Your Perfect Internship</h3>
+                  <p className="text-white/85 text-sm leading-relaxed">
+                    Browse curated opportunities across engineering, tech, research, and more — all vetted for NED Scholars students.
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* Filters */}
@@ -406,18 +420,10 @@ export default function InternshipsPage() {
                       <SelectItem value="all">All Categories</SelectItem>
                       <SelectItem value="engineering">Engineering</SelectItem>
                       <SelectItem value="information_technology">IT</SelectItem>
-                      <SelectItem value="software_development">
-                        Software Development
-                      </SelectItem>
-                      <SelectItem value="research_development">
-                        Research & Development
-                      </SelectItem>
-                      <SelectItem value="corporate_administrative">
-                        Corporate & Admin
-                      </SelectItem>
-                      <SelectItem value="education_training">
-                        Education & Training
-                      </SelectItem>
+                      <SelectItem value="software_development">Software Development</SelectItem>
+                      <SelectItem value="research_development">Research & Development</SelectItem>
+                      <SelectItem value="corporate_administrative">Corporate & Admin</SelectItem>
+                      <SelectItem value="education_training">Education & Training</SelectItem>
                     </SelectContent>
                   </Select>
                   <Select value={locationFilter} onValueChange={setLocationFilter}>
@@ -445,9 +451,7 @@ export default function InternshipsPage() {
               <Card className="border-[#82B4CC]/30">
                 <CardContent className="p-20 text-center">
                   <Briefcase className="w-16 h-16 text-[#68B9C4] mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                    No Internships Found
-                  </h3>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2">No Internships Found</h3>
                   <p className="text-gray-600">
                     Try adjusting your filters or check back later for new opportunities
                   </p>
@@ -458,7 +462,7 @@ export default function InternshipsPage() {
                 {filteredInternships.map((internship) => (
                   <Card
                     key={internship.id}
-                    className={`hover:shadow-2xl transition-all duration-300 cursor-pointer border-2 ${
+                    className={`hover:shadow-2xl transition-all duration-300 cursor-pointer border-2 relative ${
                       internship.featured
                         ? "border-[#1164A3] bg-gradient-to-br from-[#1164A3]/5 to-[#68B9C4]/5"
                         : "border-[#82B4CC]/30 hover:border-[#1164A3]"
@@ -472,78 +476,49 @@ export default function InternshipsPage() {
                       </div>
                     )}
                     <CardHeader>
-                      <div
-                        className={`w-12 h-12 rounded-lg bg-gradient-to-r ${getCategoryColor(
-                          internship.category
-                        )} flex items-center justify-center text-white mb-4`}
-                      >
+                      <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${getCategoryColor(internship.category)} flex items-center justify-center text-white mb-4`}>
                         {getCategoryIcon(internship.category)}
                       </div>
-                      <CardTitle className="text-xl mb-2">
-                        {internship.title}
-                      </CardTitle>
+                      <CardTitle className="text-xl mb-2">{internship.title}</CardTitle>
                       <div className="flex items-center gap-2 text-gray-600 mb-2">
                         <Building2 className="w-4 h-4" />
                         <span className="font-semibold">{internship.company}</span>
                       </div>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-gray-600 mb-4 line-clamp-2">
-                        {internship.description}
-                      </p>
-
+                      <p className="text-gray-600 mb-4 line-clamp-2">{internship.description}</p>
                       <div className="space-y-3 mb-4">
                         <div className="flex items-center gap-2 text-sm text-gray-600">
                           <MapPin className="w-4 h-4 text-[#1164A3]" />
                           <span>{internship.location}</span>
-                          <Badge variant="outline" className="text-xs">
-                            {formatLocationType(internship.locationType)}
-                          </Badge>
+                          <Badge variant="outline" className="text-xs">{formatLocationType(internship.locationType)}</Badge>
                         </div>
-
                         <div className="flex items-center gap-2 text-sm text-gray-600">
                           <Clock className="w-4 h-4 text-[#1164A3]" />
                           <span>{internship.duration}</span>
                         </div>
-
                         {internship.isPaid && internship.stipend && (
                           <div className="flex items-center gap-2 text-sm text-gray-600">
                             <DollarSign className="w-4 h-4 text-[#68B9C4]" />
-                            <span className="font-semibold text-[#68B9C4]">
-                              {internship.stipend}
-                            </span>
+                            <span className="font-semibold text-[#68B9C4]">{internship.stipend}</span>
                           </div>
                         )}
                       </div>
-
                       <div className="flex flex-wrap gap-2 mb-4">
-                        <Badge className="bg-[#82B4CC] text-white text-xs">
-                          {formatCategory(internship.category)}
-                        </Badge>
+                        <Badge className="bg-[#82B4CC] text-white text-xs">{formatCategory(internship.category)}</Badge>
                         {internship.skills.slice(0, 2).map((skill, idx) => (
-                          <Badge
-                            key={idx}
-                            variant="outline"
-                            className="text-xs border-[#82B4CC]"
-                          >
-                            {skill}
-                          </Badge>
+                          <Badge key={idx} variant="outline" className="text-xs border-[#82B4CC]">{skill}</Badge>
                         ))}
                         {internship.skills.length > 2 && (
-                          <Badge variant="outline" className="text-xs">
-                            +{internship.skills.length - 2} more
-                          </Badge>
+                          <Badge variant="outline" className="text-xs">+{internship.skills.length - 2} more</Badge>
                         )}
                       </div>
-
                       {internship.applicationDeadline && (
                         <div className="mb-4 p-2 bg-amber-50 border border-amber-200 rounded text-xs text-amber-800 flex items-center gap-2">
                           <Calendar className="w-3 h-3" />
-                          Deadline:{" "}
-                          {new Date(internship.applicationDeadline).toLocaleDateString()}
+                          Deadline: {new Date(internship.applicationDeadline).toLocaleDateString()}
                         </div>
                       )}
-
                       <Button
                         className="w-full bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white"
                         onClick={(e) => {
@@ -567,28 +542,19 @@ export default function InternshipsPage() {
       <section className="py-20 bg-gradient-to-r from-[#1164A3] via-[#68B9C4] to-[#82B4CC] text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-6">
-              Ready to Start Your Professional Journey?
-            </h2>
+            <h2 className="text-4xl font-bold mb-6">Ready to Start Your Professional Journey?</h2>
             <p className="text-xl text-white/90 mb-8">
               NED Scholars connects students with meaningful internship opportunities
               that support skill development and career preparation. Join us in
               bridging the gap between academic learning and professional success.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                onClick={() => {
-                  const internshipsSection = document.querySelector(
-                    'section:has([class*="Available Internships"])'
-                  );
-                  internshipsSection?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="bg-white text-[#1164A3] hover:bg-gray-100 text-lg px-8 py-6"
-              >
-                Browse Opportunities
-                <ExternalLink className="w-5 h-5 ml-2" />
-              </Button>
-            </div>
+            <a
+              href="#internships"
+              className="inline-flex items-center gap-2 bg-white text-[#1164A3] hover:bg-gray-100 text-lg px-8 py-4 rounded-full font-semibold shadow-xl transform hover:scale-105 transition-all duration-300"
+            >
+              Browse Opportunities
+              <ExternalLink className="w-5 h-5" />
+            </a>
           </div>
         </div>
       </section>

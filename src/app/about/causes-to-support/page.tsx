@@ -10,7 +10,6 @@ import Image from "next/image";
 import StatCard from "@/components/Stats";
 import CustomCard from "@/components/Card";
 import { useRouter } from "next/navigation";
-import bannerImage from "../../../data/images/About/causes to support.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -106,26 +105,16 @@ const SupportPage: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-br from-[#1164A3] via-[#68B9C4] to-[#82B4CC]">
       {/* Hero Section */}
       
-       <section className="relative w-full h-[500px] md:h-[600px] overflow-hidden"  ref={heroSectionRef}>
-                          <Image
-                            src={bannerImage.src}
-                            alt="banner"
-                            fill
-                            priority
-                            quality={90}
-                            className="object-cover object-top"
-                          />
-                          {/* Overlay */}
-                          <div className="absolute inset-0 opacity-40 bg-gradient-to-r from-[#1164A3]/90 via-[#68B9C4]/75 to-[#82B4CC]/60" />
-                          
-                          {/* Content */}
-                          <div className="relative z-10 h-full flex items-center">
-                           <div className="max-w-6xl mx-auto box text-center">
-          <h1 className="text-6xl md:text-7xl font-bold mb-6 drop-shadow-lg text-white">
-            NED Scholars
+      <section
+        className="text-center py-20 px-5 text-white"
+        ref={heroSectionRef}
+      >
+        <div className="mx-auto box">
+          <h1 className="text-6xl md:text-7xl font-bold mb-6 drop-shadow-lg">
+            Empower the Future Through Education
           </h1>
-          <p className="text-xl md:text-2xl mb-12 opacity-90 max-w-3xl mx-auto text-white">
-            Empowering aspiring scholars pursuing their dreams in STEM
+          <p className="text-xl md:text-2xl mb-12 opacity-90 max-w-5xl mx-auto">
+            Education doesn’t just change a single life, it reshapes entire generations. Yet, transforming that potential into reality requires targeted action.
           </p>
           <button
             className="bg-white text-[#1164A3] px-12 py-5 text-xl font-bold rounded-full hover:shadow-xl hover:bg-[#82B4CC] hover:text-white transition-all duration-300 transform hover:-translate-y-1"
@@ -134,8 +123,7 @@ const SupportPage: React.FC = () => {
             Donate Now & Make a Difference
           </button>
         </div>
-                          </div>
-                        </section>
+      </section>
 
       {/* Programs Section */}
       <section className="bg-white py-20">
@@ -156,6 +144,9 @@ const SupportPage: React.FC = () => {
             {programs.map((program, index) => (
               <CustomCard key={program.id} value={program} index={index} />
             ))}
+          </div>
+          <div className="max-w-6xl mx-auto px-5">
+            <p className="text-gray-600 leading-relaxed">When you support NED Scholars, you are not simply funding a university degree. You are directly investing in the engineers, innovators, and problem-solvers who will build our future. Because we are a registered 501(c)(3) organization, 100% of your tax-deductible contributions bypass administrative bloat and go straight to the students who need it most.</p>
           </div>
         </div>
       </section>

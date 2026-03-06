@@ -38,8 +38,8 @@ export const programs = [
 ];
 
 export const stats = [
-  { number: "500+", label: "Students Supported", color: "text-blue-400" },
-  { number: "85%", label: "Job Placement Rate", color: "text-blue-400" },
-  { number: "250+", label: "Laptops Donated", color: "text-blue-400" },
-  { number: "50+", label: "Events Organized", color: "text-blue-400" },
+  { number: "918+", label: "Scholarships Provided", color: "text-blue-400" },
+  { number: "$640,000", label: "Financial Aid provided", color: "text-blue-400" },
+  { number: "131+", label: "Graduated Scholars", color: "text-blue-400" },
+  { number: "87%", label: "Scholars Success Rate", color: "text-blue-400" },
 ];

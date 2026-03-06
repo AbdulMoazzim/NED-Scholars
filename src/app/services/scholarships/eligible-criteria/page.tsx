@@ -161,7 +161,7 @@ export default function EligibilityCriteriaPage() {
         </div>
       </section>
 
-      {/* Detailed Criteria Section */}
+      {/* Detailed Criteria Section — image beside cards grid */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -175,39 +175,58 @@ export default function EligibilityCriteriaPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {eligibilityCriteria.map((criterion, index) => (
-              <Card
-                key={index}
-                className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300 hover:-translate-y-2 border-[#82B4CC]/20 shadow-lg"
-              >
-                <CardContent className="p-6">
-                  <div
-                    className={cn(
-                      "w-14 h-14 rounded-full flex items-center justify-center mb-4",
-                      colorClasses[criterion.color as keyof typeof colorClasses]
-                    )}
-                  >
-                    <criterion.icon className="w-7 h-7" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-3">
-                    {criterion.title}
-                  </h3>
-                  <p className="text-gray-600 font-medium mb-3">
-                    {criterion.description}
-                  </p>
-                  <p className="text-sm text-gray-500">{criterion.details}</p>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
+            {/* Image */}
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[500px] lg:sticky lg:top-8">
+              <img
+                src="/images/eligibility-criteria.jpg"
+                alt="Students studying at NED University"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5">
+                <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
+                  Committed to supporting deserving students across Pakistan and the USA
+                </p>
+              </div>
+              <div className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl border-4 border-[#68B9C4]/30 -z-10" />
+            </div>
+
+            {/* Criteria cards */}
+            <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+              {eligibilityCriteria.map((criterion, index) => (
+                <Card
+                  key={index}
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300 hover:-translate-y-2 border-[#82B4CC]/20 shadow-lg"
+                >
+                  <CardContent className="p-6">
+                    <div
+                      className={cn(
+                        "w-14 h-14 rounded-full flex items-center justify-center mb-4",
+                        colorClasses[criterion.color as keyof typeof colorClasses]
+                      )}
+                    >
+                      <criterion.icon className="w-7 h-7" />
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-800 mb-3">
+                      {criterion.title}
+                    </h3>
+                    <p className="text-gray-600 font-medium mb-3">
+                      {criterion.description}
+                    </p>
+                    <p className="text-sm text-gray-500">{criterion.details}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Priority Levels Section */}
+      {/* Priority Levels Section — image beside priorities */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <Badge className="mb-4 bg-[#1164A3] text-white border-[#1164A3]">SELECTION PREFERENCE</Badge>
               <h2 className="text-4xl font-bold text-gray-800 mb-4">
@@ -219,41 +238,59 @@ export default function EligibilityCriteriaPage() {
               </p>
             </div>
 
-            <div className="space-y-6">
-              {preferences.map((pref, index) => (
-                <Card
-                  key={index}
-                  className="overflow-hidden border-[#82B4CC]/20 shadow-lg hover:shadow-xl hover:border-[#1164A3] transition-all"
-                >
-                  <div
-                    className={cn(
-                      "bg-gradient-to-r h-2",
-                      pref.color
-                    )}
-                  ></div>
-                  <CardContent className="p-6">
-                    <div className="flex items-center justify-between flex-wrap gap-4">
-                      <div>
-                        <h3 className="text-xl font-bold text-gray-800 mb-2">
-                          {pref.priority}
-                        </h3>
-                        <p className="text-gray-600">{pref.description}</p>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+              <div className="space-y-6">
+                {preferences.map((pref, index) => (
+                  <Card
+                    key={index}
+                    className="overflow-hidden border-[#82B4CC]/20 shadow-lg hover:shadow-xl hover:border-[#1164A3] transition-all"
+                  >
+                    <div
+                      className={cn(
+                        "bg-gradient-to-r h-2",
+                        pref.color
+                      )}
+                    ></div>
+                    <CardContent className="p-6">
+                      <div className="flex items-center justify-between flex-wrap gap-4">
+                        <div>
+                          <h3 className="text-xl font-bold text-gray-800 mb-2">
+                            {pref.priority}
+                          </h3>
+                          <p className="text-gray-600">{pref.description}</p>
+                        </div>
+                        <Badge
+                          className="text-base px-4 py-2 bg-[#82B4CC] text-white"
+                        >
+                          Priority {index + 1}
+                        </Badge>
                       </div>
-                      <Badge
-                        className="text-base px-4 py-2 bg-[#82B4CC] text-white"
-                      >
-                        Priority {index + 1}
-                      </Badge>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+
+              {/* Image */}
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[380px]">
+                <img
+                  src="/images/eligibility-priority.jpg"
+                  alt="NED University engineering students in classroom"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
+                <div className="absolute bottom-5 left-5 right-5">
+                  <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
+                    Engineering students at NED University are our primary focus
+                  </p>
+                </div>
+                <div className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl border-4 border-[#82B4CC]/30 -z-10" />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Key Requirements Section */}
+      {/* Key Requirements Section — image beside requirement cards */}
       <section className="py-16 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
@@ -264,80 +301,99 @@ export default function EligibilityCriteriaPage() {
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Need-Cum-Merit Basis */}
-              <Card className="border-0 shadow-xl">
-                <CardHeader className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white">
-                  <CardTitle className="flex items-center gap-2">
-                    <Award className="w-5 h-5" />
-                    Need-Cum-Merit Basis
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="p-6">
-                  <p className="text-gray-700 mb-4">
-                    We evaluate applications based on two key factors:
-                  </p>
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-[#1164A3] rounded-full mt-2"></div>
-                      <div>
-                        <p className="font-semibold text-gray-800">
-                          Financial Need
-                        </p>
-                        <p className="text-sm text-gray-600">
-                          Demonstrated requirement for financial assistance
-                        </p>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+              {/* Requirement cards */}
+              <div className="space-y-8">
+                {/* Need-Cum-Merit Basis */}
+                <Card className="border-0 shadow-xl">
+                  <CardHeader className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white">
+                    <CardTitle className="flex items-center gap-2">
+                      <Award className="w-5 h-5" />
+                      Need-Cum-Merit Basis
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="p-6">
+                    <p className="text-gray-700 mb-4">
+                      We evaluate applications based on two key factors:
+                    </p>
+                    <div className="space-y-3">
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-[#1164A3] rounded-full mt-2"></div>
+                        <div>
+                          <p className="font-semibold text-gray-800">
+                            Financial Need
+                          </p>
+                          <p className="text-sm text-gray-600">
+                            Demonstrated requirement for financial assistance
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-[#68B9C4] rounded-full mt-2"></div>
+                        <div>
+                          <p className="font-semibold text-gray-800">
+                            Academic Merit
+                          </p>
+                          <p className="text-sm text-gray-600">
+                            Strong academic performance and potential
+                          </p>
+                        </div>
                       </div>
                     </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-[#68B9C4] rounded-full mt-2"></div>
-                      <div>
-                        <p className="font-semibold text-gray-800">
-                          Academic Merit
-                        </p>
-                        <p className="text-sm text-gray-600">
-                          Strong academic performance and potential
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
 
-              {/* STEM Focus */}
-              <Card className="border-0 shadow-xl">
-                <CardHeader className="bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] text-white">
-                  <CardTitle className="flex items-center gap-2">
-                    <BookOpen className="w-5 h-5" />
-                    STEM Education Focus
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="p-6">
-                  <p className="text-gray-700 mb-4">
-                    Eligible fields of study include:
+                {/* STEM Focus */}
+                <Card className="border-0 shadow-xl">
+                  <CardHeader className="bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] text-white">
+                    <CardTitle className="flex items-center gap-2">
+                      <BookOpen className="w-5 h-5" />
+                      STEM Education Focus
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="p-6">
+                    <p className="text-gray-700 mb-4">
+                      Eligible fields of study include:
+                    </p>
+                    <div className="grid grid-cols-2 gap-2">
+                      {[
+                        "Engineering",
+                        "Computer Science",
+                        "Mathematics",
+                        "Physics",
+                        "Chemistry",
+                        "Biology",
+                        "Technology",
+                        "Data Science",
+                      ].map((field, i) => (
+                        <div
+                          key={i}
+                          className="flex items-center gap-2 text-sm text-gray-700"
+                        >
+                          <CheckCircle2 className="w-4 h-4 text-[#68B9C4]" />
+                          {field}
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Image */}
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[460px]">
+                <img
+                  src="/images/eligibility-requirements.jpg"
+                  alt="STEM students working on engineering projects"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
+                <div className="absolute bottom-5 left-5 right-5">
+                  <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
+                    Academic excellence and financial need — the two pillars of our selection
                   </p>
-                  <div className="grid grid-cols-2 gap-2">
-                    {[
-                      "Engineering",
-                      "Computer Science",
-                      "Mathematics",
-                      "Physics",
-                      "Chemistry",
-                      "Biology",
-                      "Technology",
-                      "Data Science",
-                    ].map((field, i) => (
-                      <div
-                        key={i}
-                        className="flex items-center gap-2 text-sm text-gray-700"
-                      >
-                        <CheckCircle2 className="w-4 h-4 text-[#68B9C4]" />
-                        {field}
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+                </div>
+                <div className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl border-4 border-[#68B9C4]/30 -z-10" />
+              </div>
             </div>
           </div>
         </div>

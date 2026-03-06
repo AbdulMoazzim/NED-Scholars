@@ -45,7 +45,6 @@ import { useSession } from "@/lib/auth-client";
 import { Course, CourseEnrollment } from "@/lib/form-types";
 import { getEnrollmentStatusColor } from "@/lib/utils";
 
-
 export default function ELearningPage() {
   const router = useRouter();
   const session = useSession();
@@ -55,37 +54,24 @@ export default function ELearningPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("all");
   const [levelFilter, setLevelFilter] = useState("all");
-  const [userEnrollments, setUserEnrollments] = useState<CourseEnrollment[]>(
-    []
-  );
-
+  const [userEnrollments, setUserEnrollments] = useState<CourseEnrollment[]>([]);
 
   useEffect(() => {
-    if (session.data?.user) {
-      fetchUserEnrollments();
-    }
+    if (session.data?.user) fetchUserEnrollments();
   }, [session.data?.user]);
 
   const fetchUserEnrollments = async () => {
     if (!session.data?.user.id) return;
-
     try {
       const result = await GetEnrollmentsByUser(session.data.user.id);
-      if (result.success && result.data) {
-        setUserEnrollments(result.data as CourseEnrollment[]);
-      }
+      if (result.success && result.data) setUserEnrollments(result.data as CourseEnrollment[]);
     } catch (error) {
       console.error("Error fetching enrollments:", error);
     }
   };
 
-  useEffect(() => {
-    fetchCourses();
-  }, []);
-
-  useEffect(() => {
-    filterCourses();
-  }, [searchQuery, categoryFilter, levelFilter, courses]);
+  useEffect(() => { fetchCourses(); }, []);
+  useEffect(() => { filterCourses(); }, [searchQuery, categoryFilter, levelFilter, courses]);
 
   const fetchCourses = async () => {
     setLoading(true);
@@ -97,7 +83,6 @@ export default function ELearningPage() {
       }
     } catch (error) {
       toast.error("Failed to load courses");
-      console.error("Error fetching courses:", error);
     } finally {
       setLoading(false);
     }
@@ -105,26 +90,9 @@ export default function ELearningPage() {
 
   const filterCourses = () => {
     let filtered = [...courses];
-
-    if (searchQuery) {
-      filtered = filtered.filter(
-        (course) =>
-          course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          course.instructor.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          course.description.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-    }
-
-    if (categoryFilter !== "all") {
-      filtered = filtered.filter(
-        (course) => course.category === categoryFilter
-      );
-    }
-
-    if (levelFilter !== "all") {
-      filtered = filtered.filter((course) => course.level === levelFilter);
-    }
-
+    if (searchQuery) filtered = filtered.filter((c) => c.title.toLowerCase().includes(searchQuery.toLowerCase()) || c.instructor.toLowerCase().includes(searchQuery.toLowerCase()) || c.description.toLowerCase().includes(searchQuery.toLowerCase()));
+    if (categoryFilter !== "all") filtered = filtered.filter((c) => c.category === categoryFilter);
+    if (levelFilter !== "all") filtered = filtered.filter((c) => c.level === levelFilter);
     setFilteredCourses(filtered);
   };
 
@@ -152,188 +120,146 @@ export default function ELearningPage() {
     return colors[category] || "from-[#1164A3] to-[#68B9C4]";
   };
 
-  const formatCategory = (category: string) => {
-    return category
-      .split("_")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
-  };
-
-  const formatLevel = (level: string) => {
-    return level.charAt(0).toUpperCase() + level.slice(1);
-  };
+  const formatCategory = (category: string) => category.split("_").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+  const formatLevel = (level: string) => level.charAt(0).toUpperCase() + level.slice(1);
 
   const platformFeatures = [
-    {
-      icon: <BookOpen className="w-8 h-8" />,
-      title: "Expert-Led Courses",
-      description:
-        "Learn from industry professionals and experienced instructors",
-      color: "from-[#1164A3] to-[#68B9C4]",
-    },
-    {
-      icon: <Laptop className="w-8 h-8" />,
-      title: "Flexible Learning",
-      description: "Study at your own pace with on-demand video content",
-      color: "from-[#68B9C4] to-[#82B4CC]",
-    },
-    {
-      icon: <Award className="w-8 h-8" />,
-      title: "Practical Skills",
-      description: "Gain hands-on experience with real-world projects",
-      color: "from-[#82B4CC] to-[#B0A3B3]",
-    },
-    {
-      icon: <Users className="w-8 h-8" />,
-      title: "Community Support",
-      description: "Connect with fellow learners and instructors",
-      color: "from-[#1164A3] to-[#82B4CC]",
-    },
+    { icon: <BookOpen className="w-8 h-8" />, title: "Expert-Led Courses", description: "Learn from industry professionals and experienced instructors", color: "from-[#1164A3] to-[#68B9C4]" },
+    { icon: <Laptop className="w-8 h-8" />, title: "Flexible Learning", description: "Study at your own pace with on-demand video content", color: "from-[#68B9C4] to-[#82B4CC]" },
+    { icon: <Award className="w-8 h-8" />, title: "Practical Skills", description: "Gain hands-on experience with real-world projects", color: "from-[#82B4CC] to-[#B0A3B3]" },
+    { icon: <Users className="w-8 h-8" />, title: "Community Support", description: "Connect with fellow learners and instructors", color: "from-[#1164A3] to-[#82B4CC]" },
   ];
 
   const benefits = [
-    {
-      icon: <GraduationCap className="w-6 h-6" />,
-      text: "Learn from industry experts",
-    },
-    {
-      icon: <Clock className="w-6 h-6" />,
-      text: "Study at your own pace",
-    },
-    {
-      icon: <CheckCircle className="w-6 h-6" />,
-      text: "Earn certificates of completion",
-    },
-    {
-      icon: <Target className="w-6 h-6" />,
-      text: "Build practical skills",
-    },
-    {
-      icon: <TrendingUp className="w-6 h-6" />,
-      text: "Advance your career",
-    },
-    {
-      icon: <Users className="w-6 h-6" />,
-      text: "Join a learning community",
-    },
+    { icon: <GraduationCap className="w-6 h-6" />, text: "Learn from industry experts" },
+    { icon: <Clock className="w-6 h-6" />, text: "Study at your own pace" },
+    { icon: <CheckCircle className="w-6 h-6" />, text: "Earn certificates of completion" },
+    { icon: <Target className="w-6 h-6" />, text: "Build practical skills" },
+    { icon: <TrendingUp className="w-6 h-6" />, text: "Advance your career" },
+    { icon: <Users className="w-6 h-6" />, text: "Join a learning community" },
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      {/* Hero Section */}
+
+      {/* Hero Section — no image */}
       <section className="bg-gradient-to-r from-[#1164A3] via-[#68B9C4] to-[#82B4CC] text-white py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-4 bg-white/20 text-white border-white/30 text-base px-4 py-2">
-              <BookOpen className="w-4 h-4 mr-2 inline" />
-              E-Learning Platform
+              <BookOpen className="w-4 h-4 mr-2 inline" />E-Learning Platform
             </Badge>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              Learn, Grow, Excel
-            </h1>
-            <p className="text-2xl text-white/90 mb-4">
-              Master New Skills with Expert-Led Online Courses
-            </p>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">Learn, Grow, Excel</h1>
+            <p className="text-2xl text-white/90 mb-4">Master New Skills with Expert-Led Online Courses</p>
             <p className="text-xl text-white/80 max-w-3xl mx-auto">
-              Access high-quality courses designed to enhance your knowledge and
-              advance your career in engineering, technology, and data science
+              Access high-quality courses designed to enhance your knowledge and advance your career in
+              engineering, technology, and data science
             </p>
           </div>
         </div>
       </section>
 
-      
-
-      {/* Platform Features */}
+      {/* Platform Features — feature cards left, image right */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4 text-base bg-[#68B9C4] text-white">
-                Why Choose NED Scholars E-Learning
-              </Badge>
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">
-                Learn from the Best
-              </h2>
+              <Badge className="mb-4 text-base bg-[#68B9C4] text-white">Why Choose NED Scholars E-Learning</Badge>
+              <h2 className="text-4xl font-bold text-gray-800 mb-4">Learn from the Best</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Our platform provides comprehensive learning experiences
-                designed to help you succeed in today&apos;s competitive
-                landscape
+                Our platform provides comprehensive learning experiences designed to help you succeed in
+                today&apos;s competitive landscape
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {platformFeatures.map((feature, index) => (
-                <Card
-                  key={index}
-                  className="hover:shadow-2xl hover:border-[#1164A3] transition-all duration-300"
-                >
-                  <CardContent className="p-8">
-                    <div className="flex items-start gap-6">
-                      <div
-                        className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${feature.color} flex items-center justify-center text-white flex-shrink-0`}
-                      >
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {platformFeatures.map((feature, index) => (
+                  <Card key={index} className="hover:shadow-2xl hover:border-[#1164A3] transition-all duration-300">
+                    <CardContent className="p-6">
+                      <div className={`w-14 h-14 rounded-2xl bg-gradient-to-r ${feature.color} flex items-center justify-center text-white mb-4`}>
                         {feature.icon}
                       </div>
-                      <div>
-                        <h3 className="text-xl font-bold text-gray-800 mb-2">
-                          {feature.title}
-                        </h3>
-                        <p className="text-gray-600">{feature.description}</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                      <h3 className="text-lg font-bold text-gray-800 mb-2">{feature.title}</h3>
+                      <p className="text-gray-600 text-sm">{feature.description}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+
+              {/* Image */}
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[460px]">
+                <img
+                  src="/images/elearning-features.jpg"
+                  alt="Students learning online with NED Scholars"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
+                <div className="absolute bottom-5 left-5 right-5">
+                  <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
+                    Expert-led, flexible, and designed for real-world impact
+                  </p>
+                </div>
+                <div className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl border-4 border-[#68B9C4]/30 -z-10" />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Learning Benefits */}
+      {/* Learning Benefits — image left, benefits grid right */}
       <section className="py-20 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4 text-base bg-[#1164A3] text-white">
-                Student Benefits
-              </Badge>
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">
-                What You&apos;ll Gain
-              </h2>
+              <Badge className="mb-4 text-base bg-[#1164A3] text-white">Student Benefits</Badge>
+              <h2 className="text-4xl font-bold text-gray-800 mb-4">What You&apos;ll Gain</h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {benefits.map((benefit, index) => (
-                <Card
-                  key={index}
-                  className="border-[#82B4CC]/30 hover:shadow-lg transition-all"
-                >
-                  <CardContent className="p-6 flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-[#1164A3]/10 flex items-center justify-center text-[#1164A3]">
-                      {benefit.icon}
-                    </div>
-                    <p className="text-gray-700 font-medium">{benefit.text}</p>
-                  </CardContent>
-                </Card>
-              ))}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              {/* Image */}
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[400px]">
+                <img
+                  src="/images/elearning-benefits.jpg"
+                  alt="Students gaining certificates and career skills"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
+                <div className="absolute bottom-5 left-5 right-5">
+                  <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
+                    From certificates to career advancement — every course adds real value
+                  </p>
+                </div>
+                <div className="absolute -bottom-3 -left-3 w-full h-full rounded-2xl border-4 border-[#82B4CC]/30 -z-10" />
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {benefits.map((benefit, index) => (
+                  <Card key={index} className="border-[#82B4CC]/30 hover:shadow-lg transition-all">
+                    <CardContent className="p-6 flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-lg bg-[#1164A3]/10 flex items-center justify-center text-[#1164A3] flex-shrink-0">
+                        {benefit.icon}
+                      </div>
+                      <p className="text-gray-700 font-medium">{benefit.text}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
+      {/* My Enrolled Courses (conditional) */}
       {session && userEnrollments.length > 0 && (
         <section className="py-12 bg-gradient-to-r from-[#B0A3B3]/5 to-[#82B4CC]/5">
           <div className="container mx-auto px-4">
             <div className="max-w-7xl mx-auto">
               <div className="text-center mb-8">
                 <Badge className="mb-3 text-base bg-[#1164A3] text-white">
-                  <GraduationCap className="w-4 h-4 mr-2 inline" />
-                  Your Learning Journey
+                  <GraduationCap className="w-4 h-4 mr-2 inline" />Your Learning Journey
                 </Badge>
-                <h2 className="text-3xl font-bold text-gray-800 mb-2">
-                  My Enrolled Courses
-                </h2>
+                <h2 className="text-3xl font-bold text-gray-800 mb-2">My Enrolled Courses</h2>
                 <p className="text-gray-600">Continue your learning journey</p>
               </div>
 
@@ -342,62 +268,35 @@ export default function ELearningPage() {
                   <Card
                     key={enrollment.id}
                     className="hover:shadow-xl hover:border-[#1164A3] transition-all cursor-pointer"
-                    onClick={() =>
-                      router.push(
-                        `/events/e-learning/${enrollment.course.slug}`
-                      )
-                    }
+                    onClick={() => router.push(`/events/e-learning/${enrollment.course.slug}`)}
                   >
                     <CardHeader>
                       <div className="flex items-center justify-between mb-2">
-                        <Badge
-                          className={getEnrollmentStatusColor(
-                            enrollment.status
-                          )}
-                        >
-                          {enrollment.status}
-                        </Badge>
+                        <Badge className={getEnrollmentStatusColor(enrollment.status)}>{enrollment.status}</Badge>
                         {enrollment.rating && (
                           <div className="flex items-center gap-1">
                             <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                            <span className="text-sm">
-                              {enrollment.rating}/5
-                            </span>
+                            <span className="text-sm">{enrollment.rating}/5</span>
                           </div>
                         )}
                       </div>
-                      <CardTitle className="text-lg">
-                        {enrollment.course.title}
-                      </CardTitle>
-                      <p className="text-sm text-gray-600">
-                        by {enrollment.course.instructor}
-                      </p>
+                      <CardTitle className="text-lg">{enrollment.course.title}</CardTitle>
+                      <p className="text-sm text-gray-600">by {enrollment.course.instructor}</p>
                     </CardHeader>
                     <CardContent>
                       <div className="space-y-2 text-sm text-gray-600">
                         <div className="flex items-center gap-2">
                           <Calendar className="w-4 h-4" />
-                          <span>
-                            Enrolled:{" "}
-                            {new Date(
-                              enrollment.enrollmentDate
-                            ).toLocaleDateString()}
-                          </span>
+                          <span>Enrolled: {new Date(enrollment.enrollmentDate).toLocaleDateString()}</span>
                         </div>
                         {!enrollment.rating && (
                           <Button
                             variant="outline"
                             size="sm"
                             className="w-full mt-3 border-[#1164A3] text-[#1164A3]"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              router.push(
-                                `/events/e-learning/${enrollment.course.slug}`
-                              );
-                            }}
+                            onClick={(e) => { e.stopPropagation(); router.push(`/events/e-learning/${enrollment.course.slug}`); }}
                           >
-                            <Star className="w-4 h-4 mr-2" />
-                            Rate Course
+                            <Star className="w-4 h-4 mr-2" />Rate Course
                           </Button>
                         )}
                       </div>
@@ -408,14 +307,7 @@ export default function ELearningPage() {
 
               {userEnrollments.length > 3 && (
                 <div className="text-center mt-6">
-                  <Button
-                    variant="outline"
-                    onClick={() => {
-                      // Scroll to or show all enrollments
-                    }}
-                  >
-                    View All ({userEnrollments.length})
-                  </Button>
+                  <Button variant="outline">View All ({userEnrollments.length})</Button>
                 </div>
               )}
             </div>
@@ -423,22 +315,33 @@ export default function ELearningPage() {
         </section>
       )}
 
-      {/* Available Courses */}
+      {/* Available Courses — banner image + course grid */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <Badge className="mb-4 text-base bg-[#1164A3] text-white">
-                <Sparkles className="w-4 h-4 mr-1 inline" />
-                Course Catalog
+                <Sparkles className="w-4 h-4 mr-1 inline" />Course Catalog
               </Badge>
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">
-                Available Courses
-              </h2>
-              <p className="text-xl text-gray-600">
-                Explore our curated selection of courses across various
-                disciplines
-              </p>
+              <h2 className="text-4xl font-bold text-gray-800 mb-4">Available Courses</h2>
+              <p className="text-xl text-gray-600">Explore our curated selection of courses across various disciplines</p>
+            </div>
+
+            {/* Wide banner image */}
+            <div className="relative rounded-2xl overflow-hidden shadow-xl mb-10 h-52 md:h-64">
+              <img
+                src="/images/elearning-catalog.jpg"
+                alt="NED Scholars e-learning course catalog"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#1164A3]/65 to-transparent flex items-center">
+                <div className="px-10 max-w-lg">
+                  <h3 className="text-white text-2xl font-bold mb-2">Engineering, Tech & Data Science</h3>
+                  <p className="text-white/85 text-sm leading-relaxed">
+                    Courses built for STEM students — from beginner fundamentals to expert-level specialisations.
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* Filters */}
@@ -454,10 +357,7 @@ export default function ELearningPage() {
                       className="pl-10 border-[#82B4CC]/50 focus:ring-[#1164A3]"
                     />
                   </div>
-                  <Select
-                    value={categoryFilter}
-                    onValueChange={setCategoryFilter}
-                  >
+                  <Select value={categoryFilter} onValueChange={setCategoryFilter}>
                     <SelectTrigger className="border-[#82B4CC]/50">
                       <Filter className="w-4 h-4 mr-2" />
                       <SelectValue placeholder="Category" />
@@ -467,9 +367,7 @@ export default function ELearningPage() {
                       <SelectItem value="engineering">Engineering</SelectItem>
                       <SelectItem value="data_science">Data Science</SelectItem>
                       <SelectItem value="programming">Programming</SelectItem>
-                      <SelectItem value="artificial_intelligence">
-                        AI
-                      </SelectItem>
+                      <SelectItem value="artificial_intelligence">AI</SelectItem>
                       <SelectItem value="statistics">Statistics</SelectItem>
                       <SelectItem value="six_sigma">Six Sigma</SelectItem>
                     </SelectContent>
@@ -500,13 +398,8 @@ export default function ELearningPage() {
               <Card className="border-[#82B4CC]/30">
                 <CardContent className="p-20 text-center">
                   <BookOpen className="w-16 h-16 text-[#68B9C4] mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                    No Courses Found
-                  </h3>
-                  <p className="text-gray-600">
-                    Try adjusting your filters or check back later for new
-                    courses
-                  </p>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2">No Courses Found</h3>
+                  <p className="text-gray-600">Try adjusting your filters or check back later for new courses</p>
                 </CardContent>
               </Card>
             ) : (
@@ -514,36 +407,19 @@ export default function ELearningPage() {
                 {filteredCourses.map((course) => (
                   <Card
                     key={course.id}
-                    className={`hover:shadow-2xl transition-all duration-300 cursor-pointer border-2 ${
-                      course.featured
-                        ? "border-[#1164A3] bg-gradient-to-br from-[#1164A3]/5 to-[#68B9C4]/5"
-                        : "border-[#82B4CC]/30 hover:border-[#1164A3]"
-                    }`}
+                    className={`hover:shadow-2xl transition-all duration-300 cursor-pointer border-2 ${course.featured ? "border-[#1164A3] bg-gradient-to-br from-[#1164A3]/5 to-[#68B9C4]/5" : "border-[#82B4CC]/30 hover:border-[#1164A3]"}`}
                     onClick={() => router.push(`/elearning/${course.slug}`)}
                   >
                     {course.featured && (
                       <div className="absolute top-0 right-0 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-3 py-1 rounded-bl-lg rounded-tr-lg text-xs font-semibold">
-                        <Sparkles className="w-3 h-3 inline mr-1" />
-                        Featured
+                        <Sparkles className="w-3 h-3 inline mr-1" />Featured
                       </div>
                     )}
-
-                    {/* Thumbnail or Icon */}
-                    <div
-                      className={`h-48 bg-gradient-to-r ${getCategoryColor(
-                        course.category
-                      )} flex items-center justify-center relative overflow-hidden`}
-                    >
+                    <div className={`h-48 bg-gradient-to-r ${getCategoryColor(course.category)} flex items-center justify-center relative overflow-hidden`}>
                       {course.thumbnailUrl ? (
-                        <img
-                          src={course.thumbnailUrl}
-                          alt={course.title}
-                          className="w-full h-full object-cover"
-                        />
+                        <img src={course.thumbnailUrl} alt={course.title} className="w-full h-full object-cover" />
                       ) : (
-                        <div className="text-white">
-                          {getCategoryIcon(course.category)}
-                        </div>
+                        <div className="text-white">{getCategoryIcon(course.category)}</div>
                       )}
                       {course.youtubeUrl && (
                         <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
@@ -553,32 +429,19 @@ export default function ELearningPage() {
                         </div>
                       )}
                     </div>
-
                     <CardHeader>
                       <div className="flex items-center justify-between mb-2">
-                        <Badge className="bg-[#82B4CC] text-white text-xs">
-                          {formatCategory(course.category)}
-                        </Badge>
-                        <Badge variant="outline" className="text-xs">
-                          {formatLevel(course.level)}
-                        </Badge>
+                        <Badge className="bg-[#82B4CC] text-white text-xs">{formatCategory(course.category)}</Badge>
+                        <Badge variant="outline" className="text-xs">{formatLevel(course.level)}</Badge>
                       </div>
-                      <CardTitle className="text-xl mb-2 line-clamp-2">
-                        {course.title}
-                      </CardTitle>
+                      <CardTitle className="text-xl mb-2 line-clamp-2">{course.title}</CardTitle>
                       <div className="flex items-center gap-2 text-sm text-gray-600">
                         <Users className="w-4 h-4" />
-                        <span>
-                          {course.instructorTitle} {course.instructor}
-                        </span>
+                        <span>{course.instructorTitle} {course.instructor}</span>
                       </div>
                     </CardHeader>
-
                     <CardContent>
-                      <p className="text-gray-600 mb-4 line-clamp-3">
-                        {course.overview}
-                      </p>
-
+                      <p className="text-gray-600 mb-4 line-clamp-3">{course.overview}</p>
                       <div className="space-y-3 mb-4">
                         {course.duration && (
                           <div className="flex items-center gap-2 text-sm text-gray-600">
@@ -586,12 +449,10 @@ export default function ELearningPage() {
                             <span>{course.duration}</span>
                           </div>
                         )}
-
                         <div className="flex items-center gap-2 text-sm text-gray-600">
                           <Users className="w-4 h-4 text-[#1164A3]" />
                           <span>{course.enrollmentCount} enrolled</span>
                         </div>
-
                         {course.rating && course.rating > 0 && (
                           <div className="flex items-center gap-2 text-sm text-gray-600">
                             <Star className="w-4 h-4 text-[#68B9C4] fill-[#68B9C4]" />
@@ -599,30 +460,21 @@ export default function ELearningPage() {
                           </div>
                         )}
                       </div>
-
                       {course.youtubeUrl && (
                         <div className="mb-4">
                           <Button
                             variant="outline"
                             size="sm"
                             className="w-full border-red-500 text-red-500 hover:bg-red-50"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              window.open(course.youtubeUrl, "_blank");
-                            }}
+                            onClick={(e) => { e.stopPropagation(); window.open(course.youtubeUrl, "_blank"); }}
                           >
-                            <Youtube className="w-4 h-4 mr-2" />
-                            Watch on YouTube
+                            <Youtube className="w-4 h-4 mr-2" />Watch on YouTube
                           </Button>
                         </div>
                       )}
-
                       <Button
                         className="w-full bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          router.push(`/events/e-learning/${course.slug}`);
-                        }}
+                        onClick={(e) => { e.stopPropagation(); router.push(`/events/e-learning/${course.slug}`); }}
                       >
                         {course.isFree ? "Enroll Free" : "View Course"}
                         <ExternalLink className="w-4 h-4 ml-2" />
@@ -636,7 +488,58 @@ export default function ELearningPage() {
         </div>
       </section>
 
-      
+      {/* Bottom CTA — image left, text + buttons right */}
+      <section className="py-20 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              {/* Image */}
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[400px]">
+                <img
+                  src="/images/elearning-cta.jpg"
+                  alt="NED Scholar completing an online course"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
+                <div className="absolute bottom-5 left-5 right-5">
+                  <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
+                    Every course completed is a step closer to your career goals
+                  </p>
+                </div>
+                <div className="absolute -bottom-3 -left-3 w-full h-full rounded-2xl border-4 border-[#68B9C4]/30 -z-10" />
+              </div>
+
+              <div className="text-center lg:text-left">
+                <Badge className="mb-4 bg-[#1164A3] text-white text-base px-4 py-2">Start Learning Today</Badge>
+                <h2 className="text-4xl font-bold text-gray-800 mb-6">
+                  Your Next Career Milestone Starts Here
+                </h2>
+                <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+                  Join hundreds of NED Scholars who are already leveling up their skills, earning
+                  certificates, and advancing their careers — all on their own schedule.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                  <Button
+                    size="lg"
+                    className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                    onClick={() => router.push("/register/student")}
+                  >
+                    <GraduationCap className="w-5 h-5 mr-2" />Get Started Free
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-2 border-[#1164A3] text-[#1164A3] px-8 py-4 rounded-full font-semibold hover:bg-[#1164A3] hover:text-white transition-all duration-300"
+                    onClick={() => router.push("/donation")}
+                  >
+                    <Award className="w-5 h-5 mr-2" />Support a Learner
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

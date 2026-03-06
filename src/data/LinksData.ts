@@ -84,10 +84,22 @@ export const ScholarshipData = [
   { title: "Apply for Scholarship", href: "/register/scholarship" },
 ];
 
-export const dimensions = {
-  "About Us": "w-[220px] translate-x-[-234px] mt-[454px]",
-  "Services": "w-[600px] translate-x-[75px] mt-[431px]",
-  "Programs": "w-[200px] translate-x-[-20px] mt-[276px]",
-  "Scholars": "w-[200px] translate-x-[85px] mt-[237px]",
-  "Events": "w-[200px] translate-x-[186px] mt-[276px]",
-  }
+  export const NavDescriptions: Record<string, string> = {
+  "About Us":
+    "Learn about our mission, vision, and the dedicated team working to empower students and transform lives through education and support.",
+
+  Services:
+    "Explore our comprehensive range of services designed to support students at every stage of their educational journey, from scholarships to vocational training.",
+
+  Programs:
+    "Discover our educational programs including seminars, webinars, and internship opportunities that bridge the gap between academia and industry.",
+
+  Scholars:
+    "Meet our community of volunteers and read inspiring success stories from scholars who have benefited from our programs and are making a difference.",
+
+  Events:
+    "Stay updated with our latest events including Gup Shup sessions, industrial visits, and e-learning courses that provide practical learning experiences.",
+
+  "Donate Now":
+    "Support our mission by making a donation through various methods including PayPal, Zelle, Zeffy, or by mail. Every contribution helps empower the next generation of scholars."
+};

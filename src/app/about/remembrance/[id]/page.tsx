@@ -182,23 +182,12 @@ export default async function RemembranceDetailPage({
             </div>
   
             {/* Footer Section */}
-            <div className="px-8 py-8 md:px-16 bg-gradient-to-r from-[#82B4CC]/10 to-[#B0A3B3]/10 border-t border-[#82B4CC]/30">
-              <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                <div className="flex items-center gap-4">
-                  <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#82B4CC]/20 text-[#1164A3] font-medium">
-                    <Heart className="w-4 h-4 fill-[#1164A3]" />
-                    In Memoriam
-                  </span>
-                  <span className="inline-flex items-center px-4 py-2 rounded-full bg-[#68B9C4]/20 text-[#1164A3] font-medium">
-                    Forever in Our Hearts
-                  </span>
-                </div>
-                <Link href="/remembrance">
+            <div className="px-8 py-8 md:px-16 bg-gradient-to-r from-[#82B4CC]/10 to-[#B0A3B3]/10 border-t border-[#82B4CC]/30 flex justify-end">
+                <Link href="/about/remembrance">
                   <Button className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] hover:from-[#68B9C4] hover:to-[#82B4CC] text-white px-6">
                     View More Tributes
                   </Button>
                 </Link>
-              </div>
             </div>
           </div>
         </div>
