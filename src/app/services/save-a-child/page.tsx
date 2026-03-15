@@ -26,6 +26,12 @@ import { useEffect, useState } from "react";
 import SuccessStoriesComponent from "@/components/Success-stories-card";
 import { SuccessStoriesData } from "@/lib/types";
 import { useRouter } from "next/navigation";
+import image1 from "../../../data/images/services/save a child/save a child (1).jpeg";
+import image2 from "../../../data/images/services/save a child/save a child (2).jpeg";
+import image3 from "../../../data/images/services/save a child/save a child (3).jpeg";
+import image4 from "../../../data/images/services/save a child/save a child (4).jpeg";
+import Link from "next/link";
+
 
 export default function EducationSupportPakistan() {
   const router = useRouter();
@@ -72,7 +78,6 @@ export default function EducationSupportPakistan() {
   ];
 
   const impactPoints = [
-    { icon: <BookOpen className="w-6 h-6" />, text: "Keep a talented student in school" },
     { icon: <Users className="w-6 h-6" />, text: "Provide mentorship & career guidance" },
     { icon: <Laptop className="w-6 h-6" />, text: "Equip them with STEM skills for future employment" },
     { icon: <Trophy className="w-6 h-6" />, text: "Help them compete in national & global innovation challenges" },
@@ -110,13 +115,13 @@ export default function EducationSupportPakistan() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
               {crisisStats.map((stat, index) => (
                 <Card key={index} className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300 overflow-hidden">
-                  <CardContent className="p-6">
+                  <CardContent className="p-6 flex flex-col items-center">
                     <div className={`w-16 h-16 bg-gradient-to-r ${stat.color} rounded-full flex items-center justify-center text-white mb-4`}>
                       {stat.icon}
                     </div>
                     <div className="text-4xl font-bold text-[#1164A3] mb-2">{stat.number}</div>
-                    <h4 className="font-semibold text-gray-800 mb-2">{stat.label}</h4>
-                    <p className="text-sm text-gray-600 mb-2">{stat.description}</p>
+                    <h4 className="font-semibold text-gray-800 mb-2 text-center">{stat.label}</h4>
+                    <p className="text-sm text-gray-600 mb-2 text-center">{stat.description}</p>
                     <Badge variant="secondary" className="text-xs">{stat.source}</Badge>
                   </CardContent>
                 </Card>
@@ -129,18 +134,19 @@ export default function EducationSupportPakistan() {
                 <CardContent className="p-6">
                   <div className="flex items-start space-x-4">
                     <div className="text-[#1164A3] text-4xl">&quot;</div>
-                    <p className="text-lg text-gray-700 italic mb-2">
-                      Education is not a privilege—it is a fundamental right. When the state fails to
+                    <p className="text-lg text-gray-700 italic font-bold mb-2">
+                      Education is not a privilege — it is a fundamental right. When the state fails to
                       provide it, society must step in to bridge the gap.
                     </p>
+                    <div className="text-[#1164A3] text-4xl">&quot;</div>
                   </div>
                 </CardContent>
               </Card>
 
               {/* Image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[280px]">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-fit">
                 <img
-                  src="/images/edu-crisis.jpg"
+                  src={image4.src}
                   alt="Children in Pakistan facing education barriers"
                   className="w-full h-full object-cover"
                 />
@@ -176,7 +182,7 @@ export default function EducationSupportPakistan() {
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[380px]">
                 <img
-                  src="/images/edu-intervention.jpg"
+                  src={image2.src}
                   alt="Students studying STEM in a classroom"
                   className="w-full h-full object-cover"
                 />
@@ -193,14 +199,13 @@ export default function EducationSupportPakistan() {
                 <div className="grid grid-cols-1 gap-5 mb-6">
                   {whyItMatters.map((item, index) => (
                     <Card key={index} className="bg-white hover:shadow-xl hover:border-[#1164A3] transition-all duration-300">
-                      <CardContent className="p-6">
+                      <CardContent>
                         <div className="flex items-start gap-4">
                           <div className="w-12 h-12 bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] rounded-full flex items-center justify-center text-white flex-shrink-0">
                             {item.icon}
                           </div>
                           <div>
                             <h4 className="font-semibold text-gray-800 mb-1 flex items-center gap-2">
-                              <CheckCircle2 className="w-5 h-5 text-[#68B9C4]" />
                               {item.title}
                             </h4>
                             <p className="text-gray-600 text-sm">{item.description}</p>
@@ -210,7 +215,9 @@ export default function EducationSupportPakistan() {
                     </Card>
                   ))}
                 </div>
-                <Card className="bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] text-white">
+              </div>
+            </div>
+                <Card className="bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] text-white w-full my-4">
                   <CardContent className="p-4">
                     <p className="font-semibold text-sm">
                       The Solution? A targeted, cost-effective approach that identifies high-potential
@@ -218,8 +225,6 @@ export default function EducationSupportPakistan() {
                     </p>
                   </CardContent>
                 </Card>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -238,11 +243,6 @@ export default function EducationSupportPakistan() {
 
             {/* Wide image banner */}
             <div className="relative rounded-2xl overflow-hidden shadow-xl mb-10 h-60 md:h-72">
-              <img
-                src="/images/edu-program.jpg"
-                alt="NED Scholars support program in action"
-                className="w-full h-full object-cover"
-              />
               <div className="absolute inset-0 bg-gradient-to-r from-[#1164A3]/65 to-transparent flex items-center">
                 <div className="px-10 max-w-lg">
                   <h3 className="text-white text-2xl font-bold mb-2">Three Steps to Change a Life</h3>
@@ -270,7 +270,6 @@ export default function EducationSupportPakistan() {
                       <div className="text-[#1164A3] flex-shrink-0">{criteria.icon}</div>
                       <div>
                         <h5 className="font-semibold text-gray-800 mb-1 flex items-center">
-                          <CheckCircle2 className="w-4 h-4 text-[#68B9C4] mr-2" />
                           {criteria.title}
                         </h5>
                         <p className="text-sm text-gray-600">{criteria.description}</p>
@@ -309,7 +308,7 @@ export default function EducationSupportPakistan() {
                   {/* Image */}
                   <div className="relative rounded-2xl overflow-hidden shadow-xl h-[280px]">
                     <img
-                      src="/images/edu-support-package.jpg"
+                      src={image3.src}
                       alt="Students receiving mentorship and tutoring support"
                       className="w-full h-full object-cover"
                     />
@@ -349,12 +348,13 @@ export default function EducationSupportPakistan() {
                 </div>
                 <Card className="bg-gradient-to-r from-[#82B4CC]/20 to-[#B0A3B3]/20 border-l-4 border-[#1164A3]">
                   <CardContent className="p-4">
-                    <div className="flex items-start space-x-4">
+                    <div className="flex items-center justify-center space-x-4">
                       <div className="text-[#1164A3] text-3xl">&quot;</div>
-                      <p className="text-gray-700 italic font-medium">
+                      <p className="text-gray-700 italic font-bold">
                         We don&apos;t just keep students in school—we prepare them for high-value careers that
                         break the cycle of poverty.
                       </p>
+                      <div className="text-[#1164A3] text-3xl">&quot;</div>
                     </div>
                   </CardContent>
                 </Card>
@@ -369,7 +369,6 @@ export default function EducationSupportPakistan() {
         <SuccessStoriesComponent slice={3} data={stories} path="/save-a-child" />
       </section>
 
-      {/* Impact of Support — image left, impact points right */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -387,7 +386,7 @@ export default function EducationSupportPakistan() {
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[400px]">
                 <img
-                  src="/images/edu-impact.jpg"
+                  src={image1.src}
                   alt="Student thriving after receiving NED Scholars support"
                   className="w-full h-full object-cover"
                 />
@@ -419,7 +418,7 @@ export default function EducationSupportPakistan() {
         </div>
       </section>
 
-      {/* Call to Action — gradient, image beside contact card */}
+       {/* Call to Action — gradient, image beside contact card */}
       <section className="py-16 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
@@ -464,31 +463,20 @@ export default function EducationSupportPakistan() {
                 <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8">
                   <div className="flex items-center space-x-3">
                     <Mail className="w-6 h-6 text-[#1164A3]" />
-                    <a href="mailto:support@nedscholars.org" className="text-[#1164A3] hover:underline font-medium">support@nedscholars.org</a>
+                    <Link href="/donate" className="text-[#1164A3] hover:underline font-medium">admin@nedscholars.org</Link>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Globe className="w-6 h-6 text-[#1164A3]" />
-                    <a href="https://www.nedscholars.org/education-support" className="text-[#1164A3] hover:underline font-medium">www.nedscholars.org/education-support</a>
+                    <Link href="/donate" className="text-[#1164A3] hover:underline font-medium">www.nedscholars.org</Link>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            <div className="mt-8 text-center">
-              <Card className="bg-white/10 border-white/20 text-white inline-block">
-                <CardContent className="p-6">
-                  <div className="flex items-start space-x-4">
-                    <div className="text-3xl">&quot;</div>
-                    <p className="text-lg italic">
-                      Education is the most powerful weapon to change the world. Help us arm Pakistan&apos;s youth.
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
           </div>
         </div>
       </section>
+
 
       {/* Key Takeaways — image beside list */}
       <section className="py-16 bg-gray-100">
@@ -499,7 +487,6 @@ export default function EducationSupportPakistan() {
               <h2 className="text-3xl font-bold text-gray-800">Key Takeaways</h2>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               <Card className="shadow-lg border-[#82B4CC]/20">
                 <CardContent className="p-8">
                   <ul className="space-y-4">
@@ -518,42 +505,6 @@ export default function EducationSupportPakistan() {
                   </ul>
                 </CardContent>
               </Card>
-
-              {/* Image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[380px]">
-                <img
-                  src="/images/edu-takeaway.jpg"
-                  alt="NED Scholars students celebrating achievements"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
-                <div className="absolute bottom-5 left-5 right-5">
-                  <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
-                    Every stat represents a real student whose future we can change together
-                  </p>
-                </div>
-                <div className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl border-4 border-[#82B4CC]/30 -z-10" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA Buttons */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-8">Ready to Make a Difference?</h3>
-            <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-              <button onClick={() => { router.push("/donation"); }} className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
-                <Heart className="w-5 h-5 mr-2" />
-                Sponsor a Student Today
-              </button>
-              <button onClick={() => { router.push("/register/mentor"); }} className="border-2 border-[#1164A3] text-[#1164A3] px-8 py-4 rounded-full font-semibold hover:bg-[#1164A3] hover:text-white transition-all duration-300 flex items-center justify-center">
-                <Users className="w-5 h-5 mr-2" />
-                Become a Mentor
-              </button>
-            </div>
           </div>
         </div>
       </section>

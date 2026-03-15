@@ -47,6 +47,10 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import type { IndustrialVisit, Registration } from "@/lib/form-types";
 import { useSession } from "@/lib/auth-client";
+import image1 from "../../../data/images/Events/indutrial visit/indutrial visit (1).jpeg";
+import image2 from "../../../data/images/Events/indutrial visit/indutrial visit (2).jpeg";
+import image3 from "../../../data/images/Events/indutrial visit/indutrial visit (3).jpeg";
+import image4 from "../../../data/images/Events/indutrial visit/indutrial visit (4).jpeg";
 
 export default function IndustrialVisitsPage() {
   const router = useRouter();
@@ -158,16 +162,14 @@ export default function IndustrialVisitsPage() {
     { icon: <Target className="w-8 h-8" />, title: "Practical Exposure", description: "Provide practical exposure aligned with academic learning", color: "from-[#1164A3] to-[#68B9C4]" },
     { icon: <Eye className="w-8 h-8" />, title: "Real-World Operations", description: "Help students understand real-world industrial operations", color: "from-[#68B9C4] to-[#82B4CC]" },
     { icon: <Zap className="w-8 h-8" />, title: "Modern Technology", description: "Familiarize with modern tools, machinery, and technologies", color: "from-[#82B4CC] to-[#B0A3B3]" },
-    { icon: <Users className="w-8 h-8" />, title: "Professional Ethics", description: "Develop professional ethics, discipline, and workplace awareness", color: "from-[#1164A3] to-[#82B4CC]" },
-    { icon: <Brain className="w-8 h-8" />, title: "Practical Applications", description: "Connect classroom concepts with practical applications", color: "from-[#68B9C4] to-[#B0A3B3]" },
+  { icon: <Brain className="w-8 h-8" />, title: "Practical Applications", description: "Connect classroom concepts with practical applications", color: "from-[#68B9C4] to-[#B0A3B3]" },
   ];
 
   const learningOutcomes = [
     { icon: <Lightbulb className="w-6 h-6" />, text: "Understand real-world applications of academic concepts" },
     { icon: <Users className="w-6 h-6" />, text: "Interact with industry professionals and experts" },
     { icon: <TrendingUp className="w-6 h-6" />, text: "Learn about current industry trends and innovations" },
-    { icon: <Brain className="w-6 h-6" />, text: "Improve communication, observation, and analytical skills" },
-    { icon: <Target className="w-6 h-6" />, text: "Gain clarity about career paths and professional expectations" },
+    { icon: <Brain className="w-6 h-6" />, text: "Improve communication, observation, and analytical skills" }
   ];
 
   const industries = [
@@ -203,13 +205,6 @@ export default function IndustrialVisitsPage() {
             <p className="text-xl text-white/80 max-w-3xl mx-auto mb-8">
               Experience real-world industrial environments and connect classroom concepts with practical applications through guided industrial visits
             </p>
-            <a
-              href="#upcoming"
-              className="inline-flex items-center gap-2 bg-white text-[#1164A3] hover:bg-gray-100 text-lg px-8 py-4 rounded-full shadow-xl font-semibold transform hover:scale-105 transition-all duration-300"
-            >
-              <Factory className="w-5 h-5" />
-              View Upcoming Visits
-            </a>
           </div>
         </div>
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
@@ -243,7 +238,7 @@ export default function IndustrialVisitsPage() {
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[420px]">
                 <img
-                  src="/images/industrial-overview.jpg"
+                  src={image3.src}
                   alt="Students on an industrial visit exploring a professional facility"
                   className="w-full h-full object-cover"
                 />
@@ -273,7 +268,7 @@ export default function IndustrialVisitsPage() {
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[440px]">
                 <img
-                  src="/images/industrial-objectives.jpg"
+                  src={image2.src}
                   alt="Engineering students observing industrial machinery and processes"
                   className="w-full h-full object-cover"
                 />
@@ -289,7 +284,7 @@ export default function IndustrialVisitsPage() {
               <div className="space-y-5">
                 {objectives.map((objective, index) => (
                   <Card key={index} className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300">
-                    <CardContent className="p-5">
+                    <CardContent>
                       <div className="flex items-center gap-5">
                         <div className={`w-14 h-14 rounded-full bg-gradient-to-r ${objective.color} flex items-center justify-center text-white flex-shrink-0`}>
                           {objective.icon}
@@ -308,47 +303,37 @@ export default function IndustrialVisitsPage() {
         </div>
       </section>
 
-      {/* Learning Outcomes — image beside outcomes */}
-      <section className="py-20">
+      {/* Learning Outcomes */}
+       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4 text-base bg-[#1164A3] text-white">What You&apos;ll Gain</Badge>
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">Learning Outcomes</h2>
+              <Badge className="mb-4 text-base bg-[#1164A3] text-white">
+                What You&apos;ll Gain
+              </Badge>
+              <h2 className="text-4xl font-bold text-gray-800 mb-4">
+                Learning Outcomes
+              </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Through Industrial Visits, students are able to develop practical skills and gain real-world insights
+                Through Industrial Visits, students are able to develop practical
+                skills and gain real-world insights
               </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-              <div className="grid grid-cols-1 gap-5">
-                {learningOutcomes.map((outcome, index) => (
-                  <Card key={index} className="border-[#82B4CC]/30 hover:border-[#1164A3] transition-all">
-                    <CardContent className="p-5 flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-lg bg-[#1164A3]/10 flex items-center justify-center text-[#1164A3] flex-shrink-0">
-                        {outcome.icon}
-                      </div>
-                      <p className="text-gray-700 font-medium pt-2">{outcome.text}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-
-              {/* Image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[440px]">
-                <img
-                  src="/images/industrial-outcomes.jpg"
-                  alt="Students learning from industry professionals during a facility tour"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
-                <div className="absolute bottom-5 left-5 right-5">
-                  <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
-                    Each visit builds skills that textbooks alone cannot teach
-                  </p>
-                </div>
-                <div className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl border-4 border-[#68B9C4]/30 -z-10" />
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {learningOutcomes.map((outcome, index) => (
+                <Card
+                  key={index}
+                  className="border-[#82B4CC]/30 hover:border-[#1164A3] transition-all"
+                >
+                  <CardContent className="p-6 flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-lg bg-[#1164A3]/10 flex items-center justify-center text-[#1164A3] flex-shrink-0">
+                      {outcome.icon}
+                    </div>
+                    <p className="text-gray-700 font-medium pt-2">{outcome.text}</p>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </div>
@@ -368,7 +353,7 @@ export default function IndustrialVisitsPage() {
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[420px]">
                 <img
-                  src="/images/industrial-industries.jpg"
+                  src={image4.src}
                   alt="Diverse industries covered by the NED Scholars industrial visit program"
                   className="w-full h-full object-cover"
                 />
@@ -398,44 +383,33 @@ export default function IndustrialVisitsPage() {
         </div>
       </section>
 
-      {/* Student Benefits — image beside benefits */}
-      <section className="py-20">
+      {/* Student Benefits  */}
+     <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4 text-base bg-[#1164A3] text-white">Your Advantage</Badge>
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">Student Benefits</h2>
+              <Badge className="mb-4 text-base bg-[#1164A3] text-white">
+                Your Advantage
+              </Badge>
+              <h2 className="text-4xl font-bold text-gray-800 mb-4">
+                Student Benefits
+              </h2>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-              <div className="grid grid-cols-1 gap-5">
-                {benefits.map((benefit, index) => (
-                  <Card key={index} className="border-[#82B4CC]/30 hover:shadow-lg hover:border-[#1164A3] transition-all">
-                    <CardContent className="p-5 flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-lg bg-[#68B9C4]/10 flex items-center justify-center text-[#68B9C4] flex-shrink-0">
-                        {benefit.icon}
-                      </div>
-                      <p className="text-gray-700 font-medium">{benefit.text}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-
-              {/* Image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[400px]">
-                <img
-                  src="/images/industrial-benefits.jpg"
-                  alt="Students gaining hands-on experience and building professional confidence"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
-                <div className="absolute bottom-5 left-5 right-5">
-                  <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
-                    Industrial visits build confidence, clarity, and the competitive edge that sets graduates apart
-                  </p>
-                </div>
-                <div className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl border-4 border-[#68B9C4]/30 -z-10" />
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {benefits.map((benefit, index) => (
+                <Card
+                  key={index}
+                  className="border-[#82B4CC]/30 hover:shadow-lg transition-all"
+                >
+                  <CardContent className="p-6 flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-lg bg-[#68B9C4]/10 flex items-center justify-center text-[#68B9C4]">
+                      {benefit.icon}
+                    </div>
+                    <p className="text-gray-700 font-medium">{benefit.text}</p>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </div>
@@ -577,9 +551,9 @@ export default function IndustrialVisitsPage() {
             </div>
 
             {/* Wide banner image */}
-            <div className="relative rounded-2xl overflow-hidden shadow-xl mb-10 h-52 md:h-64">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl mb-10 h-52 md:h-[500px]">
               <img
-                src="/images/industrial-upcoming.jpg"
+                src={image1.src}
                 alt="Students preparing for upcoming industrial visits to Pakistan's leading companies"
                 className="w-full h-full object-cover"
               />
@@ -687,7 +661,7 @@ export default function IndustrialVisitsPage() {
           <div className="container mx-auto px-4">
             <div className="max-w-7xl mx-auto">
               <div className="text-center mb-12">
-                <Badge className="mb-4 text-base bg-[#68B9C4] text-white">Success Stories</Badge>
+                <Badge className="mb-4 text-base bg-[#68B9C4] text-white">Industrial Visits</Badge>
                 <h2 className="text-4xl font-bold text-gray-800 mb-4">Past Industrial Visits</h2>
                 <p className="text-xl text-gray-600">Explore our successful visits to leading industries</p>
               </div>
@@ -725,58 +699,57 @@ export default function IndustrialVisitsPage() {
         </section>
       )}
 
-      {/* Safety & Supervision — image beside safety card */}
+      {/* Safety & Supervision */}
       <section className="py-20 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-              {/* Image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[380px]">
-                <img
-                  src="/images/industrial-safety.jpg"
-                  alt="Faculty and industry professionals supervising students during an industrial visit"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
-                <div className="absolute bottom-5 left-5 right-5">
-                  <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
-                    Every visit is conducted under expert supervision with strict safety protocols
-                  </p>
+            <Card className="border-2 border-[#82B4CC]/30 shadow-xl">
+              <CardHeader className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-full flex items-center justify-center text-white mx-auto mb-4">
+                  <Shield className="w-8 h-8" />
                 </div>
-                <div className="absolute -bottom-3 -left-3 w-full h-full rounded-2xl border-4 border-[#82B4CC]/30 -z-10" />
-              </div>
-
-              <Card className="border-2 border-[#82B4CC]/30 shadow-xl">
-                <CardHeader className="text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-full flex items-center justify-center text-white mx-auto mb-4">
-                    <Shield className="w-8 h-8" />
+                <CardTitle className="text-3xl">
+                  Safety and Supervision
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-lg text-gray-700 mb-6 max-w-3xl mx-auto">
+                  All Industrial Visits are conducted under proper supervision and
+                  strict safety guidelines. Faculty members and industry
+                  professionals guide students throughout the visit to ensure a
+                  secure, informative, and productive learning experience.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                  <div className="p-4 bg-[#1164A3]/5 rounded-lg">
+                    <Shield className="w-8 h-8 text-[#1164A3] mx-auto mb-2" />
+                    <h4 className="font-semibold text-gray-800 mb-1">
+                      Safety First
+                    </h4>
+                    <p className="text-sm text-gray-600">
+                      Strict safety protocols followed
+                    </p>
                   </div>
-                  <CardTitle className="text-3xl">Safety and Supervision</CardTitle>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <p className="text-lg text-gray-700 mb-6 max-w-3xl mx-auto">
-                    All Industrial Visits are conducted under proper supervision and strict safety guidelines. Faculty members and industry professionals guide students throughout the visit to ensure a secure, informative, and productive learning experience.
-                  </p>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-                    <div className="p-4 bg-[#1164A3]/5 rounded-lg">
-                      <Shield className="w-8 h-8 text-[#1164A3] mx-auto mb-2" />
-                      <h4 className="font-semibold text-gray-800 mb-1">Safety First</h4>
-                      <p className="text-sm text-gray-600">Strict safety protocols followed</p>
-                    </div>
-                    <div className="p-4 bg-[#68B9C4]/5 rounded-lg">
-                      <Users className="w-8 h-8 text-[#68B9C4] mx-auto mb-2" />
-                      <h4 className="font-semibold text-gray-800 mb-1">Expert Supervision</h4>
-                      <p className="text-sm text-gray-600">Guided by faculty and professionals</p>
-                    </div>
-                    <div className="p-4 bg-[#82B4CC]/5 rounded-lg">
-                      <CheckCircle className="w-8 h-8 text-[#82B4CC] mx-auto mb-2" />
-                      <h4 className="font-semibold text-gray-800 mb-1">Secure Experience</h4>
-                      <p className="text-sm text-gray-600">Informative and productive visits</p>
-                    </div>
+                  <div className="p-4 bg-[#68B9C4]/5 rounded-lg">
+                    <Users className="w-8 h-8 text-[#68B9C4] mx-auto mb-2" />
+                    <h4 className="font-semibold text-gray-800 mb-1">
+                      Expert Supervision
+                    </h4>
+                    <p className="text-sm text-gray-600">
+                      Guided by faculty and professionals
+                    </p>
                   </div>
-                </CardContent>
-              </Card>
-            </div>
+                  <div className="p-4 bg-[#82B4CC]/5 rounded-lg">
+                    <CheckCircle className="w-8 h-8 text-[#82B4CC] mx-auto mb-2" />
+                    <h4 className="font-semibold text-gray-800 mb-1">
+                      Secure Experience
+                    </h4>
+                    <p className="text-sm text-gray-600">
+                      Informative and productive visits
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>

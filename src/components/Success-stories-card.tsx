@@ -81,12 +81,6 @@ export default function SuccessStoriesComponent({
                           {story.studentName}
                         </h3>
 
-                        {story.currentPosition && (
-                          <p className="text-sm text-[#1164A3] font-medium mb-3 text-center">
-                            {story.currentPosition}
-                          </p>
-                        )}
-
                         {story.year && (
                           <p className="text-xs text-gray-500 mb-4 text-center">
                             Batch {story.year}

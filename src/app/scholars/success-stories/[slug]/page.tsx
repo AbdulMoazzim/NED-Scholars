@@ -79,20 +79,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
                 {/* Info Pills */}
                 <div className="flex flex-wrap gap-3 justify-center md:justify-start">
-                  {story.currentPosition && (
-                    <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
-                      <Briefcase className="w-4 h-4" />
-                      <span className="font-medium">
-                        {story.currentPosition}
-                      </span>
-                    </div>
-                  )}
-                  {story.company && (
-                    <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
-                      <Award className="w-4 h-4" />
-                      <span className="font-medium">{story.company}</span>
-                    </div>
-                  )}
                   {story.year && (
                     <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
                       <Calendar className="w-4 h-4" />
@@ -148,33 +134,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
               dangerouslySetInnerHTML={{ __html: story.story }}
             />
 
-            {/* Advice Section (if available) */}
-            {story.advice && (
-              <div className="mt-12 p-8 bg-gradient-to-r from-[#1164A3]/10 to-[#68B9C4]/10 rounded-2xl border-l-4 border-[#1164A3]">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <Award className="w-6 h-6 text-[#1164A3]" />
-                  Advice for Future Scholars
-                </h3>
-                <div
-                  className="prose prose-lg max-w-none prose-p:text-gray-700"
-                  dangerouslySetInnerHTML={{ __html: story.advice }}
-                />
-              </div>
-            )}
-
-            {/* Impact Section (if available) */}
-            {story.impact && (
-              <div className="mt-8 p-8 bg-gradient-to-r from-[#68B9C4]/10 to-[#1164A3]/10 rounded-2xl border-l-4 border-[#68B9C4]">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  Impact & Achievements
-                </h3>
-                <div
-                  className="prose prose-lg max-w-none prose-p:text-gray-700"
-                  dangerouslySetInnerHTML={{ __html: story.impact }}
-                />
-              </div>
-            )}
-
+            
             {/* Videos Section (if available) */}
             {story.videos && story.videos.length > 0 && (
               <div className="mt-12">

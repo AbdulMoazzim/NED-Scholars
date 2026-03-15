@@ -36,57 +36,26 @@ export default async function TransparencyPage() {
   if (result.success && result.data) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-[#82B4CC]/10 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
+        <div className="w-[95%] md:w-[90%] mx-auto">
 
-          {/* Header Section */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              Financial Transparency
-            </h1>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              In our commitment to transparency and accountability, we make our financial
-              statements available to the public. Below you will find our annual financial
-              reports including balance sheets, profit and loss statements, and IRS filings.
-            </p>
-            <p className="text-sm text-gray-500 mt-4">
-              Note: All figures are in US Dollars.
-            </p>
-          </div>
+          {/* Header + Images Side-by-Side Section */}
+          <div className="flex flex-col lg:flex-row gap-8 mb-12 items-start">
 
-          {/* Image Grid Section */}
-          <div className="mb-12">
-            <div className="
-              grid
-              grid-cols-1
-              sm:grid-cols-2
-              gap-3
-              sm:gap-4
-              rounded-xl
-              overflow-hidden
-            ">
-              {transparencyImages.map((image, index) => (
-                <div
-                  key={index}
-                  className="relative w-full overflow-hidden rounded-xl sm:rounded-none sm:first:rounded-tl-xl sm:rounded-tr-none group
-                    [&:nth-child(2)]:sm:rounded-tr-xl
-                    [&:nth-child(3)]:sm:rounded-bl-xl
-                    [&:nth-child(4)]:sm:rounded-br-xl
-                  "
-                  style={{ aspectRatio: "16/9" }}
-                >
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className="absolute inset-0 w-full h-full object-contain"
-                  />
-                  {/* Subtle gradient overlay on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#1164A3]/0 to-[#68B9C4]/0 " />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Content Section */}
+            {/* Header Section - Left */}
+            <div className="flex-1">
+              <h1 className="text-4xl font-bold text-gray-900 mb-4">
+                Financial Transparency
+              </h1>
+              <p className="text-lg text-gray-600">
+                In our commitment to transparency and accountability, we make our financial
+                statements available to the public. Below you will find our annual financial
+                reports including balance sheets, profit and loss statements, and IRS filings.
+              </p>
+              <p className="text-sm text-gray-500 mt-4">
+                Note: All figures are in US Dollars.
+              </p>
+                {/* Content Section */}
+              <div className="mt-4">
           {result.data.length === 0 ? (
             <div className="text-center py-12 bg-white rounded-lg shadow-sm border border-[#82B4CC]/30">
               <FileText className="mx-auto h-12 w-12 text-[#68B9C4]" />
@@ -148,6 +117,30 @@ export default async function TransparencyPage() {
               ))}
             </div>
           )}
+              </div>
+            </div>
+
+            {/* Image Column Section - Right */}
+            <div className="w-full lg:w-72 xl:w-80 flex flex-col gap-3 flex-shrink-0">
+              {transparencyImages.map((image, index) => (
+                <div
+                  key={index}
+                  className="relative w-full overflow-hidden rounded-xl group"
+                  style={{ aspectRatio: "16/9" }}
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="absolute inset-0 w-full h-full object-contain"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#1164A3]/0 to-[#68B9C4]/0" />
+                </div>
+              ))}
+            </div>
+
+          </div>
+
+          
 
           {/* Footer Information */}
           <div className="mt-12 p-6 border border-[#82B4CC]/30 bg-white rounded-lg shadow-sm">

@@ -33,6 +33,11 @@ import { useRouter } from "next/navigation";
 import { GetUpcomingSeminars, GetAllSeminars } from "@/app/actions/seminar";
 import { Seminar } from "@/lib/form-types";
 import { toast } from "sonner";
+import image1 from "../../../data/images/Programs/seminar/seminar (1).jpeg";
+import image2 from "../../../data/images/Programs/seminar/seminar (2).jpeg";
+import image3 from "../../../data/images/Programs/seminar/seminar (3).jpeg";
+import image4 from "../../../data/images/Programs/seminar/seminar (4).jpeg";
+import Image from "next/image";
 
 export default function SeminarSeriesNewPage() {
   const router = useRouter();
@@ -91,10 +96,10 @@ export default function SeminarSeriesNewPage() {
   };
 
   const seminarFeatures = [
-    { icon: <Laptop className="w-6 h-6" />, title: "Live Technology Demonstrations", description: "Hands-on showcases of emerging technologies in action" },
-    { icon: <TrendingUp className="w-6 h-6" />, title: "Career Success Stories", description: "Learn from professionals who've achieved global success" },
-    { icon: <Network className="w-6 h-6" />, title: "Networking Opportunities", description: "Connect with industry professionals and ambitious peers" },
-    { icon: <MessageCircle className="w-6 h-6" />, title: "Interactive Q&A Sessions", description: "Get personalized answers to your career questions" },
+    { icon: <Laptop className="w-6 h-6" />, title: "Live Technology Demonstrations" },
+    { icon: <TrendingUp className="w-6 h-6" />, title: "Career Success Stories"},
+    { icon: <Network className="w-6 h-6" />, title: "Networking Opportunities"},
+    { icon: <MessageCircle className="w-6 h-6" />, title: "Interactive Q&A Sessions" },
   ];
 
   const certificationAreas = [
@@ -126,10 +131,10 @@ export default function SeminarSeriesNewPage() {
   ];
 
   const uniqueFeatures = [
-    { icon: <BookOpen className="w-8 h-8" />, title: "Real-World Case Studies", description: "Not just theory, but proven applications" },
-    { icon: <Laptop className="w-8 h-8" />, title: "Interactive Workshops", description: "Hands-on sessions with tools and software" },
-    { icon: <Globe className="w-8 h-8" />, title: "Global-Local Fusion", description: "International best practices adapted for Pakistan's market" },
-    { icon: <Heart className="w-8 h-8" />, title: "Mentorship Opportunities", description: "Many seminars lead to long-term mentor relationships" },
+    { icon: <BookOpen className="w-8 h-8" />, title: "Real-World Case Studies" },
+    { icon: <Laptop className="w-8 h-8" />, title: "Interactive Workshops" },
+    { icon: <Globe className="w-8 h-8" />, title: "Global-Local Fusion" },
+    { icon: <Heart className="w-8 h-8" />, title: "Mentorship Opportunities" },
   ];
 
   const presenterTypes = [
@@ -139,9 +144,9 @@ export default function SeminarSeriesNewPage() {
   ];
 
   const successStories = [
-    { icon: <Briefcase className="w-8 h-8" />, title: "Career Opportunity in Germany", story: "A 2023 attendee landed a job at a presenter's company in Germany", color: "from-[#1164A3] to-[#68B9C4]" },
-    { icon: <Rocket className="w-8 h-8" />, title: "Clean-Tech Startup Launch", story: "A solar energy workshop led to a scholar launching a clean-tech startup", color: "from-[#68B9C4] to-[#82B4CC]" },
-    { icon: <GraduationCap className="w-8 h-8" />, title: "International Research Collaboration", story: "An AI seminar inspired a research collaboration between NED and a U.S. university", color: "from-[#82B4CC] to-[#B0A3B3]" },
+    { icon: <Briefcase className="w-8 h-8" />, title: "Career Opportunity in Germany", color: "from-[#1164A3] to-[#68B9C4]" },
+    { icon: <Rocket className="w-8 h-8" />, title: "Clean-Tech Startup Launch", color: "from-[#68B9C4] to-[#82B4CC]" },
+    { icon: <GraduationCap className="w-8 h-8" />, title: "International Research Collaboration", color: "from-[#82B4CC] to-[#B0A3B3]" },
   ];
 
   return (
@@ -164,13 +169,6 @@ export default function SeminarSeriesNewPage() {
               Bridging Global Expertise with Local Talent
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <a
-                href="#upcoming"
-                className="inline-flex items-center gap-2 bg-white text-[#1164A3] hover:bg-gray-100 text-lg px-8 py-4 rounded-full shadow-xl font-semibold transform hover:scale-105 transition-all duration-300"
-              >
-                Upcoming Seminars
-                <ArrowRight className="w-5 h-5" />
-              </a>
               <button
                 onClick={() => router.push("/register/seminar-presenter")}
                 className="inline-flex items-center gap-2 border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-4 rounded-full font-semibold transition-all duration-300"
@@ -213,7 +211,6 @@ export default function SeminarSeriesNewPage() {
                           <div className="text-[#1164A3] flex-shrink-0 mt-1">{feature.icon}</div>
                           <div>
                             <h4 className="font-semibold text-gray-800 mb-1 text-sm">{feature.title}</h4>
-                            <p className="text-xs text-gray-600">{feature.description}</p>
                           </div>
                         </div>
                       ))}
@@ -224,8 +221,8 @@ export default function SeminarSeriesNewPage() {
 
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[520px]">
-                <img
-                  src="/images/seminar-intro.jpg"
+                        <img
+                  src={image4.src}
                   alt="NED Scholars seminar session with students and global experts"
                   className="w-full h-full object-cover"
                 />
@@ -242,9 +239,9 @@ export default function SeminarSeriesNewPage() {
             {/* Quote */}
             <Card className="bg-gradient-to-r from-[#82B4CC]/20 to-[#B0A3B3]/20 border-l-4 border-[#1164A3] shadow-lg">
               <CardContent className="p-8">
-                <div className="flex items-start space-x-4">
+                <div className="flex items-start justify-center">
                   <div className="text-[#1164A3] text-6xl leading-none">&quot;</div>
-                  <p className="text-xl text-gray-700 italic pt-2">
+                  <p className="text-xl text-gray-700 italic pt-2 font-bold text-center">
                     Seeing is believing. When our scholars witness NED alumni thriving globally, they realize their own potential is limitless.
                   </p>
                   <div className="text-[#1164A3] text-6xl leading-none">&quot;</div>
@@ -289,7 +286,7 @@ export default function SeminarSeriesNewPage() {
                       <div className="flex flex-col md:flex-row">
                         {seminar.images && seminar.images.length > 0 ? (
                           <div className="relative w-full md:w-64 h-48 md:h-auto overflow-hidden bg-gradient-to-br from-[#1164A3]/20 to-[#68B9C4]/20 flex-shrink-0">
-                            <img src={seminar.images[0].url} alt={seminar.images[0].alt || seminar.title} className="object-cover group-hover:scale-110 transition-transform duration-500" />
+                              <img src={seminar.images[0].url} alt={seminar.images[0].alt || seminar.title} className="object-cover group-hover:scale-110 transition-transform duration-500" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                             <div className="absolute top-3 left-3 flex flex-wrap gap-2">
                               <Badge className="bg-black/70 text-white border-0">{seminar.location}</Badge>
@@ -343,15 +340,12 @@ export default function SeminarSeriesNewPage() {
             <div className="text-center mb-16">
               <Badge className="mb-4 text-base bg-[#68B9C4] text-white">Career Enhancement</Badge>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Specialized Certification Training Opportunities</h2>
-              <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-                As part of this ongoing academic collaboration, students will learn about exclusive certification training programs conducted in partnership with global accreditation bodies.
-              </p>
             </div>
 
             {/* Wide image banner */}
             <div className="relative rounded-2xl overflow-hidden shadow-xl mb-12 h-56 md:h-64">
-              <img
-                src="/images/seminar-certification.jpg"
+                <img
+                src={image2.src}
                 alt="Certification training programs and accreditation bodies"
                 className="w-full h-full object-cover"
               />
@@ -445,7 +439,7 @@ export default function SeminarSeriesNewPage() {
                     >
                       {seminar.images && seminar.images.length > 0 ? (
                         <div className="relative overflow-hidden h-48">
-                          <img src={seminar.images[0].url} alt={seminar.images[0].alt || seminar.title} className="object-cover group-hover:scale-110 transition-transform duration-500" />
+                            <img src={seminar.images[0].url} alt={seminar.images[0].alt || seminar.title} className="object-cover group-hover:scale-110 transition-transform duration-500" />
                           <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors duration-300" />
                           <Badge className="absolute top-3 right-3 bg-black/70 text-white border-0"><Users className="w-3 h-3 mr-1" />{seminar.attendees.length}</Badge>
                           <Badge className="absolute bottom-3 right-3 bg-black/70 text-white border-0">{calculateDuration(seminar.date, seminar.endDate || undefined)}</Badge>
@@ -484,74 +478,6 @@ export default function SeminarSeriesNewPage() {
         </div>
       </section>
 
-      {/* Why Seminars Matter — image beside scholar benefits, image beside presenter benefits */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <Badge className="mb-4 text-base bg-[#1164A3] text-white">Impact & Value</Badge>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Why These Seminars Matter</h2>
-              <p className="text-xl text-gray-600">Benefits for scholars, presenters, and the entire community</p>
-            </div>
-
-            {/* For Scholars — image on right */}
-            <div className="mb-16">
-              <h3 className="text-3xl font-bold text-gray-800 mb-8 text-center">For Scholars</h3>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  {scholarBenefits.map((benefit, index) => (
-                    <Card key={index} className="hover:shadow-2xl hover:border-[#1164A3] transition-all duration-300">
-                      <CardContent className="p-6">
-                        <div className={`w-14 h-14 bg-gradient-to-r ${benefit.color} rounded-2xl flex items-center justify-center text-white mb-4`}>{benefit.icon}</div>
-                        <h4 className="text-lg font-bold text-gray-800 mb-2">{benefit.title}</h4>
-                        <p className="text-gray-600 text-sm">{benefit.description}</p>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[440px]">
-                  <img src="/images/seminar-scholars.jpg" alt="NED scholars attending a seminar and gaining career insights" className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
-                  <div className="absolute bottom-5 left-5 right-5">
-                    <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
-                      Scholars who attend seminars graduate with a global mindset and a competitive edge
-                    </p>
-                  </div>
-                  <div className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl border-4 border-[#68B9C4]/30 -z-10" />
-                </div>
-              </div>
-            </div>
-
-            {/* For Presenters — image on left */}
-            <div>
-              <h3 className="text-3xl font-bold text-gray-800 mb-8 text-center">For Presenters (NED Alumni & Experts)</h3>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[440px]">
-                  <img src="/images/seminar-presenters.jpg" alt="NED alumni presenting at a seminar session" className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
-                  <div className="absolute bottom-5 left-5 right-5">
-                    <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
-                      Presenters give back to their alma mater while growing their own professional legacy
-                    </p>
-                  </div>
-                  <div className="absolute -bottom-3 -left-3 w-full h-full rounded-2xl border-4 border-[#82B4CC]/30 -z-10" />
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  {presenterBenefits.map((benefit, index) => (
-                    <Card key={index} className="hover:shadow-2xl hover:border-[#1164A3] transition-all duration-300">
-                      <CardContent className="p-6">
-                        <div className={`w-14 h-14 bg-gradient-to-r ${benefit.color} rounded-2xl flex items-center justify-center text-white mb-4`}>{benefit.icon}</div>
-                        <h4 className="text-lg font-bold text-gray-800 mb-2">{benefit.title}</h4>
-                        <p className="text-gray-600 text-sm">{benefit.description}</p>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* What Makes Us Unique — image beside unique feature cards */}
       <section className="py-20 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
@@ -573,7 +499,6 @@ export default function SeminarSeriesNewPage() {
                         </div>
                         <h3 className="text-lg font-bold text-gray-800">{feature.title}</h3>
                       </div>
-                      <p className="text-gray-600 text-sm">{feature.description}</p>
                     </CardContent>
                   </Card>
                 ))}
@@ -581,7 +506,7 @@ export default function SeminarSeriesNewPage() {
 
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[420px]">
-                <img src="/images/seminar-unique.jpg" alt="Interactive workshop session with hands-on learning" className="w-full h-full object-cover" />
+                  <img src={image3.src} alt="Interactive workshop session with hands-on learning" className="w-full h-full object-cover object-top-right" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
                 <div className="absolute bottom-5 left-5 right-5">
                   <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
@@ -608,7 +533,7 @@ export default function SeminarSeriesNewPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[400px]">
-                <img src="/images/seminar-success.jpg" alt="NED Scholars alumni who built successful careers after attending seminars" className="w-full h-full object-cover" />
+                  <img src={image1.src} alt="NED Scholars alumni who built successful careers after attending seminars" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
                 <div className="absolute bottom-5 left-5 right-5">
                   <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
@@ -621,14 +546,13 @@ export default function SeminarSeriesNewPage() {
               <div className="space-y-6">
                 {successStories.map((story, index) => (
                   <Card key={index} className="hover:shadow-2xl hover:border-[#1164A3] transition-all duration-300">
-                    <CardContent className="p-6">
+                    <CardContent>
                       <div className="flex items-start space-x-5">
                         <div className={`w-16 h-16 bg-gradient-to-r ${story.color} rounded-full flex items-center justify-center text-white flex-shrink-0`}>
                           {story.icon}
                         </div>
                         <div>
                           <h4 className="text-lg font-bold text-gray-800 mb-2">{story.title}</h4>
-                          <p className="text-gray-600 text-sm leading-relaxed">{story.story}</p>
                         </div>
                       </div>
                     </CardContent>
@@ -640,82 +564,64 @@ export default function SeminarSeriesNewPage() {
         </div>
       </section>
 
-      {/* Present as Expert — image beside presenter card */}
+      {/* Present as Expert */}
       <section className="py-20 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <Badge className="mb-4 text-base bg-[#1164A3] text-white">Get Involved</Badge>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Present as an Expert</h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+                Present as an Expert
+              </h2>
               <p className="text-xl text-gray-600">Share your knowledge and inspire the next generation</p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-              <Card className="shadow-2xl border-2 border-[#82B4CC]/20">
-                <CardHeader className="bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10 py-4">
-                  <CardTitle className="flex items-center space-x-3 text-2xl">
-                    <Users className="w-10 h-10 text-[#1164A3]" />
-                    <span>Present as an Expert</span>
-                  </CardTitle>
-                  <p className="text-sm text-gray-600 mt-2">(We Need You!)</p>
-                </CardHeader>
-                <CardContent className="p-8">
-                  <p className="text-gray-700 mb-6 font-medium">We seek:</p>
-                  <div className="space-y-4 mb-8">
-                    {presenterTypes.map((type, index) => (
-                      <div key={index} className="flex items-start space-x-4 p-4 bg-[#82B4CC]/10 rounded-xl">
-                        <div className="text-[#1164A3] flex-shrink-0">{type.icon}</div>
-                        <div>
-                          <h5 className="font-bold text-gray-800 mb-1">{type.title}</h5>
-                          <p className="text-sm text-gray-600">{type.description}</p>
-                        </div>
+            {/* Present as Expert */}
+            <Card className="shadow-2xl border-2 border-[#82B4CC]/20">
+              <CardHeader className="bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10 py-4">
+                <CardTitle className="flex items-center space-x-3 text-2xl">
+                  <Users className="w-10 h-10 text-[#1164A3]" />
+                  <span>Present as an Expert</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-700 mb-6 font-medium">We seek:</p>
+                <div className="space-y-4 mb-8">
+                  {presenterTypes.map((type, index) => (
+                    <div
+                      key={index}
+                      className="flex items-start space-x-4 p-4 bg-[#82B4CC]/10 rounded-xl"
+                    >
+                      <div className="text-[#1164A3] flex-shrink-0">
+                        {type.icon}
                       </div>
-                    ))}
-                  </div>
-                  <div className="flex items-center space-x-3 mb-6">
+                      <div>
+                        <h5 className="font-bold text-gray-800 flex items-center mb-1">
+                          {type.title}
+                        </h5>
+                        <p className="text-sm text-gray-600">
+                          {type.description}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="space-y-4 mb-6">
+                  <div className="flex items-center space-x-3">
                     <Plane className="w-6 h-6 text-[#1164A3]" />
-                    <p className="text-sm text-gray-700 font-medium">Travel Support Available for overseas presenters</p>
+                    <p className="text-sm text-gray-700 font-medium">
+                      Travel Support Available for overseas presenters
+                    </p>
                   </div>
-                  <button
-                    onClick={() => router.push("/register/seminar-presenter")}
-                    className="w-full bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl transition-all duration-300"
-                  >
-                    Propose a Seminar Topic
-                  </button>
-                </CardContent>
-              </Card>
-
-              {/* Image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[460px]">
-                <img src="/images/seminar-presenter-cta.jpg" alt="Expert presenting to an engaged audience of NED scholars" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
-                <div className="absolute bottom-5 left-5 right-5">
-                  <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
-                    Your expertise can shape the career of the next generation of engineers
-                  </p>
                 </div>
-                <div className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl border-4 border-[#82B4CC]/30 -z-10" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Final Message */}
-      <section className="py-20 bg-gradient-to-r from-[#1164A3] via-[#68B9C4] to-[#82B4CC] text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-8">Together, We&apos;re Redefining Engineering Excellence</h2>
-            <Card className="bg-white/10 border-white/20 backdrop-blur-sm">
-              <CardContent className="p-10">
-                <div className="flex items-start justify-center space-x-6 mb-8">
-                  <div className="text-7xl text-white leading-none">&quot;</div>
-                  <p className="text-2xl italic text-white pt-4">
-                    Knowledge shared is impact multiplied. Whether you&apos;re a scholar seeking direction or an alum ready to guide, these seminars are where futures take shape.
-                  </p>
-                  <div className="text-7xl text-white leading-none">&quot;</div>
-                </div>
-                <p className="text-xl text-white/90 font-bold">NED Scholars: Lighting the Spark of Innovation Since 2010</p>
+                <button 
+                  onClick={() => router.push("/register/seminar-presenter")} 
+                  className="w-full bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl transition-all duration-300"
+                >
+                  Propose a Seminar Topic
+                </button>
               </CardContent>
             </Card>
           </div>

@@ -22,6 +22,10 @@ import {
   Heart,
   Laptop,
 } from "lucide-react";
+import image1 from "../../../data/images/services/d2d/d2d (1).jpeg";
+import image2 from "../../../data/images/services/d2d/d2d (2).jpeg";
+import image3 from "../../../data/images/services/d2d/d2d (3).jpeg";
+import image4 from "../../../data/images/services/d2d/d2d (4).jpeg";
 import Link from "next/link";
 
 export default function Dare2DesignPage() {
@@ -29,25 +33,21 @@ export default function Dare2DesignPage() {
     {
       icon: <Brain className="w-8 h-8" />,
       title: "Creativity & Innovation",
-      description: "Nurturing creative thinking and innovative problem-solving approaches",
       color: "from-[#82B4CC] to-[#B0A3B3]",
     },
     {
       icon: <Target className="w-8 h-8" />,
       title: "Problem-Solving",
-      description: "Developing real-world solutions to address community challenges",
       color: "from-[#1164A3] to-[#68B9C4]",
     },
     {
       icon: <Rocket className="w-8 h-8" />,
       title: "STEM Education",
-      description: "Building strong technical foundations in Science, Technology, Engineering, and Mathematics",
       color: "from-[#68B9C4] to-[#82B4CC]",
     },
     {
       icon: <Globe className="w-8 h-8" />,
       title: "Global Recognition",
-      description: "Providing platforms to showcase innovations on international stages",
       color: "from-[#1164A3] to-[#82B4CC]",
     },
   ];
@@ -134,20 +134,13 @@ export default function Dare2DesignPage() {
             <div className="text-center mb-12">
               <Badge className="mb-4 bg-[#68B9C4] text-white border-[#68B9C4]">About the Program</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Empowering Young Innovators</h2>
-              <p className="text-gray-600 text-lg max-w-4xl mx-auto">
-                The Dare2Design initiative by NED Scholars is a dynamic program fostering STEM education,
-                creativity, and problem-solving among young minds. Designed to nurture innovation through a
-                structured approach, it encourages students to develop real-world solutions.
-              </p>
             </div>
 
             {/* Two-column: content left, image right */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
               <div>
                 <p className="text-gray-700 text-lg leading-relaxed mb-8">
-                  By providing mentorship, resources, and hands-on experience, Dare2Design ensures that
-                  participants not only refine their technical skills but also gain the confidence to present
-                  their ideas on global platforms.
+                 The Dare2Design initiative by NED Scholars is a dynamic program that promotes STEM education, creativity, and problem-solving among young students. Through mentorship, resources, and hands-on learning, it encourages participants to develop innovative solutions to real-world challenges while building technical skills and the confidence to present their ideas on global platforms.
                 </p>
                 <div className="grid grid-cols-2 gap-6">
                   {programPillars.map((pillar, index) => (
@@ -156,7 +149,6 @@ export default function Dare2DesignPage() {
                         {pillar.icon}
                       </div>
                       <h4 className="font-semibold text-gray-800 mb-1 text-sm">{pillar.title}</h4>
-                      <p className="text-xs text-gray-600">{pillar.description}</p>
                     </div>
                   ))}
                 </div>
@@ -165,7 +157,7 @@ export default function Dare2DesignPage() {
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[460px]">
                 <img
-                  src="/images/dare2design-overview.jpg"
+                  src={image4.src}
                   alt="Students innovating and designing"
                   className="w-full h-full object-cover"
                 />
@@ -235,7 +227,7 @@ export default function Dare2DesignPage() {
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[360px]">
                 <img
-                  src="/images/dare2design-emuinvent.jpg"
+                  src={image2.src}
                   alt="EMUiNVENT 2024 competition at NED University"
                   className="w-full h-full object-cover"
                 />
@@ -292,7 +284,7 @@ export default function Dare2DesignPage() {
             {/* Wide image banner */}
             <div className="relative rounded-2xl overflow-hidden shadow-xl mb-10 h-60 md:h-72">
               <img
-                src="/images/dare2design-training.jpg"
+                src={image3.src}
                 alt="Students in a tech training session"
                 className="w-full h-full object-cover"
               />
@@ -387,52 +379,43 @@ export default function Dare2DesignPage() {
         </div>
       </section>
 
-      {/* Success Factors — image on left, cards on right */}
-      <section className="py-16">
+      {/* Success Factors */}
+       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <Badge className="mb-4 bg-[#1164A3] text-white border-[#1164A3]">What Makes Us Different</Badge>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Keys to Success</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                Keys to Success
+              </h2>
               <p className="text-gray-600 text-lg max-w-3xl mx-auto">
-                Our comprehensive approach ensures students receive everything they need to succeed on the global stage
+                Our comprehensive approach ensures students receive everything
+                they need to succeed on the global stage
               </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-              {/* Image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[420px]">
-                <img
-                  src="/images/dare2design-success.jpg"
-                  alt="Students presenting their innovations"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
-                <div className="absolute bottom-5 left-5 right-5">
-                  <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
-                    Pakistani students competing on the global innovation stage
-                  </p>
-                </div>
-                <div className="absolute -bottom-3 -left-3 w-full h-full rounded-2xl border-4 border-[#68B9C4]/30 -z-10" />
-              </div>
-
-              <div className="grid grid-cols-1 gap-6">
-                {successFactors.map((factor, index) => (
-                  <Card key={index} className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300">
-                    <CardContent className="p-6">
-                      <div className="flex items-start space-x-4">
-                        <div className="w-12 h-12 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-lg flex items-center justify-center text-white flex-shrink-0">
-                          {factor.icon}
-                        </div>
-                        <div>
-                          <h4 className="font-semibold text-gray-800 mb-2">{factor.title}</h4>
-                          <p className="text-gray-600">{factor.description}</p>
-                        </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {successFactors.map((factor, index) => (
+                <Card
+                  key={index}
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
+                >
+                  <CardContent className="p-6">
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                        {factor.icon}
                       </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+                      <div>
+                        <h4 className="font-semibold text-gray-800 mb-2 flex items-center">
+                          <CheckCircle2 className="w-5 h-5 text-[#68B9C4] mr-2" />
+                          {factor.title}
+                        </h4>
+                        <p className="text-gray-600">{factor.description}</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </div>
@@ -460,10 +443,10 @@ export default function Dare2DesignPage() {
                     <Badge className="px-3 py-1.5 text-sm bg-[#1164A3] text-white">
                       <TrendingUp className="w-4 h-4 mr-1" />Structured Training
                     </Badge>
-                    <Badge className="px-3 py-1.5 text-sm bg-[#68B9C4] text-white">
+                    <Badge className="px-3 py-1.5 text-sm bg-[#1164A3] text-white">
                       <DollarSign className="w-4 h-4 mr-1" />Financial Support
                     </Badge>
-                    <Badge className="px-3 py-1.5 text-sm bg-[#82B4CC] text-white">
+                    <Badge className="px-3 py-1.5 text-sm bg-[#1164A3] text-white">
                       <Users className="w-4 h-4 mr-1" />Expert Mentorship
                     </Badge>
                     <Badge className="px-3 py-1.5 text-sm bg-[#1164A3] text-white">
@@ -474,9 +457,9 @@ export default function Dare2DesignPage() {
               </Card>
 
               {/* Image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[440px]">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-full">
                 <img
-                  src="/images/dare2design-commitment.jpg"
+                  src={image1.src}
                   alt="NED Scholars mentors and students"
                   className="w-full h-full object-cover"
                 />
@@ -509,25 +492,11 @@ export default function Dare2DesignPage() {
                 <Lightbulb className="w-5 h-5 mr-2" />
                 Apply as a Student
               </Link>
-              <Link href="/donation" className="bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
+              <Link href="/donate" className="bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
                 <Heart className="w-5 h-5 mr-2" />
                 Support Innovation
               </Link>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Final Quote */}
-      <section className="py-16 bg-gradient-to-r from-[#1164A3] via-[#68B9C4] to-[#82B4CC] text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <blockquote className="text-2xl md:text-3xl font-semibold mb-6">
-              &quot;Innovation distinguishes between a leader and a follower.&quot;
-            </blockquote>
-            <p className="text-lg text-white/90">
-              Join us in nurturing the next generation of innovators and leaders
-            </p>
           </div>
         </div>
       </section>

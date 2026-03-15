@@ -23,6 +23,11 @@ import {
   Video,
 } from "lucide-react";
 import Link from "next/link";
+import image1 from "../../../data/images/services/laptop/laptop (1).jpeg";
+import image2 from "../../../data/images/services/laptop/laptop (2).jpeg";
+import image3 from "../../../data/images/services/laptop/laptop (3).jpeg";
+import image4 from "../../../data/images/services/laptop/laptop (4).jpeg";
+import image5 from "../../../data/images/services/laptop/laptop (1).png";
 
 export default function LaptopProgramPage() {
   const digitalDivideChallenges = [
@@ -79,9 +84,9 @@ export default function LaptopProgramPage() {
   ];
 
   const waysToContribute = [
-    { icon: <DollarSign className="w-8 h-8" />, title: "Donate Now", description: "Make a one-time or recurring donation", action: "Visit www.nedscholars.org", color: "from-[#1164A3] to-[#68B9C4]" },
-    { icon: <Users className="w-8 h-8" />, title: "Sponsor a Student", description: "Directly support a student's digital access", action: "Email us at admin@nedscholars.org", color: "from-[#68B9C4] to-[#82B4CC]" },
-    { icon: <Share2 className="w-8 h-8" />, title: "Spread the Word", description: "Share our mission with your network", action: "Help us reach more supporters", color: "from-[#82B4CC] to-[#B0A3B3]" },
+    { icon: <DollarSign className="w-8 h-8" />, title: "Donate Now",  color: "from-[#1164A3] to-[#68B9C4]" },
+    { icon: <Users className="w-8 h-8" />, title: "Sponsor a Student",  color: "from-[#68B9C4] to-[#82B4CC]" },
+    { icon: <Share2 className="w-8 h-8" />, title: "Spread the Word",   color: "from-[#82B4CC] to-[#B0A3B3]" },
   ];
 
   return (
@@ -137,7 +142,7 @@ export default function LaptopProgramPage() {
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[380px]">
                 <img
-                  src="/images/laptop-intro.jpg"
+                  src={image4.src}
                   alt="Student using a laptop for studies"
                   className="w-full h-full object-cover"
                 />
@@ -170,73 +175,65 @@ export default function LaptopProgramPage() {
         </div>
       </section>
 
-      {/* Digital Divide — challenges left, image right */}
+      {/* Digital Divide */}
       <section className="py-16 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4 bg-[#1164A3] text-white border-[#1164A3]">Critical Issue</Badge>
+              <Badge className="mb-4 bg-[#1164A3] text-white border-[#1164A3]">
+                Critical Issue
+              </Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 The Digital Divide: A Growing Challenge
               </h2>
               <p className="text-gray-600 text-lg max-w-3xl mx-auto">
-                In an era where education and employment increasingly depend on digital access,
-                students without laptops or reliable internet face severe disadvantages:
+                In an era where education and employment increasingly depend on
+                digital access, students without laptops or reliable internet
+                face severe disadvantages:
               </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-10">
-              <div className="grid grid-cols-1 gap-4">
-                {digitalDivideChallenges.map((challenge, index) => (
-                  <Card key={index} className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300">
-                    <CardContent className="p-6">
-                      <div className="flex items-start space-x-4">
-                        <div className={`${challenge.color} w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0`}>
-                          {challenge.icon}
-                        </div>
-                        <div>
-                          <h4 className="font-bold text-gray-800 mb-1 flex items-center gap-2">
-                            <CheckCircle2 className="w-4 h-4 text-[#68B9C4]" />
-                            {challenge.title}
-                          </h4>
-                          <p className="text-gray-600">{challenge.description}</p>
-                        </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              {digitalDivideChallenges.map((challenge, index) => (
+                <Card
+                  key={index}
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
+                >
+                  <CardContent className="p-6">
+                    <div className="flex items-start space-x-4">
+                      <div
+                        className={`${challenge.color} w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0`}
+                      >
+                        {challenge.icon}
                       </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-
-              {/* Image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[440px]">
-                <img
-                  src="/images/laptop-divide.jpg"
-                  alt="Student struggling without technology access"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
-                <div className="absolute bottom-5 left-5 right-5">
-                  <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
-                    Without digital access, talented students fall behind in today&apos;s technology-driven world
-                  </p>
-                </div>
-                <div className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl border-4 border-[#82B4CC]/30 -z-10" />
-              </div>
+                      <div>
+                        <h4 className="font-bold text-gray-800 mb-2 flex items-center">
+                          {challenge.title}
+                        </h4>
+                        <p className="text-gray-600">{challenge.description}</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
 
             {/* Quote */}
             <Card className="bg-gradient-to-r from-[#82B4CC]/20 to-[#B0A3B3]/20 border-l-4 border-[#1164A3] shadow-lg">
               <CardContent className="p-8">
-                <div className="flex items-start space-x-4">
+                <div className="flex items-start justify-center text-center space-x-4">
                   <div className="text-[#1164A3] text-5xl">&quot;</div>
                   <div>
-                    <p className="text-lg text-gray-700 italic leading-relaxed mb-4">
-                      In a world that promises equal opportunities, reality paints a different picture. Once,
-                      securing a seat in a professional university was a testament to a student&apos;s talent.
+                    <p className="text-lg text-gray-700 italic font-bold leading-relaxed mb-4">
+                      In a world that promises equal opportunities, reality
+                      paints a different picture. Once, securing a seat in a
+                      professional university was a testament to a student&apos;s
+                      talent.
                     </p>
-                    <p className="text-lg text-gray-700 italic leading-relaxed">
-                      Today, success leans toward those with computers, high-speed internet, and digital tools.
-                      NED Scholars strives to bridge this divide.
+                    <p className="text-lg text-gray-700 italic font-bold leading-relaxed">
+                      Today, success leans toward those with computers,
+                      high-speed internet, and digital tools. NED Scholars
+                      strives to bridge this divide.
                     </p>
                   </div>
                   <div className="text-[#1164A3] text-5xl">&quot;</div>
@@ -264,11 +261,11 @@ export default function LaptopProgramPage() {
             </div>
 
             {/* Wide image banner */}
-            <div className="relative rounded-2xl overflow-hidden shadow-xl mb-10 h-60 md:h-72">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl mb-10 h-60 md:h-90">
               <img
-                src="/images/laptop-distribution.jpg"
+                src={image5.src}
                 alt="Laptop distribution ceremony at NED University"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-top"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[#1164A3]/65 to-transparent flex items-center">
                 <div className="px-10 max-w-lg">
@@ -284,10 +281,13 @@ export default function LaptopProgramPage() {
               {programTypes.map((type, index) => (
                 <Card key={index} className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300">
                   <CardContent className="p-8">
+                    <div className="flex w-full gap-6 justify-start items-center">
+
                     <div className={`w-16 h-16 bg-gradient-to-r ${type.color} rounded-2xl flex items-center justify-center text-white mb-6`}>
                       {type.icon}
                     </div>
                     <h3 className="text-2xl font-bold text-gray-800 mb-3">{type.title}</h3>
+                    </div>
                     <p className="text-gray-600 mb-4">{type.description}</p>
                     <div className="space-y-2">
                       {type.details.map((detail, idx) => (
@@ -348,7 +348,7 @@ export default function LaptopProgramPage() {
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[420px]">
                 <img
-                  src="/images/laptop-student-benefits.jpg"
+                  src={image2.src}
                   alt="Students using laptops for learning and freelancing"
                   className="w-full h-full object-cover"
                 />
@@ -363,16 +363,12 @@ export default function LaptopProgramPage() {
 
               <div className="grid grid-cols-1 gap-4">
                 {studentBenefits.map((item, index) => (
-                  <Card key={index} className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300">
-                    <CardContent className="p-5">
-                      <div className="flex items-center space-x-4">
+                      <div className="flex items-center space-x-4 p-4 shadow rounded" key={index}>
                         <div className="w-11 h-11 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-lg flex items-center justify-center text-white flex-shrink-0">
                           {item.icon}
                         </div>
                         <p className="text-gray-700 font-medium">{item.benefit}</p>
                       </div>
-                    </CardContent>
-                  </Card>
                 ))}
               </div>
             </div>
@@ -431,7 +427,7 @@ export default function LaptopProgramPage() {
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[400px]">
                 <img
-                  src="/images/laptop-support.jpg"
+                  src={image1.src}
                   alt="Supporters and donors with NED Scholars"
                   className="w-full h-full object-cover"
                 />
@@ -447,15 +443,13 @@ export default function LaptopProgramPage() {
               <div className="space-y-5">
                 {waysToContribute.map((way, index) => (
                   <Card key={index} className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300">
-                    <CardContent className="p-6">
+                    <CardContent>
                       <div className="flex items-start space-x-5">
                         <div className={`w-14 h-14 bg-gradient-to-r ${way.color} rounded-2xl flex items-center justify-center text-white flex-shrink-0`}>
                           {way.icon}
                         </div>
                         <div>
                           <h4 className="font-bold text-gray-800 text-lg mb-1">{way.title}</h4>
-                          <p className="text-gray-600 text-sm mb-1">{way.description}</p>
-                          <p className="text-sm text-[#1164A3] font-medium">{way.action}</p>
                         </div>
                       </div>
                     </CardContent>
@@ -468,24 +462,9 @@ export default function LaptopProgramPage() {
             <Card className="shadow-xl bg-white border-[#82B4CC]/20">
               <CardContent className="p-8">
                 <h3 className="text-xl font-semibold text-gray-800 mb-6 text-center">Ready to Make an Impact?</h3>
-                <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8 mb-6">
-                  <div className="flex items-center space-x-3">
-                    <Globe className="w-6 h-6 text-[#1164A3]" />
-                    <div>
-                      <p className="text-sm text-gray-600">Visit:</p>
-                      <a href="https://www.nedscholars.org" className="text-[#1164A3] hover:underline font-semibold">www.nedscholars.org</a>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <Mail className="w-6 h-6 text-[#1164A3]" />
-                    <div>
-                      <p className="text-sm text-gray-600">Email:</p>
-                      <a href="mailto:admin@nedscholars.org" className="text-[#1164A3] hover:underline font-semibold">admin@nedscholars.org</a>
-                    </div>
-                  </div>
-                </div>
+              
                 <div className="text-center">
-                  <Link href="/donation" className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center">
+                  <Link href="/donate" className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center">
                     <Heart className="w-5 h-5 mr-2" />
                     Donate Now
                     <ArrowRight className="w-5 h-5 ml-2" />
@@ -535,9 +514,9 @@ export default function LaptopProgramPage() {
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[440px]">
                 <img
-                  src="/images/laptop-final.jpg"
+                  src={image3.src}
                   alt="Scholar receiving a laptop and smiling"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-right"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/40 to-transparent" />
                 <div className="absolute bottom-5 left-5 right-5">

@@ -22,6 +22,8 @@ import {
   ArrowRight,
   User,
 } from 'lucide-react';
+import image1 from "../../data/images/About/aboutus/Our Belief.png";
+import image2 from "../../data/images/About/aboutus/Who we are.jpeg";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -204,37 +206,12 @@ const About: React.FC = () => {
 
       {/* Right - Stacked Image Collage */}
       <div className="relative h-[520px] hidden lg:block">
-
-        {/* Top-right image */}
-        <div className="absolute top-0 right-0 w-[58%] h-[48%] rounded-2xl overflow-hidden shadow-xl z-10">
           <img
-            src="/images/belief-1.jpg"
+            src={image1.src}
             alt="Graduate with family"
             className="w-full h-full object-cover"
           />
-        </div>
 
-        {/* Middle-left image */}
-        <div className="absolute top-[26%] left-0 w-[62%] h-[44%] rounded-2xl overflow-hidden shadow-xl z-20">
-          <img
-            src="/images/belief-2.jpg"
-            alt="Scholar in graduation gown"
-            className="w-full h-full object-cover"
-          />
-        </div>
-
-        {/* Bottom-right image */}
-        <div className="absolute bottom-0 right-0 w-[55%] h-[36%] rounded-2xl overflow-hidden shadow-xl z-10">
-          <img
-            src="/images/belief-3.jpg"
-            alt="Scholars with their families"
-            className="w-full h-full object-cover"
-          />
-        </div>
-
-        {/* Decorative background dot pattern */}
-        <div className="absolute -bottom-4 -left-4 w-28 h-28 rounded-full bg-[#68B9C4]/20 -z-10" />
-        <div className="absolute -top-4 -right-4 w-20 h-20 rounded-full bg-[#1164A3]/10 -z-10" />
       </div>
 
     </div>
@@ -250,9 +227,9 @@ const About: React.FC = () => {
       <div className="relative">
         <div className="relative rounded-2xl overflow-hidden shadow-2xl">
           <img
-            src="/images/who-we-are.jpg"
+            src={image2.src}
             alt="NED Scholars community"
-            className="w-full h-[480px] object-cover"
+            className="w-full h-[480px] object-cover object-top"
           />
         </div>
       </div>
@@ -332,7 +309,6 @@ const About: React.FC = () => {
         <div className="max-w-6xl mx-auto px-5">
           <div className="text-center mb-10">
             <div className="flex items-center justify-center gap-3 mb-4">
-              <Heart className="w-8 h-8 text-[#1164A3]" />
               <h2 className="text-4xl font-bold text-gray-800">Memorial Scholarships</h2>
             </div>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">

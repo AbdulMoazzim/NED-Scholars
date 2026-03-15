@@ -63,6 +63,17 @@ export default function MobileHeader({
         {/* Menu Items */}
         <div className="flex-1 overflow-y-auto p-4">
           <nav className="space-y-2">
+              <div
+                className="border-b border-gray-100 last:border-b-0"
+              >
+                <Link href="/"
+                  className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
+                >
+                  <span className="text-gray-800 font-medium">
+                    Home
+                  </span>
+                </Link>
+              </div>
             {menuItems.slice(0, menuItems.length).map((item, index) => (
               <div
                 key={index}

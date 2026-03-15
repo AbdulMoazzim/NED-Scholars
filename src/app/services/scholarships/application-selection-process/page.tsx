@@ -22,6 +22,10 @@ import {
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
+import image1 from "../../../../data/images/Services/Application and Selection proccess/image1.jpeg";
+import image2 from "../../../../data/images/Services/Application and Selection proccess/image2.jpeg";
+import image3 from "../../../../data/images/Services/Application and Selection proccess/image3.jpeg";
+import image4 from "../../../../data/images/Services/Application and Selection proccess/image4.jpeg";
 
 export default function GuidelinesAndPrioritiesPage() {
   const router = useRouter();
@@ -56,13 +60,6 @@ export default function GuidelinesAndPrioritiesPage() {
     { step: 11, title: "Distribution", description: "NED University CSA distributes funds to scholars", icon: Award, details: ["CSA handles distribution", "Scholars receive funds", "Distribution process monitored"] },
     { step: 12, title: "Receipt Confirmation", description: "Scholars confirm receipt of scholarship", icon: CheckCircle2, details: ["Receipt sent to Admin", "Confirmation documented", "Process completion verified"] },
     { step: 13, title: "Social Media Engagement", description: "Connect with NED Scholars community", icon: Users, details: ["Subscribe to YouTube Channel", "Like on Facebook", "Follow on LinkedIn & Instagram"] },
-  ];
-
-  const eligibilityPriorities = [
-    { priority: "First Priority", title: "Bachelor of Engineering - First Year", description: "All first-year engineering students at NED University are eligible", icon: Award, color: "from-[#1164A3] to-[#68B9C4]" },
-    { priority: "Second Priority", title: "Engineering Students - Years 2-4", description: "Limited scholarships for second, third, and fourth year engineering students", icon: Users, color: "from-[#68B9C4] to-[#82B4CC]" },
-    { priority: "Third Priority", title: "Non-Engineering NEDians", description: "Few scholarships available for non-engineering students", icon: Users, color: "from-[#82B4CC] to-[#B0A3B3]" },
-    { priority: "Limited Availability", title: "Non-NEDian Students", description: "Small number of scholarships for students from other institutions", icon: AlertCircle, color: "from-[#B0A3B3] to-[#82B4CC]" },
   ];
 
   const interviewQuestions = [
@@ -145,7 +142,7 @@ export default function GuidelinesAndPrioritiesPage() {
                   <CardHeader className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white py-4">
                     <CardTitle className="flex items-center gap-2"><Shield className="w-5 h-5" />Need-Cum-Merit Basis</CardTitle>
                   </CardHeader>
-                  <CardContent className="p-6">
+                  <CardContent>
                     <p className="text-gray-700 mb-4">
                       Scholarships are awarded based on both financial need and academic merit, ensuring support reaches those who need it most while maintaining high academic standards.
                     </p>
@@ -164,7 +161,7 @@ export default function GuidelinesAndPrioritiesPage() {
                   <CardHeader className="bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] text-white py-4">
                     <CardTitle className="flex items-center gap-2"><Users className="w-5 h-5" />Administration</CardTitle>
                   </CardHeader>
-                  <CardContent className="p-6">
+                  <CardContent>
                     <p className="text-gray-700 mb-4">
                       The NED Controller of Student Affairs (CSA) administers the entire scholarship application process with support from NED Scholars alumni.
                     </p>
@@ -181,9 +178,9 @@ export default function GuidelinesAndPrioritiesPage() {
               </div>
 
               {/* Image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[460px]">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[90%]">
                 <img
-                  src="/images/guidelines-principles.jpg"
+                  src={image4.src}
                   alt="NED Scholars selection committee reviewing applications"
                   className="w-full h-full object-cover"
                 />
@@ -200,107 +197,51 @@ export default function GuidelinesAndPrioritiesPage() {
         </div>
       </section>
 
-      {/* Eligibility Priorities — image beside priority cards */}
-      <section className="py-16 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-12">
-              <Badge className="mb-4 bg-[#68B9C4] text-white border-[#68B9C4]">PRIORITY LEVELS</Badge>
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">Student Eligibility Priorities</h2>
-              <p className="text-gray-600 text-lg">Understanding who receives priority in our selection process</p>
-            </div>
+      
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-              <div className="space-y-5">
-                {eligibilityPriorities.map((priority, index) => (
-                  <Card key={index} className="overflow-hidden border-0 shadow-lg hover:shadow-xl hover:border-[#1164A3] transition-all">
-                    <div className={cn("bg-gradient-to-r h-2", priority.color)}></div>
-                    <CardContent className="p-6">
-                      <div className="flex items-start gap-4">
-                        <div className={cn("w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 bg-gradient-to-r", priority.color)}>
-                          <priority.icon className="w-6 h-6 text-white" />
-                        </div>
-                        <div className="flex-1">
-                          <div className="flex items-center gap-3 mb-2">
-                            <Badge className="bg-[#82B4CC] text-white">{priority.priority}</Badge>
-                            <h3 className="text-lg font-bold text-gray-800">{priority.title}</h3>
-                          </div>
-                          <p className="text-gray-600 text-sm">{priority.description}</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-
-              {/* Image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[460px]">
-                <img
-                  src="/images/guidelines-eligibility.jpg"
-                  alt="NED University engineering students"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
-                <div className="absolute bottom-5 left-5 right-5">
-                  <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
-                    First-year engineering students are our primary focus — every deserving student counts
-                  </p>
-                </div>
-                <div className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl border-4 border-[#82B4CC]/30 -z-10" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Selection Committee — image beside committee list */}
+      {/* Selection Committee */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-12">
+            <div className="text-center mb-6">
               <Badge className="mb-4 bg-[#1164A3] text-white border-[#1164A3]">OUR TEAM</Badge>
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">Selection Committee</h2>
-              <p className="text-gray-600 text-lg">Experienced professionals and senior NEDians who evaluate applications</p>
+              <h2 className="text-4xl font-bold text-gray-800 mb-4">
+                Selection Committee
+              </h2>
+              <p className="text-gray-600 text-lg">
+                Experienced professionals and senior NEDians who evaluate
+                applications
+              </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-              {/* Image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[400px]">
-                <img
-                  src="/images/guidelines-committee.jpg"
-                  alt="NED Scholars selection committee members"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
-                <div className="absolute bottom-5 left-5 right-5">
-                  <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
-                    Industry professionals and academics ensuring fair, unbiased selection
-                  </p>
-                </div>
-                <div className="absolute -bottom-3 -left-3 w-full h-full rounded-2xl border-4 border-[#68B9C4]/30 -z-10" />
-              </div>
-
-              <Card className="border-0 shadow-xl">
-                <CardHeader className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white py-4">
-                  <CardTitle className="flex items-center gap-2"><Users className="w-5 h-5" />Committee Members</CardTitle>
-                </CardHeader>
-                <CardContent className="p-6">
-                  <div className="space-y-3">
-                    {selectionCommittee.map((member, index) => (
-                      <div key={index} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg hover:bg-[#82B4CC]/10 transition-colors">
-                        <div className="w-10 h-10 bg-[#82B4CC]/20 rounded-full flex items-center justify-center flex-shrink-0">
-                          <UserCheck className="w-5 h-5 text-[#1164A3]" />
-                        </div>
-                        <div>
-                          <p className="font-semibold text-gray-800">{member.name}</p>
-                          <p className="text-sm text-gray-600">{member.role}</p>
-                        </div>
+            <Card className="border-0 shadow-xl">
+              <CardHeader className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white">
+                <CardTitle className="flex items-center gap-2 py-4">
+                  <Users className="w-5 h-5" />
+                  Committee Members
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {selectionCommittee.map((member, index) => (
+                    <div
+                      key={index}
+                      className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg hover:bg-[#82B4CC]/10 transition-colors"
+                    >
+                      <div className="w-10 h-10 bg-[#82B4CC]/20 rounded-full flex items-center justify-center flex-shrink-0">
+                        <UserCheck className="w-5 h-5 text-[#1164A3]" />
                       </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+                      <div>
+                        <p className="font-semibold text-gray-800">
+                          {member.name}
+                        </p>
+                        <p className="text-sm text-gray-600">{member.role}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -316,9 +257,9 @@ export default function GuidelinesAndPrioritiesPage() {
             </div>
 
             {/* Wide image banner */}
-            <div className="relative rounded-2xl overflow-hidden shadow-xl mb-10 h-56 md:h-64">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl mb-10 h-56 md:h-[500px]">
               <img
-                src="/images/guidelines-process.jpg"
+                src={image3.src}
                 alt="Scholarship selection process overview"
                 className="w-full h-full object-cover"
               />
@@ -363,78 +304,83 @@ export default function GuidelinesAndPrioritiesPage() {
 
       {/* Interview Details — image beside interview cards */}
       <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-12">
-              <Badge className="mb-4 bg-[#1164A3] text-white border-[#1164A3]">INTERVIEW PROCESS</Badge>
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">What to Expect in Interviews</h2>
-              <p className="text-gray-600 text-lg">Be prepared for these topics during your online interview</p>
-            </div>
+  <div className="container mx-auto px-4">
+    <div className="max-w-5xl mx-auto">
+      <div className="text-center mb-12">
+        <Badge className="mb-4 bg-[#1164A3] text-white border-[#1164A3]">INTERVIEW PROCESS</Badge>
+        <h2 className="text-4xl font-bold text-gray-800 mb-4">What to Expect in Interviews</h2>
+        <p className="text-gray-600 text-lg">Be prepared for these topics during your online interview</p>
+      </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-              {/* Image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[420px]">
-                <img
-                  src="/images/guidelines-interview.jpg"
-                  alt="Student attending a virtual scholarship interview"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
-                <div className="absolute bottom-5 left-5 right-5">
-                  <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
-                    Interviews are conducted online — parents must be present
-                  </p>
-                </div>
-                <div className="absolute -bottom-3 -left-3 w-full h-full rounded-2xl border-4 border-[#68B9C4]/30 -z-10" />
-              </div>
-
-              <div className="lg:col-span-2 space-y-6">
-                <Card className="border-0 shadow-xl">
-                  <CardHeader className="bg-gradient-to-r from-[#82B4CC] to-[#B0A3B3] text-white py-4">
-                    <CardTitle className="flex items-center gap-2"><Video className="w-5 h-5" />Interview Requirements</CardTitle>
-                  </CardHeader>
-                  <CardContent className="p-6">
-                    <div className="space-y-4">
-                      {[
-                        { title: "Online Platform", desc: "Interviews are conducted virtually" },
-                        { title: "Parents Must Attend", desc: "Parents/guardians required to be present" },
-                        { title: "Recording", desc: "All interviews are recorded for evaluation" },
-                        { title: "Evaluation Form", desc: "Standardized scoring by committee members" },
-                      ].map((item, i) => (
-                        <div key={i} className="flex items-start gap-3">
-                          <AlertCircle className="w-5 h-5 text-[#1164A3] mt-0.5 flex-shrink-0" />
-                          <div>
-                            <p className="font-semibold text-gray-800 mb-1">{item.title}</p>
-                            <p className="text-sm text-gray-600">{item.desc}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-0 shadow-xl">
-                  <CardHeader className="bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] text-white py-4">
-                    <CardTitle className="flex items-center gap-2"><MessageSquare className="w-5 h-5" />Topics Discussed</CardTitle>
-                  </CardHeader>
-                  <CardContent className="p-6">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      {interviewQuestions.map((question, index) => (
-                        <div key={index} className="flex items-start gap-2">
-                          <div className="w-5 h-5 bg-[#68B9C4]/20 rounded flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <span className="text-xs text-[#1164A3] font-bold">{index + 1}</span>
-                          </div>
-                          <p className="text-gray-700 text-sm">{question}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
+      <div className="flex flex-col gap-8">
+        {/* Image on top — full width */}
+        <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[600px]">
+          <img
+            src={image1.src}
+            alt="Student attending a virtual scholarship interview"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
+          <div className="absolute bottom-5 left-5 right-5">
+            <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
+              Interviews are conducted online — parents must be present
+            </p>
           </div>
+          <div className="absolute -bottom-3 -left-3 w-full h-full rounded-2xl border-4 border-[#68B9C4]/30 -z-10" />
         </div>
-      </section>
+
+        {/* Cards below — side by side on large screens */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <Card className="border-0 shadow-xl">
+            <CardHeader className="bg-gradient-to-r from-[#82B4CC] to-[#B0A3B3] text-white py-4">
+              <CardTitle className="flex items-center gap-2">
+                <Video className="w-5 h-5" />Interview Requirements
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-6">
+              <div className="space-y-4">
+                {[
+                  { title: "Online Platform", desc: "Interviews are conducted virtually" },
+                  { title: "Parents Must Attend", desc: "Parents/guardians required to be present" },
+                  { title: "Recording", desc: "All interviews are recorded for evaluation" },
+                  { title: "Evaluation Form", desc: "Standardized scoring by committee members" },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <AlertCircle className="w-5 h-5 text-[#1164A3] mt-0.5 flex-shrink-0" />
+                    <div>
+                      <p className="font-semibold text-gray-800 mb-1">{item.title}</p>
+                      <p className="text-sm text-gray-600">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="border-0 shadow-xl">
+            <CardHeader className="bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] text-white py-4">
+              <CardTitle className="flex items-center gap-2">
+                <MessageSquare className="w-5 h-5" />Topics Discussed
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {interviewQuestions.map((question, index) => (
+                  <div key={index} className="flex items-start gap-2">
+                    <div className="w-5 h-5 bg-[#68B9C4]/20 rounded flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-xs text-[#1164A3] font-bold">{index + 1}</span>
+                    </div>
+                    <p className="text-gray-700 text-sm">{question}</p>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Verification Process — image beside card */}
       <section className="py-16 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
@@ -445,7 +391,7 @@ export default function GuidelinesAndPrioritiesPage() {
                 <CardHeader className="py-4 bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] text-white">
                   <CardTitle className="flex items-center gap-2"><Shield className="w-5 h-5" />Verification & Transparency</CardTitle>
                 </CardHeader>
-                <CardContent className="p-6">
+                <CardContent>
                   <p className="text-gray-700 mb-6">
                     To ensure the integrity of our selection process and verify the accuracy of applications:
                   </p>
@@ -474,7 +420,7 @@ export default function GuidelinesAndPrioritiesPage() {
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[380px]">
                 <img
-                  src="/images/guidelines-verification.jpg"
+                  src={image2.src}
                   alt="Committee member conducting a home visit"
                   className="w-full h-full object-cover"
                 />

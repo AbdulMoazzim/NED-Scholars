@@ -49,6 +49,10 @@ import { toast } from "sonner";
 import Image from "next/image";
 import { useSession } from "@/lib/auth-client";
 import { GupShupRegistration, GupShupSession } from "@/lib/form-types";
+import image1 from "../../../data/images/Events/gupshup/gupshup (1).jpeg";
+import image2 from "../../../data/images/Events/gupshup/gupshup (2).jpeg";
+import image3 from "../../../data/images/Events/gupshup/gupshup (3).jpeg";
+import image4 from "../../../data/images/Events/gupshup/gupshup (4).jpeg";
 
 export default function GupShupPage() {
   const router = useRouter();
@@ -209,8 +213,7 @@ export default function GupShupPage() {
                 <Coffee className="w-16 h-16 md:w-20 md:h-20 text-white" />
               </div>
               <Badge className="mb-4 bg-white/20 text-white border-white/30 text-base px-4 py-2">Special Monthly Feature</Badge>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-white">&quot;Gup Shup&quot;</h1>
-              <p className="text-2xl md:text-3xl text-white/95 mb-4 font-semibold">Casual Conversations. Meaningful Insights.</p>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-white">Gup Shup</h1>
               <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
                 In the spirit of open dialogue and diverse perspectives, NED Scholars hosts &quot;Gup Shup&quot;—a monthly virtual gathering inspired by the Urdu term for friendly conversation.
               </p>
@@ -251,7 +254,7 @@ export default function GupShupPage() {
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[380px]">
                 <img
-                  src="/images/gupshup-about.jpg"
+                  src={image3.src}
                   alt="Casual conversation gathering in the spirit of Gup Shup"
                   className="w-full h-full object-cover"
                 />
@@ -270,10 +273,13 @@ export default function GupShupPage() {
               {guestCategories.map((category, index) => (
                 <Card key={index} className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300">
                   <CardContent className="p-6">
+                    <div className="flex items-center gap-4">
+
                     <div className={`w-14 h-14 bg-gradient-to-r ${category.color} rounded-2xl flex items-center justify-center text-white mb-4`}>
                       {category.icon}
                     </div>
                     <h4 className="font-bold text-gray-800 mb-2 text-lg">{category.category}</h4>
+                    </div>
                     <p className="text-sm text-gray-600">{category.description}</p>
                   </CardContent>
                 </Card>
@@ -296,7 +302,7 @@ export default function GupShupPage() {
             {/* Wide banner image */}
             <div className="relative rounded-2xl overflow-hidden shadow-xl mb-10 h-52 md:h-60">
               <img
-                src="/images/gupshup-format.jpg"
+                src={image4.src}
                 alt="Gup Shup event format with speaker, discussion, and Q&A"
                 className="w-full h-full object-cover"
               />
@@ -354,7 +360,7 @@ export default function GupShupPage() {
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[420px]">
                 <img
-                  src="/images/gupshup-benefits.jpg"
+                  src={image1.src}
                   alt="Community members engaging in open, meaningful conversations"
                   className="w-full h-full object-cover"
                 />
@@ -529,9 +535,9 @@ export default function GupShupPage() {
             </div>
 
             {/* Wide banner image */}
-            <div className="relative rounded-2xl overflow-hidden shadow-xl mb-10 h-52 md:h-60">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl mb-10 h-52 md:h-[500px]">
               <img
-                src="/images/gupshup-upcoming.jpg"
+                src={image2.src}
                 alt="Register for upcoming Gup Shup sessions"
                 className="w-full h-full object-cover"
               />
@@ -719,21 +725,6 @@ export default function GupShupPage() {
         </div>
       </section>
 
-      {/* Quote */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <Card className="shadow-2xl bg-gradient-to-r from-[#82B4CC]/20 to-[#B0A3B3]/20 border-l-4 border-[#1164A3]">
-              <CardContent className="p-8 md:p-12 text-center">
-                <blockquote className="text-2xl md:text-3xl font-semibold text-gray-800 mb-6">
-                  &quot;The best conversations happen over chai—casual, genuine, and full of unexpected insights.&quot;
-                </blockquote>
-                <p className="text-lg text-gray-600">Join us for your monthly dose of Gup Shup</p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

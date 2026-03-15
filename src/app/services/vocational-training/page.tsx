@@ -30,7 +30,6 @@ export default function VocationalTrainingPage() {
       icon: <Users className="w-8 h-8" />,
       number: "22%",
       label: "Women in Formal Workforce",
-      description: "Only 22% of women participate in formal employment",
       source: "World Bank, 2023",
       color: "from-[#1164A3] to-[#68B9C4]",
     },
@@ -38,7 +37,6 @@ export default function VocationalTrainingPage() {
       icon: <GraduationCap className="w-8 h-8" />,
       number: "12M+",
       label: "Girls Drop Out",
-      description: "Before completing secondary education",
       source: "UNICEF Pakistan, 2023",
       color: "from-[#68B9C4] to-[#82B4CC]",
     },
@@ -46,7 +44,6 @@ export default function VocationalTrainingPage() {
       icon: <Home className="w-8 h-8" />,
       number: "81%",
       label: "Prefer Early Marriage",
-      description: "Rural families prioritize marriage over education",
       source: "Pakistan Bureau of Statistics, 2022",
       color: "from-[#82B4CC] to-[#B0A3B3]",
     },
@@ -54,7 +51,6 @@ export default function VocationalTrainingPage() {
       icon: <AlertTriangle className="w-8 h-8" />,
       number: "<5%",
       label: "Have Access to Training",
-      description: "Low-income women lack vocational opportunities",
       source: "ILO Report, 2023",
       color: "from-[#1164A3] to-[#82B4CC]",
     },
@@ -224,21 +220,13 @@ export default function VocationalTrainingPage() {
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
               Empowering Women Through Skills Development
             </p>
-            <Link
-              href="/donation"
-              className="inline-flex items-center gap-2 bg-white text-[#1164A3] hover:bg-gray-100 text-lg px-8 py-4 rounded-full shadow-xl font-semibold transform hover:scale-105 transition-all duration-300"
-            >
-              <Heart className="w-5 h-5" />
-              Support the Program
-              <ArrowRight className="w-5 h-5" />
-            </Link>
+            
           </div>
         </div>
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#68B9C4]/20 rounded-full blur-3xl"></div>
       </section>
 
-      {/* Crisis Statistics — wide image banner + stat cards */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -256,23 +244,6 @@ export default function VocationalTrainingPage() {
               </p>
             </div>
 
-            {/* Wide image banner */}
-            <div className="relative rounded-2xl overflow-hidden shadow-xl mb-10 h-56 md:h-64">
-              <img
-                src="/images/vocational-crisis.jpg"
-                alt="Women facing unemployment challenges in Pakistan"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#1164A3]/65 to-transparent flex items-center">
-                <div className="px-10 max-w-lg">
-                  <h3 className="text-white text-2xl font-bold mb-2">A Crisis That Demands Action</h3>
-                  <p className="text-white/85 text-sm leading-relaxed">
-                    Millions of girls are left behind — without education, skills, or economic opportunity.
-                  </p>
-                </div>
-              </div>
-            </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
               {crisisStatistics.map((stat, index) => (
                 <Card
@@ -280,13 +251,20 @@ export default function VocationalTrainingPage() {
                   className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
                 >
                   <CardContent className="p-6 text-center">
-                    <div className={`w-16 h-16 bg-gradient-to-r ${stat.color} rounded-full flex items-center justify-center text-white mx-auto mb-4`}>
+                    <div
+                      className={`w-16 h-16 bg-gradient-to-r ${stat.color} rounded-full flex items-center justify-center text-white mx-auto mb-4`}
+                    >
                       {stat.icon}
                     </div>
-                    <div className="text-4xl font-bold text-[#1164A3] mb-2">{stat.number}</div>
-                    <h4 className="font-semibold text-gray-800 mb-2">{stat.label}</h4>
-                    <p className="text-sm text-gray-600 mb-2">{stat.description}</p>
-                    <Badge variant="secondary" className="text-xs">{stat.source}</Badge>
+                    <div className="text-4xl font-bold text-[#1164A3] mb-2">
+                      {stat.number}
+                    </div>
+                    <h4 className="font-semibold text-gray-800 mb-2">
+                      {stat.label}
+                    </h4>
+                    <Badge variant="secondary" className="text-xs">
+                      {stat.source}
+                    </Badge>
                   </CardContent>
                 </Card>
               ))}
@@ -295,10 +273,12 @@ export default function VocationalTrainingPage() {
             {/* Quote */}
             <Card className="bg-gradient-to-r from-[#82B4CC]/20 to-[#68B9C4]/20 border-l-4 border-[#1164A3]">
               <CardContent className="p-6">
-                <div className="flex items-start space-x-4">
+                <div className="flex items-start justify-center space-x-4">
                   <div className="text-[#1164A3] text-4xl">&quot;</div>
                   <p className="text-lg text-gray-700 italic">
-                    When girls are denied education and employment, entire communities suffer. Vocational training is not just a skill—it&apos;s a lifeline.
+                    When girls are denied education and employment, entire
+                    communities suffer. Vocational training is not just a
+                    skill—it&apos;s a lifeline.
                   </p>
                   <div className="text-[#1164A3] text-4xl">&quot;</div>
                 </div>
@@ -308,8 +288,8 @@ export default function VocationalTrainingPage() {
         </div>
       </section>
 
-      {/* Program Origin — image beside trend cards + solution card */}
-      <section className="py-16 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
+      {/* Program Origin */}
+       <section className="py-16 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
@@ -323,39 +303,25 @@ export default function VocationalTrainingPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-8">
-              {/* Image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[400px]">
-                <img
-                  src="/images/vocational-origin.jpg"
-                  alt="NED Scholars team working in Karachi communities"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
-                <div className="absolute bottom-5 left-5 right-5">
-                  <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
-                    Discovered on the ground during the &quot;Save A Child&quot; initiative in Karachi
-                  </p>
-                </div>
-                <div className="absolute -bottom-3 -left-3 w-full h-full rounded-2xl border-4 border-[#68B9C4]/30 -z-10" />
-              </div>
-
-              <div className="space-y-5">
-                {discoveredTrends.map((trend, index) => (
-                  <Card
-                    key={index}
-                    className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
-                  >
-                    <CardContent className="p-6">
-                      <div className={`${trend.color} w-14 h-14 rounded-full flex items-center justify-center mb-4`}>
-                        {trend.icon}
-                      </div>
-                      <h4 className="font-bold text-gray-800 mb-2">{trend.title}</h4>
-                      <p className="text-gray-600">{trend.description}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              {discoveredTrends.map((trend, index) => (
+                <Card
+                  key={index}
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
+                >
+                  <CardContent className="p-6">
+                    <div
+                      className={`${trend.color} w-14 h-14 rounded-full flex items-center justify-center mb-4`}
+                    >
+                      {trend.icon}
+                    </div>
+                    <h4 className="font-bold text-gray-800 mb-2 flex items-center">
+                      {trend.title}
+                    </h4>
+                    <p className="text-gray-600">{trend.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
 
             <Card className="shadow-xl bg-gradient-to-r from-[#82B4CC]/20 to-[#B0A3B3]/20 border-[#1164A3]/20">
@@ -386,148 +352,111 @@ export default function VocationalTrainingPage() {
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 Training Centers
               </h2>
-              <p className="text-gray-600 text-lg">Expanding opportunities across Karachi</p>
+              <p className="text-gray-600 text-lg">
+                Expanding opportunities across Karachi
+              </p>
             </div>
 
-            <div className="space-y-10">
+            <div className="space-y-6">
               {trainingCenters.map((center, index) => (
-                <div key={index} className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-                  {/* Alternate image side */}
-                  {index % 2 === 0 ? (
-                    <>
-                      <Card className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300">
-                        <CardContent className="p-8">
-                          <div className="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-6 mb-6">
-                            <div className={`w-20 h-20 bg-gradient-to-r ${center.color} rounded-2xl flex items-center justify-center text-white flex-shrink-0`}>
-                              <MapPin className="w-10 h-10" />
-                            </div>
-                            <div className="flex-1">
-                              <div className="flex items-center space-x-3 mb-2">
-                                <h3 className="text-2xl font-bold text-gray-800">{center.name}</h3>
-                                <Badge className={center.status === "Active" ? "bg-[#68B9C4] text-white" : "bg-gray-200"}>
-                                  {center.status}
-                                </Badge>
-                              </div>
-                              <div className="flex items-center space-x-4 text-sm text-gray-600 mb-3">
-                                <span className="flex items-center"><MapPin className="w-4 h-4 mr-1" />{center.location}</span>
-                                <span className="flex items-center"><Calendar className="w-4 h-4 mr-1" />Since {center.since}</span>
-                              </div>
-                              <p className="text-gray-700 mb-2"><span className="font-semibold">Focus:</span> {center.focus}</p>
-                            </div>
-                          </div>
-
-                          {center.status === "Active" ? (
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                              <div className="bg-[#82B4CC]/20 p-4 rounded-lg">
-                                <div className="flex items-center space-x-2 mb-2">
-                                  <Users className="w-5 h-5 text-[#1164A3]" />
-                                  <h5 className="font-semibold text-gray-800">Trainees</h5>
-                                </div>
-                                <p className="text-sm text-gray-600">{center.trainees}</p>
-                              </div>
-                              <div className="bg-[#68B9C4]/20 p-4 rounded-lg">
-                                <div className="flex items-center space-x-2 mb-2">
-                                  <Award className="w-5 h-5 text-[#1164A3]" />
-                                  <h5 className="font-semibold text-gray-800">Achievement</h5>
-                                </div>
-                                <p className="text-sm text-gray-600">{center.achievement}</p>
-                              </div>
-                              <div className="bg-[#B0A3B3]/20 p-4 rounded-lg">
-                                <div className="flex items-center space-x-2 mb-2">
-                                  <Rocket className="w-5 h-5 text-[#1164A3]" />
-                                  <h5 className="font-semibold text-gray-800">Next Step</h5>
-                                </div>
-                                <p className="text-sm text-gray-600">{center.nextStep}</p>
-                              </div>
-                            </div>
-                          ) : (
-                            <div className="bg-[#B0A3B3]/20 p-6 rounded-lg">
-                              <h5 className="font-semibold text-gray-800 mb-3 flex items-center">
-                                <Star className="w-5 h-5 text-[#1164A3] mr-2" />Planned Courses:
-                              </h5>
-                              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                                {center.courses?.map((course, idx) => (
-                                  <div key={idx} className="flex items-start space-x-2 bg-white p-3 rounded">
-                                    <CheckCircle2 className="w-4 h-4 text-[#68B9C4] flex-shrink-0 mt-0.5" />
-                                    <span className="text-sm text-gray-700">{course}</span>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-                        </CardContent>
-                      </Card>
-
-                      <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[380px]">
-                        <img
-                          src="/images/vocational-center-1.jpg"
-                          alt="AlMustafa Educational Center training session"
-                          className="w-full h-full object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
-                        <div className="absolute bottom-5 left-5 right-5">
-                          <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
-                            110 girls trained since 2020 at AlMustafa Educational Center
-                          </p>
-                        </div>
-                        <div className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl border-4 border-[#68B9C4]/30 -z-10" />
+                <Card
+                  key={index}
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
+                >
+                  <CardContent className="p-8">
+                    <div className="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-6 mb-6">
+                      <div
+                        className={`w-20 h-20 bg-gradient-to-r ${center.color} rounded-2xl flex items-center justify-center text-white flex-shrink-0`}
+                      >
+                        <MapPin className="w-10 h-10" />
                       </div>
-                    </>
-                  ) : (
-                    <>
-                      <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[380px]">
-                        <img
-                          src="/images/vocational-center-2.jpg"
-                          alt="Khadija Qazi School upcoming training center"
-                          className="w-full h-full object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
-                        <div className="absolute bottom-5 left-5 right-5">
-                          <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
-                            Expanding into technical trades — electrician, plumbing, AC repair
-                          </p>
+                      <div className="flex-1">
+                        <div className="flex items-center space-x-3 mb-2">
+                          <h3 className="text-2xl font-bold text-gray-800">
+                            {center.name}
+                          </h3>
+                          <Badge
+                            className={center.status === "Active" ? "bg-[#68B9C4] text-white" : "bg-gray-200"}
+                          >
+                            {center.status}
+                          </Badge>
                         </div>
-                        <div className="absolute -bottom-3 -left-3 w-full h-full rounded-2xl border-4 border-[#82B4CC]/30 -z-10" />
+                        <div className="flex items-center space-x-4 text-sm text-gray-600 mb-3">
+                          <span className="flex items-center">
+                            <MapPin className="w-4 h-4 mr-1" />
+                            {center.location}
+                          </span>
+                          <span className="flex items-center">
+                            <Calendar className="w-4 h-4 mr-1" />
+                            Since {center.since}
+                          </span>
+                        </div>
+                        <p className="text-gray-700 mb-2">
+                          <span className="font-semibold">Focus:</span>{" "}
+                          {center.focus}
+                        </p>
                       </div>
+                    </div>
 
-                      <Card className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300">
-                        <CardContent className="p-8">
-                          <div className="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-6 mb-6">
-                            <div className={`w-20 h-20 bg-gradient-to-r ${center.color} rounded-2xl flex items-center justify-center text-white flex-shrink-0`}>
-                              <MapPin className="w-10 h-10" />
-                            </div>
-                            <div className="flex-1">
-                              <div className="flex items-center space-x-3 mb-2">
-                                <h3 className="text-2xl font-bold text-gray-800">{center.name}</h3>
-                                <Badge className={center.status === "Active" ? "bg-[#68B9C4] text-white" : "bg-gray-200"}>
-                                  {center.status}
-                                </Badge>
-                              </div>
-                              <div className="flex items-center space-x-4 text-sm text-gray-600 mb-3">
-                                <span className="flex items-center"><MapPin className="w-4 h-4 mr-1" />{center.location}</span>
-                                <span className="flex items-center"><Calendar className="w-4 h-4 mr-1" />Since {center.since}</span>
-                              </div>
-                              <p className="text-gray-700 mb-2"><span className="font-semibold">Focus:</span> {center.focus}</p>
-                            </div>
-                          </div>
-                          <div className="bg-[#B0A3B3]/20 p-6 rounded-lg">
-                            <h5 className="font-semibold text-gray-800 mb-3 flex items-center">
-                              <Star className="w-5 h-5 text-[#1164A3] mr-2" />Planned Courses:
+                    {center.status === "Active" ? (
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="bg-[#82B4CC]/20 p-4 rounded-lg">
+                          <div className="flex items-center space-x-2 mb-2">
+                            <Users className="w-5 h-5 text-[#1164A3]" />
+                            <h5 className="font-semibold text-gray-800">
+                              Trainees
                             </h5>
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                              {center.courses?.map((course, idx) => (
-                                <div key={idx} className="flex items-start space-x-2 bg-white p-3 rounded">
-                                  <CheckCircle2 className="w-4 h-4 text-[#68B9C4] flex-shrink-0 mt-0.5" />
-                                  <span className="text-sm text-gray-700">{course}</span>
-                                </div>
-                              ))}
-                            </div>
                           </div>
-                        </CardContent>
-                      </Card>
-                    </>
-                  )}
-                </div>
+                          <p className="text-sm text-gray-600">
+                            {center.trainees}
+                          </p>
+                        </div>
+                        <div className="bg-[#68B9C4]/20 p-4 rounded-lg">
+                          <div className="flex items-center space-x-2 mb-2">
+                            <Award className="w-5 h-5 text-[#1164A3]" />
+                            <h5 className="font-semibold text-gray-800">
+                              Achievement
+                            </h5>
+                          </div>
+                          <p className="text-sm text-gray-600">
+                            {center.achievement}
+                          </p>
+                        </div>
+                        <div className="bg-[#B0A3B3]/20 p-4 rounded-lg">
+                          <div className="flex items-center space-x-2 mb-2">
+                            <Rocket className="w-5 h-5 text-[#1164A3]" />
+                            <h5 className="font-semibold text-gray-800">
+                              Next Step
+                            </h5>
+                          </div>
+                          <p className="text-sm text-gray-600">
+                            {center.nextStep}
+                          </p>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="bg-[#B0A3B3]/20 p-6 rounded-lg">
+                        <h5 className="font-semibold text-gray-800 mb-3 flex items-center">
+                          <Star className="w-5 h-5 text-[#1164A3] mr-2" />
+                          Planned Courses:
+                        </h5>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                          {center.courses?.map((course, idx) => (
+                            <div
+                              key={idx}
+                              className="flex items-start space-x-2 bg-white p-3 rounded"
+                            >
+                              <CheckCircle2 className="w-4 h-4 text-[#68B9C4] flex-shrink-0 mt-0.5" />
+                              <span className="text-sm text-gray-700">
+                                {course}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </div>
@@ -535,73 +464,7 @@ export default function VocationalTrainingPage() {
       </section>
 
       {/* How It Works — image beside program structure cards */}
-      <section className="py-16 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <Badge className="mb-4 bg-[#68B9C4] text-white border-[#68B9C4]">Our Approach</Badge>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                How the Program Works
-              </h2>
-              <p className="text-gray-600 text-lg">A comprehensive three-pillar approach to empowerment</p>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-              <div className="space-y-6">
-                {programStructure.map((structure, index) => (
-                  <Card
-                    key={index}
-                    className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
-                  >
-                    <CardContent className="p-8">
-                      <div className="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-6 mb-6">
-                        <div className={`w-20 h-20 bg-gradient-to-r ${structure.color} rounded-2xl flex items-center justify-center text-white flex-shrink-0`}>
-                          {structure.icon}
-                        </div>
-                        <div className="flex-1">
-                          <div className="flex items-center space-x-3 mb-2">
-                            <div className="w-8 h-8 bg-[#1164A3] rounded-full flex items-center justify-center text-white font-bold text-sm">
-                              {structure.step}
-                            </div>
-                            <h3 className="text-2xl font-bold text-gray-800">{structure.title}</h3>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        {structure.benefits.map((benefit, idx) => (
-                          <div key={idx} className={`flex items-start space-x-2 p-3 rounded-lg ${benefit.color}`}>
-                            <CheckCircle2 className="w-5 h-5 text-[#1164A3] flex-shrink-0 mt-0.5" />
-                            <span className="text-sm text-gray-700">{benefit.text}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-
-              {/* Image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[540px]">
-                <img
-                  src="/images/vocational-program.jpg"
-                  alt="Vocational training program in action"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
-                <div className="absolute bottom-5 left-5 right-5">
-                  <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
-                    Hands-on training that creates real earning potential and lasting independence
-                  </p>
-                </div>
-                <div className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl border-4 border-[#68B9C4]/30 -z-10" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Success Stories — image beside story cards */}
-      <section className="py-16">
+       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
@@ -609,46 +472,32 @@ export default function VocationalTrainingPage() {
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 Success Stories
               </h2>
-              <p className="text-gray-600 text-lg">Lives transformed through vocational training</p>
+              <p className="text-gray-600 text-lg">
+                Lives transformed through vocational training
+              </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-8">
-              {/* Image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[400px]">
-                <img
-                  src="/images/vocational-success.jpg"
-                  alt="Program graduates who have transformed their lives"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
-                <div className="absolute bottom-5 left-5 right-5">
-                  <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
-                    From school dropouts to independent earners — real stories, real change
-                  </p>
-                </div>
-                <div className="absolute -bottom-3 -left-3 w-full h-full rounded-2xl border-4 border-[#68B9C4]/30 -z-10" />
-              </div>
-
-              <div className="space-y-5">
-                {successStories.map((story, index) => (
-                  <Card
-                    key={index}
-                    className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
-                  >
-                    <CardContent className="p-6">
-                      <div className="flex items-center space-x-4">
-                        <div className={`w-14 h-14 bg-gradient-to-r ${story.color} rounded-full flex items-center justify-center flex-shrink-0`}>
-                          {story.image}
-                        </div>
-                        <div>
-                          <h4 className="font-bold text-gray-800 mb-1">{story.name}</h4>
-                          <p className="text-gray-600 text-sm">{story.story}</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+              {successStories.map((story, index) => (
+                <Card
+                  key={index}
+                  className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
+                >
+                  <CardContent className="p-6">
+                    <div
+                      className={`w-16 h-16 bg-gradient-to-r ${story.color} rounded-full flex items-center justify-center mx-auto mb-4`}
+                    >
+                      {story.image}
+                    </div>
+                    <div className="text-center mb-4">
+                      <h4 className="font-bold text-gray-800 inline">
+                        {story.name}
+                      </h4>
+                    </div>
+                    <p className="text-gray-600 text-center">{story.story}</p>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
 
             {/* Testimonial Quote */}
@@ -658,9 +507,12 @@ export default function VocationalTrainingPage() {
                   <div className="text-[#1164A3] text-5xl">&quot;</div>
                   <div>
                     <p className="text-xl text-gray-700 italic mb-2">
-                      This program didn&apos;t just teach me stitching—it gave me dignity.
+                      This program didn&apos;t just teach me stitching—it gave me
+                      dignity.
                     </p>
-                    <p className="text-gray-600">– Ayesha, Program Graduate</p>
+                    <p className="text-gray-600">
+                      – Ayesha, Program Graduate
+                    </p>
                   </div>
                   <div className="text-[#1164A3] text-5xl">&quot;</div>
                 </div>
@@ -670,7 +522,7 @@ export default function VocationalTrainingPage() {
         </div>
       </section>
 
-      {/* How You Can Help — image beside funding + contribution cards */}
+      {/* How You Can Help */}
       <section className="py-16 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -679,102 +531,63 @@ export default function VocationalTrainingPage() {
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                 How You Can Help
               </h2>
-              <p className="text-gray-600 text-lg">Multiple ways to support women&apos;s empowerment</p>
+              <p className="text-gray-600 text-lg">
+                Multiple ways to support women&apos;s empowerment
+              </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-12">
-              {/* Image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[420px]">
-                <img
-                  src="/images/vocational-support.jpg"
-                  alt="Supporters contributing to the vocational training program"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
-                <div className="absolute bottom-5 left-5 right-5">
-                  <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
-                    Every dollar you give transforms a girl&apos;s future and her entire community
-                  </p>
-                </div>
-                <div className="absolute -bottom-3 -left-3 w-full h-full rounded-2xl border-4 border-[#82B4CC]/30 -z-10" />
-              </div>
-
-              <div className="space-y-8">
-                {/* Funding Options */}
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-800 mb-5">Funding Needs</h3>
-                  <div className="space-y-4">
-                    {fundingOptions.map((option, index) => (
-                      <Card
-                        key={index}
-                        className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300 cursor-pointer hover:-translate-y-1"
+            {/* Funding Options */}
+            <div className="mb-12">
+              <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+                Funding Needs
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {fundingOptions.map((option, index) => (
+                  <Card
+                    key={index}
+                    className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300 cursor-pointer hover:-translate-y-1"
+                  >
+                    <CardContent className="p-6 text-center">
+                      <div
+                        className={`w-16 h-16 bg-gradient-to-r ${option.color} rounded-full flex items-center justify-center text-white mx-auto mb-4`}
                       >
-                        <CardContent className="p-5">
-                          <div className="flex items-center space-x-4">
-                            <div className={`w-12 h-12 bg-gradient-to-r ${option.color} rounded-full flex items-center justify-center text-white flex-shrink-0`}>
-                              {option.icon}
-                            </div>
-                            <div>
-                              <div className="text-2xl font-bold text-[#1164A3]">{option.amount}</div>
-                              <p className="text-gray-600 text-sm">{option.description}</p>
-                            </div>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Contribution Ways */}
-                <div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-4">Ways to Contribute</h3>
-                  <div className="grid grid-cols-1 gap-3">
-                    {contributionWays.map((way, index) => (
-                      <Card
-                        key={index}
-                        className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
-                      >
-                        <CardContent className="p-4">
-                          <div className="flex items-center space-x-4">
-                            <div className="w-10 h-10 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-full flex items-center justify-center text-white flex-shrink-0">
-                              {way.icon}
-                            </div>
-                            <div>
-                              <h4 className="font-bold text-gray-800">{way.title}</h4>
-                              <p className="text-sm text-gray-600">{way.amount}</p>
-                            </div>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
-                </div>
+                        {option.icon}
+                      </div>
+                      <div className="text-3xl font-bold text-[#1164A3] mb-2">
+                        {option.amount}
+                      </div>
+                      <p className="text-gray-600">{option.description}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
 
-            {/* Contact Info */}
-            <Card className="shadow-lg bg-white border-[#1164A3]/20">
-              <CardContent className="p-8">
-                <h3 className="text-xl font-semibold text-gray-800 mb-6 text-center flex items-center justify-center">
-                  <Mail className="w-6 h-6 mr-2 text-[#1164A3]" />
-                  Contact Us
-                </h3>
-                <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8">
-                  <div className="flex items-center space-x-3">
-                    <Mail className="w-6 h-6 text-[#1164A3]" />
-                    <a href="mailto:vocational@nedscholars.org" className="text-[#1164A3] hover:underline font-medium">
-                      vocational@nedscholars.org
-                    </a>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <Globe className="w-6 h-6 text-[#1164A3]" />
-                    <a href="https://www.nedscholars.org/vocational-training" className="text-[#1164A3] hover:underline font-medium">
-                      www.nedscholars.org/vocational-training
-                    </a>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            {/* Contribution Ways */}
+            <div className="mb-8">
+              <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+                Ways to Contribute
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {contributionWays.map((way, index) => (
+                  <Card
+                    key={index}
+                    className="hover:shadow-xl hover:border-[#1164A3] transition-all duration-300"
+                  >
+                    <CardContent className="p-6 text-center">
+                      <div className="w-12 h-12 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-full flex items-center justify-center text-white mx-auto mb-3">
+                        {way.icon}
+                      </div>
+                      <h4 className="font-bold text-gray-800 mb-2">
+                        {way.title}
+                      </h4>
+                      <p className="text-sm text-gray-600">{way.amount}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -784,9 +597,14 @@ export default function VocationalTrainingPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4 bg-white/20 text-white border-white/30">Quick Summary</Badge>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Key Takeaways</h2>
+              <Badge className="mb-4 bg-white/20 text-white border-white/30">
+                Quick Summary
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Key Takeaways
+              </h2>
             </div>
+
             <Card className="bg-white/10 border-white/20 text-white">
               <CardContent className="p-8">
                 <ul className="space-y-4">
@@ -814,13 +632,15 @@ export default function VocationalTrainingPage() {
                     <Heart className="w-10 h-10 text-white" />
                   </div>
                   <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
-                    &quot;Skills transform lives. Help us empower more women in Pakistan.&quot;
+                    Skills transform lives. Help us empower more women in
+                    Pakistan.
                   </h3>
                   <p className="text-lg text-gray-700 mb-8">
-                    Every contribution, no matter the size, makes a lasting impact on a girl&apos;s future and her community.
+                    Every contribution, no matter the size, makes a lasting
+                    impact on a girl&apos;s future and her community.
                   </p>
                   <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                    <Link href="/donation" className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center">
+                    <Link href="/donate" className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center">
                       <Heart className="w-5 h-5 mr-2" />
                       Donate Now
                       <ArrowRight className="w-5 h-5 ml-2" />

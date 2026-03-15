@@ -78,11 +78,7 @@ export interface SuccessStoryData {
   slug: string;
   studentName: string;
   year: number;
-  currentPosition: string;
-  company: string;
   story: string;
-  impact: string | null;
-  advice: string | null;
 }
 
 export interface BlogData {

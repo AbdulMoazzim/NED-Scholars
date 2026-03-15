@@ -15,7 +15,7 @@ import {
   Check,
 } from "lucide-react";
 import students from "../data/images/HomePage/Home Page About Us Section.png";
-import dreamImage from "../data/images/HomePage/Home Front Image.png";
+import dreamImage from "../data/images/HomePage/Home Banner Front Image.png";
 import { stats } from "@/data/HomePageData";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -48,7 +48,6 @@ const NedScholarsHomepage = () => {
     }
     load();
   }, []);
-
 
   const slides: SlideData[] = [
     {
@@ -140,7 +139,7 @@ const NedScholarsHomepage = () => {
       {/* About Section */}
       <section id="about" className="py-20 bg-white">
         <div className="w-full px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-[100px] justify-center mx-auto items-center w-full md:w-[70%] lg:w-[45%]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-[100px] justify-center mx-auto items-center w-full md:w-[70%] lg:w-[60%]">
             {/* Left side - Image with decorative elements */}
             <div className="relative grid grid-cols-1">
 
@@ -409,19 +408,13 @@ const NedScholarsHomepage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left side - Image */}
             <div className="relative">
-              {/* Decorative dots pattern */}
-              <div className="absolute top-10 right-10 w-20 h-20 grid grid-cols-6 gap-1 opacity-30">
-                {[...Array(36)].map((_, i) => (
-                  <div key={i} className="w-1 h-1 bg-gray-400 rounded-full" />
-                ))}
-              </div>
 
               <Image
                height={500}
                 width={200}
                 src={dreamImage.src}
                 alt="Students and community"
-                className="w-full rounded-3xl shadow-2xl relative z-10"
+                className="w-1/2 mx-auto rounded-3xl shadow-2xl relative z-10"
               />
             </div>
 
