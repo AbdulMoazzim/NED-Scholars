@@ -22,10 +22,10 @@ import {
   Heart,
   Laptop,
 } from "lucide-react";
-import image1 from "../../../data/images/services/d2d/d2d 1.jpeg";
-import image2 from "../../../data/images/services/d2d/d2d 2.jpeg";
-import image3 from "../../../data/images/services/d2d/d2d 3.jpeg";
-import image4 from "../../../data/images/services/d2d/d2d 4.jpeg";
+import image1 from "../../../data/images/Services/d2d/d2d 1.jpeg";
+import image2 from "../../../data/images/Services/d2d/d2d 2.jpeg";
+import image3 from "../../../data/images/Services/d2d/d2d 3.jpeg";
+import image4 from "../../../data/images/Services/d2d/d2d 4.jpeg";
 import Link from "next/link";
 
 export default function Dare2DesignPage() {

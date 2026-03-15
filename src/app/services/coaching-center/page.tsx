@@ -23,12 +23,12 @@ import {
   UserCheck,
   TrendingDown,
 } from "lucide-react";
-import image1 from "../../../data/images/services/CoachingCenter/coaching center 1.jpeg";
-import image2 from "../../../data/images/services/CoachingCenter/coaching center 6.jpeg";
-import image3 from "../../../data/images/services/CoachingCenter/coaching center 5.jpg";
-import image4 from "../../../data/images/services/CoachingCenter/coaching center 4.jpg";
-import image5 from "../../../data/images/services/CoachingCenter/coaching center 1.jpg";
-import image6 from "../../../data/images/services/CoachingCenter/coaching center 2.jpeg";
+import image1 from "../../../data/images/Services/CoachingCenter/coaching center 1.jpeg";
+import image2 from "../../../data/images/Services/CoachingCenter/coaching center 6.jpeg";
+import image3 from "../../../data/images/Services/CoachingCenter/coaching center 5.jpg";
+import image4 from "../../../data/images/Services/CoachingCenter/coaching center 4.jpg";
+import image5 from "../../../data/images/Services/CoachingCenter/coaching center 1.jpg";
+import image6 from "../../../data/images/Services/CoachingCenter/coaching center 2.jpeg";
 
 export default function CoachingCenterPage() {
   const systemChallenges = [
