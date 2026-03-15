@@ -26,10 +26,10 @@ import { useEffect, useState } from "react";
 import SuccessStoriesComponent from "@/components/Success-stories-card";
 import { SuccessStoriesData } from "@/lib/types";
 import { useRouter } from "next/navigation";
-import image1 from "../../../data/images/services/save a child/save a child (1).jpeg";
-import image2 from "../../../data/images/services/save a child/save a child (2).jpeg";
-import image3 from "../../../data/images/services/save a child/save a child (3).jpeg";
-import image4 from "../../../data/images/services/save a child/save a child (4).jpeg";
+import image1 from "../../../data/images/services/save a child/save a child 1.jpeg";
+import image2 from "../../../data/images/services/save a child/save a child 2.jpeg";
+import image3 from "../../../data/images/services/save a child/save a child 3.jpeg";
+import image4 from "../../../data/images/services/save a child/save a child 4.jpeg";
 import Link from "next/link";
 
 

@@ -23,11 +23,11 @@ import {
   Video,
 } from "lucide-react";
 import Link from "next/link";
-import image1 from "../../../data/images/services/laptop/laptop (1).jpeg";
-import image2 from "../../../data/images/services/laptop/laptop (2).jpeg";
-import image3 from "../../../data/images/services/laptop/laptop (3).jpeg";
-import image4 from "../../../data/images/services/laptop/laptop (4).jpeg";
-import image5 from "../../../data/images/services/laptop/laptop (1).png";
+import image1 from "../../../data/images/services/laptop/laptop 1.jpeg";
+import image2 from "../../../data/images/services/laptop/laptop 2.jpeg";
+import image3 from "../../../data/images/services/laptop/laptop 3.jpeg";
+import image4 from "../../../data/images/services/laptop/laptop 4.jpeg";
+import image5 from "../../../data/images/services/laptop/laptop 1.png";
 
 export default function LaptopProgramPage() {
   const digitalDivideChallenges = [

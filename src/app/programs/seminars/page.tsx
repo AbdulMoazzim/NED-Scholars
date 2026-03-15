@@ -33,10 +33,10 @@ import { useRouter } from "next/navigation";
 import { GetUpcomingSeminars, GetAllSeminars } from "@/app/actions/seminar";
 import { Seminar } from "@/lib/form-types";
 import { toast } from "sonner";
-import image1 from "../../../data/images/Programs/seminar/seminar (1).jpeg";
-import image2 from "../../../data/images/Programs/seminar/seminar (2).jpeg";
-import image3 from "../../../data/images/Programs/seminar/seminar (3).jpeg";
-import image4 from "../../../data/images/Programs/seminar/seminar (4).jpeg";
+import image1 from "../../../data/images/Programs/seminar/seminar 1.jpeg";
+import image2 from "../../../data/images/Programs/seminar/seminar 2.jpeg";
+import image3 from "../../../data/images/Programs/seminar/seminar 3.jpeg";
+import image4 from "../../../data/images/Programs/seminar/seminar 4.jpeg";
 import Image from "next/image";
 
 export default function SeminarSeriesNewPage() {

@@ -24,10 +24,10 @@ import {
   Network,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import image1 from "../../../data/images/services/mentorship/mentorship (1).jpeg";
-import image2 from "../../../data/images/services/mentorship/mentorship (2).jpeg";
-import image3 from "../../../data/images/services/mentorship/mentorship (1).jpg";
-import image4 from "../../../data/images/services/mentorship/mentorship (1).png";
+import image1 from "../../../data/images/services/mentorship/mentorship 1.jpeg";
+import image2 from "../../../data/images/services/mentorship/mentorship 2.jpeg";
+import image3 from "../../../data/images/services/mentorship/mentorship 4.jpeg";
+import image4 from "../../../data/images/services/mentorship/mentorship 3.jpeg";
 
 export default function MentorshipProgramPage() {
   const router = useRouter();

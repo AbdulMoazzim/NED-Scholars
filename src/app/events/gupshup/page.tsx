@@ -49,10 +49,10 @@ import { toast } from "sonner";
 import Image from "next/image";
 import { useSession } from "@/lib/auth-client";
 import { GupShupRegistration, GupShupSession } from "@/lib/form-types";
-import image1 from "../../../data/images/Events/gupshup/gupshup (1).jpeg";
-import image2 from "../../../data/images/Events/gupshup/gupshup (2).jpeg";
-import image3 from "../../../data/images/Events/gupshup/gupshup (3).jpeg";
-import image4 from "../../../data/images/Events/gupshup/gupshup (4).jpeg";
+import image1 from "../../../data/images/Events/gupshup/gupshup 1.jpeg";
+import image2 from "../../../data/images/Events/gupshup/gupshup 2.jpeg";
+import image3 from "../../../data/images/Events/gupshup/gupshup 3.jpeg";
+import image4 from "../../../data/images/Events/gupshup/gupshup 4.jpeg";
 
 export default function GupShupPage() {
   const router = useRouter();

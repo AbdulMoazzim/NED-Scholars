@@ -47,10 +47,10 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import type { IndustrialVisit, Registration } from "@/lib/form-types";
 import { useSession } from "@/lib/auth-client";
-import image1 from "../../../data/images/Events/indutrial visit/indutrial visit (1).jpeg";
-import image2 from "../../../data/images/Events/indutrial visit/indutrial visit (2).jpeg";
-import image3 from "../../../data/images/Events/indutrial visit/indutrial visit (3).jpeg";
-import image4 from "../../../data/images/Events/indutrial visit/indutrial visit (4).jpeg";
+import image1 from "../../../data/images/Events/indutrial visit/indutrial visit 1.jpeg";
+import image2 from "../../../data/images/Events/indutrial visit/indutrial visit 2.jpeg";
+import image3 from "../../../data/images/Events/indutrial visit/indutrial visit 3.jpeg";
+import image4 from "../../../data/images/Events/indutrial visit/indutrial visit 4.jpeg";
 
 export default function IndustrialVisitsPage() {
   const router = useRouter();
