@@ -233,12 +233,7 @@ export default function GupShupPage() {
 
             {/* Intro card + image side by side */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-12">
-              <Card className="shadow-xl border-[#82B4CC]/20">
-                <CardContent className="p-8">
                   <div className="flex items-start space-x-4 mb-6">
-                    <div className="w-12 h-12 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-full flex items-center justify-center text-white flex-shrink-0">
-                      <MessageCircle className="w-6 h-6" />
-                    </div>
                     <div>
                       <p className="text-lg text-gray-700 leading-relaxed mb-4">
                         Each Gup Shup features a guest speaker from any walk of life—politics, entertainment, social activism, academia, or religion—who delivers a 10–15 minute talk on a topic of personal or public interest.
@@ -248,8 +243,6 @@ export default function GupShupPage() {
                       </p>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
 
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[380px]">

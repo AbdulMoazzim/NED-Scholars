@@ -25,7 +25,6 @@ import { GetAllSuccessStories } from "@/app/actions/success-stories";
 import { useEffect, useState } from "react";
 import SuccessStoriesComponent from "@/components/Success-stories-card";
 import { SuccessStoriesData } from "@/lib/types";
-import { useRouter } from "next/navigation";
 import image1 from "../../../data/images/Services/save a child/save a child 1.jpeg";
 import image2 from "../../../data/images/Services/save a child/save a child 2.jpeg";
 import image3 from "../../../data/images/Services/save a child/save a child 3.jpeg";
@@ -34,7 +33,6 @@ import Link from "next/link";
 
 
 export default function EducationSupportPakistan() {
-  const router = useRouter();
   const [stories, setSuccessStories] = useState<SuccessStoriesData>({ success: false, data: [] });
 
   useEffect(() => {

@@ -216,12 +216,8 @@ export default function IndustrialVisitsPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-              <Card className="shadow-2xl border-[#82B4CC]/20">
-                <CardContent className="p-10">
                   <div className="flex items-start space-x-6">
-                    <div className="w-16 h-16 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-2xl flex items-center justify-center text-white flex-shrink-0">
-                      <Factory className="w-8 h-8" />
-                    </div>
+                   
                     <div>
                       <h2 className="text-3xl font-bold text-gray-800 mb-6">Overview</h2>
                       <p className="text-lg text-gray-700 leading-relaxed mb-6">
@@ -232,9 +228,6 @@ export default function IndustrialVisitsPage() {
                       </p>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
-
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[420px]">
                 <img

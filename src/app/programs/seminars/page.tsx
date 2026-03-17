@@ -116,20 +116,6 @@ export default function SeminarSeriesNewPage() {
     { acronym: "IEOM Society", fullName: "Industrial Engineering & Operations Management", description: "International society promoting industrial engineering excellence" },
   ];
 
-  const scholarBenefits = [
-    { icon: <Globe className="w-8 h-8" />, title: "Break the 'Local Limits' Mentality", description: "Learn how NED graduates conquered global challenges", color: "from-[#1164A3] to-[#68B9C4]" },
-    { icon: <Zap className="w-8 h-8" />, title: "Discover Emerging Tech", description: "AI, renewable energy, advanced manufacturing, and more", color: "from-[#68B9C4] to-[#82B4CC]" },
-    { icon: <Target className="w-8 h-8" />, title: "Get Career Roadmaps", description: "Understand skills and steps to reach top companies", color: "from-[#82B4CC] to-[#B0A3B3]" },
-    { icon: <Users className="w-8 h-8" />, title: "Network with Decision-Makers", description: "Connect directly with hiring managers and innovators", color: "from-[#1164A3] to-[#82B4CC]" },
-  ];
-
-  const presenterBenefits = [
-    { icon: <Heart className="w-8 h-8" />, title: "Give Back to Your Alma Mater", description: "Inspire the next generation of engineers", color: "from-[#82B4CC] to-[#B0A3B3]" },
-    { icon: <Users className="w-8 h-8" />, title: "Understand Pakistan's Talent Pool", description: "See firsthand the potential of NED's scholars", color: "from-[#1164A3] to-[#68B9C4]" },
-    { icon: <Network className="w-8 h-8" />, title: "Expand Your Professional Network", description: "Connect with future hires and collaborators", color: "from-[#68B9C4] to-[#82B4CC]" },
-    { icon: <TrendingUp className="w-8 h-8" />, title: "Strengthen Your Personal Brand", description: "Share your expertise with a passionate audience", color: "from-[#82B4CC] to-[#B0A3B3]" },
-  ];
-
   const uniqueFeatures = [
     { icon: <BookOpen className="w-8 h-8" />, title: "Real-World Case Studies" },
     { icon: <Laptop className="w-8 h-8" />, title: "Interactive Workshops" },
@@ -189,12 +175,7 @@ export default function SeminarSeriesNewPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-12">
               {/* Intro card */}
               <div className="space-y-6">
-                <Card className="shadow-2xl border-[#82B4CC]/20">
-                  <CardContent className="p-10">
                     <div className="flex items-start space-x-6 mb-6">
-                      <div className="w-16 h-16 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-2xl flex items-center justify-center text-white flex-shrink-0">
-                        <Lightbulb className="w-8 h-8" />
-                      </div>
                       <div>
                         <h2 className="text-3xl font-bold text-gray-800 mb-4">Exposure Inspires Excellence</h2>
                         <p className="text-lg text-gray-700 leading-relaxed mb-4">
@@ -215,8 +196,6 @@ export default function SeminarSeriesNewPage() {
                         </div>
                       ))}
                     </div>
-                  </CardContent>
-                </Card>
               </div>
 
               {/* Image */}

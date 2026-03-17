@@ -122,12 +122,7 @@ export default function MentorshipProgramPage() {
 
             {/* Two-column: card left, image right */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
-              <Card className="shadow-xl border-[#82B4CC]/20">
-                <CardContent>
                   <div className="flex items-start space-x-4 mb-6">
-                    <div className="w-12 h-12 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-full flex items-center justify-center text-white flex-shrink-0">
-                      <Users className="w-6 h-6" />
-                    </div>
                     <div>
                       <p className="text-lg text-gray-700 leading-relaxed mb-4">
                         At NED Scholars, mentorship is a cornerstone of our program. We connect talented
@@ -143,8 +138,6 @@ export default function MentorshipProgramPage() {
                       </p>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
 
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[380px]">

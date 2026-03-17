@@ -114,12 +114,7 @@ export default function LaptopProgramPage() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
               <div>
-                <Card className="shadow-xl border-[#82B4CC]/20 mb-6">
-                  <CardContent className="p-8">
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-full flex items-center justify-center text-white flex-shrink-0">
-                        <Laptop className="w-6 h-6" />
-                      </div>
                       <div>
                         <p className="text-lg text-gray-700 leading-relaxed mb-4">
                           At NED Scholars, we believe that{" "}
@@ -135,8 +130,6 @@ export default function LaptopProgramPage() {
                         </p>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
               </div>
 
               {/* Image */}
