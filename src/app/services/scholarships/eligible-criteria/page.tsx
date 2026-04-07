@@ -96,13 +96,13 @@ export default function EligibilityCriteriaPage() {
       <section className="relative overflow-hidden bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white py-20">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-4 bg-white/20 text-white border-white/30 text-sm">
+            <Badge className="mb-6 bg-white/20 text-white border-white/30 px-4 py-2 text-sm">
               SCHOLARSHIP PROGRAM
             </Badge>
             <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in">
               Eligibility Criteria
             </h1>
-            <p className="text-xl md:text-2xl mb-8 opacity-90 max-w-3xl mx-auto">
+            <p className="text-2xl text-white/90 mb-4">
               Find out if you qualify for our scholarship program and take the
               first step towards achieving your educational dreams
             </p>
@@ -122,43 +122,6 @@ export default function EligibilityCriteriaPage() {
         {/* Decorative elements */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#68B9C4]/20 rounded-full blur-3xl"></div>
-      </section>
-
-      {/* Quick Check Section */}
-      <section className="py-16 -mt-10 relative z-20">
-        <div className="container mx-auto px-4">
-          <Card className="max-w-4xl mx-auto shadow-2xl border-0 pt-0">
-            <CardHeader className="bg-gradient-to-r from-[#68B9C4] to-[#1164A3] text-white rounded-t-xl py-4">
-              <CardTitle className="text-2xl flex items-center gap-2">
-                <CheckCircle2 className="w-6 h-6" />
-                Quick Eligibility Check
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="p-8">
-              <p className="text-gray-700 text-lg mb-6">
-                Our scholarships are designed to support talented students who
-                demonstrate both academic excellence and financial need. Here&apos;s
-                what we look for:
-              </p>
-              <div className="space-y-3">
-                {[
-                  "Enrolled in an accredited institution in Pakistan or USA",
-                  "Pursuing STEM (Science, Technology, Engineering, Mathematics) education",
-                  "Demonstrable financial need",
-                  "Strong academic record",
-                  "Commitment to educational goals",
-                ].map((item, index) => (
-                  <div key={index} className="flex items-start gap-3">
-                    <div className="w-6 h-6 bg-[#68B9C4]/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <CheckCircle2 className="w-4 h-4 text-[#68B9C4]" />
-                    </div>
-                    <p className="text-gray-700">{item}</p>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </div>
       </section>
 
       {/* Detailed Criteria Section */}

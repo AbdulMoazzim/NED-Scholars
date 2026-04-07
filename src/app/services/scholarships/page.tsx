@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -124,13 +123,13 @@ export default function ScholarshipGuidelines() {
       <section className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-4 bg-white/20 text-white border-white/30">
+            <Badge className="mb-6 bg-white/20 text-white border-white/30 px-4 py-2 text-sm">
               Scholarship Information
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Guidelines and Selection Process
             </h1>
-            <p className="text-xl text-white/90">
+            <p className="text-2xl text-white/90 mb-4">
               NED University of Engineering and Technology, Pakistan
             </p>
           </div>
@@ -163,7 +162,9 @@ export default function ScholarshipGuidelines() {
                     <CheckCircle2 className="w-5 h-5 text-[#68B9C4] mt-1 flex-shrink-0" />
                     <span className="text-gray-700">
                       Scholarships are awarded on a{" "}
-                      <span className="font-semibold">&quot;need-cum-merit&quot;</span>{" "}
+                      <span className="font-semibold">
+                        &quot;need-cum-merit&quot;
+                      </span>{" "}
                       basis.
                     </span>
                   </li>
@@ -199,10 +200,7 @@ export default function ScholarshipGuidelines() {
                     <Calendar className="w-5 h-5 text-[#68B9C4] mt-1 flex-shrink-0" />
                     <span className="text-gray-700">
                       Interviews are conducted in{" "}
-                      <span className="font-semibold">
-                        December – January
-                      </span>
-                      .
+                      <span className="font-semibold">December – January</span>.
                     </span>
                   </li>
                   <li className="flex items-start space-x-3">
@@ -374,8 +372,8 @@ export default function ScholarshipGuidelines() {
                     <div>
                       <h4 className="font-semibold mb-2">Home Verification</h4>
                       <p className="text-white/90">
-                        20% of scholars&quot; homes are randomly visited to ensure
-                        the truthfulness of applications.
+                        20% of scholars&quot; homes are randomly visited to
+                        ensure the truthfulness of applications.
                       </p>
                     </div>
                   </div>
@@ -387,7 +385,9 @@ export default function ScholarshipGuidelines() {
                   <div className="flex items-start space-x-3">
                     <Video className="w-6 h-6 flex-shrink-0 mt-1" />
                     <div>
-                      <h4 className="font-semibold mb-2">Recorded Interviews</h4>
+                      <h4 className="font-semibold mb-2">
+                        Recorded Interviews
+                      </h4>
                       <p className="text-white/90">
                         All interviews are recorded for evaluation and
                         transparency purposes.
@@ -402,7 +402,9 @@ export default function ScholarshipGuidelines() {
                   <div className="flex items-start space-x-3">
                     <Users className="w-6 h-6 flex-shrink-0 mt-1" />
                     <div>
-                      <h4 className="font-semibold mb-2">Parent Participation</h4>
+                      <h4 className="font-semibold mb-2">
+                        Parent Participation
+                      </h4>
                       <p className="text-white/90">
                         Parents/guardians must be present during the online
                         interview process.
@@ -417,7 +419,9 @@ export default function ScholarshipGuidelines() {
                   <div className="flex items-start space-x-3">
                     <Award className="w-6 h-6 flex-shrink-0 mt-1" />
                     <div>
-                      <h4 className="font-semibold mb-2">Need-Cum-Merit Based</h4>
+                      <h4 className="font-semibold mb-2">
+                        Need-Cum-Merit Based
+                      </h4>
                       <p className="text-white/90">
                         Selection considers both financial need and academic
                         merit of the applicants.
@@ -444,7 +448,8 @@ export default function ScholarshipGuidelines() {
               ready.
             </p>
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-              <Link href="/register/scholarship" 
+              <Link
+                href="/register/scholarship"
                 className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
               >
                 Apply Now

@@ -8,7 +8,7 @@ export default async function SuccessStories() {
       <SuccessStoriesComponent
         data={storiesData}
         slice={storiesData.data?.length ?? 0}
-        path="/scholars/scholarships"
+        path="/scholars/success-stories"
       />
     );
   }

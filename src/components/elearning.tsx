@@ -142,8 +142,8 @@ export default function ELearningPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
 
-      {/* Hero Section — no image */}
-      <section className="bg-gradient-to-r from-[#1164A3] via-[#68B9C4] to-[#82B4CC] text-white py-20">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-4 bg-white/20 text-white border-white/30 text-base px-4 py-2">
@@ -151,15 +151,11 @@ export default function ELearningPage() {
             </Badge>
             <h1 className="text-5xl md:text-6xl font-bold mb-6">Learn, Grow, Excel</h1>
             <p className="text-2xl text-white/90 mb-4">Master New Skills with Expert-Led Online Courses</p>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto">
-              Access high-quality courses designed to enhance your knowledge and advance your career in
-              engineering, technology, and data science
-            </p>
           </div>
         </div>
       </section>
 
-      {/* Platform Features — feature cards left, image right */}
+      {/* Platform Features */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -207,7 +203,7 @@ export default function ELearningPage() {
         </div>
       </section>
 
-      {/* Learning Benefits — image left, benefits grid right */}
+      {/* Learning Benefits */}
       <section className="py-20 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -315,7 +311,7 @@ export default function ELearningPage() {
         </section>
       )}
 
-      {/* Available Courses — banner image + course grid */}
+      {/* Available Courses */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
@@ -488,7 +484,7 @@ export default function ELearningPage() {
         </div>
       </section>
 
-      {/* Bottom CTA — image left, text + buttons right */}
+      {/* Bottom CTA */}
       <section className="py-20 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -530,7 +526,7 @@ export default function ELearningPage() {
                     size="lg"
                     variant="outline"
                     className="border-2 border-[#1164A3] text-[#1164A3] px-8 py-4 rounded-full font-semibold hover:bg-[#1164A3] hover:text-white transition-all duration-300"
-                    onClick={() => router.push("/donation")}
+                    onClick={() => router.push("/donate")}
                   >
                     <Award className="w-5 h-5 mr-2" />Support a Learner
                   </Button>

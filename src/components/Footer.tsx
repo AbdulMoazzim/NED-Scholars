@@ -29,7 +29,7 @@ export default function Footer() {
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               NED Scholars is a non-profit corporation. It operates exclusively for educational and charitable purposes within the meaning of Section 501 (c)(3) of the Internal Revenue Code.
             </p>
-            <Link href="/donation" className="bg-[#1164A3] hover:bg-[#82B4CC] text-white font-semibold px-6 py-2 rounded-full transition-colors">
+            <Link href="/donate" className="bg-[#1164A3] hover:bg-[#82B4CC] text-white font-semibold px-6 py-2 rounded-full transition-colors">
               DONATE NOW
             </Link>
           </div>
@@ -45,17 +45,12 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/events" className="hover:text-white transition-colors">
-                  Events
-                </Link>
-              </li>
-              <li>
                 <Link href="/services/scholarships" className="hover:text-white transition-colors">
                   Scholarship Details
                 </Link>
               </li>
               <li>
-                <Link href="/donation" className="hover:text-white transition-colors">
+                <Link href="/donate" className="hover:text-white transition-colors">
                   Donation methods
                 </Link>
               </li>

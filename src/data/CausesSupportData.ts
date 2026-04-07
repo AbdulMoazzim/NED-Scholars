@@ -4,36 +4,42 @@ export const programs = [
     title: "Tuition Assistance",
     description:
       "Help deserving students cover their university or college tuition fees, ensuring they can pursue their academic dreams without financial burdens. Every dollar brings a student closer to their STEM degree.",
+    image: "/images/About/Causes to support/Copy of Tuition Assistance.png"
   },
   {
     id: "counseling",
     title: "Career Counseling",
     description:
       "At NED Scholars, we believe mentorship is more than just advice – it's about empowering the next generation of STEM professionals with guidance, career planning, and professional development.",
+     image: "/images/About/Causes to support/Copy of Career Counselling.png"
   },
   {
     id: "laptops",
     title: "Laptop Scholarships",
     description:
       "Equip students with the technology they need by donating towards laptop scholarships, bridging the digital divide and enhancing learning opportunities in our digital age.",
+      image: "/images/About/Causes to support/Copy of Laptop Scholarships.png"
   },
   {
     id: "events",
     title: "Skill-Building Events",
     description:
       "Assist us in organizing STEM-focused events, educational webinars, seminars, training sessions, competitions, and more to enhance students' skillsets and practical knowledge.",
+      image: "/images/About/Causes to support/Copy of Skill Building Events.png"
   },
   {
     id: "certifications",
     title: "Certification Programs",
     description:
       "Support students in acquiring essential third-party technical certifications, helping them gain specialized skills and improve their future job prospects in competitive markets.",
+      image: "/images/About/Causes to support/Copy of Certificatio Programs.png"
   },
   {
     id: "jobs",
     title: "Job Opportunities",
     description:
       "Your contributions help students secure jobs and internships, providing valuable real-world experience to prepare them for the workforce and launch successful careers.",
+      image: "/images/About/Causes to support/Copy of Job Opportunities.png"
   },
 ];
 

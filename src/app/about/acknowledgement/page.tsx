@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Heart } from "lucide-react";
-import cardImage from "../../../data/images/About/acknowledgement.jpeg";
+import Link from "next/link";
 
 export default function AcknowledgementPage() {
   const donors = [
@@ -79,9 +79,14 @@ export default function AcknowledgementPage() {
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Acknowledging a Legacy of Generosity
             </h1>
-            <p className="text-lg md:text-xl opacity-90 leading-relaxed">
+            <p className="text-2xl text-white/90 mb-12 ">
               Since 2007, the success of the NED Scholarship has relied on the selfless contributions of our scholars and supporters. We extend our sincere thanks to all who made this possible.
             </p>
+             <Link href="/donate"
+              className="bg-white text-[#1164A3] px-12 py-5 text-xl font-bold rounded-full hover:shadow-xl hover:bg-[#82B4CC] hover:text-white transition-all duration-300 transform hover:-translate-y-1"
+            >
+              Donate Now
+            </Link>
           </div>
         </div>
       </section>
@@ -133,7 +138,7 @@ export default function AcknowledgementPage() {
         <div
           className="relative h-full"
           style={{
-            backgroundImage: `url(${cardImage.src})`,
+            backgroundImage: `url(/images/About/acknowledgement.jpeg)`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

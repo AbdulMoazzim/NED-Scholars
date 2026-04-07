@@ -201,27 +201,17 @@ export default function VolunteersPage() {
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               Volunteer With NED Scholars
             </h1>
-            <p className="text-xl text-white/90 mb-4">
-              Make a Meaningful Impact Through Your Skills
-            </p>
-            <p className="text-lg text-white/80 max-w-3xl mx-auto mb-8">
+            <p className="text-2xl text-white/90 mb-4">
               Join one of our specialized teams and contribute to empowering
               students, building communities, and creating lasting change.
             </p>
-            <Link
-              href="/register/volunteer"
-              className="inline-flex items-center gap-2 bg-white text-[#1164A3] hover:bg-gray-100 text-lg px-8 py-4 rounded-full shadow-xl font-semibold transform hover:scale-105 transition-all duration-300"
-            >
-              Start Volunteering
-              <ArrowRight className="w-5 h-5" />
-            </Link>
           </div>
         </div>
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#68B9C4]/20 rounded-full blur-3xl"></div>
       </section>
 
-      {/* Why Volunteer — image beside benefit cards */}
+      {/* Why Volunteer */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -288,7 +278,7 @@ export default function VolunteersPage() {
         </div>
       </section>
 
-      {/* Teams Section — each team card with alternating image */}
+      {/* Teams Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
@@ -306,11 +296,10 @@ export default function VolunteersPage() {
               {teams.map((team, index) => (
                 <div key={team.id} className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
 
-                  {/* Alternate image position: even = card left + image right, odd = image left + card right */}
                   {index % 2 === 0 ? (
                     <>
                       {/* Team Card */}
-                      <Card className="hover:shadow-2xl hover:border-[#1164A3] transition-all duration-300 overflow-hidden h-full">
+                      <Card className="hover:shadow-2xl hover:border-[#1164A3] transition-all duration-300 overflow-hidden h-full p-0">
                         <div className={`bg-gradient-to-r ${team.color} p-6 flex flex-col sm:flex-row items-center gap-4 text-white`}>
                           <div>{team.icon}</div>
                           <div className="flex-1 text-center sm:text-left">
@@ -347,7 +336,7 @@ export default function VolunteersPage() {
                       </Card>
 
                       {/* Image */}
-                      <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[420px]">
+                      <div className="relative rounded-2xl overflow-hidden shadow-2xl h-full">
                         <img
                           src={team.image}
                           alt={team.imageAlt}
@@ -364,8 +353,7 @@ export default function VolunteersPage() {
                     </>
                   ) : (
                     <>
-                      {/* Image on left */}
-                      <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[420px]">
+                      <div className="relative rounded-2xl overflow-hidden shadow-2xl h-full">
                         <img
                           src={team.image}
                           alt={team.imageAlt}
@@ -380,8 +368,7 @@ export default function VolunteersPage() {
                         <div className="absolute -bottom-3 -left-3 w-full h-full rounded-2xl border-4 border-[#82B4CC]/30 -z-10" />
                       </div>
 
-                      {/* Team Card on right */}
-                      <Card className="hover:shadow-2xl hover:border-[#1164A3] transition-all duration-300 overflow-hidden h-full">
+                      <Card className="hover:shadow-2xl hover:border-[#1164A3] transition-all duration-300 overflow-hidden h-full p-0">
                         <div className={`bg-gradient-to-r ${team.color} p-6 flex flex-col sm:flex-row items-center gap-4 text-white`}>
                           <div>{team.icon}</div>
                           <div className="flex-1 text-center sm:text-left">

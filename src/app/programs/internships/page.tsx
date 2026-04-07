@@ -30,7 +30,6 @@ import {
   Loader2,
   ExternalLink,
   Sparkles,
-  ArrowRight,
 } from "lucide-react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
@@ -189,7 +188,7 @@ export default function InternshipsPage() {
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-[#1164A3] via-[#68B9C4] to-[#82B4CC] text-white py-20">
+      <section className="relative overflow-hidden bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white py-20">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-4 bg-white/20 text-white border-white/30 text-base px-4 py-2">
@@ -199,26 +198,16 @@ export default function InternshipsPage() {
               Internship Opportunities
             </h1>
             <p className="text-2xl text-white/90 mb-4">
-              Bridge the Gap Between Theory and Practice
-            </p>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto mb-8">
               Connect with meaningful internship opportunities that complement your
               academic learning and prepare you for real-world challenges
             </p>
-            <a
-              href="#internships"
-              className="inline-flex items-center gap-2 bg-white text-[#1164A3] hover:bg-gray-100 text-lg px-8 py-4 rounded-full shadow-xl font-semibold transform hover:scale-105 transition-all duration-300"
-            >
-              Browse Opportunities
-              <ArrowRight className="w-5 h-5" />
-            </a>
           </div>
         </div>
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#68B9C4]/20 rounded-full blur-3xl"></div>
       </section>
 
-      {/* Overview Section — image beside overview cards */}
+      {/* Overview Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -274,7 +263,7 @@ export default function InternshipsPage() {
         </div>
       </section>
 
-      {/* Learning Outcomes — image beside outcome cards */}
+      {/* Learning Outcomes  */}
       <section className="py-20 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -319,7 +308,7 @@ export default function InternshipsPage() {
         </div>
       </section>
 
-      {/* Student Benefits — image beside benefit cards */}
+      {/* Student Benefits */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -366,7 +355,7 @@ export default function InternshipsPage() {
         </div>
       </section>
 
-      {/* Available Internships — wide banner image + listings */}
+      {/* Available Internships */}
       <section id="internships" className="py-20 bg-gradient-to-r from-gray-50 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">

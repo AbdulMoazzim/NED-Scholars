@@ -99,7 +99,7 @@ export default function JourneyPage() {
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-6 bg-white/20 text-white border-white/30 px-4 py-2 text-sm">OUR JOURNEY</Badge>
             <h1 className="text-5xl md:text-6xl font-bold mb-6">Where It All Began</h1>
-            <p className="text-xl md:text-2xl opacity-90 mb-8">
+            <p className="text-2xl text-white/90 mb-4">
               A story of friendship, memory, and commitment to empowering the next generation of STEM leaders
             </p>
             <div className="flex items-center justify-center gap-4 text-lg">
@@ -129,7 +129,7 @@ export default function JourneyPage() {
         </div>
       </section>
 
-      {/* Origin Story — text + memorial cards left, image right */}
+      {/* Origin Story */}
       <section className="py-20 bg-gradient-to-r from-gray-50 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -179,7 +179,7 @@ export default function JourneyPage() {
         </div>
       </section>
 
-      {/* Timeline — each card has an image banner */}
+      {/* Timeline */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -287,7 +287,7 @@ export default function JourneyPage() {
         </div>
       </section>
 
-      {/* The Challenge — image left, text right */}
+      {/* The Challenge  */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -339,7 +339,7 @@ export default function JourneyPage() {
         </div>
       </section>
 
-      {/* What Makes Us Different — benefits card left, image right */}
+      {/* What Makes Us Different  */}
       <section className="py-20 bg-gradient-to-r from-gray-50 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -399,7 +399,7 @@ export default function JourneyPage() {
             Together, we can continue to empower talented students and create opportunities for the next generation of STEM leaders.
           </p>
           <Link
-            href="/donation"
+            href="/donate"
             className="bg-white text-[#1164A3] px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors inline-block"
           >
             Support a Scholar

@@ -120,7 +120,7 @@ export default function WebinarSeriesPage() {
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-[#1164A3] via-[#68B9C4] to-[#82B4CC] text-white py-20">
+      <section className="relative overflow-hidden bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white py-20">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex justify-center mb-4">
@@ -128,24 +128,16 @@ export default function WebinarSeriesPage() {
             </div>
             <Badge className="mb-4 bg-white/20 text-white border-white/30">Online Learning Platform</Badge>
             <h1 className="text-5xl md:text-6xl font-bold mb-6">NED Scholars Webinar Series</h1>
-            <p className="text-xl text-white/90 mb-4">Empowering Minds, Everywhere in the World</p>
-            <p className="text-lg text-white/80 max-w-3xl mx-auto mb-8">
+            <p className="text-2xl text-white/90 mb-4">
               Join us from the comfort of your home for dynamic online training designed to prepare students and young professionals for global opportunities.
             </p>
-            <a
-              href="#upcoming"
-              className="inline-flex items-center gap-2 bg-white text-[#1164A3] hover:bg-gray-100 text-lg px-8 py-4 rounded-full shadow-xl font-semibold transform hover:scale-105 transition-all duration-300"
-            >
-              Upcoming Webinars
-              <ArrowRight className="w-5 h-5" />
-            </a>
           </div>
         </div>
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#68B9C4]/20 rounded-full blur-3xl"></div>
       </section>
 
-      {/* What We Offer — image beside training areas + features */}
+      {/* What We Offer */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -157,7 +149,7 @@ export default function WebinarSeriesPage() {
               </p>
             </div>
 
-            {/* Training Areas — image on right */}
+            {/* Training Areas */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-12">
               <div>
                 <h3 className="text-2xl font-bold text-gray-800 mb-4 text-center">Expert-Led Training</h3>
@@ -194,7 +186,7 @@ export default function WebinarSeriesPage() {
               </div>
             </div>
 
-            {/* Certification Bodies — image on left */}
+            {/* Certification Bodies  */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-12">
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[360px]">
@@ -260,7 +252,7 @@ export default function WebinarSeriesPage() {
         </div>
       </section>
 
-      {/* Upcoming Webinars — wide banner image + listings */}
+      {/* Upcoming Webinars */}
       <section id="upcoming" className="py-16 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -444,7 +436,7 @@ export default function WebinarSeriesPage() {
         </div>
       </section>
 
-      {/* Benefits — image beside benefits card */}
+      {/* Benefits  */}
       <section className="py-16 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">

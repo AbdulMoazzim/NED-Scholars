@@ -17,13 +17,11 @@ export default function ZelleTransfer() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      {/* Hero Section with Image Overlay */}
+      {/* Hero Section */}
       <section className="relative w-full h-[400px] md:h-[500px] overflow-hidden">
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1164A3]/90 via-[#68B9C4]/75 to-[#82B4CC]/60" />
         
         {/* Content */}
-        <div className="relative z-10 h-full flex items-center">
+        <div className="relative z-10 h-full flex items-center bg-gradient-to-r from-[#1164A3] to-[#68B9C4]">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl">
               <div className="flex items-center gap-3 mb-4">
@@ -35,7 +33,7 @@ export default function ZelleTransfer() {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
                 Money Transfer Using Zelle
               </h1>
-              <p className="text-lg md:text-xl text-white/90 max-w-2xl">
+              <p className="text-2xl text-white/90 mb-4">
                 Send your donation instantly and securely using Zelle®
               </p>
             </div>

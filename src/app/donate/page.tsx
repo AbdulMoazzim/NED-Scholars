@@ -1,7 +1,6 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import {
   CreditCard,
   Building2,
@@ -31,10 +30,9 @@ export default function DonationMethods() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
 
-      {/* Hero Section — existing image overlay */}
+      {/* Hero Section  */}
       <section className="relative w-full h-[400px] md:h-[500px] overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1164A3]/85 via-[#68B9C4]/60 to-transparent" />
-        <div className="relative z-10 h-full flex items-center">
+        <div className="relative z-10 h-full flex items-center bg-gradient-to-r from-[#1164A3] to-[#68B9C4]">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl">
               <div className="flex items-center gap-3 mb-4">
@@ -46,7 +44,7 @@ export default function DonationMethods() {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
                 Donation Methods
               </h1>
-              <p className="text-lg md:text-xl text-white/90 max-w-2xl">
+              <p className="text-2xl text-white/90 mb-4">
                 Choose your preferred method to support aspiring scholars pursuing their dreams
               </p>
             </div>
@@ -114,7 +112,7 @@ export default function DonationMethods() {
               ))}
             </div>
 
-            {/* Why Your Donation Matters — image + benefits side by side */}
+            {/* Why Your Donation Matters */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[400px]">

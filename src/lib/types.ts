@@ -16,6 +16,9 @@ export interface cardItems {
   title: string;
   description: string;
 }
+export interface programCardItems extends cardItems{
+  image: string
+}
 
 export interface Stats {
   number: string;

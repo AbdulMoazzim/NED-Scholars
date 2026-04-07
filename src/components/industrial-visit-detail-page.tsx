@@ -63,7 +63,6 @@ import {
   deleteVideo,
 } from "@/app/actions/resource";
 import { toast } from "sonner";
-import Image from "next/image";
 import { Registration, VisitDetails } from "@/lib/form-types";
 import { useSession } from "@/lib/auth-client";
 
@@ -669,10 +668,9 @@ export default function IndustrialVisitDetailPage({ slug }: { slug: string }) {
                           <div>
                             {/* Main Image */}
                             <div className="relative h-96 bg-gray-100 group">
-                              <Image
+                              <img
                                 src={visit.images[selectedImage].url}
                                 alt={visit.images[selectedImage].alt || visit.title}
-                                fill
                                 className="object-cover"
                               />
                               {/* Delete Button (Admin Only) */}
@@ -708,10 +706,9 @@ export default function IndustrialVisitDetailPage({ slug }: { slug: string }) {
                                         : "border-transparent hover:border-[#68B9C4]"
                                     }`}
                                   >
-                                    <Image
+                                    <img
                                       src={image.url}
                                       alt={image.alt || `Image ${index + 1}`}
-                                      fill
                                       className="object-cover"
                                     />
                                   </button>
@@ -865,7 +862,7 @@ export default function IndustrialVisitDetailPage({ slug }: { slug: string }) {
                 {/* Registration Card */}
                 <Card className="border-[#1164A3] border-2 shadow-xl">
                   <CardHeader className={`bg-gradient-to-r ${getIndustryColor(visit.industry)} text-white`}>
-                    <CardTitle className="text-center text-xl">Visit Information</CardTitle>
+                    <CardTitle className="text-center text-xl py-4">Visit Information</CardTitle>
                   </CardHeader>
                   <CardContent className="p-6 space-y-4">
                     {/* Date & Time */}

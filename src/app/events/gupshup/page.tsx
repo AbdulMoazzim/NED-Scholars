@@ -49,10 +49,6 @@ import { toast } from "sonner";
 import Image from "next/image";
 import { useSession } from "@/lib/auth-client";
 import { GupShupRegistration, GupShupSession } from "@/lib/form-types";
-import image1 from "../../../data/images/Events/gupshup/gupshup 1.jpeg";
-import image2 from "../../../data/images/Events/gupshup/gupshup 2.jpeg";
-import image3 from "../../../data/images/Events/gupshup/gupshup 3.jpeg";
-import image4 from "../../../data/images/Events/gupshup/gupshup 4.jpeg";
 
 export default function GupShupPage() {
   const router = useRouter();
@@ -202,11 +198,9 @@ export default function GupShupPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
 
-      {/* Hero Section — full-bleed image overlay (kept as-is, already has image) */}
+      {/* Hero Section */}
       <section className="relative w-full h-[500px] md:h-[600px] overflow-hidden">
-        <Image src="/images/gupshup-hero.jpg" alt="Gup Shup - Casual Conversations" fill priority quality={90} className="object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1164A3]/90 via-[#68B9C4]/75 to-[#82B4CC]/60" />
-        <div className="relative z-10 h-full flex items-center">
+        <div className="relative z-10 h-full flex items-center bg-gradient-to-r from-[#1164A3] to-[#68B9C4]">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <div className="flex justify-center mb-4">
@@ -214,15 +208,15 @@ export default function GupShupPage() {
               </div>
               <Badge className="mb-4 bg-white/20 text-white border-white/30 text-base px-4 py-2">Special Monthly Feature</Badge>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-white">Gup Shup</h1>
-              <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-                In the spirit of open dialogue and diverse perspectives, NED Scholars hosts &quot;Gup Shup&quot;—a monthly virtual gathering inspired by the Urdu term for friendly conversation.
+              <p className="text-2xl text-white/90 mb-4">
+                In the spirit of open dialogue and diverse perspectives, NED Scholars hosts &quot;Gup Shup&quot; — a monthly virtual gathering inspired by the Urdu term for friendly conversation.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* What is Gup Shup — image beside intro card + category grid */}
+      {/* What is Gup Shup */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -231,7 +225,6 @@ export default function GupShupPage() {
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">What is Gup Shup?</h2>
             </div>
 
-            {/* Intro card + image side by side */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-12">
                   <div className="flex items-start space-x-4 mb-6">
                     <div>
@@ -246,8 +239,10 @@ export default function GupShupPage() {
 
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[380px]">
-                <img
-                  src={image3.src}
+                <Image
+                width={800}
+  height={600}
+                  src="/images/Events/gupshup/gupshup 3.jpeg"
                   alt="Casual conversation gathering in the spirit of Gup Shup"
                   className="w-full h-full object-cover"
                 />
@@ -282,7 +277,7 @@ export default function GupShupPage() {
         </div>
       </section>
 
-      {/* Event Format — wide banner image + format steps */}
+      {/* Event Format  */}
       <section className="py-16 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -294,8 +289,10 @@ export default function GupShupPage() {
 
             {/* Wide banner image */}
             <div className="relative rounded-2xl overflow-hidden shadow-xl mb-10 h-52 md:h-60">
-              <img
-                src={image4.src}
+              <Image
+              width={800}
+  height={600}
+                src="/images/Events/gupshup/gupshup 4.jpeg"
                 alt="Gup Shup event format with speaker, discussion, and Q&A"
                 className="w-full h-full object-cover"
               />
@@ -339,7 +336,7 @@ export default function GupShupPage() {
         </div>
       </section>
 
-      {/* Benefits — image beside benefit cards */}
+      {/* Benefits */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -352,8 +349,10 @@ export default function GupShupPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[420px]">
-                <img
-                  src={image1.src}
+                <Image
+                width={800}
+  height={600}
+                  src="/images/Events/gupshup/gupshup 1.jpeg"
                   alt="Community members engaging in open, meaningful conversations"
                   className="w-full h-full object-cover"
                 />
@@ -385,7 +384,7 @@ export default function GupShupPage() {
         </div>
       </section>
 
-      {/* My Registrations Section — unchanged */}
+      {/* My Registrations Section */}
       {session && userRegistrations.length > 0 && (
         <section className="py-12 bg-gradient-to-r from-[#B0A3B3]/5 to-[#82B4CC]/5">
           <div className="container mx-auto px-4">
@@ -514,7 +513,7 @@ export default function GupShupPage() {
         </section>
       )}
 
-      {/* Upcoming Sessions — wide banner image + session cards */}
+      {/* Upcoming Sessions  */}
       <section className="py-20 bg-gradient-to-r from-gray-50 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
@@ -529,8 +528,10 @@ export default function GupShupPage() {
 
             {/* Wide banner image */}
             <div className="relative rounded-2xl overflow-hidden shadow-xl mb-10 h-52 md:h-[500px]">
-              <img
-                src={image2.src}
+              <Image
+              width={800}
+  height={600}
+                src="/images/Events/gupshup/gupshup 2.jpeg"
                 alt="Register for upcoming Gup Shup sessions"
                 className="w-full h-full object-cover"
               />
@@ -637,7 +638,7 @@ export default function GupShupPage() {
         </div>
       </section>
 
-      {/* Previous Sessions — image beside stacked session cards */}
+      {/* Previous Sessions  */}
       {completedSessions.length > 0 && (
         <section className="py-16">
           <div className="container mx-auto px-4">

@@ -137,15 +137,20 @@ export default function MobileHeader({
                                 </div>
                               )}
                             </>
-                          ) : (
-                            <Link
+                          ) : subItem.href.includes("paypal") || subItem.href.includes("zeffy") ? (<Link
+                              href={subItem.href}
+                              target="_blank"
+                              onClick={toggleMenu}
+                              className="block p-2 text-gray-600 hover:bg-gray-50 rounded"
+                            >
+                              {subItem.title}
+                            </Link>) : (<Link
                               href={subItem.href}
                               onClick={toggleMenu}
                               className="block p-2 text-gray-600 hover:bg-gray-50 rounded"
                             >
                               {subItem.title}
-                            </Link>
-                          )}
+                            </Link>)}
                         </div>
                       ))}
                   </div>

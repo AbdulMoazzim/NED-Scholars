@@ -1,10 +1,5 @@
 import Link from "next/link";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "./ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { ScholarshipData, NavDescriptions } from "@/data/LinksData";
 import { MenuItem } from "@/lib/types";
 
@@ -18,8 +13,10 @@ export default function SubNavbar({
   setSubHeader: (item: MenuItem) => void;
 }) {
   const subTitle = subLinks.length > 0 ? subLinks[0].title : "";
-  const description = NavDescriptions[title] || "Explore our offerings and discover how we can support your educational journey.";
-  
+  const description =
+    NavDescriptions[title] ||
+    "Explore our offerings and discover how we can support your educational journey.";
+
   return (
     <>
       {title && (
@@ -36,11 +33,22 @@ export default function SubNavbar({
             <div className="flex flex-col">
               <h1 className="text-3xl text-[#333333] mb-4 px-3">{title}</h1>
               {subLinks.map((link, index) => {
+                if (link.href.includes("paypal") || link.href.includes("zeffy"))
+                  return (
+                    <Link
+                      key={index}
+                      href={link.href}
+                      target="_blank"
+                      className="text-[16px]"
+                    >
+                      <div className="w-[300px] py-2 px-3 hover:bg-[#F5F5F5] rounded transition-colors">
+                        {link.title}
+                      </div>
+                    </Link>
+                  );
                 return (
                   <Link key={index} href={link.href} className="text-[16px]">
-                    <div
-                      className="w-[300px] py-2 px-3 hover:bg-[#F5F5F5] rounded transition-colors"
-                    >
+                    <div className="w-[300px] py-2 px-3 hover:bg-[#F5F5F5] rounded transition-colors">
                       {link.title}
                     </div>
                   </Link>
@@ -70,7 +78,9 @@ export default function SubNavbar({
           <div className="w-1/2 flex justify-center items-center">
             <Card className="w-4/5 bg-[#FEF6CD] border-[#E5D9A0]">
               <CardHeader>
-                <CardTitle className="text-[#333333] text-3xl">{title}</CardTitle>
+                <CardTitle className="text-[#333333] text-3xl">
+                  {title}
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-[#555555] leading-relaxed">{description}</p>

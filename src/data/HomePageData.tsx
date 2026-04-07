@@ -1,30 +1,27 @@
-import Award from "../data/images/HomePage/scholarship_provided.png"
-import GraduationCap from "../data/images/HomePage/scholars.png"
-import TrendingUp from "../data/images/HomePage/rate.png"
-import DollarSign from "../data/images/HomePage/aid.svg"
-import { CreditCard, Smartphone, Wallet } from "lucide-react";
+
+import { CreditCard, DollarSign, Smartphone, Wallet } from "lucide-react";
 
 export const stats = [
   {
-    icon: Award,
+    icon: "/images/HomePage/scholarship_provided.png",
     label: "Scholarships Provided",
     value: "600",
     color: "text-blue-600",
   },
   {
-    icon: DollarSign,
+    icon: "/images/HomePage/aid.svg",
     label: "Financial Aid Provided",
     value: "$478,818",
     color: "text-green-600",
   },
   {
-    icon: GraduationCap,
+    icon: "/images/HomePage/scholars.png",
     label: "Graduated Scholars",
     value: "131",
     color: "text-purple-600",
   },
   {
-    icon: TrendingUp,
+    icon: "/images/HomePage/rate.png",
     label: "Success Rate",
     value: "87%",
     color: "text-orange-600",
@@ -40,10 +37,30 @@ export const causes = [
 
 
 export const paymentMethods = [
-  { name: "Credit Card", icon: CreditCard },
-  { name: "PayPal", icon: Wallet },
-  { name: "Bank Transfer", icon: DollarSign },
-  { name: "Mobile Pay", icon: Smartphone },
-];;
+  {
+    name: "Zelle",
+    description: "Instant bank transfers",
+  },
+  {
+    name: "Zeffy",
+    description: "100% free for nonprofits",
+  },
+  {
+    name: "PayPal",
+    description: "Secure online payments",
+  },
+  {
+    name: "Citizens Bank",
+    description: "Direct bank transfer",
+  },
+  {
+    name: "Donation by Mail",
+    description: "Send a check or money order",
+  },
+  {
+    name: "Donate in Pakistan",
+    description: "Local payment options",
+  },
+];
 
 

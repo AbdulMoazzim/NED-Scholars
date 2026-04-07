@@ -29,7 +29,6 @@ import {
 } from "lucide-react";
 import { GetGupShupSessionBySlug, SubmitGupShupFeedback } from "@/app/actions/gupshup";
 import { toast } from "sonner";
-import Image from "next/image";
 import { GupShupSession, GupShupRegistration } from "@/lib/form-types";
 
 interface session extends GupShupSession {
@@ -367,10 +366,9 @@ console.log(userRegistration)
                   <Card className="border-[#82B4CC]/30 shadow-lg overflow-hidden">
                     <CardContent className="p-0">
                       <div className="relative h-96">
-                        <Image
+                        <img
                           src={session.thumbnailImage[0].url}
                           alt={session.thumbnailImage[0].alt || "Thumbnail Image"}
-                          fill
                           className="object-cover"
                         />
                       </div>
@@ -481,7 +479,7 @@ console.log(userRegistration)
                 {/* Registration Card */}
                 <Card className="border-[#1164A3] border-2 shadow-xl">
                   <CardHeader className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white">
-                    <CardTitle className="text-center text-xl">Session Details</CardTitle>
+                    <CardTitle className="text-center text-xl py-4">Session Details</CardTitle>
                   </CardHeader>
                   <CardContent className="p-6 space-y-4">
                     {/* Date & Time */}

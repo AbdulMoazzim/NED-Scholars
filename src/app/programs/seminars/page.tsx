@@ -1,10 +1,9 @@
-"use client"
+"use client";
 
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
-  Lightbulb,
   Users,
   Award,
   Globe,
@@ -33,10 +32,6 @@ import { useRouter } from "next/navigation";
 import { GetUpcomingSeminars, GetAllSeminars } from "@/app/actions/seminar";
 import { Seminar } from "@/lib/form-types";
 import { toast } from "sonner";
-import image1 from "../../../data/images/Programs/seminar/seminar 1.jpeg";
-import image2 from "../../../data/images/Programs/seminar/seminar 2.jpeg";
-import image3 from "../../../data/images/Programs/seminar/seminar 3.jpeg";
-import image4 from "../../../data/images/Programs/seminar/seminar 4.jpeg";
 import Image from "next/image";
 
 export default function SeminarSeriesNewPage() {
@@ -46,9 +41,9 @@ export default function SeminarSeriesNewPage() {
   const [loading, setLoading] = useState(true);
   const [viewMoreData, setviewMoreData] = useState(6);
 
-  const handleViewButton = (() => {
+  const handleViewButton = () => {
     setviewMoreData(previousSeminars.length);
-  });
+  };
 
   useEffect(() => {
     fetchSeminars();
@@ -65,7 +60,9 @@ export default function SeminarSeriesNewPage() {
         setUpcomingSeminars(upcomingRes.data as Seminar[]);
       }
       if (allRes.success && allRes.data) {
-        const completed = (allRes.data as Seminar[]).filter((s) => s.status === "completed");
+        const completed = (allRes.data as Seminar[]).filter(
+          (s) => s.status === "completed",
+        );
         setPreviousSeminars(completed);
       }
     } catch (error) {
@@ -77,10 +74,18 @@ export default function SeminarSeriesNewPage() {
   };
 
   const formatDate = (date: Date) =>
-    new Date(date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+    new Date(date).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
 
   const formatTime = (date: Date) =>
-    new Date(date).toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", hour12: true });
+    new Date(date).toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    });
 
   const calculateDuration = (startDate: Date, endDate?: Date) => {
     if (!endDate) return "TBD";
@@ -91,55 +96,139 @@ export default function SeminarSeriesNewPage() {
   };
 
   const getSeminarColor = (index: number) => {
-    const colors = ["from-[#1164A3] to-[#68B9C4]", "from-[#68B9C4] to-[#82B4CC]", "from-[#82B4CC] to-[#B0A3B3]"];
+    const colors = [
+      "from-[#1164A3] to-[#68B9C4]",
+      "from-[#68B9C4] to-[#82B4CC]",
+      "from-[#82B4CC] to-[#B0A3B3]",
+    ];
     return colors[index % colors.length];
   };
 
   const seminarFeatures = [
-    { icon: <Laptop className="w-6 h-6" />, title: "Live Technology Demonstrations" },
-    { icon: <TrendingUp className="w-6 h-6" />, title: "Career Success Stories"},
-    { icon: <Network className="w-6 h-6" />, title: "Networking Opportunities"},
-    { icon: <MessageCircle className="w-6 h-6" />, title: "Interactive Q&A Sessions" },
+    {
+      icon: <Laptop className="w-6 h-6" />,
+      title: "Live Technology Demonstrations",
+    },
+    {
+      icon: <TrendingUp className="w-6 h-6" />,
+      title: "Career Success Stories",
+    },
+    {
+      icon: <Network className="w-6 h-6" />,
+      title: "Networking Opportunities",
+    },
+    {
+      icon: <MessageCircle className="w-6 h-6" />,
+      title: "Interactive Q&A Sessions",
+    },
   ];
 
   const certificationAreas = [
-    { icon: <Target className="w-8 h-8" />, title: "Six Sigma & Lean Methodologies", subtitle: "Advanced Statistics", description: "Process optimization and quality management expertise", color: "from-[#1164A3] to-[#68B9C4]" },
-    { icon: <Briefcase className="w-8 h-8" />, title: "Project Management", subtitle: "Professional Leadership", description: "Master project execution and team management", color: "from-[#68B9C4] to-[#82B4CC]" },
-    { icon: <Zap className="w-8 h-8" />, title: "AI & Machine Learning", subtitle: "Future Technologies", description: "Cutting-edge artificial intelligence applications", color: "from-[#82B4CC] to-[#B0A3B3]" },
-    { icon: <Laptop className="w-8 h-8" />, title: "Embedded Systems", subtitle: "Hardware Programming", description: "Raspberry Pi, Arduino, and IoT applications", color: "from-[#1164A3] to-[#82B4CC]" },
+    {
+      icon: <Target className="w-8 h-8" />,
+      title: "Six Sigma & Lean Methodologies",
+      subtitle: "Advanced Statistics",
+      description: "Process optimization and quality management expertise",
+      color: "from-[#1164A3] to-[#68B9C4]",
+    },
+    {
+      icon: <Briefcase className="w-8 h-8" />,
+      title: "Project Management",
+      subtitle: "Professional Leadership",
+      description: "Master project execution and team management",
+      color: "from-[#68B9C4] to-[#82B4CC]",
+    },
+    {
+      icon: <Zap className="w-8 h-8" />,
+      title: "AI & Machine Learning",
+      subtitle: "Future Technologies",
+      description: "Cutting-edge artificial intelligence applications",
+      color: "from-[#82B4CC] to-[#B0A3B3]",
+    },
+    {
+      icon: <Laptop className="w-8 h-8" />,
+      title: "Embedded Systems",
+      subtitle: "Hardware Programming",
+      description: "Raspberry Pi, Arduino, and IoT applications",
+      color: "from-[#1164A3] to-[#82B4CC]",
+    },
   ];
 
   const accreditationBodies = [
-    { acronym: "SME", fullName: "Society of Manufacturing Engineers", description: "Global leader in manufacturing education" },
-    { acronym: "ASEM", fullName: "American Society for Engineering Management", description: "Premier professional organization for engineering management" },
-    { acronym: "ASME", fullName: "American Society of Mechanical Engineers", description: "World's largest mechanical engineering society" },
-    { acronym: "IEOM Society", fullName: "Industrial Engineering & Operations Management", description: "International society promoting industrial engineering excellence" },
+    {
+      acronym: "SME",
+      fullName: "Society of Manufacturing Engineers",
+      description: "Global leader in manufacturing education",
+    },
+    {
+      acronym: "ASEM",
+      fullName: "American Society for Engineering Management",
+      description:
+        "Premier professional organization for engineering management",
+    },
+    {
+      acronym: "ASME",
+      fullName: "American Society of Mechanical Engineers",
+      description: "World's largest mechanical engineering society",
+    },
+    {
+      acronym: "IEOM Society",
+      fullName: "Industrial Engineering & Operations Management",
+      description:
+        "International society promoting industrial engineering excellence",
+    },
   ];
 
   const uniqueFeatures = [
-    { icon: <BookOpen className="w-8 h-8" />, title: "Real-World Case Studies" },
+    {
+      icon: <BookOpen className="w-8 h-8" />,
+      title: "Real-World Case Studies",
+    },
     { icon: <Laptop className="w-8 h-8" />, title: "Interactive Workshops" },
     { icon: <Globe className="w-8 h-8" />, title: "Global-Local Fusion" },
     { icon: <Heart className="w-8 h-8" />, title: "Mentorship Opportunities" },
   ];
 
   const presenterTypes = [
-    { icon: <Globe className="w-6 h-6" />, title: "Expat NEDians", description: "Willing to share international experiences" },
-    { icon: <Building2 className="w-6 h-6" />, title: "Pakistan-based Professionals", description: "Innovating in tech and engineering sectors" },
-    { icon: <Rocket className="w-6 h-6" />, title: "Entrepreneurs", description: "Who've built successful startups" },
+    {
+      icon: <Globe className="w-6 h-6" />,
+      title: "Expat NEDians",
+      description: "Willing to share international experiences",
+    },
+    {
+      icon: <Building2 className="w-6 h-6" />,
+      title: "Pakistan-based Professionals",
+      description: "Innovating in tech and engineering sectors",
+    },
+    {
+      icon: <Rocket className="w-6 h-6" />,
+      title: "Entrepreneurs",
+      description: "Who've built successful startups",
+    },
   ];
 
   const successStories = [
-    { icon: <Briefcase className="w-8 h-8" />, title: "Career Opportunity in Germany", color: "from-[#1164A3] to-[#68B9C4]" },
-    { icon: <Rocket className="w-8 h-8" />, title: "Clean-Tech Startup Launch", color: "from-[#68B9C4] to-[#82B4CC]" },
-    { icon: <GraduationCap className="w-8 h-8" />, title: "International Research Collaboration", color: "from-[#82B4CC] to-[#B0A3B3]" },
+    {
+      icon: <Briefcase className="w-8 h-8" />,
+      title: "Career Opportunity in Germany",
+      color: "from-[#1164A3] to-[#68B9C4]",
+    },
+    {
+      icon: <Rocket className="w-8 h-8" />,
+      title: "Clean-Tech Startup Launch",
+      color: "from-[#68B9C4] to-[#82B4CC]",
+    },
+    {
+      icon: <GraduationCap className="w-8 h-8" />,
+      title: "International Research Collaboration",
+      color: "from-[#82B4CC] to-[#B0A3B3]",
+    },
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-[#1164A3] via-[#68B9C4] to-[#82B4CC] text-white py-20">
+      <section className="relative overflow-hidden bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white py-20">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-4 bg-white/20 text-white border-white/30 text-base px-4 py-2">
@@ -151,64 +240,70 @@ export default function SeminarSeriesNewPage() {
             <p className="text-2xl text-white/90 mb-4">
               Igniting Innovation Through Knowledge Exchange
             </p>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto mb-8">
-              Bridging Global Expertise with Local Talent
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <button
-                onClick={() => router.push("/register/seminar-presenter")}
-                className="inline-flex items-center gap-2 border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-4 rounded-full font-semibold transition-all duration-300"
-              >
-                Present as Expert
-              </button>
-            </div>
           </div>
         </div>
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#68B9C4]/20 rounded-full blur-3xl"></div>
       </section>
 
-      {/* Introduction — image beside intro card + features */}
+      {/* Introduction */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-12">
               {/* Intro card */}
               <div className="space-y-6">
-                    <div className="flex items-start space-x-6 mb-6">
+                <div className="flex items-start space-x-6 mb-6">
+                  <div>
+                    <h2 className="text-3xl font-bold text-gray-800 mb-4">
+                      Exposure Inspires Excellence
+                    </h2>
+                    <p className="text-lg text-gray-700 leading-relaxed mb-4">
+                      At NED Scholars, we believe that exposure inspires
+                      excellence. Our Seminar Series brings together NED&apos;s
+                      brightest minds and accomplished global professionals for
+                      an electrifying exchange of ideas, cutting-edge
+                      technologies, and career-defining insights.
+                    </p>
+                    <p className="text-lg text-gray-700 leading-relaxed">
+                      Featuring NEDians returning from abroad and industry
+                      leaders, these seminars provide:
+                    </p>
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {seminarFeatures.map((feature, index) => (
+                    <div
+                      key={index}
+                      className="flex items-start space-x-3 p-3 bg-[#82B4CC]/10 rounded-xl"
+                    >
+                      <div className="text-[#1164A3] flex-shrink-0 mt-1">
+                        {feature.icon}
+                      </div>
                       <div>
-                        <h2 className="text-3xl font-bold text-gray-800 mb-4">Exposure Inspires Excellence</h2>
-                        <p className="text-lg text-gray-700 leading-relaxed mb-4">
-                          At NED Scholars, we believe that exposure inspires excellence. Our Seminar Series brings together NED&apos;s brightest minds and accomplished global professionals for an electrifying exchange of ideas, cutting-edge technologies, and career-defining insights.
-                        </p>
-                        <p className="text-lg text-gray-700 leading-relaxed">
-                          Featuring NEDians returning from abroad and industry leaders, these seminars provide:
-                        </p>
+                        <h4 className="font-semibold text-gray-800 mb-1 text-sm">
+                          {feature.title}
+                        </h4>
                       </div>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      {seminarFeatures.map((feature, index) => (
-                        <div key={index} className="flex items-start space-x-3 p-3 bg-[#82B4CC]/10 rounded-xl">
-                          <div className="text-[#1164A3] flex-shrink-0 mt-1">{feature.icon}</div>
-                          <div>
-                            <h4 className="font-semibold text-gray-800 mb-1 text-sm">{feature.title}</h4>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+                  ))}
+                </div>
               </div>
 
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[520px]">
-                        <img
-                  src={image4.src}
+                <Image
+                  width={800}
+                  height={600}
+                  src="/images/Programs/seminar/seminar 4.jpeg"
                   alt="NED Scholars seminar session with students and global experts"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
                 <div className="absolute bottom-5 left-5 right-5">
                   <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
-                    Where global expertise meets local ambition — every seminar sparks new possibilities
+                    Where global expertise meets local ambition — every seminar
+                    sparks new possibilities
                   </p>
                 </div>
                 <div className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl border-4 border-[#68B9C4]/30 -z-10" />
@@ -219,11 +314,17 @@ export default function SeminarSeriesNewPage() {
             <Card className="bg-gradient-to-r from-[#82B4CC]/20 to-[#B0A3B3]/20 border-l-4 border-[#1164A3] shadow-lg">
               <CardContent className="p-8">
                 <div className="flex items-start justify-center">
-                  <div className="text-[#1164A3] text-6xl leading-none">&quot;</div>
+                  <div className="text-[#1164A3] text-6xl leading-none">
+                    &quot;
+                  </div>
                   <p className="text-xl text-gray-700 italic pt-2 font-bold text-center">
-                    Seeing is believing. When our scholars witness NED alumni thriving globally, they realize their own potential is limitless.
+                    Seeing is believing. When our scholars witness NED alumni
+                    thriving globally, they realize their own potential is
+                    limitless.
                   </p>
-                  <div className="text-[#1164A3] text-6xl leading-none">&quot;</div>
+                  <div className="text-[#1164A3] text-6xl leading-none">
+                    &quot;
+                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -232,13 +333,22 @@ export default function SeminarSeriesNewPage() {
       </section>
 
       {/* Upcoming Seminars */}
-      <section id="upcoming" className="py-20 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
+      <section
+        id="upcoming"
+        className="py-20 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10"
+      >
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4 bg-[#1164A3] text-white">Coming Soon</Badge>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Upcoming Seminars</h2>
-              <p className="text-gray-600 text-lg">Register now to secure your spot in our next sessions</p>
+              <Badge className="mb-4 bg-[#1164A3] text-white">
+                Coming Soon
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                Upcoming Seminars
+              </h2>
+              <p className="text-gray-600 text-lg">
+                Register now to secure your spot in our next sessions
+              </p>
             </div>
 
             {loading ? (
@@ -249,8 +359,12 @@ export default function SeminarSeriesNewPage() {
               <Card className="border-[#82B4CC]/30">
                 <CardContent className="p-12 text-center">
                   <Users className="w-16 h-16 mx-auto mb-4 text-[#68B9C4] opacity-50" />
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">No Upcoming Seminars</h3>
-                  <p className="text-gray-600">Check back soon for new seminar announcements!</p>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                    No Upcoming Seminars
+                  </h3>
+                  <p className="text-gray-600">
+                    Check back soon for new seminar announcements!
+                  </p>
                 </CardContent>
               </Card>
             ) : (
@@ -265,38 +379,77 @@ export default function SeminarSeriesNewPage() {
                       <div className="flex flex-col md:flex-row">
                         {seminar.images && seminar.images.length > 0 ? (
                           <div className="relative w-full md:w-64 h-48 md:h-auto overflow-hidden bg-gradient-to-br from-[#1164A3]/20 to-[#68B9C4]/20 flex-shrink-0">
-                              <img src={seminar.images[0].url} alt={seminar.images[0].alt || seminar.title} className="object-cover group-hover:scale-110 transition-transform duration-500" />
+                            <img
+                              src={seminar.images[0].url}
+                              alt={seminar.images[0].alt || seminar.title}
+                              className="object-cover group-hover:scale-110 transition-transform duration-500"
+                            />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                             <div className="absolute top-3 left-3 flex flex-wrap gap-2">
-                              <Badge className="bg-black/70 text-white border-0">{seminar.location}</Badge>
-                              <Badge className="bg-black/70 text-white border-0">{seminar.status}</Badge>
+                              <Badge className="bg-black/70 text-white border-0">
+                                {seminar.location}
+                              </Badge>
+                              <Badge className="bg-black/70 text-white border-0">
+                                {seminar.status}
+                              </Badge>
                             </div>
                           </div>
                         ) : (
-                          <div className={`relative w-full md:w-64 h-48 md:h-auto bg-gradient-to-r ${getSeminarColor(index)} flex items-center justify-center flex-shrink-0`}>
+                          <div
+                            className={`relative w-full md:w-64 h-48 md:h-auto bg-gradient-to-r ${getSeminarColor(index)} flex items-center justify-center flex-shrink-0`}
+                          >
                             <Users className="w-16 h-16 text-white opacity-30" />
                             <div className="absolute top-3 left-3 flex flex-wrap gap-2">
-                              <Badge className="bg-white/20 text-white border-white/30">{seminar.location}</Badge>
-                              <Badge className="bg-white/20 text-white border-white/30">{seminar.status}</Badge>
+                              <Badge className="bg-white/20 text-white border-white/30">
+                                {seminar.location}
+                              </Badge>
+                              <Badge className="bg-white/20 text-white border-white/30">
+                                {seminar.status}
+                              </Badge>
                             </div>
                           </div>
                         )}
                         <div className="flex-1 p-8">
-                          <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-[#1164A3] transition-colors">{seminar.title}</h3>
-                          <p className="text-gray-600 mb-3 line-clamp-2">{seminar.description}</p>
+                          <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-[#1164A3] transition-colors">
+                            {seminar.title}
+                          </h3>
+                          <p className="text-gray-600 mb-3 line-clamp-2">
+                            {seminar.description}
+                          </p>
                           <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-4">
-                            <span className="flex items-center"><Calendar className="w-4 h-4 mr-1" />{formatDate(seminar.date)}</span>
-                            <span className="flex items-center"><Clock className="w-4 h-4 mr-1" />{formatTime(seminar.date)}</span>
-                            <span className="flex items-center"><MapPin className="w-4 h-4 mr-1" />In-Person Event</span>
-                            {(seminar.maxCapacity || seminar.physicalCapacity) && (
+                            <span className="flex items-center">
+                              <Calendar className="w-4 h-4 mr-1" />
+                              {formatDate(seminar.date)}
+                            </span>
+                            <span className="flex items-center">
+                              <Clock className="w-4 h-4 mr-1" />
+                              {formatTime(seminar.date)}
+                            </span>
+                            <span className="flex items-center">
+                              <MapPin className="w-4 h-4 mr-1" />
+                              In-Person Event
+                            </span>
+                            {(seminar.maxCapacity ||
+                              seminar.physicalCapacity) && (
                               <span className="flex items-center text-[#68B9C4] font-medium">
                                 <Users className="w-4 h-4 mr-1" />
-                                {(seminar.maxCapacity || seminar.physicalCapacity || 0) - seminar.attendees.filter(a => a.attendance_mode === "physical").length} spots available
+                                {(seminar.maxCapacity ||
+                                  seminar.physicalCapacity ||
+                                  0) -
+                                  seminar.attendees.filter(
+                                    (a) => a.attendance_mode === "physical",
+                                  ).length}{" "}
+                                spots available
                               </span>
                             )}
                           </div>
                           <button
-                            onClick={(e) => { e.stopPropagation(); router.push(`/register/seminar-attendee?seminarId=${seminar.id}`); }}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              router.push(
+                                `/register/seminar-attendee?seminarId=${seminar.id}`,
+                              );
+                            }}
                             className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 flex items-center"
                           >
                             Register Now <ArrowRight className="w-4 h-4 ml-2" />
@@ -312,27 +465,36 @@ export default function SeminarSeriesNewPage() {
         </div>
       </section>
 
-      {/* Certification Training — wide banner image + cards */}
+      {/* Certification Training */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <Badge className="mb-4 text-base bg-[#68B9C4] text-white">Career Enhancement</Badge>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Specialized Certification Training Opportunities</h2>
+              <Badge className="mb-4 text-base bg-[#68B9C4] text-white">
+                Career Enhancement
+              </Badge>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+                Specialized Certification Training Opportunities
+              </h2>
             </div>
 
             {/* Wide image banner */}
             <div className="relative rounded-2xl overflow-hidden shadow-xl mb-12 h-56 md:h-64">
-                <img
-                src={image2.src}
+              <Image
+                width={800}
+                height={600}
+                src="/images/Programs/seminar/seminar 2.jpeg"
                 alt="Certification training programs and accreditation bodies"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[#1164A3]/65 to-transparent flex items-center">
                 <div className="px-10 max-w-lg">
-                  <h3 className="text-white text-2xl font-bold mb-2">Globally Recognized Certifications</h3>
+                  <h3 className="text-white text-2xl font-bold mb-2">
+                    Globally Recognized Certifications
+                  </h3>
                   <p className="text-white/85 text-sm leading-relaxed">
-                    Earn credentials backed by world-class accreditation bodies — from Six Sigma to AI, open doors to international careers.
+                    Earn credentials backed by world-class accreditation bodies
+                    — from Six Sigma to AI, open doors to international careers.
                   </p>
                 </div>
               </div>
@@ -340,13 +502,22 @@ export default function SeminarSeriesNewPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
               {certificationAreas.map((area, index) => (
-                <Card key={index} className="hover:shadow-2xl hover:border-[#1164A3] transition-all duration-300 border-2">
+                <Card
+                  key={index}
+                  className="hover:shadow-2xl hover:border-[#1164A3] transition-all duration-300 border-2"
+                >
                   <CardContent className="p-8">
-                    <div className={`w-20 h-20 bg-gradient-to-r ${area.color} rounded-2xl flex items-center justify-center text-white mb-6`}>
+                    <div
+                      className={`w-20 h-20 bg-gradient-to-r ${area.color} rounded-2xl flex items-center justify-center text-white mb-6`}
+                    >
                       {area.icon}
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-800 mb-2">{area.title}</h3>
-                    <p className="text-[#1164A3] font-medium mb-3">{area.subtitle}</p>
+                    <h3 className="text-2xl font-bold text-gray-800 mb-2">
+                      {area.title}
+                    </h3>
+                    <p className="text-[#1164A3] font-medium mb-3">
+                      {area.subtitle}
+                    </p>
                     <p className="text-gray-600">{area.description}</p>
                   </CardContent>
                 </Card>
@@ -362,18 +533,30 @@ export default function SeminarSeriesNewPage() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-700 mb-6 text-lg">All certifications are recognized and backed by respected third-party accreditation organizations:</p>
+                <p className="text-gray-700 mb-6 text-lg">
+                  All certifications are recognized and backed by respected
+                  third-party accreditation organizations:
+                </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {accreditationBodies.map((body, index) => (
-                    <div key={index} className="p-6 bg-gradient-to-r from-[#82B4CC]/10 to-[#B0A3B3]/10 rounded-xl">
+                    <div
+                      key={index}
+                      className="p-6 bg-gradient-to-r from-[#82B4CC]/10 to-[#B0A3B3]/10 rounded-xl"
+                    >
                       <div className="flex items-start space-x-4">
                         <div className="w-12 h-12 bg-[#1164A3] rounded-lg flex items-center justify-center text-white font-bold flex-shrink-0">
                           {body.acronym.substring(0, 1)}
                         </div>
                         <div>
-                          <h4 className="font-bold text-gray-800 mb-1">{body.acronym}</h4>
-                          <p className="text-sm font-medium text-[#1164A3] mb-1">{body.fullName}</p>
-                          <p className="text-xs text-gray-600">{body.description}</p>
+                          <h4 className="font-bold text-gray-800 mb-1">
+                            {body.acronym}
+                          </h4>
+                          <p className="text-sm font-medium text-[#1164A3] mb-1">
+                            {body.fullName}
+                          </p>
+                          <p className="text-xs text-gray-600">
+                            {body.description}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -390,9 +573,15 @@ export default function SeminarSeriesNewPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <Badge className="mb-4 text-base bg-[#68B9C4] text-white">Watch & Learn</Badge>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Previous Seminar Recordings</h2>
-              <p className="text-xl text-gray-600">Access our library of past seminars and continue learning</p>
+              <Badge className="mb-4 text-base bg-[#68B9C4] text-white">
+                Watch & Learn
+              </Badge>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+                Previous Seminar Recordings
+              </h2>
+              <p className="text-xl text-gray-600">
+                Access our library of past seminars and continue learning
+              </p>
             </div>
 
             {loading ? (
@@ -403,8 +592,12 @@ export default function SeminarSeriesNewPage() {
               <Card className="border-[#82B4CC]/30">
                 <CardContent className="p-12 text-center">
                   <Play className="w-16 h-16 mx-auto mb-4 text-[#68B9C4] opacity-50" />
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">No Previous Seminars</h3>
-                  <p className="text-gray-600">Past seminar recordings will appear here</p>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                    No Previous Seminars
+                  </h3>
+                  <p className="text-gray-600">
+                    Past seminar recordings will appear here
+                  </p>
                 </CardContent>
               </Card>
             ) : (
@@ -414,14 +607,28 @@ export default function SeminarSeriesNewPage() {
                     <Card
                       key={seminar.id}
                       className="hover:shadow-2xl hover:border-[#1164A3] transition-all duration-300 cursor-pointer group overflow-hidden"
-                      onClick={() => router.push(`/programs/seminars/${seminar.id}`)}
+                      onClick={() =>
+                        router.push(`/programs/seminars/${seminar.id}`)
+                      }
                     >
                       {seminar.images && seminar.images.length > 0 ? (
                         <div className="relative overflow-hidden h-48">
-                            <img src={seminar.images[0].url} alt={seminar.images[0].alt || seminar.title} className="object-cover group-hover:scale-110 transition-transform duration-500" />
+                          <img
+                            src={seminar.images[0].url}
+                            alt={seminar.images[0].alt || seminar.title}
+                            className="object-cover group-hover:scale-110 transition-transform duration-500"
+                          />
                           <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors duration-300" />
-                          <Badge className="absolute top-3 right-3 bg-black/70 text-white border-0"><Users className="w-3 h-3 mr-1" />{seminar.attendees.length}</Badge>
-                          <Badge className="absolute bottom-3 right-3 bg-black/70 text-white border-0">{calculateDuration(seminar.date, seminar.endDate || undefined)}</Badge>
+                          <Badge className="absolute top-3 right-3 bg-black/70 text-white border-0">
+                            <Users className="w-3 h-3 mr-1" />
+                            {seminar.attendees.length}
+                          </Badge>
+                          <Badge className="absolute bottom-3 right-3 bg-black/70 text-white border-0">
+                            {calculateDuration(
+                              seminar.date,
+                              seminar.endDate || undefined,
+                            )}
+                          </Badge>
                         </div>
                       ) : (
                         <div className="relative overflow-hidden bg-gradient-to-br from-[#1164A3]/20 to-[#68B9C4]/20 h-48 flex items-center justify-center">
@@ -431,14 +638,27 @@ export default function SeminarSeriesNewPage() {
                       )}
                       <CardContent className="p-6">
                         <div className="flex items-center justify-between mb-2">
-                          <Badge className="bg-[#82B4CC] text-white">{seminar.location}</Badge>
-                          <span className="text-sm font-semibold text-gray-700">{seminar.status}</span>
+                          <Badge className="bg-[#82B4CC] text-white">
+                            {seminar.location}
+                          </Badge>
+                          <span className="text-sm font-semibold text-gray-700">
+                            {seminar.status}
+                          </span>
                         </div>
-                        <h4 className="font-bold text-lg text-gray-800 mb-2 line-clamp-2 group-hover:text-[#1164A3] transition-colors">{seminar.title}</h4>
-                        <p className="text-sm text-gray-600 mb-3 line-clamp-2">{seminar.description}</p>
+                        <h4 className="font-bold text-lg text-gray-800 mb-2 line-clamp-2 group-hover:text-[#1164A3] transition-colors">
+                          {seminar.title}
+                        </h4>
+                        <p className="text-sm text-gray-600 mb-3 line-clamp-2">
+                          {seminar.description}
+                        </p>
                         <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-                          <span className="text-xs text-gray-500 flex items-center"><Calendar className="w-3 h-3 mr-1" />{formatDate(seminar.date)}</span>
-                          <span className="text-[#1164A3] hover:text-[#68B9C4] font-semibold flex items-center text-sm">View <ArrowRight className="w-4 h-4 ml-1" /></span>
+                          <span className="text-xs text-gray-500 flex items-center">
+                            <Calendar className="w-3 h-3 mr-1" />
+                            {formatDate(seminar.date)}
+                          </span>
+                          <span className="text-[#1164A3] hover:text-[#68B9C4] font-semibold flex items-center text-sm">
+                            View <ArrowRight className="w-4 h-4 ml-1" />
+                          </span>
                         </div>
                       </CardContent>
                     </Card>
@@ -446,8 +666,13 @@ export default function SeminarSeriesNewPage() {
                 </div>
                 {previousSeminars.length > 6 && viewMoreData > 6 && (
                   <div className="text-center mt-12">
-                    <button onClick={() => handleViewButton()} className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-10 py-4 rounded-full font-bold text-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 inline-flex items-center">
-                      <Video className="w-6 h-6 mr-3" />View All Seminars<ArrowRight className="w-6 h-6 ml-3" />
+                    <button
+                      onClick={() => handleViewButton()}
+                      className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white px-10 py-4 rounded-full font-bold text-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 inline-flex items-center"
+                    >
+                      <Video className="w-6 h-6 mr-3" />
+                      View All Seminars
+                      <ArrowRight className="w-6 h-6 ml-3" />
                     </button>
                   </div>
                 )}
@@ -457,26 +682,34 @@ export default function SeminarSeriesNewPage() {
         </div>
       </section>
 
-
-      {/* What Makes Us Unique — image beside unique feature cards */}
+      {/* What Makes Us Unique */}
       <section className="py-20 bg-gradient-to-r from-[#B0A3B3]/10 to-[#82B4CC]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <Badge className="mb-4 text-base bg-[#68B9C4] text-white">Our Distinction</Badge>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">What Makes Our Seminars Unique?</h2>
+              <Badge className="mb-4 text-base bg-[#68B9C4] text-white">
+                Our Distinction
+              </Badge>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+                What Makes Our Seminars Unique?
+              </h2>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {uniqueFeatures.map((feature, index) => (
-                  <Card key={index} className="hover:shadow-2xl hover:border-[#1164A3] transition-all duration-300 bg-white">
+                  <Card
+                    key={index}
+                    className="hover:shadow-2xl hover:border-[#1164A3] transition-all duration-300 bg-white"
+                  >
                     <CardContent className="p-6">
                       <div className="flex items-center space-x-3 mb-3">
                         <div className="w-12 h-12 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-xl flex items-center justify-center text-white flex-shrink-0">
                           {feature.icon}
                         </div>
-                        <h3 className="text-lg font-bold text-gray-800">{feature.title}</h3>
+                        <h3 className="text-lg font-bold text-gray-800">
+                          {feature.title}
+                        </h3>
                       </div>
                     </CardContent>
                   </Card>
@@ -485,11 +718,18 @@ export default function SeminarSeriesNewPage() {
 
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[420px]">
-                  <img src={image3.src} alt="Interactive workshop session with hands-on learning" className="w-full h-full object-cover object-top-right" />
+                <Image
+                  width={800}
+                  height={600}
+                  src="/images/Programs/seminar/seminar 3.jpeg"
+                  alt="Interactive workshop session with hands-on learning"
+                  className="w-full h-full object-cover object-top-right"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
                 <div className="absolute bottom-5 left-5 right-5">
                   <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
-                    Hands-on, globally informed, and rooted in real industry practice
+                    Hands-on, globally informed, and rooted in real industry
+                    practice
                   </p>
                 </div>
                 <div className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl border-4 border-[#68B9C4]/30 -z-10" />
@@ -499,24 +739,37 @@ export default function SeminarSeriesNewPage() {
         </div>
       </section>
 
-      {/* Success Stories — image beside story cards */}
+      {/* Success Stories */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <Badge className="mb-4 text-base bg-[#1164A3] text-white">Real Impact</Badge>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Success Stories: From Seminar Attendees to Industry Leaders</h2>
-              <p className="text-xl text-gray-600">How our seminars transform careers and create opportunities</p>
+              <Badge className="mb-4 text-base bg-[#1164A3] text-white">
+                Real Impact
+              </Badge>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+                Success Stories: From Seminar Attendees to Industry Leaders
+              </h2>
+              <p className="text-xl text-gray-600">
+                How our seminars transform careers and create opportunities
+              </p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[400px]">
-                  <img src={image1.src} alt="NED Scholars alumni who built successful careers after attending seminars" className="w-full h-full object-cover" />
+                <Image
+                  width={800}
+                  height={600}
+                  src="/images/Programs/seminar/seminar 1.jpeg"
+                  alt="NED Scholars alumni who built successful careers after attending seminars"
+                  className="w-full h-full object-cover"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
                 <div className="absolute bottom-5 left-5 right-5">
                   <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
-                    One seminar. One connection. One career transformed — it happens here
+                    One seminar. One connection. One career transformed — it
+                    happens here
                   </p>
                 </div>
                 <div className="absolute -bottom-3 -left-3 w-full h-full rounded-2xl border-4 border-[#82B4CC]/30 -z-10" />
@@ -524,14 +777,21 @@ export default function SeminarSeriesNewPage() {
 
               <div className="space-y-6">
                 {successStories.map((story, index) => (
-                  <Card key={index} className="hover:shadow-2xl hover:border-[#1164A3] transition-all duration-300">
+                  <Card
+                    key={index}
+                    className="hover:shadow-2xl hover:border-[#1164A3] transition-all duration-300"
+                  >
                     <CardContent>
                       <div className="flex items-start space-x-5">
-                        <div className={`w-16 h-16 bg-gradient-to-r ${story.color} rounded-full flex items-center justify-center text-white flex-shrink-0`}>
+                        <div
+                          className={`w-16 h-16 bg-gradient-to-r ${story.color} rounded-full flex items-center justify-center text-white flex-shrink-0`}
+                        >
                           {story.icon}
                         </div>
                         <div>
-                          <h4 className="text-lg font-bold text-gray-800 mb-2">{story.title}</h4>
+                          <h4 className="text-lg font-bold text-gray-800 mb-2">
+                            {story.title}
+                          </h4>
                         </div>
                       </div>
                     </CardContent>
@@ -548,11 +808,15 @@ export default function SeminarSeriesNewPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4 text-base bg-[#1164A3] text-white">Get Involved</Badge>
+              <Badge className="mb-4 text-base bg-[#1164A3] text-white">
+                Get Involved
+              </Badge>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
                 Present as an Expert
               </h2>
-              <p className="text-xl text-gray-600">Share your knowledge and inspire the next generation</p>
+              <p className="text-xl text-gray-600">
+                Share your knowledge and inspire the next generation
+              </p>
             </div>
 
             {/* Present as Expert */}
@@ -595,8 +859,8 @@ export default function SeminarSeriesNewPage() {
                   </div>
                 </div>
 
-                <button 
-                  onClick={() => router.push("/register/seminar-presenter")} 
+                <button
+                  onClick={() => router.push("/register/seminar-presenter")}
                   className="w-full bg-gradient-to-r from-[#68B9C4] to-[#82B4CC] text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl transition-all duration-300"
                 >
                   Propose a Seminar Topic
