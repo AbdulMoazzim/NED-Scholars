@@ -203,12 +203,12 @@ export default function Dare2DesignPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-6 bg-white/20 text-white border-white/30 px-4 py-2 text-sm">
-              Innovation & Creativity
+              Dare to Design
             </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <h1 className="text-3xl md:text-6xl font-bold mb-6">
               Creativity & Problem Solving Through Invention Learning
             </h1>
-            <p className="text-2xl text-white/90 mb-4">
+            <p className="text-lg md:text-2xl text-white/90 mb-4">
               Dare2Design by NED Scholars
             </p>
           </div>
@@ -219,18 +219,13 @@ export default function Dare2DesignPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <Badge className="mb-4 bg-[#68B9C4] text-white border-[#68B9C4]">
-                About the Program
-              </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                Empowering Young Innovators
-              </h2>
-            </div>
 
             {/* Two-column: content left, image right */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
               <div>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                Empowering Young Innovators
+              </h2>
                 <p className="text-gray-700 text-lg leading-relaxed mb-8">
                   The Dare2Design initiative by NED Scholars is a dynamic
                   program that promotes STEM education, creativity, and

@@ -192,12 +192,12 @@ export default function InternshipsPage() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-4 bg-white/20 text-white border-white/30 text-base px-4 py-2">
-              Professional Development
+              Internships
             </Badge>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            <h1 className="text-3xl md:text-6xl font-bold mb-6">
               Internship Opportunities
             </h1>
-            <p className="text-2xl text-white/90 mb-4">
+            <p className="text-lg md:text-2xl text-white/90 mb-4">
               Connect with meaningful internship opportunities that complement your
               academic learning and prepare you for real-world challenges
             </p>

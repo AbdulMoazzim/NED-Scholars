@@ -53,7 +53,7 @@ const StatCard: React.FC<{ stat: Stats; index: number }> = ({ stat, index }) => 
 
   return (
     <div ref={statRef} className="text-center p-6">
-      <span ref={numberRef} className={`text-4xl font-bold block mb-2`}>
+      <span ref={numberRef} className={`text-4xl font-bold block`}>
         {stat.number}
       </span>
       <span className="font-medium">{stat.label}</span>

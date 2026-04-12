@@ -177,21 +177,13 @@ const About: React.FC = () => {
       <section className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white py-20">
         <div className="max-w-6xl mx-auto px-5 text-center">
           <div ref={heroRef}>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-shadow-lg">
+            <h1 className="text-3xl md:text-6xl font-bold mb-6 text-shadow-lg">
               About NED Scholars
             </h1>
-            <p className="text-2xl text-white/90 mb-4">
+            <p className="text-lg md:text-2xl text-white/90 mb-4">
               Cultivating Talent by Leveling Fields
             </p>
           </div>
-          {/* Stats */}
-      <section className="w-full">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 w-[90%] md:w-3/5 mx-auto">
-          {stats.map((stat, index) => (
-            <StatCard key={stat.label} stat={stat} index={index} />
-          ))}
-        </div>
-      </section>
         </div>
       </section>
 
@@ -409,60 +401,80 @@ const About: React.FC = () => {
 
       {/* Who Are Our Scholars */}
       <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-5">
-          <div ref={scholarsRef}>
-            <div className="flex items-center gap-3 mb-6">
-              <GraduationCap className="w-8 h-8 text-[#1164A3]" />
-              <h2 className="text-4xl font-bold text-gray-800">
-                Who Are Our Scholars?
-              </h2>
-            </div>
-            <p className="text-gray-600 leading-relaxed mb-6 text-lg">
-              We proudly call our scholarship recipients{" "}
-              <strong className="text-[#1164A3]">Scholars</strong> — because
-              they represent not only academic promise, but determination,
-              resilience, and potential for leadership.
-            </p>
-            <p className="text-gray-700 font-semibold mb-4">
-              Most of our scholars are:
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              {[
-                {
-                  icon: <Star className="w-6 h-6 text-[#1164A3]" />,
-                  text: "The first in their families to attend a university offering STEM education",
-                },
-                {
-                  icon: <Users className="w-6 h-6 text-[#1164A3]" />,
-                  text: "From lower-middle-income or underprivileged backgrounds",
-                },
-                {
-                  icon: <TrendingUp className="w-6 h-6 text-[#1164A3]" />,
-                  text: "Facing challenges such as limited financial resources, low exposure, and reduced self-confidence",
-                },
-              ].map((item, i) => (
-                <div
-                  key={i}
-                  className="flex items-start gap-4 p-5 bg-gradient-to-br from-slate-50 to-[#82B4CC]/10 rounded-xl border border-[#82B4CC]/30"
-                >
-                  <div className="flex-shrink-0 mt-1">{item.icon}</div>
-                  <p className="text-gray-600 leading-relaxed">{item.text}</p>
-                </div>
-              ))}
-            </div>
-            <p className="text-gray-600 leading-relaxed">
-              Our support goes beyond financial assistance. We actively nurture
-              the personal and professional growth of our scholars through
-              mentorship, training, and community engagement. Scholars are
-              regularly involved in volunteering and outreach activities to
-              cultivate a strong spirit of giving back to society. Many of the
-              organization&apos;s events, initiatives, and programs are planned
-              and led by our student body and scholars themselves — fostering
-              leadership, ownership, and a sustainable cycle of impact.
+  <div className="max-w-6xl mx-auto px-5">
+    <div ref={scholarsRef}>
+ 
+      {/* Wide banner image on top */}
+      <div className="relative rounded-2xl overflow-hidden shadow-xl mb-10 h-[400px]">
+        <Image
+        height={800}
+        width={600}
+          src="/images/About/aboutus/scholars.jpeg"
+          alt="NED Scholars — first-generation university students with determination and potential"
+          className="w-full h-full object-cover object-top"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1164A3]/65 to-transparent flex items-center">
+          <div className="px-10 max-w-lg">
+            <h3 className="text-white text-2xl font-bold mb-2">Who Are Our Scholars?</h3>
+            <p className="text-white/85 text-sm leading-relaxed">
+              First-generation students, resilient dreamers, and future leaders — our scholars represent the best of what determination can achieve.
             </p>
           </div>
         </div>
-      </section>
+      </div>
+ 
+      <div className="flex items-center gap-3 mb-6">
+        <GraduationCap className="w-8 h-8 text-[#1164A3]" />
+        <h2 className="text-4xl font-bold text-gray-800">
+          Who Are Our Scholars?
+        </h2>
+      </div>
+      <p className="text-gray-600 leading-relaxed mb-6 text-lg">
+        We proudly call our scholarship recipients{" "}
+        <strong className="text-[#1164A3]">Scholars</strong> — because
+        they represent not only academic promise, but determination,
+        resilience, and potential for leadership.
+      </p>
+      <p className="text-gray-700 font-semibold mb-4">
+        Most of our scholars are:
+      </p>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        {[
+          {
+            icon: <Star className="w-6 h-6 text-[#1164A3]" />,
+            text: "The first in their families to attend a university offering STEM education",
+          },
+          {
+            icon: <Users className="w-6 h-6 text-[#1164A3]" />,
+            text: "From lower-middle-income or underprivileged backgrounds",
+          },
+          {
+            icon: <TrendingUp className="w-6 h-6 text-[#1164A3]" />,
+            text: "Facing challenges such as limited financial resources, low exposure, and reduced self-confidence",
+          },
+        ].map((item, i) => (
+          <div
+            key={i}
+            className="flex items-start gap-4 p-5 bg-gradient-to-br from-slate-50 to-[#82B4CC]/10 rounded-xl border border-[#82B4CC]/30"
+          >
+            <div className="flex-shrink-0 mt-1">{item.icon}</div>
+            <p className="text-gray-600 leading-relaxed">{item.text}</p>
+          </div>
+        ))}
+      </div>
+      <p className="text-gray-600 leading-relaxed">
+        Our support goes beyond financial assistance. We actively nurture
+        the personal and professional growth of our scholars through
+        mentorship, training, and community engagement. Scholars are
+        regularly involved in volunteering and outreach activities to
+        cultivate a strong spirit of giving back to society. Many of the
+        organization&apos;s events, initiatives, and programs are planned
+        and led by our student body and scholars themselves — fostering
+        leadership, ownership, and a sustainable cycle of impact.
+      </p>
+    </div>
+  </div>
+</section>
 
       {/* Mission & Challenge */}
       <section className="py-20 bg-gradient-to-br from-gray-50 to-[#82B4CC]/10">
@@ -549,7 +561,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Support Us / Call to Action */}
-      <section className="py-20 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white">
+      <section className="pt-20 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white">
         <div className="max-w-4xl mx-auto px-5 text-center">
           <div className="flex items-center justify-center gap-3 mb-6">
             <h2 className="text-4xl font-bold">
@@ -601,6 +613,14 @@ const About: React.FC = () => {
               Become a Mentor
             </button>
           </div>
+          {/* Stats */}
+      <section className="w-full py-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 w-[90%] md:w-3/5 mx-auto">
+          {stats.map((stat, index) => (
+            <StatCard key={stat.label} stat={stat} index={index} />
+          ))}
+        </div>
+      </section>
         </div>
       </section>
     </div>

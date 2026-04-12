@@ -30,10 +30,10 @@ export default function DonationInPakistan() {
                   INTERNATIONAL DONATION
                 </p>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              <h1 className="text-3xl md:text-6xl lg:text-6xl font-bold text-white mb-6">
                 Donation In Pakistan
               </h1>
-              <p className="text-2xl text-white/90 mb-4">
+              <p className="text-lg md:text-2xl text-white/90 mb-4">
                 Support NED Scholars directly from Pakistan through our local banking partner
               </p>
             </div>

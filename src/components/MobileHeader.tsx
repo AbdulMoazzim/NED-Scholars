@@ -3,6 +3,10 @@
 import { menuItems, ScholarshipData } from "@/data/LinksData";
 import { ChevronDown, X, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import MyUser from "./MyUser";
+import { useSession } from "@/lib/auth-client";
+import { usePathname, useRouter } from "next/navigation";
+import { Button } from "./ui/button";
 
 export default function MobileHeader({
   isMenuOpen,
@@ -28,7 +32,9 @@ export default function MobileHeader({
       setExpandedSubItem("");
     }
   };
-
+  const session = useSession();
+  const path = usePathname();
+  const router = useRouter();
   const toggleSubExpanded = (title: string) => {
     setExpandedSubItem(expandedSubItem === title ? "" : title);
   };
@@ -63,17 +69,26 @@ export default function MobileHeader({
         {/* Menu Items */}
         <div className="flex-1 overflow-y-auto p-4">
           <nav className="space-y-2">
-              <div
-                className="border-b border-gray-100 last:border-b-0"
+            {session.data
+              ? path !== "/auth" && <MyUser />
+              : path !== "/auth" && (
+                  <div className="lg:block hidden">
+                    <Button
+                      className="px-6 rounded-3xl bg-[#1164A3] hover:bg-[#0d4d82]"
+                      onClick={() => router.push("/auth")}
+                    >
+                      Log In
+                    </Button>
+                  </div>
+                )}
+            <div className="border-b border-gray-100 last:border-b-0">
+              <Link
+                href="/"
+                className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
               >
-                <Link href="/"
-                  className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
-                >
-                  <span className="text-gray-800 font-medium">
-                    Home
-                  </span>
-                </Link>
-              </div>
+                <span className="text-gray-800 font-medium">Home</span>
+              </Link>
+            </div>
             {menuItems.slice(0, menuItems.length).map((item, index) => (
               <div
                 key={index}
@@ -132,31 +147,37 @@ export default function MobileHeader({
                                       >
                                         {scholarshipItem.title}
                                       </Link>
-                                    )
+                                    ),
                                   )}
                                 </div>
                               )}
                             </>
-                          ) : subItem.href.includes("paypal") || subItem.href.includes("zeffy") ? (<Link
+                          ) : subItem.href.includes("paypal") ||
+                            subItem.href.includes("zeffy") ? (
+                            <Link
                               href={subItem.href}
                               target="_blank"
                               onClick={toggleMenu}
                               className="block p-2 text-gray-600 hover:bg-gray-50 rounded"
                             >
                               {subItem.title}
-                            </Link>) : (<Link
+                            </Link>
+                          ) : (
+                            <Link
                               href={subItem.href}
                               onClick={toggleMenu}
                               className="block p-2 text-gray-600 hover:bg-gray-50 rounded"
                             >
                               {subItem.title}
-                            </Link>)}
+                            </Link>
+                          )}
                         </div>
                       ))}
                   </div>
                 )}
               </div>
             ))}
+            
           </nav>
         </div>
       </div>

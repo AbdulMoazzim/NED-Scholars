@@ -25,14 +25,14 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { getFormConfig } from "@/data/AdminPortal";
 import {
   BlogData,
+  dbImages,
+  dbURLS,
+  dbVideos,
   FormField,
-  imageData,
   NewsData,
   Remembrance,
   SuccessStoryData,
   TeamMemberData,
-  urlData,
-  videoData,
 } from "@/lib/types";
 import { GetMember, UpdateMember } from "@/app/actions/team-member";
 import { GetRemembrance, UpdateRemembrance } from "@/app/actions/remembrance";
@@ -51,16 +51,11 @@ import {
   deleteVideo,
   deleteYoutubeUrl,
 } from "@/app/actions/resource";
+import { toast } from "sonner";
+import { handleRevalidate } from "@/app/actions/revalidatePathAction";
+import { GetCourseBySlug, UpdateCourse } from "@/app/actions/e-learning";
+import { CourseData } from "@/lib/form-types";
 
-interface dbImages extends imageData {
-  id: string;
-}
-interface dbVideos extends videoData {
-  id: string;
-}
-interface dbURLS extends urlData {
-  id: string;
-}
 export default function DynamicEditPage() {
   const router = useRouter();
   const params = useParams();
@@ -79,6 +74,11 @@ export default function DynamicEditPage() {
   const [youtubeUrls, setYoutubeUrls] = useState<dbURLS[]>([]);
   const [uploadingImage, setUploadingImage] = useState(false);
   const [uploadingVideo, setUploadingVideo] = useState(false);
+
+  // Per-item delete loading state
+  const [deletingImageId, setDeletingImageId] = useState<string | null>(null);
+  const [deletingVideoId, setDeletingVideoId] = useState<string | null>(null);
+  const [deletingYoutubeId, setDeletingYoutubeId] = useState<string | null>(null);
 
   const config = getFormConfig(modelType);
 
@@ -108,12 +108,15 @@ export default function DynamicEditPage() {
             setVideos(response?.data?.videos || []);
             setYoutubeUrls(response?.data?.youtubeUrls || []);
             break;
-          default:
-            response = await GetBlog(id);
-
+          case "e-learning":
+            response = await GetCourseBySlug(id);
             setVideos(response?.data?.videos || []);
             setYoutubeUrls(response?.data?.youtubeUrls || []);
-
+            break;
+          default:
+            response = await GetBlog(id);
+            setVideos(response?.data?.videos || []);
+            setYoutubeUrls(response?.data?.youtubeUrls || []);
             break;
         }
 
@@ -122,7 +125,6 @@ export default function DynamicEditPage() {
         }
 
         setFormData(response);
-        // Set media data
         setImages(response?.data?.images || []);
       } catch (err) {
         setError(err instanceof Error ? err.message : "An error occurred");
@@ -137,10 +139,8 @@ export default function DynamicEditPage() {
   }, [modelType, id]);
 
   const handleInputChange = (name: string, value: string | number) => {
-    console.log(name, value);
     setFormData((prev) => {
-      if (!prev) return prev; // Return null if prev is null
-
+      if (!prev) return prev;
       if ("data" in prev && typeof prev.data === "object") {
         return {
           ...prev,
@@ -150,16 +150,13 @@ export default function DynamicEditPage() {
           },
         };
       }
-
-      return prev; // Return prev unchanged if structure is unexpected
+      return prev;
     });
-
     setSuccess(false);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     try {
       setSaving(true);
       setError(null);
@@ -173,57 +170,41 @@ export default function DynamicEditPage() {
           };
           switch (modelType) {
             case "team-member":
-              const memberResult = await UpdateMember(
-                id,
-                rest as TeamMemberData
-              );
-              if (!memberResult?.success) {
-                throw new Error("Error Occurred during updating");
-              }
+              const memberResult = await UpdateMember(id, rest as TeamMemberData);
+              if (!memberResult?.success) throw new Error("Error Occurred during updating");
+              handleRevalidate(`/about/team/${id}`);
               break;
             case "remembrance":
-              const { success: remembranceSuccess } = await UpdateRemembrance(
-                id,
-                rest as Remembrance
-              );
-              if (!remembranceSuccess) {
-                throw new Error("Error Occurred during updating");
-              }
+              const { success: remembranceSuccess } = await UpdateRemembrance(id, rest as Remembrance);
+              if (!remembranceSuccess) throw new Error("Error Occurred during updating");
+              handleRevalidate(`/about/remembrance/${id}`);
               break;
             case "success-stories":
-              const { success: storySuccess } = await UpdateSuccessStory(
-                id,
-                rest as SuccessStoryData
-              );
-              if (!storySuccess) {
-                throw new Error("Error Occurred during updating");
-              }
+              const { success: storySuccess } = await UpdateSuccessStory(id, rest as SuccessStoryData);
+              if (!storySuccess) throw new Error("Error Occurred during updating");
+              handleRevalidate(`/scholars/success-stories/${id}`);
               break;
             case "news":
-              const { success: newsSuccess } = await UpdateNews(
-                id,
-                rest as NewsData
-              );
-              if (!newsSuccess) {
-                throw new Error("Error Occurred during updating");
-              }
+              const { success: newsSuccess } = await UpdateNews(id, rest as NewsData);
+              if (!newsSuccess) throw new Error("Error Occurred during updating");
+              break;
+            case "e-learning":
+              const { success: courseSuccess } = await UpdateCourse(id, rest as CourseData);
+              if (!courseSuccess) throw new Error("Error Occurred during updating");
+              handleRevalidate(`/events/e-learning/${id}`);
               break;
             default:
-              const { success: blogsSuccess } = await UpdateBlog(
-                id,
-                rest as BlogData
-              );
-              if (!blogsSuccess) {
-                throw new Error("Error Occurred during updating");
-              }
+              const { success: blogsSuccess } = await UpdateBlog(id, rest as BlogData);
+              if (!blogsSuccess) throw new Error("Error Occurred during updating");
               break;
           }
         }
       }
-
+      toast("Changes saved successfully!");
       setSuccess(true);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to save changes");
+      toast("Error occurred during saving!");
     } finally {
       setSaving(false);
     }
@@ -233,29 +214,13 @@ export default function DynamicEditPage() {
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-
-    const fileData = {
-      id: (Date.now() + Math.random()).toString(),
-      file,
-      name: file.name,
-    };
+    const fileData = { id: (Date.now() + Math.random()).toString(), file, name: file.name };
     try {
       setUploadingImage(true);
       if ("data" in formData && typeof formData.data === "object") {
-        if (
-          formData.data &&
-          "id" in formData.data &&
-          typeof formData.data.id === "string"
-        ) {
-          const newImage = await addImage(
-            fileData,
-            modelType,
-            formData?.data?.id ?? "",
-            modelType
-          );
-          if (newImage.data) {
-            setImages([...images, newImage?.data]);
-          }
+        if (formData.data && "id" in formData.data && typeof formData.data.id === "string") {
+          const newImage = await addImage(fileData, modelType, formData?.data?.id ?? "", modelType);
+          if (newImage.data) setImages([...images, newImage?.data]);
         }
       }
     } catch {
@@ -267,10 +232,13 @@ export default function DynamicEditPage() {
 
   const handleImageDelete = async (imageId: string, public_id: string) => {
     try {
+      setDeletingImageId(imageId);
       await deleteImage(imageId, public_id);
       setImages(images?.filter((image) => image.id !== imageId));
     } catch {
       setError("Failed to delete images");
+    } finally {
+      setDeletingImageId(null);
     }
   };
 
@@ -278,28 +246,13 @@ export default function DynamicEditPage() {
   const handleVideoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    const fileData = {
-      id: (Date.now() + Math.random()).toString(),
-      file,
-      name: file.name,
-    };
+    const fileData = { id: (Date.now() + Math.random()).toString(), file, name: file.name };
     try {
       if ("data" in formData && typeof formData.data === "object") {
-        if (
-          formData.data &&
-          "id" in formData.data &&
-          typeof formData.data.id === "string"
-        ) {
+        if (formData.data && "id" in formData.data && typeof formData.data.id === "string") {
           setUploadingVideo(true);
-          const newVideo = await addVideo(
-            fileData,
-            modelType,
-            formData?.data?.id ?? "",
-            modelType
-          );
-          if (newVideo.data) {
-            setVideos([...videos, newVideo?.data]);
-          }
+          const newVideo = await addVideo(fileData, modelType, formData?.data?.id ?? "", modelType);
+          if (newVideo.data) setVideos([...videos, newVideo?.data]);
         }
       }
     } catch {
@@ -311,10 +264,13 @@ export default function DynamicEditPage() {
 
   const handleVideoDelete = async (videoId: string, public_id: string) => {
     try {
+      setDeletingVideoId(videoId);
       await deleteVideo(videoId, public_id);
       setVideos(videos?.filter((video) => video.id !== videoId));
     } catch {
       setError("Failed to delete videos");
+    } finally {
+      setDeletingVideoId(null);
     }
   };
 
@@ -322,20 +278,9 @@ export default function DynamicEditPage() {
   const handleYoutubeAdd = async (id: string, url: string, title?: string) => {
     try {
       if ("data" in formData && typeof formData.data === "object") {
-        if (
-          formData.data &&
-          "id" in formData.data &&
-          typeof formData.data.id === "string"
-        ) {
-          const newUrl = await addYoutubeUrl(
-            url,
-            modelType,
-            formData?.data?.id ?? "",
-            title
-          );
-          if (newUrl.data && youtubeUrls) {
-            setYoutubeUrls([...youtubeUrls, newUrl?.data]);
-          }
+        if (formData.data && "id" in formData.data && typeof formData.data.id === "string") {
+          const newUrl = await addYoutubeUrl(url, modelType, formData?.data?.id ?? "", title);
+          if (newUrl.data && youtubeUrls) setYoutubeUrls([...youtubeUrls, newUrl?.data]);
         }
       }
     } catch {
@@ -345,10 +290,13 @@ export default function DynamicEditPage() {
 
   const handleYoutubeDelete = async (urlId: string) => {
     try {
+      setDeletingYoutubeId(urlId);
       await deleteYoutubeUrl(urlId);
       setYoutubeUrls(youtubeUrls?.filter((url) => url.id !== urlId));
     } catch {
       setError("Failed to delete YouTube URL");
+    } finally {
+      setDeletingYoutubeId(null);
     }
   };
 
@@ -358,7 +306,6 @@ export default function DynamicEditPage() {
       if (value) {
         switch (field.type) {
           case "textarea":
-            // Use Tiptap Editor for textarea fields
             return (
               <TiptapEditor
                 value={value[field.name as keyof typeof value] as string}
@@ -366,7 +313,6 @@ export default function DynamicEditPage() {
                 placeholder={`Enter ${field.label.toLowerCase()}...`}
               />
             );
-
           case "select":
             return (
               <Select
@@ -375,9 +321,7 @@ export default function DynamicEditPage() {
                 required={field.required}
               >
                 <SelectTrigger>
-                  <SelectValue
-                    placeholder={`Select ${field.label.toLowerCase()}`}
-                  />
+                  <SelectValue placeholder={`Select ${field.label.toLowerCase()}`} />
                 </SelectTrigger>
                 <SelectContent>
                   {field.options?.map((option: string) => (
@@ -388,21 +332,17 @@ export default function DynamicEditPage() {
                 </SelectContent>
               </Select>
             );
-
           case "number":
             return (
               <Input
                 id={field.name}
                 type="number"
                 value={value[field.name as keyof typeof value] as string}
-                onChange={(e) =>
-                  handleInputChange(field.name, parseInt(e.target.value))
-                }
+                onChange={(e) => handleInputChange(field.name, parseInt(e.target.value))}
                 required={field.required}
                 placeholder={`Enter ${field.label.toLowerCase()}...`}
               />
             );
-
           case "datetime-local":
             return (
               <Input
@@ -410,9 +350,7 @@ export default function DynamicEditPage() {
                 type="datetime-local"
                 value={
                   value
-                    ? new Date(
-                        value[field.name as keyof typeof value] as string
-                      )
+                    ? new Date(value[field.name as keyof typeof value] as string)
                         .toISOString()
                         .slice(0, 16)
                     : ""
@@ -421,7 +359,6 @@ export default function DynamicEditPage() {
                 required={field.required}
               />
             );
-
           default:
             return (
               <Input
@@ -443,9 +380,7 @@ export default function DynamicEditPage() {
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-[#82B4CC]/10 to-slate-100 flex items-center justify-center">
         <div className="text-center space-y-4">
           <Loader2 className="w-12 h-12 animate-spin text-[#1164A3] mx-auto" />
-          <p className="text-slate-600 font-['Instrument_Serif'] text-lg">
-            Loading data...
-          </p>
+          <p className="text-slate-600 font-['Instrument_Serif'] text-lg">Loading data...</p>
         </div>
       </div>
     );
@@ -468,14 +403,14 @@ export default function DynamicEditPage() {
             className="group -ml-3 text-slate-600 hover:text-slate-900 transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
-            <span className=" font-medium">Back</span>
+            <span className="font-medium">Back</span>
           </Button>
 
           <div className="space-y-2">
-            <h1 className=" text-4xl sm:text-5xl font-medium text-slate-900 tracking-tight">
+            <h1 className="text-4xl sm:text-5xl font-medium text-slate-900 tracking-tight">
               Edit {config.title.replace("Create ", "")}
             </h1>
-            <p className="text-slate-600 text-lg ">
+            <p className="text-slate-600 text-lg">
               Update the information below to modify this entry
             </p>
           </div>
@@ -483,10 +418,7 @@ export default function DynamicEditPage() {
 
         {/* Alerts */}
         {error && (
-          <Alert
-            variant="destructive"
-            className="mb-6 border-red-200 bg-red-50"
-          >
+          <Alert variant="destructive" className="mb-6 border-red-200 bg-red-50">
             <AlertCircle className="h-4 w-4" />
             <AlertDescription>{error}</AlertDescription>
           </Alert>
@@ -494,7 +426,7 @@ export default function DynamicEditPage() {
 
         {success && (
           <Alert className="mb-6 border-[#68B9C4] bg-[#68B9C4]/10 text-[#1164A3]">
-            <AlertDescription className=" font-medium">
+            <AlertDescription className="font-medium">
               Changes saved successfully!
             </AlertDescription>
           </Alert>
@@ -514,12 +446,10 @@ export default function DynamicEditPage() {
                 <div key={field.name} className="space-y-2.5">
                   <Label
                     htmlFor={field.name}
-                    className="text-slate-700  font-medium text-[15px] flex items-center gap-1.5"
+                    className="text-slate-700 font-medium text-[15px] flex items-center gap-1.5"
                   >
                     {field.label}
-                    {field.required && (
-                      <span className="text-red-500 text-sm">*</span>
-                    )}
+                    {field.required && <span className="text-red-500 text-sm">*</span>}
                   </Label>
                   {"data" in formData && renderField(field)}
                 </div>
@@ -534,9 +464,7 @@ export default function DynamicEditPage() {
                 {/* Images Section */}
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <Label className="text-slate-700  font-medium text-[15px]">
-                      Images
-                    </Label>
+                    <Label className="text-slate-700 font-medium text-[15px]">Images</Label>
                     <div className="relative">
                       <Input
                         type="file"
@@ -551,9 +479,7 @@ export default function DynamicEditPage() {
                         variant="outline"
                         size="sm"
                         disabled={uploadingImage}
-                        onClick={() =>
-                          document.getElementById("image-upload")?.click()
-                        }
+                        onClick={() => document.getElementById("image-upload")?.click()}
                         className="border-[#1164A3] text-[#1164A3] hover:bg-[#1164A3] hover:text-white"
                       >
                         {uploadingImage ? (
@@ -588,19 +514,20 @@ export default function DynamicEditPage() {
                               type="button"
                               variant="destructive"
                               size="sm"
-                              onClick={() =>
-                                handleImageDelete(image.id, image.public_id)
-                              }
+                              disabled={deletingImageId === image.id}
+                              onClick={() => handleImageDelete(image.id, image.public_id)}
                             >
-                              <Trash2 className="w-4 h-4 mr-1.5" />
-                              Delete
+                              {deletingImageId === image.id ? (
+                                <Loader2 className="w-4 h-4 mr-1.5 animate-spin" />
+                              ) : (
+                                <Trash2 className="w-4 h-4 mr-1.5" />
+                              )}
+                              {deletingImageId === image.id ? "Deleting..." : "Delete"}
                             </Button>
                           </div>
                           {image.alt && (
                             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-2">
-                              <p className="text-white text-xs  truncate">
-                                {image.alt}
-                              </p>
+                              <p className="text-white text-xs truncate">{image.alt}</p>
                             </div>
                           )}
                         </div>
@@ -608,19 +535,16 @@ export default function DynamicEditPage() {
                     </div>
                   ) : (
                     <div className="text-center py-8 border-2 border-dashed border-[#82B4CC]/30 rounded-lg">
-                      <p className="text-slate-500  text-sm">
-                        No images added yet
-                      </p>
+                      <p className="text-slate-500 text-sm">No images added yet</p>
                     </div>
                   )}
                 </div>
+
                 {/* Videos Section */}
                 {modelType !== "remembrance" && (
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
-                      <Label className="text-slate-700  font-medium text-[15px]">
-                        Videos
-                      </Label>
+                      <Label className="text-slate-700 font-medium text-[15px]">Videos</Label>
                       <div className="relative">
                         <Input
                           type="file"
@@ -635,9 +559,7 @@ export default function DynamicEditPage() {
                           variant="outline"
                           size="sm"
                           disabled={uploadingVideo}
-                          onClick={() =>
-                            document.getElementById("video-upload")?.click()
-                          }
+                          onClick={() => document.getElementById("video-upload")?.click()}
                           className="border-[#1164A3] text-[#1164A3] hover:bg-[#1164A3] hover:text-white"
                         >
                           {uploadingVideo ? (
@@ -672,20 +594,21 @@ export default function DynamicEditPage() {
                                 type="button"
                                 variant="destructive"
                                 size="sm"
-                                onClick={() =>
-                                  handleVideoDelete(video.id, video.public_id)
-                                }
-                                className=" opacity-0 group-hover:opacity-100 transition-opacity"
+                                disabled={deletingVideoId === video.id}
+                                onClick={() => handleVideoDelete(video.id, video.public_id)}
+                                className="opacity-0 group-hover:opacity-100 transition-opacity"
                               >
-                                <Trash2 className="w-4 h-4 mr-1.5" />
-                                Delete
+                                {deletingVideoId === video.id ? (
+                                  <Loader2 className="w-4 h-4 mr-1.5 animate-spin" />
+                                ) : (
+                                  <Trash2 className="w-4 h-4 mr-1.5" />
+                                )}
+                                {deletingVideoId === video.id ? "Deleting..." : "Delete"}
                               </Button>
                             </div>
                             {video.title && (
                               <div className="p-3 border-t border-[#82B4CC]/30">
-                                <p className="text-slate-700 text-sm  font-medium">
-                                  {video.title}
-                                </p>
+                                <p className="text-slate-700 text-sm font-medium">{video.title}</p>
                               </div>
                             )}
                           </div>
@@ -693,20 +616,17 @@ export default function DynamicEditPage() {
                       </div>
                     ) : (
                       <div className="text-center py-8 border-2 border-dashed border-[#82B4CC]/30 rounded-lg">
-                        <p className="text-slate-500  text-sm">
-                          No videos added yet
-                        </p>
+                        <p className="text-slate-500 text-sm">No videos added yet</p>
                       </div>
                     )}
                   </div>
                 )}
+
                 {/* YouTube URLs Section */}
                 {modelType !== "remembrance" && (
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
-                      <Label className="text-slate-700  font-medium text-[15px]">
-                        YouTube URLs
-                      </Label>
+                      <Label className="text-slate-700 font-medium text-[15px]">YouTube URLs</Label>
                       <Button
                         type="button"
                         variant="outline"
@@ -734,15 +654,13 @@ export default function DynamicEditPage() {
                           >
                             <div className="flex-1 min-w-0">
                               {youtubeUrl.title && (
-                                <p className=" font-medium text-slate-900 mb-1">
-                                  {youtubeUrl.title}
-                                </p>
+                                <p className="font-medium text-slate-900 mb-1">{youtubeUrl.title}</p>
                               )}
                               <a
                                 href={youtubeUrl.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-[#1164A3] hover:text-[#68B9C4]  text-sm truncate block"
+                                className="text-[#1164A3] hover:text-[#68B9C4] text-sm truncate block"
                               >
                                 {youtubeUrl.url}
                               </a>
@@ -751,20 +669,23 @@ export default function DynamicEditPage() {
                               type="button"
                               variant="destructive"
                               size="sm"
+                              disabled={deletingYoutubeId === youtubeUrl.id}
                               onClick={() => handleYoutubeDelete(youtubeUrl.id)}
-                              className="ml-4  opacity-0 group-hover:opacity-100 transition-opacity"
+                              className="ml-4 opacity-0 group-hover:opacity-100 transition-opacity"
                             >
-                              <Trash2 className="w-4 h-4 mr-1.5" />
-                              Delete
+                              {deletingYoutubeId === youtubeUrl.id ? (
+                                <Loader2 className="w-4 h-4 mr-1.5 animate-spin" />
+                              ) : (
+                                <Trash2 className="w-4 h-4 mr-1.5" />
+                              )}
+                              {deletingYoutubeId === youtubeUrl.id ? "Deleting..." : "Delete"}
                             </Button>
                           </div>
                         ))}
                       </div>
                     ) : (
                       <div className="text-center py-8 border-2 border-dashed border-[#82B4CC]/30 rounded-lg">
-                        <p className="text-slate-500  text-sm">
-                          No YouTube URLs added yet
-                        </p>
+                        <p className="text-slate-500 text-sm">No YouTube URLs added yet</p>
                       </div>
                     )}
                   </div>
@@ -776,7 +697,7 @@ export default function DynamicEditPage() {
                 <Button
                   type="submit"
                   disabled={saving}
-                  className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] hover:from-[#68B9C4] hover:to-[#82B4CC] text-white shadow-lg shadow-[#1164A3]/20  font-medium px-8 transition-all duration-200"
+                  className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] hover:from-[#68B9C4] hover:to-[#82B4CC] text-white shadow-lg shadow-[#1164A3]/20 font-medium px-8 transition-all duration-200"
                 >
                   {saving ? (
                     <>
@@ -796,7 +717,7 @@ export default function DynamicEditPage() {
                   variant="outline"
                   onClick={() => router.back()}
                   disabled={saving}
-                  className=" font-medium border-[#82B4CC]/30 text-slate-700 hover:bg-slate-50"
+                  className="font-medium border-[#82B4CC]/30 text-slate-700 hover:bg-slate-50"
                 >
                   Cancel
                 </Button>

@@ -232,13 +232,13 @@ export default function CoachingCenterPage() {
       <section className="bg-gradient-to-r from-[#1164A3] via-[#68B9C4] to-[#82B4CC] text-white py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-4 bg-white/20 text-white border-white/30">
-              Social Enterprise Model
+            <Badge className="mb-6 bg-white/20 text-white border-white/30 px-4 py-2 text-sm">
+              Coaching Center
             </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <h1 className="text-3xl md:text-6xl font-bold mb-6">
               NED Scholars Coaching Center Initiative
             </h1>
-            <p className="text-xl text-white/90">
+            <p className="text-lg md:text-2xl text-white/90">
               Revolutionizing Affordable Education in Pakistan
             </p>
           </div>
@@ -863,31 +863,6 @@ export default function CoachingCenterPage() {
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#1164A3]/85 to-[#68B9C4]/85 opacity-80" />
 
-        {/* Content */}
-        <div className="relative z-10 container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <Badge className="mb-4 bg-white/20 text-white border-white/30">
-                Quick Summary
-              </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Key Program Highlights
-              </h2>
-            </div>
-            <Card className="bg-white/10 border-white/20 text-white">
-              <CardContent className="p-8">
-                <ul className="space-y-4">
-                  {keyHighlights.map((highlight, index) => (
-                    <li key={index} className="flex items-start space-x-3">
-                      <CheckCircle2 className="w-6 h-6 flex-shrink-0 mt-1" />
-                      <span className="text-lg">{highlight}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
       </section>
     </div>
   );

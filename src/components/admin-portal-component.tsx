@@ -12,7 +12,6 @@ const AdminPortal = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [formData, setFormData] = useState<Partial<ContentData>>({});
   
-  
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200">
       <Sidebar

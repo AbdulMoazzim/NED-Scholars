@@ -235,15 +235,15 @@ export default function VocationalTrainingPage() {
             <Badge className="mb-6 bg-white/20 text-white border-white/30 px-4 py-2 text-sm">
               Women&apos;s Empowerment Initiative
             </Badge>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            <h1 className="text-3xl md:text-6xl font-bold mb-6">
               Vocational Training Program
             </h1>
-            <p className="text-2xl text-white/90 mb-4">
+            <p className="text-lg md:text-2xl text-white/90 mb-4">
               Empowering Women Through Skills Development
             </p>
             <Link
               href="/donate"
-              className="inline-flex items-center gap-2 bg-white text-[#1164A3] hover:bg-gray-100 text-lg px-8 py-4 rounded-full shadow-xl font-semibold transform hover:scale-105 transition-all duration-300"
+              className="inline-flex items-center gap-2 bg-white text-[#1164A3] hover:bg-gray-100 text-sm md:text-lg px-8 py-4 rounded-full shadow-xl font-semibold transform hover:scale-105 transition-all duration-300"
             >
               <Heart className="w-5 h-5" />
               Support the Program
@@ -273,13 +273,13 @@ export default function VocationalTrainingPage() {
             </div>
 
             {/* Wide banner image */}
-            <div className="relative rounded-2xl overflow-hidden shadow-xl mb-10 h-52 md:h-64">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl mb-10 h-64 md:h-80">
               <Image
                 width={800}
                 height={600}
-                src="/images/vocational-crisis.jpg"
+                src="/images/Services/vocational/image3.jpeg"
                 alt="The reality of female unemployment and limited opportunities in Pakistan"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-bottom"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[#1164A3]/65 to-transparent flex items-center">
                 <div className="px-10 max-w-lg">
@@ -362,7 +362,7 @@ export default function VocationalTrainingPage() {
                 <Image
                   width={800}
                   height={600}
-                  src="/images/vocational-origin.jpg"
+                  src="/images/Services/vocational/image2.jpeg"
                   alt="NED Scholars discovering alarming trends in Karachi outskirts communities"
                   className="w-full h-full object-cover"
                 />
@@ -513,7 +513,7 @@ export default function VocationalTrainingPage() {
                 <Image
                   width={800}
                   height={600}
-                  src="/images/vocational-center-1.jpg"
+                  src="/images/Services/vocational/image1.jpeg"
                   alt="AlMustafa Educational Center - girls learning stitching and sewing"
                   className="w-full h-full object-cover"
                 />
@@ -531,8 +531,10 @@ export default function VocationalTrainingPage() {
             {/* Center 2 — image on left */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[360px]">
-                <img
-                  src="/images/vocational-center-2.jpg"
+                <Image
+                height={800}
+                width={600}
+                  src="/images/Services/vocational/image4.jpeg"
                   alt="Khadija Qazi School - upcoming technical trades training center"
                   className="w-full h-full object-cover"
                 />
@@ -620,21 +622,6 @@ export default function VocationalTrainingPage() {
                 A three-phase model built for real, lasting impact
               </p>
             </div>
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[400px] mb-4">
-              <img
-                src="/images/vocational-program.jpg"
-                alt="Vocational training program structure — from skills to economic empowerment"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1164A3]/50 to-transparent" />
-              <div className="absolute bottom-5 left-5 right-5">
-                <p className="text-white text-sm font-medium bg-black/30 rounded-xl px-4 py-2 backdrop-blur-sm">
-                  From training to certification to income — a complete pathway
-                  to independence
-                </p>
-              </div>
-              <div className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl border-4 border-[#68B9C4]/30 -z-10" />
-            </div>
               <div className="space-y-6 flex flex-wrap justify-center gap-5">
                 {programStructure.map((item, index) => (
                   <Card
@@ -693,8 +680,10 @@ export default function VocationalTrainingPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-8">
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[400px]">
-                <img
-                  src="/images/vocational-success.jpg"
+                <Image
+                height={800}
+                width={600}
+                  src="/images/Services/vocational/image6.jpeg"
                   alt="Graduates of the vocational training program who have transformed their lives"
                   className="w-full h-full object-cover"
                 />
@@ -826,8 +815,10 @@ export default function VocationalTrainingPage() {
 
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[480px]">
-                <img
-                  src="/images/vocational-support.jpg"
+                <Image
+                height={800}
+                width={600}
+                  src="/images/Services/vocational/image5.jpeg"
                   alt="Supporting women's empowerment through vocational training donations"
                   className="w-full h-full object-cover"
                 />

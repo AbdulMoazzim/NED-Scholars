@@ -98,11 +98,11 @@ export default function JourneyPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-6 bg-white/20 text-white border-white/30 px-4 py-2 text-sm">OUR JOURNEY</Badge>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">Where It All Began</h1>
-            <p className="text-2xl text-white/90 mb-4">
+            <h1 className="text-3xl md:text-6xl font-bold mb-6">Where It All Began</h1>
+            <p className="text-lg md:text-2xl text-white/90 mb-4">
               A story of friendship, memory, and commitment to empowering the next generation of STEM leaders
             </p>
-            <div className="flex items-center justify-center gap-4 text-lg">
+            <div className="flex items-center justify-center gap-4 text-sm md:text-lg">
               <Calendar className="w-6 h-6" />
               <span>Since 2007</span>
               <span className="opacity-50">•</span>

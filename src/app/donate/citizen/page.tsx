@@ -29,10 +29,10 @@ export default function CitizensTransfer() {
                   BANK TRANSFER
                 </p>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              <h1 className="text-3xl md:text-6xl lg:text-6xl font-bold text-white mb-6">
                 Money Transfer Using Citizens
               </h1>
-              <p className="text-2xl text-white/90 mb-4">
+              <p className="text-lg md:text-2xl text-white/90 mb-4">
                 You can send us your donation directly to our CITIZENS Bank account
               </p>
             </div>

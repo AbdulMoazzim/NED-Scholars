@@ -26,14 +26,14 @@ import { CreateSuccessStory } from "@/app/actions/success-stories";
 import { CreateBlog } from "@/app/actions/blogs";
 import { CreateNews } from "@/app/actions/news";
 import { CreateRemembrance } from "@/app/actions/remembrance";
-import { Transparency } from "@/lib/form-types";
+import { CourseData, Transparency } from "@/lib/form-types";
 import { CreateTransparency } from "@/app/actions/transparency";
 import FormResponsesViewer from "./form-data-component";
 import EventManagementDashboard from "./seminar-webinar-management-component";
 import IndustrialVisitsManagement from "./industrial-visit-management";
 import InternshipManagement from "./internship-management";
 import GupShupManagement from "./gupshup-management";
-import CourseManagement from "./elearning-management";
+import {  CreateCourse } from "@/app/actions/e-learning";
 
 export const ContentForm = ({
   config,
@@ -51,7 +51,6 @@ export const ContentForm = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const videoInputRef = useRef<HTMLInputElement>(null);
-
   const handleInputChange = (name: string, value: string) => {
     setFormData(
       (prev) =>
@@ -110,7 +109,6 @@ export const ContentForm = ({
     if (!e.target.files) return;
     const files = Array.from(e.target.files);
     files.forEach((file) => {
-      console.log(file);
       if (file.size < 4 * 1024 * 1024) {
         setVideos((prev) => [
           ...prev,
@@ -188,6 +186,22 @@ export const ContentForm = ({
             resetForm();
           } else {
             toast(memberResult.error);
+          }
+          break;
+        case "elearning":
+          typedData = formData as CourseData;
+          const courseResult = await CreateCourse(
+            typedData,
+            images,
+            videos,
+            youtubeUrls
+          );
+
+          if (courseResult.success) {
+            toast("Course created successfully");
+            resetForm();
+          } else {
+            toast(courseResult.error);
           }
           break;
 
@@ -279,7 +293,7 @@ export const ContentForm = ({
       setIsSubmitting(false);
     }
   };
-
+  
   return (
     <>
       {activeTab === "form-responses" ? (
@@ -287,7 +301,6 @@ export const ContentForm = ({
       ) : activeTab === "sessions" ? <EventManagementDashboard /> : 
        activeTab === "internships" ? <InternshipManagement /> : 
        activeTab === "gupshup" ? <GupShupManagement /> : 
-       activeTab === "elearning" ? <CourseManagement /> : 
         activeTab === "industrial-visits" ? <IndustrialVisitsManagement /> : (
         <div className="p-4 lg:p-8 pt-[60px]">
           {/* Header */}
@@ -569,7 +582,7 @@ export const ContentForm = ({
                     ref={fileInputRef}
                     type="file"
                     multiple
-                    accept="raw/*"
+                    accept=".pdf"
                     onChange={handleImageUpload}
                     className="hidden"
                   />

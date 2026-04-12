@@ -1,7 +1,5 @@
-import { fileData, imageData, videoData } from "./types";
-// ============================================
-// FORM MODELS
-// ============================================
+import { GetCourseBySlug } from "@/app/actions/e-learning";
+import { dbImages, fileData, imageData, videoData } from "./types";
 
 export interface ScholarshipForm {
   full_name: string;
@@ -360,7 +358,7 @@ export interface InternshipApplication {
     title: string;
     company: string;
   };
-  resume: fileData;
+  resume: fileData[];
   createdAt: Date;
   updatedAt: Date;
 }
@@ -394,7 +392,7 @@ export interface GupShupSession {
   mainTopic: string;
   discussionPoints: string | null;
   expectedOutcome: string | null;
-  thumbnailImage: imageData[] | null;
+  thumbnailImage: dbImages[] | null;
   youtubeUrl: string | null;
   maxAttendees: number | null;
   requiresRegistration: boolean;
@@ -447,93 +445,9 @@ export interface CreateGupShupRegistrationData {
   userId: string;
 }
 
-export interface Course {
-  id: string;
+export interface CourseData {
   title: string;
-  instructor: string;
-  instructorTitle?: string;
-  instructorBio?: string;
-  overview: string;
   description: string;
-  learningOutcomes: string;
-  category: string;
-  level: string;
-  thumbnailUrl?: string;
-  youtubeUrl?: string;
-  videoUrl?: string;
-  duration?: string;
-  targetAudience: string;
-  prerequisites?: string;
-  syllabus?: string;
-  modules?: number;
-  lessons?: number;
-  isFree: boolean;
-  price?: number;
-  currency?: string;
-  status: string;
-  featured: boolean;
-  rating?: number;
-  enrollmentCount: number;
-  slug: string;
-  tags: string[];
-  publishedDate: Date;
-  createdAt: Date;
-  updatedAt: Date;
-  _count?: {
-    enrollments: number;
-  };
 }
-
-export interface CourseEnrollment {
-  id: string;
-  userId: string;
-  fullName: string;
-  email: string;
-  phone?: string;
-  currentStatus: string;
-  organization?: string;
-  department?: string;
-  courseId: string;
-  status: string;
-  enrollmentDate: Date;
-  rating?: number;
-  review?: string;
-  reviewDate?: Date;
-  createdAt: Date;
-  updatedAt: Date;
-  course: {
-    id: string;
-    title: string;
-    instructor: string;
-    category: string;
-    slug: string;
-  };
-}
-
-export interface CourseFormData {
-  title: string;
-  instructor: string;
-  instructorTitle: string;
-  instructorBio: string;
-  overview: string;
-  description: string;
-  learningOutcomes: string;
-  category: string;
-  level: string;
-  thumbnailUrl: string | null;
-  youtubeUrl: string | null;
-  videoUrl: string | null;
-  duration: string;
-  targetAudience: string;
-  prerequisites: string;
-  syllabus: string;
-  modules: string;
-  lessons: string;
-  isFree: boolean;
-  price: string;
-  currency: string;
-  status: string;
-  featured: boolean;
-  slug: string;
-  tags: string;
-}
+type CourseResponse = Awaited<ReturnType<typeof GetCourseBySlug>>;
+export type Course = CourseResponse["data"]

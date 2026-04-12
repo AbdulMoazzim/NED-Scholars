@@ -37,13 +37,13 @@ export default function RemembranceCardsComponent({
                 <Badge className="mb-6 bg-white/20 text-white border-white/30 px-4 py-2 text-sm">
                   REMEMBRANCE
                 </Badge>
-                <h1 className="text-5xl md:text-6xl font-bold mb-6">
+                <h1 className="text-3xl md:text-6xl font-bold mb-6">
                   In Loving Memory
                 </h1>
-                <p className="text-xl md:text-2xl text-white/90 mb-4">
+                <p className="text-lg md:text-2xl text-white/90 mb-4">
                   Honoring the lives and legacies of those who have touched our hearts
                 </p>
-                <div className="flex items-center justify-center gap-4 text-lg">
+                <div className="flex items-center justify-center gap-4 text-sm md:text-lg">
                   <Heart className="w-6 h-6" />
                   <span>Tributes & Memories</span>
                   <span className="opacity-50">•</span>

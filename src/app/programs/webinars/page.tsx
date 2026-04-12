@@ -123,12 +123,9 @@ export default function WebinarSeriesPage() {
       <section className="relative overflow-hidden bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white py-20">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="flex justify-center mb-4">
-              <Video className="w-16 h-16 text-white" />
-            </div>
-            <Badge className="mb-4 bg-white/20 text-white border-white/30">Online Learning Platform</Badge>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">NED Scholars Webinar Series</h1>
-            <p className="text-2xl text-white/90 mb-4">
+            <Badge className="mb-6 bg-white/20 text-white border-white/30 px-4 py-2 text-sm">Webinars</Badge>
+            <h1 className="text-3xl md:text-6xl font-bold mb-6">NED Scholars Webinar Series</h1>
+            <p className="text-lg md:text-2xl text-white/90 mb-4">
               Join us from the comfort of your home for dynamic online training designed to prepare students and young professionals for global opportunities.
             </p>
           </div>
@@ -171,8 +168,10 @@ export default function WebinarSeriesPage() {
 
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[460px]">
-                <img
-                  src="/images/webinar-training.jpg"
+                <Image
+                height={800}
+                width={600}
+                  src="/images/Programs/webinar/webinar1.jpeg"
                   alt="Expert-led webinar training session on engineering and technology topics"
                   className="w-full h-full object-cover"
                 />
@@ -190,8 +189,10 @@ export default function WebinarSeriesPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-12">
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[360px]">
-                <img
-                  src="/images/webinar-certification.jpg"
+                <Image
+                height={800}
+                width={600}
+                  src="/images/Programs/webinar/webinar4.jpeg"
                   alt="Globally recognized certifications from reputable accreditation bodies"
                   className="w-full h-full object-cover"
                 />
@@ -264,12 +265,7 @@ export default function WebinarSeriesPage() {
 
             {/* Wide image banner */}
             <div className="relative rounded-2xl overflow-hidden shadow-xl mb-10 h-56 md:h-64">
-              <img
-                src="/images/webinar-upcoming.jpg"
-                alt="Students joining a live webinar from around the world"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#1164A3]/65 to-transparent flex items-center">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] flex items-center">
                 <div className="px-10 max-w-lg">
                   <h3 className="text-white text-2xl font-bold mb-2">Join Our Next Live Session</h3>
                   <p className="text-white/85 text-sm leading-relaxed">
@@ -461,8 +457,10 @@ export default function WebinarSeriesPage() {
 
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[360px]">
-                <img
-                  src="/images/webinar-benefits.jpg"
+                <Image
+                height={800}
+                width={600}
+                  src="/images/Programs/webinar/webinar2.jpeg"
                   alt="Students benefiting from the NED Scholars webinar series"
                   className="w-full h-full object-cover"
                 />

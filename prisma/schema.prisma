@@ -4,7 +4,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
@@ -95,16 +95,16 @@ model TeamMember {
 
 // Success Stories Model
 model SuccessStory {
-  id              String       @id @default(cuid())
-  slug            String       @unique @db.VarChar(255)
-  studentName     String       @db.VarChar(2048)
-  year            Int
-  story           String       @db.VarChar(2048)
-  createdAt       DateTime     @default(now())
-  updatedAt       DateTime     @updatedAt
-  images          Image[]
-  videos          Video[]
-  youtubeUrls     YoutubeUrl[]
+  id          String       @id @default(cuid())
+  slug        String       @unique @db.VarChar(255)
+  studentName String       @db.VarChar(2048)
+  year        Int
+  story       String       @db.VarChar(2048)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  images      Image[]
+  videos      Video[]
+  youtubeUrls YoutubeUrl[]
 
   @@map("success_stories")
 }
@@ -180,6 +180,9 @@ model Image {
   industrialVisit   IndustrialVisit? @relation(fields: [industrialVisitId], references: [id], onDelete: Cascade)
   gupshupId         String?
   gupshup           GupShupSession?  @relation(fields: [gupshupId], references: [id], onDelete: Cascade)
+  
+  courseId         String?
+  course           Course?  @relation(fields: [courseId], references: [id], onDelete: Cascade)
 
   @@map("images")
 }
@@ -212,6 +215,8 @@ model Video {
   webinar           Webinar?         @relation(fields: [webinarId], references: [id], onDelete: Cascade)
   industrialVisitId String?
   industrialVisit   IndustrialVisit? @relation(fields: [industrialVisitId], references: [id], onDelete: Cascade)
+  courseId         String?
+  course           Course?  @relation(fields: [courseId], references: [id], onDelete: Cascade)
 
   @@map("videos")
 }
@@ -236,6 +241,9 @@ model YoutubeUrl {
 
   successStoryId String?
   successStory   SuccessStory? @relation(fields: [successStoryId], references: [id], onDelete: Cascade)
+
+  courseId         String?
+  course           Course?  @relation(fields: [courseId], references: [id], onDelete: Cascade)
 
   @@map("youtube_urls")
 }
@@ -294,8 +302,8 @@ model Resources {
   transparencyResource   Transparency? @relation(fields: [transparencyResourceId], references: [id], onDelete: Cascade)
 
   // Internship application files
-  resumeId String                @unique
-  resume   InternshipApplication @relation(fields: [resumeId], references: [id], onDelete: Cascade)
+  resumeId String?               
+  resume   InternshipApplication? @relation(fields: [resumeId], references: [id], onDelete: Cascade)
 
   @@map("resources")
 }
@@ -713,7 +721,7 @@ model InternshipApplication {
   expectedGraduation String
 
   // Resume
-  resume Resources?
+  resume Resources[]
 
   // Cover letter
   coverLetter String?
@@ -826,72 +834,15 @@ model GupShupRegistration {
 }
 
 model Course {
-  id               String   @id @default(cuid())
-  title            String
-  instructor       String
-  instructorTitle  String?
-  instructorBio    String?  @db.Text
-  overview         String   @db.Text
-  description      String   @db.Text
-  learningOutcomes String   @db.Text
-  category         String
-  level            String   @default("beginner")
-  thumbnailUrl     String?
-  youtubeUrl       String?
-  videoUrl         String?
-  duration         String?
-  targetAudience   String   @db.Text
-  prerequisites    String?  @db.Text
-  syllabus         String?  @db.Text
-  modules          Int?
-  lessons          Int?
-  isFree           Boolean  @default(true)
-  price            Float?
-  currency         String?  @default("USD")
-  status           String   @default("active")
-  featured         Boolean  @default(false)
-  rating           Float?
-  enrollmentCount  Int      @default(0)
-  slug             String   @unique
-  tags             String[]
+  id          String       @id @default(cuid())
+  title       String
+  slug        String       @unique @db.VarChar(255)
+  description String       @db.VarChar(2048)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  images      Image[]
+  videos      Video[]
+  youtubeUrls YoutubeUrl[]
 
-  enrollments CourseEnrollment[]
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@index([category])
-  @@index([level])
-  @@index([status])
-  @@index([featured])
-  @@index([slug])
-}
-
-model CourseEnrollment {
-  id            String  @id @default(cuid())
-  userId        String
-  fullName      String
-  email         String
-  phone         String?
-  currentStatus String
-  organization  String?
-  department    String?
-
-  courseId String
-  course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
-
-  status         String   @default("enrolled")
-  enrollmentDate DateTime @default(now())
-
-  rating     Float?
-  review     String?   @db.Text
-  reviewDate DateTime?
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@unique([email, courseId])
-  @@index([courseId])
-  @@index([email])
-  @@index([status])
+  @@map("elearning_courses")
 }

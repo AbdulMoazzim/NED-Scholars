@@ -128,10 +128,10 @@ export default function MentorshipProgramPage() {
             <Badge className="mb-6 bg-white/20 text-white border-white/30 px-4 py-2 text-sm">
               Mentorship Program
             </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <h1 className="text-3xl md:text-6xl font-bold mb-6">
               Guiding the Next Generation of Leaders
             </h1>
-            <p className="text-2xl text-white/90 mb-4">
+            <p className="text-lg md:text-2xl text-white/90 mb-4">
               Connecting talented students with experienced professionals for
               meaningful growth
             </p>
@@ -143,19 +143,14 @@ export default function MentorshipProgramPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <Badge className="mb-4 bg-[#68B9C4] text-white border-[#68B9C4]">
-                Our Mission
-              </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                Why Mentorship Matters
-              </h2>
-            </div>
 
             {/* Two-column: card left, image right */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
               <div className="flex items-start space-x-4 mb-6">
                 <div>
+                  <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                Why Mentorship Matters
+              </h2>
                   <p className="text-lg text-gray-700 leading-relaxed mb-4">
                     At NED Scholars, mentorship is a cornerstone of our program.
                     We connect talented students with experienced professionals

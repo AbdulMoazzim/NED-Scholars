@@ -36,15 +36,14 @@ export default function DonationMethods() {
           <div className="container mx-auto px-4">
             <div className="max-w-4xl">
               <div className="flex items-center gap-3 mb-4">
-                <Heart className="w-8 h-8 text-white" />
                 <p className="text-cyan-200 text-sm md:text-base uppercase tracking-wider font-semibold">
                   SUPPORT OUR MISSION
                 </p>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              <h1 className="text-3xl md:text-6xl lg:text-6xl font-bold text-white mb-6">
                 Donation Methods
               </h1>
-              <p className="text-2xl text-white/90 mb-4">
+              <p className="text:lg md:text-2xl text-white/90 mb-4">
                 Choose your preferred method to support aspiring scholars pursuing their dreams
               </p>
             </div>

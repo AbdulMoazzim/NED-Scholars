@@ -1,17 +1,14 @@
-
-import { CreditCard, DollarSign, Smartphone, Wallet } from "lucide-react";
-
 export const stats = [
   {
     icon: "/images/HomePage/scholarship_provided.png",
     label: "Scholarships Provided",
-    value: "600",
+    value: "918",
     color: "text-blue-600",
   },
   {
     icon: "/images/HomePage/aid.svg",
     label: "Financial Aid Provided",
-    value: "$478,818",
+    value: "$640,000",
     color: "text-green-600",
   },
   {

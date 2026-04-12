@@ -19,10 +19,10 @@ export default function DonateByMail() {
                   DONATION METHOD
                 </p>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              <h1 className="text-3xl md:text-6xl lg:text-6xl font-bold text-white mb-6">
                 Donate by Mail
               </h1>
-              <p className="text-2xl text-white/90 mb-4">
+              <p className="text-lg md:text-2xl text-white/90 mb-4">
                 You can always mail your cheques to our address
               </p>
             </div>

@@ -90,17 +90,6 @@ export default function InternshipDetailPage({ slug }: InternshipDetailPageProps
     }
   };
 
-  const getCategoryColor = (category: string) => {
-    const colors: Record<string, string> = {
-      engineering: "from-[#1164A3] to-[#68B9C4]",
-      information_technology: "from-[#68B9C4] to-[#82B4CC]",
-      software_development: "from-[#82B4CC] to-[#B0A3B3]",
-      research_development: "from-[#1164A3] to-[#82B4CC]",
-      corporate_administrative: "from-[#68B9C4] to-[#B0A3B3]",
-      education_training: "from-[#82B4CC] to-[#1164A3]",
-    };
-    return colors[category] || "from-[#1164A3] to-[#68B9C4]";
-  };
 
   const formatCategory = (category: string) => {
     return category
@@ -159,7 +148,7 @@ export default function InternshipDetailPage({ slug }: InternshipDetailPageProps
             <h2 className="text-2xl font-bold text-gray-800 mb-2">Internship Not Found</h2>
             <p className="text-gray-600 mb-6">The internship you&apos;re looking for doesn&apos;t exist.</p>
             <Button
-              onClick={() => router.push("/internships")}
+              onClick={() => router.push("/programs/internships")}
               className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
@@ -174,11 +163,11 @@ export default function InternshipDetailPage({ slug }: InternshipDetailPageProps
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
-      <section className={`bg-gradient-to-r ${getCategoryColor(internship.category)} text-white py-16`}>
+      <section className={`bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white py-16`}>
         <div className="container mx-auto px-4">
           <Button
             variant="ghost"
-            onClick={() => router.push("/internships")}
+            onClick={() => router.push("/programs/internships")}
             className="text-white hover:bg-white/20 mb-6"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />

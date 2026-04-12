@@ -76,14 +76,14 @@ export default function AcknowledgementPage() {
             <Badge className="mb-6 bg-white/20 text-white border-white/30 px-4 py-2 text-sm">
               ACKNOWLEDGEMENT
             </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <h1 className="text-3xl md:text-6xl font-bold mb-6">
               Acknowledging a Legacy of Generosity
             </h1>
-            <p className="text-2xl text-white/90 mb-12 ">
+            <p className="text-lg md:text-2xl text-white/90 mb-12 ">
               Since 2007, the success of the NED Scholarship has relied on the selfless contributions of our scholars and supporters. We extend our sincere thanks to all who made this possible.
             </p>
              <Link href="/donate"
-              className="bg-white text-[#1164A3] px-12 py-5 text-xl font-bold rounded-full hover:shadow-xl hover:bg-[#82B4CC] hover:text-white transition-all duration-300 transform hover:-translate-y-1"
+              className="bg-white text-[#1164A3] px-12 py-5 text-sm md:text-lg font-bold rounded-full hover:shadow-xl hover:bg-[#82B4CC] hover:text-white transition-all duration-300 transform hover:-translate-y-1"
             >
               Donate Now
             </Link>

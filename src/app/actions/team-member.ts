@@ -137,7 +137,6 @@ export async function GetMember(slug: string) {
 export async function DeleteMember(id: string) {
   try {
     const images = await prisma.image.findMany({ where: { teamMemberId: id } });
-    console.log(images);
     images.forEach(async (image) => {
       const result = await deleteResource(image.public_id);
       if (!result) {

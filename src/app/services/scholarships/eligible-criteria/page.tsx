@@ -99,17 +99,17 @@ export default function EligibilityCriteriaPage() {
             <Badge className="mb-6 bg-white/20 text-white border-white/30 px-4 py-2 text-sm">
               SCHOLARSHIP PROGRAM
             </Badge>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in">
+            <h1 className="text-3xl md:text-6xl font-bold mb-6 animate-fade-in">
               Eligibility Criteria
             </h1>
-            <p className="text-2xl text-white/90 mb-4">
+            <p className="text-lg md:text-2xl text-white/90 mb-4">
               Find out if you qualify for our scholarship program and take the
               first step towards achieving your educational dreams
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button
                 size="lg"
-                className="bg-white text-[#1164A3] hover:bg-gray-100 text-lg px-8 py-6 rounded-full shadow-xl transform hover:scale-105 transition-all duration-300"
+                className="bg-white text-[#1164A3] hover:bg-gray-100 text-sm md:text-lg px-8 py-6 rounded-full shadow-xl transform hover:scale-105 transition-all duration-300"
                 onClick={() => redirect("/register/scholarship")}
               >
                 Apply Now
@@ -163,55 +163,6 @@ export default function EligibilityCriteriaPage() {
                 </CardContent>
               </Card>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Priority Levels Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <Badge className="mb-4 bg-[#1164A3] text-white border-[#1164A3]">SELECTION PREFERENCE</Badge>
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">
-                Priority Levels
-              </h2>
-              <p className="text-gray-600 text-lg">
-                Understanding our selection preferences helps you gauge your
-                application strength
-              </p>
-            </div>
-
-            <div className="space-y-6">
-              {preferences.map((pref, index) => (
-                <Card
-                  key={index}
-                  className="overflow-hidden border-[#82B4CC]/20 shadow-lg hover:shadow-xl hover:border-[#1164A3] transition-all"
-                >
-                  <div
-                    className={cn(
-                      "bg-gradient-to-r h-2",
-                      pref.color
-                    )}
-                  ></div>
-                  <CardContent className="p-6">
-                    <div className="flex items-center justify-between flex-wrap gap-4">
-                      <div>
-                        <h3 className="text-xl font-bold text-gray-800 mb-2">
-                          {pref.priority}
-                        </h3>
-                        <p className="text-gray-600">{pref.description}</p>
-                      </div>
-                      <Badge
-                        className="text-base px-4 py-2 bg-[#82B4CC] text-white"
-                      >
-                        Priority {index + 1}
-                      </Badge>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
           </div>
         </div>
       </section>
@@ -328,50 +279,6 @@ export default function EligibilityCriteriaPage() {
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Additional Info Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <Card className="border-2 border-[#82B4CC] bg-[#82B4CC]/10">
-              <CardContent className="p-8">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-[#82B4CC]/20 rounded-full flex items-center justify-center flex-shrink-0">
-                    <AlertCircle className="w-6 h-6 text-[#1164A3]" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-800 mb-3">
-                      Important Note
-                    </h3>
-                    <div className="space-y-2 text-gray-700">
-                      <p>
-                        • Meeting the eligibility criteria does not guarantee a
-                        scholarship award
-                      </p>
-                      <p>
-                        • Scholarships are awarded based on available funding
-                        and application strength
-                      </p>
-                      <p>
-                        • All applications are reviewed thoroughly by our
-                        selection committee
-                      </p>
-                      <p>
-                        • Incomplete applications will not be considered for
-                        review
-                      </p>
-                      <p>
-                        • Priority is given to students demonstrating both
-                        strong academic performance and genuine financial need
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </section>

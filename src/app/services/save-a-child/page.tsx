@@ -127,7 +127,7 @@ export default function EducationSupportPakistan() {
   const flagshipPrograms = [
     {
       icon: <Laptop className="w-8 h-8" />,
-      title: "TechAThon",
+      title: "Techathon",
       description: "Hands-on technology bootcamps",
       color: "from-[#68B9C4] to-[#82B4CC]",
     },
@@ -185,12 +185,12 @@ export default function EducationSupportPakistan() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-6 bg-white/20 text-white border-white/30 px-4 py-2 text-sm">
-              Education Crisis Response
+              Save A Child
             </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <h1 className="text-3xl md:text-6xl font-bold mb-6">
               Investing in Human Capital Through Targeted Education Support
             </h1>
-            <p className="text-2xl text-white/90 mb-4">
+            <p className="text-lg md:text-2xl text-white/90 mb-4">
               NED Scholars Pakistan: Transforming Lives Through Education
             </p>
           </div>

@@ -201,19 +201,19 @@ export default function GuidelinesAndPrioritiesPage() {
       <section className="relative overflow-hidden bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white py-20">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-4 bg-white/20 text-white border-white/30 text-sm">
+            <Badge className="mb-6 bg-white/20 text-white border-white/30 px-4 py-2 text-sm">
               SCHOLARSHIP PROGRAM
             </Badge>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in">
+            <h1 className="text-3xl md:text-6xl font-bold mb-6 animate-fade-in">
               Guidelines & Priorities
             </h1>
-            <p className="text-2xl text-white/90 mb-4">
+            <p className="text-lg md:text-2xl text-white/90 mb-4">
               Understand our comprehensive selection process and what to expect
               when applying for NED Scholars scholarship program
             </p>
             <Button
               size="lg"
-              className="bg-white text-[#1164A3] hover:bg-gray-100 text-lg px-8 py-6 rounded-full shadow-xl transform hover:scale-105 transition-all duration-300"
+              className="bg-white text-[#1164A3] hover:bg-gray-100 text-sm md:text-lg px-8 py-6 rounded-full shadow-xl transform hover:scale-105 transition-all duration-300"
               onClick={() => router.push("/register/scholarship")}
             >
               Apply Now
@@ -390,13 +390,13 @@ export default function GuidelinesAndPrioritiesPage() {
             </div>
 
             {/* Wide image banner */}
-            <div className="relative rounded-2xl overflow-hidden shadow-xl mb-10 h-72 md:h-[700px]">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl mb-10 h-72 md:h-[500px]">
               <Image
                 width={800}
                 height={600}
                 src="/images/Services/Application and Selection proccess/image3.jpeg"
                 alt="Scholarship selection process overview"
-                className="w-full h-full object-cover object-top"
+                className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[#1164A3]/65 to-transparent flex items-center">
                 <div className="px-10 max-w-lg">

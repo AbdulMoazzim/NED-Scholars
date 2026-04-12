@@ -30,10 +30,10 @@ export default function ZelleTransfer() {
                   INSTANT TRANSFER
                 </p>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              <h1 className="text-3xl md:text-6xl lg:text-6xl font-bold text-white mb-6">
                 Money Transfer Using Zelle
               </h1>
-              <p className="text-2xl text-white/90 mb-4">
+              <p className="text:lg md:text-2xl text-white/90 mb-4">
                 Send your donation instantly and securely using Zelle®
               </p>
             </div>

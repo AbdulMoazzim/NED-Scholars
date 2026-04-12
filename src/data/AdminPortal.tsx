@@ -81,7 +81,7 @@ export const sidebarItems: SidebarNavItem[] = [
     color: "from-[#68B9C4] to-[#82B4CC]",
   },
   {
-    id: "elearning",
+    id: "e-learning",
     label: "E-Learning",
     icon: <GraduationCap className="w-5 h-5" />,
     color: "from-[#68B9C4] to-[#82B4CC]",
@@ -127,6 +127,23 @@ export const getFormConfig = (type: string) => {
           type: "textarea",
           required: false,
           rows: 3,
+        },
+      ],
+    },
+    "e-learning": {
+      title: "Create E-Learning Course",
+      fields: [
+        {
+          name: "title",
+          label: "Title",
+          type: "text",
+          required: true,
+        },
+        {
+          name: "description",
+          label: "Description",
+          type: "textarea",
+          required: true,
         },
       ],
     },

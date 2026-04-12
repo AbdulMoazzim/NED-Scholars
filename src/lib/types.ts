@@ -3,8 +3,7 @@ import { Dispatch, ReactElement, SetStateAction } from "react";
 import { FORM_CONFIGS } from "../data/form-config";
 import { GetAllMembers } from "@/app/actions/team-member";
 import { GetAllRemembrances } from "@/app/actions/remembrance";
-import { Transparency } from "./form-types";
-
+import { CourseData, Transparency } from "./form-types";
 
 export interface MenuItem {
   title: string;
@@ -16,8 +15,8 @@ export interface cardItems {
   title: string;
   description: string;
 }
-export interface programCardItems extends cardItems{
-  image: string
+export interface programCardItems extends cardItems {
+  image: string;
 }
 
 export interface Stats {
@@ -124,7 +123,8 @@ export type ContentData =
   | BlogData
   | NewsData
   | Remembrance
-  | Transparency;
+  | Transparency
+  | CourseData;
 
 export interface ContentFormProps {
   activeTab: string;
@@ -141,21 +141,21 @@ interface resourceData {
   successStoryId: null | string;
   teamMemberId: null | string;
   newsUpdateId: null | string;
- 
+  courseId: null | string;
 }
 export interface imageData extends resourceData {
-   seminarId: null | string;
+  seminarId: null | string;
   webinarId: null | string;
   industrialVisitId: null | string;
   remembranceId: null | string;
   gupshupId: string | null;
   public_id: string;
-  alt: string | null; // Changed from string to string | null
+  alt: string | null;
 }
 
 export interface videoData extends resourceData {
-   seminarId: null | string;
-   industrialVisitId : null | string;
+  seminarId: null | string;
+  industrialVisitId: null | string;
   webinarId: null | string;
   public_id: string;
   title: string | null;
@@ -168,7 +168,7 @@ export interface fileData {
   url: string;
   scholarshipResourceId: null | string;
   transparencyResourceId: null | string;
-  resumeId: string
+  resumeId: null | string;
 }
 
 export type SuccessStoriesData = Awaited<
@@ -190,6 +190,7 @@ export interface FieldConfig {
     min?: number;
     max?: number;
     maxDate?: Date;
+    message?: string;
   };
   options?: Array<{ value: string; label: string }>;
   rows?: number;
@@ -215,3 +216,12 @@ export interface FormConfig {
 }
 
 export type FormConfigs = typeof FORM_CONFIGS;
+export interface dbImages extends imageData {
+  id: string;
+}
+export interface dbVideos extends videoData {
+  id: string;
+}
+export interface dbURLS extends urlData {
+  id: string;
+}

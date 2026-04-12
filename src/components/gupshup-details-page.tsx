@@ -46,7 +46,7 @@ export default function GupShupDetailPage({ slug }: { slug: string }) {
   const [feedbackText, setFeedbackText] = useState("");
   const [submittingFeedback, setSubmittingFeedback] = useState(false);
   const [userRegistration, setUserRegistration] = useState<Omit<GupShupRegistration, "session">>();
-console.log(userRegistration)
+
   useEffect(() => {
     fetchSession();
   }, [slug]);
@@ -510,7 +510,7 @@ console.log(userRegistration)
                     </div>
 
                     {/* Capacity */}
-                    {session.maxAttendees && (
+                    {(session.maxAttendees && (session.status === "upcoming" || session.status === "live")) ?  (
                       <div className="p-4 bg-gradient-to-r from-[#1164A3]/5 to-[#68B9C4]/5 rounded-lg">
                         <div className="flex items-center justify-between mb-2">
                           <span className="text-gray-700 font-medium">Capacity</span>
@@ -534,10 +534,10 @@ console.log(userRegistration)
                           {session.maxAttendees - (session._count?.registrations || 0)} seats available
                         </p>
                       </div>
-                    )}
+                    ): null}
 
                     {/* Deadline Warning */}
-                    {session.registrationDeadline && (
+                    {(session.registrationDeadline && (session.status === "upcoming" || session.status === "live")) ?(
                       <div className={`p-3 rounded-lg border-2 ${
                         new Date(session.registrationDeadline) < new Date()
                           ? "bg-red-50 border-red-200"
@@ -559,7 +559,7 @@ console.log(userRegistration)
                           {formatDate(session.registrationDeadline)}
                         </p>
                       </div>
-                    )}
+                    ): null}
 
                     {/* Register Button */}
                     <Button

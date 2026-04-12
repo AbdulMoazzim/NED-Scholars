@@ -38,13 +38,13 @@ export default function TeamMembersComponent({
                 <Badge className="mb-6 bg-white/20 text-white border-white/30 px-4 py-2 text-sm">
                   OUR TEAM
                 </Badge>
-                <h1 className="text-5xl md:text-6xl font-bold mb-6">
+                <h1 className="text-3xl md:text-6xl font-bold mb-6">
                   Meet Our Team
                 </h1>
-                <p className="text-xl md:text-2xl text-white/90 mb-4">
+                <p className="text-lg md:text-2xl text-white/90 mb-4">
                   Dedicated professionals working together to make a difference
                 </p>
-                <div className="flex items-center justify-center gap-4 text-lg">
+                <div className="flex items-center justify-center gap-4 text-sm md:text-lg">
                   <Users className="w-6 h-6" />
                   <span>Passionate People</span>
                   <span className="opacity-50">•</span>

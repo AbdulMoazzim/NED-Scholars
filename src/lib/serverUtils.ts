@@ -83,7 +83,7 @@ export async function uploadResourceWithTracking(
       scholarshipResourceId: null,
       transparencyResourceId: null,
       public_id: uploadedResource.public_id,
-      resumeId: ""
+      resumeId: null
     };
 
     // Set the appropriate foreign key
@@ -149,7 +149,8 @@ export async function uploadImageWithTracking(
       webinarId: null,
       seminarId: null,
       industrialVisitId: null,
-      gupshupId: ""
+      courseId: null,
+      gupshupId: null
     };
 
     // Set the appropriate foreign key
@@ -177,6 +178,9 @@ export async function uploadImageWithTracking(
         break;
       case "industrial-visit":
         imageData.industrialVisitId = entityId;
+        break;
+      case "course":
+        imageData.courseId = entityId;
         break;
       default:
         imageData.gupshupId = entityId;
@@ -231,6 +235,7 @@ export async function uploadVideoWithTracking(
       newsUpdateId: null,
       webinarId: null,
       seminarId: null,
+      courseId: null,
       industrialVisitId: null
     };
 
@@ -256,6 +261,9 @@ export async function uploadVideoWithTracking(
         break;
       case "industrial-visit":
         videoData.industrialVisitId = entityId;
+        break;
+      case "course":
+        videoData.courseId = entityId;
         break;
     }
 
@@ -293,6 +301,7 @@ export async function saveYoutubeUrlWithTracking(
       successStoryId: null,
       teamMemberId: null,
       newsUpdateId: null,
+      courseId: null
     };
 
     // Set the appropriate foreign key
@@ -308,6 +317,9 @@ export async function saveYoutubeUrlWithTracking(
         break;
       case "team":
         urlData.teamMemberId = entityId;
+        break;
+      case "course":
+        urlData.courseId = entityId;
         break;
     }
 
@@ -395,6 +407,11 @@ export async function performRollback(rollbackState: RollbackState) {
           break;
         case "success-story":
           await prisma.successStory.delete({
+            where: { id: rollbackState.entityId },
+          });
+          break;
+        case "course":
+          await prisma.course.delete({
             where: { id: rollbackState.entityId },
           });
           break;

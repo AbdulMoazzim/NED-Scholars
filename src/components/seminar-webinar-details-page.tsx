@@ -55,7 +55,6 @@ import {
   deleteVideo,
 } from "@/app/actions/resource";
 import { toast } from "sonner";
-import Image from "next/image";
 import type { Seminar, Webinar } from "@/lib/form-types";
 import { useSession } from "@/lib/auth-client";
 
@@ -550,12 +549,11 @@ export default function EventDetailPage({ id, type }: DetailPageProps) {
                         {event.images && event.images.length > 0 ? (
                           <div>
                             <div className="relative h-96 bg-gray-100 group">
-                              <Image
+                              <img
                                 src={event.images[selectedImage].url}
                                 alt={
                                   event.images[selectedImage].alt || event.title
                                 }
-                                fill
                                 className="object-cover"
                               />
                               {/* Delete Button (Admin Only) */}
@@ -590,10 +588,9 @@ export default function EventDetailPage({ id, type }: DetailPageProps) {
                                         : "border-transparent hover:border-[#68B9C4]"
                                     }`}
                                   >
-                                    <Image
+                                    <img
                                       src={image.url}
                                       alt={image.alt || `Image ${index + 1}`}
-                                      fill
                                       className="object-cover"
                                     />
                                   </button>

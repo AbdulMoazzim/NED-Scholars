@@ -592,7 +592,6 @@ export const FORM_CONFIGS = {
           { value: "website", label: "Website" },
           { value: "animations", label: "Animations" },
           { value: "documention", label: "Documentation" },
-          { value: "ai-sw", label: "AI / SW" },
           { value: "medical", label: "Medical" },
           { value: "laptop-distribution", label: "Laptop Distribution" },
           { value: "event-management", label: "Event Management" },

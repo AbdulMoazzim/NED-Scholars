@@ -98,6 +98,7 @@ export async function GetUpcomingGupShupSessions() {
       },
       orderBy: { date: "asc" },
     });
+    console.log(sessions)
 
     return { success: true, data: sessions };
   } catch (err) {
@@ -373,7 +374,6 @@ export async function GetAllGupShupRegistrationsByUser(userId: string) {
       },
       orderBy: { createdAt: "desc" },
     });
-
     return { success: true, data: registrations };
   } catch (err) {
     console.error("GetAllGupShupRegistrations error:", err);

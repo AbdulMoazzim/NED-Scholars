@@ -222,12 +222,12 @@ export default function LaptopProgramPage() {
               <Laptop className="w-16 h-16 text-white" />
             </div>
             <Badge className="mb-6 bg-white/20 text-white border-white/30 px-4 py-2 text-sm">
-              Digital Access Initiative
+             Laptop Scholarship
             </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <h1 className="text-3xl md:text-6xl font-bold mb-6">
               Bridging the Digital Divide
             </h1>
-            <p className="text-2xl text-white/90 mb-4">
+            <p className="text-lg md:text-2xl text-white/90 mb-4">
               NED Scholars Laptop Distribution Program
             </p>
           </div>
@@ -242,6 +242,7 @@ export default function LaptopProgramPage() {
               <div>
                 <div className="flex items-start space-x-4">
                   <div>
+                    <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Overview</h1>
                     <p className="text-lg text-gray-700 leading-relaxed mb-4">
                       At NED Scholars, we believe that{" "}
                       <span className="font-semibold">

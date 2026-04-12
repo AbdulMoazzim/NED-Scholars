@@ -44,7 +44,7 @@ export async function addYoutubeUrl(
   url: string,
   type: string,
   foreignId: string,
-  title?: string
+  title?: string,
 ) {
   try {
     let urlData: urlData = {
@@ -54,6 +54,7 @@ export async function addYoutubeUrl(
       successStoryId: null,
       teamMemberId: null,
       newsUpdateId: null,
+      courseId: null,
     };
     switch (type) {
       case "team-member":
@@ -64,6 +65,10 @@ export async function addYoutubeUrl(
         break;
       case "news":
         urlData = { ...urlData, newsUpdateId: foreignId };
+
+        break;
+      case "e-learning":
+        urlData = { ...urlData, courseId: foreignId };
 
         break;
       default:
@@ -87,7 +92,7 @@ export async function addVideo(
   file: Resource,
   type: string,
   foreignId: string,
-  folderName: string
+  folderName: string,
 ) {
   try {
     const dataUri = await fileToDataUri(file.file);
@@ -95,6 +100,7 @@ export async function addVideo(
       folder: folderName,
     });
     let videoData: videoData = {
+      courseId: null,
       url: uploadedVideo.secure_url,
       title: uploadedVideo.original_filename || file.name,
       public_id: uploadedVideo.public_id,
@@ -130,6 +136,10 @@ export async function addVideo(
         videoData = { ...videoData, industrialVisitId: foreignId };
 
         break;
+      case "e-learning":
+        videoData = { ...videoData, courseId: foreignId };
+
+        break;
       default:
         videoData = { ...videoData, blogPostId: foreignId };
 
@@ -151,7 +161,7 @@ export async function addImage(
   file: Resource,
   type: string,
   foreignId: string,
-  folderName: string
+  folderName: string,
 ) {
   try {
     const dataUri = await fileToDataUri(file.file);
@@ -171,6 +181,7 @@ export async function addImage(
       seminarId: null,
       industrialVisitId: null,
       gupshupId: null,
+      courseId: null,
     };
     switch (type) {
       case "team-member":
@@ -203,12 +214,15 @@ export async function addImage(
         imageData = { ...imageData, gupshupId: foreignId };
 
         break;
+      case "e-learning":
+        imageData = { ...imageData, courseId: foreignId };
+
+        break;
       default:
         imageData = { ...imageData, blogPostId: foreignId };
 
         break;
     }
-    console.log(imageData);
 
     const newUrl = await prisma.image.create({ data: imageData });
     return { success: true, data: newUrl, error: null };

@@ -13,7 +13,6 @@ import { imageData, urlData, videoData } from "@/lib/types";
 export default async function Page({ params }: { params: Promise<{ "team-member": string }> }) {
   const webParams = await params;
   const slug = webParams["team-member"];
-  console.log(slug)
   const { data: member} = await GetMember(slug);
   const requestHeaders = new Headers(await headers())
   
@@ -34,7 +33,7 @@ export default async function Page({ params }: { params: Promise<{ "team-member"
           console.error("Error deleting team member:", error);
           return;
         }
-        revalidatePath("");
+        revalidatePath("/about/team");
         redirect("/about/team");
     }
   }
@@ -213,7 +212,6 @@ export default async function Page({ params }: { params: Promise<{ "team-member"
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {member.youtubeUrls.map((url: urlData, index: number) => {
-                    console.log(url.url)
                     return (
                       <div
                         key={index}

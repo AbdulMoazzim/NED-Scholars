@@ -96,16 +96,16 @@ const SupportPage: React.FC = () => {
         ref={heroSectionRef}
       >
         <div className="mx-auto box max-w-5xl">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 drop-shadow-lg leading-tight">
+          <h1 className="text-3xl md:text-6xl font-bold mb-6 drop-shadow-lg leading-tight">
             Empower the Future Through Education
           </h1>
-          <p className="text-2xl text-white/90 mb-4">
+          <p className="text-lg md:text-2xl text-white/90 mb-4">
             Education doesn&apos;t just change a single life, it reshapes entire
             generations. Yet, transforming that potential into reality requires
             targeted action.
           </p>
           <button
-            className="bg-white text-[#1164A3] px-12 py-5 text-xl font-bold rounded-full hover:shadow-xl hover:bg-[#82B4CC] hover:text-white transition-all duration-300 transform hover:-translate-y-1"
+            className="bg-white text-[#1164A3] px-12 py-5 text-sm md:text-lg font-bold rounded-full hover:shadow-xl hover:bg-[#82B4CC] hover:text-white transition-all duration-300 transform hover:-translate-y-1"
             onClick={() => {
               router.push("/donate");
             }}

@@ -3,20 +3,27 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
-export default async function Page({ params }:  {params: Promise<{ form: string }> }) {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ form: string }>;
+}) {
+  const requestHeaders = new Headers(await headers());
 
-  const requestHeaders = new Headers(await headers())
-  
-    const session = await auth.api.getSession({
-      headers: requestHeaders
-    })
-  
-    const slug = await params;
-    if (!session && (slug.form === "industrial-visit-attendee" || slug.form === "gupshup-registration" || slug.form === "course-registration")) {
-      redirect("/auth")
-    }
+  const session = await auth.api.getSession({
+    headers: requestHeaders,
+  });
+
+  const slug = await params;
+  if (
+    !session &&
+    (slug.form === "industrial-visit-attendee" ||
+      slug.form === "gupshup-registration")
+  ) {
+    redirect("/auth");
+  }
   return <FormPage form={slug.form} />;
 }
 
@@ -34,15 +41,16 @@ export async function generateStaticParams() {
     { slug: "industrial-visit-attendee" },
     { slug: "internship-application" },
     { slug: "gupshup-registration" },
-    { slug: "course-registration" },
   ];
 }
 
 // Metadata for SEO
-export async function generateMetadata({ params }: { params: Promise<{ form: string }> }) {
-  
-  
-  const {form} = await params;
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ form: string }>;
+}) {
+  const { form } = await params;
   const titles: Record<string, string> = {
     scholarship: "Scholarship Application | NED Scholars",
     partner: "Partner Application | NED Scholars",
@@ -55,7 +63,6 @@ export async function generateMetadata({ params }: { params: Promise<{ form: str
     "industrial-visit-attendee": "Seminar Presenter Application | NED Scholars",
     "internship-application": "Internship Application | NED Scholars",
     "gupshup-registration": "GupShup Registration | NED Scholars",
-    "course-registration": "Course Registration | NED Scholars",
   };
 
   return {

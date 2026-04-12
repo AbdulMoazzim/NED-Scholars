@@ -6,7 +6,6 @@ import {
   Film,
   Code,
   FileText,
-  Brain,
   Heart,
   Laptop,
   Calendar,
@@ -14,10 +13,9 @@ import {
   Users,
   ArrowRight,
   Sparkles,
-  Target,
-  Award,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function VolunteersPage() {
   const teams = [
@@ -34,7 +32,7 @@ export default function VolunteersPage() {
         { title: "Creativity and Visual Storytelling", description: "Ability to convey ideas through compelling visuals." },
         { title: "Attention to Detail", description: "Ensuring precision and professionalism in all design elements." },
       ],
-      image: "/images/volunteer-graphics.jpg",
+      image: "/images/Volunteers/graphics.jpeg",
       imageAlt: "Graphic design volunteers creating visual content",
       imageCaption: "Crafting visuals that tell powerful stories",
       formLink: "/register/volunteer",
@@ -52,7 +50,7 @@ export default function VolunteersPage() {
         { title: "Social Media Proficiency", description: "Leverage platforms like Instagram, Facebook, and LinkedIn to enhance our online presence." },
         { title: "Analytical Skills", description: "Analyze engagement metrics to evaluate the success of posts and strategies." },
       ],
-      image: "/images/volunteer-media.jpg",
+      image: "/images/Volunteers/media.jpeg",
       imageAlt: "Media team managing social media presence",
       imageCaption: "Amplifying our reach across every platform",
       formLink: "/register/volunteer",
@@ -70,7 +68,7 @@ export default function VolunteersPage() {
         { title: "Creativity and Storytelling", description: "Skill in crafting engaging, educational content." },
         { title: "Attention to Detail", description: "Precision to ensure high-quality, professional animations." },
       ],
-      image: "/images/volunteer-animation.jpg",
+      image: "/images/Volunteers/animation.jpeg",
       imageAlt: "Animation team working on educational multimedia",
       imageCaption: "Bringing ideas to life through animation",
       formLink: "/register/volunteer",
@@ -88,7 +86,7 @@ export default function VolunteersPage() {
         { title: "Graphic Design", description: "Creative ability to design engaging visuals for the website." },
         { title: "Responsive Design", description: "Knowledge of creating mobile-friendly layouts to enhance user experience across devices." },
       ],
-      image: "/images/volunteer-website.jpg",
+      image: "/images/Volunteers/website.jpeg",
       imageAlt: "Website team developing and maintaining the NED Scholars website",
       imageCaption: "Building a digital home for our mission",
       formLink: "/register/volunteer",
@@ -106,27 +104,9 @@ export default function VolunteersPage() {
         { title: "Organizational Skills", description: "Capability to manage and maintain important resources and documentation." },
         { title: "Basic Research Skills", description: "Proficiency in gathering and synthesizing information for blog posts and articles." },
       ],
-      image: "/images/volunteer-documentation.jpg",
+      image: "/images/Volunteers/documentation.jpeg",
       imageAlt: "Documentation team writing reports and newsletters",
       imageCaption: "Preserving every milestone and achievement",
-      formLink: "/register/volunteer",
-    },
-    {
-      id: "aisw",
-      name: "TEAM AI / SW",
-      icon: <Brain className="w-12 h-12" />,
-      color: "from-[#1164A3] to-[#68B9C4]",
-      description:
-        "Volunteers passionate about technology are encouraged to join the NED Scholars AI/SW Team, where innovation and application converge. This team explores cutting-edge projects in Software Development and Artificial Intelligence, from chatbot development to integrating AI into various applications. Volunteers gain hands-on experience in creating tools that address real-world challenges, enhancing efficiency across domains. The team fosters skill-building in advanced software and website development, empowering members with practical AI applications. Joining the AI/SW Team offers opportunities to expand your skill set, build a strong portfolio, and prepare for the job market. Stand out as a fresh graduate with valuable experience and a competitive edge, equipped for impactful roles in tech-driven industries.",
-      skills: [
-        { title: "Programming Proficiency", description: "Strong skills in Python, C and JavaScript for application development." },
-        { title: "Understanding of AI Concepts", description: "Familiarity with artificial intelligence and machine learning principles." },
-        { title: "Problem-solving Skills", description: "Ability to analyze challenges and develop innovative solutions." },
-        { title: "Collaboration", description: "Teamwork skills to effectively work with others on various projects." },
-      ],
-      image: "/images/volunteer-ai.jpg",
-      imageAlt: "AI and software development team working on tech projects",
-      imageCaption: "Where innovation meets real-world impact",
       formLink: "/register/volunteer",
     },
     {
@@ -142,7 +122,7 @@ export default function VolunteersPage() {
         { title: "Organizational Skills", description: "Efficiently coordinating appointments, treatments, and follow-up visits." },
         { title: "Problem-solving", description: "Quick thinking to find solutions for health-related challenges and access to care." },
       ],
-      image: "/images/volunteer-medical.jpg",
+      image: "/images/Volunteers/medical.jpeg",
       imageAlt: "Medical team connecting students with healthcare resources",
       imageCaption: "Ensuring no student faces health challenges alone",
       formLink: "/register/volunteer",
@@ -160,7 +140,7 @@ export default function VolunteersPage() {
         { title: "Communication Skills", description: "Strong interpersonal skills for effective interactions with students and smooth coordination." },
         { title: "Organizational Skills", description: "Ability to manage multiple tasks, prioritize efficiently, and ensure a streamlined distribution process." },
       ],
-      image: "/images/volunteer-laptop.jpg",
+      image: "/images/Volunteers/laptop_dist.jpeg",
       imageAlt: "Laptop distribution team managing device allocation",
       imageCaption: "Bridging the digital divide for every student",
       formLink: "/register/volunteer",
@@ -178,7 +158,7 @@ export default function VolunteersPage() {
         { title: "Problem-solving Skills", description: "Quick thinking to handle on-site issues and ensure smooth event operations." },
         { title: "Time Management", description: "Ability to prioritize tasks and meet event timelines efficiently." },
       ],
-      image: "/images/volunteer-events.jpg",
+      image: "/images/Volunteers/event.jpeg",
       imageAlt: "Event management team organizing a NED Scholars seminar",
       imageCaption: "Delivering seamless, memorable events for our community",
       formLink: "#join-events",
@@ -260,8 +240,10 @@ export default function VolunteersPage() {
 
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[500px]">
-                <img
-                  src="/images/volunteer-community.jpg"
+                <Image
+                height={800}
+                width={600}
+                  src="/images/Volunteers/volunteers.jpeg"
                   alt="NED Scholars volunteer community working together"
                   className="w-full h-full object-cover"
                 />
@@ -337,7 +319,9 @@ export default function VolunteersPage() {
 
                       {/* Image */}
                       <div className="relative rounded-2xl overflow-hidden shadow-2xl h-full">
-                        <img
+                        <Image
+                        height={800}
+                        width={600}
                           src={team.image}
                           alt={team.imageAlt}
                           className="w-full h-full object-cover"
@@ -354,7 +338,9 @@ export default function VolunteersPage() {
                   ) : (
                     <>
                       <div className="relative rounded-2xl overflow-hidden shadow-2xl h-full">
-                        <img
+                        <Image
+                        height={800}
+                        width={600}
                           src={team.image}
                           alt={team.imageAlt}
                           className="w-full h-full object-cover"
