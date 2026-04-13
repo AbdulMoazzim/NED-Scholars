@@ -161,7 +161,7 @@ const SupportPage: React.FC = () => {
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[#1164A3]/60 to-transparent flex flex-col justify-center px-10">
-                <h3 className="text-white text-3xl font-bold mb-3 leading-snug">
+                <h3 className="text-white text-lg md:text-3xl font-bold mb-3 leading-snug">
                   Join our team and donate to empower aspiring scholars pursuing
                   their dreams
                 </h3>
