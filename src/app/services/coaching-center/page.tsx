@@ -218,14 +218,6 @@ export default function CoachingCenterPage() {
     },
   ];
 
-  const keyHighlights = [
-    "Addresses systemic issues in Pakistan's coaching industry",
-    "Scholar-owned model creates sustainable careers",
-    "$50/year subsidized tuition makes quality education accessible",
-    "STEM-enhanced curriculum beyond test preparation",
-    "Proven results with 85% pass rate in mock exams",
-  ];
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section — no image */}
@@ -849,21 +841,6 @@ export default function CoachingCenterPage() {
         </div>
       </section>
 
-      {/* Key Highlights */}
-      <section className="py-[250px] relative text-white overflow-hidden">
-        <Image
-          width={800}
-          height={600}
-          src="/images/Services/CoachingCenter/coaching center 1.jpeg"
-          alt="students holding certificates"
-          className="absolute inset-0 w-full h-full object-cover object-center"
-          aria-hidden="true"
-        />
-
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1164A3]/85 to-[#68B9C4]/85 opacity-80" />
-
-      </section>
     </div>
   );
 }

@@ -50,7 +50,8 @@ import Image from "next/image";
 import { useSession } from "@/lib/auth-client";
 import { GupShupRegistration, GupShupSession } from "@/lib/form-types";
 
-export default function GupShupPage({sessionId}: {sessionId: string}) {
+export default function GupShupPage() {
+  const session = useSession();
   const router = useRouter();
   const [upcomingSessions, setUpcomingSessions] = useState<GupShupSession[]>([]);
   const [completedSessions, setCompletedSessions] = useState<GupShupSession[]>([]);
@@ -70,7 +71,7 @@ export default function GupShupPage({sessionId}: {sessionId: string}) {
       const [upcomingRes, completedRes, registrationsRes] = await Promise.all([
         GetUpcomingGupShupSessions(),
         GetCompletedGupShupSessions(),
-        GetAllGupShupRegistrationsByUser(sessionId),
+        GetAllGupShupRegistrationsByUser(session.data?.user.id || ""),
       ]);
       if (upcomingRes.success) {
         setUpcomingSessions(upcomingRes.data as GupShupSession[]);
@@ -335,7 +336,7 @@ export default function GupShupPage({sessionId}: {sessionId: string}) {
       </section>
 
       {/* My Registrations */}
-      {sessionId && userRegistrations.length > 0 && (
+      {session && userRegistrations.length > 0 && (
         <section className="py-12 bg-gradient-to-r from-[#B0A3B3]/5 to-[#82B4CC]/5">
           <div className="container mx-auto px-4">
             <div className="max-w-7xl mx-auto">

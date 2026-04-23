@@ -14,6 +14,7 @@ export async function CreateIndustrialVisit(visitData: CreateVisitData) {
     const visit = await prisma.industrialVisit.create({
       data: {
         ...visitData,
+        slug: `${visitData.slug}-${Date.now()}`,
         industry: visitData.industry,
         status: (visitData.status) || "upcoming",
         transportProvided: visitData.transportProvided ?? false,

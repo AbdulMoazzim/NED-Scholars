@@ -518,7 +518,7 @@ export default function LaptopProgramPage() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               {/* Image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[420px]">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-full">
                 <Image
                   width={800}
                   height={600}
@@ -725,7 +725,7 @@ export default function LaptopProgramPage() {
               </Card>
 
               {/* Image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[440px]">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-full">
                 <Image
                   width={800}
                   height={600}

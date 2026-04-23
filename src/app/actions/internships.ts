@@ -20,6 +20,7 @@ export async function CreateInternship(internshipData: CreateInternshipData) {
     const internship = await prisma.internship.create({
       data: {
         ...internshipData,
+        slug: `${internshipData.slug}-${Date.now()}`,
         locationType: internshipData.locationType,
         category: internshipData.category,
         status: internshipData.status || "active",

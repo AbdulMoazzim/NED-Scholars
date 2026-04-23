@@ -13,7 +13,6 @@ export async function CreateCourse(formData: CourseData, images: Resource[],
   const rollbackState = createRollbackState("course");
   
     try {
-  
       const createdCourse = await prisma.course.create({
         data: {
           ...formData,

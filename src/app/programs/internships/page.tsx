@@ -230,9 +230,6 @@ export default function InternshipsPage() {
                   >
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
-                        <div className={`w-14 h-14 rounded-2xl bg-gradient-to-r ${item.color} flex items-center justify-center text-white flex-shrink-0`}>
-                          {item.icon}
-                        </div>
                         <div>
                           <h3 className="text-lg font-bold text-gray-800 mb-1">{item.title}</h3>
                           <p className="text-gray-600 text-sm">{item.description}</p>

@@ -474,71 +474,106 @@ const About: React.FC = () => {
       </p>
     </div>
   </div>
+{/* Stats */}
+      <section className="w-full pt-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 w-[90%] md:w-3/5 mx-auto">
+          {stats.map((stat, index) => (
+            <StatCard key={stat.label} stat={stat} index={index} />
+          ))}
+        </div>
+      </section>
 </section>
 
       {/* Mission & Challenge */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-[#82B4CC]/10">
-        <div className="max-w-6xl mx-auto px-5">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <div ref={missionTextRef}>
-              <h2 className="text-4xl font-bold mb-6 text-gray-800">
-                Our Mission
-              </h2>
-              <div className="space-y-6 text-gray-600 leading-relaxed">
-                <p>
-                  Originally known as the MECH 80-81 ALUMNI Scholarship, NED
-                  Scholars was started by a small group of NEDians from the
-                  Mechanical Engineering Batch 80-81 in 2007. Under the program,
-                  scholarships are awarded on a &quot;need-cum-merit&quot; basis
-                  to deserving students.
-                </p>
-                <p>
-                  Since 2015, we have opened the scholarship to students from
-                  various countries in STEM (Science Technology Engineering and
-                  Math) education. Currently we are entertaining applicants from
-                  Pakistan and USA on need-cum-merit basis.
-                </p>
-                <p>
-                  What makes scholarships by NED Scholars different is the
-                  mentorship that is provided to these scholars. Scholars are
-                  encouraged to communicate directly with the NED Alumni group,
-                  with at least one alumni contacting them throughout the
-                  academic year.
-                </p>
-              </div>
-            </div>
+      <section className="py-10 bg-gradient-to-br from-gray-50 to-[#82B4CC]/10">
+  <div className="max-w-6xl mx-auto px-5">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
 
-            <div ref={challengeTextRef}>
-              <h2 className="text-4xl font-bold mb-6 text-gray-800">
-                The Challenge We Address
-              </h2>
-              <div className="space-y-6 text-gray-600 leading-relaxed">
-                <p>
-                  We are living in a world that is supposed to be
-                  &quot;flat&quot;, providing equal opportunities to all. But in
-                  reality, the model fails in academics, especially when we talk
-                  about a society with &quot;class segregation&quot; as in
-                  Pakistan.
-                </p>
-                <p>
-                  With the advent and introduction of computers and the
-                  Internet, the &quot;competition field for success&quot; is not
-                  flat any more, but rather tilted. It is tilted towards
-                  students who have access to personal computers, high-speed
-                  Internet, and modern learning resources.
-                </p>
-                <p>
-                  NED Scholars is an effort to support students on a
-                  &quot;need-cum-merit&quot; basis, in an effort to create a
-                  level field for them to compete. These scholars come from
-                  lower middle class and poor families, lacking in resources,
-                  professionalism, self-esteem, and motivation.
-                </p>
-              </div>
-            </div>
-          </div>
+      {/* Our Mission */}
+      <div ref={missionTextRef}>
+        {/* Image */}
+        <div className="relative mb-8 rounded-2xl overflow-hidden shadow-md group">
+          <img
+            src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80"
+            alt="Students graduating"
+            className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+          {/* Subtle tint overlay matching brand color */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#82B4CC]/40 to-transparent" />
+          <span className="absolute bottom-3 left-4 text-white text-sm font-medium tracking-wide drop-shadow">
+            Empowering NEDians since 2007
+          </span>
         </div>
-      </section>
+
+        <h2 className="text-4xl font-bold mb-6 text-gray-800">Our Mission</h2>
+        <div className="space-y-6 text-gray-600 leading-relaxed">
+          <p>
+            Originally known as the MECH 80-81 ALUMNI Scholarship, NED Scholars
+            was started by a small group of NEDians from the Mechanical
+            Engineering Batch 80-81 in 2007. Under the program, scholarships
+            are awarded on a &quot;need-cum-merit&quot; basis to deserving
+            students.
+          </p>
+          <p>
+            Since 2015, we have opened the scholarship to students from various
+            countries in STEM (Science Technology Engineering and Math)
+            education. Currently we are entertaining applicants from Pakistan
+            and USA on need-cum-merit basis.
+          </p>
+          <p>
+            What makes scholarships by NED Scholars different is the mentorship
+            that is provided to these scholars. Scholars are encouraged to
+            communicate directly with the NED Alumni group, with at least one
+            alumni contacting them throughout the academic year.
+          </p>
+        </div>
+      </div>
+
+      {/* The Challenge We Address */}
+      <div ref={challengeTextRef}>
+        {/* Image */}
+        <div className="relative mb-8 rounded-2xl overflow-hidden shadow-md group">
+          <img
+            src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80"
+            alt="Students studying"
+            className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#82B4CC]/40 to-transparent" />
+          <span className="absolute bottom-3 left-4 text-white text-sm font-medium tracking-wide drop-shadow">
+            Leveling the playing field
+          </span>
+        </div>
+
+        <h2 className="text-4xl font-bold mb-6 text-gray-800">
+          The Challenge We Address
+        </h2>
+        <div className="space-y-6 text-gray-600 leading-relaxed">
+          <p>
+            We are living in a world that is supposed to be &quot;flat&quot;,
+            providing equal opportunities to all. But in reality, the model
+            fails in academics, especially when we talk about a society with
+            &quot;class segregation&quot; as in Pakistan.
+          </p>
+          <p>
+            With the advent and introduction of computers and the Internet, the
+            &quot;competition field for success&quot; is not flat any more, but
+            rather tilted. It is tilted towards students who have access to
+            personal computers, high-speed Internet, and modern learning
+            resources.
+          </p>
+          <p>
+            NED Scholars is an effort to support students on a
+            &quot;need-cum-merit&quot; basis, in an effort to create a level
+            field for them to compete. These scholars come from lower middle
+            class and poor families, lacking in resources, professionalism,
+            self-esteem, and motivation.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
       {/* Our Core Values */}
       <section className="py-20 bg-white">
@@ -561,7 +596,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Support Us / Call to Action */}
-      <section className="pt-20 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white">
+      <section className="py-10 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] text-white">
         <div className="max-w-4xl mx-auto px-5 text-center">
           <div className="flex items-center justify-center gap-3 mb-6">
             <h2 className="text-4xl font-bold">
@@ -613,14 +648,7 @@ const About: React.FC = () => {
               Become a Mentor
             </button>
           </div>
-          {/* Stats */}
-      <section className="w-full py-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 w-[90%] md:w-3/5 mx-auto">
-          {stats.map((stat, index) => (
-            <StatCard key={stat.label} stat={stat} index={index} />
-          ))}
-        </div>
-      </section>
+          
         </div>
       </section>
     </div>

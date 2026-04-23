@@ -113,7 +113,7 @@ export default function HeroSlider({
               className="object-cover"
             />
             {/* Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/75 via-blue-800/60 to-blue-900/40" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#1164A3]/75 to-[#68B9C4]/40" />
           </div>
         ))}
       </div>
@@ -133,7 +133,7 @@ export default function HeroSlider({
                   }`}
                   style={{ transitionDelay: "100ms" }}
                 >
-                  <p className="text-cyan-400 text-xs md:text-sm lg:text-base uppercase tracking-wider font-semibold">
+                  <p className="text-cyan-300 text-xs md:text-sm lg:text-base uppercase tracking-wider font-semibold">
                     {currentSlide.subtitle}
                   </p>
                 </div>

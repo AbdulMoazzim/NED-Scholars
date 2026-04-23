@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Heart } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function AcknowledgementPage() {
@@ -133,37 +134,37 @@ export default function AcknowledgementPage() {
       {/* Thank You Message */}
       <section className="py-20 bg-white">
   <div className="container mx-auto px-4">
-    <div className="max-w-4xl mx-auto">
-      <Card className="border-0 shadow-xl overflow-hidden text-white py-0 h-[600px]">
-        <div
-          className="relative h-full"
-          style={{
-            backgroundImage: `url(/images/About/acknowledgement.jpeg)`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          <div
-            className="absolute inset-0"
-            style={{
-              background: "linear-gradient(to right, rgba(17, 100, 163, 0.82), rgba(104, 185, 196, 0.82))",
-              opacity: 0.4
-            }}
-          />
+    <div className="max-w-5xl mx-auto">
+      <Card className="border border-[#82B4CC]/30 shadow-xl overflow-hidden py-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2">
 
-          {/* Content sits above the overlay */}
-          <CardContent className="relative z-10 p-12 text-center flex flex-col justify-center items-center h-full">
-            <Heart className="w-16 h-16 mx-auto mb-6 opacity-90" />
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          {/* Image Side */}
+          <div className="relative w-full h-[420px] lg:h-auto lg:min-h-[420px]">
+            <Image
+              src="/images/About/acknowledgement.jpeg"
+              alt="Acknowledgement"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#1164A3]/30 to-[#68B9C4]/20" />
+          </div>
+
+          {/* Text Side */}
+          <div className="bg-gradient-to-r from-[#1164A3] to-[#68B9C4] p-10 flex flex-col justify-center text-white">
+            <h2 className="text-3xl md:text-4xl font-bold mb-5 leading-tight">
               Your Generosity Creates Opportunities
             </h2>
-            <p className="text-lg md:text-xl opacity-90 leading-relaxed mb-8">
-              Every contribution, no matter the size, helps us empower deserving students to pursue their dreams in STEM education. Your support doesn&apos;t just provide financial aid—it opens doors, builds confidence, and creates future leaders.
+            <p className="text-white/85 leading-relaxed mb-6 text-lg">
+              Every contribution, no matter the size, helps us empower deserving students
+              to pursue their dreams in STEM education. Your support doesn&apos;t just
+              provide financial aid — it opens doors, builds confidence, and creates
+              future leaders.
             </p>
-            <p className="text-xl font-semibold">
+            <p className="text-white font-semibold text-lg">
               From the bottom of our hearts, thank you.
             </p>
-          </CardContent>
+          </div>
+
         </div>
       </Card>
     </div>

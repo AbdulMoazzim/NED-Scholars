@@ -25,6 +25,7 @@ export async function CreateGupShupSession(
     const session = await prisma.gupShupSession.create({
       data: {
         ...sessionData,
+        slug: `${sessionData.slug}-${Date.now()}`,
         category: sessionData.category,
         status: sessionData.status || "upcoming",
         requiresRegistration: sessionData.requiresRegistration ?? true,
