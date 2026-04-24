@@ -33,7 +33,8 @@ import EventManagementDashboard from "./seminar-webinar-management-component";
 import IndustrialVisitsManagement from "./industrial-visit-management";
 import InternshipManagement from "./internship-management";
 import GupShupManagement from "./gupshup-management";
-import {  CreateCourse } from "@/app/actions/e-learning";
+import { CreateCourse } from "@/app/actions/e-learning";
+import { handleRevalidate } from "@/app/actions/revalidatePathAction";
 
 export const ContentForm = ({
   config,
@@ -57,7 +58,7 @@ export const ContentForm = ({
         ({
           ...prev,
           [name]: value,
-        }) as Partial<ContentData>
+        }) as Partial<ContentData>,
     );
 
     // Clear error for this field when user starts typing
@@ -132,10 +133,10 @@ export const ContentForm = ({
   const updateYoutubeUrl = (
     index: number,
     field: keyof YouTubeUrl,
-    value: string
+    value: string,
   ) => {
     setYoutubeUrls((prev) =>
-      prev.map((item, i) => (i === index ? { ...item, [field]: value } : item))
+      prev.map((item, i) => (i === index ? { ...item, [field]: value } : item)),
     );
   };
 
@@ -194,7 +195,7 @@ export const ContentForm = ({
             typedData,
             images,
             videos,
-            youtubeUrls
+            youtubeUrls,
           );
 
           if (courseResult.success) {
@@ -215,6 +216,7 @@ export const ContentForm = ({
           });
 
           if (storyResult.success) {
+            await handleRevalidate("/scholars/success-stories");
             toast("Success story created successfully");
             resetForm();
           } else {
@@ -264,6 +266,7 @@ export const ContentForm = ({
           });
 
           if (remembranceResult.success) {
+            await handleRevalidate("/about/remembrance");
             toast("Remembrance created successfully");
             resetForm();
           } else {
@@ -279,6 +282,7 @@ export const ContentForm = ({
           });
 
           if (transparencyResult.success) {
+            await handleRevalidate("/about/transparency");
             toast("Transparency files created successfully");
             resetForm();
           } else {
@@ -293,15 +297,20 @@ export const ContentForm = ({
       setIsSubmitting(false);
     }
   };
-  
+
   return (
     <>
       {activeTab === "form-responses" ? (
         <FormResponsesViewer />
-      ) : activeTab === "sessions" ? <EventManagementDashboard /> : 
-       activeTab === "internships" ? <InternshipManagement /> : 
-       activeTab === "gupshup" ? <GupShupManagement /> : 
-        activeTab === "industrial-visits" ? <IndustrialVisitsManagement /> : (
+      ) : activeTab === "sessions" ? (
+        <EventManagementDashboard />
+      ) : activeTab === "internships" ? (
+        <InternshipManagement />
+      ) : activeTab === "gupshup" ? (
+        <GupShupManagement />
+      ) : activeTab === "industrial-visits" ? (
+        <IndustrialVisitsManagement />
+      ) : (
         <div className="p-4 lg:p-8 pt-[60px]">
           {/* Header */}
           <div className="bg-white rounded-2xl shadow-lg p-8 mb-8 border border-[#82B4CC]/20">

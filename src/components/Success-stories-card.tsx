@@ -90,52 +90,49 @@ export default function SuccessStoriesComponent({
 
                   return (
                     <Card
-                      key={index}
-                      className="bg-[#82B4CC]/20 border-[#82B4CC]/30 overflow-hidden hover:shadow-xl transition-all group"
-                    >
-                      {story.images && story.images.length > 0 ? (
-                        <div className="relative">
-                          <Image
-                            width={200}
-                            height={200}
-                            src={story.images[0].url}
-                            alt={story.images[0].alt || story.studentName}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      ) : (
-                        <div className="m-auto w-20 h-20 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-full flex items-center justify-center text-3xl text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
-                          {story.studentName.charAt(0)}
-                        </div>
-                      )}
-                      <CardContent className="p-6">
-                        <div>
-                          <h3 className="text-xl font-bold text-gray-900 mb-2 text-center group-hover:text-[#1164A3] transition-colors duration-300">
-                            {story.studentName}
-                          </h3>
+  key={index}
+  className="bg-[#82B4CC]/20 border-[#82B4CC]/30 overflow-hidden hover:shadow-xl transition-all group"
+>
+  {story.images && story.images.length > 0 ? (
+    <div className="relative h-[350px]">
+      <img
+        src={story.images[0].url}
+        alt={story.images[0].alt || story.studentName}
+        className="h-full w-full object-cover"
+      />
+    </div>
+  ) : (
+    <div className="h-[350px] flex items-center justify-center bg-gradient-to-b from-[#1164A3]/10 to-[#68B9C4]/10">
+      <div className="w-16 h-16 bg-gradient-to-r from-[#1164A3] to-[#68B9C4] rounded-full flex items-center justify-center text-2xl text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+        {story.studentName.charAt(0)}
+      </div>
+    </div>
+  )}
 
-                          {story.year && (
-                            <p className="text-xs text-gray-500 mb-4 text-center">
-                              Batch {story.year}
-                            </p>
-                          )}
+  <CardContent className="p-4">
+    <h3 className="text-base font-bold text-gray-900 mb-0.5 text-center group-hover:text-[#1164A3] transition-colors duration-300">
+      {story.studentName}
+    </h3>
 
-                          <div className="flex justify-between gap-3.5">
-                            <p className="text-gray-600 text-sm leading-relaxed mb-6 line-clamp-4 w-[85%]">
-                              {plainText.slice(0, 150)}...
-                            </p>
-                            <div className="w-[10%]">
-                              <Link
-                                href={`/scholars/success-stories/${story.slug}`}
-                                className="rounded-full bg-gray-800 hover:bg-gray-700 text-white w-[40px] h-[40px] flex justify-center items-center cursor-pointer"
-                              >
-                                <ArrowRight className="w-5 h-5" />
-                              </Link>
-                            </div>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
+    {story.year && (
+      <p className="text-xs text-gray-500 mb-2 text-center">
+        Batch {story.year}
+      </p>
+    )}
+
+    <div className="flex items-center gap-3">
+      <p className="text-gray-600 text-sm leading-relaxed line-clamp-2 flex-1">
+        {plainText.slice(0, 150)}...
+      </p>
+      <Link
+        href={`/scholars/success-stories/${story.slug}`}
+        className="rounded-full bg-gray-800 hover:bg-gray-700 text-white w-[36px] h-[36px] shrink-0 flex justify-center items-center cursor-pointer"
+      >
+        <ArrowRight className="w-4 h-4" />
+      </Link>
+    </div>
+  </CardContent>
+</Card>
                   );
                 })}
               </div>
